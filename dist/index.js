@@ -1,11 +1,12 @@
-"use strict";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import '../dev-server/src/index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
+ReactDOM.render(<App />, document.getElementById('root'));
 
-var _profile = require("./components/profile");
-
-var _default = _profile.DeveloperProfile;
-exports["default"] = _default;
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();

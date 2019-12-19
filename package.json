@@ -2,22 +2,47 @@
   "name": "@wld/developer-profile",
   "version": "1.0.0",
   "description": "Developer profile for W3D",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
+    "start": "BROWSER=none react-scripts start",
+    "eject": "react-scripts eject",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/babel src -d dist"
-
+    "build": "rimraf lib && ./node_modules/.bin/babel src/component -d lib",
+    "build:app": "react-scripts build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
-    "@babel/preset-react": "^7.7.4"
+    "@babel/preset-react": "^7.7.4",
+    "husky": "^3.1.0",
+    "rimraf": "^3.0.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build"
+    }
   }
 }

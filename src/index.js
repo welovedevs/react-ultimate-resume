@@ -1,3 +1,5 @@
-import { DeveloperProfile } from "./components/profile";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
 
-export default DeveloperProfile;
+ReactDOM.render(<App />, document.getElementById('root'));
