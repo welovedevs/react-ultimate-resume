@@ -1,5 +1,5 @@
 {
-  "name": "developer-profile",
+  "name": "@wld/developer-profile",
   "version": "1.0.0",
   "description": "Developer profile for W3D",
   "main": "src/index.js",
