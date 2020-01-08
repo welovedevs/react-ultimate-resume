@@ -1,0 +1,44 @@
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "plugins": ["react-hooks", "babel", "react", "jsx-a11y"],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "rules": {
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "off",
+        "no-tabs": ["off"],
+        "indent": ["off", 4],
+        "max-len": ["off", 120],
+        "object-curly-newline": "off",
+        "react/prop-types": ["off"],
+        "react/jsx-indent": ["off"],
+        "react/jsx-indent-props": ["off"],
+        "react/jsx-props-no-spreading": ["off"],
+        "comma-dangle": ["error", "never"],
+        "jsx-a11y/no-static-element-interactions": ["off"],
+        "jsx-a11y/href-no-hash": ["off"],
+        "jsx-a11y/click-events-have-key-events": ["warn"],
+        "arrow-parens": "off",
+        "no-underscore-dangle": ["off"],
+        "implicit-arrow-linebreak": "off",
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+        "import/prefer-default-export": "off",
+        "react/destructuring-assignment": ["warn", "always"],
+        "jsx-a11y/alt-text": "off",
+        "react/no-array-index-key": "off",
+        "import/no-named-as-default": "off",
+        "prefer-destructuring": "warn",
+        "no-console": "warn",
+        "no-alert": "error"
+    },
+    "globals": {
+        "window": true,
+        "talkus": true,
+        "document": true,
+        "localStorage": true
+    }
+}
