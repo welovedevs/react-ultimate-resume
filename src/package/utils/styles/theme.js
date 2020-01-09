@@ -1,3 +1,7 @@
+import merge from 'lodash/mergeWith';
+import cloneDeep from 'lodash/cloneDeep';
+import isArray from 'lodash/isArray';
+
 const DEFAULT_PALETTE = Object.freeze({
     primary: {
         50: '#e4e2f5',
@@ -13,7 +17,7 @@ const DEFAULT_PALETTE = Object.freeze({
         contrastDefaultColor: 'light'
     },
     secondary: {
-    50: '#fce4ec',
+        50: '#fce4ec',
         100: '#f8bbd0',
         200: '#f48fb1',
         300: '#f06292',
@@ -57,9 +61,7 @@ const DEFAULT_PALETTE = Object.freeze({
 });
 
 const DEFAULT_THEME = Object.freeze({
-    palette: {
-        primary: DEFAULT_PALETTE
-    },
+    palette: DEFAULT_PALETTE,
     miscellaneous: {
         backgroundColor: DEFAULT_PALETTE.dark[50],
         color: DEFAULT_PALETTE.dark[500],
@@ -84,28 +86,15 @@ const DEFAULT_THEME = Object.freeze({
     }
 });
 
-const deepMergeObjects = (base, toMerge) => {
-    if (!base || !toMerge) {
-        console.warn('Cannot merge falsy values.');
-        return base;
+const mergeFunction = (objValue, srcValue) => {
+    if (isArray(objValue)) {
+        return srcValue;
     }
-    return Object.entries(base).map((acc, [key, value]) => {
-        const accumulator = acc;
-        const toMergeValue = toMerge[value];
-        let finalValue = value;
-        if (typeof toMergeValue !== 'object' || typeof value !== 'object') {
-            finalValue = toMergeValue;
-        } else if (typeof value === 'object') {
-            finalValue = deepMergeObjects(base, toMergeValue);
-        }
-    accumulator[key] = finalValue;
-    return accumulator;
-}, {});
 };
 
-export const buildTheme = (theme) => {
+export const buildTheme = theme => {
     if (!theme) {
         return DEFAULT_THEME;
     }
-    return deepMergeObjects(DEFAULT_THEME, theme);
+    return merge(cloneDeep(DEFAULT_THEME), theme, mergeFunction);
 };

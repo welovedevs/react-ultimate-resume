@@ -1,5 +1,5 @@
-import { App } from './components/app/app';
+import { DeveloperProfile } from './components/profile';
 
 import './styles/global.css';
 
-export default App;
+export default DeveloperProfile;
