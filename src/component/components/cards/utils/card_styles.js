@@ -5,7 +5,8 @@ export default theme => ({
             padding: theme.spacing,
             margin: theme.spacing * 2,
             borderRadius: theme.rounding,
-            width: 300,
+            width: 500,
+            height: 500,
             backgroundColor: cardStyles.backgroundColor,
             color: cardStyles.color,
             boxShadow: '8px 8px 22px rgba(0,0,0,0.2)'

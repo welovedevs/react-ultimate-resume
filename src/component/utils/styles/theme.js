@@ -1,5 +1,6 @@
 export const buildTheme = (userTheme = { palette: [] }) => {
     return {
+        font: userTheme.font || 'Avenir Next',
         spacing: 8,
         rounding: 10,
         defaultCard: {

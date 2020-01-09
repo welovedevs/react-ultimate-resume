@@ -1,5 +1,8 @@
-export default {
+export default theme => ({
     grid: {
-        display: 'flex'
+        display: 'flex',
+        '&, & *': {
+            fontFamily: [theme.font, 'Roboto', 'open sans', 'Arial']
+        }
     }
-};
+});

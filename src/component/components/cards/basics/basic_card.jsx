@@ -1,8 +1,10 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 
 import { Card } from '../utils/card';
 import { BasicCardFront } from './front_content';
 import { BasicCardBack } from './back_content';
+import translations from './translations';
 
 const mapData = data => {
     return {
@@ -17,6 +19,15 @@ const mapData = data => {
     };
 };
 
-export const BasicCard = ({ data, variant }) => (
-    <Card data={mapData(data)} FrontComponent={BasicCardFront} BackComponent={BasicCardBack} variant={variant} />
-);
+export const BasicCard = ({ data, variant, flipped }) => {
+    const { formatMessage } = useIntl();
+    return (
+        <Card
+            data={mapData(data)}
+            FrontComponent={BasicCardFront}
+            BackComponent={BasicCardBack}
+            moreTetxt={formatMessage(translations.moreText)}
+            {...{ variant, flipped }}
+        />
+    );
+};
