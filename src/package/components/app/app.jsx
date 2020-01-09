@@ -4,7 +4,7 @@ import { createUseStyles, ThemeProvider } from 'react-jss';
 
 import { buildTheme } from '../../utils/styles/theme';
 
-import styles from './app_styles';
+import { styles } from './app_styles';
 
 const useStyles = createUseStyles(styles);
 
@@ -12,16 +12,29 @@ const DEFAULT_OPTIONS = Object.freeze({
     locale: 'en'
 });
 
-const AppComponent = ({ options = DEFAULT_OPTIONS }) => {
-    const classes = useStyles();
-    const theme = useMemo(() => buildTheme(options?.theme), [options]);
+const WithProvidersApplication = (props) => {
+    const { options = DEFAULT_OPTIONS } = props;
+    const theme = useMemo(() => {
+        const built = buildTheme(options?.theme);
+        console.log('Built theme:', built);
+        return built;
+    }, [options]);
     return (
         <ThemeProvider theme={theme}>
             <IntlProvider locale={options.locale || 'en'}>
-                {'coucou'}
+                <Application />
             </IntlProvider>
         </ThemeProvider>
     );
 };
 
-export const App = AppComponent;
+const Application = () => {
+    const classes = useStyles();
+    return (
+        <div className={classes.container}>
+            coucou
+        </div>
+    );
+};
+
+export const App = WithProvidersApplication;

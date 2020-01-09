@@ -1,0 +1,14 @@
+html,
+body,
+#root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    animation: fade-in 1s ease;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
