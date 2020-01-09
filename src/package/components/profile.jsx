@@ -3,11 +3,12 @@ import { IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
 import JsonStub from '../../data/json_stub.json';
-import { BasicCard } from './cards/basics/basic_card';
-import { buildTheme } from '../utils/styles/theme';
+import { buildTheme } from '../utils/styles/theme/theme';
+
+import { prepareJsonResume } from '../utils/data/resume';
+import { Banner } from './banner/banner';
 
 import { styles } from './profile_styles';
-import { prepareJsonResume } from '../utils/data/resume';
 
 const useStyles = createUseStyles(styles);
 
@@ -15,20 +16,17 @@ const DEFAULT_OPTIONS = Object.freeze({
     locale: 'en'
 });
 
-const DeveloperProfileElements = ({ options }) => {
+const DeveloperProfileComponent = ({ options }) => {
     const classes = useStyles(styles);
-    const { flipped } = options;
-
     const data = prepareJsonResume(JsonStub);
     return (
         <div className={classes.container}>
-            {/*<BasicCard flipped={flipped} data={data} variant={0} />*/}
-            {/*<BasicCard flipped={flipped} data={data} />*/}
-            coucou
+            <Banner />
         </div>
     );
 };
-export const DeveloperProfile = ({ options = {} }) => {
+
+const WithProvidersDeveloperProfile = ({ options = {} }) => {
     const { locale, theme } = useMemo(() => ({ ...DEFAULT_OPTIONS, ...options }), [options]);
 
     const profileTheme = useMemo(() => {
@@ -40,8 +38,10 @@ export const DeveloperProfile = ({ options = {} }) => {
     return (
         <ThemeProvider theme={profileTheme}>
             <IntlProvider locale={locale}>
-                <DeveloperProfileElements {...{ options }} />
+                <DeveloperProfileComponent {...{ options }} />
             </IntlProvider>
         </ThemeProvider>
     );
 };
+
+export const DeveloperProfile = WithProvidersDeveloperProfile;

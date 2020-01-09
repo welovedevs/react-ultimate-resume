@@ -2685,11 +2685,6 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.5:
-  version "2.2.6"
-  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
-  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
-
 clean-css@4.2.x:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.1.tgz#2d411ef76b8569b6d0c84068dabe85b0aa5e5c17"
@@ -3682,11 +3677,6 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
-emoji-regex@^6.4.1:
-  version "6.5.1"
-  resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-6.5.1.tgz#9baea929b155565c11ea41c6626eaa65cef992c2"
-  integrity sha512-PAHp6TxrCy7MGMFidro8uikr+zlJJKJ/Q6mm2ExZ7HwkyR9lSVFfE3kt36qcwa24BQL7y0G9axycGjK1A/0uNQ==
-
 emoji-regex@^7.0.1, emoji-regex@^7.0.2:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-7.0.3.tgz#933a04052860c85e83c122479c4748a8e4c72156"
@@ -4518,6 +4508,11 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
+fn-name@~2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/fn-name/-/fn-name-2.0.1.tgz#5214d7537a4d06a4a301c0cc262feb84188002e7"
+  integrity sha1-UhTXU3pNBqSjAcDMJi/rhBiAAuc=
+
 follow-redirects@^1.0.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.9.0.tgz#8d5bcdc65b7108fe1508649c79c12d732dcedb4f"
@@ -5335,7 +5330,7 @@ intl-messageformat@7.7.2:
     intl-format-cache "^4.2.13"
     intl-messageformat-parser "^3.5.1"
 
-invariant@^2.1.1, invariant@^2.2.1, invariant@^2.2.2, invariant@^2.2.4:
+invariant@^2.1.1, invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -6573,16 +6568,6 @@ lodash._reinterpolate@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
-
-lodash.flatten@^4.2.0, lodash.flatten@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/lodash.flatten/-/lodash.flatten-4.4.0.tgz#f31c22225a9632d2bbf8e4addbef240aa765a61f"
-  integrity sha1-8xwiIlqWMtK7+OSt2+8kCqdlph8=
-
-lodash.isstring@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/lodash.isstring/-/lodash.isstring-4.0.1.tgz#d527dfb5456eca7cc9bb95d5daeaf88ba54a5451"
-  integrity sha1-1SfftUVuynzJu5XV2ur4i6VKVFE=
 
 lodash.memoize@^4.1.2:
   version "4.1.2"
@@ -8508,6 +8493,11 @@ prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
     object-assign "^4.1.1"
     react-is "^16.8.1"
 
+property-expr@^1.5.0:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/property-expr/-/property-expr-1.5.1.tgz#22e8706894a0c8e28d58735804f6ba3a3673314f"
+  integrity sha512-CGuc0VUTGthpJXL36ydB6jnbyOf/rAHFvmVrJlH+Rg0DqqLFQGAP6hIaxD/G0OAmBJPhXDHuEJigrp0e0wFV6g==
+
 proxy-addr@~2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/proxy-addr/-/proxy-addr-2.0.5.tgz#34cbd64a2d81f4b1fd21e76f9f06c8a45299ee34"
@@ -8709,17 +8699,6 @@ react-dom@^16.12.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.18.0"
-
-react-emoji-render@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/react-emoji-render/-/react-emoji-render-1.2.1.tgz#646302217ffe9af53033b8582e930c7933ce58e5"
-  integrity sha512-h6gBzD63LEUt06WiwIlipbX9deYzfdWBmWpN0exGnMk2BoyVmtZ33B9ep0C6jmt4Un3wJN2CPJV4E1+uXS4inQ==
-  dependencies:
-    classnames "^2.2.5"
-    emoji-regex "^6.4.1"
-    lodash.flatten "^4.4.0"
-    prop-types "^15.5.8"
-    string-replace-to-array "^1.0.1"
 
 react-error-overlay@^6.0.4:
   version "6.0.4"
@@ -9835,15 +9814,6 @@ string-length@^3.1.0:
     astral-regex "^1.0.0"
     strip-ansi "^5.2.0"
 
-string-replace-to-array@^1.0.1:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/string-replace-to-array/-/string-replace-to-array-1.0.3.tgz#c93eba999a5ee24d731aebbaf5aba36b5f18f7bf"
-  integrity sha1-yT66mZpe4k1zGuu69auja18Y978=
-  dependencies:
-    invariant "^2.2.1"
-    lodash.flatten "^4.2.0"
-    lodash.isstring "^4.0.1"
-
 string-width@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-1.0.2.tgz#118bdf5b8cdc51a2a7e70d211e07e2b0b9b107d3"
@@ -10039,6 +10009,11 @@ symbol-tree@^3.2.2:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
+synchronous-promise@^2.0.6:
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/synchronous-promise/-/synchronous-promise-2.0.10.tgz#e64c6fd3afd25f423963353043f4a68ebd397fd8"
+  integrity sha512-6PC+JRGmNjiG3kJ56ZMNWDPL8hjyghF5cMXIFOKg+NiwwEZZIvxTWd0pinWKyD227odg9ygF8xVhhz7gb8Uq7A==
+
 table@^5.2.3:
   version "5.4.6"
   resolved "https://registry.yarnpkg.com/table/-/table-5.4.6.tgz#1292d19500ce3f86053b05f0e8e7e4a3bb21079e"
@@ -10208,6 +10183,11 @@ toidentifier@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
+
+toposort@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/toposort/-/toposort-2.0.2.tgz#ae21768175d1559d48bef35420b2f4962f09c330"
+  integrity sha1-riF2gXXRVZ1IvvNUILL0li8JwzA=
 
 tough-cookie@^2.3.3, tough-cookie@^2.3.4, tough-cookie@^2.5.0:
   version "2.5.0"
@@ -11045,3 +11025,15 @@ yargs@^13.3.0:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^13.1.1"
+
+yup@^0.28.0:
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/yup/-/yup-0.28.0.tgz#fdc04d1a495465c83d3757a80c47616884baeddc"
+  integrity sha512-9ZmsB/PT6/m+oUKF8rT9lWhMMGfx5s/aNCCf8pMu/GEQA0Ro2tLOc+aX12GjfL67Vif5a3c7eZVuxGFqFScnJQ==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    fn-name "~2.0.1"
+    lodash "^4.17.11"
+    property-expr "^1.5.0"
+    synchronous-promise "^2.0.6"
+    toposort "^2.0.2"

@@ -1,6 +1,10 @@
 import merge from 'lodash/mergeWith';
 import cloneDeep from 'lodash/cloneDeep';
 import isArray from 'lodash/isArray';
+import * as yup from 'yup';
+
+import { THEME_SCHEMA } from './theme_schema';
+import { transformTheme } from './theme_transforms';
 
 const DEFAULT_PALETTE = Object.freeze({
     primary: {
@@ -70,6 +74,9 @@ const DEFAULT_THEME = Object.freeze({
         rounding: 8
     },
     components: {
+        banner: {
+            overlayColor: 'primary'
+        },
         cards: {
             default: {
                 backgroundColor: 'dark',
@@ -86,15 +93,22 @@ const DEFAULT_THEME = Object.freeze({
     }
 });
 
+
 const mergeFunction = (objValue, srcValue) => {
     if (isArray(objValue)) {
         return srcValue;
     }
+    return objValue;
 };
 
-export const buildTheme = theme => {
-    if (!theme) {
+export const buildTheme = (theme) => {
+    const merged = merge(cloneDeep(DEFAULT_THEME), theme, mergeFunction);
+    const validationResult = THEME_SCHEMA.validate(merged);
+    if (!validationResult) {
+        console.warn('Invalid theme! Using default theme instead.');
         return DEFAULT_THEME;
     }
-    return merge(cloneDeep(DEFAULT_THEME), theme, mergeFunction);
+    const transformedTheme = transformTheme(merged);
+    console.log('Built theme:', transformedTheme);
+    return transformedTheme;
 };
