@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import { useIntl } from 'react-intl';
 
 import { Card } from '../utils/card';
@@ -21,9 +21,11 @@ const mapData = data => {
 
 export const BasicCard = ({ data, variant, flipped }) => {
     const { formatMessage } = useIntl();
+
+    const mappedData = useMemo(() => mapData(data), [data]);
     return (
         <Card
-            data={mapData(data)}
+            data={mappedData}
             FrontComponent={BasicCardFront}
             BackComponent={BasicCardBack}
             moreTetxt={formatMessage(translations.moreText)}
