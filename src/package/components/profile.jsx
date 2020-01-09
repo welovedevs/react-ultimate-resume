@@ -1,5 +1,3 @@
-import '../main_style.css';
-
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';

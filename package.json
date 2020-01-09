@@ -5,9 +5,10 @@
     "main": "lib/index.js",
     "scripts": {
         "start": "BROWSER=none react-scripts start",
+        "dev": "yarn start",
         "eject": "react-scripts eject",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "rimraf lib && ./node_modules/.bin/babel src/component -d lib",
+        "build": "rimraf lib && ./node_modules/.bin/babel src/package -d lib",
         "build:app": "react-scripts build"
     },
     "author": "",
@@ -17,7 +18,6 @@
         "moment": "^2.24.0",
         "react": "^16.12.0",
         "react-dom": "^16.12.0",
-        "react-emoji-render": "^1.2.1",
         "react-intl": "^3.9.3",
         "react-jss": "^10.0.3",
         "react-scripts": "3.3.0"

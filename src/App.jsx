@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DeveloperProfile } from './component/components/profile';
+import { DeveloperProfile } from './package/components/profile';
 
 function App() {
     const [flipped, setFlipped] = useState(false);
