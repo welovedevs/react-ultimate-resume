@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
@@ -28,17 +28,25 @@ const DeveloperProfileComponent = ({ options }) => {
 
 const WithProvidersDeveloperProfile = ({ options = {} }) => {
     const { locale, theme } = useMemo(() => ({ ...DEFAULT_OPTIONS, ...options }), [options]);
+    const [builtTheme, setBuiltTheme] = useState(null);
 
-    const profileTheme = useMemo(() => {
-        const built = buildTheme(theme);
-        console.log('Built theme:', built);
-        return built;
+    useEffect(() => {
+        const asyncBuild = async () => {
+            const built = await buildTheme(theme);
+            console.log('Built theme:', built);
+            setBuiltTheme(built);
+        };
+        asyncBuild();
     }, [options]);
 
+    if (!builtTheme) {
+        return null;
+    }
+
     return (
-        <ThemeProvider theme={profileTheme}>
+        <ThemeProvider theme={builtTheme}>
             <IntlProvider locale={locale}>
-                <DeveloperProfileComponent {...{ options }} />
+                <DeveloperProfileComponent options={options} />
             </IntlProvider>
         </ThemeProvider>
     );

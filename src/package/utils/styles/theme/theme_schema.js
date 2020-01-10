@@ -7,9 +7,17 @@ const SHADES_SCHEMA = Object.freeze({
     500: isHex.required()
 });
 
+const isExistingColorInPalette = yup.string().test(
+    'is-existing-color-in-palette',
+    (args) => `Color \`${args.value}\` must be present in palette.`,
+    function (value) {
+        return Boolean(this.options.palette?.[value]);
+    }
+);
+
 const CARD_VARIANT_SCHEMA = yup.object({
-    backgroundColor: isHex.required(),
-    color: isHex.required()
+    backgroundColor: isExistingColorInPalette.required(),
+    color: isExistingColorInPalette.required()
 });
 
 export const THEME_SCHEMA = yup.object({
@@ -29,7 +37,8 @@ export const THEME_SCHEMA = yup.object({
     }),
     components: yup.object({
         banner: yup.object({
-            overlayColor: yup.string().required()
+            overlayColor: isExistingColorInPalette.required(),
+            imageSrc: yup.string().required()
         }),
         cards: yup.object({
             default: CARD_VARIANT_SCHEMA,

@@ -1,7 +1,6 @@
 import merge from 'lodash/mergeWith';
 import cloneDeep from 'lodash/cloneDeep';
 import isArray from 'lodash/isArray';
-import * as yup from 'yup';
 
 import { THEME_SCHEMA } from './theme_schema';
 import { transformTheme } from './theme_transforms';
@@ -43,7 +42,8 @@ const DEFAULT_PALETTE = Object.freeze({
         600: '#f7e419',
         700: '#f6e014',
         800: '#f5dd11',
-        900: '#f3d709'
+        900: '#f3d709',
+        contrastDefaultColor: 'light'
     },
     dark: {
         50: '#efefef',
@@ -75,7 +75,8 @@ const DEFAULT_THEME = Object.freeze({
     },
     components: {
         banner: {
-            overlayColor: 'primary'
+            overlayColor: 'primary',
+            imageSrc: 'https://source.unsplash.com/random/4000x2000'
         },
         cards: {
             default: {
@@ -93,7 +94,6 @@ const DEFAULT_THEME = Object.freeze({
     }
 });
 
-
 const mergeFunction = (objValue, srcValue) => {
     if (isArray(objValue)) {
         return srcValue;
@@ -101,14 +101,13 @@ const mergeFunction = (objValue, srcValue) => {
     return objValue;
 };
 
-export const buildTheme = (theme) => {
+export const buildTheme = async (theme) => {
     const merged = merge(cloneDeep(DEFAULT_THEME), theme, mergeFunction);
-    const validationResult = THEME_SCHEMA.validate(merged);
-    if (!validationResult) {
-        console.warn('Invalid theme! Using default theme instead.');
+    try {
+        await THEME_SCHEMA.validate(merged, { palette: merged?.palette });
+        return transformTheme(merged);
+    } catch (error) {
+        console.error('Invalid theme! Using default theme instead.', { error });
         return DEFAULT_THEME;
     }
-    const transformedTheme = transformTheme(merged);
-    console.log('Built theme:', transformedTheme);
-    return transformedTheme;
 };
