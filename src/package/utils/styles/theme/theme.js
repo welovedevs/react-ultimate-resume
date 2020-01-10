@@ -76,7 +76,7 @@ const DEFAULT_THEME = Object.freeze({
     components: {
         banner: {
             overlayColor: 'primary',
-            imageSrc: 'https://source.unsplash.com/random/4000x2000'
+            imageSource: 'https://source.unsplash.com/random/4000x2000'
         },
         cards: {
             default: {
@@ -103,11 +103,14 @@ const mergeFunction = (objValue, srcValue) => {
 
 export const buildTheme = async (theme) => {
     const merged = merge(cloneDeep(DEFAULT_THEME), theme, mergeFunction);
+    let finalTheme = null;
     try {
         await THEME_SCHEMA.validate(merged, { palette: merged?.palette });
-        return transformTheme(merged);
+        finalTheme = merged;
     } catch (error) {
         console.error('Invalid theme! Using default theme instead.', { error });
-        return DEFAULT_THEME;
+        finalTheme = { ...DEFAULT_THEME };
     }
+    console.log({ finalTheme });
+    return transformTheme(finalTheme);
 };

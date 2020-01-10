@@ -38,7 +38,7 @@ export const THEME_SCHEMA = yup.object({
     components: yup.object({
         banner: yup.object({
             overlayColor: isExistingColorInPalette.required(),
-            imageSrc: yup.string().required()
+            imageSource: yup.string().required()
         }),
         cards: yup.object({
             default: CARD_VARIANT_SCHEMA,

@@ -10,8 +10,11 @@ export const styles = ({ palette, miscellaneous: { spacing } }) => {
             width: '100%',
             position: 'relative',
             overflow: 'hidden',
-            padding: spacing * 4,
-            ...center
+            padding: [spacing * 4, spacing * 12],
+            ...center,
+            '& > *:not($image):not($overlay)': {
+                zIndex: 2
+            }
         },
         absolutePositioned: {
             position: 'absolute',

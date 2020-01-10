@@ -18,7 +18,7 @@ Sections -
 You can integrate this profile as such:
 
 ```
-import { DeveloperProfile } from '@welovedevs/developer-profile';
+import { DeveloperProfile } from '@wld/developer-profile';
 
 const ApplicationComponent = () => {
     return (
