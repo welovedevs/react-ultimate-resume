@@ -32,7 +32,6 @@ export const THEME_SCHEMA = yup.object({
         backgroundColor: isHex.required(),
         color: isHex.required(),
         spacing: yup.number().required(),
-        rounding: yup.number().required(),
         fontFamily: yup.array().of(yup.string())
     }),
     components: yup.object({
@@ -41,6 +40,7 @@ export const THEME_SCHEMA = yup.object({
             imageSource: yup.string().required()
         }),
         cards: yup.object({
+            borderRadius: yup.number().required(),
             default: CARD_VARIANT_SCHEMA,
             variants: yup.array().of(CARD_VARIANT_SCHEMA).required()
         })

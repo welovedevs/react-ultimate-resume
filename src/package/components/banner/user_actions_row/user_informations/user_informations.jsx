@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { createUseStyles } from 'react-jss';
+import { Typography } from '@wld/ui/';
 
 import { Avatar } from '../../../commons/avatar/avatar';
 import { Column } from '../../../commons/column/column';
@@ -14,8 +15,25 @@ const UserInformationsComponent = () => {
     return (
         <div className={classes.container}>
             <Avatar />
-            <Column>
-                {'Marie Bodin'}
+            <Column customClasses={{ container: classes.textColumn }}>
+                <Typography
+                    customClasses={{
+                        container: classes.name
+                    }}
+                    variant="h3"
+                    component="h3"
+                >
+                    Marie Bodin
+                </Typography>
+                <Typography
+                    customClasses={{
+                        container: classes.description
+                    }}
+                    variant="h4"
+                    component="h4"
+                >
+                    Front-end developer
+                </Typography>
             </Column>
         </div>
     );

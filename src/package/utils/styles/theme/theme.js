@@ -70,8 +70,7 @@ const DEFAULT_THEME = Object.freeze({
         backgroundColor: DEFAULT_PALETTE.dark[50],
         color: DEFAULT_PALETTE.dark[500],
         fontFamily: ['Avenir Next', 'Open Sans', 'Roboto', 'Arial'],
-        spacing: 8,
-        rounding: 8
+        spacing: 8
     },
     components: {
         banner: {
@@ -79,6 +78,7 @@ const DEFAULT_THEME = Object.freeze({
             imageSource: 'https://source.unsplash.com/random/4000x2000'
         },
         cards: {
+            borderRadius: 20,
             default: {
                 backgroundColor: 'dark',
                 color: 'light'

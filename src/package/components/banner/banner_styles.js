@@ -31,7 +31,7 @@ export const styles = ({ palette, miscellaneous: { spacing } }) => {
         overlay: {
             extend: 'absolutePositioned',
             zIndex: 1,
-            backgroundImage: `linear-gradient(360deg, rgba(${primaryRgb}, 0) -28.58%, rgba(${primaryRgb}, 0.5) 93.05%)`
+            backgroundImage: `linear-gradient(360deg, rgba(0, 0, 0, .5) -28.58%, rgba(${primaryRgb}, 0.5) 93.05%)`
         }
     });
 };

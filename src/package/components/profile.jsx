@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { createContext, useMemo, useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
@@ -7,6 +7,7 @@ import { buildTheme } from '../utils/styles/theme/theme';
 
 import { prepareJsonResume } from '../utils/data/resume';
 import { Banner } from './banner/banner';
+import { Cards } from './cards/cards';
 
 import { styles } from './profile_styles';
 
@@ -16,12 +17,17 @@ const DEFAULT_OPTIONS = Object.freeze({
     locale: 'en'
 });
 
+export const DeveloperProfileContext = createContext({});
+
 const DeveloperProfileComponent = ({ options }) => {
     const classes = useStyles(styles);
-    const data = prepareJsonResume(JsonStub);
+    const data = useMemo(() => prepareJsonResume(JsonStub), [JsonStub]);
     return (
         <div className={classes.container}>
-            <Banner />
+            <DeveloperProfileContext.Provider value={{ data }}>
+                <Banner />
+                <Cards />
+            </DeveloperProfileContext.Provider>
         </div>
     );
 };

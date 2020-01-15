@@ -1,14 +1,19 @@
+import { flex } from '../../../utils/styles/styles_utils';
+
+const { center } = flex;
+
 export const styles = ({ palette }) => ({
     container: {
         height: 110,
         width: 110,
         borderRadius: '50%',
         backgroundColor: palette.dark[50],
-        overflow: 'hidden'
+        overflow: 'hidden',
+        ...center
     },
     image: {
-        height: '100%',
-        width: '100%',
+        height: 'calc(100% + 2px)',
+        width: 'calc(100% + 2px)',
         objectFit: 'cover'
     }
 });
