@@ -1,5 +1,4 @@
-const getColorFromCardVariant = (theme, cardVariant) =>
-    theme.palette[(theme.components.cards.variants[cardVariant] || theme.components.cards.default).color][500];
+import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../utils/styles/styles_utils';
 
 export const styles = (theme) => ({
         container: {
@@ -12,7 +11,7 @@ export const styles = (theme) => ({
         typography: ({ cardVariant }) => ({
             textTransform: 'unset',
             fontSize: ['14px', '!important'],
-            color: [getColorFromCardVariant(theme, cardVariant), '!important']
+            color: [getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).color), '!important']
         }),
         arrowContainer: {
             display: 'flex'
@@ -20,7 +19,7 @@ export const styles = (theme) => ({
         arrow: ({ cardVariant }) => ({
             height: 28,
             '& > path': {
-                stroke: getColorFromCardVariant(theme, cardVariant)
+                stroke: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).color)
             }
         })
     });

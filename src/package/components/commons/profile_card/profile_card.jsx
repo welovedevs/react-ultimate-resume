@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useRef, useState } from 'react';
+import React, { createContext, useCallback, useEffect, useRef, useState } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { config, useTransition } from 'react-spring';
@@ -18,6 +18,9 @@ const ProfileCardComponent = ({ data, sides, side: receivedSide, variant }) => {
 
     const hasSideChanged = useRef(false);
 
+    const handleMouseEnter = useCallback(() => setSide('back'), []);
+    const handleMouseLeave = useCallback(() => setSide('front'), []);
+
     // Either 'front' or 'back'.
     useEffect(() => {
         if (receivedSide) {
@@ -33,9 +36,9 @@ const ProfileCardComponent = ({ data, sides, side: receivedSide, variant }) => {
     }, [side]);
 
     const transitions = useTransition(side, item => `card_side_${item}`, {
-        from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
+        from: { opacity: 0, transform: 'translate3d(50%,0,0)' },
         enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-        leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
+        leave: { opacity: 0, transform: 'translate3d(-25%,0,0)' },
         config: config.default,
         immediate: !hasSideChanged.current
     });
@@ -43,6 +46,8 @@ const ProfileCardComponent = ({ data, sides, side: receivedSide, variant }) => {
         <Card
             customClasses={{ container: classes.container }}
             elevation={1}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
         >
                 <ProfileCardContext.Provider value={{ side, setSide }}>
                     {transitions.map(({ item, key, props }) => {

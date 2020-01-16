@@ -19,7 +19,7 @@ const BasicsFrontComponent = ({ data, variant }) => {
     const { currentPosition, currentCity } = data;
     const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side]);
     return (
-        <>
+        <div className={classes.container}>
             <CenterContentContainer>
                 <Typography variant="h1" component="h2" customClasses={{ container: classes.title }}>
                     <FormattedMessage
@@ -37,7 +37,7 @@ const BasicsFrontComponent = ({ data, variant }) => {
                     More about me
                 </ProfileCardButton>
             </ProfileCardActions>
-        </>
+        </div>
     );
 };
 

@@ -14,12 +14,6 @@ export const styles = (theme) => {
                 color: palette[color][500],
                 overflow: 'hidden'
             };
-        },
-        sidesContainer: {
-            height: '100%',
-            position: 'absolute',
-            top: 0,
-            left: 0
         }
     });
 };

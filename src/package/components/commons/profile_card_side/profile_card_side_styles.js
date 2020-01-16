@@ -2,7 +2,6 @@ export const styles = (theme) => {
     const { miscellaneous: { spacing } } = theme;
     return ({
         container: {
-            padding: spacing * 7,
             willChange: 'transform',
             height: '100%',
             width: '100%',

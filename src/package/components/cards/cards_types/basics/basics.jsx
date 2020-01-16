@@ -27,7 +27,7 @@ const BasicsCardComponent = ({ variant, flipped }) => {
             data={mappedData}
             sides={{
                 front: BasicsFront,
-                back: BasicsFront
+                back: BasicsBack
             }}
             variant={variant}
             flipped={flipped}
