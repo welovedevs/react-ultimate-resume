@@ -14,6 +14,8 @@ const CardsComponent = () => {
         <div className={classes.container}>
             <BasicsCard variant={4} />
             <BasicsCard variant={3} />
+            <BasicsCard variant={2} />
+            <BasicsCard variant={1} />
         </div>
     );
 };

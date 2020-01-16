@@ -64,7 +64,7 @@ const DEFAULT_PALETTE = Object.freeze({
     }
 });
 
-const DEFAULT_THEME = Object.freeze({
+export const DEFAULT_THEME = Object.freeze({
     palette: DEFAULT_PALETTE,
     miscellaneous: {
         backgroundColor: DEFAULT_PALETTE.dark[50],

@@ -25,8 +25,10 @@ const BasicsCardComponent = ({ variant, flipped }) => {
     return (
         <ProfileCard
             data={mappedData}
-            front={BasicsFront}
-            back={BasicsBack}
+            sides={{
+                front: BasicsFront,
+                back: BasicsFront
+            }}
             variant={variant}
             flipped={flipped}
         />

@@ -6,14 +6,20 @@ export const styles = (theme) => {
             const { palette } = theme;
             return {
                 position: 'relative',
-                padding: spacing * 7,
                 margin: spacing * 2,
                 borderRadius: theme.components.cards.borderRadius,
-                width: 500,
-                height: 500,
+                width: 450,
+                height: 450,
                 backgroundColor: palette[backgroundColor][500],
-                color: palette[color][500]
+                color: palette[color][500],
+                overflow: 'hidden'
             };
+        },
+        sidesContainer: {
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            left: 0
         }
     });
 };

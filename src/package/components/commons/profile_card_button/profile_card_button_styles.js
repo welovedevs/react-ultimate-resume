@@ -1,9 +1,7 @@
 const getColorFromCardVariant = (theme, cardVariant) =>
     theme.palette[(theme.components.cards.variants[cardVariant] || theme.components.cards.default).color][500];
 
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = (theme) => ({
         container: {
             display: 'flex',
             alignItems: 'center'
@@ -13,8 +11,8 @@ export const styles = (theme) => {
         },
         typography: ({ cardVariant }) => ({
             textTransform: 'unset',
-            fontSize: '14px !important',
-            color: `${getColorFromCardVariant(theme, cardVariant)} !important`,
+            fontSize: ['14px', '!important'],
+            color: [getColorFromCardVariant(theme, cardVariant), '!important']
         }),
         arrowContainer: {
             display: 'flex'
@@ -26,4 +24,3 @@ export const styles = (theme) => {
             }
         })
     });
-};

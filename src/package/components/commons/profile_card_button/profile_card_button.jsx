@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import injectSheet from 'react-jss';
 import { animated, useSpring, config } from 'react-spring';
 
 import { Button } from '@wld/ui';
@@ -9,13 +9,10 @@ import { ReactComponent as ArrowRight } from '../../../assets/icons/arrow-right.
 
 import { styles } from './profile_card_button_styles';
 
-const useStyles = createUseStyles(styles);
-
 const DEFAULT_SPRING_PROPS = ({ translation: 0 });
 const ACTIVE_SPRING_PROPS = ({ translation: 6 });
 
-const ProfileCardButtonComponent = ({ children, cardVariant }) => {
-    const classes = useStyles({ cardVariant });
+const ProfileCardButtonComponent = injectSheet(styles)(({ children, classes, cardVariant, ...other }) => {
     const [springProps, setSpringProps] = useSpring(() => DEFAULT_SPRING_PROPS);
     const setDefaultSpringProps = useCallback(() => setSpringProps(() => DEFAULT_SPRING_PROPS), []);
     const setActiveSpringProps = useCallback(() => setSpringProps(() => ACTIVE_SPRING_PROPS), []);
@@ -27,6 +24,7 @@ const ProfileCardButtonComponent = ({ children, cardVariant }) => {
                 variant="text"
                 onMouseEnter={setActiveSpringProps}
                 onMouseLeave={setDefaultSpringProps}
+                {...other}
             >
                 {children}
             </Button>
@@ -41,6 +39,6 @@ const ProfileCardButtonComponent = ({ children, cardVariant }) => {
             </animated.span>
         </div>
     );
-};
+});
 
 export const ProfileCardButton = ProfileCardButtonComponent;
