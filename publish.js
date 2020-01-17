@@ -114,7 +114,7 @@ const run = async () => {
     }
     mergingMasterSourcesSpinner.succeed('Checked out master elements.');
 
-    const srcPath = __dirname + '/src';
+    const srcPath = __dirname + '/src/package';
     const srcFiles = fs.readdirSync(srcPath);
 
     if (!srcFiles || !srcFiles.length) {
