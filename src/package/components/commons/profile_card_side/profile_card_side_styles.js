@@ -12,7 +12,9 @@ export const styles = theme => {
             top: 0,
             left: 0,
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            borderRadius: theme.components.cards.borderRadius,
+            overflow: 'hidden'
         }
     };
 };
