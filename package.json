@@ -1,6 +1,6 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.0.1",
+    "version": "0.0.0",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
@@ -46,6 +46,8 @@
         "eslint-plugin-react": "^7.17.0",
         "eslint-plugin-react-hooks": "^2.3.0",
         "husky": "^3.1.0",
+        "ora": "^4.0.3",
+        "readline-sync": "^1.4.10",
         "rimraf": "^3.0.0"
     },
     "eslintConfig": {
