@@ -4,7 +4,10 @@ export const styles = theme => {
     } = theme;
     return {
         container: {
-            padding: spacing * 7
+            height: '100%',
+            padding: spacing * 7,
+            display: 'flex',
+            alignItems: 'center'
         },
         title: {
             color: 'inherit',
