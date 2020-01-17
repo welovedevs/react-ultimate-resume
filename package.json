@@ -10,6 +10,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "rimraf lib && ./node_modules/.bin/babel src/package -d .",
         "test-build": "rimraf ./test-build && ./node_modules/.bin/babel src -d ./test_build",
+        "posttest-build": "rimraf ./test_build ./styles ",
         "build:app": "react-scripts build"
     },
     "author": "",
@@ -34,6 +35,9 @@
         "@babel/plugin-proposal-optional-chaining": "^7.7.5",
         "@babel/preset-env": "^7.7.7",
         "@babel/preset-react": "^7.7.4",
+        "babel-plugin-css-modules-transform": "^1.6.2",
+        "babel-plugin-inline-react-svg": "^1.1.0",
+        "babel-plugin-transform-import-styles": "^0.0.11",
         "eslint": "^6.8.0",
         "eslint-config-airbnb": "^18.0.1",
         "eslint-plugin-babel": "^5.3.0",
@@ -61,7 +65,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run test-build --scripts-prepend-node-path && rimraf ./test_build"
+            "pre-commit": "npm run test-build --scripts-prepend-node-path"
         }
     }
 }
