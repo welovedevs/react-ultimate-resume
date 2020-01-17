@@ -2,6 +2,7 @@ import React, { createContext, useCallback, useEffect, useRef, useState } from '
 
 import { createUseStyles } from 'react-jss';
 import { config, useTransition } from 'react-spring';
+import { useDebounce } from 'use-debounce';
 
 import { Card } from '@wld/ui';
 
@@ -15,6 +16,7 @@ export const ProfileCardContext = createContext({});
 const ProfileCardComponent = ({ data, sides, side: receivedSide, variant }) => {
     const classes = useStyles({ variant });
     const [side, setSide] = useState('front');
+    const [debouncedSide] = useDebounce(side, 200);
 
     const hasSideChanged = useRef(false);
 
@@ -35,7 +37,7 @@ const ProfileCardComponent = ({ data, sides, side: receivedSide, variant }) => {
         hasSideChanged.current = true;
     }, [side]);
 
-    const transitions = useTransition(side, item => `card_side_${item}`, {
+    const transitions = useTransition(debouncedSide, item => `card_side_${item}`, {
         from: { opacity: 0 },
         enter: { opacity: 1 },
         leave: { opacity: 0 },

@@ -56,7 +56,8 @@
         "husky": "^3.1.0",
         "ora": "^4.0.3",
         "readline-sync": "^1.4.10",
-        "rimraf": "^3.0.0"
+        "rimraf": "^3.0.0",
+        "use-debounce": "^3.3.0"
     },
     "eslintConfig": {
         "extends": "react-app"
