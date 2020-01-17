@@ -18,6 +18,19 @@ export const withCustomHorizontalScrollbar = (color = '#c1c1c1') => ({
     }
 });
 
+export const withCustomVerticalScrollbar = (color = '#c1c1c1') => ({
+    '&::-webkit-scrollbar-track': {
+        border: 0
+    },
+    '&::-webkit-scrollbar': {
+        width: 5
+    },
+    '&::-webkit-scrollbar-thumb': {
+        backgroundColor: color,
+        borderRadius: 100
+    }
+});
+
 export const getColorsFromCardVariant = (theme, cardVariant) =>
     theme.components.cards.variants[cardVariant] || theme.components.cards.default;
 
