@@ -6,12 +6,12 @@ import { styles } from './profile_card_content_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardContentComponent = ({ children }) => {
+const ProfileCardContentComponent = ({ component: Component = 'div', style, children }) => {
     const classes = useStyles(styles);
     return (
-        <div className={classes.container}>
+        <Component className={classes.container} {...{ style }}>
             {children}
-        </div>
+        </Component>
     );
 };
 

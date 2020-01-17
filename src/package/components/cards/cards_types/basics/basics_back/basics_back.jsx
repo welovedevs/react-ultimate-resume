@@ -3,17 +3,15 @@ import { FormattedMessage } from 'react-intl';
 import { Twemoji } from 'react-emoji-render';
 
 import { TextSection } from '../../../../commons/sections/text_section';
-import { ProfileCardTitle } from '../../../../commons/profile_card_title/profile_card_title';
-import { ProfileCardContent } from '../../../../commons/profile_card_content/profile_card_content';
+import { ProfileCardAnimatedBack } from '../../../../commons/profile_card_animated_back/profile_card_animated_back';
 
 const BasicsBackComponent = ({ data, variant }) => {
     const { currentCity, remoteWork, experienceYears, contractType, studiesLevel, codingYears, codingReason } = data;
     return (
-        <>
-            <ProfileCardTitle cardVariant={variant}>
-                Who?
-            </ProfileCardTitle>
-            <ProfileCardContent>
+        <ProfileCardAnimatedBack
+            title={"Who ?"}
+            cardVariant={variant}
+        >
             <TextSection icon={<Twemoji svg text="📍" />}>
                 <FormattedMessage
                     id="Basics.Back.Location"
@@ -51,8 +49,7 @@ const BasicsBackComponent = ({ data, variant }) => {
                 />
             </TextSection>
             <TextSection icon={<Twemoji svg text="💙" />}>{codingReason}</TextSection>
-            </ProfileCardContent>
-        </>
+        </ProfileCardAnimatedBack>
     );
 };
 

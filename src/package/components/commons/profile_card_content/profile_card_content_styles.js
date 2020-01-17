@@ -6,7 +6,8 @@ export const styles = (theme) => {
         container: ({ cardVariant }) => ({
             padding: [spacing * 3, spacing * 6],
             backgroundColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).color),
-            color: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).backgroundColor)
+            color: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).backgroundColor),
+            flex: 1
         })
     });
 };

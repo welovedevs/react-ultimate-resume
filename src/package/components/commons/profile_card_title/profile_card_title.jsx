@@ -8,10 +8,10 @@ import { styles } from './profie_card_title_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardTitleComponent = ({ children, cardVariant }) => {
+const ProfileCardTitleComponent = ({ component: Component = 'div', style, children, cardVariant }) => {
     const classes = useStyles({ cardVariant });
     return (
-        <div className={classes.container}>
+        <Component className={classes.container} style={style}>
             <Typography
                 variant="h2"
                 component="h3"
@@ -19,7 +19,7 @@ const ProfileCardTitleComponent = ({ children, cardVariant }) => {
             >
                 {children}
             </Typography>
-        </div>
+        </Component>
     );
 };
 

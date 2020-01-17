@@ -9,6 +9,8 @@ export const styles = (theme) => {
             position: 'absolute',
             top: 0,
             left: 0,
+            display: 'flex',
+            flexDirection: 'column'
         }
     });
 };

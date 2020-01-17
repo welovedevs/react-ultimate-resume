@@ -36,9 +36,9 @@ const ProfileCardComponent = ({ data, sides, side: receivedSide, variant }) => {
     }, [side]);
 
     const transitions = useTransition(side, item => `card_side_${item}`, {
-        from: { opacity: 0, transform: 'translate3d(50%,0,0)' },
-        enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-        leave: { opacity: 0, transform: 'translate3d(-25%,0,0)' },
+        from: { opacity: 0 },
+        enter: { opacity: 1 },
+        leave: { opacity: 0 },
         config: config.default,
         immediate: !hasSideChanged.current
     });
