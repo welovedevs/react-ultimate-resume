@@ -4,7 +4,7 @@ const { center } = flex;
 
 export const styles = ({ palette, miscellaneous: { spacing } }) => {
     const primaryRgb = palette.primary.rgbShades[500].join(', ');
-    return ({
+    return {
         container: {
             height: 400,
             width: '100%',
@@ -33,5 +33,5 @@ export const styles = ({ palette, miscellaneous: { spacing } }) => {
             zIndex: 1,
             backgroundImage: `linear-gradient(360deg, rgba(0, 0, 0, .5) -28.58%, rgba(${primaryRgb}, 0.5) 93.05%)`
         }
-    });
+    };
 };

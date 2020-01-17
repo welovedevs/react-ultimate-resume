@@ -10,11 +10,7 @@ const AvatarComponent = ({ imageSource = 'https://i.pravatar.cc/1000', displayed
     const classes = useStyles();
     return (
         <div className={classes.container}>
-            <img
-                className={classes.image}
-                src={imageSource}
-                alt={displayedName}
-            />
+            <img className={classes.image} src={imageSource} alt={displayedName} />
         </div>
     );
 };

@@ -8,10 +8,7 @@ import { ProfileCardAnimatedBack } from '../../../../commons/profile_card_animat
 const BasicsBackComponent = ({ data, variant }) => {
     const { currentCity, remoteWork, experienceYears, contractType, studiesLevel, codingYears, codingReason } = data;
     return (
-        <ProfileCardAnimatedBack
-            title={"Who ?"}
-            cardVariant={variant}
-        >
+        <ProfileCardAnimatedBack title={'Who ?'} cardVariant={variant}>
             <TextSection icon={<Twemoji svg text="📍" />}>
                 <FormattedMessage
                     id="Basics.Back.Location"

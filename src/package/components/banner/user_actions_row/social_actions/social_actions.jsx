@@ -12,10 +12,7 @@ const SocialActionsComponent = () => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
-            <Button
-                style={{ color: '#fff' }}
-                variant="outlined"
-            >
+            <Button style={{ color: '#fff' }} variant="outlined">
                 {'Get in touch'}
             </Button>
         </div>

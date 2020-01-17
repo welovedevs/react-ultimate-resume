@@ -1,6 +1,6 @@
 import get from 'lodash/get';
 
-const hexToRgb = (hex) => {
+const hexToRgb = hex => {
     let c;
     if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
         c = hex.substring(1).split('');
@@ -15,24 +15,26 @@ const hexToRgb = (hex) => {
 };
 
 const THEME_TRANSFORMS = Object.freeze({
-    palette: (colors) => Object.entries(colors).reduce((colorsAcc, [colorName, shades]) => {
-        const colorAccumulator = colorsAcc;
-        colorAccumulator[colorName] = {
-            ...shades,
-            rgbShades: Object.entries(shades).reduce((shadesAcc, [shade, shadeValue]) => {
-                if (isNaN(parseInt(shade, 10))) {
-                    return shadesAcc;
-                }
-                const shadesAccumulator = shadesAcc;
-                shadesAccumulator[shade] = hexToRgb(shadeValue);
-                return shadesAccumulator;
-            }, {})
-        };
-        return colorAccumulator;
-    }, {})
+    palette: colors =>
+        Object.entries(colors).reduce((colorsAcc, [colorName, shades]) => {
+            const colorAccumulator = colorsAcc;
+            colorAccumulator[colorName] = {
+                ...shades,
+                rgbShades: Object.entries(shades).reduce((shadesAcc, [shade, shadeValue]) => {
+                    if (isNaN(parseInt(shade, 10))) {
+                        return shadesAcc;
+                    }
+                    const shadesAccumulator = shadesAcc;
+                    shadesAccumulator[shade] = hexToRgb(shadeValue);
+                    return shadesAccumulator;
+                }, {})
+            };
+            return colorAccumulator;
+        }, {})
 });
 
-export const transformTheme = (theme) => Object.entries(THEME_TRANSFORMS).reduce((acc, [path, transform]) => {
+export const transformTheme = theme =>
+    Object.entries(THEME_TRANSFORMS).reduce((acc, [path, transform]) => {
         acc[path] = transform(get(theme, path));
         return acc;
     }, theme);

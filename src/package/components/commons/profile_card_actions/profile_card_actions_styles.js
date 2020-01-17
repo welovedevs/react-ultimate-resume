@@ -1,6 +1,8 @@
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: {
             position: 'absolute',
             bottom: spacing,
@@ -8,5 +10,5 @@ export const styles = (theme) => {
             display: 'flex',
             alignItems: 'center'
         }
-    });
+    };
 };

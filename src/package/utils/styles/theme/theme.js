@@ -101,7 +101,7 @@ const mergeFunction = (objValue, srcValue) => {
     return objValue;
 };
 
-export const buildTheme = async (theme) => {
+export const buildTheme = async theme => {
     const merged = merge(cloneDeep(DEFAULT_THEME), theme, mergeFunction);
     let finalTheme = null;
     try {

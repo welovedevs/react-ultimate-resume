@@ -1,8 +1,11 @@
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: ({ variant }) => {
-            const { backgroundColor, color } = theme.components.cards.variants[variant] || theme.components.cards.default;
+            const { backgroundColor, color } =
+                theme.components.cards.variants[variant] || theme.components.cards.default;
             const { palette } = theme;
             return {
                 position: 'relative',
@@ -15,5 +18,5 @@ export const styles = (theme) => {
                 overflow: 'hidden'
             };
         }
-    });
+    };
 };

@@ -1,6 +1,8 @@
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: {
             width: '100%',
             marginTop: -(spacing * 12),
@@ -10,5 +12,5 @@ export const styles = (theme) => {
             zIndex: 2,
             flexWrap: 'wrap'
         }
-    });
+    };
 };

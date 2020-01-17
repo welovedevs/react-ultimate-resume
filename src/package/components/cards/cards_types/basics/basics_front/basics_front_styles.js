@@ -1,6 +1,8 @@
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: {
             padding: spacing * 7
         },
@@ -10,5 +12,5 @@ export const styles = (theme) => {
             fontSize: 70,
             lineHeight: 1.1
         }
-    });
+    };
 };

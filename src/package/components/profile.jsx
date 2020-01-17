@@ -1,4 +1,4 @@
-import React, { createContext, useMemo, useEffect, useState } from 'react';
+import React, { createContext, useMemo, useEffect, useState, useCallback } from 'react';
 import { IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
@@ -10,6 +10,7 @@ import { Banner } from './banner/banner';
 import { Cards } from './cards/cards';
 
 import { styles } from './profile_styles';
+import { FlatObjectToJsonResume } from './cards/utils/data_mapping';
 
 const useStyles = createUseStyles(styles);
 
@@ -19,12 +20,22 @@ const DEFAULT_OPTIONS = Object.freeze({
 
 export const DeveloperProfileContext = createContext({});
 
-const DeveloperProfileComponent = ({ options }) => {
+const DeveloperProfileComponent = ({ options, onEdit: onEditProps = () => {} }) => {
     const classes = useStyles(styles);
+    const [isEditing, setIsEditing] = useState(true);
     const data = useMemo(() => prepareJsonResume(JsonStub), [JsonStub]);
+
+    const onEdit = useCallback(
+        dataMapping => newData => {
+            onEdit(FlatObjectToJsonResume(newData, dataMapping));
+            setIsEditing(false);
+        },
+        []
+    );
+
     return (
         <div className={classes.container}>
-            <DeveloperProfileContext.Provider value={{ data }}>
+            <DeveloperProfileContext.Provider value={{ data, isEditing, onEdit }}>
                 <Banner />
                 <Cards />
             </DeveloperProfileContext.Provider>

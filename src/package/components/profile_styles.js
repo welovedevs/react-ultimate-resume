@@ -1,6 +1,8 @@
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         '@global': {
             '*': {
                 'box-sizing': 'border-box'
@@ -41,5 +43,5 @@ export const styles = (theme) => {
                 {}
             )
         }
-    });
+    };
 };

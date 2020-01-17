@@ -30,10 +30,7 @@ const BasicsFrontComponent = ({ data, variant }) => {
                 </Typography>
             </CenterContentContainer>
             <ProfileCardActions>
-                <ProfileCardButton
-                    cardVariant={variant}
-                    onClick={handleButtonClick}
-                >
+                <ProfileCardButton cardVariant={variant} onClick={handleButtonClick}>
                     More about me
                 </ProfileCardButton>
             </ProfileCardActions>

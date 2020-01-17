@@ -1,6 +1,8 @@
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: {
             display: 'flex',
             alignItems: 'center'
@@ -21,5 +23,5 @@ export const styles = (theme) => {
         description: {
             extend: 'text'
         }
-    });
+    };
 };

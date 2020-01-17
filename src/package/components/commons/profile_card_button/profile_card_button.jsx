@@ -9,8 +9,8 @@ import { ReactComponent as ArrowRight } from '../../../assets/icons/arrow-right.
 
 import { styles } from './profile_card_button_styles';
 
-const DEFAULT_SPRING_PROPS = ({ translation: 0 });
-const ACTIVE_SPRING_PROPS = ({ translation: 6 });
+const DEFAULT_SPRING_PROPS = { translation: 0 };
+const ACTIVE_SPRING_PROPS = { translation: 6 };
 
 const ProfileCardButtonComponent = injectSheet(styles)(({ children, classes, cardVariant, ...other }) => {
     const [springProps, setSpringProps] = useSpring(() => DEFAULT_SPRING_PROPS);
@@ -31,8 +31,7 @@ const ProfileCardButtonComponent = injectSheet(styles)(({ children, classes, car
             <animated.span
                 className={classes.arrowContainer}
                 style={{
-                    transform: springProps.translation
-                        .interpolate(value => `translate3d(${value}px, 0, 0)`)
+                    transform: springProps.translation.interpolate(value => `translate3d(${value}px, 0, 0)`)
                 }}
             >
                 <ArrowRight className={classes.arrow} />

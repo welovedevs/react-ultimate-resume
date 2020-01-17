@@ -49,19 +49,16 @@ const ProfileCardComponent = ({ data, sides, side: receivedSide, variant }) => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-                <ProfileCardContext.Provider value={{ side, setSide }}>
-                    {transitions.map(({ item, key, props }) => {
-                        const SideComponent = sides[item] || (() => null);
-                        return (
-                            <ProfileCardSide
-                                key={key}
-                                style={props}
-                            >
-                                <SideComponent data={data} variant={variant} />
-                            </ProfileCardSide>
-                        );
-                    })}
-                </ProfileCardContext.Provider>
+            <ProfileCardContext.Provider value={{ side, setSide }}>
+                {transitions.map(({ item, key, props }) => {
+                    const SideComponent = sides[item] || (() => null);
+                    return (
+                        <ProfileCardSide key={key} style={props}>
+                            <SideComponent data={data} variant={variant} />
+                        </ProfileCardSide>
+                    );
+                })}
+            </ProfileCardContext.Provider>
         </Card>
     );
 };

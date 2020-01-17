@@ -1,6 +1,8 @@
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: {
             willChange: 'transform',
             height: '100%',
@@ -12,5 +14,5 @@ export const styles = (theme) => {
             display: 'flex',
             flexDirection: 'column'
         }
-    });
+    };
 };
