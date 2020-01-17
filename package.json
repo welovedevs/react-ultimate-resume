@@ -1,6 +1,6 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
@@ -8,15 +8,15 @@
         "dev": "yarn start",
         "eject": "react-scripts eject",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "rimraf lib && ./node_modules/.bin/babel src/package -d lib",
+        "build": "rimraf lib && ./node_modules/.bin/babel src/package -d .",
+        "test-build": "rimraf ./test-build && ./node_modules/.bin/babel src -d ./test_build",
+        "posttest-build": "rimraf ./test_build ./styles ",
         "build:app": "react-scripts build"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
         "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.0.4",
-        "babel": "^6.23.0",
-        "babel-eslint": "^10.0.3",
         "classnames": "^2.2.6",
         "lodash": "^4.17.15",
         "moment": "^2.24.0",
@@ -35,13 +35,16 @@
         "@babel/plugin-proposal-optional-chaining": "^7.7.5",
         "@babel/preset-env": "^7.7.7",
         "@babel/preset-react": "^7.7.4",
+        "babel-plugin-css-modules-transform": "^1.6.2",
+        "babel-plugin-inline-react-svg": "^1.1.0",
+        "babel-plugin-transform-import-styles": "^0.0.11",
         "eslint": "^6.8.0",
         "eslint-config-airbnb": "^18.0.1",
         "eslint-plugin-babel": "^5.3.0",
-        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-import": "^2.20.0",
         "eslint-plugin-jsx-a11y": "^6.2.3",
-        "eslint-plugin-react": "^7.15.1",
-        "eslint-plugin-react-hooks": "^2.1.1",
+        "eslint-plugin-react": "^7.17.0",
+        "eslint-plugin-react-hooks": "^2.3.0",
         "husky": "^3.1.0",
         "rimraf": "^3.0.0"
     },
@@ -62,7 +65,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run build && git add lib/"
+            "pre-commit": "npm run test-build --scripts-prepend-node-path"
         }
     }
 }
