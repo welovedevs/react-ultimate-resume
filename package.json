@@ -1,6 +1,6 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
@@ -9,6 +9,7 @@
         "eject": "react-scripts eject",
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "rimraf lib && ./node_modules/.bin/babel src/package -d .",
+        "postbuild": "cp-cli src/package/readme.md readme.md && cp-cli src/package/i18n i18n && cp-cli src/package/assets assets",
         "test-build": "rimraf ./test-build && ./node_modules/.bin/babel src -d ./test_build",
         "posttest-build": "rimraf ./test_build ./styles ",
         "build:app": "react-scripts build"
@@ -18,6 +19,7 @@
     "dependencies": {
         "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.0.4",
         "classnames": "^2.2.6",
+        "cp-cli": "^2.0.0",
         "lodash": "^4.17.15",
         "moment": "^2.24.0",
         "react": "^16.12.0",
