@@ -8,7 +8,7 @@
         "dev": "yarn start",
         "eject": "react-scripts eject",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "rimraf lib && ./node_modules/.bin/babel src/package -d lib",
+        "build": "rimraf lib && ./node_modules/.bin/babel src/package -d .",
         "test-build": "rimraf ./test-build && ./node_modules/.bin/babel src -d ./test_build",
         "build:app": "react-scripts build"
     },
