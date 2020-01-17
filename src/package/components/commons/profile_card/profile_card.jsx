@@ -40,6 +40,7 @@ const ProfileCardComponent = ({ data, sides, side: receivedSide, variant }) => {
         enter: { opacity: 1 },
         leave: { opacity: 0 },
         config: config.default,
+        unique: true,
         immediate: !hasSideChanged.current
     });
     return (

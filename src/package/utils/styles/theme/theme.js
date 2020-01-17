@@ -81,15 +81,17 @@ export const DEFAULT_THEME = Object.freeze({
             borderRadius: 20,
             default: {
                 backgroundColor: 'dark',
-                color: 'light'
+                color: 'light',
+                backBackgroundColor: 'light',
+                backColor: 'dark'
             },
             variants: [
-                ['primary', 'light'],
-                ['tertiary', 'primary'],
-                ['light', 'secondary'],
-                ['secondary', 'light'],
-                ['light', 'primary']
-            ].map(([backgroundColor, color]) => ({ backgroundColor, color }))
+                ['primary', 'light', 'light', 'primary'],
+                ['tertiary', 'primary', 'light', 'primary'],
+                ['light', 'secondary', 'light', 'secondary'],
+                ['secondary', 'light', 'light', 'secondary'],
+                ['light', 'primary', 'light', 'primary']
+            ].map(([backgroundColor, color, backBackgroundColor, backColor]) => ({ backgroundColor, color, backBackgroundColor, backColor }))
         }
     }
 });

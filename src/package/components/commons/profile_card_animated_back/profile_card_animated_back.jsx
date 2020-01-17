@@ -1,13 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 
 import { createUseStyles } from 'react-jss';
-import { animated, useTransition, useChain, useSpring } from 'react-spring';
+import { animated, useChain, useSpring } from 'react-spring';
 
 import { ProfileCardTitle } from '../profile_card_title/profile_card_title';
 import { ProfileCardContent } from '../profile_card_content/profile_card_content';
 
 import {
-    CONTENT_CONTAINER_SPRING_PROPS, CONTENT_SPRING_PROPS,
+    CONTENT_CONTAINER_SPRING_PROPS,
+    CONTENT_SPRING_PROPS,
     TITLE_SPRING_PROPS
 } from './profile_card_animated_back_springs';
 
@@ -41,8 +42,8 @@ const ProfileCardAnimatedBackComponent = ({ title, cardVariant, children: conten
         ref: titleSpringReference
     });
 
-    useChain([contentContainerSpringReference, contentSpringReference], [0, 0.3]);
-    useChain([contentContainerSpringReference, titleSpringReference], [0, 0.2]);
+    useChain([contentContainerSpringReference, contentSpringReference], [0, 0.2]);
+    useChain([contentContainerSpringReference, titleSpringReference], [0, 0.3]);
 
     return (
         <>
@@ -80,6 +81,6 @@ const ProfileCardAnimatedBackComponent = ({ title, cardVariant, children: conten
             </ProfileCardContent>
         </>
     );
-}
+};
 
 export const ProfileCardAnimatedBack = ProfileCardAnimatedBackComponent;

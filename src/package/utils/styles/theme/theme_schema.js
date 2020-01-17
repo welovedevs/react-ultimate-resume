@@ -20,7 +20,9 @@ const isExistingColorInPalette = yup.string().test(
 
 const CARD_VARIANT_SCHEMA = yup.object({
     backgroundColor: isExistingColorInPalette.required(),
-    color: isExistingColorInPalette.required()
+    color: isExistingColorInPalette.required(),
+    backBackgroundColor: isExistingColorInPalette.required(),
+    backColor: isExistingColorInPalette.required()
 });
 
 export const THEME_SCHEMA = yup.object({

@@ -1,51 +1,111 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import { Twemoji } from 'react-emoji-render';
+import React, { useMemo } from 'react';
 
-import { TextSection } from '../../../../commons/sections/text_section';
+import { createUseStyles } from 'react-jss';
+import { FormattedMessage } from 'react-intl';
+
 import { ProfileCardAnimatedBack } from '../../../../commons/profile_card_animated_back/profile_card_animated_back';
+import { ProfileCardSectionTitle } from '../../../../commons/profile_card_section_title/profile_card_section_title';
+import { ProfileCardSectionText } from '../../../../commons/profile_card_section_text/profile_card_section_text';
+import { ProfileCardSection } from '../../../../commons/profile_card_section/profile_card_section';
+
+import { styles } from './basics_back_styles';
+
+const useStyles = createUseStyles(styles);
 
 const BasicsBackComponent = ({ data, variant }) => {
+    const classes = useStyles({ cardVariant: variant });
     const { currentCity, remoteWork, experienceYears, contractType, studiesLevel, codingYears, codingReason } = data;
-    return (
-        <ProfileCardAnimatedBack title={'Who ?'} cardVariant={variant}>
-            <TextSection icon={<Twemoji svg text="📍" />}>
+    const sections = useMemo(() => ({
+        remote: {
+            title: (
                 <FormattedMessage
-                    id="Basics.Back.Location"
-                    defaultMessage={'based in {currentCity}'}
+                    id="Basics.Back.Location.Title"
+                    defaultMessage="Location"
                     values={{ currentCity }}
                 />
-                <div>
+            ),
+            value: (
+                <>
+                    <FormattedMessage
+                        id="Basics.Back.Location"
+                        defaultMessage={'Based in {currentCity}'}
+                        values={{ currentCity }}
+                    />
+                    <br />
                     <RemoteWork remoteWork={remoteWork} />
-                </div>
-            </TextSection>
-            <TextSection icon={<Twemoji svg text="💼" />}>
+                </>
+            )
+        },
+        work: {
+            title: (
                 <FormattedMessage
-                    id="Basics.Back.Experience"
-                    defaultMessage={'{experienceYears} years of experience'}
-                    values={{ experienceYears }}
+                    id="Basics.Back.Work.Title"
+                    defaultMessage="Work"
                 />
+            ),
+            value: (
+                <>
+                    <FormattedMessage
+                        id="Basics.Back.Work"
+                        defaultMessage={'{experienceYears} years of experience'}
+                        values={{ experienceYears }}
+                    />
+                    <br />
+                    <FormattedMessage
+                        id="Basics.Back.WorkContract"
+                        defaultMessage={'Looking for a {contractType} contract'}
+                        values={{ contractType }}
+                    />
+                </>
+            )
+        },
+        studies: {
+            title: (
                 <FormattedMessage
-                    id="Basics.Back.ContractType"
-                    defaultMessage={'Looking for a {contractType} contract'}
-                    values={{ contractType }}
+                    id="Basics.Back.StudiesLevel.Title"
+                    defaultMessage="Training"
                 />
-            </TextSection>
-            <TextSection icon={<Twemoji svg text="🎓" />}>
+            ),
+            value: (
                 <FormattedMessage
                     id="Basics.Back.StudiesLevel"
                     defaultMessage={'{studiesLevel} years of higher education'}
                     values={{ studiesLevel }}
                 />
-            </TextSection>
-            <TextSection icon={<Twemoji svg text="💻" />}>
+            )
+        },
+        codingYears: {
+            title: (
+                <FormattedMessage
+                    id="Basics.Back.CodingYears"
+                    defaultMessage="Experience"
+                />
+            ),
+            value: (
                 <FormattedMessage
                     id="Basics.Back.CodingYears"
                     defaultMessage={'{codingYears} years coding'}
                     values={{ codingYears }}
                 />
-            </TextSection>
-            <TextSection icon={<Twemoji svg text="💙" />}>{codingReason}</TextSection>
+            )
+        }
+    }), [currentCity, remoteWork, experienceYears, contractType, studiesLevel, codingYears, codingReason]);
+
+    return (
+        <ProfileCardAnimatedBack
+            title="Who ?"
+            cardVariant={variant}
+        >
+            {Object.entries(sections).map(([id, { title, value }]) => (
+                <ProfileCardSection key={id} customClasses={{ container: classes.section }}>
+                    <ProfileCardSectionTitle>
+                        {title}
+                    </ProfileCardSectionTitle>
+                    <ProfileCardSectionText>
+                        {value}
+                    </ProfileCardSectionText>
+                </ProfileCardSection>
+            ))}
         </ProfileCardAnimatedBack>
     );
 };
