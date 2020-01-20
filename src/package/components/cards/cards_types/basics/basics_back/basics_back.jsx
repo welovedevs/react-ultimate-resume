@@ -3,10 +3,10 @@ import React, { useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 
-import { ProfileCardAnimatedBack } from '../../../../commons/profile_card_animated_back/profile_card_animated_back';
-import { ProfileCardSectionTitle } from '../../../../commons/profile_card_section_title/profile_card_section_title';
-import { ProfileCardSectionText } from '../../../../commons/profile_card_section_text/profile_card_section_text';
-import { ProfileCardSection } from '../../../../commons/profile_card_section/profile_card_section';
+import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back';
+import { ProfileCardSectionTitle } from '../../../../commons/profile_card/profile_card_section_title/profile_card_section_title';
+import { ProfileCardSectionText } from '../../../../commons/profile_card/profile_card_section_text/profile_card_section_text';
+import { ProfileCardSection } from '../../../../commons/profile_card/profile_card_section/profile_card_section';
 
 import { styles } from './basics_back_styles';
 

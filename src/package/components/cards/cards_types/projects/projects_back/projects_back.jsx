@@ -2,9 +2,9 @@ import React from 'react';
 
 import { createUseStyles } from 'react-jss';
 
-import { ProfileCardTitle } from '../../../../commons/profile_card_title/profile_card_title';
+import { ProfileCardTitle } from '../../../../commons/profile_card/profile_card_title/profile_card_title';
 
-import { ProfileCardContent } from '../../../../commons/profile_card_content/profile_card_content';
+import { ProfileCardContent } from '../../../../commons/profile_card/profile_card_content/profile_card_content';
 import { ProjectSection } from './project_section/project_section';
 
 import { styles } from './projects_back_styles';

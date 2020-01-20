@@ -3,10 +3,10 @@ import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { Typography } from '@wld/ui';
 
-import { ProfileCardSectionTitle } from '../../../../../commons/profile_card_section_title/profile_card_section_title';
-import { ProfileCardSectionSubtitle } from '../../../../../commons/profile_card_section_subtitle/profile_card_section_subtitle';
-import { ProfileCardSectionText } from '../../../../../commons/profile_card_section_text/profile_card_section_text';
-import { ProfileCardSection } from '../../../../../commons/profile_card_section/profile_card_section';
+import { ProfileCardSectionTitle } from '../../../../../commons/profile_card/profile_card_section_title/profile_card_section_title';
+import { ProfileCardSectionSubtitle } from '../../../../../commons/profile_card/profile_card_section_subtitle/profile_card_section_subtitle';
+import { ProfileCardSectionText } from '../../../../../commons/profile_card/profile_card_section_text/profile_card_section_text';
+import { ProfileCardSection } from '../../../../../commons/profile_card/profile_card_section/profile_card_section';
 
 import { ReactComponent as LinkIcon } from '../../../../../../assets/icons/link.svg';
 

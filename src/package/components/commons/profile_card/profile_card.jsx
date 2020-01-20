@@ -7,7 +7,7 @@ import { useDebounce } from 'use-debounce';
 import { Card } from '@wld/ui';
 
 import { styles } from './profile_card_styles';
-import { ProfileCardSide } from '../profile_card_side/profile_card_side';
+import { ProfileCardSide } from './profile_card_side/profile_card_side';
 
 const useStyles = createUseStyles(styles);
 

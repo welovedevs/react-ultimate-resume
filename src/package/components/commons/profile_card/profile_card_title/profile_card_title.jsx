@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss';
 
 import { Typography } from '@wld/ui';
 
-import { styles } from './profie_card_title_styles';
+import { styles } from './profile_card_title_styles';
 
 const useStyles = createUseStyles(styles);
 

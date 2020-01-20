@@ -5,7 +5,7 @@ import { animated, useSpring, config } from 'react-spring';
 
 import { Button } from '@wld/ui';
 
-import { ReactComponent as ArrowRight } from '../../../assets/icons/arrow-right.svg';
+import { ReactComponent as ArrowRight } from '../../../../assets/icons/arrow-right.svg';
 
 import { styles } from './profile_card_button_styles';
 

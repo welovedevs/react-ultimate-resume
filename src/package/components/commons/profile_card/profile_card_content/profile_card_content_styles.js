@@ -1,7 +1,7 @@
 import {
     getColorsFromCardVariant,
     getHexFromPaletteColor
-} from '../../../utils/styles/styles_utils';
+} from '../../../../utils/styles/styles_utils';
 
 const getContentBackgroundColor = (theme, cardVariant) => {
     const { backBackgroundColor, backgroundColor: frontBackgroundColor } = getColorsFromCardVariant(theme, cardVariant);

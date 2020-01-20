@@ -5,11 +5,14 @@ import { FormattedMessage } from 'react-intl';
 
 import { Typography } from '@wld/ui';
 
-import { styles } from './basics_front_styles';
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
-import { ProfileCardActions } from '../../../../commons/profile_card_actions/profile_card_actions';
-import { ProfileCardButton } from '../../../../commons/profile_card_button/profile_card_button';
+import { ProfileCardActions } from '../../../../commons/profile_card/profile_card_actions/profile_card_actions';
+import { ProfileCardButton } from '../../../../commons/profile_card/profile_card_button/profile_card_button';
 import { ProfileCardContext } from '../../../../commons/profile_card/profile_card';
+import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
+import { ProfileCardFrontTypography } from '../../../../commons/profile_card/profile_card_front_typography/profile_card_front_typography';
+
+import { styles } from './basics_front_styles';
 
 const useStyles = createUseStyles(styles);
 
@@ -19,22 +22,22 @@ const BasicsFrontComponent = ({ data, variant }) => {
     const { currentPosition, currentCity } = data;
     const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side]);
     return (
-        <div className={classes.container}>
+        <ProfileCardPaddedFront>
             <CenterContentContainer>
-                <Typography variant="h1" component="h2" customClasses={{ container: classes.title }}>
+                <ProfileCardFrontTypography>
                     <FormattedMessage
                         id="Basics.Front.MainPhrase"
                         defaultMessage={'{currentPosition} based in {currentCity}'}
                         values={{ currentCity, currentPosition }}
                     />
-                </Typography>
+                </ProfileCardFrontTypography>
             </CenterContentContainer>
             <ProfileCardActions>
                 <ProfileCardButton cardVariant={variant} onClick={handleButtonClick}>
                     More about me
                 </ProfileCardButton>
             </ProfileCardActions>
-        </div>
+        </ProfileCardPaddedFront>
     );
 };
 

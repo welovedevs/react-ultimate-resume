@@ -4,8 +4,8 @@ import { createUseStyles } from 'react-jss';
 
 import { Typography } from '@wld/ui';
 
-import { ProfileCardActions } from '../../../../commons/profile_card_actions/profile_card_actions';
-import { ProfileCardButton } from '../../../../commons/profile_card_button/profile_card_button';
+import { ProfileCardActions } from '../../../../commons/profile_card/profile_card_actions/profile_card_actions';
+import { ProfileCardButton } from '../../../../commons/profile_card/profile_card_button/profile_card_button';
 
 import { styles } from './projects_front_styles';
 
