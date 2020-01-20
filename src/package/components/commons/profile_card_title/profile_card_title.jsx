@@ -1,5 +1,6 @@
 import React from 'react';
 
+import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 
 import { Typography } from '@wld/ui';
@@ -8,14 +9,15 @@ import { styles } from './profie_card_title_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardTitleComponent = ({ component: Component = 'div', style, children, cardVariant }) => {
+const ProfileCardTitleComponent = ({ component: Component = 'div', style, beforeTypography, children, cardVariant, customClasses = {} }) => {
     const classes = useStyles({ cardVariant });
     return (
-        <Component className={classes.container} style={style}>
+        <Component className={cn(classes.container, customClasses.container)} style={style}>
+            {beforeTypography}
             <Typography
                 variant="h2"
                 component="h3"
-                customClasses={{ container: classes.typography }}
+                customClasses={{ container: cn(classes.typography, customClasses.typography) }}
             >
                 {children}
             </Typography>

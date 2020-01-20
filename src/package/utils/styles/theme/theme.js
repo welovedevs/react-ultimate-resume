@@ -75,7 +75,7 @@ export const DEFAULT_THEME = Object.freeze({
     components: {
         banner: {
             overlayColor: 'primary',
-            imageSource: 'https://source.unsplash.com/random/4000x2000'
+            imageSource: 'https://source.unsplash.com/random/2000x6000'
         },
         cards: {
             borderRadius: 20,

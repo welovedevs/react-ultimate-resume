@@ -11,8 +11,8 @@ export const styles = theme => {
                 position: 'relative',
                 margin: spacing * 2,
                 borderRadius: theme.components.cards.borderRadius,
-                width: 450,
-                height: 450,
+                width: 470,
+                height: 470,
                 backgroundColor: palette[backgroundColor][500],
                 color: palette[color][500],
                 overflow: 'hidden'

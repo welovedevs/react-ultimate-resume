@@ -25,8 +25,13 @@ export const styles = ({ palette, miscellaneous: { spacing } }) => {
         },
         image: {
             extend: 'absolutePositioned',
+            height: 'calc(100% + 50px)',
+            width: 'calc(100% + 50px)',
             zIndex: 0,
-            objectFit: 'cover'
+            objectFit: 'cover',
+            filter: 'blur(10px)',
+            top: -50,
+            left: -50
         },
         overlay: {
             extend: 'absolutePositioned',

@@ -4,9 +4,9 @@ import { ProfileCard } from '../../../commons/profile_card/profile_card';
 
 import { BasicsFront } from './basics_front/basics_front';
 import { BasicsBack } from './basics_back/basics_back';
-import { DeveloperProfileContext } from '../../../profile';
 import { JsonResumeToFlatObject } from '../../utils/data_mapping';
 import { BasicMapping } from './data/mapping';
+import { DeveloperProfileContext } from '../../../profile';
 
 import { BasicsCardEditDialog } from './edit_dialog/basic_card_edit_dialog';
 

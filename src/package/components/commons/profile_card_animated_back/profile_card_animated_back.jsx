@@ -60,6 +60,7 @@ const ProfileCardAnimatedBackComponent = ({ title, cardVariant, children: conten
                 {title}
             </ProfileCardTitle>
             <ProfileCardContent
+                customClasses={{ container: classes.content }}
                 cardVariant={cardVariant}
                 component={animated.div}
                 style={{
