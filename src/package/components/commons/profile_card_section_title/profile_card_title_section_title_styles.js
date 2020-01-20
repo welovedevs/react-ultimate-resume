@@ -1,10 +1,12 @@
 export const styles = (theme) => {
     const { miscellaneous: { spacing } } = theme;
     return ({
-        typography: {
+        container: {
             color: 'inherit',
             fontWeight: 700,
-            marginBottom: spacing
+            marginBottom: spacing,
+            fontSize: 30,
+            lineHeight: 1.4
         }
     });
 };

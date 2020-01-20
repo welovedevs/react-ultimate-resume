@@ -7,8 +7,8 @@ import { styles } from './profile_card_section_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardSectionComponent = ({ children, customClasses = {} }) => {
-    const classes = useStyles();
+const ProfileCardSectionComponent = ({ cardVariant, children, customClasses = {} }) => {
+    const classes = useStyles({ cardVariant });
     return (
         <div className={cn(classes.container, customClasses.container)}>
             {children}

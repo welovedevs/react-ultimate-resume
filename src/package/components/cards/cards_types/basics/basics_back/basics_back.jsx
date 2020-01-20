@@ -97,7 +97,7 @@ const BasicsBackComponent = ({ data, variant }) => {
             cardVariant={variant}
         >
             {Object.entries(sections).map(([id, { title, value }]) => (
-                <ProfileCardSection key={id} customClasses={{ container: classes.section }}>
+                <ProfileCardSection key={id} cardVariant={variant}>
                     <ProfileCardSectionTitle>
                         {title}
                     </ProfileCardSectionTitle>

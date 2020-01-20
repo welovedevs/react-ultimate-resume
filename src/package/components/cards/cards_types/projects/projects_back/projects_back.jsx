@@ -4,11 +4,14 @@ import { createUseStyles } from 'react-jss';
 
 import { ProfileCardTitle } from '../../../../commons/profile_card_title/profile_card_title';
 
+import { ProfileCardContent } from '../../../../commons/profile_card_content/profile_card_content';
+import { ProjectSection } from './project_section/project_section';
+
 import { styles } from './projects_back_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectsBackComponent = () => {
+const ProjectsBackComponent = ({ variant }) => {
     const classes = useStyles();
     return (
         <>
@@ -23,8 +26,13 @@ const ProjectsBackComponent = () => {
                     </div>
                 )}
             >
-                {'Projects'}
+                Projects
             </ProfileCardTitle>
+            <ProfileCardContent cardVariant={variant}>
+                <ProjectSection cardVariant={variant} />
+                <ProjectSection cardVariant={variant} />
+                <ProjectSection cardVariant={variant} />
+            </ProfileCardContent>
         </>
     );
 };

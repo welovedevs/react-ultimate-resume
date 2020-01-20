@@ -1,5 +1,6 @@
 import React from 'react';
 
+import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 
 import { Typography } from '@wld/ui';
@@ -8,10 +9,10 @@ import { styles } from './profile_card_section_text_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardSectionTextComponent = ({ children }) => {
+const ProfileCardSectionTextComponent = ({ children, customClasses = {} }) => {
     const classes = useStyles();
     return (
-        <Typography component="p" customClasses={{ container: classes.typography }}>
+        <Typography component="p" customClasses={{ container: cn(classes.container, customClasses.container) }}>
             {children}
         </Typography>
     );

@@ -1,5 +1,6 @@
 export const styles = ({
-    typography: {
-        color: 'inherit'
+    container: {
+        color: 'inherit',
+        fontWeight: 500
     }
 });
