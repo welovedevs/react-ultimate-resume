@@ -1,6 +1,8 @@
 export const styles = theme => ({
-    fieldEditComponent: {
-        padding: theme.miscellaneous.spacing * 2,
+    fieldEditChildren: {
         display: 'flex'
+    },
+    fieldEditComponent: {
+        padding: theme.miscellaneous.spacing * 2
     }
 });

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { useFormikContext } from 'formik';
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { EditDialogField } from '../../../../commons/edit_dialog_field/edit_dialog_field';
 import { SliderWithPopper } from '../../../../commons/slider_with_popper/slider_with_popper';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { TextField, Typography } from '@wld/ui';
 import { CONTRACT_TYPES } from '../../../../../utils/enums/contract_types/contract_types';
 import { contractTypesTranslations } from '../../../../../utils/enums/contract_types/contract_types_translations';
@@ -13,22 +13,13 @@ import { CheckboxField } from '../../../../commons/checkbox_field/checkbox_group
 import LocationField from '../../../../commons/location_field/location_field';
 
 const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue } }) => {
-    const {
-        values: {
-            currentCity: { name: currentCityName },
-            remoteWork,
-            experienceYears,
-            contractTypes,
-            studiesLevel,
-            codingYears,
-            codingReason
-        },
-        handleChange
-    } = useFormikContext();
+    const { values, errors, handleChange } = useFormikContext();
+    const { currentCity, remoteWork, experienceYears, contractTypes, studiesLevel, codingYears, codingReason } = values;
 
     return (
         <>
             <EditDialogField
+                error={errors?.currentCity?.name || errors?.currentCity}
                 title={
                     <FormattedMessage
                         id="Basics.editDialog.location.title"
@@ -36,7 +27,7 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
                     />
                 }
             >
-                <LocationField value={currentCityName} onLocationSelected={handleValueChange(currentCityName)} />
+                <LocationField value={currentCity?.name} onLocationSelected={handleValueChange('currentCity')} />
                 <CheckboxField
                     variant="outlined"
                     title={
@@ -54,6 +45,7 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
                 />
             </EditDialogField>
             <EditDialogField
+                error={errors.contractTypes}
                 title={
                     <FormattedMessage
                         id="Basics.editDialog.contractTypes.title"
@@ -71,6 +63,7 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
                 />
             </EditDialogField>
             <EditDialogField
+                error={errors.codingYears}
                 title={
                     <FormattedMessage
                         id="Basics.editDialog.codingYears.title"
@@ -94,6 +87,7 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
                 />
             </EditDialogField>
             <EditDialogField
+                error={errors.studiesLevel}
                 title={
                     <FormattedMessage
                         id="Basics.editDialog.studiesLevel.title"
@@ -113,10 +107,11 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
                     value={studiesLevel}
                     onChange={handleChange}
                     min={0}
-                    max={20}
+                    max={12}
                 />
             </EditDialogField>
             <EditDialogField
+                error={errors.experienceYears}
                 title={
                     <FormattedMessage
                         id="Basics.editDialog.experienceYears.title"
@@ -140,6 +135,7 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
                 />
             </EditDialogField>
             <EditDialogField
+                error={errors.codingReason}
                 title={
                     <FormattedMessage
                         id="Basics.editDialog.codingReason.title"
@@ -152,13 +148,19 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
         </>
     );
 };
-export const BasicsCardEditDialog = ({ data, onEdit }) => (
-    <EditDialog
-        data={data}
-        onEdit={onEdit}
-        open
-        title={<FormattedMessage id={'Basics.editDialog.title'} defaultMessage="Your basic information" />}
-    >
-        {helpers => <BasicsCardEditDialogContent helpers={helpers} />}
-    </EditDialog>
-);
+export const BasicsCardEditDialog = ({ data, onEdit, validationSchema }) => {
+    const { formatMessage } = useIntl();
+    const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
+
+    return (
+        <EditDialog
+            data={data}
+            onEdit={onEdit}
+            validationSchema={validationSchemaToPass}
+            open
+            title={<FormattedMessage id={'Basics.editDialog.title'} defaultMessage="Your basic information" />}
+        >
+            {helpers => <BasicsCardEditDialogContent helpers={helpers} />}
+        </EditDialog>
+    );
+};

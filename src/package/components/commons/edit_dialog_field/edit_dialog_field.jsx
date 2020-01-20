@@ -6,7 +6,7 @@ import React from 'react';
 
 const useStyles = createUseStyles(styles);
 
-export const EditDialogField = ({ title, subtitle, children }) => {
+export const EditDialogField = ({ title, subtitle, children, error }) => {
     const classes = useStyles();
 
     return (
@@ -21,7 +21,10 @@ export const EditDialogField = ({ title, subtitle, children }) => {
                     {subtitle}
                 </Typography>
             )}
-            <div className={classes.fieldEditComponent}>{children}</div>
+            <div className={classes.fieldEditComponent}>
+                <div className={classes.fieldEditChildren}>{children}</div>
+                {error && <Typography color="danger">{error}</Typography>}
+            </div>
         </div>
     );
 };

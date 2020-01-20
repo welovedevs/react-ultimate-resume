@@ -25,6 +25,12 @@ const LocationField = ({ variant, onLocationSelected, value, clearOnSelect }) =>
 
     const clear = useCallback(() => setInput(''), []);
 
+    const handleChange = useCallback(e => {
+        setInput(e.target.value);
+        if (typeof onLocationSelected === 'function' && !e.target.value) {
+            onLocationSelected(null);
+        }
+    });
     const onPredictionSelected = useCallback(
         (placeId, description) => {
             if (typeof onLocationSelected === 'function') {
@@ -42,7 +48,7 @@ const LocationField = ({ variant, onLocationSelected, value, clearOnSelect }) =>
                     className={classes.input}
                     onClick={e => e.target && e.target.select && e.target.select()}
                     value={input}
-                    onChange={e => e.target && setInput(e.target.value)}
+                    onChange={handleChange}
                     placeholder={formatMessage(locationFieldTranslations.placeholder)}
                     onBlur={() => {
                         if (!preventBlur) {
