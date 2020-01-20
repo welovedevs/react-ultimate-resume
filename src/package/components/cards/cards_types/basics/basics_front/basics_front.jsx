@@ -16,7 +16,10 @@ const useStyles = createUseStyles(styles);
 const BasicsFrontComponent = ({ data, variant }) => {
     const classes = useStyles();
     const { side, setSide } = useContext(ProfileCardContext);
-    const { currentPosition, currentCity } = data;
+    const {
+        currentPosition,
+        currentCity: { name: currentCityName }
+    } = data;
     const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side]);
     return (
         <div className={classes.container}>
@@ -25,7 +28,7 @@ const BasicsFrontComponent = ({ data, variant }) => {
                     <FormattedMessage
                         id="Basics.Front.MainPhrase"
                         defaultMessage={'{currentPosition} based in {currentCity}'}
-                        values={{ currentCity, currentPosition }}
+                        values={{ currentCity: currentCityName, currentPosition }}
                     />
                 </Typography>
             </CenterContentContainer>

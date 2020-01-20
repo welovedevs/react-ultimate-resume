@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Checkbox, Typography } from '@wld/ui';
+import { Typography } from '@wld/ui';
 import { useIntl } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 import { checkboxGroupStyles } from './checkbox_group_styles';

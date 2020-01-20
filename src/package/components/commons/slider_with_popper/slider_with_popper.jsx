@@ -11,7 +11,7 @@ export const SliderWithPopper = ({ color, name, value, onChange, min, max }) => 
 
     const handleChange = useCallback(
         e => {
-            e.persist()
+            e.persist();
             const newValue = e.target.value;
             if (timer.current) {
                 clearTimeout(timer.current);
@@ -21,6 +21,7 @@ export const SliderWithPopper = ({ color, name, value, onChange, min, max }) => 
         },
         [onChange]
     );
+
     return (
         <Slider
             color={color}
@@ -31,6 +32,7 @@ export const SliderWithPopper = ({ color, name, value, onChange, min, max }) => 
             max={max}
             onMouseDown={handleFocus}
             onMouseUp={handleBlur}
+            thumbReference={thumbReference}
             thumbChildren={
                 <PopperCard
                     open={isFocused}

@@ -10,10 +10,19 @@ import { CONTRACT_TYPES } from '../../../../../utils/enums/contract_types/contra
 import { contractTypesTranslations } from '../../../../../utils/enums/contract_types/contract_types_translations';
 import { CheckboxGroup } from '../../../../commons/checkbox_group/checkbox_group';
 import { CheckboxField } from '../../../../commons/checkbox_field/checkbox_group';
+import LocationField from '../../../../commons/location_field/location_field';
 
 const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue } }) => {
     const {
-        values: { currentCity, remoteWork, experienceYears, contractTypes, studiesLevel, codingYears, codingReason },
+        values: {
+            currentCity: { name: currentCityName },
+            remoteWork,
+            experienceYears,
+            contractTypes,
+            studiesLevel,
+            codingYears,
+            codingReason
+        },
         handleChange
     } = useFormikContext();
 
@@ -27,6 +36,7 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
                     />
                 }
             >
+                <LocationField value={currentCityName} onLocationSelected={handleValueChange(currentCityName)} />
                 <CheckboxField
                     variant="outlined"
                     title={
@@ -101,6 +111,29 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
                     color="primary"
                     name="studiesLevel"
                     value={studiesLevel}
+                    onChange={handleChange}
+                    min={0}
+                    max={20}
+                />
+            </EditDialogField>
+            <EditDialogField
+                title={
+                    <FormattedMessage
+                        id="Basics.editDialog.experienceYears.title"
+                        defaultMessage={'How many years of professional experience do you have?'}
+                    />
+                }
+                subtitle={
+                    <FormattedMessage
+                        id="Basics.editDialog.experienceYears.subtitle"
+                        defaultMessage={'Tech and non-tech experiences '}
+                    />
+                }
+            >
+                <SliderWithPopper
+                    color="primary"
+                    name="experienceYears"
+                    value={experienceYears}
                     onChange={handleChange}
                     min={0}
                     max={20}

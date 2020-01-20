@@ -1,6 +1,6 @@
 export const BasicMapping = Object.freeze({
     currentPosition: 'work[0].position',
-    currentCity: 'basics.location.city',
+    'currentCity.name': 'basics.location.city',
     remoteWork: 'specific.work.remote',
     experienceYears: 'specific.work.experienceYears',
     contractTypes: 'specific.work.contractTypes',
