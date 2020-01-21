@@ -20,7 +20,7 @@ export const styles = theme => ({
         height: 28,
         color: 'inherit',
         '& > path': {
-            stroke: !cardVariant ? 'currentColor' : getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).color)
+            stroke: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).color)
         }
     })
 });

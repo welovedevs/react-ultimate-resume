@@ -9,6 +9,7 @@ import { SoundtrackCard } from './cards_types/soundtrack/soundtrack_card';
 import { StudiesCard } from './cards_types/studies/studies_card';
 import { ExperiencesCard } from './cards_types/experiences/experiences_card';
 import { SkillsCard } from './cards_types/skills/skills_card';
+import { GifsCard } from './cards_types/gifs/gifs_card';
 
 import { styles } from './cards_styles';
 
@@ -18,6 +19,7 @@ const CardsComponent = () => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
+            <GifsCard variant={2} />
             <StudiesCard variant={3} />
             <SkillsCard variant={0} />
             <ProjectsCard variant={4} />

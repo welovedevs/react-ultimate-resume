@@ -1,45 +1,38 @@
-import { flex } from '../../../../../utils/styles/styles_utils';
-
-const { center } = flex;
-
 export const styles = (theme) => {
     const { palette } = theme;
     return ({
-        title: {
-            position: 'relative',
+        container: {
             '& > *:not($background)': {
-                zIndex: 2,
-                position: 'relative'
+                zIndex: 2
             }
         },
-        typography: {
-            color: [palette.light[500], '!important']
+        title: {
+            position: 'relative'
+        },
+        titleTypography: {
+            color: [palette.light[900], '!important']
         },
         background: {
-            zIndex: 0,
             height: '100%',
             width: '100%',
             position: 'absolute',
             top: 0,
             left: 0,
-            overflow: 'hidden',
-            ...center,
             '&::after': {
-                zIndex: 1,
+                height: '100%',
+                width: '100%',
                 position: 'absolute',
                 top: 0,
                 left: 0,
-                height: '100%',
-                width: '100%',
                 backgroundColor: `rgba(${palette.dark.rgbShades[900].join(', ')}, .4)`,
                 content: "''"
             }
         },
         backgroundImage: {
-            height: '190%',
-            width: '110%',
+            height: '100%',
+            width: '100%',
             objectFit: 'cover',
-            transform: 'rotate(-10deg)'
+            zIndex: 0
         }
     });
 };
