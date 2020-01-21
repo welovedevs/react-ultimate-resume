@@ -13,7 +13,7 @@ const useStyles = createUseStyles(styles);
 
 export const ProfileCardContext = createContext({});
 
-const ProfileCardComponent = ({ data, sides, side: receivedSide, variant }) => {
+const ProfileCardComponent = ({ data, sides, side: receivedSide, variant, isTransitionUnique = true }) => {
     const classes = useStyles({ variant });
     const [side, setSide] = useState('front');
     const [debouncedSide] = useDebounce(side, 200);
@@ -42,9 +42,10 @@ const ProfileCardComponent = ({ data, sides, side: receivedSide, variant }) => {
         enter: { opacity: 1 },
         leave: { opacity: 0 },
         config: config.default,
-        unique: true,
+        unique: isTransitionUnique,
         immediate: !hasSideChanged.current
     });
+
     return (
         <Card
             customClasses={{ container: classes.container }}

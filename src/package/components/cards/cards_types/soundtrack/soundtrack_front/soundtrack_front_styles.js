@@ -5,9 +5,10 @@ export const styles = (theme) => {
             flexDirection: 'column'
         },
         logo: {
-            height: '45%',
-            width: 'auto',
-            marginBottom: spacing * 3
+            marginBottom: spacing * 3,
+            '& > path': {
+                fill: 'currentColor'
+            }
         },
         typography: {
             fontSize: 36,

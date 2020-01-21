@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { animated, useSpring, useTransition } from 'react-spring';
 
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
@@ -8,12 +8,17 @@ import { LoadingSpinner } from '../../../../commons/loading_spinner/loading_spin
 
 import { styles } from './soundtrack_back_styles';
 import { LOADING_SPINNER_TRANSITIONS } from './soundtrack_back_loading_spinner_transitions';
+import { getColorsFromCardVariant } from '../../../../../utils/styles/styles_utils';
 
 const useStyles = createUseStyles(styles);
 
-const SoundtrackBackComponent = () => {
+const SoundtrackBackComponent = ({ variant }) => {
     const classes = useStyles();
+    const theme = useTheme();
     const [hasLoaded, setHasLoaded] = useState(false);
+
+    const color = useMemo(() => getColorsFromCardVariant(theme, variant).color, [theme, variant]);
+
     const handleLoad = useCallback(() => setHasLoaded(true), []);
     const iframeSpringProps = useSpring({
         opacity: hasLoaded ? 1 : 0
@@ -34,7 +39,7 @@ const SoundtrackBackComponent = () => {
                         className={classes.loadingSpinnerChild}
                         style={props}
                     >
-                        <LoadingSpinner color="light" />
+                        <LoadingSpinner color={color} />
                     </animated.span>
                 ))}
             </span>

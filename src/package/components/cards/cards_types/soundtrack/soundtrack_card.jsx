@@ -20,6 +20,7 @@ const SoundtrackCardComponent = ({ variant, flipped }) => {
             }}
             variant={variant}
             flipped={flipped}
+            isTransitionUnique={false}
         />
     );
 };
