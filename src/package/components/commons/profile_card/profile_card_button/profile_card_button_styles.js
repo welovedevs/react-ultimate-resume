@@ -18,8 +18,9 @@ export const styles = theme => ({
     },
     arrow: ({ cardVariant }) => ({
         height: 28,
+        color: 'inherit',
         '& > path': {
-            stroke: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).color)
+            stroke: !cardVariant ? 'currentColor' : getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).color)
         }
     })
 });

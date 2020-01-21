@@ -3,7 +3,7 @@ import { flex } from '../../../../../utils/styles/styles_utils';
 const { center } = flex;
 
 export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
+    const { palette } = theme;
     return ({
         title: {
             position: 'relative',
@@ -13,7 +13,7 @@ export const styles = (theme) => {
             }
         },
         typography: {
-            color: ['#fff', '!important']
+            color: [palette.light[500], '!important']
         },
         background: {
             zIndex: 0,
