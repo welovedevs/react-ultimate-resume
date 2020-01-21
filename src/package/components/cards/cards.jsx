@@ -20,12 +20,12 @@ const CardsComponent = () => {
         <div className={classes.container}>
             <StudiesCard variant={3} />
             <SkillsCard variant={0} />
-            <SoundtrackCard variant={0} />
-            <BasicsCard variant={3} />
             <ProjectsCard variant={4} />
-            <BasicsCard variant={0} />
-            <ExperiencesCard variant={4} />
+            <BasicsCard variant={3} />
+            <SoundtrackCard variant={0} />
             <InterestedByCard variant={2} />
+            <ExperiencesCard variant={4} />
+            <BasicsCard variant={0} />
         </div>
     );
 };
