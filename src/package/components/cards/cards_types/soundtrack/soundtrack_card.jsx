@@ -4,6 +4,7 @@ import { createUseStyles } from 'react-jss';
 
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { SoundtrackFront } from './soundtrack_front/soundtrack_front';
+import { SoundtrackBack } from './soundtrack_back/soundtrack_back';
 
 import { styles } from './soundtrack_card_styles';
 
@@ -13,9 +14,9 @@ const SoundtrackCardComponent = ({ variant, flipped }) => {
     const classes = useStyles();
     return (
         <ProfileCard
-                sides={{
+            sides={{
                 front: SoundtrackFront,
-                back: () => null
+                back: SoundtrackBack
             }}
             variant={variant}
             flipped={flipped}

@@ -10112,6 +10112,11 @@ resolve@^1.11.0, resolve@^1.8.1:
   dependencies:
     path-parse "^1.0.6"
 
+respinner@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/respinner/-/respinner-3.0.2.tgz#a8cda96c1310c928c87af13ec38e7a396e4ab20f"
+  integrity sha512-TYVR35BrQCHKcIc7CaF17VPiP8wycUZaRBdrt4DOoR4jsdfXbpRPSn62u1nW/Cyhs3jEMYxzqkA2TFnx+qZdEg==
+
 restore-cursor@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/restore-cursor/-/restore-cursor-2.0.0.tgz#9f7ee287f82fd326d4fd162923d62129eee0dfaf"

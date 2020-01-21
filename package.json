@@ -34,6 +34,7 @@
         "react-jss": "^10.0.3",
         "react-scripts": "3.3.0",
         "react-spring": "^8.0.27",
+        "respinner": "^3.0.2",
         "yup": "^0.28.0"
     },
     "devDependencies": {
