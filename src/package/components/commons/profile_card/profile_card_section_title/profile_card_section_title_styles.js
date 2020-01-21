@@ -4,7 +4,6 @@ export const styles = (theme) => {
         container: {
             color: 'inherit',
             fontWeight: 700,
-            marginBottom: spacing,
             fontSize: 30,
             lineHeight: 1.4
         }
