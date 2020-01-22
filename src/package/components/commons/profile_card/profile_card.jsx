@@ -20,7 +20,8 @@ const ProfileCardComponent = ({
     variant,
     isTransitionUnique = true,
     isEditingProfile,
-    editDialog
+    editDialog,
+    customTransitions
 }) => {
     const classes = useStyles({ variant });
     const [side, setSide] = useState('front');
@@ -54,7 +55,7 @@ const ProfileCardComponent = ({
         hasSideChanged.current = true;
     }, [side]);
 
-    const transitions = useTransition(debouncedSide, item => `card_side_${item}`, {
+    const transitions = useTransition(debouncedSide, item => `card_side_${item}`, customTransitions || {
         from: { opacity: 0 },
         enter: { opacity: 1 },
         leave: { opacity: 0 },

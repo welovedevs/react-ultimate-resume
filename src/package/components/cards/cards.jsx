@@ -19,7 +19,7 @@ const CardsComponent = () => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
-            <GifsCard variant={2} />
+            <GifsCard variant={3} />
             <StudiesCard variant={3} />
             <SkillsCard variant={2} />
             <SoundtrackCard variant={0} />

@@ -11,8 +11,7 @@ export const styles = (theme) => {
             width: '100%',
             position: 'absolute',
             top: 0,
-            left: 0,
-            zIndex: 0
+            left: 0
         },
         title: {
             position: 'relative'

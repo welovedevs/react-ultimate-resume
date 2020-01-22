@@ -12,6 +12,9 @@ import { Cards } from './cards/cards';
 import { styles } from './profile_styles';
 import { FlatObjectToJsonResume } from './cards/utils/data_mapping';
 
+import '../styles/lib/slick-carousel/slick-theme.css';
+import '../styles/lib/slick-carousel/slick.css';
+
 const useStyles = createUseStyles(styles);
 
 const DEFAULT_OPTIONS = Object.freeze({
