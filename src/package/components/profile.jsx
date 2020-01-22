@@ -22,7 +22,7 @@ export const DeveloperProfileContext = createContext({});
 
 const DeveloperProfileComponent = ({ options, onEdit: onEditProps = () => {} }) => {
     const classes = useStyles(styles);
-    const [isEditing, setIsEditing] = useState(true);
+    const [isEditing, setIsEditing] = useState(false);
     const data = useMemo(() => prepareJsonResume(JsonStub), [JsonStub]);
 
     const onEdit = useCallback(
