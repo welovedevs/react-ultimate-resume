@@ -2,6 +2,10 @@ import React, { useCallback } from 'react';
 import { Formik, useFormikContext } from 'formik';
 import { Button, Typography } from '@wld/ui';
 import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
+import { createUseStyles } from 'react-jss';
+import { styles } from './edit_dialog_styles';
+
+const useStyles = createUseStyles(styles);
 
 const EditDialogContent = ({ children, onClose }) => {
     const { handleSubmit, setFieldValue, values } = useFormikContext();
@@ -29,18 +33,21 @@ const EditDialogContent = ({ children, onClose }) => {
         </>
     );
 };
-export const EditDialog = ({ open, onClose, data, onEdit, children, title, validationSchema }) => (
-    <Dialog {...{ open, onClose }}>
-        <Typography variant="h3" component="h3">
-            {title || 'Coucou'}
-        </Typography>
-        <Formik
-            validateOnChange={false}
-            initialValues={data}
-            onSubmit={newValues => onEdit(newValues)}
-            validationSchema={validationSchema}
-        >
-            <EditDialogContent onClose={onClose}>{children}</EditDialogContent>
-        </Formik>
-    </Dialog>
-);
+export const EditDialog = ({ open, onClose, data, onEdit, children, title, validationSchema }) => {
+    const classes = useStyles();
+    return (
+        <Dialog {...{ open, onClose }}>
+            <Typography variant="h3" component="h3" className={classes.title}>
+                {title || 'Coucou'}
+            </Typography>
+            <Formik
+                validateOnChange={false}
+                initialValues={data}
+                onSubmit={newValues => onEdit(newValues)}
+                validationSchema={validationSchema}
+            >
+                <EditDialogContent onClose={onClose}>{children}</EditDialogContent>
+            </Formik>
+        </Dialog>
+    );
+};
