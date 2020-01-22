@@ -15,18 +15,17 @@ const InterestedByCardComponent = ({ variant, flipped }) => {
 
     return (
         <>
-            {isEditing && (
-                <InterestedByEditDialog
-                    data={mappedData}
-                    onEdit={onEdit(InterestedByMapping)}
-                    validationSchema={InterestedByValidationSchema}
-                />
-            )}
             <ProfileCard
                 data={mappedData}
+                isEditingProfile={isEditing}
                 sides={{
                     front: InterestedByFront,
                     back: InterestedByBack
+                }}
+                editDialog={{
+                    component: InterestedByEditDialog,
+                    validationSchema: InterestedByValidationSchema,
+                    onEdit: onEdit(InterestedByMapping)
                 }}
                 variant={variant}
                 flipped={flipped}

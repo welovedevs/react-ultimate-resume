@@ -148,7 +148,7 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
         </>
     );
 };
-export const BasicsCardEditDialog = ({ data, onEdit, validationSchema }) => {
+export const BasicsCardEditDialog = ({ data, onEdit, validationSchema, onClose }) => {
     const { formatMessage } = useIntl();
     const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
 
@@ -156,6 +156,7 @@ export const BasicsCardEditDialog = ({ data, onEdit, validationSchema }) => {
         <EditDialog
             data={data}
             onEdit={onEdit}
+            onClose={onClose}
             validationSchema={validationSchemaToPass}
             open
             title={<FormattedMessage id={'Basics.editDialog.title'} defaultMessage="Your basic information" />}

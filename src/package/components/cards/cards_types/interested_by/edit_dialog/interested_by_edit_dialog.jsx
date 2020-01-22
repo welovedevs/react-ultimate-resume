@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { useFormikContext } from 'formik';
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { EditDialogField } from '../../../../commons/edit_dialog_field/edit_dialog_field';
-import { FormattedMessage, useIntl } from 'react-intl';
 import { TextField } from '@wld/ui';
 
 const BasicsCardEditDialogContent = () => {
@@ -32,7 +32,7 @@ const BasicsCardEditDialogContent = () => {
         </>
     );
 };
-export const InterestedByEditDialog = ({ data, onEdit, validationSchema }) => {
+export const InterestedByEditDialog = ({ data, onEdit, validationSchema, onClose }) => {
     const { formatMessage } = useIntl();
     const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
 
@@ -40,6 +40,7 @@ export const InterestedByEditDialog = ({ data, onEdit, validationSchema }) => {
         <EditDialog
             data={data}
             onEdit={onEdit}
+            onClose={onClose}
             validationSchema={validationSchemaToPass}
             open
             title={

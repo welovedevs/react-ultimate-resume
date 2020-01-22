@@ -16,15 +16,14 @@ const BasicsCardComponent = ({ variant, flipped }) => {
     const mappedData = useMemo(() => JsonResumeToFlatObject(data, BasicMapping), [data]);
     return (
         <>
-            {isEditing && (
-                <BasicsCardEditDialog
-                    data={mappedData}
-                    onEdit={onEdit(BasicMapping)}
-                    validationSchema={BasicsValidationSchema}
-                />
-            )}
             <ProfileCard
                 data={mappedData}
+                isEditingProfile={isEditing}
+                editDialog={{
+                    component: BasicsCardEditDialog,
+                    validationSchema: BasicsValidationSchema,
+                    onEdit: onEdit(BasicMapping)
+                }}
                 sides={{
                     front: BasicsFront,
                     back: BasicsBack
