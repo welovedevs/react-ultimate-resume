@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.0.4",
+        "chroma-js": "^2.1.0",
         "classnames": "^2.2.6",
         "cp-cli": "^2.0.0",
         "formik": "^2.1.2",
@@ -34,6 +35,7 @@
         "react-jss": "^10.0.3",
         "react-scripts": "3.3.0",
         "react-spring": "^8.0.27",
+        "recharts": "^2.0.0-beta.1",
         "respinner": "^3.0.2",
         "yup": "^0.28.0"
     },

@@ -21,7 +21,9 @@ const CardsComponent = () => {
         <div className={classes.container}>
             <GifsCard variant={2} />
             <StudiesCard variant={3} />
-            <SkillsCard variant={0} />
+            <SkillsCard variant={2} />
+            <SoundtrackCard variant={0} />
+            <InterestedByCard variant={2} />
             <ProjectsCard variant={4} />
             <BasicsCard variant={3} />
             <SoundtrackCard variant={0} />
