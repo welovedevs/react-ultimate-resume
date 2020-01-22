@@ -6,22 +6,25 @@ import React from 'react';
 
 const useStyles = createUseStyles(styles);
 
-export const EditDialogField = ({ title, subtitle, children }) => {
+export const EditDialogField = ({ title, subtitle, children, error }) => {
     const classes = useStyles();
 
     return (
         <div className={classes.field}>
             {title && (
-                <Typography component="h3" variant="h3">
+                <Typography component="h2" variant="h4">
                     {title}
                 </Typography>
             )}
             {subtitle && (
-                <Typography component="h4" variant="h4">
+                <Typography component="div" variant="body">
                     {subtitle}
                 </Typography>
             )}
-            {children}
+            <div className={classes.fieldEditComponent}>
+                <div className={classes.fieldEditChildren}>{children}</div>
+                {error && <Typography color="danger">{error}</Typography>}
+            </div>
         </div>
     );
 };

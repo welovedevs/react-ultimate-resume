@@ -1,4 +1,4 @@
-import React, { createContext, useMemo, useEffect, useState, useCallback } from 'react';
+import React, { createContext, useCallback, useEffect, useMemo, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
@@ -27,8 +27,8 @@ const DeveloperProfileComponent = ({ options, onEdit: onEditProps = () => {} }) 
 
     const onEdit = useCallback(
         dataMapping => newData => {
-            onEdit(FlatObjectToJsonResume(newData, dataMapping));
-            setIsEditing(false);
+            onEditProps(FlatObjectToJsonResume(newData, dataMapping));
+            // setIsEditing(false);
         },
         []
     );

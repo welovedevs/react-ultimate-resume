@@ -1,3 +1,4 @@
+.env.*
 lib/
 # Created by https://www.gitignore.io/api/node,react,intellij+iml
 # Edit at https://www.gitignore.io/?templates=node,react,intellij+iml

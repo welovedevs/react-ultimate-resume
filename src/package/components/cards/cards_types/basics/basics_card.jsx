@@ -9,13 +9,20 @@ import { BasicMapping } from './data/mapping';
 import { DeveloperProfileContext } from '../../../profile';
 
 import { BasicsCardEditDialog } from './edit_dialog/basic_card_edit_dialog';
+import { BasicsValidationSchema } from './data/validator';
 
 const BasicsCardComponent = ({ variant, flipped }) => {
     const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => JsonResumeToFlatObject(data, BasicMapping), [data]);
     return (
         <>
-            {isEditing && <BasicsCardEditDialog data={data} onEdit={onEdit(BasicMapping)} />}
+            {isEditing && (
+                <BasicsCardEditDialog
+                    data={mappedData}
+                    onEdit={onEdit(BasicMapping)}
+                    validationSchema={BasicsValidationSchema}
+                />
+            )}
             <ProfileCard
                 data={mappedData}
                 sides={{
