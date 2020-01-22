@@ -21,14 +21,16 @@ const CustomLabel = (props) => {
         <g>
             <animated.g style={springProps}>
 
-                <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={customColor} fill="none"/>
-                <circle cx={ex} cy={ey} r={2} fill={customColor} stroke="none"/>
-                <text x={ex + (cos >= 0 ? 1 : -1) * 8}
-                      y={ey}
-                      dy={5}
-                      textAnchor={textAnchor}
-                      fill={customColor}
-                      fontWeight="bold">
+                <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={customColor} fill="none" />
+                <circle cx={ex} cy={ey} r={2} fill={customColor} stroke="none" />
+                <text
+                    x={ex + (cos >= 0 ? 1 : -1) * 8}
+                    y={ey}
+                    dy={5}
+                    textAnchor={textAnchor}
+                    fill={customColor}
+                    fontWeight="500"
+                >
                     {name}
                 </text>
             </animated.g>

@@ -52,7 +52,7 @@ const SkillsBackComponent = ({ variant }) => {
                 <PieChart width={470} height={300}>
                     <Pie
                         dataKey="value"
-                        animationDuration={500}
+                        animationDuration={750}
                         labelLine={false}
                         label={(shapeProps) => (
                             <CustomLabel
@@ -69,13 +69,10 @@ const SkillsBackComponent = ({ variant }) => {
                         onAnimationEnd={() => {
                             setSpringProps({ opacity: 1 });
                         }}
-
                     >
-                        {
-                            top3Skills.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={colorPalette[index]} stroke={backgroundColor}/>
-                            ))
-                        }
+                        {top3Skills.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={colorPalette[index]} stroke={backgroundColor} />
+                        ))}
                     </Pie>
                 </PieChart>
                 <animated.div style={{ opacity: springProps.opacity }}>
