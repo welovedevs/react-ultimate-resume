@@ -26,7 +26,7 @@ const EditDialogContent = ({ children, onClose }) => {
                 <Button size="small" onClick={onClose}>
                     Close
                 </Button>
-                <Button size="small" color="primary" onClick={handleSubmit}>
+                <Button type="submit" size="small" color="primary" onClick={handleSubmit}>
                     Save
                 </Button>
             </DialogActions>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 
@@ -8,46 +8,26 @@ import { ProfileCardSectionText } from '../../../../commons/profile_card/profile
 import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back';
 
 import { styles } from './studies_back_styles';
+import { FormattedMessage } from 'react-intl';
 
 const useStyles = createUseStyles(styles);
 
-const SECTIONS = Object.freeze({
-    first: {
-        start: 2018,
-        end: 2019,
-        name: 'Chef de projet Web',
-        school: 'Efficom, Lille'
-    },
-    second: {
-        start: 2017,
-        end: 2018,
-        name: 'BTS SIO - Alternance',
-        school: 'Lycée Gaston Berger, Lille'
-    },
-    third: {
-        start: 2016,
-        end: 2017,
-        name: 'BTS SIO - Initial',
-        school: 'Lycée Dampierre, Valenciennes'
-    }
-});
-
-const StudiesBackComponent = ({ variant }) => {
+const StudiesBackComponent = ({ variant, data }) => {
     const classes = useStyles();
+
     return (
-        <ProfileCardAnimatedBack
-            title="Studies"
-            cardVariant={variant}
-        >
-            {Object.entries(SECTIONS).map(([id, { start, end, name, school }]) => (
-                <ProfileCardSection key={id} cardVariant={variant}>
-                    <ProfileCardSectionTitle>
-                        {`${start} - ${end}`}
-                    </ProfileCardSectionTitle>
+        <ProfileCardAnimatedBack title="Studies" cardVariant={variant}>
+            {data.map(({ endDate, area, studyType, institution, id }, index) => (
+                <ProfileCardSection key={`${index}_${id}`} cardVariant={variant}>
+                    <ProfileCardSectionTitle>{endDate.year()}</ProfileCardSectionTitle>
                     <ProfileCardSectionText>
-                        {name}
+                        <FormattedMessage
+                            id={'Studies.back.diploma'}
+                            defaultMessage={'{studyType} in {area}'}
+                            values={{ area, studyType }}
+                        />
                         <br />
-                        {school}
+                        {institution}
                     </ProfileCardSectionText>
                 </ProfileCardSection>
             ))}

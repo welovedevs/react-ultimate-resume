@@ -70,7 +70,7 @@ const ProfileCardComponent = ({
         return createElement(editDialog.component, {
             onEdit: (...parameters) => {
                 setIsEditingCard(false);
-                editDialog.onEdit(parameters);
+                editDialog.onEdit(...parameters);
             },
             validationSchema: editDialog.validationSchema,
             data,

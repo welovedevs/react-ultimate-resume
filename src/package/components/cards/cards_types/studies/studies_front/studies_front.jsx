@@ -14,10 +14,10 @@ import { ReactComponent as SchoolLogo } from '../../../../../assets/icons/dev_on
 import { getColorsFromCardVariant } from '../../../../../utils/styles/styles_utils';
 
 import { styles } from './studies_front_styles';
+import { FormattedMessage } from 'react-intl';
 
 const useStyles = createUseStyles(styles);
-
-const StudiesFrontComponent = ({ variant }) => {
+const StudiesFrontComponent = ({ variant, data }) => {
     const classes = useStyles();
     const theme = useTheme();
     const color = useMemo(() => getColorsFromCardVariant(theme, variant).color, [theme, variant]);
@@ -31,14 +31,16 @@ const StudiesFrontComponent = ({ variant }) => {
                         vector={SchoolLogo}
                     />
                     <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
-                        I graduated from École 42
+                        <FormattedMessage
+                            id="Studies.title"
+                            defaultMessage="I gratuated from {schoolName}"
+                            values={{ schoolName: data[0] && data[0].institution }}
+                        />
                     </ProfileCardFrontTypography>
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton cardVariant={variant}>
-                    All my studies
-                </ProfileCardButton>
+                <ProfileCardButton cardVariant={variant}>All my studies</ProfileCardButton>
             </ProfileCardActions>
         </>
     );

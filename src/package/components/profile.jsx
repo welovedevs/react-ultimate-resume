@@ -25,13 +25,9 @@ const DeveloperProfileComponent = ({ options, onEdit: onEditProps = () => {} }) 
     const [isEditing, setIsEditing] = useState(true);
     const data = useMemo(() => prepareJsonResume(JsonStub), [JsonStub]);
 
-    const onEdit = useCallback(
-        dataMapping => newData => {
-            onEditProps(FlatObjectToJsonResume(newData, dataMapping));
-            // setIsEditing(false);
-        },
-        []
-    );
+    const onEdit = useCallback(newData => {
+        console.log(newData);
+    }, []);
 
     return (
         <div className={classes.container}>

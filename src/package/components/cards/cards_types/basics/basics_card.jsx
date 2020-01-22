@@ -1,10 +1,10 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 
 import { BasicsFront } from './basics_front/basics_front';
 import { BasicsBack } from './basics_back/basics_back';
-import { JsonResumeToFlatObject } from '../../utils/data_mapping';
+import { FlatObjectToJsonResume, JsonResumeToFlatObject } from '../../utils/data_mapping';
 import { BasicMapping } from './data/mapping';
 import { DeveloperProfileContext } from '../../../profile';
 
@@ -14,6 +14,11 @@ import { BasicsValidationSchema } from './data/validator';
 const BasicsCardComponent = ({ variant, flipped }) => {
     const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => JsonResumeToFlatObject(data, BasicMapping), [data]);
+
+    const onDialogEdited = useCallback(editedData => {
+        onEdit(FlatObjectToJsonResume(editedData, BasicMapping));
+    }, []);
+
     return (
         <>
             <ProfileCard
@@ -22,7 +27,7 @@ const BasicsCardComponent = ({ variant, flipped }) => {
                 editDialog={{
                     component: BasicsCardEditDialog,
                     validationSchema: BasicsValidationSchema,
-                    onEdit: onEdit(BasicMapping)
+                    onEdit: onDialogEdited
                 }}
                 sides={{
                     front: BasicsFront,
