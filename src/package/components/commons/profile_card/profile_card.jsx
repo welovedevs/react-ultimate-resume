@@ -4,10 +4,13 @@ import { createUseStyles } from 'react-jss';
 import { config, useTransition } from 'react-spring';
 import { useDebounce } from 'use-debounce';
 
-import { Card, Typography } from '@wld/ui';
+import { Card, Tooltip } from '@wld/ui';
+
+import { ProfileCardSide } from './profile_card_side/profile_card_side';
+
+import { ReactComponent as EditIcon } from '../../../assets/icons/edit.svg';
 
 import { styles } from './profile_card_styles';
-import { ProfileCardSide } from './profile_card_side/profile_card_side';
 
 const useStyles = createUseStyles(styles);
 
@@ -52,8 +55,6 @@ const ProfileCardComponent = ({
     const enableEditingCard = useCallback(e => {
         e.preventDefault();
         e.stopPropagation();
-        console.log('ca clique non?');
-
         setIsEditingCard(true);
     }, []);
 
@@ -102,9 +103,11 @@ const ProfileCardComponent = ({
                 onMouseLeave={handleMouseLeave}
             >
                 {isEditingProfile && (
-                    <button className={classes.editButton} onClick={enableEditingCard}>
-                        <Typography>Modifier</Typography>
-                    </button>
+                    <Tooltip title="Editer cette carte">
+                        <button type="button" className={classes.editButton} onClick={enableEditingCard}>
+                            <EditIcon className={classes.editIcon} />
+                        </button>
+                    </Tooltip>
                 )}
                 <ProfileCardContext.Provider value={{ side, setSide }}>
                     {transitions.map(({ item, key, props }) => {

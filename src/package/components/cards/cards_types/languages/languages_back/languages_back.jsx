@@ -54,8 +54,6 @@ const LanguagesBackComponent = ({ variant }) => {
         [backColor, backBackgroundColor]
     );
 
-    console.log({ colorPalette });
-
     return (
         <ProfileCardAnimatedBack title="Languages" customClasses={{ content: classes.content, contentAnimated: classes.contentAnimated }}>
             <div className={classes.columnsContainer}>

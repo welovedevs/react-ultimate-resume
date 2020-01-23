@@ -1,25 +1,30 @@
-export const styles = theme => ({
-    container: ({ variant }) => {
-        const { backgroundColor, color } = theme.components.cards.variants[variant] || theme.components.cards.default;
-        const { palette } = theme;
-        return {
-            position: 'relative',
-            margin: theme.miscellaneous.spacing * 2,
-            borderRadius: theme.components.cards.borderRadius,
-            width: 470,
-            height: 470,
-            backgroundColor: palette[backgroundColor][500],
-            color: palette[color][500],
-            overflow: 'hidden'
-        };
-    },
-    editButton: {
-        zIndex: 10,
-        backgroundColor: 'white',
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        borderBottomLeftRadius: theme.components.cards.borderRadius,
-        padding: theme.miscellaneous.spacing * 2
-    }
-});
+import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../utils/styles/styles_utils';
+
+export const styles = (theme) => {
+    const { miscellaneous: { spacing } } = theme;
+    return ({
+        container: ({ variant }) => {
+            const { backgroundColor, color } = getColorsFromCardVariant(theme, variant);
+            return {
+                position: 'relative',
+                margin: theme.miscellaneous.spacing * 2,
+                borderRadius: theme.components.cards.borderRadius,
+                width: 470,
+                height: 470,
+                backgroundColor: getHexFromPaletteColor(theme, backgroundColor),
+                color: getHexFromPaletteColor(theme, color),
+                overflow: 'hidden'
+            };
+        },
+        editButton: ({
+            zIndex: 1,
+            position: 'absolute',
+            top: spacing * 2,
+            right: spacing * 2
+        }),
+        editIcon: ({ variant }) => ({
+            height: 40,
+            fill: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).color)
+        })
+    });
+};
