@@ -33,7 +33,7 @@ const SoundtrackBackComponent = ({ variant }) => {
     return (
         <CenterContentContainer customClasses={{ container: classes.container }}>
             <span className={classes.loadingSpinnerContainer}>
-                {loadingSpinnerTransitions.map(({ key, props }) => (
+                {loadingSpinnerTransitions.map(({ item, key, props }) => !item && (
                     <animated.span
                         key={key}
                         className={classes.loadingSpinnerChild}
