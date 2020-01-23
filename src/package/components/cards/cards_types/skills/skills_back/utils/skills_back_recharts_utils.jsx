@@ -20,7 +20,6 @@ const CustomLabel = (props) => {
     return (
         <g>
             <animated.g style={springProps}>
-
                 <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={customColor} fill="none" />
                 <circle cx={ex} cy={ey} r={2} fill={customColor} stroke="none" />
                 <text
