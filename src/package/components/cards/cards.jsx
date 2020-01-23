@@ -10,6 +10,7 @@ import { StudiesCard } from './cards_types/studies/studies_card';
 import { ExperiencesCard } from './cards_types/experiences/experiences_card';
 import { SkillsCard } from './cards_types/skills/skills_card';
 import { GifsCard } from './cards_types/gifs/gifs_card';
+import { DreamJobCard } from './cards_types/dream_job/dream_job_card';
 
 import { styles } from './cards_styles';
 
@@ -19,7 +20,8 @@ const CardsComponent = () => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
-            <GifsCard variant={3} />
+            <DreamJobCard variant={4} />
+            <GifsCard variant={2} />
             <StudiesCard variant={3} />
             <SkillsCard variant={2} />
             <SoundtrackCard variant={0} />

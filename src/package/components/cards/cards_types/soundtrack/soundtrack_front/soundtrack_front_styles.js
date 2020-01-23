@@ -12,7 +12,7 @@ export const styles = (theme) => {
         },
         typography: {
             fontSize: 36,
-            lineHeight: 1.5,
+            lineHeight: 1.3,
             maxWidth: '70%'
         }
     });

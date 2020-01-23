@@ -13,6 +13,13 @@ const useStyles = createUseStyles(styles);
 
 export const ProfileCardContext = createContext({});
 
+const DEFAULT_TRANSITIONS_SPRING_PROPS = {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: config.default
+};
+
 const ProfileCardComponent = ({
     data,
     sides,
@@ -21,12 +28,21 @@ const ProfileCardComponent = ({
     isTransitionUnique = true,
     isEditingProfile,
     editDialog,
-    customTransitions
+    customTransitionsSpringProps
 }) => {
     const classes = useStyles({ variant });
     const [side, setSide] = useState('front');
     const [isEditingCard, setIsEditingCard] = useState(false);
     const [debouncedSide] = useDebounce(side, 200);
+    const transitionsSpringProps = useMemo(() => {
+        if (customTransitionsSpringProps) {
+            if (typeof customTransitionsSpringProps === 'function') {
+                return customTransitionsSpringProps(side);
+            }
+            return customTransitionsSpringProps;
+        }
+        return DEFAULT_TRANSITIONS_SPRING_PROPS;
+    }, [customTransitionsSpringProps, side]);
 
     const hasSideChanged = useRef(false);
 
@@ -55,11 +71,8 @@ const ProfileCardComponent = ({
         hasSideChanged.current = true;
     }, [side]);
 
-    const transitions = useTransition(debouncedSide, item => `card_side_${item}`, customTransitions || {
-        from: { opacity: 0 },
-        enter: { opacity: 1 },
-        leave: { opacity: 0 },
-        config: config.default,
+    const transitions = useTransition(debouncedSide, item => `card_side_${item}`, {
+        ...transitionsSpringProps,
         unique: isTransitionUnique,
         immediate: !hasSideChanged.current
     });

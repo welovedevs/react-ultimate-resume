@@ -6,7 +6,7 @@ export const styles = (theme) => {
         },
         logo: {
             marginBottom: spacing * 4,
-            '& > path': {
+            '& > g > path': {
                 fill: 'currentColor'
             }
         },

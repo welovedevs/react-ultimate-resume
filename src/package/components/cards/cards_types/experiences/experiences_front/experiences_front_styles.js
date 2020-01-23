@@ -6,7 +6,7 @@ export const styles = (theme) => {
         },
         mainTypography: {
             fontSize: 44,
-            lineHeight: 1.5
+            lineHeight: 1.3
         },
         locationTypography: {
             color: 'inherit',
