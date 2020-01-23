@@ -12,10 +12,10 @@ import { FormattedMessage } from 'react-intl';
 
 const useStyles = createUseStyles(styles);
 
-const InterestedByFrontComponent = ({ customClasses = {}, data: { interestedBy } }) => {
+const InterestedByFrontComponent = ({ data: { interestedBy } }) => {
     const classes = useStyles();
     return (
-        <ProfileCardPaddedFront customClasses={{ container: cn(classes.container, customClasses.container) }}>
+        <ProfileCardPaddedFront customClasses={{ container: classes.container }}>
             <CenterContentContainer>
                 <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
                     <FormattedMessage

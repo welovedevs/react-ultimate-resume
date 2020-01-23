@@ -19,7 +19,11 @@ const SkillsPieChart = ({ data, variant, springOnOpenOpacityProps, springOnScrol
             backgroundColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backgroundColor)
         }
     ), [theme, variant]);
-    const colorPalette = useMemo(() => Array.from({ length: 3 }, (v, k) => chroma.mix(contentColor, backgroundColor, (2 * k) / 10).hex()), [contentColor, backgroundColor]);
+    const colorPalette = useMemo(
+        () => Array.from({ length: 3 },
+            (v, k) => chroma.mix(contentColor, backgroundColor,
+                (2 * k) / 10).hex()), [contentColor, backgroundColor]
+    );
 
 
     return (

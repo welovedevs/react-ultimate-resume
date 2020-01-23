@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 
+import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { animated, useChain, useSpring } from 'react-spring';
 
@@ -18,7 +19,7 @@ const useStyles = createUseStyles(styles);
 
 const TRANSLATION_INTERPOLATION = (value) => `translate3d(0, ${value}%, 0)`;
 
-const ProfileCardAnimatedBackComponent = ({ title, cardVariant, children: content }) => {
+const ProfileCardAnimatedBackComponent = ({ title, cardVariant, children: content, customClasses = {} }) => {
     const classes = useStyles();
     const contentContainerSpringReference = useRef();
     const contentSpringReference = useRef();
@@ -60,7 +61,7 @@ const ProfileCardAnimatedBackComponent = ({ title, cardVariant, children: conten
                 {title}
             </ProfileCardTitle>
             <ProfileCardContent
-                customClasses={{ container: classes.content }}
+                customClasses={{ container: cn(classes.content, customClasses.content) }}
                 cardVariant={cardVariant}
                 component={animated.div}
                 style={{
@@ -70,6 +71,7 @@ const ProfileCardAnimatedBackComponent = ({ title, cardVariant, children: conten
                 }}
             >
                 <animated.div
+                    className={customClasses.contentAnimated}
                     style={{
                         transform: contentSpringProps
                             .translation
