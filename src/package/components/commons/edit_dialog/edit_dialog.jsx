@@ -1,8 +1,13 @@
 import React, { useCallback } from 'react';
-import { Formik, useFormikContext } from 'formik';
-import { Button, Typography } from '@wld/ui';
-import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
+
 import { createUseStyles } from 'react-jss';
+import { Formik, useFormikContext } from 'formik';
+
+import { Button } from '@wld/ui';
+import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
+
+import { DialogTitle } from '../dialog/dialog_title/dialog_title';
+
 import { styles } from './edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
@@ -37,9 +42,9 @@ export const EditDialog = ({ open, onClose, data, onEdit, children, title, valid
     const classes = useStyles();
     return (
         <Dialog {...{ open, onClose }}>
-            <Typography variant="h3" component="h3" className={classes.title}>
+            <DialogTitle>
                 {title || 'Coucou'}
-            </Typography>
+            </DialogTitle>
             <Formik
                 validateOnChange={false}
                 initialValues={data}

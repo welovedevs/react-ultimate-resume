@@ -23,11 +23,10 @@ export const withCustomVerticalScrollbar = (color = '#c1c1c1') => ({
         border: 0
     },
     '&::-webkit-scrollbar': {
-        width: 7
+        width: 6
     },
     '&::-webkit-scrollbar-thumb': {
-        backgroundColor: color,
-        borderRadius: 100
+        backgroundColor: color
     }
 });
 

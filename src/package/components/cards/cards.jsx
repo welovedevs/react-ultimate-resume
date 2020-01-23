@@ -21,6 +21,7 @@ const CardsComponent = () => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
+            <ProjectsCard variant={4} />
             <LanguagesCard variant={3} />
             <DreamJobCard variant={4} />
             <GifsCard variant={2} />
@@ -28,7 +29,6 @@ const CardsComponent = () => {
             <SkillsCard variant={0} />
             <SoundtrackCard variant={0} />
             <InterestedByCard variant={2} />
-            <ProjectsCard variant={4} />
             <BasicsCard variant={3} />
             <SoundtrackCard variant={0} />
             <InterestedByCard variant={2} />

@@ -27,7 +27,7 @@ export const styles = (theme) => {
         },
         text: {
             color: 'inherit',
-            fontWeight: 600,
+            fontWeight: 700,
             fontSize: 30,
             lineHeight: 1.4
         }
