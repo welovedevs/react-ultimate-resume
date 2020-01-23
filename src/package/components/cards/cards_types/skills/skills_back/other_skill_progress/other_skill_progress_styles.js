@@ -15,7 +15,7 @@ export const styles = (theme) => ({
     },
     progressBarCustomContainer: ({ cardVariant }) => ({
         height: 8,
-        border: `2px solid ${getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).color)}`,
+        // border: `2px solid ${getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).color)}`,
         backgroundColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).backgroundColor)
     }),
     progressBarCustomBar: ({ cardVariant }) => ({

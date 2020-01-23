@@ -1,6 +1,6 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo, useCallback, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
-import { useSpring } from 'react-spring';
+import { useSpring, config } from 'react-spring';
 
 import { ProfileCardTitle } from '../../../../commons/profile_card/profile_card_title/profile_card_title';
 
@@ -18,13 +18,15 @@ const data = [
     { name: 'Angular', value: 5, index: 1 },
     { name: 'Vue', value: 5, index: 2 },
     { name: 'Python', value: 8, index: 3 },
-    { name: 'Datamining', value: 7, index: 4 },
-    { name: 'IA', value: 8, index: 5 },
-    { name: 'LA DROGUE', value: 3, index: 6 },
+    { name: 'Python', value: 8, index: 3 },
+
     { name: 'CSS', value: 4, index: 7 }];
 
 const SkillsBackComponent = ({ variant }) => {
     const classes = useStyles();
+    const [springOnOpenOpacityProps, setSpringOnOpenOpacityProps] = useSpring(() => ({ opacity: 0 }));
+    const [springOnScrollOpacityProps, setSpringOnScrollOpacityProps] = useSpring(() => ({ opacity: 1 }));
+    const [springTranslationProps, setSpringTranslationProps] = useSpring(() => ({ yt: 0, config: config.slow }));
 
     const { top3Skills, othersSkills } = useMemo(() => {
         const newData = [...data || []];
@@ -35,24 +37,42 @@ const SkillsBackComponent = ({ variant }) => {
         });
     }, [data]);
 
-    const [springAnimationProps, setSpringAnimationProps] = useSpring(() => ({ opacity: 0 }));
+
+    const onScroll = useCallback(e => {
+        const newOpacity = Math.max(1 - (e.target.scrollTop) / 60, 0);
+
+        if (newOpacity === 0) {
+            if (othersSkills.length > 10) {
+                setSpringTranslationProps({ yt: -100 });
+            } else {
+                setSpringTranslationProps({ yt: -100 + (e.target.scrollTop > 160 && (e.target.scrollTop - 160)) });
+            }
+        } else {
+            setSpringTranslationProps({ yt: 0 });
+        }
+
+        return setSpringOnScrollOpacityProps({ opacity: newOpacity });
+    }, [othersSkills]);
+    const onAnimationEnd = useCallback(() => setSpringOnOpenOpacityProps({ opacity: 1 }), []);
 
     return (
         <>
             <ProfileCardTitle>
                 Skills
             </ProfileCardTitle>
-            <div className={classes.container}>
+            <div className={classes.container} onScroll={onScroll}>
                 <SkillsPieChart
                     variant={variant}
                     data={top3Skills}
-                    labelSpringProps={springAnimationProps}
-                    onAnimationEnd={() => setSpringAnimationProps({ opacity: 1 })}
+                    springOnScrollOpacityProps={springOnScrollOpacityProps}
+                    springOnOpenOpacityProps={springOnOpenOpacityProps}
+                    onAnimationEnd={onAnimationEnd}
                 />
                 <OtherSkills
                     variant={variant}
                     othersSkills={othersSkills}
-                    springProps={springAnimationProps}
+                    springOnOpenOpacityProps={springOnOpenOpacityProps}
+                    springTranslationProps={springTranslationProps}
                 />
             </div>
         </>

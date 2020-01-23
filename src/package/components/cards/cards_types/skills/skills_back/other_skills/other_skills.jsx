@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { animated } from 'react-spring';
+import { interpolate } from 'react-spring';
 
 import { Typography } from '@wld/ui/typography/typography';
 
@@ -11,7 +12,7 @@ import { styles } from './other_skills_styles';
 
 const useStyles = createUseStyles(styles);
 
-const OtherSkills = ({ variant, othersSkills, springProps }) => {
+const OtherSkills = ({ variant, othersSkills, springOnOpenOpacityProps, springTranslationProps: { yt } }) => {
     const classes = useStyles({ cardVariant: variant });
     const theme = useTheme();
     const mainColor = useMemo(() => getColorsFromCardVariant(theme, variant).color, [theme, variant]);
@@ -19,7 +20,10 @@ const OtherSkills = ({ variant, othersSkills, springProps }) => {
     return (
         <animated.div
             className={classes.otherSkillsContainer}
-            style={{ opacity: springProps.opacity }}
+            style={{
+                opacity: springOnOpenOpacityProps.opacity,
+                transform: interpolate([yt], (yt) => `translate3d(0, ${yt}px,0)`)
+            }}
         >
             <Typography
                 variant="h3"
