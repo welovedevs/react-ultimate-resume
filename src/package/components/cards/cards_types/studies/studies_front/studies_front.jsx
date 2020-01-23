@@ -17,7 +17,7 @@ import { styles } from './studies_front_styles';
 import { FormattedMessage } from 'react-intl';
 
 const useStyles = createUseStyles(styles);
-const StudiesFrontComponent = ({ variant, data }) => {
+const StudiesFrontComponent = ({ variant, data: { education: data } }) => {
     const classes = useStyles();
     const theme = useTheme();
     const color = useMemo(() => getColorsFromCardVariant(theme, variant).color, [theme, variant]);

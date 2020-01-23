@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 
@@ -12,40 +12,36 @@ import { styles } from './experiences_back_styles';
 
 const useStyles = createUseStyles(styles);
 
-const SECTIONS = Object.freeze({
-    first: {
-        start: 2016,
-        end: 2019,
-        description: 'Implemented websites, mobile applications, and landing pages from concept through deployment. Assessed UX and UI designs for technical feasibility.',
-        company: 'WeLoveDevs.com'
-    },
-    second: {
-        start: 2013,
-        end: 2014,
-        description: 'Sitting quietly watching someone build a game that later killed the company.',
-        company: 'Adictiz'
-    }
-});
+const ExperienceContent = ({ experience, variant, classes }) => {
+    const { id, name, summary } = experience;
+    const dateString = useMemo(() => {
+        if (!experience.endDate) {
+            return experience.startDate?.year() || '';
+        }
+        return `${experience.startDate?.year() || ''} - ${experience.endDate.year()}`;
+    }, [experience]);
 
-const ExperiencesBackComponent = ({ variant }) => {
+    return (
+        <ProfileCardSection key={id} cardVariant={variant}>
+            <ProfileCardSectionTitle>{dateString}</ProfileCardSectionTitle>
+            <ProfileCardSectionSubtitle customClasses={{ container: classes.subtitle }}>
+                {name}
+            </ProfileCardSectionSubtitle>
+            <ProfileCardSectionText>{summary}</ProfileCardSectionText>
+        </ProfileCardSection>
+    );
+};
+const ExperiencesBackComponent = ({ variant, data }) => {
     const classes = useStyles();
     return (
-        <ProfileCardAnimatedBack
-            title="Experiences"
-            cardVariant={variant}
-        >
-            {Object.entries(SECTIONS).map(([id, { start, end, description, company }]) => (
-                <ProfileCardSection key={id} cardVariant={variant}>
-                    <ProfileCardSectionTitle>
-                        {`${start} - ${end}`}
-                    </ProfileCardSectionTitle>
-                    <ProfileCardSectionSubtitle customClasses={{ container: classes.subtitle }}>
-                        {company}
-                    </ProfileCardSectionSubtitle>
-                    <ProfileCardSectionText>
-                        {description}
-                    </ProfileCardSectionText>
-                </ProfileCardSection>
+        <ProfileCardAnimatedBack title="Experiences" cardVariant={variant}>
+            {data.work?.map(experience => (
+                <ExperienceContent
+                    key={`work_experience_${experience.id}`}
+                    experience={experience}
+                    variant={variant}
+                    classes={classes}
+                />
             ))}
         </ProfileCardAnimatedBack>
     );

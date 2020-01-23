@@ -23,7 +23,11 @@ export const EditDialogField = ({ title, subtitle, children, error }) => {
             )}
             <div className={classes.fieldEditComponent}>
                 <div className={classes.fieldEditChildren}>{children}</div>
-                {error && <Typography color="danger">{error}</Typography>}
+                {error && (
+                    <Typography color="danger" variant="helper" component="p">
+                        {error}
+                    </Typography>
+                )}
             </div>
         </div>
     );

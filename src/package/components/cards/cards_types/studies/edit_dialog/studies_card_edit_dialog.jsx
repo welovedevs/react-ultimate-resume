@@ -77,7 +77,7 @@ const FormationItem = SortableElement(({ id, formation, onChange, onRemove, erro
                                 placeholder={formatMessage(translations.schoolNamePlaceholder)}
                             />
                             {fieldErrors && fieldErrors.institution && (
-                                <Typography color="danger" component="p">
+                                <Typography color="danger" variant="helper" component="p">
                                     {fieldErrors.institution}
                                 </Typography>
                             )}
@@ -92,7 +92,7 @@ const FormationItem = SortableElement(({ id, formation, onChange, onRemove, erro
                                 {selectYearItems}
                             </Select>
                             {fieldErrors && fieldErrors.endDate && (
-                                <Typography color="danger" component="p">
+                                <Typography color="danger" variant="helper" component="p">
                                     {fieldErrors.endDate}
                                 </Typography>
                             )}
@@ -111,7 +111,7 @@ const FormationItem = SortableElement(({ id, formation, onChange, onRemove, erro
                             />
 
                             {fieldErrors && fieldErrors.studyType && (
-                                <Typography color="danger" component="p">
+                                <Typography color="danger" variant="helper" component="p">
                                     {fieldErrors.studyType}
                                 </Typography>
                             )}
@@ -128,7 +128,7 @@ const FormationItem = SortableElement(({ id, formation, onChange, onRemove, erro
                             />
 
                             {fieldErrors && fieldErrors.area && (
-                                <Typography color="danger" component="p">
+                                <Typography color="danger" variant="helper" component="p">
                                     {fieldErrors.area}
                                 </Typography>
                             )}
@@ -244,7 +244,7 @@ export const StudiesCardEditDialog = ({ data, onEdit, validationSchema, onClose 
 
     return (
         <EditDialog
-            data={{ education: data }}
+            data={data}
             onEdit={onEdit}
             onClose={onClose}
             validationSchema={validationSchemaToPass}

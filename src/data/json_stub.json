@@ -24,7 +24,7 @@
     },
     "work": [
         {
-            "company": "Company",
+            "name": "Company",
             "position": "President",
             "website": "http://company.com",
             "startDate": "2013-01-01",
@@ -102,6 +102,10 @@
             "studiesLevel": 5
         },
         "work": {
+            "currentJob": {
+                "location": "Lille, France",
+                "summary": "I'm leading the front-end team @welovedevs"
+            },
             "remote": "occasionally",
             "contractTypes": ["permanent"],
             "codingYears": 7,

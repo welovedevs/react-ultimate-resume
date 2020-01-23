@@ -25,15 +25,12 @@ const CardsComponent = () => {
             <LanguagesCard variant={3} />
             <DreamJobCard variant={4} />
             <GifsCard variant={2} />
+            <ExperiencesCard variant={4} />
             <StudiesCard variant={3} />
             <SkillsCard variant={0} />
             <SoundtrackCard variant={0} />
             <InterestedByCard variant={2} />
             <BasicsCard variant={3} />
-            <SoundtrackCard variant={0} />
-            <InterestedByCard variant={2} />
-            <ExperiencesCard variant={4} />
-            <BasicsCard variant={0} />
         </div>
     );
 };

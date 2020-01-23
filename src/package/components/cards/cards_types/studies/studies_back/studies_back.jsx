@@ -12,7 +12,7 @@ import { FormattedMessage } from 'react-intl';
 
 const useStyles = createUseStyles(styles);
 
-const StudiesBackComponent = ({ variant, data }) => {
+const StudiesBackComponent = ({ variant, data: { education: data }  }) => {
     const classes = useStyles();
 
     return (

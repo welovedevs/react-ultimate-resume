@@ -62,6 +62,23 @@ const DEFAULT_PALETTE = Object.freeze({
         500: '#fff',
         900: '#fff',
         contrastDefaultColor: 'dark'
+    },
+    danger: {
+        50: '#fdeaeb',
+        100: '#fbcccc',
+        200: '#f8aaaa',
+        300: '#f58788',
+        400: '#f26e6f',
+        500: '#f05455',
+        600: '#ee4d4e',
+        700: '#ec4344',
+        800: '#e93a3b',
+        900: '#e5292a',
+        A100: '#ffffff',
+        A200: '#fff0f0',
+        A400: '#ffbdbd',
+        A700: '#ffa3a4',
+        contrastDefaultColor: 'light'
     }
 });
 

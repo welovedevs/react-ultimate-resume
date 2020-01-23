@@ -11,10 +11,11 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 import { ProfileCardFrontTypography } from '../../../../commons/profile_card/profile_card_front_typography/profile_card_front_typography';
 
 import { styles } from './experiences_front_styles';
+import { Twemoji } from 'react-emoji-render';
 
 const useStyles = createUseStyles(styles);
 
-const ExperiencesFrontComponent = ({ variant }) => {
+const ExperiencesFrontComponent = ({ variant, data }) => {
     const classes = useStyles();
     return (
         <>
@@ -22,22 +23,21 @@ const ExperiencesFrontComponent = ({ variant }) => {
                 <CenterContentContainer customClasses={{ container: classes.container }}>
                     <div className={classes.textsContainer}>
                         <ProfileCardFrontTypography customClasses={{ container: classes.mainTypography }}>
-                            I am leading the front-end team @welovedevs
+                            {data.currentJobTitle}
                         </ProfileCardFrontTypography>
                         <Typography
                             customClasses={{ container: classes.locationTypography }}
                             component="h3"
                             variant="h2"
                         >
-                            📍 Lille
+                            <Twemoji svg text="📍" />
+                            {data.currentJobLocation.name}
                         </Typography>
                     </div>
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton cardVariant={variant}>
-                    3 more positions
-                </ProfileCardButton>
+                <ProfileCardButton cardVariant={variant}>See all experiences</ProfileCardButton>
             </ProfileCardActions>
         </>
     );
