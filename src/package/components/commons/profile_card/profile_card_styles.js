@@ -17,7 +17,7 @@ export const styles = (theme) => {
             };
         },
         editButton: ({
-            zIndex: 1,
+            zIndex: 2,
             position: 'absolute',
             top: spacing * 2,
             right: spacing * 2
