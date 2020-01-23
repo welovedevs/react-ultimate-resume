@@ -79,6 +79,8 @@ export const DEFAULT_THEME = Object.freeze({
             imageSource: 'https://source.unsplash.com/random/2000x6000'
         },
         cards: {
+            height: 470,
+            width: 470,
             borderRadius: 20,
             default: {
                 backgroundColor: 'dark',
@@ -92,7 +94,12 @@ export const DEFAULT_THEME = Object.freeze({
                 ['light', 'secondary', 'light', 'secondary'],
                 ['secondary', 'light', 'light', 'secondary'],
                 ['light', 'primary', 'light', 'primary']
-            ].map(([backgroundColor, color, backBackgroundColor, backColor]) => ({ backgroundColor, color, backBackgroundColor, backColor }))
+            ].map(([backgroundColor, color, backBackgroundColor, backColor]) => ({
+                backgroundColor,
+                color,
+                backBackgroundColor,
+                backColor
+            }))
         }
     }
 });
@@ -106,14 +113,16 @@ const mergeFunction = (objValue, srcValue) => {
 
 export const buildTheme = async theme => {
     const merged = merge(cloneDeep(DEFAULT_THEME), theme, mergeFunction);
-    let finalTheme = null;
+    console.log(merged);
     try {
-        await THEME_SCHEMA.validate(merged, { palette: merged?.palette });
-        finalTheme = merged;
+        const validationResult = await THEME_SCHEMA.validate(merged, {
+            context: { palette: merged?.palette },
+            strict: true
+        });
+        console.log({ merged, validationResult });
+        return transformTheme(merged);
     } catch (error) {
         console.error('Invalid theme! Using default theme instead.', { error });
-        finalTheme = { ...DEFAULT_THEME };
+        return transformTheme({ ...DEFAULT_THEME });
     }
-    console.log({ finalTheme });
-    return transformTheme(finalTheme);
 };

@@ -52,6 +52,8 @@ export const THEME_SCHEMA = yup.object({
             imageSource: yup.string().required()
         }),
         cards: yup.object({
+            height: yup.number().required(),
+            width: yup.number().required(),
             borderRadius: yup.number().required(),
             default: CARD_VARIANT_SCHEMA,
             variants: yup

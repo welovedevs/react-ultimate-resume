@@ -12,7 +12,12 @@ import { styles } from './skills_back_styles';
 import { CustomLabel } from './utils/skills_back_recharts_utils';
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
 
+
+import SkillsPieChart from './skills_pie_chart/skills_pie_chart';
+import OtherSkillProgress from './other_skill_progress/other_skill_progress';
+
 const useStyles = createUseStyles(styles);
+
 
 const data = [
     { name: 'React', value: 7, index: 0 },
@@ -49,34 +54,19 @@ const SkillsBackComponent = ({ variant }) => {
                 Skills
             </ProfileCardTitle>
             <div className={classes.container}>
-                <PieChart width={470} height={300}>
-                    <Pie
-                        dataKey="value"
-                        animationDuration={750}
-                        labelLine={false}
-                        label={(shapeProps) => (
-                            <CustomLabel
-                                customColor={contentColor}
-                                springProps={springProps}
-                                {...shapeProps}
-                            />
-                        )}
-                        data={top3Skills}
-                        cx={470 / 2}
-                        cy={150}
-                        innerRadius={0}
-                        outerRadius={100}
-                        onAnimationEnd={() => {
-                            setSpringProps({ opacity: 1 });
-                        }}
-                    >
-                        {top3Skills.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={colorPalette[index]} stroke={backgroundColor} />
-                        ))}
-                    </Pie>
-                </PieChart>
-                <animated.div style={{ opacity: springProps.opacity }}>
-                    {othersSkills.map(e => <div>{e.name}</div>)}
+                <SkillsPieChart
+                    data={top3Skills}
+                    colorPalette={colorPalette}
+                    contentColor={contentColor}
+                    backgroundColor={backgroundColor}
+                    labelSpringProps={springProps}
+                    onAnimationEnd={() => setSpringProps({ opacity: 1 })}
+                />
+                <animated.div
+                    className={classes.otherSkillsContainer}
+                    style={{ opacity: springProps.opacity }}
+                >
+                    {othersSkills.map(skill => <OtherSkillProgress {...skill} />)}
                 </animated.div>
             </div>
         </>
