@@ -1,14 +1,14 @@
-import React, { memo, useCallback, useMemo, useState } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
+
 import { createUseStyles } from 'react-jss';
 import { useSpring, config } from 'react-spring';
 
 import { ProfileCardTitle } from '../../../../commons/profile_card/profile_card_title/profile_card_title';
 
-import { styles } from './skills_back_styles';
-
-
 import SkillsPieChart from './skills_pie_chart/skills_pie_chart';
 import OtherSkills from './other_skills/other_skills';
+
+import { styles } from './skills_back_styles';
 
 const useStyles = createUseStyles(styles);
 
@@ -20,10 +20,17 @@ const data = [
     { name: 'Python', value: 8, index: 3 },
     { name: 'Python', value: 8, index: 3 },
 
+    { name: 'CSS', value: 4, index: 7 },
+    { name: 'React', value: 7, index: 0 },
+    { name: 'Angular', value: 5, index: 1 },
+    { name: 'Vue', value: 5, index: 2 },
+    { name: 'Python', value: 8, index: 3 },
+    { name: 'Python', value: 8, index: 3 },
+
     { name: 'CSS', value: 4, index: 7 }];
 
 const SkillsBackComponent = ({ variant }) => {
-    const classes = useStyles();
+    const classes = useStyles({ cardVariant: variant });
     const [springOnOpenOpacityProps, setSpringOnOpenOpacityProps] = useSpring(() => ({ opacity: 0 }));
     const [springOnScrollOpacityProps, setSpringOnScrollOpacityProps] = useSpring(() => ({ opacity: 1 }));
     const [springTranslationProps, setSpringTranslationProps] = useSpring(() => ({ yt: 0, config: config.slow }));

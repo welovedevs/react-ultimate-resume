@@ -31,7 +31,7 @@ const SkillsPieChart = ({ data, variant, springOnOpenOpacityProps, springOnScrol
             <PieChart width={theme.components.cards.width} height={GRAPH_HEIGHT}>
                 <Pie
                     dataKey="value"
-                    animationDuration={500}
+                    animationDuration={750}
                     labelLine={false}
                     label={(shapeProps) => (
                         <CustomLabel

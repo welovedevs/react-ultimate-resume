@@ -39,20 +39,19 @@ const LanguagesBackComponent = ({ variant }) => {
         trail: 175
     }));
 
-
     const {
-        contentColor,
-        backgroundColor
+        backColor,
+        backBackgroundColor
     } = useMemo(() => ({
-            contentColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).color),
-            backgroundColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backgroundColor)
+            backColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backColor),
+            backBackgroundColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backBackgroundColor)
         }),
     [theme, variant]);
 
     const colorPalette = useMemo(
         () => Array.from({ length: languagesEntries.length },
-            (v, k) => chroma.mix(backgroundColor, contentColor, (2 * k) / 10).hex()),
-        [contentColor, backgroundColor]
+            (v, k) => chroma.mix(backColor, backBackgroundColor, (2 * k) / 10).hex()),
+        [backColor, backBackgroundColor]
     );
 
     console.log({ colorPalette });
@@ -68,7 +67,7 @@ const LanguagesBackComponent = ({ variant }) => {
                         style={{
                             ...props,
                             backgroundColor: colorPalette[index],
-                            color: contentColor
+                            color: backColor
                         }}
                         cardVariant={variant}
                     >
