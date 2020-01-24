@@ -8,8 +8,8 @@ import { styles } from './language_column_styles';
 
 const useStyles = createUseStyles(styles);
 
-const LanguageColumnComponent = ({ component: Component = 'div', color, style, value, children }) => {
-    const classes = useStyles({ value, color });
+const LanguageColumnComponent = ({ component: Component = 'div', color, style, value, children, itemsSize }) => {
+    const classes = useStyles({ value, color, itemsSize });
 
     return (
         <Component className={classes.container} style={style}>

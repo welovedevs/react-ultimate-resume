@@ -35,17 +35,21 @@ const DEFAULT_TRANSITIONS_SPRING_PROPS = {
 };
 
 const ProfileCardComponent = ({
-                                  data,
-                                  sides,
-                                  variant,
-                                  isTransitionUnique = true,
-                                  isEditingProfile,
-                                  editDialog,
-                                  customTransitionsSpringProps
-                              }) => {
+    data,
+    sides,
+    variant,
+    isTransitionUnique = true,
+    isEditingProfile,
+    editDialog,
+    customTransitionsSpringProps,
+    side: sideProps
+}) => {
     const classes = useStyles({ variant });
     const [isEditingCard, setIsEditingCard] = useState(false);
-    const [state, dispatch] = useReducer(PROFILE_CARD_REDUCER, getProfileCardInitialState({ variant }));
+    const [state, dispatch] = useReducer(
+        PROFILE_CARD_REDUCER,
+        getProfileCardInitialState({ variant, side: sideProps })
+    );
     const { side, hasDialogOpened } = state;
     const [debouncedSide] = useDebounce(side, 200);
 
@@ -61,10 +65,14 @@ const ProfileCardComponent = ({
 
     const hasSideChanged = useRef(false);
 
-    const setSide = useCallback((newSide) => dispatch({
-        type: SET_SIDE,
-        side: newSide
-    }), []);
+    const setSide = useCallback(
+        newSide =>
+            dispatch({
+                type: SET_SIDE,
+                side: newSide
+            }),
+        []
+    );
 
     const handleMouseEnter = useCallback(() => setSide('back'), [dispatch]);
 

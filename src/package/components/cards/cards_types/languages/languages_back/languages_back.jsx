@@ -14,24 +14,11 @@ import { useCardVariant } from '../../../../commons/profile_card/profile_card_ho
 
 const useStyles = createUseStyles(styles);
 
-const LANGUAGES = {
-    fr: {
-        value: 100
-    },
-    en: {
-        value: 70
-    },
-    sp: {
-        value: 40
-    }
-};
-
-const LanguagesBackComponent = () => {
+const LanguagesBackComponent = ({ data }) => {
     const classes = useStyles();
     const theme = useTheme();
     const [variant] = useCardVariant();
-    const languagesEntries = useMemo(() => LANGUAGES && Object.entries(LANGUAGES), [LANGUAGES]);
-    const transitions = useTransition(languagesEntries, ([id]) => `language_column_${id}`, ({
+    const transitions = useTransition(data.languages ?? [], ({ id }) => `language_column_${id}`, {
         from: {
             transform: 'translate3d(0, 50%, 0)'
         },
@@ -39,31 +26,39 @@ const LanguagesBackComponent = () => {
             transform: 'translate3d(0, 0, 0)'
         },
         trail: 175
-    }));
+    });
 
-    const {
-        backColor,
-        backBackgroundColor
-    } = useMemo(() => ({
+    const { backColor, backBackgroundColor } = useMemo(
+        () => ({
             backColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backColor),
-            backBackgroundColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backBackgroundColor)
+            backBackgroundColor: getHexFromPaletteColor(
+                theme,
+                getColorsFromCardVariant(theme, variant).backBackgroundColor
+            )
         }),
-    [theme, variant]);
+        [theme, variant]
+    );
 
     const colorPalette = useMemo(
-        () => Array.from({ length: languagesEntries.length },
-            (v, k) => chroma.mix(backColor, backBackgroundColor, (2 * k) / 10).hex()),
+        () =>
+            Array.from({ length: data.languages?.length ?? 0 }, (v, k) =>
+                chroma.mix(backColor, backBackgroundColor, (2 * k) / 15).hex()
+            ),
         [backColor, backBackgroundColor]
     );
 
     return (
-        <ProfileCardAnimatedBack title="Languages" customClasses={{ content: classes.content, contentAnimated: classes.contentAnimated }}>
+        <ProfileCardAnimatedBack
+            title="Languages"
+            customClasses={{ content: classes.content, contentAnimated: classes.contentAnimated }}
+        >
             <div className={classes.columnsContainer}>
                 {transitions.map(({ item, key, props }, index) => (
                     <LanguageColumn
+                        itemsSize={data.languages?.length ?? 0}
                         key={key}
                         component={animated.div}
-                        value={item[1].value}
+                        value={item.value}
                         style={{
                             ...props,
                             backgroundColor: colorPalette[index],
@@ -71,7 +66,7 @@ const LanguagesBackComponent = () => {
                         }}
                         cardVariant={variant}
                     >
-                        {item[0].toUpperCase()}
+                        {item.language?.substring(0, 2).toUpperCase()}
                     </LanguageColumn>
                 ))}
             </div>

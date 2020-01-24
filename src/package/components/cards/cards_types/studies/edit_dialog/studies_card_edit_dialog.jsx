@@ -14,8 +14,8 @@ import { MenuItem } from '@material-ui/core';
 
 import { Button, Tooltip, List, ListItem, Typography, TextField, Tag } from '@wld/ui';
 
-import { styles } from './formations_styles';
-import translations from './formation_translations';
+import { styles } from './studies_styles';
+import translations from './studies_translations';
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { useFormikContext } from 'formik';
 import { createUseStyles } from 'react-jss';

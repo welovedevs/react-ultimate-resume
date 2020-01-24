@@ -2,10 +2,11 @@ import { Slider, PopperCard } from '@wld/ui';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { sliderStyles } from './slider_with_popper_styles';
+import cn from 'classnames';
 
 const useStyles = createUseStyles(sliderStyles);
 
-export const SliderWithPopper = ({ color, name, value, onChange, min, max }) => {
+export const SliderWithPopper = ({ color, name, value, onChange, min, max, className }) => {
     const classes = useStyles();
     const [isFocused, setIsFocused] = useState(false);
     const handleFocus = useCallback(() => setIsFocused(true), []);
@@ -32,7 +33,7 @@ export const SliderWithPopper = ({ color, name, value, onChange, min, max }) => 
 
     return (
         <Slider
-            classes={{ container: classes.slider }}
+            classes={{ container: cn(classes.slider, className) }}
             color={color}
             name={name}
             value={localValue}

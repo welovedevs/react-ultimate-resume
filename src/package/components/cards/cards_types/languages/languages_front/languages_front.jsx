@@ -12,15 +12,15 @@ import { styles } from './languages_front_styles';
 
 const useStyles = createUseStyles(styles);
 
-const LanguagesFrontComponent = () => {
+const LanguagesFrontComponent = ({ data }) => {
     const classes = useStyles();
     const languagesNode = (
         <>
-            English
+            {data.languages?.[0]?.language}
             <br />
-            Español
+            {data.languages?.[1]?.language}
             <br />
-            Français
+            {data.languages?.[2]?.language}
         </>
     );
     return (
@@ -35,9 +35,7 @@ const LanguagesFrontComponent = () => {
                 </ProfileCardFrontTypography>
             </CenterContentContainer>
             <ProfileCardActions>
-                <ProfileCardButton>
-                    {'Languages level'}
-                </ProfileCardButton>
+                <ProfileCardButton>{'Languages level'}</ProfileCardButton>
             </ProfileCardActions>
         </>
     );

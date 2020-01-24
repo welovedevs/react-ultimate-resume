@@ -1,9 +1,11 @@
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
-        container: ({ value, color }) => ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
+        container: ({ value, color, itemsSize }) => ({
             height: `${value}%`,
-            width: 90,
+            width: Math.min(90, (theme.components.cards.width * 0.7) / itemsSize),
             backgroundColor: color,
             color: '#fff',
             display: 'flex',
@@ -14,5 +16,5 @@ export const styles = (theme) => {
         typography: {
             transform: 'rotate(-90deg)'
         }
-    });
+    };
 };
