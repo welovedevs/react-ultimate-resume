@@ -1,35 +1,63 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { createUseStyles } from 'react-jss';
+import { FormattedMessage } from 'react-intl';
 
-import { Button, TextField } from '@wld/ui';
+import { Button } from '@wld/ui';
+
 import {
     Dialog,
     DialogContent,
     DialogActions
 } from '@material-ui/core';
 
-import { FormattedMessage } from 'react-intl';
-
 import { DialogTitle } from '../../../../commons/dialog/dialog_title/dialog_title';
-import { ProfileCardContext } from '../../../../commons/profile_card/profile_card';
+import { ProjectDialogContentTitle } from './project_dialog_content_title/project_dialog_content_title';
+import { ProjectDialogContentImages } from './project_dialog_content_images/project_dialog_content_images';
+import { ProjectDialogContentDescription } from './project_dialog_content_description/project_dialog_content_description';
 
-import { SET_HAS_DIALOG_OPENED } from '../../../../commons/profile_card/profile_card_actions_types';
+import { useHasDialogOpened } from '../../../../commons/profile_card/profile_card_hooks/use_card_has_dialog_opened';
 
 import { styles } from './project_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
+const DEFAULT_PROJECT = ({
+    title: "Développement d'un serpent connecté",
+    description: "Et oui, vous avez bien entendu !\nUn serpent connecté, c'est comme une montre connectée, mais en serpent, en fait ça ressemble pas une montre, mais ça reste connecté 🚀",
+    images: {
+        random1: {
+            name: 'Random 1',
+            url: 'https://source.unsplash.com/random/400x200'
+        },
+        random2: {
+            name: 'Random 2',
+            url: 'https://source.unsplash.com/random/400x200'
+        },
+        random3: {
+            name: 'Random 3',
+            url: 'https://source.unsplash.com/random/400x200'
+        },
+        random4: {
+            name: 'Random 4',
+            url: 'https://source.unsplash.com/random/400x200'
+        },
+        random5: {
+            name: 'Random 3',
+            url: 'https://source.unsplash.com/random/400x200'
+        },
+        random6: {
+            name: 'Random 4',
+            url: 'https://source.unsplash.com/random/400x200'
+        }
+    }
+});
+
 const ProjectDialogComponent = ({ open, onClose, project }) => {
     const classes = useStyles();
-    const { dispatch: profileCardDispatch } = useContext(ProfileCardContext);
+    const [, setHasDialogOpened] = useHasDialogOpened();
 
-    useEffect(() => {
-        profileCardDispatch({
-            type: SET_HAS_DIALOG_OPENED,
-            hasDialogOpened: open
-        });
-    }, [open, profileCardDispatch]);
+    useEffect(() => setHasDialogOpened(open), [open]);
 
     return (
         <Dialog
@@ -47,18 +75,9 @@ const ProjectDialogComponent = ({ open, onClose, project }) => {
                     root: classes.content
                 }}
             >
-                <TextField
-                    fullWidth
-                    multiline
-                    variant="flat"
-                    rows={10}
-                />
-                <div className={classes.images}>
-                    <div className={classes.image} />
-                    <div className={classes.image} />
-                    <div className={classes.image} />
-                    <div className={classes.image} />
-                </div>
+                <ProjectDialogContentTitle title={DEFAULT_PROJECT.title} />
+                <ProjectDialogContentDescription description={DEFAULT_PROJECT.description} />
+                <ProjectDialogContentImages images={DEFAULT_PROJECT.images} />
             </DialogContent>
             <DialogActions>
                 <Button

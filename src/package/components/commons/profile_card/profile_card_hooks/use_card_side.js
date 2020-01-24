@@ -11,7 +11,7 @@ export const useCardSide = () => {
     const setCardSide = useCallback((newSide) => dispatch({
         type: SET_SIDE,
         side: newSide
-    }), [dispatch]);
+    }), []);
 
     return [side, setCardSide];
 };
