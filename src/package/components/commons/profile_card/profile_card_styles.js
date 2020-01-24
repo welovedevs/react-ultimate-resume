@@ -2,15 +2,16 @@ import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../utils
 
 export const styles = (theme) => {
     const { miscellaneous: { spacing } } = theme;
+    const { components: { cards: { height, width } } } = theme;
     return ({
         container: ({ variant }) => {
             const { backgroundColor, color } = getColorsFromCardVariant(theme, variant);
             return {
+                height,
+                width,
                 position: 'relative',
                 margin: theme.miscellaneous.spacing * 2,
                 borderRadius: theme.components.cards.borderRadius,
-                width: 470,
-                height: 470,
                 backgroundColor: getHexFromPaletteColor(theme, backgroundColor),
                 color: getHexFromPaletteColor(theme, color),
                 overflow: 'hidden'

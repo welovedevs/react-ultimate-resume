@@ -31,15 +31,15 @@ const ExperienceContent = ({ experience, variant, classes }) => {
         </ProfileCardSection>
     );
 };
-const ExperiencesBackComponent = ({ variant, data }) => {
+
+const ExperiencesBackComponent = ({ data }) => {
     const classes = useStyles();
     return (
-        <ProfileCardAnimatedBack title="Experiences" cardVariant={variant}>
+        <ProfileCardAnimatedBack title="Experiences">
             {data.work?.map(experience => (
                 <ExperienceContent
                     key={`work_experience_${experience.id}`}
                     experience={experience}
-                    variant={variant}
                     classes={classes}
                 />
             ))}

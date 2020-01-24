@@ -11,7 +11,7 @@ import { styles } from './projects_front_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectsFrontComponent = ({ variant }) => {
+const ProjectsFrontComponent = () => {
     const classes = useStyles();
     return (
         <>
@@ -24,7 +24,7 @@ const ProjectsFrontComponent = ({ variant }) => {
                 </Typography>
             </div>
             <ProfileCardActions>
-                <ProfileCardButton cardVariant={variant}>
+                <ProfileCardButton>
                     2 more projects
                 </ProfileCardButton>
             </ProfileCardActions>

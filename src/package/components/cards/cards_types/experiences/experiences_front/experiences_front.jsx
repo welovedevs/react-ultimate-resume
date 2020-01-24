@@ -10,13 +10,15 @@ import { ProfileCardActions } from '../../../../commons/profile_card/profile_car
 import { ProfileCardButton } from '../../../../commons/profile_card/profile_card_button/profile_card_button';
 import { ProfileCardFrontTypography } from '../../../../commons/profile_card/profile_card_front_typography/profile_card_front_typography';
 
+import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+
 import { styles } from './experiences_front_styles';
-import { Twemoji } from 'react-emoji-render';
 
 const useStyles = createUseStyles(styles);
 
-const ExperiencesFrontComponent = ({ variant, data }) => {
-    const classes = useStyles();
+const ExperiencesFrontComponent = ({ data }) => {
+    const [variant] = useCardVariant();
+    const classes = useStyles({ variant });
     return (
         <>
             <ProfileCardPaddedFront>
@@ -30,14 +32,16 @@ const ExperiencesFrontComponent = ({ variant, data }) => {
                             component="h3"
                             variant="h2"
                         >
-                            <Twemoji svg text="📍" />
-                            {data.currentJobLocation.name}
+                            <span role="img" aria-label="Location">📍</span>
+                            {` ${data.currentJobLocation.name}`}
                         </Typography>
                     </div>
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton cardVariant={variant}>See all experiences</ProfileCardButton>
+                <ProfileCardButton>
+                    See all experiences
+                </ProfileCardButton>
             </ProfileCardActions>
         </>
     );

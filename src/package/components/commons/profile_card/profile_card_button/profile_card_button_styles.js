@@ -8,19 +8,19 @@ export const styles = theme => ({
     button: {
         marginRight: 0
     },
-    typography: ({ cardVariant }) => ({
+    typography: ({ variant, overrideColor }) => ({
         textTransform: 'unset',
         fontSize: ['14px', '!important'],
-        color: [getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).color), '!important']
+        color: [getHexFromPaletteColor(theme, overrideColor || getColorsFromCardVariant(theme, variant).color), '!important']
     }),
     arrowContainer: {
         display: 'flex'
     },
-    arrow: ({ cardVariant }) => ({
+    arrow: ({ variant, overrideColor }) => ({
         height: 28,
         color: 'inherit',
         '& > path': {
-            stroke: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).color)
+            stroke: getHexFromPaletteColor(theme, overrideColor || getColorsFromCardVariant(theme, variant).color)
         }
     })
 });

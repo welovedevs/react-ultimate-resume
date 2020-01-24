@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
@@ -11,8 +11,6 @@ import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'r
 import { Button, Checkbox, List, ListItem, Tooltip, TextField, Typography, Tag } from '@wld/ui';
 import { Twemoji } from 'react-emoji-render';
 
-import translations from './experiences_card_edit_dialog_translations';
-import styles from './experiences_card_edit_dialog_styles';
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { useFormikContext } from 'formik';
 import keyBy from 'lodash/keyBy';
@@ -23,8 +21,10 @@ import { ReactComponent as DeleteIcon } from '../../../../../assets/icons/trash.
 import { ReactComponent as ArrowIcon } from '../../../../../assets/icons/keyboard_arrow_down.svg';
 import { YearMonth } from '../../../../commons/year_month/year_month';
 import { EditDialogField } from '../../../../commons/edit_dialog_field/edit_dialog_field';
-import LocationField from '../../../../commons/location_field/location_field';
-import { CheckboxField } from '../../../../commons/checkbox_field/checkbox_group';
+import { LocationField } from '../../../../commons/location_field/location_field';
+
+import { styles } from './experiences_card_edit_dialog_styles';
+import { translations } from './experiences_card_edit_dialog_translations';
 
 const useStyles = createUseStyles(styles);
 
@@ -423,12 +423,12 @@ export const ExperiencesEditDialog = ({ data, onEdit, validationSchema, onClose 
             onClose={onClose}
             validationSchema={validationSchemaToPass}
             open
-            title={
+            title={(
                 <FormattedMessage
                     id="Experiences.editDialog.title"
                     defaultMessage="Your past and present professional experiences"
                 />
-            }
+            )}
         >
             {helpers => <ExperiencesEditForm helpers={helpers} />}
         </EditDialog>

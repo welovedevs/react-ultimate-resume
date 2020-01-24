@@ -48,7 +48,7 @@ const WithProvidersDeveloperProfile = ({ options = {} }) => {
     useEffect(() => {
         const asyncBuild = async () => {
             const built = await buildTheme(theme);
-            console.log('Built theme:', built);
+            console.log('🎨 Built theme:', built);
             setBuiltTheme(built);
         };
         asyncBuild();

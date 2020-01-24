@@ -24,7 +24,7 @@ const GifsFrontComponent = () => {
             )}
         >
             <ProfileCardActions>
-                <ProfileCardButton>
+                <ProfileCardButton overrideColor="light">
                     See all hobbies
                 </ProfileCardButton>
             </ProfileCardActions>

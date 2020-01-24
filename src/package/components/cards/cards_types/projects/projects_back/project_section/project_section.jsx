@@ -7,14 +7,27 @@ import { ProfileCardSectionTitle } from '../../../../../commons/profile_card/pro
 import { ProfileCardSectionSubtitle } from '../../../../../commons/profile_card/profile_card_section_subtitle/profile_card_section_subtitle';
 import { ProfileCardSectionText } from '../../../../../commons/profile_card/profile_card_section_text/profile_card_section_text';
 import { ProfileCardSection } from '../../../../../commons/profile_card/profile_card_section/profile_card_section';
+import { SeeProjectDetail } from '../../see_project_detail/see_project_detail';
 
 import { ReactComponent as LinkIcon } from '../../../../../../assets/icons/link.svg';
+import { ReactComponent as EyeIcon } from '../../../../../../assets/icons/eye.svg';
 
 import { styles } from './project_section_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectSectionContainer = ({ cardVariant }) => {
+const DETAILS = {
+    link: {
+        icon: LinkIcon,
+        value: 'Link'
+    },
+    seeProject: {
+        icon: EyeIcon,
+        value: <SeeProjectDetail />
+    }
+};
+
+const ProjectSectionContainer = ({ projectId, cardVariant }) => {
     const classes = useStyles();
     return (
         <ProfileCardSection cardVariant={cardVariant}>
@@ -35,18 +48,22 @@ const ProjectSectionContainer = ({ cardVariant }) => {
                 <br />
                 Just another bullshit here
             </ProfileCardSectionText>
-            <Details classes={classes} />
+            <Details classes={classes} projectId={projectId} />
         </ProfileCardSection>
     );
 };
 
-const Details = ({ classes }) => (
-        <div className={classes.detail}>
-            <LinkIcon className={classes.detailIcon} />
-            <Typography customClasses={{ container: classes.detailTypography }} color="primary">
-                Link
-            </Typography>
-        </div>
-    );
+const Details = ({ projectId, classes }) => (
+    <div className={classes.details}>
+    {Object.entries(DETAILS).map(([id, { icon: Icon, value }]) => (
+            <div key={`project_${projectId}_detail_${id}`} className={classes.detail}>
+                <Icon className={classes.detailIcon} />
+                <Typography customClasses={{ container: classes.detailTypography }} color="primary">
+                    {value}
+                </Typography>
+            </div>
+        ))}
+    </div>
+);
 
 export const ProjectSection = ProjectSectionContainer;

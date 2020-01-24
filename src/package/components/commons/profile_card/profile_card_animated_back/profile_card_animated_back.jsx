@@ -19,7 +19,7 @@ const useStyles = createUseStyles(styles);
 
 const TRANSLATION_INTERPOLATION = (value) => `translate3d(0, ${value}%, 0)`;
 
-const ProfileCardAnimatedBackComponent = ({ title, cardVariant, children: content, customClasses = {} }) => {
+const ProfileCardAnimatedBackComponent = ({ title, children: content, customClasses = {} }) => {
     const classes = useStyles();
     const contentContainerSpringReference = useRef();
     const contentSpringReference = useRef();
@@ -49,20 +49,20 @@ const ProfileCardAnimatedBackComponent = ({ title, cardVariant, children: conten
     return (
         <>
             <ProfileCardTitle
-                cardVariant={cardVariant}
                 component={animated.div}
                 style={{
                     opacity: titleSpringProps.opacity,
-                transform: titleSpringProps
-                    .translation
-                    .interpolate(TRANSLATION_INTERPOLATION)
+                    transform: titleSpringProps
+                        .translation
+                        .interpolate(TRANSLATION_INTERPOLATION)
             }}
             >
                 {title}
             </ProfileCardTitle>
             <ProfileCardContent
-                customClasses={{ container: cn(classes.content, customClasses.content) }}
-                cardVariant={cardVariant}
+                customClasses={{
+                    container: cn(classes.content, customClasses.content)
+                }}
                 component={animated.div}
                 style={{
                     transform: contentContainerSpringProps

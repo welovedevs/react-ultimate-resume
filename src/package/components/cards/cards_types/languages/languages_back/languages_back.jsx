@@ -10,6 +10,7 @@ import { LanguageColumn } from './language_column/language_column';
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
 
 import { styles } from './languages_back_styles';
+import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
 
 const useStyles = createUseStyles(styles);
 
@@ -25,9 +26,10 @@ const LANGUAGES = {
     }
 };
 
-const LanguagesBackComponent = ({ variant }) => {
+const LanguagesBackComponent = () => {
     const classes = useStyles();
     const theme = useTheme();
+    const [variant] = useCardVariant();
     const languagesEntries = useMemo(() => LANGUAGES && Object.entries(LANGUAGES), [LANGUAGES]);
     const transitions = useTransition(languagesEntries, ([id]) => `language_column_${id}`, ({
         from: {

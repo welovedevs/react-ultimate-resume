@@ -14,15 +14,15 @@ const getContentBackgroundColor = (theme, cardVariant) => {
 export const styles = (theme) => {
     const { miscellaneous: { spacing } } = theme;
     return ({
-        container: ({ cardVariant }) => {
-            const backHexColor = getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).backColor);
+        container: ({ variant }) => {
+            const backHexColor = getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backColor);
             return ({
                 padding: [spacing * 4, spacing * 8],
-                backgroundColor: getContentBackgroundColor(theme, cardVariant),
+                backgroundColor: getContentBackgroundColor(theme, variant),
                 color: backHexColor,
                 flex: 1,
                 overflow: 'auto',
-                ...withCustomVerticalScrollbar(getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).backColor))
+                ...withCustomVerticalScrollbar(getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backColor))
             });
         }
     });

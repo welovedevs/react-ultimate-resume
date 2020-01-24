@@ -1,4 +1,13 @@
-import React, { createContext, createElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+    createContext,
+    createElement,
+    useCallback,
+    useEffect,
+    useMemo,
+    useReducer,
+    useRef,
+    useState
+} from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { config, useTransition } from 'react-spring';
@@ -7,10 +16,12 @@ import { useDebounce } from 'use-debounce';
 import { Card, Tooltip } from '@wld/ui';
 
 import { ProfileCardSide } from './profile_card_side/profile_card_side';
+import { getProfileCardInitialState, PROFILE_CARD_REDUCER } from './profile_card_reducer';
 
 import { ReactComponent as EditIcon } from '../../../assets/icons/edit.svg';
 
 import { styles } from './profile_card_styles';
+import { SET_SIDE } from './profile_card_actions_types';
 
 const useStyles = createUseStyles(styles);
 
@@ -24,19 +35,20 @@ const DEFAULT_TRANSITIONS_SPRING_PROPS = {
 };
 
 const ProfileCardComponent = ({
-    data,
-    sides,
-    side: receivedSide,
-    variant,
-    isTransitionUnique = true,
-    isEditingProfile,
-    editDialog,
-    customTransitionsSpringProps
-}) => {
+                                  data,
+                                  sides,
+                                  variant,
+                                  isTransitionUnique = true,
+                                  isEditingProfile,
+                                  editDialog,
+                                  customTransitionsSpringProps
+                              }) => {
     const classes = useStyles({ variant });
-    const [side, setSide] = useState('front');
     const [isEditingCard, setIsEditingCard] = useState(false);
+    const [state, dispatch] = useReducer(PROFILE_CARD_REDUCER, getProfileCardInitialState({ variant }));
+    const { side, hasDialogOpened } = state;
     const [debouncedSide] = useDebounce(side, 200);
+
     const transitionsSpringProps = useMemo(() => {
         if (customTransitionsSpringProps) {
             if (typeof customTransitionsSpringProps === 'function') {
@@ -49,21 +61,25 @@ const ProfileCardComponent = ({
 
     const hasSideChanged = useRef(false);
 
-    const handleMouseEnter = useCallback(() => setSide('back'), []);
-    const handleMouseLeave = useCallback(() => setSide('front'), []);
+    const setSide = useCallback((newSide) => dispatch({
+        type: SET_SIDE,
+        side: newSide
+    }), []);
+
+    const handleMouseEnter = useCallback(() => setSide('back'), [dispatch]);
+
+    const handleMouseLeave = useCallback(() => {
+        if (hasDialogOpened) {
+            return;
+        }
+        setSide('front');
+    }, [hasDialogOpened, dispatch]);
 
     const enableEditingCard = useCallback(e => {
         e.preventDefault();
         e.stopPropagation();
         setIsEditingCard(true);
     }, []);
-
-    // Either 'front' or 'back'.
-    useEffect(() => {
-        if (receivedSide) {
-            setSide(receivedSide);
-        }
-    }, [receivedSide]);
 
     useEffect(() => {
         if (hasSideChanged.current) {
@@ -93,6 +109,8 @@ const ProfileCardComponent = ({
         });
     }, [editDialog]);
 
+    const contextData = useMemo(() => ({ state, dispatch }), [state]);
+
     return (
         <>
             {isEditingCard && EditDialogComponent}
@@ -109,12 +127,12 @@ const ProfileCardComponent = ({
                         </button>
                     </Tooltip>
                 )}
-                <ProfileCardContext.Provider value={{ side, setSide }}>
+                <ProfileCardContext.Provider value={contextData}>
                     {transitions.map(({ item, key, props }) => {
                         const SideComponent = sides[item] || (() => null);
                         return (
                             <ProfileCardSide key={key} style={props}>
-                                <SideComponent data={data} variant={variant} />
+                                <SideComponent data={data} />
                             </ProfileCardSide>
                         );
                     })}

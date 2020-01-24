@@ -9,7 +9,7 @@ import { InterestedByMapping } from './data/mapping';
 import { InterestedByEditDialog } from './edit_dialog/interested_by_edit_dialog';
 import { DeveloperProfileContext } from '../../../profile';
 
-const InterestedByCardComponent = ({ variant, flipped }) => {
+const InterestedByCardComponent = ({ variant, side }) => {
     const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => JsonResumeToFlatObject(data, InterestedByMapping), [data]);
 
@@ -32,7 +32,7 @@ const InterestedByCardComponent = ({ variant, flipped }) => {
                     onEdit: onDialogEdited
                 }}
                 variant={variant}
-                flipped={flipped}
+                side={side}
             />
         </>
     );

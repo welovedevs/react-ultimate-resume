@@ -1,16 +1,18 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+
+import { createUseStyles } from 'react-jss';
+import { useIntl } from 'react-intl';
 
 import { TextField, PopperCard, Typography, List, ListItem } from '@wld/ui';
+
 import { useGoogleMapsPredictions } from '../../hooks/location/use_google_maps_predictions';
 
 import { locationFieldStyles } from './location_field_style';
-import { createUseStyles } from 'react-jss';
 import { locationFieldTranslations } from './location_field_translations';
 
 const useStyles = createUseStyles(locationFieldStyles);
 
-const LocationField = ({ variant, onLocationSelected, value, clearOnSelect }) => {
+const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSelect }) => {
     const classes = useStyles();
     const { locale, formatMessage } = useIntl();
     const inputRef = useRef();
@@ -55,9 +57,7 @@ const LocationField = ({ variant, onLocationSelected, value, clearOnSelect }) =>
                             setIsFocused(false);
                         }
                     }}
-                    onFocus={() => {
-                        return setIsFocused(true);
-                    }}
+                    onFocus={() => setIsFocused(true)}
                     variant={variant || 'outlined'}
                     label={formatMessage(locationFieldTranslations.title)}
                     containerRef={inputRef}
@@ -83,8 +83,7 @@ const LocationField = ({ variant, onLocationSelected, value, clearOnSelect }) =>
     );
 };
 
-const PredictionsList = ({ predictions = [], setPreventBlur, input, onPredictionSelected, classes, setInput }) => {
-    return (
+const PredictionsList = ({ predictions = [], setPreventBlur, input, onPredictionSelected, classes, setInput }) => (
         <PopperCard
             open
             anchorElement={input}
@@ -117,6 +116,5 @@ const PredictionsList = ({ predictions = [], setPreventBlur, input, onPrediction
             </List>
         </PopperCard>
     );
-};
 
-export default LocationField;
+export const LocationField = LocationFieldComponent;

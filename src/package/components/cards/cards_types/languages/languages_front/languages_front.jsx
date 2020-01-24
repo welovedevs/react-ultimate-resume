@@ -12,7 +12,7 @@ import { styles } from './languages_front_styles';
 
 const useStyles = createUseStyles(styles);
 
-const LanguagesFrontComponent = ({ variant }) => {
+const LanguagesFrontComponent = () => {
     const classes = useStyles();
     const languagesNode = (
         <>
@@ -35,7 +35,7 @@ const LanguagesFrontComponent = ({ variant }) => {
                 </ProfileCardFrontTypography>
             </CenterContentContainer>
             <ProfileCardActions>
-                <ProfileCardButton cardVariant={variant}>
+                <ProfileCardButton>
                     {'Languages level'}
                 </ProfileCardButton>
             </ProfileCardActions>

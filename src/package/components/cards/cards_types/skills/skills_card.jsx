@@ -16,7 +16,7 @@ const mapData = data => ({
         .sort(({ levelValue: a }, { levelValue: b }) => b - a)
 });
 
-const SkillsCardComponent = ({ data, variant, flipped }) => {
+const SkillsCardComponent = ({ data, variant, side }) => {
     const mappedData = useMemo(() => mapData(data), [data]);
     return (
         <ProfileCard
@@ -26,7 +26,7 @@ const SkillsCardComponent = ({ data, variant, flipped }) => {
             }}
             data={mappedData}
             variant={variant}
-            flipped={flipped}
+            side={side}
         />
     );
 };

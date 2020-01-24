@@ -5,11 +5,11 @@ import {
 } from '../../../../../utils/styles/styles_utils';
 
 export const styles = (theme) => ({
-    container: ({ cardVariant }) => ({
+    container: ({ variant }) => ({
         display: 'flex',
         flexWrap: 'wrap',
         overflow: 'auto',
-        ...withCustomVerticalScrollbar(getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).backBackgroundColor))
+        ...withCustomVerticalScrollbar(getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backBackgroundColor))
     }),
     otherSkillsContainer: {
         width: '100%',

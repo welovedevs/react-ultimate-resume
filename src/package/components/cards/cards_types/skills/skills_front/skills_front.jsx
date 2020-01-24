@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
-import { createUseStyles, useTheme } from 'react-jss';
+import { createUseStyles } from 'react-jss';
 
 import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
@@ -11,22 +11,17 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 
 import { ReactComponent as ReactLogo } from '../../../../../assets/icons/dev_only/react.svg';
 
-import { getColorsFromCardVariant } from '../../../../../utils/styles/styles_utils';
-
 import { styles } from './skills_front_styles';
 
 const useStyles = createUseStyles(styles);
 
-const SkillsFrontComponent = ({ variant }) => {
+const SkillsFrontComponent = () => {
     const classes = useStyles();
-    const theme = useTheme();
-    const color = useMemo(() => getColorsFromCardVariant(theme, variant).color, [theme, variant]);
     return (
         <>
             <ProfileCardPaddedFront>
                 <CenterContentContainer customClasses={{ container: classes.container }}>
                     <ProfileCardFrontVector
-                        color={color}
                         customClasses={{ container: classes.logo }}
                         vector={ReactLogo}
                     />
@@ -36,7 +31,7 @@ const SkillsFrontComponent = ({ variant }) => {
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton cardVariant={variant}>
+                <ProfileCardButton>
                     More skills
                 </ProfileCardButton>
             </ProfileCardActions>

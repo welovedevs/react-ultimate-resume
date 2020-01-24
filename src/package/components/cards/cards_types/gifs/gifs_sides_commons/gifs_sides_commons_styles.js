@@ -14,10 +14,8 @@ export const styles = (theme) => {
             left: 0
         },
         title: {
-            position: 'relative'
-        },
-        titleTypography: {
-            color: [palette.light[900], '!important']
+            position: 'relative',
+            backgroundColor: 'transparent'
         },
         darkenLayer: {
             height: '100%',

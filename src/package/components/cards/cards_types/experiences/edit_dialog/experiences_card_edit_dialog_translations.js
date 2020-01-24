@@ -1,6 +1,6 @@
 import { defineMessages } from 'react-intl';
 
-export default defineMessages({
+export const translations = defineMessages({
     companyName: {
         id: 'Experiences.editDialog.companyName.title',
         defaultMessage: "Nom de l'entreprise"

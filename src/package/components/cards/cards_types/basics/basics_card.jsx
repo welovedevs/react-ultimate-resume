@@ -11,7 +11,7 @@ import { DeveloperProfileContext } from '../../../profile';
 import { BasicsCardEditDialog } from './edit_dialog/basic_card_edit_dialog';
 import { BasicsValidationSchema } from './data/validator';
 
-const BasicsCardComponent = ({ variant, flipped }) => {
+const BasicsCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => JsonResumeToFlatObject(data, BasicMapping), [data]);
 
@@ -34,7 +34,7 @@ const BasicsCardComponent = ({ variant, flipped }) => {
                     back: BasicsBack
                 }}
                 variant={variant}
-                flipped={flipped}
+                side={side}
             />
         </>
     );

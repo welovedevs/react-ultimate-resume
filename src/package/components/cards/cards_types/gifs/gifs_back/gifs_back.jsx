@@ -11,6 +11,8 @@ import { ReactComponent as ArrowIcon } from '../../../../../assets/icons/arrow-r
 
 import { GifsSidesCommons } from '../gifs_sides_commons/gifs_sides_commons';
 
+import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+
 import { styles } from './gifs_back_styles';
 
 const useStyles = createUseStyles(styles);
@@ -49,10 +51,12 @@ const SLIDES = [
     }
 ];
 
-const GifsBackComponent = ({ variant }) => {
-    const classes = useStyles({ cardVariant: variant });
+const GifsBackComponent = () => {
+    const [variant] = useCardVariant();
+    const classes = useStyles({ variant });
     const [currentIndex, setCurrentIndex] = useState(0);
     const hasChanged = useRef();
+
     const handleBeforeChange = useCallback((current, next) => {
         if (!hasChanged.current) {
             hasChanged.current = true;
@@ -97,12 +101,11 @@ const GifsBackComponent = ({ variant }) => {
                             classes={classes}
                             arrowRole="next"
                             buttonProps={{ className: classes.nextButton }}
-                            reverse
                         />
                     )}
                 >
-                    {SLIDES.map(({ url, alt }) => (
-                        <img className={classes.image} src={url} alt={alt} />
+                    {SLIDES.map(({ url, alt, name }) => (
+                        <img key={`gifs_slide_${name}`} className={classes.image} src={url} alt={alt} />
                     ))}
                 </Slider>
               </div>
@@ -131,14 +134,22 @@ const Arrow = ({
     arrowRole
 }) => {
     const [springProps, setSpringProps] = useSpring(() => DEFAULT_ARROW_SPRING_PROPS);
-    const handleMouseDown = useCallback(() => setSpringProps(PRESSED_ARROW_SPRING_PROPS), [setSpringProps]);
-    const handleMouseUp = useCallback(() => setSpringProps(DEFAULT_ARROW_SPRING_PROPS), [setSpringProps]);
+    const handleMouseDown = useCallback(() =>
+        setSpringProps(PRESSED_ARROW_SPRING_PROPS),
+        [setSpringProps]);
+    const handleMouseUp = useCallback(() =>
+        setSpringProps(DEFAULT_ARROW_SPRING_PROPS),
+        [setSpringProps]);
 
     return (
         <animated.button
-            onClick={onClick}
-            className={cn(classes.arrow, arrowRole === 'next' && classes.nextArrow, arrowRole === 'prev' && cn(classes.reverseArrow, classes.prevArrow))}
+            className={
+                cn(classes.arrow,
+                    arrowRole === 'next' && classes.nextArrow,
+                    arrowRole === 'prev' && cn(classes.reverseArrow, classes.prevArrow))
+            }
             type="button"
+            onClick={onClick}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             onFocus={handleMouseDown}

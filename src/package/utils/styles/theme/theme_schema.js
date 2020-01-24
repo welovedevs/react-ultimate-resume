@@ -14,7 +14,7 @@ const isExistingColorInPalette = yup.string().test(
     'is-existing-color-in-palette',
     args => `Color \`${args.value}\` must be present in palette.`,
     function(value) {
-        return Boolean(this.options.palette?.[value]);
+        return Boolean(this.options?.context?.palette?.[value]);
     }
 );
 

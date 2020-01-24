@@ -6,15 +6,22 @@ import { animated, useSpring, useTransition } from 'react-spring';
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
 import { LoadingSpinner } from '../../../../commons/loading_spinner/loading_spinner';
 
-import { styles } from './soundtrack_back_styles';
 import { LOADING_SPINNER_TRANSITIONS } from './soundtrack_back_loading_spinner_transitions';
+
 import { getColorsFromCardVariant } from '../../../../../utils/styles/styles_utils';
+import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+
+import { styles } from './soundtrack_back_styles';
 
 const useStyles = createUseStyles(styles);
 
-const SoundtrackBackComponent = ({ variant }) => {
+const SoundtrackBackComponent = () => {
     const classes = useStyles();
     const theme = useTheme();
+    const [variant] = useCardVariant();
+
+    const { components: { cards: { height, width } } } = theme;
+
     const [hasLoaded, setHasLoaded] = useState(false);
 
     const color = useMemo(() => getColorsFromCardVariant(theme, variant).color, [theme, variant]);
@@ -47,10 +54,9 @@ const SoundtrackBackComponent = ({ variant }) => {
                 className={classes.iframe}
                 title="Soundtrack"
                 src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWl7MndYYxge"
-                width="470"
-                height="470"
+                height={height}
+                width={width}
                 frameBorder="0"
-                allowTransparency="true"
                 allow="encrypted-media"
                 onLoad={handleLoad}
                 style={iframeSpringProps}

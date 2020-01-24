@@ -4,7 +4,7 @@ import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { ProjectsFront } from './projects_front/projects_front';
 import { ProjectsBack } from './projects_back/projects_back';
 
-const ProjectsCardComponent = ({ variant, flipped }) => {
+const ProjectsCardComponent = ({ variant, side }) => {
     return (
         <ProfileCard
             sides={{
@@ -12,7 +12,7 @@ const ProjectsCardComponent = ({ variant, flipped }) => {
                 back: ProjectsBack
             }}
             variant={variant}
-            flipped={flipped}
+            side={side}
         />
     );
 }

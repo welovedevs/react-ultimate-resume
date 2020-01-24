@@ -3,12 +3,15 @@ import React from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 
+import { useCardVariant } from '../profile_card_hooks/use_card_variant';
+
 import { styles } from './profile_card_section_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardSectionComponent = ({ cardVariant, children, customClasses = {} }) => {
-    const classes = useStyles({ cardVariant });
+const ProfileCardSectionComponent = ({ children, customClasses = {} }) => {
+    const [variant] = useCardVariant();
+    const classes = useStyles({ variant });
     return (
         <div className={cn(classes.container, customClasses.container)}>
             {children}

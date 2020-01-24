@@ -1,4 +1,4 @@
-import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../../utils/styles/styles_utils';
+import { getHexFromPaletteColor } from '../../../../../../utils/styles/styles_utils';
 
 export const styles = (theme) => ({
     container: {
@@ -13,12 +13,11 @@ export const styles = (theme) => ({
         textOverflow: 'ellipsis',
         paddingRight: 15
     },
-    progressBarCustomContainer: ({ cardVariant }) => ({
+    progressBarCustomContainer: ({
         height: 8,
-        // border: `2px solid ${getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).color)}`,
-        backgroundColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).backgroundColor)
+        backgroundColor: 'transparent'
     }),
-    progressBarCustomBar: ({ cardVariant }) => ({
-        color: [getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).color), '!important']
+    progressBarCustomBar: ({ color }) => ({
+        color: [getHexFromPaletteColor(theme, color), '!important']
     })
 });

@@ -130,13 +130,11 @@ const mergeFunction = (objValue, srcValue) => {
 
 export const buildTheme = async theme => {
     const merged = merge(cloneDeep(DEFAULT_THEME), theme, mergeFunction);
-    console.log(merged);
     try {
-        const validationResult = await THEME_SCHEMA.validate(merged, {
+        await THEME_SCHEMA.validate(merged, {
             context: { palette: merged?.palette },
             strict: true
         });
-        console.log({ merged, validationResult });
         return transformTheme(merged);
     } catch (error) {
         console.error('Invalid theme! Using default theme instead.', { error });

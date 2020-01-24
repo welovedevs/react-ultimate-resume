@@ -3,8 +3,8 @@ import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../ut
 export const styles = (theme) => {
     const { miscellaneous: { spacing } } = theme;
     return ({
-        container: ({ cardVariant }) => ({
-            color: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, cardVariant).backColor),
+        container: ({ variant }) => ({
+            color: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backColor),
             margin: [spacing * 3, 0],
             '&:first-child': {
                 marginTop: 0

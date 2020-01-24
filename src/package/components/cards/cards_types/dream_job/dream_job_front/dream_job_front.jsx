@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
-import { createUseStyles, useTheme } from 'react-jss';
+import { createUseStyles } from 'react-jss';
 
 import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
@@ -11,22 +11,17 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 
 import { ReactComponent as HomeLogo } from '../../../../../assets/icons/home.svg';
 
-import { getColorsFromCardVariant } from '../../../../../utils/styles/styles_utils';
-
 import { styles } from './dream_job_front_styles';
 
 const useStyles = createUseStyles(styles);
 
-const DreamJobFrontComponent = ({ variant }) => {
+const DreamJobFrontComponent = () => {
     const classes = useStyles();
-    const theme = useTheme();
-    const color = useMemo(() => getColorsFromCardVariant(theme, variant).color, [theme, variant]);
     return (
         <>
             <ProfileCardPaddedFront>
                 <CenterContentContainer customClasses={{ container: classes.container }}>
                     <ProfileCardFrontVector
-                        color={color}
                         customClasses={{ container: classes.logo }}
                         vector={HomeLogo}
                     />
@@ -36,7 +31,7 @@ const DreamJobFrontComponent = ({ variant }) => {
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton cardVariant={variant}>
+                <ProfileCardButton>
                     Discover my dream job
                 </ProfileCardButton>
             </ProfileCardActions>

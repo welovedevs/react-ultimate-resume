@@ -11,7 +11,7 @@ import { styles } from './projects_back_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectsBackComponent = ({ variant }) => {
+const ProjectsBackComponent = () => {
     const classes = useStyles();
     return (
         <>
@@ -28,10 +28,10 @@ const ProjectsBackComponent = ({ variant }) => {
             >
                 Projects
             </ProfileCardTitle>
-            <ProfileCardContent cardVariant={variant}>
-                <ProjectSection cardVariant={variant} />
-                <ProjectSection cardVariant={variant} />
-                <ProjectSection cardVariant={variant} />
+            <ProfileCardContent>
+                <ProjectSection />
+                <ProjectSection />
+                <ProjectSection />
             </ProfileCardContent>
         </>
     );

@@ -16,7 +16,12 @@ const GifsSidesCommonsComponent = ({ underLayer, children }) => {
                 {underLayer}
             </div>
             <div className={classes.darkenLayer} />
-            <ProfileCardTitle customClasses={{ container: classes.title, typography: classes.titleTypography }}>
+            <ProfileCardTitle
+                overrideColor="light"
+                customClasses={{
+                    container: classes.title
+                }}
+            >
                 Hobbies
             </ProfileCardTitle>
             {children}

@@ -6,7 +6,7 @@ import { ProfileCardSectionTitle } from '../../../../commons/profile_card/profil
 import { ProfileCardSectionText } from '../../../../commons/profile_card/profile_card_section_text/profile_card_section_text';
 import { ProfileCardSection } from '../../../../commons/profile_card/profile_card_section/profile_card_section';
 
-const BasicsBackComponent = ({ data, variant }) => {
+const BasicsBackComponent = ({ data }) => {
     const {
         currentCity: { name: currentCityName },
         remoteWork,
@@ -16,6 +16,7 @@ const BasicsBackComponent = ({ data, variant }) => {
         codingYears,
         codingReason
     } = data;
+
     const sections = useMemo(
         () => ({
             remote: {
@@ -75,9 +76,9 @@ const BasicsBackComponent = ({ data, variant }) => {
     );
 
     return (
-        <ProfileCardAnimatedBack title="Who ?" cardVariant={variant}>
+        <ProfileCardAnimatedBack title="Who ?">
             {Object.entries(sections).map(([id, { title, value }]) => (
-                <ProfileCardSection key={id} cardVariant={variant}>
+                <ProfileCardSection key={id}>
                     <ProfileCardSectionTitle>{title}</ProfileCardSectionTitle>
                     <ProfileCardSectionText>{value}</ProfileCardSectionText>
                 </ProfileCardSection>
