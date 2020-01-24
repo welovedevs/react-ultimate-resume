@@ -3,9 +3,13 @@ import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { animated, useTransition } from 'react-spring';
 
+import { Tooltip } from '@wld/ui';
+
 import { useIsEditing } from '../../../../../../hooks/use_is_editing';
 
 import { PROJECT_DIALOG_CONTENT_IMAGE_EDIT_LAYER_SPRING_PROPS } from './project_dialog_content_image_edit_layer_spring_props';
+
+import { ReactComponent as DeleteIcon } from '../../../../../../../assets/icons/trash.svg';
 
 import { useOpenerState } from '../../../../../../hooks/use_opener_state';
 
@@ -40,7 +44,19 @@ const ProjectDialogContentImageComponent = ({ component: Component = 'div', url,
 };
 
 const EditLayer = ({ style, classes }) => (
-    <animated.div className={classes.editLayer} style={style} />
+    <animated.div
+        className={classes.editLayer}
+        style={style}
+    >
+        <Tooltip title="Supprimer cette image">
+            <button
+                className={classes.deleteButton}
+                type="button"
+            >
+                <DeleteIcon className={classes.deleteIcon} />
+            </button>
+        </Tooltip>
+    </animated.div>
 );
 
 export const ProjectDialogContentImage = ProjectDialogContentImageComponent;

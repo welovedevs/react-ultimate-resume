@@ -3,9 +3,8 @@ import React, { useMemo } from 'react';
 import { createUseStyles } from 'react-jss';
 import { animated, useTransition } from 'react-spring';
 
-import { Typography, Tooltip } from '@wld/ui';
-
 import { ProjectDialogContentImage } from './project_dialog_content_image/project_dialog_content_image';
+import { ProjectDialogContentAddImage } from './project_dialog_content_add_image/project_dialog_content_add_image';
 
 import { useIsEditing } from '../../../../../hooks/use_is_editing';
 
@@ -31,11 +30,11 @@ const ProjectDialogContentImagesComponent = ({ images }) => {
 
     return (
         <div className={classes.container}>
-            {isEditing && <AddImage classes={classes} />}
+            {isEditing && <ProjectDialogContentAddImage />}
             {transitions.map(({ item, key, props }) => (
                 <ProjectDialogContentImage
                     key={key}
-                    component={animated.div}
+                    component={isEditing ? animated.button : animated.div}
                     style={props}
                     url={item[1].url}
                     name={item[1].name}
@@ -44,17 +43,5 @@ const ProjectDialogContentImagesComponent = ({ images }) => {
         </div>
     );
 };
-
-const AddImage = ({ classes }) => (
-    <Tooltip
-        title="Ajouter une image"
-    >
-        <button type="button" className={classes.addImage}>
-            <Typography variant="h2">
-                +
-            </Typography>
-        </button>
-    </Tooltip>
-);
 
 export const ProjectDialogContentImages = ProjectDialogContentImagesComponent;

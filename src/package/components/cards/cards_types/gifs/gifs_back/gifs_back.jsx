@@ -28,9 +28,9 @@ const SETTINGS = {
     slidesToScroll: 1
 };
 
-const GifsBackComponent = ({  data }) => {
+const GifsBackComponent = ({ data }) => {
     const [variant] = useCardVariant();
-    const classes = useStyles({ cardVariant: variant });
+    const classes = useStyles({ variant });
     const [currentIndex, setCurrentIndex] = useState(0);
     const hasChanged = useRef();
     const handleBeforeChange = useCallback(
@@ -68,21 +68,20 @@ const GifsBackComponent = ({  data }) => {
                     <Slider
                         {...SETTINGS}
                         beforeChange={handleBeforeChange}
-                        prevArrow={
+                        prevArrow={(
                             <Arrow
                                 classes={classes}
                                 arrowRole="prev"
                                 buttonProps={{ className: classes.previousButton }}
                             />
-                        }
-                        nextArrow={
+                        )}
+                        nextArrow={(
                             <Arrow
                                 classes={classes}
                                 arrowRole="next"
                                 buttonProps={{ className: classes.nextButton }}
-                                reverse
                             />
-                        }
+                        )}
                     >
                         {(data.interests ?? []).map(({ gifUrl, name }) => (
                             <img className={classes.image} src={gifUrl} alt={name} />

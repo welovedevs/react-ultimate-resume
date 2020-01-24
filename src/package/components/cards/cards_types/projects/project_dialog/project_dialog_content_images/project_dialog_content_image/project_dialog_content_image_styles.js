@@ -1,3 +1,7 @@
+import { getHexFromPaletteColor, flex } from '../../../../../../../utils/styles/styles_utils';
+
+const { center } = flex;
+
 export const styles = (theme) => {
     const { miscellaneous: { spacing }, palette } = theme;
     return ({
@@ -24,7 +28,16 @@ export const styles = (theme) => {
             top: 0,
             left: 0,
             backgroundColor: 'rgba(0, 0, 0, .6)',
-            content: "''"
+            content: "''",
+            ...center
+        },
+        deleteButton: {
+            display: 'flex'
+        },
+        deleteIcon: {
+            fill: getHexFromPaletteColor(theme, 'light'),
+            height: 40,
+            width: 'auto'
         }
     });
 };
