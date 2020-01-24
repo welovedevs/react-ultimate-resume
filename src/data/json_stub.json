@@ -87,8 +87,20 @@
     ],
     "interests": [
         {
-            "name": "Wildlife",
-            "keywords": ["Ferrets", "Unicorns"]
+            "name": "Burritos",
+            "gifUrl": "https://media.giphy.com/media/d8WjGORtSEWqc/giphy.gif"
+        },
+        {
+            "name": "Dogs",
+            "gifUrl": "https://media.giphy.com/media/3o85xsGXVuYh8lM3EQ/giphy.gif"
+        },
+        {
+            "name": "Tendresse",
+            "gifUrl": "https://media.giphy.com/media/EehnUUCH2JcwU/giphy.gif"
+        },
+        {
+            "name": "Something",
+            "gifUrl": "https://media.giphy.com/media/xTiTnIuKP1BLsMTerS/giphy.gif"
         }
     ],
     "references": [

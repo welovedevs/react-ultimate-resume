@@ -41,6 +41,8 @@ If you want to use the google maps autocomplete api, please make sure to add
 ></script>
 ```
 In the header of your HTML page. 
+
+If you want to use the GIPHY api, please make sure to provide a apikey.giphy to the options props of the profile
 ## Theming
 
 We created a default theme based on WeLoveDevs' graphical identity.

@@ -36,12 +36,13 @@
         "react-intl": "^3.9.3",
         "react-jss": "^10.0.3",
         "react-scripts": "3.3.0",
-        "react-sortable-hoc": "^1.11.0",
         "react-slick": "^0.25.2",
+        "react-sortable-hoc": "^1.11.0",
         "react-spring": "^8.0.27",
         "recharts": "^2.0.0-beta.1",
         "respinner": "^3.0.2",
         "uuid": "^3.4.0",
+        "whatwg-fetch": "^3.0.0",
         "yup": "^0.28.0"
     },
     "devDependencies": {

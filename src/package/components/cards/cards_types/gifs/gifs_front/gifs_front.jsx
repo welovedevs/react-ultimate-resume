@@ -11,22 +11,16 @@ import { styles } from './gifs_front_styles';
 
 const useStyles = createUseStyles(styles);
 
-const GifsFrontComponent = () => {
+const GifsFrontComponent = ({ data }) => {
     const classes = useStyles();
     return (
         <GifsSidesCommons
-            underLayer={(
-                <img
-                    className={classes.image}
-                    src="https://media.giphy.com/media/d8WjGORtSEWqc/giphy.gif"
-                    alt="Old people holding the holy burrito"
-                />
-            )}
+            underLayer={
+                <img className={classes.image} src={data.interests?.[0]?.gifUrl} alt={data.interests?.[0]?.name} />
+            }
         >
             <ProfileCardActions>
-                <ProfileCardButton overrideColor="light">
-                    See all hobbies
-                </ProfileCardButton>
+                <ProfileCardButton overrideColor="light">See all hobbies</ProfileCardButton>
             </ProfileCardActions>
         </GifsSidesCommons>
     );

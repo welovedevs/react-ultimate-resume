@@ -22,7 +22,7 @@ const DEFAULT_OPTIONS = Object.freeze({
 
 export const DeveloperProfileContext = createContext({});
 
-const DeveloperProfileComponent = ({ options, onEdit: onEditProps = () => {} }) => {
+const DeveloperProfileComponent = ({ options = {}, onEdit: onEditProps = () => {} }) => {
     const classes = useStyles(styles);
     const [isEditing, setIsEditing] = useState(true);
     const data = useMemo(() => prepareJsonResume(JsonStub), [JsonStub]);
@@ -33,7 +33,9 @@ const DeveloperProfileComponent = ({ options, onEdit: onEditProps = () => {} }) 
 
     return (
         <div className={classes.container}>
-            <DeveloperProfileContext.Provider value={{ data, isEditing, onEdit }}>
+            <DeveloperProfileContext.Provider
+                value={{ data, isEditing, onEdit, apiKeys: { giphy: options.apiKeys.giphy } }}
+            >
                 <Banner />
                 <Cards />
             </DeveloperProfileContext.Provider>
