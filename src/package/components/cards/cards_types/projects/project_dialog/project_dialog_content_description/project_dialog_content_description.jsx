@@ -11,17 +11,17 @@ import { styles } from './project_dialog_content_description_styles';
 const useStyles = createUseStyles(styles);
 
 const ProjectDialogContentDescriptionComponent = ({ description }) => {
-    const classes = useStyles();
+    const [isEditing] = useIsEditing();
+    const classes = useStyles({ isEditing });
     return (
         <div className={classes.container}>
-            <Content description={description} classes={classes} />
+            <Content description={description} isEditing={isEditing} classes={classes} />
         </div>
     );
 };
 
-const Content = ({ description, classes }) => {
-    const [isEditing] = useIsEditing();
-    if (false) {
+const Content = ({ description, isEditing, classes }) => {
+    if (isEditing) {
         return (
             <EditingContent description={description} classes={classes} />
         );

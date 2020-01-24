@@ -1,10 +1,12 @@
 export const styles = (theme) => {
     const { miscellaneous: { spacing } } = theme;
     return ({
-        container: {
+        container: ({ isEditing }) => ({
             marginBottom: spacing * 4,
-            textAlign: 'center'
-        },
+            ...!isEditing && {
+                textAlign: 'center'
+            }
+        }),
         typography: {
             fontSize: 32
         }
