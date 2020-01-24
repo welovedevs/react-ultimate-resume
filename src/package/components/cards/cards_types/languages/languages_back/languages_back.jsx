@@ -25,7 +25,7 @@ const LanguagesBackComponent = ({ data }) => {
         enter: {
             transform: 'translate3d(0, 0, 0)'
         },
-        trail: 175
+        trail: (175 * 3) / (data?.languages ?? []).length
     });
 
     const { backColor, backBackgroundColor } = useMemo(
