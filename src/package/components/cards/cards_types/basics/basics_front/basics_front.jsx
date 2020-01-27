@@ -9,33 +9,31 @@ import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile
 import { ProfileCardFrontTypography } from '../../../../commons/profile_card/profile_card_front_typography/profile_card_front_typography';
 
 import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
+import { createUseStyles } from 'react-jss';
+import { styles } from './basics_front_styles';
+
+const useStyles = createUseStyles(styles);
 
 const BasicsFrontComponent = ({ data }) => {
+    const classes = useStyles();
     const [side, setSide] = useCardSide();
 
     const {
-        currentPosition,
+        summary,
         currentCity: { name: currentCityName }
     } = data;
-    const handleButtonClick = useCallback(() =>
-        setSide(side === 'front' ? 'back' : 'front'),
-    [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
 
     return (
         <ProfileCardPaddedFront>
-            <CenterContentContainer>
-                <ProfileCardFrontTypography>
-                    <FormattedMessage
-                        id="Basics.Front.MainPhrase"
-                        defaultMessage={'{currentPosition} based in {currentCity}'}
-                        values={{ currentCity: currentCityName, currentPosition }}
-                    />
+            <CenterContentContainer customClasses={{ container: classes.container }}>
+                <ProfileCardFrontTypography>{summary}</ProfileCardFrontTypography>
+                <ProfileCardFrontTypography level="h4" component="h3" customClasses={{ container: classes.subTitle }}>
+                    📍 {currentCityName}
                 </ProfileCardFrontTypography>
             </CenterContentContainer>
             <ProfileCardActions>
-                <ProfileCardButton onClick={handleButtonClick}>
-                    More about me
-                </ProfileCardButton>
+                <ProfileCardButton onClick={handleButtonClick}>More about me</ProfileCardButton>
             </ProfileCardActions>
         </ProfileCardPaddedFront>
     );

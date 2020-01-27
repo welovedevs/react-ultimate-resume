@@ -11,14 +11,20 @@ import { styles } from './profile_card_front_typography_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardFrontTypographyComponent = ({ overrideColor, children, customClasses = {} }) => {
+const ProfileCardFrontTypographyComponent = ({
+    component = 'h2',
+    level = 'h1',
+    overrideColor,
+    children,
+    customClasses = {}
+}) => {
     const [variant] = useCardVariant();
     const classes = useStyles({ variant, overrideColor });
 
     return (
         <Typography
-            variant="h1"
-            component="h2"
+            variant={level}
+            component={component}
             customClasses={{ container: cn(classes.container, customClasses.container) }}
         >
             {children}

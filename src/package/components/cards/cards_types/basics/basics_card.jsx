@@ -34,7 +34,7 @@ const BasicsCardComponent = ({ variant, side }) => {
                     back: BasicsBack
                 }}
                 variant={variant}
-                side={side}
+                side={'back'}
             />
         </>
     );

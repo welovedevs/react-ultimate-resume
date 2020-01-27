@@ -127,6 +127,10 @@
         }
     ],
     "specific": {
+        "basics": {
+            "visaSponsorship": true,
+            "personalDescription": "This is a longer description of me, of my backstory, my backyard, my backfire, my backend, my frontend and my friends."
+        },
         "education": {
             "studiesLevel": 5
         },
@@ -138,7 +142,8 @@
             "remote": "occasionally",
             "contractTypes": ["permanent"],
             "codingYears": 7,
-            "codingReason": "J'ai commencé à coder sur Amstrad dans ma cave et je n'ai jamais arrêté depuis"
+            "codingReason": "J'ai commencé à coder sur Amstrad dans ma cave et je n'ai jamais arrêté depuis",
+            "searchState": "activelySearching"
         },
         "interestedBy": "Angular, la blochain et les chatons."
     }
