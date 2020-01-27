@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 
@@ -19,29 +19,27 @@ const useStyles = createUseStyles(styles);
 const ExperiencesFrontComponent = ({ data }) => {
     const [variant] = useCardVariant();
     const classes = useStyles({ variant });
+
+    const title = useMemo(() => {
+        if (!data.work[0]) {
+            return null;
+        }
+        return `${data.work[0].position} @${data.work[0].name}`;
+    }, [data.work]);
+
     return (
         <>
             <ProfileCardPaddedFront>
                 <CenterContentContainer customClasses={{ container: classes.container }}>
                     <div className={classes.textsContainer}>
                         <ProfileCardFrontTypography customClasses={{ container: classes.mainTypography }}>
-                            {data.currentJobTitle}
+                            {title}
                         </ProfileCardFrontTypography>
-                        <Typography
-                            customClasses={{ container: classes.locationTypography }}
-                            component="h3"
-                            variant="h2"
-                        >
-                            <span role="img" aria-label="Location">📍</span>
-                            {` ${data.currentJobLocation.name}`}
-                        </Typography>
                     </div>
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton>
-                    See all experiences
-                </ProfileCardButton>
+                <ProfileCardButton>See all experiences</ProfileCardButton>
             </ProfileCardActions>
         </>
     );

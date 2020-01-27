@@ -30,6 +30,7 @@
             "startDate": "2013-01-01",
             "endDate": "2014-01-01",
             "summary": "Description...",
+            "location": "Paris, France",
             "highlights": ["Started the company"]
         }
     ],
@@ -135,10 +136,6 @@
             "studiesLevel": 5
         },
         "work": {
-            "currentJob": {
-                "location": "Lille, France",
-                "summary": "I'm leading the front-end team @welovedevs"
-            },
             "remote": "occasionally",
             "contractTypes": ["permanent"],
             "codingYears": 7,

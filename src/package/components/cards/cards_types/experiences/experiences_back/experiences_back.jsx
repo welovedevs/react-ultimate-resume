@@ -13,7 +13,7 @@ import { styles } from './experiences_back_styles';
 const useStyles = createUseStyles(styles);
 
 const ExperienceContent = ({ experience, variant, classes }) => {
-    const { id, name, summary } = experience;
+    const { id, name, summary, place } = experience;
     const dateString = useMemo(() => {
         if (!experience.endDate) {
             return experience.startDate?.year() || '';
@@ -21,11 +21,17 @@ const ExperienceContent = ({ experience, variant, classes }) => {
         return `${experience.startDate?.year() || ''} - ${experience.endDate.year()}`;
     }, [experience]);
 
+    const title = useMemo(() => {
+        if (!place?.name) {
+            return title;
+        }
+        return `${name} - ${place.name}`;
+    }, [experience]);
     return (
         <ProfileCardSection key={id} cardVariant={variant}>
             <ProfileCardSectionTitle>{dateString}</ProfileCardSectionTitle>
             <ProfileCardSectionSubtitle customClasses={{ container: classes.subtitle }}>
-                {name}
+                {title}
             </ProfileCardSectionSubtitle>
             <ProfileCardSectionText>{summary}</ProfileCardSectionText>
         </ProfileCardSection>
@@ -37,11 +43,7 @@ const ExperiencesBackComponent = ({ data }) => {
     return (
         <ProfileCardAnimatedBack title="Experiences">
             {data.work?.map(experience => (
-                <ExperienceContent
-                    key={`work_experience_${experience.id}`}
-                    experience={experience}
-                    classes={classes}
-                />
+                <ExperienceContent key={`work_experience_${experience.id}`} experience={experience} classes={classes} />
             ))}
         </ProfileCardAnimatedBack>
     );

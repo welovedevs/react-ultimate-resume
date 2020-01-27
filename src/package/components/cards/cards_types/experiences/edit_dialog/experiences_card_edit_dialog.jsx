@@ -8,7 +8,7 @@ import * as moment from 'moment';
 import { animated, useSpring } from 'react-spring';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 
-import { Button, Checkbox, List, ListItem, Tooltip, TextField, Typography, Tag } from '@wld/ui';
+import { Button, Checkbox, List, ListItem, Tag, TextField, Tooltip, Typography } from '@wld/ui';
 import { Twemoji } from 'react-emoji-render';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
@@ -20,7 +20,6 @@ import { ReactComponent as MoveIcon } from '../../../../../assets/icons/move_lis
 import { ReactComponent as DeleteIcon } from '../../../../../assets/icons/trash.svg';
 import { ReactComponent as ArrowIcon } from '../../../../../assets/icons/keyboard_arrow_down.svg';
 import { YearMonth } from '../../../../commons/year_month/year_month';
-import { EditDialogField } from '../../../../commons/edit_dialog_field/edit_dialog_field';
 import { LocationField } from '../../../../commons/location_field/location_field';
 
 import { styles } from './experiences_card_edit_dialog_styles';
@@ -139,6 +138,10 @@ const ContentFields = ({ fieldErrors, id, formatMessage, experience, onChange, c
     const handleSummaryChange = useCallback(e => onChange(index, 'summary', e.target.value), [index]);
     const handleStartDate = useCallback(value => onChange(index, 'startDate', value), [index]);
     const handleEndDate = useCallback(value => onChange(index, 'endDate', value), [index]);
+    const handleLocationChange = useCallback(value => onChange(index, 'place', value), [index]);
+    const handleLocationTextChange = useCallback(value => onChange(index, 'place', { name: value.target.value }), [
+        index
+    ]);
 
     return (
         <div className={classes.content}>
@@ -178,6 +181,27 @@ const ContentFields = ({ fieldErrors, id, formatMessage, experience, onChange, c
                         {fieldErrors?.position && (
                             <Typography color="danger" variant="helper" component="p">
                                 {fieldErrors.position}
+                            </Typography>
+                        )}
+                    </div>
+                </div>
+                <div className={classes.fieldRow}>
+                    <div className={classes.fieldContainer}>
+                        <Typography color="dark" variant="label">
+                            {formatMessage(translations.jobPlace)}
+                        </Typography>
+                        <LocationField
+                            id={`experience_jobPlace_${id}`}
+                            placeholder={formatMessage(translations.jobPlacePlaceholder)}
+                            value={experience.place?.name}
+                            onLocationSelected={handleLocationChange}
+                            onChange={handleLocationTextChange}
+                            margin="normal"
+                            variant="flat"
+                        />
+                        {fieldErrors?.place && (
+                            <Typography color="danger" variant="helper" component="p">
+                                {fieldErrors?.place.name || fieldErrors.place}
                             </Typography>
                         )}
                     </div>
@@ -281,9 +305,8 @@ const StillEmployedField = ({ value, classes, handleStillEmployedChange, formatM
 const ExperiencesEditForm = ({ helpers: { handleValueChange } }) => {
     const classes = useStyles({});
     const {
-        values: { work, currentJobTitle, currentJobLocation },
-        errors: validationErrors,
-        handleChange
+        values: { work },
+        errors: validationErrors
     } = useFormikContext();
 
     const errors = validationErrors;
@@ -345,34 +368,6 @@ const ExperiencesEditForm = ({ helpers: { handleValueChange } }) => {
 
     return (
         <div className={classes.container}>
-            <div className={classes.topFieldsContainer}>
-                <EditDialogField
-                    error={errors?.currentJobTitle}
-                    title={
-                        <FormattedMessage
-                            id="Experiences.editDialog.currentJobTitle"
-                            defaultMessage="How would you describe your current job ?"
-                        />
-                    }
-                >
-                    <TextField onChange={handleChange} name="currentJobTitle" value={currentJobTitle} variant="flat" />
-                </EditDialogField>
-                <EditDialogField
-                    error={errors?.currentJobLocation?.name || errors?.currentJobLocation}
-                    title={
-                        <FormattedMessage
-                            id="Experiences.editDialog.currentJobTitle"
-                            defaultMessage="What's your current Job location?"
-                        />
-                    }
-                >
-                    <LocationField
-                        variant="flat"
-                        value={currentJobLocation?.name}
-                        onLocationSelected={handleValueChange('currentJobLocation')}
-                    />
-                </EditDialogField>
-            </div>
             <Typography component="h2" variant="h4">
                 <FormattedMessage
                     id="Experiences.editDialog.allExperiences"
@@ -423,12 +418,12 @@ export const ExperiencesEditDialog = ({ data, onEdit, validationSchema, onClose 
             onClose={onClose}
             validationSchema={validationSchemaToPass}
             open
-            title={(
+            title={
                 <FormattedMessage
                     id="Experiences.editDialog.title"
                     defaultMessage="Your past and present professional experiences"
                 />
-            )}
+            }
         >
             {helpers => <ExperiencesEditForm helpers={helpers} />}
         </EditDialog>

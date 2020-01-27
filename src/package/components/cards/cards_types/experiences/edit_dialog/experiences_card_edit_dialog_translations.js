@@ -57,5 +57,13 @@ export const translations = defineMessages({
     warning: {
         id: 'Experiences.editDialog.warningIcon',
         defaultMessage: '⚠'
+    },
+    jobPlace: {
+        id: 'Experiences.editDialog.jobPlace.title',
+        defaultMessage: 'Localisation du poste'
+    },
+    jobPlacePlaceholder: {
+        id: 'Experiences.editDialog.jobPlace.placeholder',
+        defaultMessage: 'Where is/was it located?'
     }
 });

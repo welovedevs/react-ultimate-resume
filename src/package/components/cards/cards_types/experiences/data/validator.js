@@ -5,17 +5,6 @@ import { workTranslations } from './validator_translations';
 
 export const WorkValidator = formatMessage =>
     Yup.object().shape({
-        currentJobTitle: Yup.string()
-            .required(formatMessage(validationTranslations.required))
-            .min(10, formatMessage(validationTranslations.min, { min: 10 })),
-        currentJobLocation: Yup.object()
-            .nullable()
-            .required(formatMessage(validationTranslations.required))
-            .shape({
-                name: Yup.string()
-                    .min(5, formatMessage(validationTranslations.min, { min: 5 }))
-                    .required(formatMessage(validationTranslations.required))
-            }),
         work: Yup.array()
             .of(
                 Yup.object()
@@ -26,6 +15,13 @@ export const WorkValidator = formatMessage =>
                         summary: Yup.string()
                             .required(formatMessage(validationTranslations.required))
                             .min(30, formatMessage(validationTranslations.min, { min: 30 })),
+                        place: Yup.object()
+                            .nullable()
+                            .shape({
+                                name: Yup.string()
+                                    .required(formatMessage(validationTranslations.required))
+                                    .min(5, formatMessage(validationTranslations.min, { min: 5 }))
+                            }),
                         startDate: Yup.object()
                             .required(formatMessage(validationTranslations.required))
                             .test(

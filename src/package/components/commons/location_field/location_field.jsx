@@ -12,7 +12,7 @@ import { locationFieldTranslations } from './location_field_translations';
 
 const useStyles = createUseStyles(locationFieldStyles);
 
-const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSelect }) => {
+const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSelect, onChange }) => {
     const classes = useStyles();
     const { locale, formatMessage } = useIntl();
     const inputRef = useRef();
@@ -29,6 +29,10 @@ const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSel
 
     const handleChange = useCallback(e => {
         setInput(e.target.value);
+        if (typeof onChange === 'function') {
+            e.persist();
+            onChange(e);
+        }
         if (typeof onLocationSelected === 'function' && !e.target.value) {
             onLocationSelected(null);
         }
@@ -84,37 +88,37 @@ const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSel
 };
 
 const PredictionsList = ({ predictions = [], setPreventBlur, input, onPredictionSelected, classes, setInput }) => (
-        <PopperCard
-            open
-            anchorElement={input}
-            customClasses={{
-                popper: classes.popperCard
-            }}
-        >
-            <List className={classes.popperList}>
-                {predictions
-                    .filter(item => item)
-                    .map(({ description, place_id: placeId }) => (
-                        <ListItem
-                            key={`prediction_${placeId}`}
-                            onMouseDown={() => setPreventBlur(true)}
-                            onMouseUp={() => {
-                                setPreventBlur(false);
-                                input && input.focus();
-                            }}
-                            onClick={() => {
-                                if (!placeId) {
-                                    return;
-                                }
-                                setInput(description);
-                                onPredictionSelected(placeId, description);
-                            }}
-                        >
-                            <Typography>{description || ''}</Typography>
-                        </ListItem>
-                    ))}
-            </List>
-        </PopperCard>
-    );
+    <PopperCard
+        open
+        anchorElement={input}
+        customClasses={{
+            popper: classes.popperCard
+        }}
+    >
+        <List className={classes.popperList}>
+            {predictions
+                .filter(item => item)
+                .map(({ description, place_id: placeId }) => (
+                    <ListItem
+                        key={`prediction_${placeId}`}
+                        onMouseDown={() => setPreventBlur(true)}
+                        onMouseUp={() => {
+                            setPreventBlur(false);
+                            input && input.focus();
+                        }}
+                        onClick={() => {
+                            if (!placeId) {
+                                return;
+                            }
+                            setInput(description);
+                            onPredictionSelected(placeId, description);
+                        }}
+                    >
+                        <Typography>{description || ''}</Typography>
+                    </ListItem>
+                ))}
+        </List>
+    </PopperCard>
+);
 
 export const LocationField = LocationFieldComponent;
