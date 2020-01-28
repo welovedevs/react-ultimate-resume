@@ -12,18 +12,6 @@ export const BasicsValidationSchema = formatMessage =>
                     .min(5, formatMessage(validationTranslations.min, { min: 5 }))
                     .required(formatMessage(validationTranslations.required))
             }),
-        contractTypes: Yup.array()
-            .test(
-                'is-not-empty',
-                formatMessage(basicsValidationTranslations.atLeastOneContractType),
-                value => !!(value || []).length
-            )
-            .test('is-exclusif', formatMessage(basicsValidationTranslations.selectByGroup), value => {
-                return !(
-                    ['permanent', 'fixedTerm', 'freelance'].filter(val => value.includes(val)).length &&
-                    ['apprenticeship', 'internship'].filter(val => value.includes(val)).length
-                );
-            }),
         experienceYears: Yup.number()
             .min(0, formatMessage(validationTranslations.min, { min: 0 }))
             .max(20, formatMessage(validationTranslations.max, { max: 20 }))

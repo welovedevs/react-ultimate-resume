@@ -13,13 +13,17 @@ export const CheckboxGroup = ({ values, translations, value = [], name, onChange
 
     const onFieldClicked = useCallback(
         enumValue => () => {
+            if (typeof onChange !== 'function') {
+                return;
+            }
+            console.log(value);
             if (!value.includes(enumValue)) {
                 onChange([...value, enumValue]);
                 return;
             }
             onChange(value.filter(checkedItem => checkedItem !== enumValue));
         },
-        [value]
+        [value, onChange]
     );
     return (
         <div className={classes.checkboxGroup}>

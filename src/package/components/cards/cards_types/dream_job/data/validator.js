@@ -2,16 +2,15 @@ import * as Yup from 'yup';
 import { validationTranslations } from '../../../../../utils/validation_translations';
 import { basicsValidationTranslations } from './validator_translations';
 
-export const BasicsValidationSchema = formatMessage =>
+export const DreamJobValidationSchema = formatMessage =>
     Yup.object({
-        currentCity: Yup.object()
-            .nullable()
-            .required(formatMessage(validationTranslations.required))
-            .shape({
+        places: Yup.array().of(
+            Yup.object().shape({
                 name: Yup.string()
                     .min(5, formatMessage(validationTranslations.min, { min: 5 }))
                     .required(formatMessage(validationTranslations.required))
-            }),
+            })
+        ),
         contractTypes: Yup.array()
             .test(
                 'is-not-empty',
@@ -24,17 +23,5 @@ export const BasicsValidationSchema = formatMessage =>
                     ['apprenticeship', 'internship'].filter(val => value.includes(val)).length
                 );
             }),
-        experienceYears: Yup.number()
-            .min(0, formatMessage(validationTranslations.min, { min: 0 }))
-            .max(20, formatMessage(validationTranslations.max, { max: 20 }))
-            .required(formatMessage(validationTranslations.required)),
-        studiesLevel: Yup.number()
-            .min(0, formatMessage(validationTranslations.min, { min: 0 }))
-            .max(12, formatMessage(validationTranslations.max, { max: 12 }))
-            .required(formatMessage(validationTranslations.required)),
-        codingYears: Yup.number()
-            .min(0, formatMessage(validationTranslations.min, { min: 0 }))
-            .max(20, formatMessage(validationTranslations.max, { max: 20 }))
-            .required(formatMessage(validationTranslations.required)),
-        codingReason: Yup.string().min(10, formatMessage(validationTranslations.min, { min: 10 }))
+        salary: Yup.string().min(2, formatMessage(validationTranslations.min, { min: 5 }))
     });

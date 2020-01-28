@@ -12,7 +12,7 @@ import { locationFieldTranslations } from './location_field_translations';
 
 const useStyles = createUseStyles(locationFieldStyles);
 
-const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSelect, onChange }) => {
+const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSelect, onChange, fullWidth }) => {
     const classes = useStyles();
     const { locale, formatMessage } = useIntl();
     const inputRef = useRef();
@@ -51,6 +51,7 @@ const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSel
         <div className={classes.container}>
             <div style={{ position: 'relative' }}>
                 <TextField
+                    fullWidth={fullWidth}
                     className={classes.input}
                     onClick={e => e.target && e.target.select && e.target.select()}
                     value={input}

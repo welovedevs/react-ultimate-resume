@@ -1,5 +1,7 @@
+import * as uuid from 'uuid/v4';
+
 export const mapDreamJobFromJsonResume = jsonResume => ({
-    places: (jsonResume.specific?.dreamJob?.locations ?? []).map(location => ({ name: location })),
+    places: (jsonResume.specific?.dreamJob?.locations ?? []).map(location => ({ name: location, id: uuid() })),
     perks: jsonResume.specific?.dreamJob?.perks,
     salary: jsonResume.specific?.dreamJob?.salary,
     remoteFrequency: jsonResume.specific?.dreamJob?.remoteFrequency,

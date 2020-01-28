@@ -3,18 +3,13 @@ import React, { useMemo } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useFormikContext } from 'formik';
 
-import { TextField, Typography, ListItem } from '@wld/ui';
+import { ListItem, TextField, Typography } from '@wld/ui';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { EditDialogField } from '../../../../commons/edit_dialog_field/edit_dialog_field';
 import { SliderWithPopper } from '../../../../commons/slider_with_popper/slider_with_popper';
-import { CheckboxGroup } from '../../../../commons/checkbox_group/checkbox_group';
 import { CheckboxField } from '../../../../commons/checkbox_field/checkbox_group';
 import { LocationField } from '../../../../commons/location_field/location_field';
-
-import { CONTRACT_TYPES } from '../../../../../utils/enums/contract_types/contract_types';
-
-import { contractTypesTranslations } from '../../../../../utils/enums/contract_types/contract_types_translations';
 import { createUseStyles } from 'react-jss';
 import { styles } from './basic_card_edit_dialog_styles';
 import { Select } from '../../../../commons/select/select';
@@ -31,7 +26,6 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
         currentCity,
         remoteWork,
         experienceYears,
-        contractTypes,
         studiesLevel,
         codingYears,
         codingReason,
@@ -68,25 +62,7 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
                     checked={remoteWork}
                 />
             </EditDialogField>
-            <EditDialogField
-                error={errors.contractTypes}
-                title={
-                    <FormattedMessage
-                        id="Basics.editDialog.contractTypes.title"
-                        defaultMessage="What contract types are you currently looking for?"
-                    />
-                }
-            >
-                <CheckboxGroup
-                    values={CONTRACT_TYPES}
-                    translations={contractTypesTranslations}
-                    value={contractTypes}
-                    name="contractTypes"
-                    variant="outlined"
-                    onChange={handleValueChange('contractTypes')}
-                />
-            </EditDialogField>
-            <EditDialogField error={errors.visaSponsorship} customClasses={{ container: classes.visaSponsorship }}>
+            <EditDialogField error={errors.visaSponsorship} classes={{ container: classes.visaSponsorship }}>
                 <CheckboxField
                     variant="outlined"
                     title={

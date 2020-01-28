@@ -17,7 +17,6 @@ const BasicsBackComponent = ({ data }) => {
 
     const {
         currentCity: { name: currentCityName },
-        remoteWork,
         experienceYears,
         contractTypes,
         studiesLevel,
@@ -39,20 +38,6 @@ const BasicsBackComponent = ({ data }) => {
                             defaultMessage={'I require a visa sponsorship'}
                         />
                     </span>
-                )
-            },
-            remote: {
-                title: <FormattedMessage id="Basics.Back.Location.Title" defaultMessage="Location" />,
-                value: (
-                    <>
-                        <FormattedMessage
-                            id="Basics.Back.Location"
-                            defaultMessage={'Based in {currentCity}'}
-                            values={{ currentCity: currentCityName }}
-                        />
-                        <br />
-                        <RemoteWork remoteWork={remoteWork} />
-                    </>
                 )
             },
             work: {
@@ -100,7 +85,6 @@ const BasicsBackComponent = ({ data }) => {
         }),
         [
             currentCityName,
-            remoteWork,
             experienceYears,
             contractTypes,
             studiesLevel,
@@ -126,15 +110,6 @@ const BasicsBackComponent = ({ data }) => {
     );
 };
 
-const RemoteWork = ({ remoteWork }) => {
-    if (!remoteWork) {
-        return null;
-    }
-    if (remoteWork === 'NEVER') {
-        return <FormattedMessage id="Basics.Back.Location" defaultMessage="Not looking for remote work" />;
-    }
-    return <FormattedMessage id="Basics.Back.Location" defaultMessage="Looking for remote work" />;
-};
 const JobSearchState = ({ jobSearchState }) => {
     const { formatMessage } = useIntl();
     if (!jobSearchState) {

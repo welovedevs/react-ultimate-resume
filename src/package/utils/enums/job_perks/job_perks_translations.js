@@ -29,7 +29,7 @@ export const JobPerksTranslations = defineMessages({
         id: 'Developer.JobPerks.perks',
         defaultMessage: 'Des avantages (tickets restaurants, CE, etc...)'
     },
-    other: {
+    others: {
         id: 'Developer.JobPerks.other',
         defaultMessage: 'Autre'
     }
