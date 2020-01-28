@@ -22,7 +22,7 @@ const BasicsBackComponent = ({ data }) => {
         studiesLevel,
         codingYears,
         codingReason,
-        jobSearchState,
+        searchState,
         visaSponsorship,
         personalDescription
     } = data;
@@ -30,7 +30,7 @@ const BasicsBackComponent = ({ data }) => {
     const sections = useMemo(
         () => ({
             visaSponsorship: {
-                hide: !!visaSponsorship,
+                hide: !visaSponsorship,
                 value: (
                     <span className={classes.bold}>
                         <FormattedMessage
@@ -52,7 +52,7 @@ const BasicsBackComponent = ({ data }) => {
                         <br />
                         <ContractType contractTypes={contractTypes} />
                         <br />
-                        <JobSearchState jobSearchState={jobSearchState} />
+                        <JobSearchState searchState={searchState} />
                     </>
                 )
             },
@@ -92,7 +92,7 @@ const BasicsBackComponent = ({ data }) => {
             codingReason,
             visaSponsorship,
             personalDescription,
-            jobSearchState
+            searchState
         ]
     );
 
@@ -110,12 +110,12 @@ const BasicsBackComponent = ({ data }) => {
     );
 };
 
-const JobSearchState = ({ jobSearchState }) => {
+const JobSearchState = ({ searchState }) => {
     const { formatMessage } = useIntl();
-    if (!jobSearchState) {
+    if (!searchState) {
         return null;
     }
-    return <span>{formatMessage(JobSearchStateTranslations[jobSearchState])}</span>;
+    return <span>{formatMessage(JobSearchStateTranslations[searchState])}</span>;
 };
 
 export const BasicsBack = BasicsBackComponent;

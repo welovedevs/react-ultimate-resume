@@ -21,7 +21,7 @@ const ExperiencesFrontComponent = ({ data }) => {
     const classes = useStyles({ variant });
 
     const title = useMemo(() => {
-        if (!data.work[0]) {
+        if (!data.work?.[0]) {
             return null;
         }
         return `${data.work[0].position} @${data.work[0].name}`;

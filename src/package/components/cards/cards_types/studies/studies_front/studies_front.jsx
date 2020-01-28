@@ -22,23 +22,18 @@ const StudiesFrontComponent = ({ data: { education: data } }) => {
         <>
             <ProfileCardPaddedFront>
                 <CenterContentContainer customClasses={{ container: classes.container }}>
-                    <ProfileCardFrontVector
-                        customClasses={{ container: classes.logo }}
-                        vector={SchoolLogo}
-                    />
+                    <ProfileCardFrontVector customClasses={{ container: classes.logo }} vector={SchoolLogo} />
                     <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
                         <FormattedMessage
                             id="Studies.title"
                             defaultMessage="I gratuated from {schoolName}"
-                            values={{ schoolName: data[0] && data[0].institution }}
+                            values={{ schoolName: data?.[0]?.institution }}
                         />
                     </ProfileCardFrontTypography>
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton>
-                    All my studies
-                </ProfileCardButton>
+                <ProfileCardButton>All my studies</ProfileCardButton>
             </ProfileCardActions>
         </>
     );

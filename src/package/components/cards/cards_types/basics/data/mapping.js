@@ -7,6 +7,6 @@ export const BasicMapping = Object.freeze({
     codingYears: 'specific.work.codingYears',
     codingReason: 'specific.work.codingReason',
     visaSponsorship: 'basics.visaSponsorship',
-    jobSearchState: 'specific.work.searchState',
+    searchState: 'specific.work.searchState',
     personalDescription: 'specific.basics.personalDescription'
 });

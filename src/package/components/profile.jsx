@@ -2,7 +2,6 @@ import React, { createContext, useCallback, useEffect, useMemo, useState } from 
 import { IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
-import JsonStub from '../../data/json_stub.json';
 import { buildTheme } from '../utils/styles/theme/theme';
 
 import { prepareJsonResume } from '../utils/data/resume';
@@ -22,13 +21,18 @@ const DEFAULT_OPTIONS = Object.freeze({
 
 export const DeveloperProfileContext = createContext({});
 
-const DeveloperProfileComponent = ({ options = {}, onEdit: onEditProps = () => {} }) => {
+const DeveloperProfileComponent = ({ data: dataProps = {}, options = {}, onEdit: onEditProps = () => {} }) => {
     const classes = useStyles(styles);
     const [isEditing, setIsEditing] = useState(true);
-    const data = useMemo(() => prepareJsonResume(JsonStub), [JsonStub]);
+    const data = useMemo(() => {
+        return prepareJsonResume(dataProps);
+    }, [JSON.stringify(dataProps)]);
 
     const onEdit = useCallback(newData => {
-        console.log(newData);
+        if (typeof onEditProps === 'function') {
+            onEditProps(newData);
+            return;
+        }
     }, []);
 
     return (
@@ -43,7 +47,7 @@ const DeveloperProfileComponent = ({ options = {}, onEdit: onEditProps = () => {
     );
 };
 
-const WithProvidersDeveloperProfile = ({ options = {} }) => {
+const WithProvidersDeveloperProfile = ({ data, onEdit, options = {} }) => {
     const { locale, theme } = useMemo(() => ({ ...DEFAULT_OPTIONS, ...options }), [options]);
     const [builtTheme, setBuiltTheme] = useState(null);
 
@@ -63,7 +67,7 @@ const WithProvidersDeveloperProfile = ({ options = {} }) => {
     return (
         <ThemeProvider theme={builtTheme}>
             <IntlProvider locale={locale}>
-                <DeveloperProfileComponent options={options} />
+                <DeveloperProfileComponent data={data} onEdit={onEdit} options={options} />
             </IntlProvider>
         </ThemeProvider>
     );

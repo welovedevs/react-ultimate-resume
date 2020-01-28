@@ -1,7 +1,7 @@
 import * as uuid from 'uuid/v4';
 
 export const mapLanguagesFromJsonResume = jsonResume => ({
-    languages: jsonResume?.languages.map((language, index) => ({
+    languages: jsonResume?.languages?.map((language, index) => ({
         ...language,
         //generating uuid for manipulating data if not present
         id: language.id || uuid(),

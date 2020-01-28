@@ -2,7 +2,7 @@ import moment from 'moment';
 import * as uuid from 'uuid/v4';
 
 export const mapWorkFromJsonResume = jsonResume => ({
-    work: jsonResume?.work.map((work, index) => ({
+    work: jsonResume?.work?.map((work, index) => ({
         ...work,
         //generating uuid for manipulating data if not present
         id: work.id || uuid(),

@@ -24,7 +24,6 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
     const { values, errors, handleChange } = useFormikContext();
     const {
         currentCity,
-        remoteWork,
         experienceYears,
         studiesLevel,
         codingYears,
@@ -46,21 +45,6 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
                 }
             >
                 <LocationField value={currentCity?.name} onLocationSelected={handleValueChange('currentCity')} />
-                <CheckboxField
-                    variant="outlined"
-                    title={
-                        <Typography>
-                            <FormattedMessage
-                                id="Basics.editDialog.remoteWork"
-                                defaultMessage="Interested in remote work"
-                            />
-                        </Typography>
-                    }
-                    value={remoteWork}
-                    onClick={toggleValue('remoteWork')}
-                    onChange={toggleValue('remoteWork')}
-                    checked={remoteWork}
-                />
             </EditDialogField>
             <EditDialogField error={errors.visaSponsorship} classes={{ container: classes.visaSponsorship }}>
                 <CheckboxField
@@ -124,6 +108,13 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
                     min={0}
                     max={20}
                 />
+                <Typography className={classes.sliderLabel}>
+                    <FormattedMessage
+                        id="Main.lang.years"
+                        defaultMessage="{count, plural, one {# year} other {# years}}"
+                        values={{ count: codingYears }}
+                    />
+                </Typography>
             </EditDialogField>
             <EditDialogField
                 error={errors.studiesLevel}
@@ -148,6 +139,13 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
                     min={0}
                     max={12}
                 />
+                <Typography className={classes.sliderLabel}>
+                    <FormattedMessage
+                        id="Main.lang.years"
+                        defaultMessage="{count, plural, one {# year} other {# years}}"
+                        values={{ count: studiesLevel }}
+                    />
+                </Typography>
             </EditDialogField>
             <EditDialogField
                 error={errors.experienceYears}
@@ -172,6 +170,13 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
                     min={0}
                     max={20}
                 />
+                <Typography className={classes.sliderLabel}>
+                    <FormattedMessage
+                        id="Main.lang.years"
+                        defaultMessage="{count, plural, one {# year} other {# years}}"
+                        values={{ count: experienceYears }}
+                    />
+                </Typography>
             </EditDialogField>
             <EditDialogField
                 error={errors.codingReason}

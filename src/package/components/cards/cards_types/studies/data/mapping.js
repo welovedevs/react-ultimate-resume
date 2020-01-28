@@ -3,7 +3,7 @@ import * as uuid from 'uuid/v4';
 
 export const mapStudiesFromJsonResume = jsonResume => {
     return {
-        education: jsonResume?.education.map(study => ({
+        education: jsonResume?.education?.map(study => ({
             ...study,
             //generating uuid for manipulating data if not present
             id: study.id || uuid(),
