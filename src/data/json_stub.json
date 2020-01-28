@@ -132,6 +132,15 @@
             "visaSponsorship": true,
             "personalDescription": "This is a longer description of me, of my backstory, my backyard, my backfire, my backend, my frontend and my friends."
         },
+        "dreamJob": {
+            "locations": ["Lille, France", "Paris,France", "Valenciennes, France"],
+            "remoteFrequency": "regularly",
+            "salary": "30k€",
+            "perks": {
+                "mood": true,
+                "others": "Un PEE chargé gros"
+            }
+        },
         "education": {
             "studiesLevel": 5
         },

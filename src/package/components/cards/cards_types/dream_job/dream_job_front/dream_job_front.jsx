@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 
@@ -12,28 +12,57 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 import { ReactComponent as HomeLogo } from '../../../../../assets/icons/home.svg';
 
 import { styles } from './dream_job_front_styles';
+import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
+import { FormattedMessage } from 'react-intl';
 
 const useStyles = createUseStyles(styles);
 
-const DreamJobFrontComponent = () => {
+const DreamJobFrontComponent = ({ data }) => {
+    const { remoteFrequency, places } = data;
     const classes = useStyles();
+
+    const content = useMemo(() => {
+        if (remoteFrequency === REMOTE_FREQUENCY.FULL_TIME) {
+            return (
+                <>
+                    <ProfileCardFrontVector customClasses={{ container: classes.logo }} vector={HomeLogo} />
+                    <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
+                        <FormattedMessage
+                            id={'DreamJob.Front.RemoteFulltime'}
+                            defaultMessage="I want to work remotely"
+                        />
+                    </ProfileCardFrontTypography>
+                </>
+            );
+        }
+
+        return (
+            <>
+                <ProfileCardFrontVector customClasses={{ container: classes.logo }} vector={HomeLogo} />
+                <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
+                    <FormattedMessage
+                        id={'DreamJob.Front.Cities'}
+                        defaultMessage="I want to work in {cities}"
+                        values={{
+                            cities: places
+                                .slice(0, 2)
+                                .map(({ name }) => name)
+                                .join(', ')
+                        }}
+                    />
+                </ProfileCardFrontTypography>
+            </>
+        );
+    }, [remoteFrequency, places]);
     return (
         <>
             <ProfileCardPaddedFront>
                 <CenterContentContainer customClasses={{ container: classes.container }}>
-                    <ProfileCardFrontVector
-                        customClasses={{ container: classes.logo }}
-                        vector={HomeLogo}
-                    />
-                    <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
-                        Want to work remotely
-                    </ProfileCardFrontTypography>
+                    {content}
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton>
-                    Discover my dream job
-                </ProfileCardButton>
+                <ProfileCardButton>Discover my dream job</ProfileCardButton>
             </ProfileCardActions>
         </>
     );

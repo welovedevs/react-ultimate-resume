@@ -8,6 +8,7 @@ import { ProfileCardSection } from '../../../../commons/profile_card/profile_car
 import { createUseStyles } from 'react-jss';
 import { styles } from './basics_back_styles';
 import JobSearchStateTranslations from '../../../../../utils/enums/job_serachstate/job_search_state_translations';
+import { ContractType } from '../../../../commons/fields/contract_types/contract_types';
 
 const useStyles = createUseStyles(styles);
 
@@ -122,30 +123,6 @@ const BasicsBackComponent = ({ data }) => {
                     </ProfileCardSection>
                 ))}
         </ProfileCardAnimatedBack>
-    );
-};
-
-const ContractType = ({ contractTypes = [] }) => {
-    const contracts = [...contractTypes];
-    const lastContract = contracts.pop();
-    if (!lastContract) {
-        return null;
-    }
-    if (!contracts.length) {
-        return (
-            <FormattedMessage
-                id="Basics.Back.WorkContract.single"
-                defaultMessage={'Looking for a {contractType} contract'}
-                values={{ contractType: lastContract }}
-            />
-        );
-    }
-    return (
-        <FormattedMessage
-            id="Basics.Back.WorkContract.multi"
-            defaultMessage={'Looking for a {contracts} or {lastContract} contract'}
-            values={{ lastContract, contracts: contracts.join(', ') }}
-        />
     );
 };
 
