@@ -30,7 +30,7 @@ const DreamJobCardComponent = ({ variant, side }) => {
                 onEdit: onDialogEdited
             }}
             variant={variant}
-            side={'back'}
+            side={side}
         />
     );
 };
