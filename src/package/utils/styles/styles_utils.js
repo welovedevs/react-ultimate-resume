@@ -33,4 +33,5 @@ export const withCustomVerticalScrollbar = (color = '#c1c1c1') => ({
 export const getColorsFromCardVariant = (theme, cardVariant) =>
     theme.components.cards.variants[cardVariant] || theme.components.cards.default;
 
-export const getHexFromPaletteColor = (theme, paletteColor, shade = 500) => theme.palette[paletteColor][shade];
+export const getHexFromPaletteColor = (theme, paletteColor, shade = 500) =>
+    (theme.palette[paletteColor] ?? theme.primary)[shade];

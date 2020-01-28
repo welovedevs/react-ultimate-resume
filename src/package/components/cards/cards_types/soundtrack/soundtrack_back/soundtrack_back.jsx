@@ -15,12 +15,16 @@ import { styles } from './soundtrack_back_styles';
 
 const useStyles = createUseStyles(styles);
 
-const SoundtrackBackComponent = () => {
+const SoundtrackBackComponent = ({ data }) => {
     const classes = useStyles();
     const theme = useTheme();
     const [variant] = useCardVariant();
 
-    const { components: { cards: { height, width } } } = theme;
+    const {
+        components: {
+            cards: { height, width }
+        }
+    } = theme;
 
     const [hasLoaded, setHasLoaded] = useState(false);
 
@@ -40,20 +44,19 @@ const SoundtrackBackComponent = () => {
     return (
         <CenterContentContainer customClasses={{ container: classes.container }}>
             <span className={classes.loadingSpinnerContainer}>
-                {loadingSpinnerTransitions.map(({ item, key, props }) => !item && (
-                    <animated.span
-                        key={key}
-                        className={classes.loadingSpinnerChild}
-                        style={props}
-                    >
-                        <LoadingSpinner color={color} />
-                    </animated.span>
-                ))}
+                {loadingSpinnerTransitions.map(
+                    ({ item, key, props }) =>
+                        !item && (
+                            <animated.span key={key} className={classes.loadingSpinnerChild} style={props}>
+                                <LoadingSpinner color={color} />
+                            </animated.span>
+                        )
+                )}
             </span>
             <animated.iframe
                 className={classes.iframe}
                 title="Soundtrack"
-                src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWl7MndYYxge"
+                src={data.embedUrl}
                 height={height}
                 width={width}
                 frameBorder="0"

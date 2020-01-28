@@ -12,6 +12,7 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 import { ReactComponent as SpotifyLogo } from '../../../../../assets/icons/brands/spotify.svg';
 
 import { styles } from './soundtrack_front_styles';
+import { FormattedMessage } from 'react-intl';
 
 const useStyles = createUseStyles(styles);
 
@@ -19,21 +20,18 @@ const SoundtrackFrontComponent = () => {
     const classes = useStyles();
     return (
         <>
-        <ProfileCardPaddedFront>
-            <CenterContentContainer customClasses={{ container: classes.container }}>
-                <ProfileCardFrontVector
-                    customClasses={{ container: classes.logo }}
-                    vector={SpotifyLogo}
-                />
-                <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
-                    AC/DC is the soundtrack of my life
-                </ProfileCardFrontTypography>
-            </CenterContentContainer>
-        </ProfileCardPaddedFront>
+            <ProfileCardPaddedFront>
+                <CenterContentContainer customClasses={{ container: classes.container }}>
+                    <ProfileCardFrontVector customClasses={{ container: classes.logo }} vector={SpotifyLogo} />
+                    <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
+                        <FormattedMessage id="Soundtrack.front.title" defaultMessage="Discover my favourite tracks" />
+                    </ProfileCardFrontTypography>
+                </CenterContentContainer>
+            </ProfileCardPaddedFront>
             <ProfileCardActions>
-            <ProfileCardButton>
-                My spotify playlist
-            </ProfileCardButton>
+                <ProfileCardButton>
+                    <FormattedMessage id="Soundtrack.front.button" defaultMessage="My playlist" />
+                </ProfileCardButton>
             </ProfileCardActions>
         </>
     );
