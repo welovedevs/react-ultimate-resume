@@ -8,7 +8,6 @@ import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../..
 import { CustomLabel } from '../utils/skills_back_recharts_utils';
 import { useCardVariant } from '../../../../../commons/profile_card/profile_card_hooks/use_card_variant';
 
-
 const GRAPH_HEIGHT = 250;
 const GRAPH_PIE_RADIUS = 100;
 
@@ -16,15 +15,16 @@ const SkillsPieChart = ({ data, springOnOpenOpacityProps, springOnScrollOpacityP
     const theme = useTheme();
     const [variant] = useCardVariant();
 
-    const { contentColor, backgroundColor } = useMemo(() => ({
+    const { contentColor, backgroundColor } = useMemo(
+        () => ({
             contentColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).color),
             backgroundColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backgroundColor)
-        }
-    ), [theme, variant]);
+        }),
+        [theme, variant]
+    );
     const colorPalette = useMemo(
-        () => Array.from({ length: 3 },
-            (v, k) => chroma.mix(contentColor, backgroundColor,
-                (2 * k) / 10).hex()), [contentColor, backgroundColor]
+        () => Array.from({ length: 3 }, (v, k) => chroma.mix(contentColor, backgroundColor, (2 * k) / 10).hex()),
+        [contentColor, backgroundColor]
     );
 
     const width = theme?.components?.cards?.width;
@@ -36,7 +36,7 @@ const SkillsPieChart = ({ data, springOnOpenOpacityProps, springOnScrollOpacityP
                     dataKey="value"
                     animationDuration={750}
                     labelLine={false}
-                    label={(shapeProps) => (
+                    label={shapeProps => (
                         <CustomLabel
                             customColor={contentColor}
                             springProps={springOnOpenOpacityProps}
@@ -48,14 +48,9 @@ const SkillsPieChart = ({ data, springOnOpenOpacityProps, springOnScrollOpacityP
                     cy={GRAPH_HEIGHT / 2}
                     outerRadius={GRAPH_PIE_RADIUS}
                     onAnimationEnd={onAnimationEnd}
-
                 >
                     {data.map((entry, index) => (
-                        <Cell
-                            key={`cell-${index}`}
-                            fill={colorPalette[index]}
-                            stroke={backgroundColor}
-                        />
+                        <Cell key={`cell-${index}`} fill={colorPalette[index]} stroke={backgroundColor} />
                     ))}
                 </Pie>
             </PieChart>

@@ -26,17 +26,15 @@ const OtherSkills = ({ othersSkills, springOnOpenOpacityProps, springTranslation
             className={classes.otherSkillsContainer}
             style={{
                 opacity: springOnOpenOpacityProps.opacity,
-                transform: yt.interpolate((value) => `translate3d(0, ${value}px,0)`)
+                transform: yt.interpolate(value => `translate3d(0, ${value}px,0)`)
             }}
         >
-            <Typography
-                variant="h3"
-                component="h3"
-                customClasses={{ container: classes.otherSkillsTitle }}
-            >
+            <Typography variant="h3" component="h3" customClasses={{ container: classes.otherSkillsTitle }}>
                 Je maitrise également...
             </Typography>
-            {othersSkills.map(skill => <OtherSkillProgress key={`other_skill_${skill.name}`} color={color} {...skill} />)}
+            {othersSkills.map(skill => (
+                <OtherSkillProgress key={`other_skill_${skill.name}`} color={color} {...skill} />
+            ))}
         </animated.div>
     );
 };

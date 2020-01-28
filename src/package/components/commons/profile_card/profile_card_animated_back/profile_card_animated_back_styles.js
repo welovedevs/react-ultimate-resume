@@ -1,3 +1,3 @@
-export const styles = ({
+export const styles = {
     content: {}
-});
+};

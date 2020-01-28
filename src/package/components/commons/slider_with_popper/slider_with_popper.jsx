@@ -6,7 +6,7 @@ import cn from 'classnames';
 
 const useStyles = createUseStyles(sliderStyles);
 
-export const SliderWithPopper = ({ color, name, value, onChange, min, max, className, label}) => {
+export const SliderWithPopper = ({ color, name, value, onChange, min, max, className, label }) => {
     const classes = useStyles();
     const [isFocused, setIsFocused] = useState(false);
     const handleFocus = useCallback(() => setIsFocused(true), []);

@@ -10,13 +10,11 @@ import { getColorsFromCardVariant } from '../../../../../utils/styles/styles_uti
 
 const useStyles = createUseStyles(styles);
 
-const InterestedByBackComponent = (props) => {
+const InterestedByBackComponent = props => {
     const [variant] = useCardVariant();
     const classes = useStyles({ variant });
     const theme = useTheme();
-    const overrideColor = useMemo(() =>
-        getColorsFromCardVariant(theme, variant).backgroundColor,
-        [theme, variant]);
+    const overrideColor = useMemo(() => getColorsFromCardVariant(theme, variant).backgroundColor, [theme, variant]);
 
     return (
         <InterestedByFront

@@ -20,11 +20,15 @@ const ProjectsBackComponent = () => {
                     container: classes.title,
                     typography: classes.typography
                 }}
-                beforeTypography={(
+                beforeTypography={
                     <div className={classes.background}>
-                        <img className={classes.backgroundImage} src="https://source.unsplash.com/random/750x400" alt="Project Background" />
+                        <img
+                            className={classes.backgroundImage}
+                            src="https://source.unsplash.com/random/750x400"
+                            alt="Project Background"
+                        />
                     </div>
-                )}
+                }
             >
                 Projects
             </ProfileCardTitle>

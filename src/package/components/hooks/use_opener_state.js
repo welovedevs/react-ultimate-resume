@@ -25,4 +25,3 @@ export const useOpenerState = ({ mobileWidth = 560 } = {}) => {
 
     return [open, eventsHandlerElementProps, { setOpened, setClosed, toggle }];
 };
-

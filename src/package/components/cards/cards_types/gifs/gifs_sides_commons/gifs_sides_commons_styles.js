@@ -1,6 +1,6 @@
-export const styles = (theme) => {
+export const styles = theme => {
     const { palette } = theme;
-    return ({
+    return {
         container: {
             '& > *:not($underLayerContainer)': {
                 zIndex: 2
@@ -25,6 +25,6 @@ export const styles = (theme) => {
             left: 0,
             backgroundColor: `rgba(${palette.dark.rgbShades[900].join(', ')}, .4)`,
             zIndex: 1
-        },
-    });
+        }
+    };
 };

@@ -22,10 +22,10 @@ const ProjectDialogContentImagesComponent = ({ images }) => {
 
     const transitions = useTransition(imagesEntries, ([id]) => `project_image_${id}`, {
         ...PROJECT_DIALOG_CONTENT_IMAGES_TRANSITIONS_SPRING_PROPS,
-        ...isEditing && {
+        ...(isEditing && {
             immediate: true,
             trail: 0
-        }
+        })
     });
 
     return (

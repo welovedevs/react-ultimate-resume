@@ -28,36 +28,40 @@ const SkillsBackComponent = () => {
     const [springTranslationProps, setSpringTranslationProps] = useSpring(() => ({ yt: 0, config: config.slow }));
 
     const { top3Skills, othersSkills } = useMemo(() => {
-        const newData = [...data || []];
+        const newData = [...(data || [])];
         const top3 = newData.splice(0, 3);
-        return ({
+        return {
             top3Skills: top3,
             othersSkills: newData
-        });
+        };
     }, [data]);
 
-    const onScroll = useCallback(e => {
-        const newOpacity = Math.max(1 - (e.target.scrollTop) / 60, 0);
+    const onScroll = useCallback(
+        e => {
+            const newOpacity = Math.max(1 - e.target.scrollTop / 60, 0);
 
-        if (newOpacity === 0) {
-            if (othersSkills.length > 10) {
-                setSpringTranslationProps({ yt: -100 });
+            if (newOpacity === 0) {
+                if (othersSkills.length > 10) {
+                    setSpringTranslationProps({ yt: -100 });
+                } else {
+                    setSpringTranslationProps({ yt: -100 + (e.target.scrollTop > 160 && e.target.scrollTop - 160) });
+                }
             } else {
-                setSpringTranslationProps({ yt: -100 + (e.target.scrollTop > 160 && (e.target.scrollTop - 160)) });
+                setSpringTranslationProps({ yt: 0 });
             }
-        } else {
-            setSpringTranslationProps({ yt: 0 });
-        }
 
-        return setSpringOnScrollOpacityProps({ opacity: newOpacity });
-    }, [othersSkills]);
-    const onAnimationEnd = useCallback(() => console.log('Animation Ended') || setSpringOnOpenOpacityProps({ opacity: 1 }), []);
+            return setSpringOnScrollOpacityProps({ opacity: newOpacity });
+        },
+        [othersSkills]
+    );
+    const onAnimationEnd = useCallback(
+        () => console.log('Animation Ended') || setSpringOnOpenOpacityProps({ opacity: 1 }),
+        []
+    );
 
     return (
         <>
-            <ProfileCardTitle>
-                Skills
-            </ProfileCardTitle>
+            <ProfileCardTitle>Skills</ProfileCardTitle>
             <div className={classes.container} onScroll={onScroll}>
                 <SkillsPieChart
                     data={top3Skills}

@@ -2,9 +2,12 @@ import { flex } from '../../../../../utils/styles/styles_utils';
 
 const { center } = flex;
 
-export const styles = (theme) => {
-    const { palette, miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        palette,
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         background: {
             height: '50%',
             minHeight: '50%',
@@ -31,5 +34,5 @@ export const styles = (theme) => {
             fontSize: 30,
             lineHeight: 1.4
         }
-    });
+    };
 };

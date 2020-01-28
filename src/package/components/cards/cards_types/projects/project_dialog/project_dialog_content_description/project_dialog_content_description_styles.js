@@ -1,14 +1,16 @@
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: ({ isEditing }) => ({
             marginBottom: spacing * 4,
-            ...!isEditing && {
+            ...(!isEditing && {
                 textAlign: 'center'
-            }
+            })
         }),
         typography: {
             whiteSpace: 'pre-line'
         }
-    });
+    };
 };

@@ -2,9 +2,13 @@ import { flex, getColorsFromCardVariant, getHexFromPaletteColor } from '../../..
 
 const { center } = flex;
 
-export const styles = (theme) => {
-    const { components: { cards: { height } } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        components: {
+            cards: { height }
+        }
+    } = theme;
+    return {
         image: {
             height,
             width: '100%',
@@ -53,5 +57,5 @@ export const styles = (theme) => {
                 }
             }
         })
-    });
+    };
 };

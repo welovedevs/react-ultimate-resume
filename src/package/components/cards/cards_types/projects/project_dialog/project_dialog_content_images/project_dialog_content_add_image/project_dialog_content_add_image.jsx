@@ -19,21 +19,13 @@ const ProjectDialogContentAddImageComponent = () => {
     return (
         <>
             <UrlInputDialog open={openDialog} onClose={setDialogClosed} />
-            <Tooltip
-                title="Ajouter une image"
-            >
-                <button
-                    type="button"
-                    className={classes.container}
-                    onClick={setDialogOpened}
-                >
-                    <Typography variant="h2">
-                        +
-                    </Typography>
+            <Tooltip title="Ajouter une image">
+                <button type="button" className={classes.container} onClick={setDialogOpened}>
+                    <Typography variant="h2">+</Typography>
                 </button>
             </Tooltip>
         </>
     );
-}
+};
 
 export const ProjectDialogContentAddImage = ProjectDialogContentAddImageComponent;

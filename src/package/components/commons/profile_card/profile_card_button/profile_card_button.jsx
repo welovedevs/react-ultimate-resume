@@ -13,12 +13,7 @@ import { useCardVariant } from '../profile_card_hooks/use_card_variant';
 const DEFAULT_SPRING_PROPS = { translation: 0 };
 const ACTIVE_SPRING_PROPS = { translation: 6 };
 
-const ProfileCardButtonComponent = injectSheet(styles)(({
-    overrideColor,
-    classes,
-    children,
-    ...other
-}) => {
+const ProfileCardButtonComponent = injectSheet(styles)(({ overrideColor, classes, children, ...other }) => {
     const [springProps, setSpringProps] = useSpring(() => DEFAULT_SPRING_PROPS);
     const setDefaultSpringProps = useCallback(() => setSpringProps(() => DEFAULT_SPRING_PROPS), []);
     const setActiveSpringProps = useCallback(() => setSpringProps(() => ACTIVE_SPRING_PROPS), []);
@@ -46,14 +41,9 @@ const ProfileCardButtonComponent = injectSheet(styles)(({
     );
 });
 
-const InjectVariantProfileCardButton = (props) => {
+const InjectVariantProfileCardButton = props => {
     const [variant] = useCardVariant();
-    return (
-        <ProfileCardButtonComponent
-            {...props}
-            variant={variant}
-        />
-    );
+    return <ProfileCardButtonComponent {...props} variant={variant} />;
 };
 
 export const ProfileCardButton = InjectVariantProfileCardButton;

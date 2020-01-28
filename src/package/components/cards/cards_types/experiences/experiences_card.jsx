@@ -11,11 +11,9 @@ import { mapWorkFromJsonResume, mapWorkToJsonResume } from './data/mapping';
 
 const ExperiencesCardComponent = ({ variant, side }) => {
     const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);
-    const mappedData = useMemo(() =>
-        mapWorkFromJsonResume(data), [data]);
+    const mappedData = useMemo(() => mapWorkFromJsonResume(data), [data]);
 
-    const onDialogEdited = useCallback(editedData =>
-        onEdit(mapWorkToJsonResume(editedData)), []);
+    const onDialogEdited = useCallback(editedData => onEdit(mapWorkToJsonResume(editedData)), []);
 
     return (
         <ProfileCard

@@ -1,8 +1,10 @@
 import { withCustomVerticalScrollbar } from '../../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         paper: {
             maxWidth: [1000, '!important']
         },
@@ -13,5 +15,5 @@ export const styles = (theme) => {
             overflow: 'overlay',
             ...withCustomVerticalScrollbar()
         }
-    });
+    };
 };

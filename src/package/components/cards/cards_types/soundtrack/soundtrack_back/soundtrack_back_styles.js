@@ -1,4 +1,4 @@
-export const styles = ({
+export const styles = {
     container: {
         position: 'relative'
     },
@@ -16,4 +16,4 @@ export const styles = ({
         position: 'absolute',
         transform: 'translate3d(-50%, -50%, 0)'
     }
-});
+};

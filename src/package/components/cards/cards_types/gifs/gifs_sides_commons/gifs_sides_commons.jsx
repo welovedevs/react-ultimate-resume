@@ -12,9 +12,7 @@ const GifsSidesCommonsComponent = ({ underLayer, children }) => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
-            <div className={classes.underLayerContainer}>
-                {underLayer}
-            </div>
+            <div className={classes.underLayerContainer}>{underLayer}</div>
             <div className={classes.darkenLayer} />
             <ProfileCardTitle
                 overrideColor="light"

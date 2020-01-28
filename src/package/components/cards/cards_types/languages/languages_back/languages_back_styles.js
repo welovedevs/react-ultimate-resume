@@ -1,4 +1,4 @@
-export const styles = ({
+export const styles = {
     content: {
         padding: 0,
         position: 'relative',
@@ -16,4 +16,4 @@ export const styles = ({
         justifyContent: 'center',
         paddingTop: 8 * 5
     }
-});
+};

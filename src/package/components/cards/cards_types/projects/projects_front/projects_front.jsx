@@ -16,7 +16,11 @@ const ProjectsFrontComponent = () => {
     return (
         <>
             <div className={classes.background}>
-                <img className={classes.backgroundImage} src="https://source.unsplash.com/random/750x400" alt="Project Background" />
+                <img
+                    className={classes.backgroundImage}
+                    src="https://source.unsplash.com/random/750x400"
+                    alt="Project Background"
+                />
             </div>
             <div className={classes.content}>
                 <Typography variant="h2" component="h2" customClasses={{ container: classes.text }}>
@@ -24,9 +28,7 @@ const ProjectsFrontComponent = () => {
                 </Typography>
             </div>
             <ProfileCardActions>
-                <ProfileCardButton>
-                    2 more projects
-                </ProfileCardButton>
+                <ProfileCardButton>2 more projects</ProfileCardButton>
             </ProfileCardActions>
         </>
     );

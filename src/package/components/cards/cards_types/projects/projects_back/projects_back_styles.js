@@ -2,9 +2,9 @@ import { flex } from '../../../../../utils/styles/styles_utils';
 
 const { center } = flex;
 
-export const styles = (theme) => {
+export const styles = theme => {
     const { palette } = theme;
-    return ({
+    return {
         title: {
             position: 'relative',
             '& > *:not($background)': {
@@ -41,5 +41,5 @@ export const styles = (theme) => {
             objectFit: 'cover',
             transform: 'rotate(-10deg)'
         }
-    });
+    };
 };

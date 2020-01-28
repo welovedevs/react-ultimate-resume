@@ -12,7 +12,11 @@ const useStyles = createUseStyles(styles);
 const ProfileCardSectionSubtitleComponent = ({ children, customClasses = {} }) => {
     const classes = useStyles();
     return (
-        <Typography variant="h4" component="h4" customClasses={{ container: cn(classes.container, customClasses.container) }}>
+        <Typography
+            variant="h4"
+            component="h4"
+            customClasses={{ container: cn(classes.container, customClasses.container) }}
+        >
             {children}
         </Typography>
     );

@@ -17,7 +17,7 @@ import { styles } from './profile_card_animated_back_styles';
 
 const useStyles = createUseStyles(styles);
 
-const TRANSLATION_INTERPOLATION = (value) => `translate3d(0, ${value}%, 0)`;
+const TRANSLATION_INTERPOLATION = value => `translate3d(0, ${value}%, 0)`;
 
 const ProfileCardAnimatedBackComponent = ({ title, children: content, customClasses = {} }) => {
     const classes = useStyles();
@@ -52,10 +52,8 @@ const ProfileCardAnimatedBackComponent = ({ title, children: content, customClas
                 component={animated.div}
                 style={{
                     opacity: titleSpringProps.opacity,
-                    transform: titleSpringProps
-                        .translation
-                        .interpolate(TRANSLATION_INTERPOLATION)
-            }}
+                    transform: titleSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION)
+                }}
             >
                 {title}
             </ProfileCardTitle>
@@ -65,17 +63,13 @@ const ProfileCardAnimatedBackComponent = ({ title, children: content, customClas
                 }}
                 component={animated.div}
                 style={{
-                    transform: contentContainerSpringProps
-                        .translation
-                        .interpolate(TRANSLATION_INTERPOLATION)
+                    transform: contentContainerSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION)
                 }}
             >
                 <animated.div
                     className={customClasses.contentAnimated}
                     style={{
-                        transform: contentSpringProps
-                            .translation
-                            .interpolate(TRANSLATION_INTERPOLATION),
+                        transform: contentSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION),
                         opacity: contentSpringProps.opacity
                     }}
                 >

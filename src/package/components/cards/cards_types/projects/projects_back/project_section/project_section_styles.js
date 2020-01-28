@@ -1,6 +1,8 @@
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         sectionText: {
             margin: [spacing * 3, 0]
         },
@@ -26,5 +28,5 @@ export const styles = (theme) => {
         detailTypography: {
             fontWeight: 500
         }
-    });
+    };
 };

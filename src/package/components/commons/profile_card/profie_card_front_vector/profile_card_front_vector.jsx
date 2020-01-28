@@ -11,14 +11,7 @@ const useStyles = createUseStyles(styles);
 const ProfileCardFrontVectorComponent = ({ vector: Vector, customClasses = {} }) => {
     const [variant] = useCardVariant();
     const classes = useStyles({ variant });
-    return (
-        <Vector
-            className={
-                cn(classes.container,
-                    customClasses.container)
-            }
-        />
-    );
+    return <Vector className={cn(classes.container, customClasses.container)} />;
 };
 
 export const ProfileCardFrontVector = ProfileCardFrontVectorComponent;

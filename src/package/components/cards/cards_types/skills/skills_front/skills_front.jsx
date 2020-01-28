@@ -21,19 +21,14 @@ const SkillsFrontComponent = () => {
         <>
             <ProfileCardPaddedFront>
                 <CenterContentContainer customClasses={{ container: classes.container }}>
-                    <ProfileCardFrontVector
-                        customClasses={{ container: classes.logo }}
-                        vector={ReactLogo}
-                    />
+                    <ProfileCardFrontVector customClasses={{ container: classes.logo }} vector={ReactLogo} />
                     <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
                         I mainly write React stuff
                     </ProfileCardFrontTypography>
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton>
-                    More skills
-                </ProfileCardButton>
+                <ProfileCardButton>More skills</ProfileCardButton>
             </ProfileCardActions>
         </>
     );

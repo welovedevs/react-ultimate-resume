@@ -22,40 +22,31 @@ const ProjectDialogContentTitleComponent = ({ title }) => {
 
 const Content = ({ title, isEditing, classes }) => {
     if (isEditing) {
-        return (
-            <EditingContent title={title} classes={classes} />
-        );
+        return <EditingContent title={title} classes={classes} />;
     }
     return <DefaultContent title={title} classes={classes} />;
 };
 
 const DefaultContent = ({ title, classes }) => (
-    <Typography
-        variant="h2"
-        component="h3"
-        customClasses={{ container: classes.typography }}
-    >
+    <Typography variant="h2" component="h3" customClasses={{ container: classes.typography }}>
         {title}
     </Typography>
 );
 
 const EditingContent = ({ title, classes }) => (
-        <>
-            <Typography
-                variant="label"
-                component="div"
-            >
-                Titre du projet
-            </Typography>
-            <TextField
-                fullWidth
-                variant="flat"
-                value={title}
-                customClasses={{
-                    container: classes.textField
-                }}
-            />
-        </>
-    );
+    <>
+        <Typography variant="label" component="div">
+            Titre du projet
+        </Typography>
+        <TextField
+            fullWidth
+            variant="flat"
+            value={title}
+            customClasses={{
+                container: classes.textField
+            }}
+        />
+    </>
+);
 
 export const ProjectDialogContentTitle = ProjectDialogContentTitleComponent;

@@ -2,9 +2,12 @@ import { getHexFromPaletteColor, flex } from '../../../../../../../utils/styles/
 
 const { center } = flex;
 
-export const styles = (theme) => {
-    const { miscellaneous: { spacing }, palette } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing },
+        palette
+    } = theme;
+    return {
         container: {
             height: 125,
             width: 200,
@@ -39,5 +42,5 @@ export const styles = (theme) => {
             height: 40,
             width: 'auto'
         }
-    });
+    };
 };

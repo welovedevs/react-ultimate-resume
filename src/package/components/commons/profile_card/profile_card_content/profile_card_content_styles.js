@@ -1,6 +1,7 @@
 import {
     getColorsFromCardVariant,
-    getHexFromPaletteColor, withCustomVerticalScrollbar
+    getHexFromPaletteColor,
+    withCustomVerticalScrollbar
 } from '../../../../utils/styles/styles_utils';
 
 const getContentBackgroundColor = (theme, cardVariant) => {
@@ -11,19 +12,23 @@ const getContentBackgroundColor = (theme, cardVariant) => {
     return getHexFromPaletteColor(theme, backBackgroundColor);
 };
 
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: ({ variant }) => {
             const backHexColor = getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backColor);
-            return ({
+            return {
                 padding: [spacing * 4, spacing * 8],
                 backgroundColor: getContentBackgroundColor(theme, variant),
                 color: backHexColor,
                 flex: 1,
                 overflow: 'auto',
-                ...withCustomVerticalScrollbar(getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backColor))
-            });
+                ...withCustomVerticalScrollbar(
+                    getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backColor)
+                )
+            };
         }
-    });
+    };
 };

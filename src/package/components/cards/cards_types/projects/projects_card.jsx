@@ -15,6 +15,6 @@ const ProjectsCardComponent = ({ variant, side }) => {
             side={side}
         />
     );
-}
+};
 
 export const ProjectsCard = ProjectsCardComponent;

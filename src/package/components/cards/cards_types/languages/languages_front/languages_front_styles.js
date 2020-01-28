@@ -1,5 +1,5 @@
-export const styles = ({
+export const styles = {
     typography: {
         maxWidth: '65%'
     }
-});
+};

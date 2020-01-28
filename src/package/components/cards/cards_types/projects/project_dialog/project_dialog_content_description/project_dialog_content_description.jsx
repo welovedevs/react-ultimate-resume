@@ -22,25 +22,18 @@ const ProjectDialogContentDescriptionComponent = ({ description }) => {
 
 const Content = ({ description, isEditing, classes }) => {
     if (isEditing) {
-        return (
-            <EditingContent description={description} classes={classes} />
-        );
+        return <EditingContent description={description} classes={classes} />;
     }
     return <DefaultContent description={description} classes={classes} />;
 };
 
 const DefaultContent = ({ description, classes }) => (
-    <Typography customClasses={{ container: classes.typography }}>
-        {description}
-    </Typography>
+    <Typography customClasses={{ container: classes.typography }}>{description}</Typography>
 );
 
 const EditingContent = ({ description, classes }) => (
     <>
-        <Typography
-            variant="label"
-            component="div"
-        >
+        <Typography variant="label" component="div">
             Description du projet
         </Typography>
         <TextField

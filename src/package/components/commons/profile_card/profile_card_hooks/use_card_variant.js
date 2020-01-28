@@ -8,10 +8,14 @@ export const useCardVariant = () => {
     const { state, dispatch } = useContext(ProfileCardContext);
     const { variant } = state;
 
-    const setCardVariant = useCallback((newVariant) => dispatch({
-        type: SET_VARIANT,
-        variant: newVariant
-    }), []);
+    const setCardVariant = useCallback(
+        newVariant =>
+            dispatch({
+                type: SET_VARIANT,
+                variant: newVariant
+            }),
+        []
+    );
 
     return [variant, setCardVariant];
 };

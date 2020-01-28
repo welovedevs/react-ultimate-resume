@@ -31,12 +31,8 @@ const ProjectSectionContainer = ({ projectId, cardVariant }) => {
     const classes = useStyles();
     return (
         <ProfileCardSection cardVariant={cardVariant}>
-            <ProfileCardSectionTitle>
-                Analytics platform
-            </ProfileCardSectionTitle>
-            <ProfileCardSectionSubtitle>
-                2019
-            </ProfileCardSectionSubtitle>
+            <ProfileCardSectionTitle>Analytics platform</ProfileCardSectionTitle>
+            <ProfileCardSectionSubtitle>2019</ProfileCardSectionSubtitle>
             <ProfileCardSectionText customClasses={{ container: classes.sectionText }}>
                 Ruby on Rails backend
                 <br />
@@ -55,7 +51,7 @@ const ProjectSectionContainer = ({ projectId, cardVariant }) => {
 
 const Details = ({ projectId, classes }) => (
     <div className={classes.details}>
-    {Object.entries(DETAILS).map(([id, { icon: Icon, value }]) => (
+        {Object.entries(DETAILS).map(([id, { icon: Icon, value }]) => (
             <div key={`project_${projectId}_detail_${id}`} className={classes.detail}>
                 <Icon className={classes.detailIcon} />
                 <Typography customClasses={{ container: classes.detailTypography }} color="primary">

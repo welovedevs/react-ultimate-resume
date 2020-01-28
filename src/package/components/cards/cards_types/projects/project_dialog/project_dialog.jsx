@@ -5,11 +5,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { Button } from '@wld/ui';
 
-import {
-    Dialog,
-    DialogContent,
-    DialogActions
-} from '@material-ui/core';
+import { Dialog, DialogContent, DialogActions } from '@material-ui/core';
 
 import { DialogTitle } from '../../../../commons/dialog/dialog_title/dialog_title';
 import { ProjectDialogContentTitle } from './project_dialog_content_title/project_dialog_content_title';
@@ -22,9 +18,10 @@ import { styles } from './project_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
-const DEFAULT_PROJECT = ({
+const DEFAULT_PROJECT = {
     title: "Développement d'un serpent connecté",
-    description: "Et oui, vous avez bien entendu !\nUn serpent connecté, c'est comme une montre connectée, mais en serpent, en fait ça ressemble pas une montre, mais ça reste connecté 🚀",
+    description:
+        "Et oui, vous avez bien entendu !\nUn serpent connecté, c'est comme une montre connectée, mais en serpent, en fait ça ressemble pas une montre, mais ça reste connecté 🚀",
     images: {
         random1: {
             name: 'Random 1',
@@ -51,7 +48,7 @@ const DEFAULT_PROJECT = ({
             url: 'https://source.unsplash.com/random/400x200'
         }
     }
-});
+};
 
 const ProjectDialogComponent = ({ open, onClose, project }) => {
     const classes = useStyles();
@@ -67,9 +64,7 @@ const ProjectDialogComponent = ({ open, onClose, project }) => {
             open={open}
             onClose={onClose}
         >
-            <DialogTitle>
-                Le projet en détails
-            </DialogTitle>
+            <DialogTitle>Le projet en détails</DialogTitle>
             <DialogContent
                 classes={{
                     root: classes.content
@@ -80,14 +75,8 @@ const ProjectDialogComponent = ({ open, onClose, project }) => {
                 <ProjectDialogContentImages images={DEFAULT_PROJECT.images} />
             </DialogContent>
             <DialogActions>
-                <Button
-                    size="small"
-                    onClick={onClose}
-                >
-                    <FormattedMessage
-                        id="Main.Lang.Close"
-                        defaultMessage="Fermer"
-                    />
+                <Button size="small" onClick={onClose}>
+                    <FormattedMessage id="Main.Lang.Close" defaultMessage="Fermer" />
                 </Button>
             </DialogActions>
         </Dialog>

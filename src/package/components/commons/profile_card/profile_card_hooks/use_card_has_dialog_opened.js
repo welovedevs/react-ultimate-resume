@@ -8,10 +8,14 @@ export const useHasDialogOpened = () => {
     const { state, dispatch } = useContext(ProfileCardContext);
     const { hasDialogOpened } = state;
 
-    const setHasDialogOpened = useCallback((newHasDialogOpened) => dispatch({
-        type: SET_HAS_DIALOG_OPENED,
-        hasDialogOpened: newHasDialogOpened
-    }), []);
+    const setHasDialogOpened = useCallback(
+        newHasDialogOpened =>
+            dispatch({
+                type: SET_HAS_DIALOG_OPENED,
+                hasDialogOpened: newHasDialogOpened
+            }),
+        []
+    );
 
     return [hasDialogOpened, setHasDialogOpened];
 };

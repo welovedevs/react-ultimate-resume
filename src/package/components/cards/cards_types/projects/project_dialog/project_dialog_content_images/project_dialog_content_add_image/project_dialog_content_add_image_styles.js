@@ -1,6 +1,9 @@
-export const styles = (theme) => {
-    const { miscellaneous: { spacing }, palette } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing },
+        palette
+    } = theme;
+    return {
         container: {
             height: 125,
             width: 200,
@@ -11,5 +14,5 @@ export const styles = (theme) => {
             overflow: 'hidden',
             border: [1, 'dashed', palette.dark[300]]
         }
-    });
+    };
 };

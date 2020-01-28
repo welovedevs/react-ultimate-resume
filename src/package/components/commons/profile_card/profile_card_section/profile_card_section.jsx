@@ -12,11 +12,7 @@ const useStyles = createUseStyles(styles);
 const ProfileCardSectionComponent = ({ children, customClasses = {} }) => {
     const [variant] = useCardVariant();
     const classes = useStyles({ variant });
-    return (
-        <div className={cn(classes.container, customClasses.container)}>
-            {children}
-        </div>
-    );
+    return <div className={cn(classes.container, customClasses.container)}>{children}</div>;
 };
 
 export const ProfileCardSection = ProfileCardSectionComponent;

@@ -22,10 +22,7 @@ const ProfileCardTitleComponent = ({
     const [variant] = useCardVariant();
     const classes = useStyles({ variant, overrideColor });
     return (
-        <Component
-            className={cn(classes.container, customClasses.container)}
-            style={style}
-        >
+        <Component className={cn(classes.container, customClasses.container)} style={style}>
             {beforeTypography}
             <Typography
                 variant="h2"

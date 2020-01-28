@@ -12,12 +12,7 @@ const OtherSkillProgress = ({ color, value, name }) => {
     const classes = useStyles({ color });
     return (
         <div className={classes.container}>
-            <Typography
-                variant="h4"
-                component="h4"
-                color={color}
-                customClasses={{ container: classes.skillLabel }}
-            >
+            <Typography variant="h4" component="h4" color={color} customClasses={{ container: classes.skillLabel }}>
                 {name}
             </Typography>
             <ProgressBar

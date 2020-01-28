@@ -12,7 +12,11 @@ import { styles } from './interested_by_front_styles';
 
 const useStyles = createUseStyles(styles);
 
-const InterestedByFrontComponent = ({ data: { interestedBy }, profileCardFrontTypographyProps, customClasses = {} }) => {
+const InterestedByFrontComponent = ({
+    data: { interestedBy },
+    profileCardFrontTypographyProps,
+    customClasses = {}
+}) => {
     const classes = useStyles();
     return (
         <ProfileCardPaddedFront customClasses={{ container: cn(classes.container, customClasses.container) }}>

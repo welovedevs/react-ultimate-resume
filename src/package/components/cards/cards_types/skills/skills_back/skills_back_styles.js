@@ -4,12 +4,14 @@ import {
     withCustomVerticalScrollbar
 } from '../../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => ({
+export const styles = theme => ({
     container: ({ variant }) => ({
         display: 'flex',
         flexWrap: 'wrap',
         overflow: 'auto',
-        ...withCustomVerticalScrollbar(getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backBackgroundColor))
+        ...withCustomVerticalScrollbar(
+            getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backBackgroundColor)
+        )
     }),
     otherSkillsContainer: {
         width: '100%',

@@ -1,4 +1,4 @@
-export const styles = (theme) => ({
+export const styles = theme => ({
     container: {
         margin: [-15, 0]
     },

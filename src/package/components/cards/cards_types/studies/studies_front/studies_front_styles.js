@@ -1,6 +1,8 @@
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: {
             flexDirection: 'column'
         },
@@ -15,5 +17,5 @@ export const styles = (theme) => {
             lineHeight: 1.3,
             maxWidth: '70%'
         }
-    });
+    };
 };

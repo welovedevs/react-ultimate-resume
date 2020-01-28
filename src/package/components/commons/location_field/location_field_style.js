@@ -1,5 +1,5 @@
 export const locationFieldStyles = {
-           popperCard: {
-               zIndex: 1400
-           },
-       };
+    popperCard: {
+        zIndex: 1400
+    }
+};

@@ -1,11 +1,11 @@
-export const LOADING_SPINNER_TRANSITIONS = ({
-    from: ({
+export const LOADING_SPINNER_TRANSITIONS = {
+    from: {
         opacity: 0
-    }),
-    enter: ({
+    },
+    enter: {
         opacity: 1
-    }),
-    leave: ({
+    },
+    leave: {
         opacity: 0
-    })
-});
+    }
+};

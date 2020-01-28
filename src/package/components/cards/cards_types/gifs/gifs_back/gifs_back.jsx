@@ -68,20 +68,16 @@ const GifsBackComponent = ({ data }) => {
                     <Slider
                         {...SETTINGS}
                         beforeChange={handleBeforeChange}
-                        prevArrow={(
+                        prevArrow={
                             <Arrow
                                 classes={classes}
                                 arrowRole="prev"
                                 buttonProps={{ className: classes.previousButton }}
                             />
-                        )}
-                        nextArrow={(
-                            <Arrow
-                                classes={classes}
-                                arrowRole="next"
-                                buttonProps={{ className: classes.nextButton }}
-                            />
-                        )}
+                        }
+                        nextArrow={
+                            <Arrow classes={classes} arrowRole="next" buttonProps={{ className: classes.nextButton }} />
+                        }
                     >
                         {(data.interests ?? []).map(({ gifUrl, name }) => (
                             <img className={classes.image} src={gifUrl} alt={name} />

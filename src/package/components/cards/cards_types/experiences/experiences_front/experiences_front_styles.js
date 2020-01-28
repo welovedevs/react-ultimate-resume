@@ -1,8 +1,10 @@
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: {
             flexDirection: 'column'
         },
@@ -15,5 +17,5 @@ export const styles = (theme) => {
             marginTop: spacing * 3,
             fontWeight: 500
         })
-    });
+    };
 };

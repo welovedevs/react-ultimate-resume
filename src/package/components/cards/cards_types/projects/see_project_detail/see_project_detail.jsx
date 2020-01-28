@@ -8,10 +8,7 @@ const SeeProjectDetailComponent = () => {
     const [openDialog, setDialogOpened, setDialogClosed] = useCallbackOpen();
     return (
         <>
-            <ProjectDialog
-                open={openDialog}
-                onClose={setDialogClosed}
-            />
+            <ProjectDialog open={openDialog} onClose={setDialogClosed} />
             <button type="button" onClick={setDialogOpened}>
                 See more
             </button>

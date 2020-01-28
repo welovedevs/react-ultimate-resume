@@ -11,7 +11,10 @@ export const styles = theme => ({
     typography: ({ variant, overrideColor }) => ({
         textTransform: 'unset',
         fontSize: ['14px', '!important'],
-        color: [getHexFromPaletteColor(theme, overrideColor || getColorsFromCardVariant(theme, variant).color), '!important']
+        color: [
+            getHexFromPaletteColor(theme, overrideColor || getColorsFromCardVariant(theme, variant).color),
+            '!important'
+        ]
     }),
     arrowContainer: {
         display: 'flex'

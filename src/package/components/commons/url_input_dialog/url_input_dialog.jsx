@@ -4,11 +4,7 @@ import { createUseStyles } from 'react-jss';
 
 import { Button, TextField } from '@wld/ui';
 
-import {
-    Dialog,
-    DialogContent,
-    DialogActions
-} from '@material-ui/core';
+import { Dialog, DialogContent, DialogActions } from '@material-ui/core';
 
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';
 
@@ -26,31 +22,18 @@ const UrlInputDialogComponent = ({ open, onClose, onConfirm }) => {
                 paper: classes.paper
             }}
         >
-            <DialogTitle>
-                Entrer une URL
-            </DialogTitle>
+            <DialogTitle>Entrer une URL</DialogTitle>
             <DialogContent>
-                <TextField
-                    fullWidth
-                    placeholder="https://pictures.com/0.jpg"
-                    variant="flat"
-                />
+                <TextField fullWidth placeholder="https://pictures.com/0.jpg" variant="flat" />
             </DialogContent>
             <DialogActions>
-                <Button
-                    size="small"
-                >
-                    Close
-                </Button>
-                <Button
-                    color="primary"
-                    size="small"
-                >
+                <Button size="small">Close</Button>
+                <Button color="primary" size="small">
                     Confirm
                 </Button>
             </DialogActions>
         </Dialog>
     );
-}
+};
 
 export const UrlInputDialog = UrlInputDialogComponent;
