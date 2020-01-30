@@ -70,7 +70,7 @@ const WithProvidersDeveloperProfile = ({ data, onEdit, options = {} }) => {
             setBuiltTheme(built);
         };
         asyncBuild();
-    }, [options]);
+    }, [JSON.stringify(options)]);
 
     if (!builtTheme) {
         return null;
