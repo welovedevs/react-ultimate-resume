@@ -43,9 +43,9 @@ const DeveloperProfileComponent = ({ data: dataProps = {}, options = {}, onEdit:
                     data,
                     isEditing,
                     onEdit,
-                    apiKeys: { giphy: options.apiKeys.giphy },
+                    apiKeys: { giphy: options?.apiKeys?.giphy },
                     endpoints: {
-                        devicons: options.endpoints.devicons
+                        devicons: options?.endpoints?.devicons
                     },
                     store: {
                         technologies: useReducer(technologiesReducer, technologiesInitialState)
