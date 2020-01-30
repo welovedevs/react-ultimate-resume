@@ -1,4 +1,4 @@
-import * as uuid from 'uuid/v4';
+import uuid from 'uuid/v4';
 
 export const mapDreamJobFromJsonResume = jsonResume => ({
     places: (jsonResume.specific?.dreamJob?.locations ?? []).map(location => ({ name: location, id: uuid() })),

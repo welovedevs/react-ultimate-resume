@@ -1,4 +1,4 @@
-import * as uuid from 'uuid/v4';
+import uuid from 'uuid/v4';
 
 export const mapInterestsFromJsonResume = jsonResume => ({
     interests: jsonResume?.interests?.map((interest, index) => ({

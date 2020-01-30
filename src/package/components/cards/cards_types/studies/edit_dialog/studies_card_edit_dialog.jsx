@@ -8,7 +8,7 @@ import { FormattedMessage, injectIntl, useIntl } from 'react-intl';
 import moment from 'moment';
 import { SortableContainer, SortableElement, SortableHandle, arrayMove } from 'react-sortable-hoc';
 
-import * as uuid from 'uuid/v4';
+import uuid from 'uuid/v4';
 
 import { MenuItem } from '@material-ui/core';
 

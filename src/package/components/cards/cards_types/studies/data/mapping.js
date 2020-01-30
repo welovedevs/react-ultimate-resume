@@ -1,5 +1,5 @@
 import moment from 'moment';
-import * as uuid from 'uuid/v4';
+import uuid from 'uuid/v4';
 
 export const mapStudiesFromJsonResume = jsonResume => {
     return {

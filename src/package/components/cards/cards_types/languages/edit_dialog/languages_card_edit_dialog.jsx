@@ -6,7 +6,7 @@ import keyBy from 'lodash/keyBy';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 
-import * as uuid from 'uuid/v4';
+import uuid from 'uuid/v4';
 
 import { Button, List, ListItem, Tag, TextField, Tooltip, Typography } from '@wld/ui';
 

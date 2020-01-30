@@ -13,7 +13,7 @@ import styles from './experiences_card_edit_dialog_styles';
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { useFormikContext } from 'formik';
 import keyBy from 'lodash/keyBy';
-import * as uuid from 'uuid/v4';
+import uuid from 'uuid/v4';
 import { ReactComponent as AddIcon } from '../../../../../assets/icons/add.svg';
 import { ReactComponent as MoveIcon } from '../../../../../assets/icons/move_list.svg';
 import { ReactComponent as DeleteIcon } from '../../../../../assets/icons/trash.svg';

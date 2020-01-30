@@ -5,7 +5,7 @@ import { useFormikContext } from 'formik';
 
 import { ListItem, Tag, TextField, Typography } from '@wld/ui';
 
-import * as uuid from 'uuid/v4';
+import uuid from 'uuid/v4';
 import { createUseStyles } from 'react-jss';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';

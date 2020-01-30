@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { useFormikContext } from 'formik';
-import * as uuid from 'uuid/v4';
+import uuid from 'uuid/v4';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { createUseStyles } from 'react-jss';
