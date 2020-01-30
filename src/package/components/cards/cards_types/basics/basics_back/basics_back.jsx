@@ -115,7 +115,7 @@ const JobSearchState = ({ searchState }) => {
     if (!searchState) {
         return null;
     }
-    return <span>{formatMessage(JobSearchStateTranslations[searchState])}</span>;
+    return <span>{formatMessage(JobSearchStateTranslations[searchState] || JobSearchStateTranslations.unknown)}</span>;
 };
 
 export const BasicsBack = BasicsBackComponent;

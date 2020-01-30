@@ -15,6 +15,6 @@ export default defineMessages({
     },
     unknown: {
         id: 'Developer.developerJobSearchState.unknown',
-        defaultMessage: 'Unknown jop search state'
+        defaultMessage: 'Unknown job search state'
     }
 });

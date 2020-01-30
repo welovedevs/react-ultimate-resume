@@ -10,7 +10,6 @@ export const useTechnologies = () => {
             technologies: [{ technologies }, dispatch]
         }
     } = useContext(DeveloperProfileContext);
-    console.log('reducer', { technologies, endpoints });
 
     useEffect(() => {
         if (!endpoints.devicons) {

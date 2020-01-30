@@ -49,7 +49,7 @@ const DeveloperProfileComponent = ({ data: dataProps = {}, options = {}, onEdit:
                 devicons: options?.endpoints?.devicons
             }
         }),
-        [options, data, isEditing, onEdit]
+        [options, data, isEditing, onEdit,store]
     );
 
     return (
