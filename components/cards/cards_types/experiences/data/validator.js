@@ -9,11 +9,13 @@ exports.WorkValidator = void 0;
 
 var Yup = _interopRequireWildcard(require("yup"));
 
-var moment = _interopRequireWildcard(require("moment"));
+var _moment = _interopRequireDefault(require("moment"));
 
 var _validation_translations = require("../../../../../utils/validation_translations");
 
 var _validator_translations = require("./validator_translations");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -45,7 +47,7 @@ var WorkValidator = function WorkValidator(formatMessage) {
         }))
       }),
       startDate: Yup.object().required(formatMessage(_validation_translations.validationTranslations.required)).test('is-not-in-future', formatMessage(_validator_translations.workTranslations.noFutureDate), function (value) {
-        return value && value.isBefore(moment().add(1, 'day'));
+        return value && value.isBefore((0, _moment.default)().add(1, 'day'));
       }).test('is-not-empty', formatMessage(_validation_translations.validationTranslations.required), function (value) {
         return !!value && !Number.isNaN(Number(value.year())) && !Number.isNaN(Number(value.month()));
       }),
@@ -60,7 +62,7 @@ var WorkValidator = function WorkValidator(formatMessage) {
               return true;
             }
 
-            return moment(value).isAfter(start);
+            return (0, _moment.default)(value).isAfter(start);
           });
         })
       })

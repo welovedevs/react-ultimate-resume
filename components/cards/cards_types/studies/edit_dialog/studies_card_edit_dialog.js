@@ -19,7 +19,7 @@ var _keyBy = _interopRequireDefault(require("lodash/keyBy"));
 
 var _reactIntl = require("react-intl");
 
-var moment = _interopRequireWildcard(require("moment"));
+var _moment = _interopRequireDefault(require("moment"));
 
 var _reactSortableHoc = require("react-sortable-hoc");
 
@@ -128,13 +128,13 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref2) {
   }, [JSON.stringify(formation), onChange]);
   var handleChangeYear = (0, _react.useCallback)(function (field) {
     return function (value) {
-      handleChange(field)(moment({
+      handleChange(field)((0, _moment.default)({
         year: value
       }));
     };
   }, [JSON.stringify(formation), onChange]);
   var selectYearItems = (0, _react.useMemo)(function () {
-    return (0, _range.default)(1980, moment().year() + 8).sort(function (a, b) {
+    return (0, _range.default)(1980, (0, _moment.default)().year() + 8).sort(function (a, b) {
       return b - a;
     }).map(function (year) {
       return _react.default.createElement(_core.MenuItem, {

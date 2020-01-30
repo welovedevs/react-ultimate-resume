@@ -17,7 +17,7 @@ var _reactIntl = require("react-intl");
 
 var _omit = _interopRequireDefault(require("lodash/omit"));
 
-var moment = _interopRequireWildcard(require("moment"));
+var _moment = _interopRequireDefault(require("moment"));
 
 var _reactSpring = require("react-spring");
 
@@ -248,7 +248,7 @@ var ContentFields = function ContentFields(_ref4) {
     if (!stillEmployed) {
       onChange(index, 'endDate', null);
     } else {
-      onChange(index, 'endDate', moment());
+      onChange(index, 'endDate', (0, _moment.default)());
     }
   }, [index, stillEmployed]);
 
