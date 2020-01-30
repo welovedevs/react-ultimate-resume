@@ -55,6 +55,8 @@ var DeveloperProfileContext = (0, _react.createContext)({});
 exports.DeveloperProfileContext = DeveloperProfileContext;
 
 var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
+  var _options$apiKeys, _options$endpoints;
+
   var _ref$data = _ref.data,
       dataProps = _ref$data === void 0 ? {} : _ref$data,
       _ref$options = _ref.options,
@@ -85,10 +87,10 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       isEditing: isEditing,
       onEdit: onEdit,
       apiKeys: {
-        giphy: options.apiKeys.giphy
+        giphy: options === null || options === void 0 ? void 0 : (_options$apiKeys = options.apiKeys) === null || _options$apiKeys === void 0 ? void 0 : _options$apiKeys.giphy
       },
       endpoints: {
-        devicons: options.endpoints.devicons
+        devicons: options === null || options === void 0 ? void 0 : (_options$endpoints = options.endpoints) === null || _options$endpoints === void 0 ? void 0 : _options$endpoints.devicons
       },
       store: {
         technologies: (0, _react.useReducer)(_technologies_reducer.technologiesReducer, _technologies_reducer.technologiesInitialState)
