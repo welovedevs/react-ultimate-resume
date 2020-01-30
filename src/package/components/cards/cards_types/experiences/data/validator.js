@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import * as moment from 'moment';
+import moment from 'moment';
 import { validationTranslations } from '../../../../../utils/validation_translations';
 import { workTranslations } from './validator_translations';
 

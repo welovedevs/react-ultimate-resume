@@ -1,6 +1,6 @@
 import head from 'lodash/head';
 import merge from 'lodash/merge';
-import * as moment from 'moment';
+import moment from 'moment';
 
 const extractExperienceYears = (works = []) => {
     const oldestJob = head(

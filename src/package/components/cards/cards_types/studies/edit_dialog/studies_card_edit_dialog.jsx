@@ -5,7 +5,7 @@ import omit from 'lodash/omit';
 import range from 'lodash/range';
 import keyBy from 'lodash/keyBy';
 import { FormattedMessage, injectIntl, useIntl } from 'react-intl';
-import * as moment from 'moment';
+import moment from 'moment';
 import { SortableContainer, SortableElement, SortableHandle, arrayMove } from 'react-sortable-hoc';
 
 import * as uuid from 'uuid/v4';

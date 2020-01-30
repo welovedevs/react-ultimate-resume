@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
 import omit from 'lodash/omit';
-import * as moment from 'moment';
+import moment from 'moment';
 import { animated, useSpring } from 'react-spring';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 
