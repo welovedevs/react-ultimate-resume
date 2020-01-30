@@ -75,8 +75,27 @@
     ],
     "skills": [
         {
-            "name": "Web Development",
+            "name": "React",
             "level": "Master",
+            "value" : 100,
+            "keywords": ["HTML", "CSS", "Javascript"]
+        },
+        {
+            "name": "Javascript",
+            "level": "Master",
+            "value" : 80,
+            "keywords": ["HTML", "CSS", "Javascript"]
+        },
+        {
+            "name": "NodeJS",
+            "level": "Master",
+            "value" : 40,
+            "keywords": ["HTML", "CSS", "Javascript"]
+        },
+        {
+            "name": "Firebase",
+            "level": "Master",
+            "value" : 60,
             "keywords": ["HTML", "CSS", "Javascript"]
         }
     ],

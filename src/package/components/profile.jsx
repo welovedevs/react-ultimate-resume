@@ -38,7 +38,15 @@ const DeveloperProfileComponent = ({ data: dataProps = {}, options = {}, onEdit:
     return (
         <div className={classes.container}>
             <DeveloperProfileContext.Provider
-                value={{ data, isEditing, onEdit, apiKeys: { giphy: options.apiKeys.giphy } }}
+                value={{
+                    data,
+                    isEditing,
+                    onEdit,
+                    apiKeys: { giphy: options.apiKeys.giphy },
+                    endpoints: {
+                        devicons: options.endpoints.devicons
+                    }
+                }}
             >
                 <Banner />
                 <Cards />

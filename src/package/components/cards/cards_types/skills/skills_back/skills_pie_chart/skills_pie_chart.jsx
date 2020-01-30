@@ -11,9 +11,15 @@ import { useCardVariant } from '../../../../../commons/profile_card/profile_card
 const GRAPH_HEIGHT = 250;
 const GRAPH_PIE_RADIUS = 100;
 
-const SkillsPieChart = ({ data, springOnOpenOpacityProps, springOnScrollOpacityProps, onAnimationEnd }) => {
+const SkillsPieChart = ({
+    data,
+    variant,
+    springOnOpenOpacityProps,
+    springOnScrollOpacityProps,
+    onAnimationEnd,
+    width: widthProps
+}) => {
     const theme = useTheme();
-    const [variant] = useCardVariant();
 
     const { contentColor, backgroundColor } = useMemo(
         () => ({
@@ -27,10 +33,10 @@ const SkillsPieChart = ({ data, springOnOpenOpacityProps, springOnScrollOpacityP
         [contentColor, backgroundColor]
     );
 
-    const width = theme?.components?.cards?.width;
+    const width = widthProps || theme?.components?.cards?.width;
 
     return (
-        <animated.div style={{ opacity: springOnScrollOpacityProps.opacity }}>
+        <animated.div style={{ opacity: springOnScrollOpacityProps && springOnScrollOpacityProps.opacity }}>
             <PieChart width={width} height={GRAPH_HEIGHT}>
                 <Pie
                     dataKey="value"

@@ -6,7 +6,7 @@ import cn from 'classnames';
 
 const useStyles = createUseStyles(sliderStyles);
 
-export const SliderWithPopper = ({ color, name, value, onChange, min, max, className, label }) => {
+export const SliderWithPopper = ({ color, name, value, onChange, min, max, className, label, debounce = 500 }) => {
     const classes = useStyles();
     const [isFocused, setIsFocused] = useState(false);
     const handleFocus = useCallback(() => setIsFocused(true), []);
@@ -26,7 +26,11 @@ export const SliderWithPopper = ({ color, name, value, onChange, min, max, class
                 clearTimeout(timer.current);
             }
             setLocalValue(newValue);
-            timer.current = setTimeout(() => onChange(e), 500);
+            if (debounce) {
+                timer.current = setTimeout(() => onChange(e), debounce);
+            } else {
+                onChange(e);
+            }
         },
         [onChange]
     );

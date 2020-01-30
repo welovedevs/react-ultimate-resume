@@ -1,28 +1,29 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { SkillsFront } from './skills_front/skills_front';
 import { SkillsBack } from './skills_back/skills_back';
+import { mapSkillsFromJsonResume } from './data/mapping';
+import { DeveloperProfileContext } from '../../../profile';
+import { SkillsCardEditDialog } from './edit_dialog/skills_card_edit_dialog';
 
-const mapData = data => ({
-    skills: (data?.skills || [])
-        .map(skill => {
-            const level = Number(skill.level);
-            if (Number.isNaN(skill.level)) {
-                return skill;
-            }
-            return { ...skill, levelValue: level };
-        })
-        .sort(({ levelValue: a }, { levelValue: b }) => b - a)
-});
+const SkillsCardComponent = ({ variant, side }) => {
+    const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);
 
-const SkillsCardComponent = ({ data, variant, side }) => {
-    const mappedData = useMemo(() => mapData(data), [data]);
+    const mappedData = useMemo(() => mapSkillsFromJsonResume(data), [data]);
+    const onDialogEdited = useCallback(editedData => {
+        // onEdit(FlatObjectToJsonResume(editedData, SoundtrackMapping));
+    }, []);
     return (
         <ProfileCard
+            isEditingProfile={isEditing}
             sides={{
                 front: SkillsFront,
                 back: SkillsBack
+            }}
+            editDialog={{
+                component: SkillsCardEditDialog,
+                onEdit: onDialogEdited
             }}
             data={mappedData}
             variant={variant}

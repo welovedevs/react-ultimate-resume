@@ -9,18 +9,12 @@ import SkillsPieChart from './skills_pie_chart/skills_pie_chart';
 import OtherSkills from './other_skills/other_skills';
 
 import { styles } from './skills_back_styles';
+import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
 
 const useStyles = createUseStyles(styles);
 
-const data = [
-    { name: 'React', value: 7, index: 0 },
-    { name: 'Angular', value: 5, index: 1 },
-    { name: 'Vue', value: 5, index: 2 },
-    { name: 'Python', value: 8, index: 3 }
-];
-
-const SkillsBackComponent = () => {
-    const variant = 0;
+const SkillsBackComponent = ({ data }) => {
+    const [variant] = useCardVariant();
 
     const classes = useStyles({ variant });
     const [springOnOpenOpacityProps, setSpringOnOpenOpacityProps] = useSpring(() => ({ opacity: 0 }));
@@ -28,7 +22,7 @@ const SkillsBackComponent = () => {
     const [springTranslationProps, setSpringTranslationProps] = useSpring(() => ({ yt: 0, config: config.slow }));
 
     const { top3Skills, othersSkills } = useMemo(() => {
-        const newData = [...(data || [])];
+        const newData = [...(data.skills ?? [])];
         const top3 = newData.splice(0, 3);
         return {
             top3Skills: top3,
@@ -64,6 +58,7 @@ const SkillsBackComponent = () => {
             <ProfileCardTitle>Skills</ProfileCardTitle>
             <div className={classes.container} onScroll={onScroll}>
                 <SkillsPieChart
+                    variant={variant}
                     data={top3Skills}
                     springOnScrollOpacityProps={springOnScrollOpacityProps}
                     springOnOpenOpacityProps={springOnOpenOpacityProps}

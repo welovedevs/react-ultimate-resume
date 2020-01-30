@@ -7,7 +7,7 @@ export const getProfileCardInitialState = (initialValues = {}) =>
         variant: initialValues.variant ?? null
     });
 
-export const PROFILE_CARD_REDUCER = (state, action) => {
+export const profileCardReducer = (state, action) => {
     switch (action.type) {
         case SET_HAS_DIALOG_OPENED:
             return {

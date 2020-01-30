@@ -1,18 +1,14 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import cn from 'classnames';
 import omit from 'lodash/omit';
-import range from 'lodash/range';
 import keyBy from 'lodash/keyBy';
-import { FormattedMessage, injectIntl, useIntl } from 'react-intl';
-import * as moment from 'moment';
-import { SortableContainer, SortableElement, SortableHandle, arrayMove } from 'react-sortable-hoc';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 
 import * as uuid from 'uuid/v4';
 
-import { MenuItem } from '@material-ui/core';
-
-import { Button, Tooltip, List, ListItem, Typography, TextField, Tag } from '@wld/ui';
+import { Button, List, ListItem, Tag, TextField, Tooltip, Typography } from '@wld/ui';
 
 import { styles } from './languages_styles';
 import translations from './languages_translations';
@@ -23,9 +19,7 @@ import { createUseStyles } from 'react-jss';
 import { ReactComponent as AddIcon } from '../../../../../assets/icons/add.svg';
 import { ReactComponent as MoveIcon } from '../../../../../assets/icons/move_list.svg';
 import { ReactComponent as TrashIcon } from '../../../../../assets/icons/trash.svg';
-import { Select } from '../../../../commons/select/select';
 import { SliderWithPopper } from '../../../../commons/slider_with_popper/slider_with_popper';
-import { EditDialogField } from '../../../../commons/edit_dialog_field/edit_dialog_field';
 
 const DragHandle = SortableHandle(({ classes }) => <MoveIcon className={classes.dragHandle} />);
 

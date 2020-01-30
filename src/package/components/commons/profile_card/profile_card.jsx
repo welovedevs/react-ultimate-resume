@@ -16,12 +16,12 @@ import { useDebounce } from 'use-debounce';
 import { Card, Tooltip } from '@wld/ui';
 
 import { ProfileCardSide } from './profile_card_side/profile_card_side';
-import { getProfileCardInitialState, PROFILE_CARD_REDUCER } from './profile_card_reducer';
+import { getProfileCardInitialState, profileCardReducer } from '../../../store/profile_card/profile_card_reducer';
 
 import { ReactComponent as EditIcon } from '../../../assets/icons/edit.svg';
 
 import { styles } from './profile_card_styles';
-import { SET_SIDE } from './profile_card_actions_types';
+import { SET_SIDE } from '../../../store/profile_card/profile_card_actions_types';
 
 const useStyles = createUseStyles(styles);
 
@@ -47,7 +47,7 @@ const ProfileCardComponent = ({
     const classes = useStyles({ variant });
     const [isEditingCard, setIsEditingCard] = useState(false);
     const [state, dispatch] = useReducer(
-        PROFILE_CARD_REDUCER,
+        profileCardReducer,
         getProfileCardInitialState({ variant, side: sideProps })
     );
     const { side, hasDialogOpened } = state;
