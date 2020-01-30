@@ -35,23 +35,26 @@ const DeveloperProfileComponent = ({ data: dataProps = {}, options = {}, onEdit:
             return;
         }
     }, []);
+    const store = {
+        technologies: useReducer(technologiesReducer, technologiesInitialState)
+    };
+    const context = useMemo(
+        () => ({
+            data,
+            isEditing,
+            onEdit,
+            apiKeys: { giphy: options?.apiKeys?.giphy },
+            store,
+            endpoints: {
+                devicons: options?.endpoints?.devicons
+            }
+        }),
+        [options, data, isEditing, onEdit]
+    );
 
     return (
         <div className={classes.container}>
-            <DeveloperProfileContext.Provider
-                value={{
-                    data,
-                    isEditing,
-                    onEdit,
-                    apiKeys: { giphy: options?.apiKeys?.giphy },
-                    endpoints: {
-                        devicons: options?.endpoints?.devicons
-                    },
-                    store: {
-                        technologies: useReducer(technologiesReducer, technologiesInitialState)
-                    }
-                }}
-            >
+            <DeveloperProfileContext.Provider value={context}>
                 <Banner />
                 <Cards />
             </DeveloperProfileContext.Provider>
