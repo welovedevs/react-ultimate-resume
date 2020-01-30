@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useEffect, useMemo, useReducer, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
@@ -12,6 +12,7 @@ import { styles } from './profile_styles';
 
 import '../styles/lib/slick-carousel/slick-theme.css';
 import '../styles/lib/slick-carousel/slick.css';
+import { technologiesInitialState, technologiesReducer } from '../store/technologies/technologies_reducer';
 
 const useStyles = createUseStyles(styles);
 
@@ -45,6 +46,9 @@ const DeveloperProfileComponent = ({ data: dataProps = {}, options = {}, onEdit:
                     apiKeys: { giphy: options.apiKeys.giphy },
                     endpoints: {
                         devicons: options.endpoints.devicons
+                    },
+                    store: {
+                        technologies: useReducer(technologiesReducer, technologiesInitialState)
                     }
                 }}
             >

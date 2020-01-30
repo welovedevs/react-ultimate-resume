@@ -8,8 +8,9 @@ export const styles = theme => {
         },
         logo: {
             marginBottom: spacing * 4,
-            '& > path': {
-                fill: 'currentColor'
+            '& > *': {
+                fill: 'currentColor',
+                stroke: 'currentColor'
             }
         },
         typography: {

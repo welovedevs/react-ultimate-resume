@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 
@@ -12,18 +12,35 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 import { ReactComponent as ReactLogo } from '../../../../../assets/icons/dev_only/react.svg';
 
 import { styles } from './skills_front_styles';
+import { useTechnologies } from '../../../../hooks/technologies/use_technologies';
 
 const useStyles = createUseStyles(styles);
 
-const SkillsFrontComponent = () => {
+const SkillsFrontComponent = ({ data }) => {
     const classes = useStyles();
+    const { technologies } = useTechnologies();
+
+    const techno = useMemo(() => {
+        const firstTechno = data?.skills?.[0];
+
+        if (!technologies || !firstTechno) {
+            return null;
+        }
+        return technologies[firstTechno?.name];
+    }, [technologies, data]);
     return (
         <>
             <ProfileCardPaddedFront>
                 <CenterContentContainer customClasses={{ container: classes.container }}>
-                    <ProfileCardFrontVector customClasses={{ container: classes.logo }} vector={ReactLogo} />
+                    <img
+                        src={
+                            techno &&
+                            `http://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle}`
+                        }
+                        className={classes.logo}
+                    />
                     <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
-                        I mainly write React stuff
+                        I mainly write {techno?.name} stuff
                     </ProfileCardFrontTypography>
                 </CenterContentContainer>
             </ProfileCardPaddedFront>

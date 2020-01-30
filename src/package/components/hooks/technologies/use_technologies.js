@@ -4,8 +4,13 @@ import { DeveloperProfileContext } from '../../profile';
 import { TECHNOLOGIES_RECEIVED } from '../../../store/technologies/technologies_actions_types';
 
 export const useTechnologies = () => {
-    const [{ technologies }, dispatch] = useReducer(technologiesReducer, technologiesInitialState);
-    const { endpoints } = useContext(DeveloperProfileContext);
+    const {
+        endpoints,
+        store: {
+            technologies: [{ technologies }, dispatch]
+        }
+    } = useContext(DeveloperProfileContext);
+    console.log('reducer', { technologies, endpoints });
 
     useEffect(() => {
         if (!endpoints.devicons) {
