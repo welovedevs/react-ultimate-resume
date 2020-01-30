@@ -22,7 +22,7 @@ var _default = (0, _reactIntl.defineMessages)({
   },
   unknown: {
     id: 'Developer.developerJobSearchState.unknown',
-    defaultMessage: 'Unknown jop search state'
+    defaultMessage: 'Unknown job search state'
   }
 });
 

@@ -28,10 +28,6 @@ var useTechnologies = function useTechnologies() {
       technologies = _useContext$store$tec[0].technologies,
       dispatch = _useContext$store$tec[1];
 
-  console.log('reducer', {
-    technologies: technologies,
-    endpoints: endpoints
-  });
   (0, _react.useEffect)(function () {
     if (!endpoints.devicons) {
       dispatch({

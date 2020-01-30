@@ -148,7 +148,7 @@ var JobSearchState = function JobSearchState(_ref6) {
     return null;
   }
 
-  return _react.default.createElement("span", null, formatMessage(_job_search_state_translations.default[searchState]));
+  return _react.default.createElement("span", null, formatMessage(_job_search_state_translations.default[searchState] || _job_search_state_translations.default.unknown));
 };
 
 var BasicsBack = BasicsBackComponent;

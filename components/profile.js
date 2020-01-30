@@ -95,7 +95,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
         devicons: options === null || options === void 0 ? void 0 : (_options$endpoints = options.endpoints) === null || _options$endpoints === void 0 ? void 0 : _options$endpoints.devicons
       }
     };
-  }, [options, data, isEditing, onEdit]);
+  }, [options, data, isEditing, onEdit, store]);
   return _react.default.createElement("div", {
     className: classes.container
   }, _react.default.createElement(DeveloperProfileContext.Provider, {
