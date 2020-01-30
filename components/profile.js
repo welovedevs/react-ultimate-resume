@@ -13,8 +13,6 @@ var _reactIntl = require("react-intl");
 
 var _reactJss = require("react-jss");
 
-var _json_stub = _interopRequireDefault(require("../../data/json_stub.json"));
-
 var _theme = require("../utils/styles/theme/theme");
 
 var _resume = require("../utils/data/resume");
@@ -25,7 +23,7 @@ var _cards = require("./cards/cards");
 
 var _profile_styles = require("./profile_styles");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _technologies_reducer = require("../store/technologies/technologies_reducer");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -35,6 +33,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -42,12 +46,6 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var useStyles = (0, _reactJss.createUseStyles)(_profile_styles.styles);
 var DEFAULT_OPTIONS = Object.freeze({
@@ -57,22 +55,52 @@ var DeveloperProfileContext = (0, _react.createContext)({});
 exports.DeveloperProfileContext = DeveloperProfileContext;
 
 var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
-  var options = _ref.options;
+  var _ref$data = _ref.data,
+      dataProps = _ref$data === void 0 ? {} : _ref$data,
+      _ref$options = _ref.options,
+      options = _ref$options === void 0 ? {} : _ref$options,
+      _ref$onEdit = _ref.onEdit,
+      onEditProps = _ref$onEdit === void 0 ? function () {} : _ref$onEdit;
   var classes = useStyles(_profile_styles.styles);
+
+  var _useState = (0, _react.useState)(true),
+      _useState2 = _slicedToArray(_useState, 2),
+      isEditing = _useState2[0],
+      setIsEditing = _useState2[1];
+
   var data = (0, _react.useMemo)(function () {
-    return (0, _resume.prepareJsonResume)(_json_stub.default);
-  }, [_json_stub.default]);
+    return (0, _resume.prepareJsonResume)(dataProps);
+  }, [JSON.stringify(dataProps)]);
+  var onEdit = (0, _react.useCallback)(function (newData) {
+    if (typeof onEditProps === 'function') {
+      onEditProps(newData);
+      return;
+    }
+  }, []);
   return _react.default.createElement("div", {
     className: classes.container
   }, _react.default.createElement(DeveloperProfileContext.Provider, {
     value: {
-      data: data
+      data: data,
+      isEditing: isEditing,
+      onEdit: onEdit,
+      apiKeys: {
+        giphy: options.apiKeys.giphy
+      },
+      endpoints: {
+        devicons: options.endpoints.devicons
+      },
+      store: {
+        technologies: (0, _react.useReducer)(_technologies_reducer.technologiesReducer, _technologies_reducer.technologiesInitialState)
+      }
     }
   }, _react.default.createElement(_banner.Banner, null), _react.default.createElement(_cards.Cards, null)));
 };
 
 var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref2) {
-  var _ref2$options = _ref2.options,
+  var data = _ref2.data,
+      onEdit = _ref2.onEdit,
+      _ref2$options = _ref2.options,
       options = _ref2$options === void 0 ? {} : _ref2$options;
 
   var _useMemo = (0, _react.useMemo)(function () {
@@ -81,10 +109,10 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref2
       locale = _useMemo.locale,
       theme = _useMemo.theme;
 
-  var _useState = (0, _react.useState)(null),
-      _useState2 = _slicedToArray(_useState, 2),
-      builtTheme = _useState2[0],
-      setBuiltTheme = _useState2[1];
+  var _useState3 = (0, _react.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      builtTheme = _useState4[0],
+      setBuiltTheme = _useState4[1];
 
   (0, _react.useEffect)(function () {
     var asyncBuild =
@@ -103,7 +131,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref2
 
               case 2:
                 built = _context.sent;
-                console.log('Built theme:', built);
+                console.log('🎨 Built theme:', built);
                 setBuiltTheme(built);
 
               case 5:
@@ -131,6 +159,8 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref2
   }, _react.default.createElement(_reactIntl.IntlProvider, {
     locale: locale
   }, _react.default.createElement(DeveloperProfileComponent, {
+    data: data,
+    onEdit: onEdit,
     options: options
   })));
 };

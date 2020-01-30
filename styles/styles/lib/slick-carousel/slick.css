@@ -1,0 +1,101 @@
+/*  imported from slick.css  */
+
+/* Slider */
+.slick__slick-slider___2asQp {
+    position: relative;
+
+    display: block;
+    box-sizing: border-box;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick__slick-list___1gCD3 {
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+}
+.slick__slick-list___1gCD3:focus {
+    outline: none;
+}
+.slick__slick-list___1gCD3.slick__dragging___Nk0eV {
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick__slick-slider___2asQp .slick__slick-track___194Yc,
+.slick__slick-slider___2asQp .slick__slick-list___1gCD3 {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.slick__slick-track___194Yc {
+    position: relative;
+    top: 0;
+    left: 0;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.slick__slick-track___194Yc:before,
+.slick__slick-track___194Yc:after {
+    display: table;
+
+    content: '';
+}
+.slick__slick-track___194Yc:after {
+    clear: both;
+}
+.slick__slick-loading___1i87n .slick__slick-track___194Yc {
+    visibility: hidden;
+}
+
+.slick__slick-slide___18MD- {
+    display: none;
+    float: left;
+
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick__slick-slide___18MD- {
+    float: right;
+}
+.slick__slick-slide___18MD-.slick__slick-loading___1i87n img {
+    display: none;
+}
+.slick__slick-slide___18MD-.slick__dragging___Nk0eV img {
+    pointer-events: none;
+}
+.slick__slick-initialized___3YaDI .slick__slick-slide___18MD- {
+    display: block;
+}
+.slick__slick-loading___1i87n .slick__slick-slide___18MD- {
+    visibility: hidden;
+}
+.slick__slick-vertical___2XLIc .slick__slick-slide___18MD- {
+    display: block;
+
+    height: auto;
+
+    border: 1px solid transparent;
+}
+.slick__slick-arrow___Lb5fh.slick__slick-hidden___3JeUn {
+    display: none;
+}

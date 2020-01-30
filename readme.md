@@ -9,9 +9,9 @@ We are open for feedbacks and will answers your issues as soon as we can.
 
 Sections -
 
-- Install
-- Usage
-- Pull Requests & Coding Guideline
+-   Install
+-   Usage
+-   Pull Requests & Coding Guideline
 
 # Usage
 
@@ -30,8 +30,19 @@ const ApplicationComponent = () => {
 }
 
 export const Application = ApplicationComponent;
-``` 
+```
 
+If you want to use the google maps autocomplete api, please make sure to add
+
+```
+<script
+   type="text/javascript"
+   src="https://maps.googleapis.com/maps/api/js?key=[YOUR_GMAPS_API_KEY]&libraries=places"
+></script>
+```
+In the header of your HTML page. 
+
+If you want to use the GIPHY api, please make sure to provide a apikey.giphy to the options props of the profile
 ## Theming
 
 We created a default theme based on WeLoveDevs' graphical identity.
@@ -66,3 +77,4 @@ Do write
 ## Architecture
 
 We use a project structure which, we believe, is the most readable.
+````

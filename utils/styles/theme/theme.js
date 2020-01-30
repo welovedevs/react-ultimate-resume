@@ -90,7 +90,42 @@ var DEFAULT_PALETTE = Object.freeze({
   },
   light: {
     500: '#fff',
+    900: '#fff',
     contrastDefaultColor: 'dark'
+  },
+  danger: {
+    50: '#fdeaeb',
+    100: '#fbcccc',
+    200: '#f8aaaa',
+    300: '#f58788',
+    400: '#f26e6f',
+    500: '#f05455',
+    600: '#ee4d4e',
+    700: '#ec4344',
+    800: '#e93a3b',
+    900: '#e5292a',
+    A100: '#ffffff',
+    A200: '#fff0f0',
+    A400: '#ffbdbd',
+    A700: '#ffa3a4',
+    contrastDefaultColor: 'light'
+  },
+  safe: {
+    50: '#ecf7f0',
+    100: '#d0ebda',
+    200: '#b1dec1',
+    300: '#91d0a8',
+    400: '#7ac695',
+    500: '#62bc82',
+    600: '#5ab67a',
+    700: '#50ad6f',
+    800: '#46a565',
+    900: '#349752',
+    A100: '#e1ffea',
+    A200: '#aeffc5',
+    A400: '#7bffa1',
+    A700: '#62ff8f',
+    contrastDefaultColor: 'light'
   }
 });
 var DEFAULT_THEME = Object.freeze({
@@ -104,22 +139,30 @@ var DEFAULT_THEME = Object.freeze({
   components: {
     banner: {
       overlayColor: 'primary',
-      imageSource: 'https://source.unsplash.com/random/4000x2000'
+      imageSource: 'https://source.unsplash.com/random/2000x6000'
     },
     cards: {
+      height: 470,
+      width: 470,
       borderRadius: 20,
       default: {
         backgroundColor: 'dark',
-        color: 'light'
+        color: 'light',
+        backBackgroundColor: 'light',
+        backColor: 'dark'
       },
-      variants: [['primary', 'light'], ['tertiary', 'primary'], ['light', 'secondary'], ['secondary', 'light'], ['light', 'primary']].map(function (_ref) {
-        var _ref2 = _slicedToArray(_ref, 2),
+      variants: [['primary', 'light', 'light', 'primary'], ['tertiary', 'primary', 'light', 'primary'], ['light', 'secondary', 'light', 'secondary'], ['secondary', 'light', 'light', 'secondary'], ['light', 'primary', 'light', 'primary']].map(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 4),
             backgroundColor = _ref2[0],
-            color = _ref2[1];
+            color = _ref2[1],
+            backBackgroundColor = _ref2[2],
+            backColor = _ref2[3];
 
         return {
           backgroundColor: backgroundColor,
-          color: color
+          color: color,
+          backBackgroundColor: backBackgroundColor,
+          backColor: backColor
         };
       })
     }
@@ -141,44 +184,38 @@ function () {
   var _ref3 = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee(theme) {
-    var merged, finalTheme;
+    var merged;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             merged = (0, _mergeWith.default)((0, _cloneDeep.default)(DEFAULT_THEME), theme, mergeFunction);
-            finalTheme = null;
-            _context.prev = 2;
-            _context.next = 5;
+            _context.prev = 1;
+            _context.next = 4;
             return _theme_schema.THEME_SCHEMA.validate(merged, {
-              palette: merged === null || merged === void 0 ? void 0 : merged.palette
+              context: {
+                palette: merged === null || merged === void 0 ? void 0 : merged.palette
+              },
+              strict: true
             });
 
-          case 5:
-            finalTheme = merged;
-            _context.next = 12;
-            break;
+          case 4:
+            return _context.abrupt("return", (0, _theme_transforms.transformTheme)(merged));
 
-          case 8:
-            _context.prev = 8;
-            _context.t0 = _context["catch"](2);
+          case 7:
+            _context.prev = 7;
+            _context.t0 = _context["catch"](1);
             console.error('Invalid theme! Using default theme instead.', {
               error: _context.t0
             });
-            finalTheme = _objectSpread({}, DEFAULT_THEME);
+            return _context.abrupt("return", (0, _theme_transforms.transformTheme)(_objectSpread({}, DEFAULT_THEME)));
 
-          case 12:
-            console.log({
-              finalTheme: finalTheme
-            });
-            return _context.abrupt("return", (0, _theme_transforms.transformTheme)(finalTheme));
-
-          case 14:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[2, 8]]);
+    }, _callee, null, [[1, 7]]);
   }));
 
   return function buildTheme(_x) {

@@ -9,9 +9,13 @@ exports.CenterContentContainer = void 0;
 
 var React = _interopRequireWildcard(require("react"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _reactJss = require("react-jss");
 
 var _center_content_container_styles = require("./center_content_container_styles");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -20,14 +24,16 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var useStyles = (0, _reactJss.createUseStyles)(_center_content_container_styles.styles);
 
 var CenterContentContainerComponent = function CenterContentContainerComponent(_ref) {
-  var children = _ref.children,
+  var _ref$customClasses = _ref.customClasses,
+      customClasses = _ref$customClasses === void 0 ? {} : _ref$customClasses,
+      children = _ref.children,
       _ref$minus = _ref.minus,
       minus = _ref$minus === void 0 ? 0 : _ref$minus;
   var classes = useStyles({
     minus: minus
   });
   return React.createElement("div", {
-    className: classes.container
+    className: (0, _classnames.default)(classes.container, customClasses.container)
   }, children);
 };
 

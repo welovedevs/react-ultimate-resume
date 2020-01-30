@@ -40,6 +40,8 @@ var styles = function styles(_ref) {
     },
     image: {
       extend: 'absolutePositioned',
+      height: '100%',
+      width: '100%',
       zIndex: 0,
       objectFit: 'cover'
     },

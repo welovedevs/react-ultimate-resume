@@ -13,15 +13,27 @@ var _reactJss = require("react-jss");
 
 var _reactSpring = require("react-spring");
 
+var _useDebounce3 = require("use-debounce");
+
 var _ui = require("@wld/ui");
+
+var _profile_card_side = require("./profile_card_side/profile_card_side");
+
+var _profile_card_reducer = require("../../../store/profile_card/profile_card_reducer");
 
 var _profile_card_styles = require("./profile_card_styles");
 
-var _profile_card_side = require("../profile_card_side/profile_card_side");
+var _profile_card_actions_types = require("../../../store/profile_card/profile_card_actions_types");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -31,37 +43,99 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+var EditIcon = function EditIcon(props) {
+  return _react.default.createElement("svg", props, _react.default.createElement("path", {
+    d: "M20 0C8.955 0 0 8.955 0 20s8.955 20 20 20 20-8.954 20-20C39.99 8.96 31.04.012 20 0zm-9.94 28.464l1.86-4.654a.854.854 0 0 1 .185-.28l9.82-9.82a.856.856 0 0 1 1.179 0l2.793 2.79a.838.838 0 0 1 0 1.178l-9.822 9.823a.829.829 0 0 1-.28.185l-4.651 1.861a.861.861 0 0 1-.9-.185.835.835 0 0 1-.184-.898zm19.557-14.5l-1.396 1.395a.834.834 0 0 1-1.179 0l-2.792-2.795a.834.834 0 0 1 0-1.179l1.397-1.396a2.808 2.808 0 0 1 3.968 3.972l.002.003z"
+  }));
+};
+
+EditIcon.defaultProps = {
+  viewBox: "0 0 40 40",
+  xmlns: "http://www.w3.org/2000/svg"
+};
 var useStyles = (0, _reactJss.createUseStyles)(_profile_card_styles.styles);
 var ProfileCardContext = (0, _react.createContext)({});
 exports.ProfileCardContext = ProfileCardContext;
+var DEFAULT_TRANSITIONS_SPRING_PROPS = {
+  from: {
+    opacity: 0
+  },
+  enter: {
+    opacity: 1
+  },
+  leave: {
+    opacity: 0
+  },
+  config: _reactSpring.config.default
+};
 
 var ProfileCardComponent = function ProfileCardComponent(_ref) {
   var data = _ref.data,
       sides = _ref.sides,
-      receivedSide = _ref.side,
-      variant = _ref.variant;
+      variant = _ref.variant,
+      _ref$isTransitionUniq = _ref.isTransitionUnique,
+      isTransitionUnique = _ref$isTransitionUniq === void 0 ? true : _ref$isTransitionUniq,
+      isEditingProfile = _ref.isEditingProfile,
+      editDialog = _ref.editDialog,
+      customTransitionsSpringProps = _ref.customTransitionsSpringProps,
+      sideProps = _ref.side;
   var classes = useStyles({
     variant: variant
   });
 
-  var _useState = (0, _react.useState)('front'),
+  var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
-      side = _useState2[0],
-      setSide = _useState2[1];
+      isEditingCard = _useState2[0],
+      setIsEditingCard = _useState2[1];
 
+  var _useReducer = (0, _react.useReducer)(_profile_card_reducer.profileCardReducer, (0, _profile_card_reducer.getProfileCardInitialState)({
+    variant: variant,
+    side: sideProps
+  })),
+      _useReducer2 = _slicedToArray(_useReducer, 2),
+      state = _useReducer2[0],
+      dispatch = _useReducer2[1];
+
+  var side = state.side,
+      hasDialogOpened = state.hasDialogOpened;
+
+  var _useDebounce = (0, _useDebounce3.useDebounce)(side, 200),
+      _useDebounce2 = _slicedToArray(_useDebounce, 1),
+      debouncedSide = _useDebounce2[0];
+
+  var transitionsSpringProps = (0, _react.useMemo)(function () {
+    if (customTransitionsSpringProps) {
+      if (typeof customTransitionsSpringProps === 'function') {
+        return customTransitionsSpringProps(side);
+      }
+
+      return customTransitionsSpringProps;
+    }
+
+    return DEFAULT_TRANSITIONS_SPRING_PROPS;
+  }, [customTransitionsSpringProps, side]);
   var hasSideChanged = (0, _react.useRef)(false);
+  var setSide = (0, _react.useCallback)(function (newSide) {
+    return dispatch({
+      type: _profile_card_actions_types.SET_SIDE,
+      side: newSide
+    });
+  }, []);
   var handleMouseEnter = (0, _react.useCallback)(function () {
     return setSide('back');
-  }, []);
+  }, [dispatch]);
   var handleMouseLeave = (0, _react.useCallback)(function () {
-    return setSide('front');
-  }, []); // Either 'front' or 'back'.
-
-  (0, _react.useEffect)(function () {
-    if (receivedSide) {
-      setSide(receivedSide);
+    if (hasDialogOpened) {
+      return;
     }
-  }, [receivedSide]);
+
+    setSide('front');
+  }, [hasDialogOpened, dispatch]);
+  var enableEditingCard = (0, _react.useCallback)(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsEditingCard(true);
+  }, []);
   (0, _react.useEffect)(function () {
     if (hasSideChanged.current) {
       return;
@@ -69,36 +143,52 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
 
     hasSideChanged.current = true;
   }, [side]);
-  var transitions = (0, _reactSpring.useTransition)(side, function (item) {
+  var transitions = (0, _reactSpring.useTransition)(debouncedSide, function (item) {
     return "card_side_".concat(item);
-  }, {
-    from: {
-      opacity: 0,
-      transform: 'translate3d(50%,0,0)'
-    },
-    enter: {
-      opacity: 1,
-      transform: 'translate3d(0%,0,0)'
-    },
-    leave: {
-      opacity: 0,
-      transform: 'translate3d(-25%,0,0)'
-    },
-    config: _reactSpring.config.default,
+  }, _objectSpread({}, transitionsSpringProps, {
+    unique: isTransitionUnique,
     immediate: !hasSideChanged.current
-  });
-  return _react.default.createElement(_ui.Card, {
+  }));
+  var EditDialogComponent = (0, _react.useMemo)(function () {
+    if (!editDialog) {
+      return null;
+    }
+
+    return (0, _react.createElement)(editDialog.component, {
+      onEdit: function onEdit() {
+        setIsEditingCard(false);
+        editDialog.onEdit.apply(editDialog, arguments);
+      },
+      validationSchema: editDialog.validationSchema,
+      data: data,
+      onClose: function onClose() {
+        return setIsEditingCard(false);
+      }
+    });
+  }, [editDialog]);
+  var contextData = (0, _react.useMemo)(function () {
+    return {
+      state: state,
+      dispatch: dispatch
+    };
+  }, [state]);
+  return _react.default.createElement(_react.default.Fragment, null, isEditingCard && EditDialogComponent, _react.default.createElement(_ui.Card, {
     customClasses: {
       container: classes.container
     },
     elevation: 1,
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave
-  }, _react.default.createElement(ProfileCardContext.Provider, {
-    value: {
-      side: side,
-      setSide: setSide
-    }
+  }, isEditingProfile && _react.default.createElement(_ui.Tooltip, {
+    title: "Editer cette carte"
+  }, _react.default.createElement("button", {
+    type: "button",
+    className: classes.editButton,
+    onClick: enableEditingCard
+  }, _react.default.createElement(EditIcon, {
+    className: classes.editIcon
+  }))), _react.default.createElement(ProfileCardContext.Provider, {
+    value: contextData
   }, transitions.map(function (_ref2) {
     var item = _ref2.item,
         key = _ref2.key,
@@ -112,10 +202,9 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       key: key,
       style: props
     }, _react.default.createElement(SideComponent, {
-      data: data,
-      variant: variant
+      data: data
     }));
-  })));
+  }))));
 };
 
 var ProfileCard = ProfileCardComponent;

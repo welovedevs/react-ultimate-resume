@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+require("whatwg-fetch");
+
 var _profile = require("./components/profile");
 
 var _default = _profile.DeveloperProfile;

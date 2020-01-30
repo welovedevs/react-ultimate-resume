@@ -28,13 +28,15 @@ var SHADES_SCHEMA = Object.freeze(_objectSpread({}, [50, 100, 150, 200, 250, 300
 var isExistingColorInPalette = yup.string().test('is-existing-color-in-palette', function (args) {
   return "Color `".concat(args.value, "` must be present in palette.");
 }, function (value) {
-  var _this$options$palette;
+  var _this$options, _this$options$context, _this$options$context2;
 
-  return Boolean((_this$options$palette = this.options.palette) === null || _this$options$palette === void 0 ? void 0 : _this$options$palette[value]);
+  return Boolean((_this$options = this.options) === null || _this$options === void 0 ? void 0 : (_this$options$context = _this$options.context) === null || _this$options$context === void 0 ? void 0 : (_this$options$context2 = _this$options$context.palette) === null || _this$options$context2 === void 0 ? void 0 : _this$options$context2[value]);
 });
 var CARD_VARIANT_SCHEMA = yup.object({
   backgroundColor: isExistingColorInPalette.required(),
-  color: isExistingColorInPalette.required()
+  color: isExistingColorInPalette.required(),
+  backBackgroundColor: isExistingColorInPalette.required(),
+  backColor: isExistingColorInPalette.required()
 });
 var THEME_SCHEMA = yup.object({
   palette: yup.lazy(function () {
@@ -57,6 +59,8 @@ var THEME_SCHEMA = yup.object({
       imageSource: yup.string().required()
     }),
     cards: yup.object({
+      height: yup.number().required(),
+      width: yup.number().required(),
       borderRadius: yup.number().required(),
       default: CARD_VARIANT_SCHEMA,
       variants: yup.array().of(CARD_VARIANT_SCHEMA).required()
