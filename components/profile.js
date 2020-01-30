@@ -150,7 +150,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref2
     }();
 
     asyncBuild();
-  }, [options]);
+  }, [JSON.stringify(options)]);
 
   if (!builtTheme) {
     return null;
