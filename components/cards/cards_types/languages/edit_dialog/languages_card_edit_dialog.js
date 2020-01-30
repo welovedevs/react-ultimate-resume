@@ -19,7 +19,7 @@ var _reactIntl = require("react-intl");
 
 var _reactSortableHoc = require("react-sortable-hoc");
 
-var uuid = _interopRequireWildcard(require("uuid/v4"));
+var _v = _interopRequireDefault(require("uuid/v4"));
 
 var _ui = require("@wld/ui");
 
@@ -213,7 +213,7 @@ var LanguagesEditForm = function LanguagesEditForm(_ref4) {
     };
   }, [JSON.stringify(keyedValues)]);
   var addLanguage = (0, _react.useCallback)(function () {
-    var id = uuid();
+    var id = (0, _v.default)();
     handleValueChange('languages')(languages.concat({
       index: languages.length,
       id: id

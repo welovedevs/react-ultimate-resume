@@ -33,7 +33,7 @@ var _formik = require("formik");
 
 var _keyBy = _interopRequireDefault(require("lodash/keyBy"));
 
-var uuid = _interopRequireWildcard(require("uuid/v4"));
+var _v = _interopRequireDefault(require("uuid/v4"));
 
 var _year_month = require("../../../../commons/year_month/year_month");
 
@@ -481,7 +481,7 @@ var ExperiencesEditForm = function ExperiencesEditForm(_ref9) {
     };
   }, [foldedState]);
   var addExperience = (0, _react.useCallback)(function () {
-    var id = uuid();
+    var id = (0, _v.default)();
     handleValueChange('work')(work.concat({
       index: work.length,
       id: id

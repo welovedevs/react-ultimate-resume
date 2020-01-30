@@ -15,7 +15,7 @@ var _formik = require("formik");
 
 var _ui = require("@wld/ui");
 
-var uuid = _interopRequireWildcard(require("uuid/v4"));
+var _v = _interopRequireDefault(require("uuid/v4"));
 
 var _reactJss = require("react-jss");
 
@@ -44,6 +44,8 @@ var _remote_utils = require("../../../../../utils/enums/remote/remote_utils");
 var _remote_filter_translations = require("../../../../../utils/enums/remote/remote_filter_translations");
 
 var _checkbox_group2 = require("../../../../commons/checkbox_field/checkbox_group");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -103,7 +105,7 @@ var DreamjobCardEditDialogContent = function DreamjobCardEditDialogContent(_ref)
       contractTypes = values.contractTypes;
   var addPlace = (0, _react.useCallback)(function (place) {
     return handleValueChange('places')(places.concat(_objectSpread({}, place, {
-      id: uuid()
+      id: (0, _v.default)()
     })));
   }, [places]);
   var removePlace = (0, _react.useCallback)(function (id) {

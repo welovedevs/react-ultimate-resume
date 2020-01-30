@@ -1,7 +1,5 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -9,11 +7,7 @@ exports.mapStudiesToJsonResume = exports.mapStudiesFromJsonResume = void 0;
 
 var _moment = _interopRequireDefault(require("moment"));
 
-var uuid = _interopRequireWildcard(require("uuid/v4"));
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+var _v = _interopRequireDefault(require("uuid/v4"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30,7 +24,7 @@ var mapStudiesFromJsonResume = function mapStudiesFromJsonResume(jsonResume) {
     education: jsonResume === null || jsonResume === void 0 ? void 0 : (_jsonResume$education = jsonResume.education) === null || _jsonResume$education === void 0 ? void 0 : _jsonResume$education.map(function (study) {
       return _objectSpread({}, study, {
         //generating uuid for manipulating data if not present
-        id: study.id || uuid(),
+        id: study.id || (0, _v.default)(),
         startDate: (0, _moment.default)(study.startDate, 'YYYY-MM-DD'),
         endDate: (0, _moment.default)(study.endDate, 'YYYY-MM-DD')
       });

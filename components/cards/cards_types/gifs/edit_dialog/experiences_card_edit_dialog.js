@@ -31,7 +31,7 @@ var _formik = require("formik");
 
 var _keyBy = _interopRequireDefault(require("lodash/keyBy"));
 
-var uuid = _interopRequireWildcard(require("uuid/v4"));
+var _v = _interopRequireDefault(require("uuid/v4"));
 
 var _use_giphy_results = require("../../../../hooks/giphy/use_giphy_results");
 
@@ -335,7 +335,7 @@ var InterestsEditForm = function InterestsEditForm(_ref9) {
     };
   }, [JSON.stringify(keyedValues)]);
   var addInterest = (0, _react.useCallback)(function () {
-    var id = uuid();
+    var id = (0, _v.default)();
     handleValueChange('interests')(interests.concat({
       index: interests.length,
       id: id

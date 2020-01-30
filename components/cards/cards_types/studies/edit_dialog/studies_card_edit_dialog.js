@@ -23,7 +23,7 @@ var _moment = _interopRequireDefault(require("moment"));
 
 var _reactSortableHoc = require("react-sortable-hoc");
 
-var uuid = _interopRequireWildcard(require("uuid/v4"));
+var _v = _interopRequireDefault(require("uuid/v4"));
 
 var _core = require("@material-ui/core");
 
@@ -265,7 +265,7 @@ var FormationsEditForm = function FormationsEditForm(_ref4) {
     };
   }, [JSON.stringify(keyedValues)]);
   var formationAdded = (0, _react.useCallback)(function () {
-    var id = uuid();
+    var id = (0, _v.default)();
     return formationChanged(id, {
       position: Object.keys(keyedValues).length,
       id: id

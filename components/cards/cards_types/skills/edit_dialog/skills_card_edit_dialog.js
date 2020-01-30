@@ -13,7 +13,7 @@ var _reactIntl = require("react-intl");
 
 var _formik = require("formik");
 
-var uuid = _interopRequireWildcard(require("uuid/v4"));
+var _v = _interopRequireDefault(require("uuid/v4"));
 
 var _edit_dialog = require("../../../../commons/edit_dialog/edit_dialog");
 
@@ -56,7 +56,7 @@ var SkillsCardEditDialogContent = function SkillsCardEditDialogContent(_ref) {
       name: name,
       index: values.skills.length,
       value: 50,
-      id: uuid()
+      id: (0, _v.default)()
     });
   }, [values]);
   var deleteItem = (0, _react.useCallback)(function (id) {
