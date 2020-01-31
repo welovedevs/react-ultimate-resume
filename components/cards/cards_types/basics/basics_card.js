@@ -15,8 +15,6 @@ var _basics_front = require("./basics_front/basics_front");
 
 var _basics_back = require("./basics_back/basics_back");
 
-var _data_mapping = require("../../utils/data_mapping");
-
 var _mapping = require("./data/mapping");
 
 var _profile = require("../../../profile");
@@ -39,10 +37,10 @@ var BasicsCardComponent = function BasicsCardComponent(_ref) {
       onEdit = _useContext.onEdit;
 
   var mappedData = (0, _react.useMemo)(function () {
-    return (0, _data_mapping.JsonResumeToFlatObject)(data, _mapping.BasicMapping);
+    return (0, _mapping.mapJsonResumeToBasicData)(data);
   }, [data]);
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
-    onEdit((0, _data_mapping.FlatObjectToJsonResume)(editedData, _mapping.BasicMapping));
+    onEdit((0, _mapping.mapBasicsDataToJsonResume)(editedData));
   }, []);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card.ProfileCard, {
     data: mappedData,
