@@ -18,18 +18,14 @@ const BasicsFrontComponent = ({ data }) => {
     const classes = useStyles();
     const [side, setSide] = useCardSide();
 
-    const {
-        summary,
-        currentCity: { name: currentCityName }
-    } = data;
     const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
 
     return (
         <ProfileCardPaddedFront>
             <CenterContentContainer customClasses={{ container: classes.container }}>
-                <ProfileCardFrontTypography>{summary}</ProfileCardFrontTypography>
+                <ProfileCardFrontTypography>{data.summary}</ProfileCardFrontTypography>
                 <ProfileCardFrontTypography level="h4" component="h3" customClasses={{ container: classes.subTitle }}>
-                    📍 {currentCityName}
+                    📍 {data?.currentCity?.name}
                 </ProfileCardFrontTypography>
             </CenterContentContainer>
             <ProfileCardActions>
