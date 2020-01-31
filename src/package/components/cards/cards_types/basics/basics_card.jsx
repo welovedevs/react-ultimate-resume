@@ -4,8 +4,7 @@ import { ProfileCard } from '../../../commons/profile_card/profile_card';
 
 import { BasicsFront } from './basics_front/basics_front';
 import { BasicsBack } from './basics_back/basics_back';
-import { FlatObjectToJsonResume, JsonResumeToFlatObject } from '../../utils/data_mapping';
-import { BasicMapping } from './data/mapping';
+import { mapBasicsDataToJsonResume, mapJsonResumeToBasicData } from './data/mapping';
 import { DeveloperProfileContext } from '../../../profile';
 
 import { BasicsCardEditDialog } from './edit_dialog/basic_card_edit_dialog';
@@ -13,10 +12,10 @@ import { BasicsValidationSchema } from './data/validator';
 
 const BasicsCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
-    const mappedData = useMemo(() => JsonResumeToFlatObject(data, BasicMapping), [data]);
+    const mappedData = useMemo(() => mapJsonResumeToBasicData(data), [data]);
 
     const onDialogEdited = useCallback(editedData => {
-        onEdit(FlatObjectToJsonResume(editedData, BasicMapping));
+        onEdit(mapBasicsDataToJsonResume(editedData));
     }, []);
 
     return (

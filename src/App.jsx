@@ -17,6 +17,7 @@ function App() {
     );
     return (
         <DeveloperProfile
+            isEditing={true}
             data={data}
             onEdit={onEdit}
             options={{
