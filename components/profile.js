@@ -63,6 +63,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       options = _ref$options === void 0 ? DEFAULT_OBJECT : _ref$options,
       _ref$onEdit = _ref.onEdit,
       onEditProps = _ref$onEdit === void 0 ? DEFAULT_FUNCTION : _ref$onEdit,
+      isEditing = _ref.isEditing,
       ActionButtons = _ref.ActionButtons;
   var classes = useStyles(_profile_styles.styles);
   var data = (0, _react.useMemo)(function () {
@@ -83,7 +84,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
     console.log('on usememoise le contexte dans DeveloperProfileComponent');
     return {
       data: data,
-      isEditing: options === null || options === void 0 ? void 0 : options.isEditing,
+      isEditing: isEditing,
       onEdit: onEdit,
       apiKeys: {
         giphy: options === null || options === void 0 ? void 0 : (_options$apiKeys = options.apiKeys) === null || _options$apiKeys === void 0 ? void 0 : _options$apiKeys.giphy
@@ -106,7 +107,8 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref2
       onEdit = _ref2.onEdit,
       _ref2$options = _ref2.options,
       options = _ref2$options === void 0 ? {} : _ref2$options,
-      ActionButtons = _ref2.ActionButtons;
+      ActionButtons = _ref2.ActionButtons,
+      isEditing = _ref2.isEditing;
 
   var _useMemo = (0, _react.useMemo)(function () {
     return _objectSpread({}, DEFAULT_OPTIONS, {}, options);
@@ -164,6 +166,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref2
   }, _react.default.createElement(_reactIntl.IntlProvider, {
     locale: locale
   }, _react.default.createElement(DeveloperProfileComponent, {
+    isEditing: isEditing,
     data: data,
     onEdit: onEdit,
     options: options,
