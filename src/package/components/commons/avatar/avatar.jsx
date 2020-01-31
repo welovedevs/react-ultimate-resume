@@ -6,11 +6,11 @@ import { styles } from './avatar_styles';
 
 const useStyles = createUseStyles(styles);
 
-const AvatarComponent = ({ imageSource = 'https://i.pravatar.cc/1000', displayedName }) => {
+const AvatarComponent = ({ src = 'https://i.pravatar.cc/1000', displayedName }) => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
-            <img className={classes.image} src={imageSource} alt={displayedName} />
+            <img className={classes.image} src={src} alt={displayedName} />
         </div>
     );
 };

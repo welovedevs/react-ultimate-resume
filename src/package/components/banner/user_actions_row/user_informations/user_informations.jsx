@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { Typography } from '@wld/ui/';
@@ -7,14 +7,17 @@ import { Avatar } from '../../../commons/avatar/avatar';
 import { Column } from '../../../commons/column/column';
 
 import { styles } from './user_informations_styles';
+import { DeveloperProfileContext } from '../../../profile';
 
 const useStyles = createUseStyles(styles);
 
 const UserInformationsComponent = () => {
+    const { data } = useContext(DeveloperProfileContext);
+
     const classes = useStyles();
     return (
         <div className={classes.container}>
-            <Avatar />
+            <Avatar src={data.basics?.picture} />
             <Column customClasses={{ container: classes.textColumn }}>
                 <Typography
                     customClasses={{
@@ -23,7 +26,7 @@ const UserInformationsComponent = () => {
                     variant="h3"
                     component="h3"
                 >
-                    Marie Bodin
+                   {data.basics?.name}
                 </Typography>
                 <Typography
                     customClasses={{
@@ -32,7 +35,7 @@ const UserInformationsComponent = () => {
                     variant="h4"
                     component="h4"
                 >
-                    Front-end developer
+                    {data.basics?.label}
                 </Typography>
             </Column>
         </div>
