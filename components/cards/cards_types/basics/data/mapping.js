@@ -43,7 +43,7 @@ var mapBasicsDataToJsonResume = function mapBasicsDataToJsonResume(data) {
         city: data.currentCity.name
       })
     },
-    specfic: {
+    specific: {
       work: {
         experienceYears: data.experienceYears,
         codingYears: data.codingYears,
