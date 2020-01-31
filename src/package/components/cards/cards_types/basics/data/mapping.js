@@ -21,7 +21,7 @@ export const mapBasicsDataToJsonResume = data => ({
         personalDescription: data.personalDescription,
         location: data.currentCity && { ...data.currentCity, city: data.currentCity.name }
     },
-    specfic: {
+    specific: {
         work: {
             experienceYears: data.experienceYears,
             codingYears: data.codingYears,
