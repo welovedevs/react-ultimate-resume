@@ -33,12 +33,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -46,6 +40,12 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var useStyles = (0, _reactJss.createUseStyles)(_profile_styles.styles);
 var DEFAULT_OPTIONS = Object.freeze({
@@ -65,12 +65,6 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       onEditProps = _ref$onEdit === void 0 ? DEFAULT_FUNCTION : _ref$onEdit,
       ActionButtons = _ref.ActionButtons;
   var classes = useStyles(_profile_styles.styles);
-
-  var _useState = (0, _react.useState)(true),
-      _useState2 = _slicedToArray(_useState, 2),
-      isEditing = _useState2[0],
-      setIsEditing = _useState2[1];
-
   var data = (0, _react.useMemo)(function () {
     return (0, _resume.prepareJsonResume)(dataProps);
   }, [JSON.stringify(dataProps)]);
@@ -89,7 +83,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
     console.log('on usememoise le contexte dans DeveloperProfileComponent');
     return {
       data: data,
-      isEditing: isEditing,
+      isEditing: options === null || options === void 0 ? void 0 : options.isEditing,
       onEdit: onEdit,
       apiKeys: {
         giphy: options === null || options === void 0 ? void 0 : (_options$apiKeys = options.apiKeys) === null || _options$apiKeys === void 0 ? void 0 : _options$apiKeys.giphy
@@ -99,7 +93,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
         devicons: options === null || options === void 0 ? void 0 : (_options$endpoints = options.endpoints) === null || _options$endpoints === void 0 ? void 0 : _options$endpoints.devicons
       }
     };
-  }, [options, data, isEditing, onEdit, store]);
+  }, [options, data, onEdit, store]);
   return _react.default.createElement("div", {
     className: classes.container
   }, _react.default.createElement(DeveloperProfileContext.Provider, {
@@ -120,10 +114,10 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref2
       locale = _useMemo.locale,
       theme = _useMemo.theme;
 
-  var _useState3 = (0, _react.useState)(null),
-      _useState4 = _slicedToArray(_useState3, 2),
-      builtTheme = _useState4[0],
-      setBuiltTheme = _useState4[1];
+  var _useState = (0, _react.useState)(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      builtTheme = _useState2[0],
+      setBuiltTheme = _useState2[1];
 
   (0, _react.useEffect)(function () {
     var asyncBuild =
