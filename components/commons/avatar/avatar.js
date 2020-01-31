@@ -16,15 +16,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var useStyles = (0, _reactJss.createUseStyles)(_avatar_styles.styles);
 
 var AvatarComponent = function AvatarComponent(_ref) {
-  var _ref$imageSource = _ref.imageSource,
-      imageSource = _ref$imageSource === void 0 ? 'https://i.pravatar.cc/1000' : _ref$imageSource,
+  var _ref$src = _ref.src,
+      src = _ref$src === void 0 ? 'https://i.pravatar.cc/1000' : _ref$src,
       displayedName = _ref.displayedName;
   var classes = useStyles();
   return _react.default.createElement("div", {
     className: classes.container
   }, _react.default.createElement("img", {
     className: classes.image,
-    src: imageSource,
+    src: src,
     alt: displayedName
   }));
 };
