@@ -31,7 +31,6 @@ const DeveloperProfileComponent = ({
     ActionButtons
 }) => {
     const classes = useStyles(styles);
-    const [isEditing, setIsEditing] = useState(true);
     const data = useMemo(() => {
         return prepareJsonResume(dataProps);
     }, [JSON.stringify(dataProps)]);
@@ -49,7 +48,7 @@ const DeveloperProfileComponent = ({
         console.log('on usememoise le contexte dans DeveloperProfileComponent');
         return {
             data,
-            isEditing,
+            isEditing: options?.isEditing,
             onEdit,
             apiKeys: { giphy: options?.apiKeys?.giphy },
             store,
@@ -57,7 +56,7 @@ const DeveloperProfileComponent = ({
                 devicons: options?.endpoints?.devicons
             }
         };
-    }, [options, data, isEditing, onEdit, store]);
+    }, [options, data, onEdit, store]);
 
     return (
         <div className={classes.container}>
