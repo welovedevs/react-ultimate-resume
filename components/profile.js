@@ -15,8 +15,6 @@ var _reactJss = require("react-jss");
 
 var _theme = require("../utils/styles/theme/theme");
 
-var _resume = require("../utils/data/resume");
-
 var _banner = require("./banner/banner");
 
 var _cards = require("./cards/cards");
@@ -58,7 +56,7 @@ var DEFAULT_FUNCTION = {};
 
 var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
   var _ref$data = _ref.data,
-      dataProps = _ref$data === void 0 ? DEFAULT_OBJECT : _ref$data,
+      data = _ref$data === void 0 ? DEFAULT_OBJECT : _ref$data,
       _ref$options = _ref.options,
       options = _ref$options === void 0 ? DEFAULT_OBJECT : _ref$options,
       _ref$onEdit = _ref.onEdit,
@@ -66,9 +64,6 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       isEditing = _ref.isEditing,
       ActionButtons = _ref.ActionButtons;
   var classes = useStyles(_profile_styles.styles);
-  var data = (0, _react.useMemo)(function () {
-    return (0, _resume.prepareJsonResume)(dataProps);
-  }, [JSON.stringify(dataProps)]);
   var onEdit = (0, _react.useCallback)(function (newData) {
     if (typeof onEditProps === 'function') {
       onEditProps(newData);
