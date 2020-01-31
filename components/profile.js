@@ -62,7 +62,8 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       _ref$options = _ref.options,
       options = _ref$options === void 0 ? DEFAULT_OBJECT : _ref$options,
       _ref$onEdit = _ref.onEdit,
-      onEditProps = _ref$onEdit === void 0 ? DEFAULT_FUNCTION : _ref$onEdit;
+      onEditProps = _ref$onEdit === void 0 ? DEFAULT_FUNCTION : _ref$onEdit,
+      ActionButtons = _ref.ActionButtons;
   var classes = useStyles(_profile_styles.styles);
 
   var _useState = (0, _react.useState)(true),
@@ -103,14 +104,15 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
     className: classes.container
   }, _react.default.createElement(DeveloperProfileContext.Provider, {
     value: context
-  }, _react.default.createElement(_banner.Banner, null), _react.default.createElement(_cards.Cards, null)));
+  }, _react.default.createElement(_banner.Banner, null, ActionButtons), _react.default.createElement(_cards.Cards, null)));
 };
 
 var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref2) {
   var data = _ref2.data,
       onEdit = _ref2.onEdit,
       _ref2$options = _ref2.options,
-      options = _ref2$options === void 0 ? {} : _ref2$options;
+      options = _ref2$options === void 0 ? {} : _ref2$options,
+      ActionButtons = _ref2.ActionButtons;
 
   var _useMemo = (0, _react.useMemo)(function () {
     return _objectSpread({}, DEFAULT_OPTIONS, {}, options);
@@ -170,7 +172,8 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref2
   }, _react.default.createElement(DeveloperProfileComponent, {
     data: data,
     onEdit: onEdit,
-    options: options
+    options: options,
+    ActionButtons: ActionButtons
   })));
 };
 

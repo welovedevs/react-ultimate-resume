@@ -17,7 +17,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var useStyles = (0, _reactJss.createUseStyles)(_social_actions_styles.styles);
 
-var SocialActionsComponent = function SocialActionsComponent() {
+var SocialActionsComponent = function SocialActionsComponent(_ref) {
+  var children = _ref.children;
   var classes = useStyles();
   return _react.default.createElement("div", {
     className: classes.container
@@ -26,7 +27,7 @@ var SocialActionsComponent = function SocialActionsComponent() {
       color: '#fff'
     },
     variant: "outlined"
-  }, 'Get in touch'));
+  }, 'Get in touch'), children);
 };
 
 var SocialActions = SocialActionsComponent;

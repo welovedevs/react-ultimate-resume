@@ -9,17 +9,20 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactJss = require("react-jss");
 
-var _user_actions_row = require("./user_actions_row/user_actions_row");
-
 var _banner_styles = require("./banner_styles");
+
+var _user_informations = require("./user_actions_row/user_informations/user_informations");
+
+var _social_actions = require("./user_actions_row/social_actions/social_actions");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var useStyles = (0, _reactJss.createUseStyles)(_banner_styles.styles);
 
-var BannerComponent = function BannerComponent() {
+var BannerComponent = function BannerComponent(_ref) {
   var _theme$components, _theme$components$ban;
 
+  var children = _ref.children;
   var classes = useStyles();
   var theme = (0, _reactJss.useTheme)();
   return _react.default.createElement("div", {
@@ -30,7 +33,9 @@ var BannerComponent = function BannerComponent() {
     alt: "Banner"
   }), _react.default.createElement("div", {
     className: classes.overlay
-  }), _react.default.createElement(_user_actions_row.UserActionsRow, null));
+  }), _react.default.createElement("div", {
+    className: classes.content
+  }, _react.default.createElement(_user_informations.UserInformations, null), _react.default.createElement(_social_actions.SocialActions, null, children)));
 };
 
 var Banner = BannerComponent;

@@ -21,6 +21,8 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+var DEFAULT_OBJECT = {};
+
 var useTechnologies = function useTechnologies() {
   var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
       endpoints = _useContext.endpoints,
@@ -32,8 +34,9 @@ var useTechnologies = function useTechnologies() {
     if (!endpoints.devicons) {
       dispatch({
         type: _technologies_actions_types.TECHNOLOGIES_RECEIVED,
-        technologies: {}
+        technologies: DEFAULT_OBJECT
       });
+      return;
     }
 
     if (technologies === null && endpoints.devicons) {
@@ -53,7 +56,7 @@ var useTechnologies = function useTechnologies() {
         console.error('Failed to fetch technologies', e);
         dispatch({
           type: _technologies_actions_types.TECHNOLOGIES_RECEIVED,
-          technologies: {}
+          technologies: DEFAULT_OBJECT
         });
       });
     }
