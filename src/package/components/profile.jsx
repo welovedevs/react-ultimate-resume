@@ -24,7 +24,12 @@ export const DeveloperProfileContext = createContext({});
 const DEFAULT_OBJECT = {};
 const DEFAULT_FUNCTION = {};
 
-const DeveloperProfileComponent = ({ data: dataProps = DEFAULT_OBJECT, options = DEFAULT_OBJECT, onEdit: onEditProps = DEFAULT_FUNCTION }) => {
+const DeveloperProfileComponent = ({
+    data: dataProps = DEFAULT_OBJECT,
+    options = DEFAULT_OBJECT,
+    onEdit: onEditProps = DEFAULT_FUNCTION,
+    ActionButtons
+}) => {
     const classes = useStyles(styles);
     const [isEditing, setIsEditing] = useState(true);
     const data = useMemo(() => {
@@ -40,34 +45,31 @@ const DeveloperProfileComponent = ({ data: dataProps = DEFAULT_OBJECT, options =
     const store = {
         technologies: useReducer(technologiesReducer, technologiesInitialState)
     };
-    const context = useMemo(
-        () => {
-            console.log('on usememoise le contexte dans DeveloperProfileComponent')
-            return ({
-                data,
-                isEditing,
-                onEdit,
-                apiKeys: { giphy: options?.apiKeys?.giphy },
-                store,
-                endpoints: {
-                    devicons: options?.endpoints?.devicons
-                }
-            });
-        },
-        [options, data, isEditing, onEdit,store]
-    );
+    const context = useMemo(() => {
+        console.log('on usememoise le contexte dans DeveloperProfileComponent');
+        return {
+            data,
+            isEditing,
+            onEdit,
+            apiKeys: { giphy: options?.apiKeys?.giphy },
+            store,
+            endpoints: {
+                devicons: options?.endpoints?.devicons
+            }
+        };
+    }, [options, data, isEditing, onEdit, store]);
 
     return (
         <div className={classes.container}>
             <DeveloperProfileContext.Provider value={context}>
-                <Banner />
+                <Banner>{ActionButtons}</Banner>
                 <Cards />
             </DeveloperProfileContext.Provider>
         </div>
     );
 };
 
-const WithProvidersDeveloperProfile = ({ data, onEdit, options = {} }) => {
+const WithProvidersDeveloperProfile = ({ data, onEdit, options = {}, ActionButtons }) => {
     const { locale, theme } = useMemo(() => ({ ...DEFAULT_OPTIONS, ...options }), [options]);
     const [builtTheme, setBuiltTheme] = useState(null);
 
@@ -87,7 +89,12 @@ const WithProvidersDeveloperProfile = ({ data, onEdit, options = {} }) => {
     return (
         <ThemeProvider theme={builtTheme}>
             <IntlProvider locale={locale}>
-                <DeveloperProfileComponent data={data} onEdit={onEdit} options={options} />
+                <DeveloperProfileComponent
+                    data={data}
+                    onEdit={onEdit}
+                    options={options}
+                    ActionButtons={ActionButtons}
+                />
             </IntlProvider>
         </ThemeProvider>
     );

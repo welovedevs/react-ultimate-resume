@@ -8,13 +8,14 @@ import { styles } from './social_actions_styles';
 
 const useStyles = createUseStyles(styles);
 
-const SocialActionsComponent = () => {
+const SocialActionsComponent = ({ children }) => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
             <Button style={{ color: '#fff' }} variant="outlined">
                 {'Get in touch'}
             </Button>
+            {children}
         </div>
     );
 };

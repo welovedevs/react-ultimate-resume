@@ -3,6 +3,7 @@ import { technologiesInitialState, technologiesReducer } from '../../../store/te
 import { DeveloperProfileContext } from '../../profile';
 import { TECHNOLOGIES_RECEIVED } from '../../../store/technologies/technologies_actions_types';
 
+const DEFAULT_OBJECT = {};
 export const useTechnologies = () => {
     const {
         endpoints,
@@ -13,7 +14,8 @@ export const useTechnologies = () => {
 
     useEffect(() => {
         if (!endpoints.devicons) {
-            dispatch({ type: TECHNOLOGIES_RECEIVED, technologies: {} });
+            dispatch({ type: TECHNOLOGIES_RECEIVED, technologies: DEFAULT_OBJECT });
+            return;
         }
         if (technologies === null && endpoints.devicons) {
             // eslint-disable-next-line no-undef
@@ -29,7 +31,7 @@ export const useTechnologies = () => {
                 )
                 .catch(e => {
                     console.error('Failed to fetch technologies', e);
-                    dispatch({ type: TECHNOLOGIES_RECEIVED, technologies: {} });
+                    dispatch({ type: TECHNOLOGIES_RECEIVED, technologies: DEFAULT_OBJECT });
                 });
         }
     }, [technologies]);

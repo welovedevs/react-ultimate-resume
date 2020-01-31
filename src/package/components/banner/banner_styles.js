@@ -34,6 +34,12 @@ export const styles = ({ palette, miscellaneous: { spacing } }) => {
             extend: 'absolutePositioned',
             zIndex: 1,
             backgroundImage: `linear-gradient(360deg, rgba(0, 0, 0, .5) -28.58%, rgba(${primaryRgb}, 0.5) 93.05%)`
+        },
+        content: {
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginBottom: spacing * 12
         }
     };
 };
