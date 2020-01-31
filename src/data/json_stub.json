@@ -169,7 +169,8 @@
             "contractTypes": ["permanent"],
             "codingYears": 7,
             "codingReason": "J'ai commencé à coder sur Amstrad dans ma cave et je n'ai jamais arrêté depuis",
-            "searchState": "activelySearching"
+            "searchState": "activelySearching",
+            "experienceYears" : 9
         },
         "sound": {
             "embedUrl": "https://open.spotify.com/embed/playlist/37i9dQZF1DWWl7MndYYxge"

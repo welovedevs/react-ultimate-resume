@@ -3,8 +3,6 @@ import { IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
 import { buildTheme } from '../utils/styles/theme/theme';
-
-import { prepareJsonResume } from '../utils/data/resume';
 import { Banner } from './banner/banner';
 import { Cards } from './cards/cards';
 
@@ -25,16 +23,13 @@ const DEFAULT_OBJECT = {};
 const DEFAULT_FUNCTION = {};
 
 const DeveloperProfileComponent = ({
-    data: dataProps = DEFAULT_OBJECT,
+    data = DEFAULT_OBJECT,
     options = DEFAULT_OBJECT,
     onEdit: onEditProps = DEFAULT_FUNCTION,
     isEditing,
     ActionButtons
 }) => {
     const classes = useStyles(styles);
-    const data = useMemo(() => {
-        return prepareJsonResume(dataProps);
-    }, [JSON.stringify(dataProps)]);
 
     const onEdit = useCallback(newData => {
         if (typeof onEditProps === 'function') {
