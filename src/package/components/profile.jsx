@@ -21,8 +21,10 @@ const DEFAULT_OPTIONS = Object.freeze({
 });
 
 export const DeveloperProfileContext = createContext({});
+const DEFAULT_OBJECT = {};
+const DEFAULT_FUNCTION = {};
 
-const DeveloperProfileComponent = ({ data: dataProps = {}, options = {}, onEdit: onEditProps = () => {} }) => {
+const DeveloperProfileComponent = ({ data: dataProps = DEFAULT_OBJECT, options = DEFAULT_OBJECT, onEdit: onEditProps = DEFAULT_FUNCTION }) => {
     const classes = useStyles(styles);
     const [isEditing, setIsEditing] = useState(true);
     const data = useMemo(() => {
@@ -39,16 +41,19 @@ const DeveloperProfileComponent = ({ data: dataProps = {}, options = {}, onEdit:
         technologies: useReducer(technologiesReducer, technologiesInitialState)
     };
     const context = useMemo(
-        () => ({
-            data,
-            isEditing,
-            onEdit,
-            apiKeys: { giphy: options?.apiKeys?.giphy },
-            store,
-            endpoints: {
-                devicons: options?.endpoints?.devicons
-            }
-        }),
+        () => {
+            console.log('on usememoise le contexte dans DeveloperProfileComponent')
+            return ({
+                data,
+                isEditing,
+                onEdit,
+                apiKeys: { giphy: options?.apiKeys?.giphy },
+                store,
+                endpoints: {
+                    devicons: options?.endpoints?.devicons
+                }
+            });
+        },
         [options, data, isEditing, onEdit,store]
     );
 
