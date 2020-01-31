@@ -28,6 +28,7 @@ const DeveloperProfileComponent = ({
     data: dataProps = DEFAULT_OBJECT,
     options = DEFAULT_OBJECT,
     onEdit: onEditProps = DEFAULT_FUNCTION,
+    isEditing,
     ActionButtons
 }) => {
     const classes = useStyles(styles);
@@ -48,7 +49,7 @@ const DeveloperProfileComponent = ({
         console.log('on usememoise le contexte dans DeveloperProfileComponent');
         return {
             data,
-            isEditing: options?.isEditing,
+            isEditing: isEditing,
             onEdit,
             apiKeys: { giphy: options?.apiKeys?.giphy },
             store,
@@ -68,7 +69,7 @@ const DeveloperProfileComponent = ({
     );
 };
 
-const WithProvidersDeveloperProfile = ({ data, onEdit, options = {}, ActionButtons }) => {
+const WithProvidersDeveloperProfile = ({ data, onEdit, options = {}, ActionButtons, isEditing }) => {
     const { locale, theme } = useMemo(() => ({ ...DEFAULT_OPTIONS, ...options }), [options]);
     const [builtTheme, setBuiltTheme] = useState(null);
 
@@ -89,6 +90,7 @@ const WithProvidersDeveloperProfile = ({ data, onEdit, options = {}, ActionButto
         <ThemeProvider theme={builtTheme}>
             <IntlProvider locale={locale}>
                 <DeveloperProfileComponent
+                    isEditing={isEditing}
                     data={data}
                     onEdit={onEdit}
                     options={options}
