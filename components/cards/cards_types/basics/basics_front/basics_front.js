@@ -42,6 +42,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var useStyles = (0, _reactJss.createUseStyles)(_basics_front_styles.styles);
 
 var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
+  var _data$currentCity;
+
   var data = _ref.data;
   var classes = useStyles();
 
@@ -50,8 +52,6 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
       side = _useCardSide2[0],
       setSide = _useCardSide2[1];
 
-  var summary = data.summary,
-      currentCityName = data.currentCity.name;
   var handleButtonClick = (0, _react.useCallback)(function () {
     return setSide(side === 'front' ? 'back' : 'front');
   }, [side, setSide]);
@@ -59,13 +59,13 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
     customClasses: {
       container: classes.container
     }
-  }, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, null, summary), _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
+  }, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, null, data.summary), _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
     level: "h4",
     component: "h3",
     customClasses: {
       container: classes.subTitle
     }
-  }, "\uD83D\uDCCD ", currentCityName)), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+  }, "\uD83D\uDCCD ", data === null || data === void 0 ? void 0 : (_data$currentCity = data.currentCity) === null || _data$currentCity === void 0 ? void 0 : _data$currentCity.name)), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick
   }, "More about me")));
 };
