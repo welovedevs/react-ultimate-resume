@@ -53,14 +53,16 @@ var DEFAULT_OPTIONS = Object.freeze({
 });
 var DeveloperProfileContext = (0, _react.createContext)({});
 exports.DeveloperProfileContext = DeveloperProfileContext;
+var DEFAULT_OBJECT = {};
+var DEFAULT_FUNCTION = {};
 
 var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
   var _ref$data = _ref.data,
-      dataProps = _ref$data === void 0 ? {} : _ref$data,
+      dataProps = _ref$data === void 0 ? DEFAULT_OBJECT : _ref$data,
       _ref$options = _ref.options,
-      options = _ref$options === void 0 ? {} : _ref$options,
+      options = _ref$options === void 0 ? DEFAULT_OBJECT : _ref$options,
       _ref$onEdit = _ref.onEdit,
-      onEditProps = _ref$onEdit === void 0 ? function () {} : _ref$onEdit;
+      onEditProps = _ref$onEdit === void 0 ? DEFAULT_FUNCTION : _ref$onEdit;
   var classes = useStyles(_profile_styles.styles);
 
   var _useState = (0, _react.useState)(true),
@@ -83,6 +85,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
   var context = (0, _react.useMemo)(function () {
     var _options$apiKeys, _options$endpoints;
 
+    console.log('on usememoise le contexte dans DeveloperProfileComponent');
     return {
       data: data,
       isEditing: isEditing,
