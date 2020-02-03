@@ -30,11 +30,23 @@ const BasicsCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue
         codingReason,
         visaSponsorship,
         searchState,
-        personalDescription
+        personalDescription,
+        summary
     } = values;
 
     return (
         <>
+            <EditDialogField
+                error={errors.summary}
+                title={
+                    <FormattedMessage
+                        id="Basics.editDialog.summary.title"
+                        defaultMessage="Describe yourself in a few words"
+                    />
+                }
+            >
+                <TextField onChange={handleChange} name="summary" value={summary} variant="flat" fullWidth />
+            </EditDialogField>
             <EditDialogField
                 error={errors?.currentCity?.name || errors?.currentCity}
                 title={
