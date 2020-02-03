@@ -155,11 +155,7 @@
             "locations": [
                 {"name": "Lille, France"}, { "name": "Paris,France"}, {"name":"Valenciennes, France"}],
             "remoteFrequency": "regularly",
-            "salary": "30k€",
-            "perks": {
-                "mood": true,
-                "others": "Un PEE chargé gros"
-            }
+            "salary": "30k€"
         },
         "education": {
             "studiesLevel": 5

@@ -72,6 +72,8 @@ const DreamjobCardEditDialogContent = ({ helpers: { handleValueChange } }) => {
             }),
         [perks]
     );
+
+    const otherPerk = useMemo(() => perks[JobPerks.OTHER] ?? null, [perks]);
     return (
         <>
             <EditDialogField
@@ -120,11 +122,11 @@ const DreamjobCardEditDialogContent = ({ helpers: { handleValueChange } }) => {
                     <CheckboxField
                         title={<Typography>{formatMessage(JobPerksTranslations[JobPerks.OTHER])}</Typography>}
                         onClick={toggleOtherPerk}
-                        checked={perks[JobPerks.OTHER] !== null}
+                        checked={otherPerk !== null}
                         variant="outlined"
                         color="secondary"
                     />
-                    {perks[JobPerks.OTHER] !== null && (
+                    {otherPerk !== null && (
                         <TextField
                             onChange={handleChange}
                             name={`perks[${JobPerks.OTHER}]`}
