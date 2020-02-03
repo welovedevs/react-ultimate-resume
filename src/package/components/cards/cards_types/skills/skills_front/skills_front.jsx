@@ -35,7 +35,7 @@ const SkillsFrontComponent = ({ data }) => {
                     <img
                         src={
                             techno &&
-                            `http://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle}`
+                            `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle}`
                         }
                         className={classes.logo}
                     />

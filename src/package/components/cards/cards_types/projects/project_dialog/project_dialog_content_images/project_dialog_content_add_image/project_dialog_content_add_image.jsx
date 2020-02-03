@@ -4,7 +4,7 @@ import { createUseStyles } from 'react-jss';
 
 import { Tooltip, Typography } from '@wld/ui';
 
-import { UrlInputDialog } from '../../../../../../commons/url_input_dialog/url_input_dialog';
+import { UrlUploadFileDialog } from '../../../../../../commons/url_upload_file_dialog/url_upload_file_dialog';
 
 import { useCallbackOpen } from '../../../../../../hooks/use_callback_open';
 
@@ -18,7 +18,7 @@ const ProjectDialogContentAddImageComponent = () => {
 
     return (
         <>
-            <UrlInputDialog open={openDialog} onClose={setDialogClosed} />
+            <UrlUploadFileDialog open={openDialog} onClose={setDialogClosed} />
             <Tooltip title="Ajouter une image">
                 <button type="button" className={classes.container} onClick={setDialogOpened}>
                     <Typography variant="h2">+</Typography>

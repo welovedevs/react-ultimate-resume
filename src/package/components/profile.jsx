@@ -26,7 +26,11 @@ const DeveloperProfileComponent = ({
     data = DEFAULT_OBJECT,
     options = DEFAULT_OBJECT,
     onEdit: onEditProps = DEFAULT_FUNCTION,
-    isEditing,
+    isEditing = false,
+    onFilesUpload = async () => {
+        await new Promise((resolve) => setTimeout(resolve, 5000));
+        return '🧸';
+    },
     ActionButtons
 }) => {
     const classes = useStyles(styles);
@@ -34,25 +38,22 @@ const DeveloperProfileComponent = ({
     const onEdit = useCallback(newData => {
         if (typeof onEditProps === 'function') {
             onEditProps(newData);
-            return;
         }
     }, []);
     const store = {
         technologies: useReducer(technologiesReducer, technologiesInitialState)
     };
-    const context = useMemo(() => {
-        console.log('on usememoise le contexte dans DeveloperProfileComponent');
-        return {
+    const context = useMemo(() => ({
             data,
             isEditing,
             onEdit,
+            onFilesUpload,
             apiKeys: { giphy: options?.apiKeys?.giphy },
             store,
             endpoints: {
                 devicons: options?.endpoints?.devicons
             }
-        };
-    }, [options, data, onEdit, store]);
+        }), [options, data, onEdit, store]);
 
     return (
         <div className={classes.container}>

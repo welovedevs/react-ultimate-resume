@@ -27,7 +27,7 @@ const UrlInputDialogComponent = ({ open, onClose, onConfirm }) => {
                 <TextField fullWidth placeholder="https://pictures.com/0.jpg" variant="flat" />
             </DialogContent>
             <DialogActions>
-                <Button size="small">Close</Button>
+                <Button onClick={onClose} size="small">Close</Button>
                 <Button color="primary" size="small">
                     Confirm
                 </Button>
