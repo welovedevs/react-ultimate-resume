@@ -136,6 +136,11 @@ var DreamjobCardEditDialogContent = function DreamjobCardEditDialogContent(_ref)
   var toggleOtherPerk = (0, _react.useCallback)(function () {
     return handleValueChange('perks')(_objectSpread({}, perks, _defineProperty({}, _job_perks_utils.JobPerks.OTHER, perks[_job_perks_utils.JobPerks.OTHER] !== null ? null : '')));
   }, [perks]);
+  var otherPerk = (0, _react.useMemo)(function () {
+    var _perks$JobPerks$OTHER;
+
+    return (_perks$JobPerks$OTHER = perks[_job_perks_utils.JobPerks.OTHER]) !== null && _perks$JobPerks$OTHER !== void 0 ? _perks$JobPerks$OTHER : null;
+  }, [perks]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_edit_dialog_field.EditDialogField, {
     classes: {
       containerChildren: classes.flexColumn
@@ -180,10 +185,10 @@ var DreamjobCardEditDialogContent = function DreamjobCardEditDialogContent(_ref)
   }, _react.default.createElement(_checkbox_group2.CheckboxField, {
     title: _react.default.createElement(_ui.Typography, null, formatMessage(_job_perks_translations.JobPerksTranslations[_job_perks_utils.JobPerks.OTHER])),
     onClick: toggleOtherPerk,
-    checked: perks[_job_perks_utils.JobPerks.OTHER] !== null,
+    checked: otherPerk !== null,
     variant: "outlined",
     color: "secondary"
-  }), perks[_job_perks_utils.JobPerks.OTHER] !== null && _react.default.createElement(_ui.TextField, {
+  }), otherPerk !== null && _react.default.createElement(_ui.TextField, {
     onChange: handleChange,
     name: "perks[".concat(_job_perks_utils.JobPerks.OTHER, "]"),
     value: perks[_job_perks_utils.JobPerks.OTHER],
