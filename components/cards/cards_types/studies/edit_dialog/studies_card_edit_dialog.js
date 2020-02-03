@@ -11,11 +11,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _omit = _interopRequireDefault(require("lodash/omit"));
-
 var _range = _interopRequireDefault(require("lodash/range"));
-
-var _keyBy = _interopRequireDefault(require("lodash/keyBy"));
 
 var _reactIntl = require("react-intl");
 
@@ -47,13 +43,15 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var AddIcon = function AddIcon(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("path", {
@@ -103,36 +101,11 @@ var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (_ref) {
   });
 });
 var useStyles = (0, _reactJss.createUseStyles)(_studies_styles.styles);
-var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref2) {
-  var _formation$endDate;
-
-  var id = _ref2.id,
-      formation = _ref2.formation,
+var SelectComponent = (0, _react.memo)(function (_ref2) {
+  var value = _ref2.value,
       onChange = _ref2.onChange,
-      onRemove = _ref2.onRemove,
-      fieldErrors = _ref2.error,
-      classes = _ref2.classes;
-
-  var _useIntl = (0, _reactIntl.useIntl)(),
-      formatMessage = _useIntl.formatMessage;
-
-  var handleChange = (0, _react.useCallback)(function (field) {
-    return function (value) {
-      onChange(id, _objectSpread({}, formation, _defineProperty({}, field, value)));
-    };
-  }, [JSON.stringify(formation), onChange]);
-  var handleEventChange = (0, _react.useCallback)(function (field) {
-    return function (event) {
-      handleChange(field)(event.target.value);
-    };
-  }, [JSON.stringify(formation), onChange]);
-  var handleChangeYear = (0, _react.useCallback)(function (field) {
-    return function (value) {
-      handleChange(field)((0, _moment.default)({
-        year: value
-      }));
-    };
-  }, [JSON.stringify(formation), onChange]);
+      classes = _ref2.classes,
+      id = _ref2.id;
   var selectYearItems = (0, _react.useMemo)(function () {
     return (0, _range.default)(1980, (0, _moment.default)().year() + 8).sort(function (a, b) {
       return b - a;
@@ -143,6 +116,41 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref2) {
       }, year);
     });
   }, []);
+  return _react.default.createElement(_select.Select, {
+    variant: "outlined",
+    value: value === null || value === void 0 ? void 0 : value.year(),
+    onChange: onChange,
+    textFieldIconProps: {
+      className: classes.selectIcon
+    }
+  }, selectYearItems);
+});
+var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref3) {
+  var id = _ref3.id,
+      formation = _ref3.formation,
+      onChange = _ref3.onChange,
+      onRemove = _ref3.onRemove,
+      fieldErrors = _ref3.error,
+      classes = _ref3.classes,
+      index = _ref3.formationIndex;
+
+  var _useIntl = (0, _reactIntl.useIntl)(),
+      formatMessage = _useIntl.formatMessage;
+
+  var handleInstitutionChange = (0, _react.useCallback)(function (e) {
+    return onChange(index, 'institution', e.target.value);
+  }, [index]);
+  var handleStudyType = (0, _react.useCallback)(function (e) {
+    return onChange(index, 'studyType', e.target.value);
+  }, [index]);
+  var handleAreaChange = (0, _react.useCallback)(function (e) {
+    return onChange(index, 'area', e.target.value);
+  }, [index]);
+  var handleEndDate = (0, _react.useCallback)(function (value) {
+    return onChange(index, 'endDate', (0, _moment.default)({
+      year: value
+    }));
+  }, [index]);
   return _react.default.createElement("div", {
     className: classes.itemContainer
   }, _react.default.createElement(DragHandle, {
@@ -155,7 +163,7 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref2) {
     className: classes.field
   }, _react.default.createElement(_ui.TextField, {
     value: formation.institution,
-    onChange: handleEventChange('institution'),
+    onChange: handleInstitutionChange,
     id: "formation_institution_".concat(id),
     placeholder: formatMessage(_studies_translations.default.schoolNamePlaceholder)
   }), fieldErrors && fieldErrors.institution && _react.default.createElement(_ui.Typography, {
@@ -164,14 +172,12 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref2) {
     component: "p"
   }, fieldErrors.institution)), _react.default.createElement("div", {
     className: classes.field
-  }, _react.default.createElement(_select.Select, {
-    variant: "outlined",
-    value: (_formation$endDate = formation.endDate) === null || _formation$endDate === void 0 ? void 0 : _formation$endDate.year(),
-    onChange: handleChangeYear('endDate'),
-    textFieldIconProps: {
-      className: classes.selectIcon
-    }
-  }, selectYearItems), fieldErrors && fieldErrors.endDate && _react.default.createElement(_ui.Typography, {
+  }, _react.default.createElement(SelectComponent, {
+    onChange: handleEndDate,
+    id: formation.id,
+    value: formation.endDate,
+    classes: classes
+  }), fieldErrors && fieldErrors.endDate && _react.default.createElement(_ui.Typography, {
     color: "danger",
     variant: "helper",
     component: "p"
@@ -184,7 +190,7 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref2) {
     label: formatMessage(_studies_translations.default.diplomaTitle),
     placeholder: formatMessage(_studies_translations.default.diplomaPlaceholder),
     value: formation.studyType,
-    onChange: handleEventChange('studyType'),
+    onChange: handleStudyType,
     margin: "normal",
     error: fieldErrors && fieldErrors.studyType
   }), fieldErrors && fieldErrors.studyType && _react.default.createElement(_ui.Typography, {
@@ -194,11 +200,11 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref2) {
   }, fieldErrors.studyType)), _react.default.createElement("div", {
     className: classes.field
   }, _react.default.createElement(_ui.TextField, {
-    id: "formation_diploma_".concat(id),
+    id: "formation_area_".concat(id),
     label: formatMessage(_studies_translations.default.mainCourse),
     placeholder: formatMessage(_studies_translations.default.mainCoursePlaceholder),
     value: formation.area,
-    onChange: handleEventChange('area'),
+    onChange: handleAreaChange,
     margin: "normal",
     error: fieldErrors && fieldErrors.area
   }), fieldErrors && fieldErrors.area && _react.default.createElement(_ui.Typography, {
@@ -215,20 +221,21 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref2) {
     onClick: onRemove(id)
   }, _react.default.createElement(TrashIcon, null)))));
 });
-var SortableFormationsItems = (0, _reactSortableHoc.SortableContainer)(function (_ref3) {
-  var items = _ref3.items,
-      formationChanged = _ref3.formationChanged,
-      formationDeleted = _ref3.formationDeleted,
-      errors = _ref3.errors,
-      name = _ref3.name,
-      schools = _ref3.schools,
-      classes = _ref3.classes;
+var SortableFormationsItems = (0, _reactSortableHoc.SortableContainer)(function (_ref4) {
+  var items = _ref4.items,
+      formationChanged = _ref4.formationChanged,
+      formationDeleted = _ref4.formationDeleted,
+      errors = _ref4.errors,
+      name = _ref4.name,
+      schools = _ref4.schools,
+      classes = _ref4.classes;
   return _react.default.createElement(_ui.List, null, items.map(function (formation, index) {
     return _react.default.createElement(FormationItem, _extends({
       key: "".concat(name, "_").concat(formation.id, "_").concat(index),
       onChange: formationChanged,
       onRemove: formationDeleted,
       id: formation.id,
+      formationIndex: index,
       error: errors && errors[index]
     }, {
       index: index,
@@ -239,8 +246,8 @@ var SortableFormationsItems = (0, _reactSortableHoc.SortableContainer)(function 
   }));
 });
 
-var FormationsEditForm = function FormationsEditForm(_ref4) {
-  var handleValueChange = _ref4.helpers.handleValueChange;
+var FormationsEditForm = function FormationsEditForm(_ref5) {
+  var handleValueChange = _ref5.helpers.handleValueChange;
   var classes = useStyles();
 
   var _useFormikContext = (0, _formik.useFormikContext)(),
@@ -248,32 +255,27 @@ var FormationsEditForm = function FormationsEditForm(_ref4) {
       validationErrors = _useFormikContext.errors;
 
   var errors = validationErrors === null || validationErrors === void 0 ? void 0 : validationErrors.education;
-  var keyedValues = (0, _react.useMemo)(function () {
-    return (0, _keyBy.default)(education, function (_ref5) {
-      var id = _ref5.id;
-      return id;
-    });
-  }, [education]);
-  var formationChanged = (0, _react.useCallback)(function (formationId, formation) {
-    var value = _objectSpread({}, keyedValues, _defineProperty({}, formationId, formation));
-
-    handleValueChange('education')(Object.values(value));
-  }, [JSON.stringify(keyedValues)]);
-  var formationDeleted = (0, _react.useCallback)(function (id) {
+  var formationChanged = (0, _react.useCallback)(function (educationsIndex, field, value) {
+    handleValueChange("education[".concat(educationsIndex, "].").concat(field))(value);
+  }, []);
+  var formationDeleted = (0, _react.useCallback)(function (deletedId) {
     return function () {
-      handleValueChange('education')(Object.values((0, _omit.default)(keyedValues, id)));
+      handleValueChange('education')(education.filter(function (_ref6) {
+        var id = _ref6.id;
+        return deletedId !== id;
+      }));
     };
-  }, [JSON.stringify(keyedValues)]);
+  }, [JSON.stringify(education)]);
   var formationAdded = (0, _react.useCallback)(function () {
     var id = (0, _v.default)();
-    return formationChanged(id, {
-      position: Object.keys(keyedValues).length,
+    return handleValueChange('education')([].concat(_toConsumableArray(education), [{
+      position: education.length,
       id: id
-    });
-  }, [JSON.stringify(keyedValues)]);
-  var move = (0, _react.useCallback)(function (_ref6) {
-    var oldIndex = _ref6.oldIndex,
-        newIndex = _ref6.newIndex;
+    }]));
+  }, [JSON.stringify(education)]);
+  var move = (0, _react.useCallback)(function (_ref7) {
+    var oldIndex = _ref7.oldIndex,
+        newIndex = _ref7.newIndex;
     handleValueChange('education')((0, _reactSortableHoc.arrayMove)(education, oldIndex, newIndex));
   }, [JSON.stringify(education)]);
   var globalError = typeof errors === 'string' && errors;
@@ -304,11 +306,11 @@ var FormationsEditForm = function FormationsEditForm(_ref4) {
   }, errors));
 };
 
-var StudiesCardEditDialog = function StudiesCardEditDialog(_ref7) {
-  var data = _ref7.data,
-      onEdit = _ref7.onEdit,
-      validationSchema = _ref7.validationSchema,
-      onClose = _ref7.onClose;
+var StudiesCardEditDialog = function StudiesCardEditDialog(_ref8) {
+  var data = _ref8.data,
+      onEdit = _ref8.onEdit,
+      validationSchema = _ref8.validationSchema,
+      onClose = _ref8.onClose;
 
   var _useIntl2 = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl2.formatMessage;
