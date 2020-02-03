@@ -44,7 +44,7 @@ const DeveloperProfileComponent = ({
         console.log('on usememoise le contexte dans DeveloperProfileComponent');
         return {
             data,
-            isEditing: isEditing,
+            isEditing: false,
             onEdit,
             apiKeys: { giphy: options?.apiKeys?.giphy },
             store,

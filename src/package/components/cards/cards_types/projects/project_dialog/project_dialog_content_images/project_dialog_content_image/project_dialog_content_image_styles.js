@@ -41,6 +41,10 @@ export const styles = theme => {
             fill: getHexFromPaletteColor(theme, 'light'),
             height: 40,
             width: 'auto'
+        },
+        button: {
+            height: '100%',
+            width: '100%'
         }
     };
 };

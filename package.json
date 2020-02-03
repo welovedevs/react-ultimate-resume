@@ -33,6 +33,7 @@
         "lodash": "^4.17.15",
         "moment": "^2.24.0",
         "react-emoji-render": "^1.2.1",
+        "react-images": "^1.1.0-beta.3",
         "react-intl": "^3.9.3",
         "react-jss": "^10.0.3",
         "react-scripts": "3.3.0",

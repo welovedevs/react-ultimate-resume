@@ -4,5 +4,5 @@ import { DeveloperProfileContext } from '../profile';
 
 export const useIsEditing = () => {
     const { isEditing } = useContext(DeveloperProfileContext);
-    return [!false];
+    return [isEditing];
 };

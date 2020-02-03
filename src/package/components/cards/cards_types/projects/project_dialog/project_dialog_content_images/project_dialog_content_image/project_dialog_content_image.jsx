@@ -17,7 +17,7 @@ import { styles } from './project_dialog_content_image_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectDialogContentImageComponent = ({ component: Component = 'div', url, name, style }) => {
+const ProjectDialogContentImageComponent = ({ component: Component = 'div', url, name, style, handleImageClick }) => {
     const classes = useStyles();
     const [isEditing] = useIsEditing();
 
@@ -31,11 +31,24 @@ const ProjectDialogContentImageComponent = ({ component: Component = 'div', url,
 
     return (
         <Component className={classes.container} style={style} {...(isEditing && eventsHandlerElementProps)}>
-            <img className={classes.image} src={url} alt={`Project ${name}`} />
+            <Image url={url} name={name} handleImageClick={handleImageClick} isEditing={isEditing} classes={classes} />
             {editLayerTransitions.map(
                 ({ item, key, props }) => item && <EditLayer key={key} style={props} classes={classes} />
             )}
         </Component>
+    );
+};
+
+const Image = ({ url, name, handleImageClick, isEditing, classes }) => {
+    if (!isEditing) {
+        return (
+            <button className={classes.button} type="button" onClick={handleImageClick}>
+                <img className={classes.image} src={url} alt={`Project ${name}`} />
+            </button>
+        );
+    }
+    return (
+        <img className={classes.image} src={url} alt={`Project ${name}`} />
     );
 };
 

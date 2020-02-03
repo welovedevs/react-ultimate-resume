@@ -10,7 +10,8 @@ export const styles = theme => {
             })
         }),
         typography: {
-            whiteSpace: 'pre-line'
+            whiteSpace: 'pre-line',
+            lineHeight: '24px'
         }
     };
 };
