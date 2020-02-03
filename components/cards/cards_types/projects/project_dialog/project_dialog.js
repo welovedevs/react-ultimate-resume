@@ -48,27 +48,27 @@ var DEFAULT_PROJECT = {
   images: {
     random1: {
       name: 'Random 1',
-      url: 'https://source.unsplash.com/random/400x200'
+      url: 'https://source.unsplash.com/random/1200x600'
     },
     random2: {
       name: 'Random 2',
-      url: 'https://source.unsplash.com/random/400x200'
+      url: 'https://source.unsplash.com/random/1200x600'
     },
     random3: {
       name: 'Random 3',
-      url: 'https://source.unsplash.com/random/400x200'
+      url: 'https://source.unsplash.com/random/1200x600'
     },
     random4: {
       name: 'Random 4',
-      url: 'https://source.unsplash.com/random/400x200'
+      url: 'https://source.unsplash.com/random/1200x600'
     },
     random5: {
       name: 'Random 3',
-      url: 'https://source.unsplash.com/random/400x200'
+      url: 'https://source.unsplash.com/random/1200x600'
     },
     random6: {
       name: 'Random 4',
-      url: 'https://source.unsplash.com/random/400x200'
+      url: 'https://source.unsplash.com/random/1200x600'
     }
   }
 };

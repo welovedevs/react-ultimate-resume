@@ -13,7 +13,7 @@ var useIsEditing = function useIsEditing() {
   var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
       isEditing = _useContext.isEditing;
 
-  return [!false];
+  return [isEditing];
 };
 
 exports.useIsEditing = useIsEditing;

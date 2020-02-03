@@ -53,7 +53,8 @@ var ProjectDialogContentImageComponent = function ProjectDialogContentImageCompo
       Component = _ref$component === void 0 ? 'div' : _ref$component,
       url = _ref.url,
       name = _ref.name,
-      style = _ref.style;
+      style = _ref.style,
+      handleImageClick = _ref.handleImageClick;
   var classes = useStyles();
 
   var _useIsEditing = (0, _use_is_editing.useIsEditing)(),
@@ -71,10 +72,12 @@ var ProjectDialogContentImageComponent = function ProjectDialogContentImageCompo
   return _react.default.createElement(Component, _extends({
     className: classes.container,
     style: style
-  }, isEditing && eventsHandlerElementProps), _react.default.createElement("img", {
-    className: classes.image,
-    src: url,
-    alt: "Project ".concat(name)
+  }, isEditing && eventsHandlerElementProps), _react.default.createElement(Image, {
+    url: url,
+    name: name,
+    handleImageClick: handleImageClick,
+    isEditing: isEditing,
+    classes: classes
   }), editLayerTransitions.map(function (_ref2) {
     var item = _ref2.item,
         key = _ref2.key,
@@ -87,9 +90,35 @@ var ProjectDialogContentImageComponent = function ProjectDialogContentImageCompo
   }));
 };
 
-var EditLayer = function EditLayer(_ref3) {
-  var style = _ref3.style,
+var Image = function Image(_ref3) {
+  var url = _ref3.url,
+      name = _ref3.name,
+      handleImageClick = _ref3.handleImageClick,
+      isEditing = _ref3.isEditing,
       classes = _ref3.classes;
+
+  if (!isEditing) {
+    return _react.default.createElement("button", {
+      className: classes.button,
+      type: "button",
+      onClick: handleImageClick
+    }, _react.default.createElement("img", {
+      className: classes.image,
+      src: url,
+      alt: "Project ".concat(name)
+    }));
+  }
+
+  return _react.default.createElement("img", {
+    className: classes.image,
+    src: url,
+    alt: "Project ".concat(name)
+  });
+};
+
+var EditLayer = function EditLayer(_ref4) {
+  var style = _ref4.style,
+      classes = _ref4.classes;
   return _react.default.createElement(_reactSpring.animated.div, {
     className: classes.editLayer,
     style: style

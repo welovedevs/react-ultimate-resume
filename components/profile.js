@@ -79,7 +79,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
     console.log('on usememoise le contexte dans DeveloperProfileComponent');
     return {
       data: data,
-      isEditing: isEditing,
+      isEditing: false,
       onEdit: onEdit,
       apiKeys: {
         giphy: options === null || options === void 0 ? void 0 : (_options$apiKeys = options.apiKeys) === null || _options$apiKeys === void 0 ? void 0 : _options$apiKeys.giphy

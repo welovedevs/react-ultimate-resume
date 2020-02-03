@@ -51,6 +51,10 @@ var styles = function styles(theme) {
       fill: (0, _styles_utils.getHexFromPaletteColor)(theme, 'light'),
       height: 40,
       width: 'auto'
+    },
+    button: {
+      height: '100%',
+      width: '100%'
     }
   };
 };
