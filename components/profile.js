@@ -88,7 +88,8 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       }
     }, _callee);
   })) : _ref$onFilesUpload,
-      ActionButtons = _ref.ActionButtons;
+      ActionButtons = _ref.ActionButtons,
+      BeforeCards = _ref.BeforeCards;
   var classes = useStyles(_profile_styles.styles);
   var onEdit = (0, _react.useCallback)(function (newData) {
     if (typeof onEditProps === 'function') {
@@ -119,7 +120,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
     className: classes.container
   }, _react.default.createElement(DeveloperProfileContext.Provider, {
     value: context
-  }, _react.default.createElement(_banner.Banner, null, ActionButtons), _react.default.createElement(_cards.Cards, null)));
+  }, _react.default.createElement(_banner.Banner, null, ActionButtons), BeforeCards, _react.default.createElement(_cards.Cards, null)));
 };
 
 var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3) {
@@ -128,6 +129,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
       _ref3$options = _ref3.options,
       options = _ref3$options === void 0 ? {} : _ref3$options,
       ActionButtons = _ref3.ActionButtons,
+      BeforeCards = _ref3.BeforeCards,
       isEditing = _ref3.isEditing;
 
   var _useMemo = (0, _react.useMemo)(function () {
@@ -190,7 +192,8 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
     data: data,
     onEdit: onEdit,
     options: options,
-    ActionButtons: ActionButtons
+    ActionButtons: ActionButtons,
+    BeforeCards: BeforeCards
   })));
 };
 
