@@ -122,7 +122,7 @@ var DreamjobCardEditDialogContent = function DreamjobCardEditDialogContent(_ref)
     }, {}), _defineProperty({}, _job_perks_utils.JobPerks.OTHER, perks[_job_perks_utils.JobPerks.OTHER])));
   }, [perks]);
   var checkedPerks = (0, _react.useMemo)(function () {
-    return Object.entries(perks).filter(function (_ref2) {
+    return Object.entries(perks || {}).filter(function (_ref2) {
       var _ref3 = _slicedToArray(_ref2, 2),
           value = _ref3[1];
 

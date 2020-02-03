@@ -138,7 +138,7 @@ var DreamJobPerks = function DreamJobPerks(_ref4) {
   var _useIntl2 = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl2.formatMessage;
 
-  return Object.entries(perks).map(function (_ref5) {
+  return Object.entries(perks || {}).map(function (_ref5) {
     var _ref6 = _slicedToArray(_ref5, 2),
         key = _ref6[0],
         value = _ref6[1];
