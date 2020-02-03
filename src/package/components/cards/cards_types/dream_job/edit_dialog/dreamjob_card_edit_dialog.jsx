@@ -55,7 +55,7 @@ const DreamjobCardEditDialogContent = ({ helpers: { handleValueChange, toggleVal
 
     const checkedPerks = useMemo(
         () =>
-            Object.entries(perks)
+            Object.entries(perks || {})
                 .filter(([, value]) => value === true)
                 .map(([perk]) => perk),
         [perks]

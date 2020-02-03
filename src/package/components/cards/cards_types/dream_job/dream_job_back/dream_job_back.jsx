@@ -89,7 +89,7 @@ const DreamJobLocations = ({ remoteFrequency, places }) => {
 const DreamJobPerks = ({ perks = {} }) => {
     const { formatMessage } = useIntl();
 
-    return Object.entries(perks)
+    return Object.entries(perks || {})
         .map(([key, value]) => {
             if (key === JobPerks.OTHER) {
                 return value;
