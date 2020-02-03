@@ -78,11 +78,13 @@ var DreamJobPlaces = function DreamJobPlaces(_ref) {
       remainingPlaces = _useMemo.remainingPlaces;
 
   if (!remainingPlaces.length) {
+    var _ref2;
+
     return _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Dreamjob.Back.Location.OnePlace",
       defaultMessage: "I want to work in {place}",
       values: {
-        place: firstPlace
+        place: (_ref2 = firstPlace === null || firstPlace === void 0 ? void 0 : firstPlace.name) !== null && _ref2 !== void 0 ? _ref2 : ''
       }
     }));
   }
@@ -101,17 +103,17 @@ var DreamJobPlaces = function DreamJobPlaces(_ref) {
     anchorElement: textAnchor.current
   }, _react.default.createElement(_ui.List, null, remainingPlaces.filter(function (item) {
     return item;
-  }).map(function (_ref2, index) {
-    var name = _ref2.name;
+  }).map(function (_ref3, index) {
+    var name = _ref3.name;
     return _react.default.createElement(_ui.ListItem, {
       key: "place_popper_".concat(index)
     }, _react.default.createElement(_ui.Typography, null, name));
   }))));
 };
 
-var DreamJobLocations = function DreamJobLocations(_ref3) {
-  var remoteFrequency = _ref3.remoteFrequency,
-      places = _ref3.places;
+var DreamJobLocations = function DreamJobLocations(_ref4) {
+  var remoteFrequency = _ref4.remoteFrequency,
+      places = _ref4.places;
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
@@ -131,17 +133,17 @@ var DreamJobLocations = function DreamJobLocations(_ref3) {
   }), _react.default.createElement("br", null), remoteFrequency && formatMessage(_remote_filter_translations.RemoteDisplayTranslations[remoteFrequency] || _remote_filter_translations.RemoteDisplayTranslations.others)));
 };
 
-var DreamJobPerks = function DreamJobPerks(_ref4) {
-  var _ref4$perks = _ref4.perks,
-      perks = _ref4$perks === void 0 ? {} : _ref4$perks;
+var DreamJobPerks = function DreamJobPerks(_ref5) {
+  var _ref5$perks = _ref5.perks,
+      perks = _ref5$perks === void 0 ? {} : _ref5$perks;
 
   var _useIntl2 = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl2.formatMessage;
 
-  return Object.entries(perks || {}).map(function (_ref5) {
-    var _ref6 = _slicedToArray(_ref5, 2),
-        key = _ref6[0],
-        value = _ref6[1];
+  return Object.entries(perks || {}).map(function (_ref6) {
+    var _ref7 = _slicedToArray(_ref6, 2),
+        key = _ref7[0],
+        value = _ref7[1];
 
     if (key === _job_perks_utils.JobPerks.OTHER) {
       return value;
@@ -151,8 +153,8 @@ var DreamJobPerks = function DreamJobPerks(_ref4) {
   }).join(', ');
 };
 
-var DreamJobBackComponent = function DreamJobBackComponent(_ref7) {
-  var data = _ref7.data;
+var DreamJobBackComponent = function DreamJobBackComponent(_ref8) {
+  var data = _ref8.data;
   var places = data.places,
       perks = data.perks,
       salary = data.salary,
