@@ -28,7 +28,7 @@ const DreamJobPlaces = ({ places = [] }) => {
                 <FormattedMessage
                     id="Dreamjob.Back.Location.OnePlace"
                     defaultMessage="I want to work in {place}"
-                    values={{ place: firstPlace }}
+                    values={{ place: firstPlace?.name ?? ''}}
                 />
             </ProfileCardSectionText>
         );
