@@ -1,18 +1,16 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 
 import cn from 'classnames';
-import omit from 'lodash/omit';
 import range from 'lodash/range';
-import keyBy from 'lodash/keyBy';
-import { FormattedMessage, injectIntl, useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import moment from 'moment';
-import { SortableContainer, SortableElement, SortableHandle, arrayMove } from 'react-sortable-hoc';
+import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 
 import uuid from 'uuid/v4';
 
 import { MenuItem } from '@material-ui/core';
 
-import { Button, Tooltip, List, ListItem, Typography, TextField, Tag } from '@wld/ui';
+import { Button, List, ListItem, Tag, TextField, Tooltip, Typography } from '@wld/ui';
 
 import { styles } from './studies_styles';
 import translations from './studies_translations';
@@ -25,32 +23,11 @@ import { ReactComponent as MoveIcon } from '../../../../../assets/icons/move_lis
 import { ReactComponent as TrashIcon } from '../../../../../assets/icons/trash.svg';
 import { Select } from '../../../../commons/select/select';
 
-const DragHandle = SortableHandle(({ classes }) => <MoveIcon className={classes.dragHandle} />);
+const DragHandle = SortableHandle(({ classes}) => <MoveIcon className={classes.dragHandle}/>);
 
 const useStyles = createUseStyles(styles);
 
-const FormationItem = SortableElement(({ id, formation, onChange, onRemove, error: fieldErrors, classes }) => {
-    const { formatMessage } = useIntl();
-    const handleChange = useCallback(
-        field => value => {
-            onChange(id, { ...formation, [field]: value });
-        },
-        [JSON.stringify(formation), onChange]
-    );
-    const handleEventChange = useCallback(
-        field => event => {
-            handleChange(field)(event.target.value);
-        },
-        [JSON.stringify(formation), onChange]
-    );
-
-    const handleChangeYear = useCallback(
-        field => value => {
-            handleChange(field)(moment({ year: value }));
-        },
-        [JSON.stringify(formation), onChange]
-    );
-
+const SelectComponent =  memo(({value, onChange, classes, id}) => {
     const selectYearItems = useMemo(
         () =>
             range(1980, moment().year() + 8)
@@ -62,6 +39,25 @@ const FormationItem = SortableElement(({ id, formation, onChange, onRemove, erro
                 )),
         []
     );
+    return (
+    <Select
+        variant="outlined"
+        value={value?.year()}
+        onChange={onChange}
+        textFieldIconProps={{ className: classes.selectIcon }}>
+        {selectYearItems}
+    </Select>
+    )
+})
+
+const FormationItem = SortableElement(({ id, formation, onChange, onRemove, error: fieldErrors, classes, formationIndex: index }) => {
+    const { formatMessage } = useIntl();
+
+
+    const handleInstitutionChange = useCallback(e => onChange(index, 'institution', e.target.value), [index]);
+    const handleStudyType = useCallback(e => onChange(index, 'studyType', e.target.value), [index]);
+    const handleAreaChange = useCallback(e => onChange(index, 'area', e.target.value), [index]);
+    const handleEndDate = useCallback(value => onChange(index, 'endDate', moment({ year: value })), [index]);
 
     return (
         <div className={classes.itemContainer}>
@@ -72,7 +68,7 @@ const FormationItem = SortableElement(({ id, formation, onChange, onRemove, erro
                         <div className={classes.field}>
                             <TextField
                                 value={formation.institution}
-                                onChange={handleEventChange('institution')}
+                                onChange={handleInstitutionChange}
                                 id={`formation_institution_${id}`}
                                 placeholder={formatMessage(translations.schoolNamePlaceholder)}
                             />
@@ -83,14 +79,7 @@ const FormationItem = SortableElement(({ id, formation, onChange, onRemove, erro
                             )}
                         </div>
                         <div className={classes.field}>
-                            <Select
-                                variant="outlined"
-                                value={formation.endDate?.year()}
-                                onChange={handleChangeYear('endDate')}
-                                textFieldIconProps={{ className: classes.selectIcon }}
-                            >
-                                {selectYearItems}
-                            </Select>
+                            <SelectComponent onChange={handleEndDate} id={formation.id} value={formation.endDate} classes={classes} />
                             {fieldErrors && fieldErrors.endDate && (
                                 <Typography color="danger" variant="helper" component="p">
                                     {fieldErrors.endDate}
@@ -105,7 +94,7 @@ const FormationItem = SortableElement(({ id, formation, onChange, onRemove, erro
                                 label={formatMessage(translations.diplomaTitle)}
                                 placeholder={formatMessage(translations.diplomaPlaceholder)}
                                 value={formation.studyType}
-                                onChange={handleEventChange('studyType')}
+                                onChange={handleStudyType}
                                 margin="normal"
                                 error={fieldErrors && fieldErrors.studyType}
                             />
@@ -118,11 +107,11 @@ const FormationItem = SortableElement(({ id, formation, onChange, onRemove, erro
                         </div>
                         <div className={classes.field}>
                             <TextField
-                                id={`formation_diploma_${id}`}
+                                id={`formation_area_${id}`}
                                 label={formatMessage(translations.mainCourse)}
                                 placeholder={formatMessage(translations.mainCoursePlaceholder)}
                                 value={formation.area}
-                                onChange={handleEventChange('area')}
+                                onChange={handleAreaChange}
                                 margin="normal"
                                 error={fieldErrors && fieldErrors.area}
                             />
@@ -135,9 +124,9 @@ const FormationItem = SortableElement(({ id, formation, onChange, onRemove, erro
                         </div>
                     </div>
                 </div>
-                <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Supprimer" />}>
+                <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Supprimer"/>}>
                     <Button className={classes.button} onClick={onRemove(id)}>
-                        <TrashIcon />
+                        <TrashIcon/>
                     </Button>
                 </Tooltip>
             </ListItem>
@@ -155,6 +144,7 @@ const SortableFormationsItems = SortableContainer(
                         onChange={formationChanged}
                         onRemove={formationDeleted}
                         id={formation.id}
+                        formationIndex={index}
                         error={errors && errors[index]}
                         {...{
                             index,
@@ -178,29 +168,25 @@ const FormationsEditForm = ({ helpers: { handleValueChange } }) => {
 
     const errors = validationErrors?.education;
 
-    const keyedValues = useMemo(() => keyBy(education, ({ id }) => id), [education]);
-
     const formationChanged = useCallback(
-        (formationId, formation) => {
-            const value = { ...keyedValues, [formationId]: formation };
-            handleValueChange('education')(Object.values(value));
-        },
-        [JSON.stringify(keyedValues)]
+        (educationsIndex, field, value) => {
+            handleValueChange(`education[${educationsIndex}].${field}`)(value);
+        }, []
     );
     const formationDeleted = useCallback(
-        id => () => {
-            handleValueChange('education')(Object.values(omit(keyedValues, id)));
+        deletedId => () => {
+            handleValueChange('education')(education.filter(({ id }) => deletedId !== id));
         },
-        [JSON.stringify(keyedValues)]
+        [JSON.stringify(education)]
     );
 
     const formationAdded = useCallback(() => {
-        let id = uuid();
-        return formationChanged(id, {
-            position: Object.keys(keyedValues).length,
+        const id = uuid();
+        return handleValueChange('education')([...education, {
+            position: education.length,
             id
-        });
-    }, [JSON.stringify(keyedValues)]);
+        }]);
+    }, [JSON.stringify(education)]);
     const move = useCallback(
         ({ oldIndex, newIndex }) => {
             handleValueChange('education')(arrayMove(education, oldIndex, newIndex));
@@ -223,10 +209,10 @@ const FormationsEditForm = ({ helpers: { handleValueChange } }) => {
             />
             <div className={classes.addButton} onClick={formationAdded}>
                 <Tag className={classes.addTag}>
-                    <AddIcon />
+                    <AddIcon/>
                 </Tag>
                 <Typography>
-                    <FormattedMessage id="Main.lang.add" defaultMessage="Ajouter" />
+                    <FormattedMessage id="Main.lang.add" defaultMessage="Ajouter"/>
                 </Typography>
             </div>
             {globalError && (
@@ -249,9 +235,9 @@ export const StudiesCardEditDialog = ({ data, onEdit, validationSchema, onClose 
             onClose={onClose}
             validationSchema={validationSchemaToPass}
             open
-            title={<FormattedMessage id="Basics.editDialog.title" defaultMessage="Your basic information" />}
+            title={<FormattedMessage id="Basics.editDialog.title" defaultMessage="Your basic information"/>}
         >
-            {helpers => <FormationsEditForm helpers={helpers} />}
+            {helpers => <FormationsEditForm helpers={helpers}/>}
         </EditDialog>
     );
 };
