@@ -67,8 +67,21 @@ var BasicsCardEditDialogContent = function BasicsCardEditDialogContent(_ref) {
       codingReason = values.codingReason,
       visaSponsorship = values.visaSponsorship,
       searchState = values.searchState,
-      personalDescription = values.personalDescription;
+      personalDescription = values.personalDescription,
+      summary = values.summary;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_edit_dialog_field.EditDialogField, {
+    error: errors.summary,
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Basics.editDialog.summary.title",
+      defaultMessage: "Describe yourself in a few words"
+    })
+  }, _react.default.createElement(_ui.TextField, {
+    onChange: handleChange,
+    name: "summary",
+    value: summary,
+    variant: "flat",
+    fullWidth: true
+  })), _react.default.createElement(_edit_dialog_field.EditDialogField, {
     error: (errors === null || errors === void 0 ? void 0 : (_errors$currentCity = errors.currentCity) === null || _errors$currentCity === void 0 ? void 0 : _errors$currentCity.name) || (errors === null || errors === void 0 ? void 0 : errors.currentCity),
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Basics.editDialog.location.title",

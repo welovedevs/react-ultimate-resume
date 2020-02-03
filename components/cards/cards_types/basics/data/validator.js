@@ -19,6 +19,11 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var BasicsValidationSchema = function BasicsValidationSchema(formatMessage) {
   return Yup.object({
+    summary: Yup.string().min(5, formatMessage(_validation_translations.validationTranslations.min, {
+      min: 10
+    })).max(50, formatMessage(_validation_translations.validationTranslations.min, {
+      min: 50
+    })),
     currentCity: Yup.object().nullable().required(formatMessage(_validation_translations.validationTranslations.required)).shape({
       name: Yup.string().min(5, formatMessage(_validation_translations.validationTranslations.min, {
         min: 5
