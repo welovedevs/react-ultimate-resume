@@ -82,11 +82,10 @@ var useStyles = (0, _reactJss.createUseStyles)(_dreamjob_card_edit_dialog_styles
 var checkboxGroupPerks = Object.values(_job_perks_utils.JobPerks).filter(function (perk) {
   return perk !== _job_perks_utils.JobPerks.OTHER;
 });
+var DEFAULT_OBJECT = {};
 
 var DreamjobCardEditDialogContent = function DreamjobCardEditDialogContent(_ref) {
-  var _ref$helpers = _ref.helpers,
-      handleValueChange = _ref$helpers.handleValueChange,
-      toggleValue = _ref$helpers.toggleValue;
+  var handleValueChange = _ref.helpers.handleValueChange;
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
@@ -99,10 +98,10 @@ var DreamjobCardEditDialogContent = function DreamjobCardEditDialogContent(_ref)
       handleChange = _useFormikContext.handleChange;
 
   var places = values.places,
-      perks = values.perks,
       salary = values.salary,
       remoteFrequency = values.remoteFrequency,
       contractTypes = values.contractTypes;
+  var perks = values.perks || DEFAULT_OBJECT;
   var addPlace = (0, _react.useCallback)(function (place) {
     return handleValueChange('places')(places.concat(_objectSpread({}, place, {
       id: (0, _v.default)()
