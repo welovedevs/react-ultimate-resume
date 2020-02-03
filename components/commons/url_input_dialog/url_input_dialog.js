@@ -37,6 +37,7 @@ var UrlInputDialogComponent = function UrlInputDialogComponent(_ref) {
     placeholder: "https://pictures.com/0.jpg",
     variant: "flat"
   })), _react.default.createElement(_core.DialogActions, null, _react.default.createElement(_ui.Button, {
+    onClick: onClose,
     size: "small"
   }, "Close"), _react.default.createElement(_ui.Button, {
     color: "primary",

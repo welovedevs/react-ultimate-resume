@@ -11,7 +11,7 @@ var _reactJss = require("react-jss");
 
 var _ui = require("@wld/ui");
 
-var _url_input_dialog = require("../../../../../../commons/url_input_dialog/url_input_dialog");
+var _url_upload_file_dialog = require("../../../../../../commons/url_upload_file_dialog/url_upload_file_dialog");
 
 var _use_callback_open = require("../../../../../../hooks/use_callback_open");
 
@@ -38,7 +38,7 @@ var ProjectDialogContentAddImageComponent = function ProjectDialogContentAddImag
       setDialogOpened = _useCallbackOpen2[1],
       setDialogClosed = _useCallbackOpen2[2];
 
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_url_input_dialog.UrlInputDialog, {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_url_upload_file_dialog.UrlUploadFileDialog, {
     open: openDialog,
     onClose: setDialogClosed
   }), _react.default.createElement(_ui.Tooltip, {

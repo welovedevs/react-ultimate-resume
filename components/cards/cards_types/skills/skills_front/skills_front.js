@@ -75,7 +75,7 @@ var SkillsFrontComponent = function SkillsFrontComponent(_ref) {
       container: classes.container
     }
   }, _react.default.createElement("img", {
-    src: techno && "http://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/".concat(techno === null || techno === void 0 ? void 0 : techno.handle),
+    src: techno && "https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/".concat(techno === null || techno === void 0 ? void 0 : techno.handle),
     className: classes.logo
   }), _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
     customClasses: {

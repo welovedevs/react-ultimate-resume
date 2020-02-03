@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <title>Exported from Streamline App (https://app.streamlineicons.com)</title>
+    <g transform="scale(1.6667)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+        <path d="m17.25 11.25c3.314 0 6 2.686 6 6s-2.686 6-6 6-6-2.686-6-6 2.686-6 6-6z"/>
+        <path d="m17.25 14.25v6"/>
+        <path d="M 17.25,20.25L15,18 "/>
+        <path d="m17.25 20.25 2.25-2.25"/>
+        <path d="m3.75 6.75h10.5"/>
+        <path d="m3.75 11.25h6"/>
+        <path d="m3.75 15.75h3.75"/>
+        <path d="M 7.5,20.25H2.25 c-0.828,0-1.5-0.672-1.5-1.5V2.25c0-0.828,0.672-1.5,1.5-1.5h10.629c0.398,0,0.779,0.158,1.06,0.439l2.872,2.872 c0.281,0.281,0.439,0.662,0.439,1.06V7.5"/>
+    </g>
+</svg>
