@@ -6,8 +6,8 @@ export const mapWorkFromJsonResume = jsonResume => ({
         ...work,
         //generating uuid for manipulating data if not present
         id: work.id || uuid(),
-        startDate: moment(work.startDate, 'YYYY-MM-DD'),
-        endDate: moment(work.endDate, 'YYYY-MM-DD'),
+        startDate: work.startDate && moment(work.startDate, 'YYYY-MM-DD'),
+        endDate: work.endDate && moment(work.endDate, 'YYYY-MM-DD'),
         place: {
             name: work.location
         },

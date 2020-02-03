@@ -24,6 +24,14 @@
     },
     "work": [
         {
+            "name": "Company 2 ",
+            "position": "Worker",
+            "website": "http://company.com",
+            "startDate": "2014-01-01",
+            "summary": "Description...",
+            "location": "Paris, France",
+            "highlights": ["Started the company"]
+        }, {
             "name": "Company",
             "position": "President",
             "website": "http://company.com",
@@ -39,7 +47,6 @@
             "organization": "Organization",
             "position": "Volunteer",
             "website": "http://organization.com/",
-            "startDate": "2012-01-01",
             "endDate": "2013-01-01",
             "summary": "Description...",
             "highlights": ["Awarded 'Volunteer of the Month'"]
