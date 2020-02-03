@@ -28,10 +28,11 @@ const DeveloperProfileComponent = ({
     onEdit: onEditProps = DEFAULT_FUNCTION,
     isEditing = false,
     onFilesUpload = async () => {
-        await new Promise((resolve) => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 5000));
         return '🧸';
     },
-    ActionButtons
+    ActionButtons,
+    BeforeCards
 }) => {
     const classes = useStyles(styles);
 
@@ -43,7 +44,8 @@ const DeveloperProfileComponent = ({
     const store = {
         technologies: useReducer(technologiesReducer, technologiesInitialState)
     };
-    const context = useMemo(() => ({
+    const context = useMemo(
+        () => ({
             data,
             isEditing,
             onEdit,
@@ -53,19 +55,22 @@ const DeveloperProfileComponent = ({
             endpoints: {
                 devicons: options?.endpoints?.devicons
             }
-        }), [options, data, onEdit, store]);
+        }),
+        [options, data, onEdit, store]
+    );
 
     return (
         <div className={classes.container}>
             <DeveloperProfileContext.Provider value={context}>
                 <Banner>{ActionButtons}</Banner>
+                {BeforeCards}
                 <Cards />
             </DeveloperProfileContext.Provider>
         </div>
     );
 };
 
-const WithProvidersDeveloperProfile = ({ data, onEdit, options = {}, ActionButtons, isEditing }) => {
+const WithProvidersDeveloperProfile = ({ data, onEdit, options = {}, ActionButtons, BeforeCards, isEditing }) => {
     const { locale, theme } = useMemo(() => ({ ...DEFAULT_OPTIONS, ...options }), [options]);
     const [builtTheme, setBuiltTheme] = useState(null);
 
@@ -91,6 +96,7 @@ const WithProvidersDeveloperProfile = ({ data, onEdit, options = {}, ActionButto
                     onEdit={onEdit}
                     options={options}
                     ActionButtons={ActionButtons}
+                    BeforeCards={BeforeCards}
                 />
             </IntlProvider>
         </ThemeProvider>
