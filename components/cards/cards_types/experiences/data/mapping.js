@@ -25,8 +25,8 @@ var mapWorkFromJsonResume = function mapWorkFromJsonResume(jsonResume) {
       return _objectSpread({}, work, {
         //generating uuid for manipulating data if not present
         id: work.id || (0, _v.default)(),
-        startDate: (0, _moment.default)(work.startDate, 'YYYY-MM-DD'),
-        endDate: (0, _moment.default)(work.endDate, 'YYYY-MM-DD'),
+        startDate: work.startDate && (0, _moment.default)(work.startDate, 'YYYY-MM-DD'),
+        endDate: work.endDate && (0, _moment.default)(work.endDate, 'YYYY-MM-DD'),
         place: {
           name: work.location
         },

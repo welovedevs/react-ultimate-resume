@@ -23,6 +23,10 @@ var _profile_card_section_subtitle = require("../../../../commons/profile_card/p
 
 var _experiences_back_styles = require("./experiences_back_styles");
 
+var _reactIntl = require("react-intl");
+
+var _experiences_translations = require("./experiences_translations");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -33,6 +37,10 @@ var ExperienceContent = function ExperienceContent(_ref) {
   var experience = _ref.experience,
       variant = _ref.variant,
       classes = _ref.classes;
+
+  var _useIntl = (0, _reactIntl.useIntl)(),
+      formatMessage = _useIntl.formatMessage;
+
   var id = experience.id,
       name = experience.name,
       summary = experience.summary,
@@ -43,7 +51,9 @@ var ExperienceContent = function ExperienceContent(_ref) {
     if (!experience.endDate) {
       var _experience$startDate;
 
-      return ((_experience$startDate = experience.startDate) === null || _experience$startDate === void 0 ? void 0 : _experience$startDate.year()) || '';
+      return formatMessage(_experiences_translations.translations.since, {
+        year: ((_experience$startDate = experience.startDate) === null || _experience$startDate === void 0 ? void 0 : _experience$startDate.year()) || ''
+      });
     }
 
     return "".concat(((_experience$startDate2 = experience.startDate) === null || _experience$startDate2 === void 0 ? void 0 : _experience$startDate2.year()) || '', " - ").concat(experience.endDate.year());
