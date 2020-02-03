@@ -28,11 +28,15 @@ import { CheckboxField } from '../../../../commons/checkbox_field/checkbox_group
 const useStyles = createUseStyles(styles);
 const checkboxGroupPerks = Object.values(JobPerks).filter(perk => perk !== JobPerks.OTHER);
 
-const DreamjobCardEditDialogContent = ({ helpers: { handleValueChange, toggleValue } }) => {
+const DEFAULT_OBJECT = {};
+
+const DreamjobCardEditDialogContent = ({ helpers: { handleValueChange } }) => {
     const { formatMessage } = useIntl();
     const classes = useStyles();
     const { values, errors, handleChange } = useFormikContext();
-    const { places, perks, salary, remoteFrequency, contractTypes } = values;
+    const { places, salary, remoteFrequency, contractTypes } = values;
+
+    const perks = values.perks || DEFAULT_OBJECT;
 
     const addPlace = useCallback(place => handleValueChange('places')(places.concat({ ...place, id: uuid() })), [
         places
