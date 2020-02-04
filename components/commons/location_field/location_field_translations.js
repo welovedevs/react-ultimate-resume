@@ -3,11 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.locationFieldTranslations = void 0;
+exports.translations = void 0;
 
 var _reactIntl = require("react-intl");
 
-var locationFieldTranslations = (0, _reactIntl.defineMessages)({
+var translations = (0, _reactIntl.defineMessages)({
   title: {
     id: 'DeveloperProfile.locationField.label',
     defaultMessage: 'Localisation'
@@ -17,4 +17,4 @@ var locationFieldTranslations = (0, _reactIntl.defineMessages)({
     defaultMessage: 'Paris, France'
   }
 });
-exports.locationFieldTranslations = locationFieldTranslations;
+exports.translations = translations;

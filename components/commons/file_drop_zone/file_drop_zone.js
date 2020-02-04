@@ -63,10 +63,10 @@ var SuccessIcon = function SuccessIcon(props) {
     strokeLinejoin: "round",
     strokeWidth: "1.5"
   }, _react.default.createElement("path", {
-    d: "M11.25 15l5.49 7.685a2.543 2.543 0 0 0 4.024.15L38.75 1.248",
+    d: "M10 22.039l4.084 5.795a1.749 1.749 0 0 0 2.845.085L30 11.38",
     strokeWidth: "2.50005"
   }), _react.default.createElement("path", {
-    d: "M27.972 6.373c-8.208-5.08-18.98-2.543-24.06 5.666s-2.544 18.98 5.665 24.06 18.98 2.543 24.06-5.665a17.481 17.481 0 0 0 1.03-16.472",
+    d: "M20 1.248c10.356 0 18.75 8.396 18.75 18.75S30.357 38.75 20 38.75 1.25 30.354 1.25 20 9.645 1.249 20 1.249z",
     strokeWidth: "2.50005"
   })));
 };

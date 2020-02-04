@@ -35,7 +35,7 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var useStyles = (0, _reactJss.createUseStyles)(_location_field_style.locationFieldStyles);
+var useStyles = (0, _reactJss.createUseStyles)(_location_field_style.styles);
 
 var LocationFieldComponent = function LocationFieldComponent(_ref) {
   var variant = _ref.variant,
@@ -113,7 +113,7 @@ var LocationFieldComponent = function LocationFieldComponent(_ref) {
     },
     value: input,
     onChange: handleChange,
-    placeholder: formatMessage(_location_field_translations.locationFieldTranslations.placeholder),
+    placeholder: formatMessage(_location_field_translations.translations.placeholder),
     onBlur: function onBlur() {
       if (!preventBlur) {
         setIsFocused(false);
@@ -123,7 +123,7 @@ var LocationFieldComponent = function LocationFieldComponent(_ref) {
       return setIsFocused(true);
     },
     variant: variant || 'outlined',
-    label: formatMessage(_location_field_translations.locationFieldTranslations.title),
+    label: formatMessage(_location_field_translations.translations.title),
     containerRef: inputRef
   }), isFocused && _react.default.createElement(PredictionsList, _extends({
     setPreventBlur: setPreventBlur,
@@ -154,9 +154,7 @@ var PredictionsList = function PredictionsList(_ref2) {
     customClasses: {
       popper: classes.popperCard
     }
-  }, _react.default.createElement(_ui.List, {
-    className: classes.popperList
-  }, predictions.filter(function (item) {
+  }, _react.default.createElement(_ui.List, null, predictions.filter(function (item) {
     return item;
   }).map(function (_ref3) {
     var description = _ref3.description,

@@ -15,7 +15,7 @@ var styles = function styles(theme) {
       return {
         color: (0, _styles_utils.getHexFromPaletteColor)(theme, overrideColor || (0, _styles_utils.getColorsFromCardVariant)(theme, variant).color),
         fontWeight: 700,
-        fontSize: 70,
+        fontSize: 64,
         lineHeight: 1.1
       };
     }

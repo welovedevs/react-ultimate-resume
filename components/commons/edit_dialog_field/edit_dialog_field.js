@@ -5,15 +5,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EditDialogField = void 0;
 
-var _reactJss = require("react-jss");
-
-var _edit_dialog_field_styles = require("./edit_dialog_field_styles");
-
-var _ui = require("@wld/ui");
+var _react = _interopRequireDefault(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _react = _interopRequireDefault(require("react"));
+var _reactJss = require("react-jss");
+
+var _ui = require("@wld/ui");
+
+var _edit_dialog_field_styles = require("./edit_dialog_field_styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
