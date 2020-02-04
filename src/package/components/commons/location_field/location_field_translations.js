@@ -1,6 +1,6 @@
 import { defineMessages } from 'react-intl';
 
-export const locationFieldTranslations = defineMessages({
+export const translations = defineMessages({
     title: {
         id: 'DeveloperProfile.locationField.label',
         defaultMessage: 'Localisation'

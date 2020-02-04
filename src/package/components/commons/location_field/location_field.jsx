@@ -7,10 +7,10 @@ import { TextField, PopperCard, Typography, List, ListItem } from '@wld/ui';
 
 import { useGoogleMapsPredictions } from '../../hooks/location/use_google_maps_predictions';
 
-import { locationFieldStyles } from './location_field_style';
-import { locationFieldTranslations } from './location_field_translations';
+import { styles } from './location_field_style';
+import { translations } from './location_field_translations';
 
-const useStyles = createUseStyles(locationFieldStyles);
+const useStyles = createUseStyles(styles);
 
 const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSelect, onChange, fullWidth }) => {
     const classes = useStyles();
@@ -56,7 +56,7 @@ const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSel
                     onClick={e => e.target && e.target.select && e.target.select()}
                     value={input}
                     onChange={handleChange}
-                    placeholder={formatMessage(locationFieldTranslations.placeholder)}
+                    placeholder={formatMessage(translations.placeholder)}
                     onBlur={() => {
                         if (!preventBlur) {
                             setIsFocused(false);
@@ -64,7 +64,7 @@ const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSel
                     }}
                     onFocus={() => setIsFocused(true)}
                     variant={variant || 'outlined'}
-                    label={formatMessage(locationFieldTranslations.title)}
+                    label={formatMessage(translations.title)}
                     containerRef={inputRef}
                 />
                 {isFocused && (
@@ -96,7 +96,7 @@ const PredictionsList = ({ predictions = [], setPreventBlur, input, onPrediction
             popper: classes.popperCard
         }}
     >
-        <List className={classes.popperList}>
+        <List>
             {predictions
                 .filter(item => item)
                 .map(({ description, place_id: placeId }) => (

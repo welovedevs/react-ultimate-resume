@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 
 import { createUseStyles } from 'react-jss';
+import { FormattedMessage } from 'react-intl';
+
+import { Button } from '@wld/ui';
 
 import { Dialog, DialogContent, DialogActions } from '@material-ui/core';
 
@@ -26,7 +29,14 @@ const UploadFileDialogComponent = ({ open, onClose }) => {
             <DialogContent>
                 <FileDropZone onDrop={onFilesUpload} />
             </DialogContent>
-            <DialogActions />
+            <DialogActions>
+                <Button size="small" onClick={onClose}>
+                    <FormattedMessage
+                        id="Main.lang.close"
+                        defaultMessage="Fermer"
+                    />
+                </Button>
+            </DialogActions>
         </Dialog>
     );
 };

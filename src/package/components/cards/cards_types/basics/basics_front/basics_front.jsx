@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { FormattedMessage } from 'react-intl';
+import { createUseStyles } from 'react-jss';
 
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
 import { ProfileCardActions } from '../../../../commons/profile_card/profile_card_actions/profile_card_actions';
@@ -9,7 +9,7 @@ import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile
 import { ProfileCardFrontTypography } from '../../../../commons/profile_card/profile_card_front_typography/profile_card_front_typography';
 
 import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
-import { createUseStyles } from 'react-jss';
+
 import { styles } from './basics_front_styles';
 
 const useStyles = createUseStyles(styles);
@@ -24,7 +24,7 @@ const BasicsFrontComponent = ({ data }) => {
         <ProfileCardPaddedFront>
             <CenterContentContainer customClasses={{ container: classes.container }}>
                 <ProfileCardFrontTypography>{data.summary}</ProfileCardFrontTypography>
-                <ProfileCardFrontTypography level="h4" component="h3" customClasses={{ container: classes.subTitle }}>
+                <ProfileCardFrontTypography level="h4" component="h3" customClasses={{ container: classes.location }}>
                     📍 {data?.currentCity?.name}
                 </ProfileCardFrontTypography>
             </CenterContentContainer>

@@ -4,7 +4,7 @@ export const styles = theme => ({
     container: ({ variant, overrideColor }) => ({
         color: getHexFromPaletteColor(theme, overrideColor || getColorsFromCardVariant(theme, variant).color),
         fontWeight: 700,
-        fontSize: 70,
+        fontSize: 64,
         lineHeight: 1.1
     })
 });

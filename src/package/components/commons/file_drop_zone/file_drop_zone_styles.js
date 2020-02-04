@@ -24,7 +24,7 @@ export const styles = (theme) => {
             height: 50,
             marginBottom: spacing * 4,
             '& > g': {
-                strokeWidth: 1.25
+                strokeWidth: 1
             }
         }
     };

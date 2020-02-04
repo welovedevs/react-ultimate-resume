@@ -1,9 +1,11 @@
-import { createUseStyles } from 'react-jss';
-import { styles } from './edit_dialog_field_styles';
-import { Typography } from '@wld/ui';
-import cn from 'classnames';
-
 import React from 'react';
+
+import cn from 'classnames';
+import { createUseStyles } from 'react-jss';
+
+import { Typography } from '@wld/ui';
+
+import { styles } from './edit_dialog_field_styles';
 
 const useStyles = createUseStyles(styles);
 
