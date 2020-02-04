@@ -1,14 +1,16 @@
 import React, { useMemo } from 'react';
+
+import { createUseStyles } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back';
 import { ProfileCardSectionTitle } from '../../../../commons/profile_card/profile_card_section_title/profile_card_section_title';
 import { ProfileCardSectionText } from '../../../../commons/profile_card/profile_card_section_text/profile_card_section_text';
 import { ProfileCardSection } from '../../../../commons/profile_card/profile_card_section/profile_card_section';
-import { createUseStyles } from 'react-jss';
-import { styles } from './basics_back_styles';
-import JobSearchStateTranslations from '../../../../../utils/enums/job_serachstate/job_search_state_translations';
 import { ContractType } from '../../../../commons/fields/contract_types/contract_types';
+
+import { translations } from '../../../../../utils/enums/job_serachstate/job_search_state_translations';
+import { styles } from './basics_back_styles';
 
 const useStyles = createUseStyles(styles);
 
@@ -115,7 +117,11 @@ const JobSearchState = ({ searchState }) => {
     if (!searchState) {
         return null;
     }
-    return <span>{formatMessage(JobSearchStateTranslations[searchState] || JobSearchStateTranslations.unknown)}</span>;
+    return (
+        <span>
+            {formatMessage(translations[searchState] || translations.unknown)}
+        </span>
+    );
 };
 
 export const BasicsBack = BasicsBackComponent;

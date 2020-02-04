@@ -1,7 +1,6 @@
 export const checkboxStyles = {
-    checkbox: {
+    container: {
         display: 'flex',
-        alignItems: 'center',
-        cursor: 'pointer'
+        alignItems: 'center'
     }
 };

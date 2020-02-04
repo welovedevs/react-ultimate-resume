@@ -1,4 +1,6 @@
-import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../utils/styles/styles_utils';
+import { flex, getColorsFromCardVariant, getHexFromPaletteColor } from '../../../utils/styles/styles_utils';
+
+const { center } = flex;
 
 export const styles = theme => {
     const {
@@ -23,15 +25,20 @@ export const styles = theme => {
                 overflow: 'hidden'
             };
         },
-        editButton: {
+        editButton: ({
             zIndex: 2,
             position: 'absolute',
             top: spacing * 2,
-            right: spacing * 2
-        },
-        editIcon: ({ variant }) => ({
-            height: 40,
-            fill: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).color)
+            right: spacing * 2,
+            height: 50,
+            width: 50,
+            borderRadius: '50%',
+            backgroundColor: getHexFromPaletteColor(theme, 'light'),
+            ...center
+        }),
+        editIcon: ({
+            height: 24,
+            fill: getHexFromPaletteColor(theme, 'dark')
         })
     };
 };

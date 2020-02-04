@@ -1,12 +1,54 @@
 import React, { useCallback } from 'react';
+
+import cn from 'classnames';
+import { createUseStyles } from 'react-jss';
 import { Formik, useFormikContext } from 'formik';
 
 import { Button } from '@wld/ui';
+
 import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
 
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';
 
-const EditDialogContent = ({ children, onClose, dialogClasses }) => {
+import { styles } from './edit_dialog_styles';
+
+const useStyles = createUseStyles(styles);
+
+const EditDialogComponent = ({
+    open,
+    onClose,
+    data,
+    onEdit,
+    children,
+    title = '✏️',
+    validationSchema,
+    classes: receivedClasses = {}
+}) => {
+    const classes = useStyles();
+    return (
+        <Dialog
+            classes={{
+                paper: cn(classes.paper, receivedClasses.paper)
+            }}
+            open={open}
+            onClose={onClose}
+        >
+            <DialogTitle>{title}</DialogTitle>
+            <Formik
+                validateOnChange={false}
+                initialValues={data}
+                onSubmit={newValues => onEdit(newValues)}
+                validationSchema={validationSchema}
+            >
+                <Content onClose={onClose} classes={classes} receivedClasses={receivedClasses}>
+                    {children}
+                </Content>
+            </Formik>
+        </Dialog>
+    );
+};
+
+const Content = ({ children, onClose, classes, receivedClasses }) => {
     const { handleSubmit, setFieldValue, values } = useFormikContext();
 
     const handleValueChange = useCallback(
@@ -20,10 +62,18 @@ const EditDialogContent = ({ children, onClose, dialogClasses }) => {
 
     return (
         <>
-            <DialogContent className={dialogClasses.content}>
+            <DialogContent
+                classes={{
+                    root: cn(classes.content, receivedClasses.content)
+                }}
+            >
                 {children({ handleValueChange, toggleValue })}
             </DialogContent>
-            <DialogActions className={dialogClasses.actions}>
+            <DialogActions
+                classes={{
+                    root: cn(classes.actions, receivedClasses.actions)
+                }}
+            >
                 <Button size="small" onClick={onClose}>
                     Close
                 </Button>
@@ -34,20 +84,5 @@ const EditDialogContent = ({ children, onClose, dialogClasses }) => {
         </>
     );
 };
-export const EditDialog = ({ open, onClose, data, onEdit, children, title, validationSchema, dialogClasses = {} }) => {
-    return (
-        <Dialog {...{ open, onClose, classes: dialogClasses.dialog }}>
-            <DialogTitle>{title || 'Coucou'}</DialogTitle>
-            <Formik
-                validateOnChange={false}
-                initialValues={data}
-                onSubmit={newValues => onEdit(newValues)}
-                validationSchema={validationSchema}
-            >
-                <EditDialogContent onClose={onClose} dialogClasses={dialogClasses}>
-                    {children}
-                </EditDialogContent>
-            </Formik>
-        </Dialog>
-    );
-};
+
+export const EditDialog = EditDialogComponent;

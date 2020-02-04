@@ -9,23 +9,31 @@ import { styles } from './edit_dialog_field_styles';
 
 const useStyles = createUseStyles(styles);
 
-export const EditDialogField = ({ title, subtitle, children, error, classes = {} }) => {
-    const innerClasses = useStyles();
-
+const EditDialogFieldComponent = ({ title, subtitle, children, error, classes: receivedClasses = {} }) => {
+    const classes = useStyles();
     return (
-        <div className={cn(innerClasses.field, classes.container)}>
+        <div className={cn(classes.container, receivedClasses.container)}>
             {title && (
-                <Typography component="h2" variant="h4">
+                <Typography
+                    component="h3"
+                    variant="h4"
+                    color="dark"
+                >
                     {title}
                 </Typography>
             )}
             {subtitle && (
-                <Typography component="div" variant="body">
+                <Typography
+                    customClasses={{ container: classes.subtitle }}
+                    component="p"
+                    variant="body2"
+                    color="dark"
+                >
                     {subtitle}
                 </Typography>
             )}
-            <div className={cn(innerClasses.fieldEditComponent, classes.container)}>
-                <div className={cn(innerClasses.fieldEditChildren, classes.containerChildren)}>{children}</div>
+            <div className={cn(classes.componentErrorContainer, receivedClasses.componentErrorContainer)}>
+                <div className={cn(classes.component, receivedClasses.component)}>{children}</div>
                 {error && (
                     <Typography color="danger" variant="helper" component="p">
                         {error}
@@ -35,3 +43,5 @@ export const EditDialogField = ({ title, subtitle, children, error, classes = {}
         </div>
     );
 };
+
+export const EditDialogField = EditDialogFieldComponent;

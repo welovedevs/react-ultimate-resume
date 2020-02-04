@@ -1,23 +1,40 @@
-import { Slider, PopperCard } from '@wld/ui';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { createUseStyles } from 'react-jss';
-import { sliderStyles } from './slider_with_popper_styles';
+
 import cn from 'classnames';
+import { createUseStyles } from 'react-jss';
 
-const useStyles = createUseStyles(sliderStyles);
+import { Slider, PopperCard } from '@wld/ui';
 
-export const SliderWithPopper = ({ color, name, value, onChange, min, max, className, label, debounce = 500 }) => {
+import { styles } from './slider_with_popper_styles';
+
+const useStyles = createUseStyles(styles);
+
+export const SliderWithPopper = ({
+    color,
+    name,
+    value,
+    onChange,
+    min,
+    max,
+    debounce = 500,
+    classes: receivedClasses = {},
+    popperCardProps
+}) => {
     const classes = useStyles();
+
     const [isFocused, setIsFocused] = useState(false);
+    const [localValue, setLocalValue] = useState(value);
+
     const handleFocus = useCallback(() => setIsFocused(true), []);
     const handleBlur = useCallback(() => setIsFocused(false), []);
+
     const timer = useRef();
     const thumbReference = useRef();
-    const [localValue, setLocalValue] = useState(value);
 
     useEffect(() => {
         setLocalValue(value);
     }, [value]);
+
     const handleChange = useCallback(
         e => {
             e.persist();
@@ -37,7 +54,9 @@ export const SliderWithPopper = ({ color, name, value, onChange, min, max, class
 
     return (
         <Slider
-            classes={{ container: cn(classes.slider, className) }}
+            classes={{
+                container: cn(classes.container, receivedClasses.container)
+            }}
             color={color}
             name={name}
             value={localValue}
@@ -48,7 +67,7 @@ export const SliderWithPopper = ({ color, name, value, onChange, min, max, class
             onMouseUp={handleBlur}
             thumbReference={thumbReference}
             fullWidth
-            thumbChildren={
+            thumbChildren={(
                 <PopperCard
                     open={isFocused}
                     anchorElement={thumbReference.current}
@@ -60,10 +79,11 @@ export const SliderWithPopper = ({ color, name, value, onChange, min, max, class
                             }
                         }
                     }}
+                    {...popperCardProps}
                 >
                     {localValue}
                 </PopperCard>
-            }
+            )}
         />
     );
 };

@@ -35,3 +35,6 @@ export const getColorsFromCardVariant = (theme, cardVariant) =>
 
 export const getHexFromPaletteColor = (theme, paletteColor, shade = 500) =>
     (theme.palette[paletteColor] ?? theme.primary)[shade];
+
+export const getContrastDefaultColorFromPaletteColor = (theme, paletteColor) =>
+    theme.palette[paletteColor].contrastDefaultColor;

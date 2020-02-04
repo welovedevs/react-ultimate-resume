@@ -1,5 +1,5 @@
-export const sliderStyles = {
-    slider: {
+export const styles = {
+    container: {
         flex: 1
     }
 };

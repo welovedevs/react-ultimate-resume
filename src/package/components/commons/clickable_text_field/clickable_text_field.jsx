@@ -1,13 +1,16 @@
 import React from 'react';
 
 import cn from 'classnames';
-import injectSheet from 'react-jss';
+import { createUseStyles } from 'react-jss';
 import { animated, useSpring } from 'react-spring';
 
-import { ReactComponent as KeyboardArrowDownIcon } from '../../../assets/icons/keyboard_arrow_down.svg';
 import { TextField, TextFieldIcon } from '@wld/ui';
 
-import styles from './clickable_text_field_styles';
+import { ReactComponent as KeyboardArrowDownIcon } from '../../../assets/icons/keyboard_arrow_down.svg';
+
+import { styles } from './clickable_text_field_styles';
+
+const useStyles = createUseStyles(styles);
 
 const ClickableTextFieldComponent = ({
     interactionsLayerRef,
@@ -15,9 +18,9 @@ const ClickableTextFieldComponent = ({
     textFieldIconProps,
     customClasses = {},
     arrowRotation = 0,
-    classes,
     ...other
 }) => {
+    const classes = useStyles();
     const { rotation: rotationSpring } = useSpring({ rotation: arrowRotation });
     return (
         <TextField readOnly className={cn(classes.container, customClasses.container)} {...other}>
@@ -40,4 +43,4 @@ const ClickableTextFieldComponent = ({
     );
 };
 
-export const ClickableTextField = injectSheet(styles)(ClickableTextFieldComponent);
+export const ClickableTextField = ClickableTextFieldComponent;

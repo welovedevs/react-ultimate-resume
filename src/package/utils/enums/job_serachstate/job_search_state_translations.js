@@ -1,6 +1,6 @@
 import { defineMessages } from 'react-intl';
 
-export default defineMessages({
+export const translations = defineMessages({
     activelySearching: {
         id: 'Developer.developerJobSearchState.activelySearching',
         defaultMessage: "I'm actively searching for a job"
