@@ -7,9 +7,11 @@ exports.CheckboxField = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _ui = require("@wld/ui");
+var _classnames = _interopRequireDefault(require("classnames"));
 
 var _reactJss = require("react-jss");
+
+var _ui = require("@wld/ui");
 
 var _checkbox_styles = require("./checkbox_styles");
 
@@ -24,14 +26,17 @@ var CheckboxField = function CheckboxField(_ref) {
       name = _ref.name,
       onChange = _ref.onChange,
       _ref$color = _ref.color,
-      color = _ref$color === void 0 ? 'secondary' : _ref$color,
+      color = _ref$color === void 0 ? 'primary' : _ref$color,
       _ref$variant = _ref.variant,
       variant = _ref$variant === void 0 ? 'raised' : _ref$variant,
-      onClick = _ref.onClick;
+      onClick = _ref.onClick,
+      _ref$classes = _ref.classes,
+      receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var classes = useStyles();
-  return _react.default.createElement("div", {
-    onClick: onClick,
-    className: classes.checkbox
+  return _react.default.createElement("button", {
+    className: (0, _classnames.default)(classes.container, receivedClasses.container),
+    type: "button",
+    onClick: onClick
   }, _react.default.createElement(_ui.Checkbox, {
     variant: variant,
     color: color,

@@ -6,9 +6,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.styles = void 0;
 
 var styles = function styles(theme) {
+  var spacing = theme.miscellaneous.spacing;
   return {
     container: {
-      padding: theme.miscellaneous.spacing * 4,
+      padding: [spacing * 4, spacing * 3],
       fontWeight: 600
     }
   };

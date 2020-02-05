@@ -9,6 +9,8 @@ exports.BasicsBack = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactJss = require("react-jss");
+
 var _reactIntl = require("react-intl");
 
 var _profile_card_animated_back = require("../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back");
@@ -19,15 +21,11 @@ var _profile_card_section_text = require("../../../../commons/profile_card/profi
 
 var _profile_card_section = require("../../../../commons/profile_card/profile_card_section/profile_card_section");
 
-var _reactJss = require("react-jss");
-
-var _basics_back_styles = require("./basics_back_styles");
-
-var _job_search_state_translations = _interopRequireDefault(require("../../../../../utils/enums/job_serachstate/job_search_state_translations"));
-
 var _contract_types = require("../../../../commons/fields/contract_types/contract_types");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _job_search_state_translations = require("../../../../../utils/enums/job_serachstate/job_search_state_translations");
+
+var _basics_back_styles = require("./basics_back_styles");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -148,7 +146,7 @@ var JobSearchState = function JobSearchState(_ref6) {
     return null;
   }
 
-  return _react.default.createElement("span", null, formatMessage(_job_search_state_translations.default[searchState] || _job_search_state_translations.default.unknown));
+  return _react.default.createElement("span", null, formatMessage(_job_search_state_translations.translations[searchState] || _job_search_state_translations.translations.unknown));
 };
 
 var BasicsBack = BasicsBackComponent;

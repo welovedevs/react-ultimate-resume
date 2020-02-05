@@ -30,7 +30,9 @@ var LanguageColumnComponent = function LanguageColumnComponent(_ref) {
     color: color,
     itemsSize: itemsSize
   });
-  return _react.default.createElement(Component, {
+  return _react.default.createElement(_ui.Tooltip, {
+    title: "".concat(value, "%")
+  }, _react.default.createElement(Component, {
     className: classes.container,
     style: style
   }, _react.default.createElement(_ui.Typography, {
@@ -39,7 +41,7 @@ var LanguageColumnComponent = function LanguageColumnComponent(_ref) {
     customClasses: {
       container: classes.typography
     }
-  }, children));
+  }, children)));
 };
 
 var LanguageColumn = LanguageColumnComponent;

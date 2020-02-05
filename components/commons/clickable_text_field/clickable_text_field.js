@@ -9,13 +9,13 @@ var _react = _interopRequireDefault(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _reactJss = _interopRequireDefault(require("react-jss"));
+var _reactJss = require("react-jss");
 
 var _reactSpring = require("react-spring");
 
 var _ui = require("@wld/ui");
 
-var _clickable_text_field_styles = _interopRequireDefault(require("./clickable_text_field_styles"));
+var _clickable_text_field_styles = require("./clickable_text_field_styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42,6 +42,7 @@ KeyboardArrowDownIcon.defaultProps = {
   fill: "none",
   xmlns: "http://www.w3.org/2000/svg"
 };
+var useStyles = (0, _reactJss.createUseStyles)(_clickable_text_field_styles.styles);
 
 var ClickableTextFieldComponent = function ClickableTextFieldComponent(_ref) {
   var interactionsLayerRef = _ref.interactionsLayerRef,
@@ -51,8 +52,9 @@ var ClickableTextFieldComponent = function ClickableTextFieldComponent(_ref) {
       customClasses = _ref$customClasses === void 0 ? {} : _ref$customClasses,
       _ref$arrowRotation = _ref.arrowRotation,
       arrowRotation = _ref$arrowRotation === void 0 ? 0 : _ref$arrowRotation,
-      classes = _ref.classes,
-      other = _objectWithoutProperties(_ref, ["interactionsLayerRef", "onClick", "textFieldIconProps", "customClasses", "arrowRotation", "classes"]);
+      other = _objectWithoutProperties(_ref, ["interactionsLayerRef", "onClick", "textFieldIconProps", "customClasses", "arrowRotation"]);
+
+  var classes = useStyles();
 
   var _useSpring = (0, _reactSpring.useSpring)({
     rotation: arrowRotation
@@ -77,5 +79,5 @@ var ClickableTextFieldComponent = function ClickableTextFieldComponent(_ref) {
   })));
 };
 
-var ClickableTextField = (0, _reactJss.default)(_clickable_text_field_styles.default)(ClickableTextFieldComponent);
+var ClickableTextField = ClickableTextFieldComponent;
 exports.ClickableTextField = ClickableTextField;

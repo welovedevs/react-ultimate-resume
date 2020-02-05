@@ -5,10 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.checkboxStyles = void 0;
 var checkboxStyles = {
-  checkbox: {
+  container: {
     display: 'flex',
-    alignItems: 'center',
-    cursor: 'pointer'
+    alignItems: 'center'
   }
 };
 exports.checkboxStyles = checkboxStyles;

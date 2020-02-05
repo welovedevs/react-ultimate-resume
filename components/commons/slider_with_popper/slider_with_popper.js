@@ -7,21 +7,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SliderWithPopper = void 0;
 
-var _ui = require("@wld/ui");
-
 var _react = _interopRequireWildcard(require("react"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
 
 var _reactJss = require("react-jss");
 
-var _slider_with_popper_styles = require("./slider_with_popper_styles");
+var _ui = require("@wld/ui");
 
-var _classnames = _interopRequireDefault(require("classnames"));
+var _slider_with_popper_styles = require("./slider_with_popper_styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -31,7 +33,7 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var useStyles = (0, _reactJss.createUseStyles)(_slider_with_popper_styles.sliderStyles);
+var useStyles = (0, _reactJss.createUseStyles)(_slider_with_popper_styles.styles);
 
 var SliderWithPopper = function SliderWithPopper(_ref) {
   var color = _ref.color,
@@ -40,16 +42,22 @@ var SliderWithPopper = function SliderWithPopper(_ref) {
       onChange = _ref.onChange,
       min = _ref.min,
       max = _ref.max,
-      className = _ref.className,
-      label = _ref.label,
       _ref$debounce = _ref.debounce,
-      debounce = _ref$debounce === void 0 ? 500 : _ref$debounce;
+      debounce = _ref$debounce === void 0 ? 500 : _ref$debounce,
+      _ref$classes = _ref.classes,
+      receivedClasses = _ref$classes === void 0 ? {} : _ref$classes,
+      popperCardProps = _ref.popperCardProps;
   var classes = useStyles();
 
   var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       isFocused = _useState2[0],
       setIsFocused = _useState2[1];
+
+  var _useState3 = (0, _react.useState)(value),
+      _useState4 = _slicedToArray(_useState3, 2),
+      localValue = _useState4[0],
+      setLocalValue = _useState4[1];
 
   var handleFocus = (0, _react.useCallback)(function () {
     return setIsFocused(true);
@@ -59,12 +67,6 @@ var SliderWithPopper = function SliderWithPopper(_ref) {
   }, []);
   var timer = (0, _react.useRef)();
   var thumbReference = (0, _react.useRef)();
-
-  var _useState3 = (0, _react.useState)(value),
-      _useState4 = _slicedToArray(_useState3, 2),
-      localValue = _useState4[0],
-      setLocalValue = _useState4[1];
-
   (0, _react.useEffect)(function () {
     setLocalValue(value);
   }, [value]);
@@ -88,7 +90,7 @@ var SliderWithPopper = function SliderWithPopper(_ref) {
   }, [onChange]);
   return _react.default.createElement(_ui.Slider, {
     classes: {
-      container: (0, _classnames.default)(classes.slider, className)
+      container: (0, _classnames.default)(classes.container, receivedClasses.container)
     },
     color: color,
     name: name,
@@ -100,7 +102,7 @@ var SliderWithPopper = function SliderWithPopper(_ref) {
     onMouseUp: handleBlur,
     thumbReference: thumbReference,
     fullWidth: true,
-    thumbChildren: _react.default.createElement(_ui.PopperCard, {
+    thumbChildren: _react.default.createElement(_ui.PopperCard, _extends({
       open: isFocused,
       anchorElement: thumbReference.current,
       popperProps: {
@@ -111,7 +113,7 @@ var SliderWithPopper = function SliderWithPopper(_ref) {
           }
         }
       }
-    }, localValue)
+    }, popperCardProps), localValue)
   });
 };
 

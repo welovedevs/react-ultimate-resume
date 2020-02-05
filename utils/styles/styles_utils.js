@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getHexFromPaletteColor = exports.getColorsFromCardVariant = exports.withCustomVerticalScrollbar = exports.withCustomHorizontalScrollbar = exports.flex = void 0;
+exports.getContrastDefaultColorFromPaletteColor = exports.getHexFromPaletteColor = exports.getColorsFromCardVariant = exports.withCustomVerticalScrollbar = exports.withCustomHorizontalScrollbar = exports.flex = void 0;
 var flex = Object.freeze({
   center: Object.freeze({
     display: 'flex',
@@ -61,3 +61,9 @@ var getHexFromPaletteColor = function getHexFromPaletteColor(theme, paletteColor
 };
 
 exports.getHexFromPaletteColor = getHexFromPaletteColor;
+
+var getContrastDefaultColorFromPaletteColor = function getContrastDefaultColorFromPaletteColor(theme, paletteColor) {
+  return theme.palette[paletteColor].contrastDefaultColor;
+};
+
+exports.getContrastDefaultColorFromPaletteColor = getContrastDefaultColorFromPaletteColor;

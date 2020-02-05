@@ -19,26 +19,31 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var useStyles = (0, _reactJss.createUseStyles)(_edit_dialog_field_styles.styles);
 
-var EditDialogField = function EditDialogField(_ref) {
+var EditDialogFieldComponent = function EditDialogFieldComponent(_ref) {
   var title = _ref.title,
       subtitle = _ref.subtitle,
       children = _ref.children,
       error = _ref.error,
       _ref$classes = _ref.classes,
-      classes = _ref$classes === void 0 ? {} : _ref$classes;
-  var innerClasses = useStyles();
+      receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
+  var classes = useStyles();
   return _react.default.createElement("div", {
-    className: (0, _classnames.default)(innerClasses.field, classes.container)
+    className: (0, _classnames.default)(classes.container, receivedClasses.container)
   }, title && _react.default.createElement(_ui.Typography, {
-    component: "h2",
-    variant: "h4"
+    component: "h3",
+    variant: "h4",
+    color: "dark"
   }, title), subtitle && _react.default.createElement(_ui.Typography, {
-    component: "div",
-    variant: "body"
+    customClasses: {
+      container: classes.subtitle
+    },
+    component: "p",
+    variant: "body2",
+    color: "dark"
   }, subtitle), _react.default.createElement("div", {
-    className: (0, _classnames.default)(innerClasses.fieldEditComponent, classes.container)
+    className: (0, _classnames.default)(classes.componentErrorContainer, receivedClasses.componentErrorContainer)
   }, _react.default.createElement("div", {
-    className: (0, _classnames.default)(innerClasses.fieldEditChildren, classes.containerChildren)
+    className: (0, _classnames.default)(classes.component, receivedClasses.component)
   }, children), error && _react.default.createElement(_ui.Typography, {
     color: "danger",
     variant: "helper",
@@ -46,4 +51,5 @@ var EditDialogField = function EditDialogField(_ref) {
   }, error)));
 };
 
+var EditDialogField = EditDialogFieldComponent;
 exports.EditDialogField = EditDialogField;

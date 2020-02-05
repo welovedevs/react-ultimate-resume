@@ -3,11 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.translations = void 0;
 
 var _reactIntl = require("react-intl");
 
-var _default = (0, _reactIntl.defineMessages)({
+var translations = (0, _reactIntl.defineMessages)({
   activelySearching: {
     id: 'Developer.developerJobSearchState.activelySearching',
     defaultMessage: "I'm actively searching for a job"
@@ -25,5 +25,4 @@ var _default = (0, _reactIntl.defineMessages)({
     defaultMessage: 'Unknown job search state'
   }
 });
-
-exports.default = _default;
+exports.translations = translations;

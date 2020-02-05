@@ -22,12 +22,7 @@ var SocialActionsComponent = function SocialActionsComponent(_ref) {
   var classes = useStyles();
   return _react.default.createElement("div", {
     className: classes.container
-  }, _react.default.createElement(_ui.Button, {
-    style: {
-      color: '#fff'
-    },
-    variant: "outlined"
-  }, 'Get in touch'), children);
+  }, children);
 };
 
 var SocialActions = SocialActionsComponent;

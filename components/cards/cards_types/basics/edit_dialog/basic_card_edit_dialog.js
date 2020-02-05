@@ -23,19 +23,13 @@ var _edit_dialog_field = require("../../../../commons/edit_dialog_field/edit_dia
 
 var _slider_with_popper = require("../../../../commons/slider_with_popper/slider_with_popper");
 
-var _checkbox_group = require("../../../../commons/checkbox_field/checkbox_group");
+var _visa_field = require("./visa_field/visa_field");
 
 var _location_field = require("../../../../commons/location_field/location_field");
 
-var _job_search_state = require("../../../../../utils/enums/job_serachstate/job_search_state");
-
-var _select = require("../../../../commons/select/select");
+var _job_search_state_field = require("./job_search_state_field/job_search_state_field");
 
 var _basic_card_edit_dialog_styles = require("./basic_card_edit_dialog_styles");
-
-var _job_search_state_translations = _interopRequireDefault(require("../../../../../utils/enums/job_serachstate/job_search_state_translations"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -43,16 +37,41 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var useStyles = (0, _reactJss.createUseStyles)(_basic_card_edit_dialog_styles.styles);
 
-var BasicsCardEditDialogContent = function BasicsCardEditDialogContent(_ref) {
-  var _errors$currentCity;
-
-  var _ref$helpers = _ref.helpers,
-      handleValueChange = _ref$helpers.handleValueChange,
-      toggleValue = _ref$helpers.toggleValue;
+var BasicsCardEditDialogComponent = function BasicsCardEditDialogComponent(_ref) {
+  var data = _ref.data,
+      onEdit = _ref.onEdit,
+      validationSchema = _ref.validationSchema,
+      onClose = _ref.onClose;
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
 
+  var validationSchemaToPass = (0, _react.useMemo)(function () {
+    return validationSchema(formatMessage);
+  }, [validationSchema]);
+  return _react.default.createElement(_edit_dialog.EditDialog, {
+    data: data,
+    onEdit: onEdit,
+    onClose: onClose,
+    validationSchema: validationSchemaToPass,
+    open: true,
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Basics.editDialog.title",
+      defaultMessage: "Your basic informations"
+    })
+  }, function (helpers) {
+    return _react.default.createElement(Content, {
+      helpers: helpers
+    });
+  });
+};
+
+var Content = function Content(_ref2) {
+  var _errors$currentCity;
+
+  var _ref2$helpers = _ref2.helpers,
+      handleValueChange = _ref2$helpers.handleValueChange,
+      toggleValue = _ref2$helpers.toggleValue;
   var classes = useStyles();
 
   var _useFormikContext = (0, _formik.useFormikContext)(),
@@ -70,17 +89,20 @@ var BasicsCardEditDialogContent = function BasicsCardEditDialogContent(_ref) {
       personalDescription = values.personalDescription,
       summary = values.summary;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_edit_dialog_field.EditDialogField, {
-    error: errors.summary,
+    classes: {
+      container: classes.field
+    },
+    error: errors === null || errors === void 0 ? void 0 : errors.summary,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Basics.editDialog.summary.title",
-      defaultMessage: "Describe yourself in a few words"
+      defaultMessage: "Describe yourself in a few words."
     })
   }, _react.default.createElement(_ui.TextField, {
-    onChange: handleChange,
-    name: "summary",
-    value: summary,
+    fullWidth: true,
     variant: "flat",
-    fullWidth: true
+    onChange: handleChange,
+    value: summary,
+    name: "summary"
   })), _react.default.createElement(_edit_dialog_field.EditDialogField, {
     error: (errors === null || errors === void 0 ? void 0 : (_errors$currentCity = errors.currentCity) === null || _errors$currentCity === void 0 ? void 0 : _errors$currentCity.name) || (errors === null || errors === void 0 ? void 0 : errors.currentCity),
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
@@ -88,43 +110,22 @@ var BasicsCardEditDialogContent = function BasicsCardEditDialogContent(_ref) {
       defaultMessage: "What's your current location?"
     })
   }, _react.default.createElement(_location_field.LocationField, {
+    variant: "flat",
     value: currentCity === null || currentCity === void 0 ? void 0 : currentCity.name,
-    onLocationSelected: handleValueChange('currentCity'),
-    variant: "flat"
-  })), _react.default.createElement(_edit_dialog_field.EditDialogField, {
-    error: errors.visaSponsorship,
-    classes: {
-      container: classes.visaSponsorship
-    }
-  }, _react.default.createElement(_checkbox_group.CheckboxField, {
-    variant: "outlined",
-    title: _react.default.createElement(_ui.Typography, null, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Basics.editDialog.visaSponsorship",
-      defaultMessage: "I require a visa sponsorship"
-    })),
+    onLocationSelected: handleValueChange('currentCity')
+  }), _react.default.createElement(_visa_field.VisaField, {
     value: visaSponsorship,
-    onClick: toggleValue('visaSponsorship'),
-    onChange: toggleValue('visaSponsorship'),
-    checked: visaSponsorship
+    toggleValue: toggleValue
   })), _react.default.createElement(_edit_dialog_field.EditDialogField, {
     error: errors.searchState,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Basics.editDialog.searchState.title",
       defaultMessage: "What's your current job search state?"
     })
-  }, _react.default.createElement(_select.Select, {
-    variant: "outlined",
+  }, _react.default.createElement(_job_search_state_field.JobSearchStateField, {
     value: searchState,
-    onChange: handleChange('searchState'),
-    textFieldIconProps: {
-      className: classes.selectIcon
-    }
-  }, _job_search_state.JOB_SEARCH_STATE.map(function (elemValue, index) {
-    return _react.default.createElement(_ui.ListItem, {
-      key: "jobsearch_state".concat(elemValue, "_").concat(index),
-      value: elemValue
-    }, formatMessage(_job_search_state_translations.default[elemValue]));
-  }))), _react.default.createElement(_edit_dialog_field.EditDialogField, {
+    handleChange: handleChange
+  })), _react.default.createElement(_edit_dialog_field.EditDialogField, {
     error: errors.codingYears,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Basics.editDialog.codingYears.title",
@@ -134,20 +135,30 @@ var BasicsCardEditDialogContent = function BasicsCardEditDialogContent(_ref) {
       id: "Basics.editDialog.codingYears.subtitle",
       defaultMessage: "(every experiences, studies, personal projects, work...)"
     })
-  }, _react.default.createElement(_slider_with_popper.SliderWithPopper, {
+  }, _react.default.createElement("div", {
+    className: classes.valueSliderContainer
+  }, _react.default.createElement(_ui.Typography, {
+    className: classes.sliderValue
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.years",
+    defaultMessage: "{countNode} year{count, plural, one {} other {s}}",
+    values: {
+      count: codingYears,
+      countNode: _react.default.createElement("span", {
+        className: classes.bolden
+      }, codingYears)
+    }
+  })), _react.default.createElement(_slider_with_popper.SliderWithPopper, {
     color: "primary",
     name: "codingYears",
     value: codingYears,
     onChange: handleChange,
     min: 0,
-    max: 20
-  }), _react.default.createElement(_ui.Typography, {
-    className: classes.sliderLabel
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Main.lang.years",
-    defaultMessage: "{count, plural, one {# year} other {# years}}",
-    values: {
-      count: codingYears
+    max: 20,
+    popperCardProps: {
+      customClasses: {
+        container: classes.sliderPopperCard
+      }
     }
   }))), _react.default.createElement(_edit_dialog_field.EditDialogField, {
     error: errors.studiesLevel,
@@ -157,22 +168,32 @@ var BasicsCardEditDialogContent = function BasicsCardEditDialogContent(_ref) {
     }),
     subtitle: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Basics.editDialog.studiesLevel.subtitle",
-      defaultMessage: "Bachelor = 3 years post graduate, Master = 5 years post graduate"
+      defaultMessage: "Bachelor = 3 years post graduate. Master = 5 years post graduate."
     })
-  }, _react.default.createElement(_slider_with_popper.SliderWithPopper, {
+  }, _react.default.createElement("div", {
+    className: classes.valueSliderContainer
+  }, _react.default.createElement(_ui.Typography, {
+    className: classes.sliderValue
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.years",
+    defaultMessage: "{countNode} year{count, plural, one {} other {}}",
+    values: {
+      count: studiesLevel,
+      countNode: _react.default.createElement("span", {
+        className: classes.bolden
+      }, studiesLevel)
+    }
+  })), _react.default.createElement(_slider_with_popper.SliderWithPopper, {
     color: "primary",
     name: "studiesLevel",
     value: studiesLevel,
     onChange: handleChange,
     min: 0,
-    max: 12
-  }), _react.default.createElement(_ui.Typography, {
-    className: classes.sliderLabel
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Main.lang.years",
-    defaultMessage: "{count, plural, one {# year} other {# years}}",
-    values: {
-      count: studiesLevel
+    max: 12,
+    popperCardProps: {
+      customClasses: {
+        container: classes.sliderPopperCard
+      }
     }
   }))), _react.default.createElement(_edit_dialog_field.EditDialogField, {
     error: errors.experienceYears,
@@ -182,22 +203,33 @@ var BasicsCardEditDialogContent = function BasicsCardEditDialogContent(_ref) {
     }),
     subtitle: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Basics.editDialog.experienceYears.subtitle",
-      defaultMessage: "Tech and non-tech experiences "
+      defaultMessage: "Tech and non-tech experiences"
     })
-  }, _react.default.createElement(_slider_with_popper.SliderWithPopper, {
+  }, _react.default.createElement("div", {
+    className: classes.valueSliderContainer
+  }, _react.default.createElement(_ui.Typography, {
+    className: classes.sliderValue
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.years",
+    defaultMessage: "{countNode} year{count, plural, one {} other {s}}",
+    values: {
+      count: experienceYears,
+      countNode: _react.default.createElement("span", {
+        className: classes.bolden
+      }, experienceYears)
+    }
+  })), _react.default.createElement(_slider_with_popper.SliderWithPopper, {
     color: "primary",
     name: "experienceYears",
     value: experienceYears,
     onChange: handleChange,
     min: 0,
-    max: 20
-  }), _react.default.createElement(_ui.Typography, {
-    className: classes.sliderLabel
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Main.lang.years",
-    defaultMessage: "{count, plural, one {# year} other {# years}}",
-    values: {
-      count: experienceYears
+    max: 20,
+    popperCardProps: {
+      customClasses: {
+        container: classes.sliderPopperCard,
+        arrowContainer: classes.sliderPopperCardArrowContainer
+      }
     }
   }))), _react.default.createElement(_edit_dialog_field.EditDialogField, {
     error: errors.codingReason,
@@ -232,33 +264,5 @@ var BasicsCardEditDialogContent = function BasicsCardEditDialogContent(_ref) {
   })));
 };
 
-var BasicsCardEditDialog = function BasicsCardEditDialog(_ref2) {
-  var data = _ref2.data,
-      onEdit = _ref2.onEdit,
-      validationSchema = _ref2.validationSchema,
-      onClose = _ref2.onClose;
-
-  var _useIntl2 = (0, _reactIntl.useIntl)(),
-      formatMessage = _useIntl2.formatMessage;
-
-  var validationSchemaToPass = (0, _react.useMemo)(function () {
-    return validationSchema(formatMessage);
-  }, [validationSchema]);
-  return _react.default.createElement(_edit_dialog.EditDialog, {
-    data: data,
-    onEdit: onEdit,
-    onClose: onClose,
-    validationSchema: validationSchemaToPass,
-    open: true,
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Basics.editDialog.title",
-      defaultMessage: "Your basic information"
-    })
-  }, function (helpers) {
-    return _react.default.createElement(BasicsCardEditDialogContent, {
-      helpers: helpers
-    });
-  });
-};
-
+var BasicsCardEditDialog = BasicsCardEditDialogComponent;
 exports.BasicsCardEditDialog = BasicsCardEditDialog;

@@ -3,8 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
-var _default = {
+exports.styles = void 0;
+var styles = {
   container: {
     position: 'relative'
   },
@@ -18,4 +18,4 @@ var _default = {
     cursor: 'pointer'
   }
 };
-exports.default = _default;
+exports.styles = styles;
