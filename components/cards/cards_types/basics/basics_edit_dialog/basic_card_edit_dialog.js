@@ -38,10 +38,11 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var useStyles = (0, _reactJss.createUseStyles)(_basic_card_edit_dialog_styles.styles);
 
 var BasicsCardEditDialogComponent = function BasicsCardEditDialogComponent(_ref) {
-  var data = _ref.data,
+  var open = _ref.open,
+      onClose = _ref.onClose,
+      data = _ref.data,
       onEdit = _ref.onEdit,
-      validationSchema = _ref.validationSchema,
-      onClose = _ref.onClose;
+      validationSchema = _ref.validationSchema;
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
@@ -50,11 +51,11 @@ var BasicsCardEditDialogComponent = function BasicsCardEditDialogComponent(_ref)
     return validationSchema(formatMessage);
   }, [validationSchema]);
   return _react.default.createElement(_edit_dialog.EditDialog, {
+    open: open,
+    onClose: onClose,
     data: data,
     onEdit: onEdit,
-    onClose: onClose,
     validationSchema: validationSchemaToPass,
-    open: true,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Basics.editDialog.title",
       defaultMessage: "Your basic informations"
@@ -157,7 +158,8 @@ var Content = function Content(_ref2) {
     max: 20,
     popperCardProps: {
       customClasses: {
-        container: classes.sliderPopperCard
+        container: classes.sliderPopperCard,
+        arrowContainer: classes.sliderPopperCardArrowContainer
       }
     }
   }))), _react.default.createElement(_edit_dialog_field.EditDialogField, {
@@ -192,7 +194,8 @@ var Content = function Content(_ref2) {
     max: 12,
     popperCardProps: {
       customClasses: {
-        container: classes.sliderPopperCard
+        container: classes.sliderPopperCard,
+        arrowContainer: classes.sliderPopperCardArrowContainer
       }
     }
   }))), _react.default.createElement(_edit_dialog_field.EditDialogField, {

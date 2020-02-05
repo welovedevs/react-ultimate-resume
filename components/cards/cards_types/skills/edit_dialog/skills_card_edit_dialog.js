@@ -41,16 +41,41 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var useStyles = (0, _reactJss.createUseStyles)(_skills_card_edit_dialog_styles.styles);
 
-var SkillsCardEditDialogContent = function SkillsCardEditDialogContent(_ref) {
-  var handleValueChange = _ref.helpers.handleValueChange;
+var SkillsCardEditDialogComponent = function SkillsCardEditDialogComponent(_ref) {
+  var open = _ref.open,
+      onClose = _ref.onClose,
+      data = _ref.data,
+      onEdit = _ref.onEdit;
+  var classes = useStyles();
+  return _react.default.createElement(_edit_dialog.EditDialog, {
+    open: open,
+    onClose: onClose,
+    data: data,
+    onEdit: onEdit,
+    dialogClasses: {
+      dialog: {
+        root: classes.dialogRoot,
+        paper: classes.dialogPaper
+      }
+    },
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Skills.editDialog.title",
+      defaultMessage: "What are your main skills?"
+    })
+  }, function (helpers) {
+    return _react.default.createElement(Content, {
+      helpers: helpers
+    });
+  });
+};
+
+var Content = function Content(_ref2) {
+  var handleValueChange = _ref2.helpers.handleValueChange;
   var classes = useStyles();
 
   var _useFormikContext = (0, _formik.useFormikContext)(),
-      values = _useFormikContext.values,
-      errors = _useFormikContext.errors,
-      handleChange = _useFormikContext.handleChange;
+      values = _useFormikContext.values;
 
-  var embedUrl = values.embedUrl;
   var addItem = (0, _react.useCallback)(function (name) {
     return handleValueChange("skills[".concat(values.skills.length, "]"))({
       name: name,
@@ -60,8 +85,8 @@ var SkillsCardEditDialogContent = function SkillsCardEditDialogContent(_ref) {
     });
   }, [values]);
   var deleteItem = (0, _react.useCallback)(function (id) {
-    return handleValueChange("skills")(values.skills.filter(function (_ref2) {
-      var skillId = _ref2.id;
+    return handleValueChange('skills')(values.skills.filter(function (_ref3) {
+      var skillId = _ref3.id;
       return skillId !== id;
     }).map(function (skill, index) {
       return _objectSpread({}, skill, {
@@ -102,31 +127,5 @@ var SkillsCardEditDialogContent = function SkillsCardEditDialogContent(_ref) {
   })));
 };
 
-var SkillsCardEditDialog = function SkillsCardEditDialog(_ref3) {
-  var data = _ref3.data,
-      onEdit = _ref3.onEdit,
-      onClose = _ref3.onClose;
-  var classes = useStyles();
-  return _react.default.createElement(_edit_dialog.EditDialog, {
-    data: data,
-    onEdit: onEdit,
-    onClose: onClose,
-    open: true,
-    dialogClasses: {
-      dialog: {
-        root: classes.dialogRoot,
-        paper: classes.dialogPaper
-      }
-    },
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Skills.editDialog.title",
-      defaultMessage: "What are your main skills?"
-    })
-  }, function (helpers) {
-    return _react.default.createElement(SkillsCardEditDialogContent, {
-      helpers: helpers
-    });
-  });
-};
-
+var SkillsCardEditDialog = SkillsCardEditDialogComponent;
 exports.SkillsCardEditDialog = SkillsCardEditDialog;

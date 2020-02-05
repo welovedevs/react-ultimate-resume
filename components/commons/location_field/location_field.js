@@ -9,6 +9,8 @@ exports.LocationField = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _reactJss = require("react-jss");
 
 var _reactIntl = require("react-intl");
@@ -20,6 +22,8 @@ var _use_google_maps_predictions = require("../../hooks/location/use_google_maps
 var _location_field_style = require("./location_field_style");
 
 var _location_field_translations = require("./location_field_translations");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -43,7 +47,9 @@ var LocationFieldComponent = function LocationFieldComponent(_ref) {
       value = _ref.value,
       clearOnSelect = _ref.clearOnSelect,
       onChange = _ref.onChange,
-      fullWidth = _ref.fullWidth;
+      fullWidth = _ref.fullWidth,
+      _ref$classes = _ref.classes,
+      receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var classes = useStyles();
 
   var _useIntl = (0, _reactIntl.useIntl)(),
@@ -76,18 +82,18 @@ var LocationFieldComponent = function LocationFieldComponent(_ref) {
   var clear = (0, _react.useCallback)(function () {
     return setInput('');
   }, []);
-  var handleChange = (0, _react.useCallback)(function (e) {
-    setInput(e.target.value);
+  var handleChange = (0, _react.useCallback)(function (event) {
+    setInput(event.target.value);
 
     if (typeof onChange === 'function') {
-      e.persist();
-      onChange(e);
+      event.persist();
+      onChange(event);
     }
 
-    if (typeof onLocationSelected === 'function' && !e.target.value) {
+    if (typeof onLocationSelected === 'function' && !event.target.value) {
       onLocationSelected(null);
     }
-  });
+  }, [onChange, onLocationSelected]);
   var onPredictionSelected = (0, _react.useCallback)(function (placeId, description) {
     if (typeof onLocationSelected === 'function') {
       onLocationSelected({
@@ -100,11 +106,7 @@ var LocationFieldComponent = function LocationFieldComponent(_ref) {
     setIsFocused(false);
   }, [locale, onLocationSelected]);
   return _react.default.createElement("div", {
-    className: classes.container
-  }, _react.default.createElement("div", {
-    style: {
-      position: 'relative'
-    }
+    className: (0, _classnames.default)(classes.container, receivedClasses.container)
   }, _react.default.createElement(_ui.TextField, {
     fullWidth: fullWidth,
     className: classes.input,
@@ -137,7 +139,7 @@ var LocationFieldComponent = function LocationFieldComponent(_ref) {
     setInput: setInput,
     clear: clear,
     clearOnSelect: clearOnSelect
-  }))));
+  })));
 };
 
 var PredictionsList = function PredictionsList(_ref2) {

@@ -30,6 +30,9 @@ var EditDialogFieldComponent = function EditDialogFieldComponent(_ref) {
   return _react.default.createElement("div", {
     className: (0, _classnames.default)(classes.container, receivedClasses.container)
   }, title && _react.default.createElement(_ui.Typography, {
+    customClasses: {
+      container: classes.title
+    },
     component: "h3",
     variant: "h4",
     color: "dark"

@@ -5,6 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = void 0;
 var styles = {
+  container: {
+    position: 'relative'
+  },
   popperCard: {
     zIndex: 1400
   }

@@ -19,7 +19,7 @@ var _mapping = require("./data/mapping");
 
 var _profile = require("../../../profile");
 
-var _basic_card_edit_dialog = require("./edit_dialog/basic_card_edit_dialog");
+var _basic_card_edit_dialog = require("./basics_edit_dialog/basic_card_edit_dialog");
 
 var _validator = require("./data/validator");
 

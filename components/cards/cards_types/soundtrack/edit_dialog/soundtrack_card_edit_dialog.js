@@ -9,9 +9,15 @@ exports.SoundtrackCardEditDialog = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactJss = require("react-jss");
+
 var _reactIntl = require("react-intl");
 
 var _formik = require("formik");
+
+var _reactSpring = require("react-spring");
+
+var _useDebounce3 = require("use-debounce");
 
 var _ui = require("@wld/ui");
 
@@ -19,21 +25,11 @@ var _edit_dialog = require("../../../../commons/edit_dialog/edit_dialog");
 
 var _edit_dialog_field = require("../../../../commons/edit_dialog_field/edit_dialog_field");
 
-var _reactSpring = require("react-spring");
-
-var _useDebounce3 = require("use-debounce");
-
-var _reactJss = require("react-jss");
-
-var _soundtrack_card_edit_dialog_styles = require("./soundtrack_card_edit_dialog_styles");
+var _loading_spinner = require("../../../../commons/loading_spinner/loading_spinner");
 
 var _string_utils = require("../../../../../utils/string_utils");
 
-var _loading_spinner = require("../../../../commons/loading_spinner/loading_spinner");
-
-var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
-
-var _styles_utils = require("../../../../../utils/styles/styles_utils");
+var _soundtrack_card_edit_dialog_styles = require("./soundtrack_card_edit_dialog_styles");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -49,7 +45,30 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var useStyles = (0, _reactJss.createUseStyles)(_soundtrack_card_edit_dialog_styles.styles);
 
-var SoundtrackCardEditDialogContent = function SoundtrackCardEditDialogContent() {
+var SoundtrackCardEditDialog = function SoundtrackCardEditDialog(_ref) {
+  var open = _ref.open,
+      onClose = _ref.onClose,
+      data = _ref.data,
+      onEdit = _ref.onEdit;
+  return _react.default.createElement(_edit_dialog.EditDialog, {
+    data: data,
+    onEdit: onEdit,
+    onClose: onClose,
+    open: open,
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Sountrack.editDialog.title",
+      defaultMessage: "Your embed playlist in your profile!"
+    })
+  }, function (helpers) {
+    return _react.default.createElement(Content, {
+      helpers: helpers
+    });
+  });
+};
+
+exports.SoundtrackCardEditDialog = SoundtrackCardEditDialog;
+
+var Content = function Content() {
   var classes = useStyles();
 
   var _useFormikContext = (0, _formik.useFormikContext)(),
@@ -104,25 +123,3 @@ var SoundtrackCardEditDialogContent = function SoundtrackCardEditDialogContent()
     onLoad: handleLoad
   })));
 };
-
-var SoundtrackCardEditDialog = function SoundtrackCardEditDialog(_ref) {
-  var data = _ref.data,
-      onEdit = _ref.onEdit,
-      onClose = _ref.onClose;
-  return _react.default.createElement(_edit_dialog.EditDialog, {
-    data: data,
-    onEdit: onEdit,
-    onClose: onClose,
-    open: true,
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Sountrack.editDialog.title",
-      defaultMessage: "Your embed playlist in your profile!"
-    })
-  }, function (helpers) {
-    return _react.default.createElement(SoundtrackCardEditDialogContent, {
-      helpers: helpers
-    });
-  });
-};
-
-exports.SoundtrackCardEditDialog = SoundtrackCardEditDialog;

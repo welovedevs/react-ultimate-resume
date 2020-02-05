@@ -5,19 +5,19 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DreamjobCardEditDialog = void 0;
+exports.DreamJobCardEditDialog = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
+
+var _reactJss = require("react-jss");
 
 var _reactIntl = require("react-intl");
 
 var _formik = require("formik");
 
-var _ui = require("@wld/ui");
-
 var _v = _interopRequireDefault(require("uuid/v4"));
 
-var _reactJss = require("react-jss");
+var _ui = require("@wld/ui");
 
 var _edit_dialog = require("../../../../commons/edit_dialog/edit_dialog");
 
@@ -25,25 +25,25 @@ var _edit_dialog_field = require("../../../../commons/edit_dialog_field/edit_dia
 
 var _checkbox_group = require("../../../../commons/checkbox_group/checkbox_group");
 
-var _location_field = require("../../../../commons/location_field/location_field");
-
 var _contract_types = require("../../../../../utils/enums/contract_types/contract_types");
-
-var _contract_types_translations = require("../../../../../utils/enums/contract_types/contract_types_translations");
-
-var _dreamjob_card_edit_dialog_styles = require("./dreamjob_card_edit_dialog_styles");
 
 var _select = require("../../../../commons/select/select");
 
 var _job_perks_utils = require("../../../../../utils/enums/job_perks/job_perks_utils");
 
-var _job_perks_translations = require("../../../../../utils/enums/job_perks/job_perks_translations");
+var _checkbox_group2 = require("../../../../commons/checkbox_field/checkbox_group");
+
+var _location_places_field = require("./location_places_field/location_places_field");
 
 var _remote_utils = require("../../../../../utils/enums/remote/remote_utils");
 
 var _remote_filter_translations = require("../../../../../utils/enums/remote/remote_filter_translations");
 
-var _checkbox_group2 = require("../../../../commons/checkbox_field/checkbox_group");
+var _contract_types_translations = require("../../../../../utils/enums/contract_types/contract_types_translations");
+
+var _job_perks_translations = require("../../../../../utils/enums/job_perks/job_perks_translations");
+
+var _dream_job_card_edit_dialog_styles = require("./dream_job_card_edit_dialog_styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65,30 +65,47 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var TrashIcon = function TrashIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("path", {
-    d: "M8.277 25.334C8.277 26.8 9.498 28 10.99 28h10.857c1.493 0 2.714-1.2 2.714-2.666v-16H8.277v16zm17.642-20h-4.75L19.813 4h-6.785L11.67 5.333H6.92V8h19V5.333z"
-  }));
-};
-
-TrashIcon.defaultProps = {
-  width: "33",
-  height: "32",
-  viewBox: "0 0 33 32",
-  fill: "#fff",
-  xmlns: "http://www.w3.org/2000/svg"
-};
-var useStyles = (0, _reactJss.createUseStyles)(_dreamjob_card_edit_dialog_styles.styles);
+var useStyles = (0, _reactJss.createUseStyles)(_dream_job_card_edit_dialog_styles.styles);
 var checkboxGroupPerks = Object.values(_job_perks_utils.JobPerks).filter(function (perk) {
   return perk !== _job_perks_utils.JobPerks.OTHER;
 });
 var DEFAULT_OBJECT = {};
 
-var DreamjobCardEditDialogContent = function DreamjobCardEditDialogContent(_ref) {
-  var handleValueChange = _ref.helpers.handleValueChange;
+var DreamJobCardEditDialogComponent = function DreamJobCardEditDialogComponent(_ref) {
+  var open = _ref.open,
+      onClose = _ref.onClose,
+      data = _ref.data,
+      onEdit = _ref.onEdit,
+      validationSchema = _ref.validationSchema;
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
+
+  var validationSchemaToPass = (0, _react.useMemo)(function () {
+    return validationSchema(formatMessage);
+  }, [validationSchema]);
+  return _react.default.createElement(_edit_dialog.EditDialog, {
+    open: open,
+    onClose: onClose,
+    data: data,
+    onEdit: onEdit,
+    validationSchema: validationSchemaToPass,
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "DreamJob.editDialog.title",
+      defaultMessage: "Your dream job information"
+    })
+  }, function (helpers) {
+    return _react.default.createElement(Content, {
+      helpers: helpers
+    });
+  });
+};
+
+var Content = function Content(_ref2) {
+  var handleValueChange = _ref2.helpers.handleValueChange;
+
+  var _useIntl2 = (0, _reactIntl.useIntl)(),
+      formatMessage = _useIntl2.formatMessage;
 
   var classes = useStyles();
 
@@ -121,14 +138,14 @@ var DreamjobCardEditDialogContent = function DreamjobCardEditDialogContent(_ref)
     }, {}), _defineProperty({}, _job_perks_utils.JobPerks.OTHER, perks[_job_perks_utils.JobPerks.OTHER])));
   }, [perks]);
   var checkedPerks = (0, _react.useMemo)(function () {
-    return Object.entries(perks || {}).filter(function (_ref2) {
-      var _ref3 = _slicedToArray(_ref2, 2),
-          value = _ref3[1];
+    return Object.entries(perks || {}).filter(function (_ref3) {
+      var _ref4 = _slicedToArray(_ref3, 2),
+          value = _ref4[1];
 
       return value === true;
-    }).map(function (_ref4) {
-      var _ref5 = _slicedToArray(_ref4, 1),
-          perk = _ref5[0];
+    }).map(function (_ref5) {
+      var _ref6 = _slicedToArray(_ref5, 1),
+          perk = _ref6[0];
 
       return perk;
     });
@@ -141,41 +158,23 @@ var DreamjobCardEditDialogContent = function DreamjobCardEditDialogContent(_ref)
 
     return (_perks$JobPerks$OTHER = perks[_job_perks_utils.JobPerks.OTHER]) !== null && _perks$JobPerks$OTHER !== void 0 ? _perks$JobPerks$OTHER : null;
   }, [perks]);
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_edit_dialog_field.EditDialogField, {
-    classes: {
-      containerChildren: classes.flexColumn
-    },
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_location_places_field.LocationPlacesField, {
     error: errors === null || errors === void 0 ? void 0 : errors.places,
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Dreamjob.editDialog.location.title",
-      defaultMessage: "What's your dreamjob location?"
-    })
-  }, _react.default.createElement(_location_field.LocationField, {
-    onLocationSelected: addPlace,
-    fullWidth: true
-  }), _react.default.createElement("div", {
-    className: classes.currentCities
-  }, places.map(function (_ref6) {
-    var name = _ref6.name,
-        id = _ref6.id;
-    return _react.default.createElement(_ui.Tag, {
-      className: classes.deleteTag
-    }, _react.default.createElement(TrashIcon, {
-      onClick: removePlace(id),
-      className: classes.deleteIcon
-    }), _react.default.createElement(_ui.Typography, null, name));
-  }))), _react.default.createElement(_edit_dialog_field.EditDialogField, {
+    places: places,
+    addPlace: addPlace,
+    removePlace: removePlace
+  }), _react.default.createElement(_edit_dialog_field.EditDialogField, {
     classes: {
-      containerChildren: classes.flexColumn
+      containerChildren: classes.column
     },
     error: errors.perks,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Dreamjob.editDialog.perks.title",
+      id: "DreamJob.editDialog.perks.title",
       defaultMessage: "What perks are important to you ?"
     })
   }, _react.default.createElement(_checkbox_group.CheckboxGroup, {
     values: checkboxGroupPerks,
-    translations: _job_perks_translations.JobPerksTranslations,
+    translations: _job_perks_translations.jobPerksTranslations,
     value: checkedPerks,
     name: "perks",
     variant: "outlined",
@@ -183,7 +182,7 @@ var DreamjobCardEditDialogContent = function DreamjobCardEditDialogContent(_ref)
   }), _react.default.createElement("div", {
     className: classes.othersCheckbox
   }, _react.default.createElement(_checkbox_group2.CheckboxField, {
-    title: _react.default.createElement(_ui.Typography, null, formatMessage(_job_perks_translations.JobPerksTranslations[_job_perks_utils.JobPerks.OTHER])),
+    title: _react.default.createElement(_ui.Typography, null, formatMessage(_job_perks_translations.jobPerksTranslations[_job_perks_utils.JobPerks.OTHER])),
     onClick: toggleOtherPerk,
     checked: otherPerk !== null,
     variant: "outlined",
@@ -195,7 +194,7 @@ var DreamjobCardEditDialogContent = function DreamjobCardEditDialogContent(_ref)
     variant: "flat"
   }))), _react.default.createElement(_edit_dialog_field.EditDialogField, {
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Dreamjob.editDialog.salary.title",
+      id: "DreamJob.editDialog.salary.title",
       defaultMessage: "What's your wanted salary?"
     }),
     error: errors.salary
@@ -208,7 +207,7 @@ var DreamjobCardEditDialogContent = function DreamjobCardEditDialogContent(_ref)
   })), _react.default.createElement(_edit_dialog_field.EditDialogField, {
     error: errors.remoteFrequency,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Dreamjob.editDialog.remoteFrequency.title",
+      id: "DreamJob.editDialog.remoteFrequency.title",
       defaultMessage: "Do you want to work remotely"
     })
   }, _react.default.createElement(_select.Select, {
@@ -222,11 +221,11 @@ var DreamjobCardEditDialogContent = function DreamjobCardEditDialogContent(_ref)
     return _react.default.createElement(_ui.ListItem, {
       key: "remote_frequency_".concat(elemValue, "_").concat(index),
       value: elemValue
-    }, formatMessage(_remote_filter_translations.RemoteSelectTranslations[elemValue]));
+    }, formatMessage(_remote_filter_translations.remoteSelectTranslations[elemValue]));
   }))), _react.default.createElement(_edit_dialog_field.EditDialogField, {
     error: errors.contractTypes,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Dreamjob.editDialog.contractTypes.title",
+      id: "DreamJob.editDialog.contractTypes.title",
       defaultMessage: "What contract types are you currently looking for?"
     })
   }, _react.default.createElement(_checkbox_group.CheckboxGroup, {
@@ -239,33 +238,5 @@ var DreamjobCardEditDialogContent = function DreamjobCardEditDialogContent(_ref)
   })));
 };
 
-var DreamjobCardEditDialog = function DreamjobCardEditDialog(_ref7) {
-  var data = _ref7.data,
-      onEdit = _ref7.onEdit,
-      validationSchema = _ref7.validationSchema,
-      onClose = _ref7.onClose;
-
-  var _useIntl2 = (0, _reactIntl.useIntl)(),
-      formatMessage = _useIntl2.formatMessage;
-
-  var validationSchemaToPass = (0, _react.useMemo)(function () {
-    return validationSchema(formatMessage);
-  }, [validationSchema]);
-  return _react.default.createElement(_edit_dialog.EditDialog, {
-    data: data,
-    onEdit: onEdit,
-    onClose: onClose,
-    validationSchema: validationSchemaToPass,
-    open: true,
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Dreamjob.editDialog.title",
-      defaultMessage: "Your dreamjob information"
-    })
-  }, function (helpers) {
-    return _react.default.createElement(DreamjobCardEditDialogContent, {
-      helpers: helpers
-    });
-  });
-};
-
-exports.DreamjobCardEditDialog = DreamjobCardEditDialog;
+var DreamJobCardEditDialog = DreamJobCardEditDialogComponent;
+exports.DreamJobCardEditDialog = DreamJobCardEditDialog;

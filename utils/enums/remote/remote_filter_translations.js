@@ -3,11 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.RemoteDisplayTranslations = exports.RemoteSelectTranslations = void 0;
+exports.remoteDisplayTranslations = exports.remoteSelectTranslations = void 0;
 
 var _reactIntl = require("react-intl");
 
-var RemoteSelectTranslations = (0, _reactIntl.defineMessages)({
+var remoteSelectTranslations = (0, _reactIntl.defineMessages)({
   never: {
     id: 'Developer.RemoteFrequency.Select.Never',
     defaultMessage: 'No'
@@ -29,8 +29,8 @@ var RemoteSelectTranslations = (0, _reactIntl.defineMessages)({
     defaultMessage: 'Other'
   }
 });
-exports.RemoteSelectTranslations = RemoteSelectTranslations;
-var RemoteDisplayTranslations = (0, _reactIntl.defineMessages)({
+exports.remoteSelectTranslations = remoteSelectTranslations;
+var remoteDisplayTranslations = (0, _reactIntl.defineMessages)({
   never: {
     id: 'Developer.RemoteFrequency.Display.never',
     defaultMessage: "I'm not interested by remote work"
@@ -52,4 +52,4 @@ var RemoteDisplayTranslations = (0, _reactIntl.defineMessages)({
     defaultMessage: 'Autres'
   }
 });
-exports.RemoteDisplayTranslations = RemoteDisplayTranslations;
+exports.remoteDisplayTranslations = remoteDisplayTranslations;

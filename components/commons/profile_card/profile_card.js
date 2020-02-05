@@ -19,11 +19,17 @@ var _ui = require("@wld/ui");
 
 var _profile_card_side = require("./profile_card_side/profile_card_side");
 
+var _profile_card_edit_button = require("./profile_card_edit_button/profile_card_edit_button");
+
+var _profile_card_actions_types = require("../../../store/profile_card/profile_card_actions_types");
+
 var _profile_card_reducer = require("../../../store/profile_card/profile_card_reducer");
+
+var _use_callback_open = require("../../hooks/use_callback_open");
 
 var _profile_card_styles = require("./profile_card_styles");
 
-var _profile_card_actions_types = require("../../../store/profile_card/profile_card_actions_types");
+var _profile_card_edit_dialog = require("./profile_card_edit_dialog/profile_card_edit_dialog");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -43,16 +49,6 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var EditIcon = function EditIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("path", {
-    d: "M25.112 6.643a.834.834 0 0 0-1.18-.002L5.728 24.852a.834.834 0 0 0 0 1.178l8.247 8.247a.834.834 0 0 0 1.179 0L33.349 16.08a.832.832 0 0 0 0-1.176l-8.237-8.26zM4.05 28.001a.833.833 0 0 0-1.4.395L.14 38.857a.836.836 0 0 0 .222.784.849.849 0 0 0 .783.22l10.454-2.5a.833.833 0 0 0 .395-1.4L4.05 28zM38.667 4.873l-3.538-3.54a4.167 4.167 0 0 0-5.887 0L26.88 3.695a.834.834 0 0 0 0 1.178l8.25 8.249a.834.834 0 0 0 1.178 0l2.36-2.365a4.166 4.166 0 0 0 0-5.884z"
-  }));
-};
-
-EditIcon.defaultProps = {
-  viewBox: "0 0 40 40",
-  xmlns: "http://www.w3.org/2000/svg"
-};
 var useStyles = (0, _reactJss.createUseStyles)(_profile_card_styles.styles);
 var ProfileCardContext = (0, _react.createContext)({});
 exports.ProfileCardContext = ProfileCardContext;
@@ -83,10 +79,11 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
     variant: variant
   });
 
-  var _useState = (0, _react.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      isEditingCard = _useState2[0],
-      setIsEditingCard = _useState2[1];
+  var _useCallbackOpen = (0, _use_callback_open.useCallbackOpen)(),
+      _useCallbackOpen2 = _slicedToArray(_useCallbackOpen, 3),
+      openEditDialog = _useCallbackOpen2[0],
+      setEditDialogOpened = _useCallbackOpen2[1],
+      setEditDialogClosed = _useCallbackOpen2[2];
 
   var _useReducer = (0, _react.useReducer)(_profile_card_reducer.profileCardReducer, (0, _profile_card_reducer.getProfileCardInitialState)({
     variant: variant,
@@ -131,11 +128,6 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
 
     setSide('front');
   }, [hasDialogOpened, dispatch]);
-  var enableEditingCard = (0, _react.useCallback)(function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsEditingCard(true);
-  }, []);
   (0, _react.useEffect)(function () {
     if (hasSideChanged.current) {
       return;
@@ -149,45 +141,27 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
     unique: isTransitionUnique,
     immediate: !hasSideChanged.current
   }));
-  var EditDialogComponent = (0, _react.useMemo)(function () {
-    if (!editDialog) {
-      return null;
-    }
-
-    return (0, _react.createElement)(editDialog.component, {
-      onEdit: function onEdit() {
-        setIsEditingCard(false);
-        editDialog.onEdit.apply(editDialog, arguments);
-      },
-      validationSchema: editDialog.validationSchema,
-      data: data,
-      onClose: function onClose() {
-        return setIsEditingCard(false);
-      }
-    });
-  }, [editDialog]);
   var contextData = (0, _react.useMemo)(function () {
     return {
       state: state,
       dispatch: dispatch
     };
   }, [state]);
-  return _react.default.createElement(_react.default.Fragment, null, isEditingCard && EditDialogComponent, _react.default.createElement(_ui.Card, {
+  return _react.default.createElement(_react.default.Fragment, null, isEditingProfile && _react.default.createElement(_profile_card_edit_dialog.ProfileCardEditDialog, {
+    editDialog: editDialog,
+    open: openEditDialog,
+    onClose: setEditDialogClosed,
+    data: data
+  }), _react.default.createElement(_ui.Card, {
     customClasses: {
       container: classes.container
     },
     elevation: 1,
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave
-  }, isEditingProfile && _react.default.createElement(_ui.Tooltip, {
-    title: "Editer cette carte"
-  }, _react.default.createElement("button", {
-    type: "button",
-    className: classes.editButton,
-    onClick: enableEditingCard
-  }, _react.default.createElement(EditIcon, {
-    className: classes.editIcon
-  }))), _react.default.createElement(ProfileCardContext.Provider, {
+  }, isEditingProfile && _react.default.createElement(_profile_card_edit_button.ProfileCardEditButton, {
+    setEditDialogOpened: setEditDialogOpened
+  }), _react.default.createElement(ProfileCardContext.Provider, {
     value: contextData
   }, transitions.map(function (_ref2) {
     var item = _ref2.item,

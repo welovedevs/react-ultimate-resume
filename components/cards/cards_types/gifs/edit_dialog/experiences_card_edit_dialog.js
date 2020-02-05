@@ -424,7 +424,7 @@ var InterestsEditDialog = function InterestsEditDialog(_ref12) {
     onEdit: onEdit,
     onClose: onClose,
     validationSchema: validationSchemaToPass,
-    open: true,
+    open: false,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Interests.editDialog.title",
       defaultMessage: "Show your loved hobbies with fancy gifs !"

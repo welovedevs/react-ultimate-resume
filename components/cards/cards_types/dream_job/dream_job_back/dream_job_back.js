@@ -9,6 +9,10 @@ exports.DreamJobBack = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactIntl = require("react-intl");
+
+var _ui = require("@wld/ui");
+
 var _profile_card_section = require("../../../../commons/profile_card/profile_card_section/profile_card_section");
 
 var _profile_card_section_title = require("../../../../commons/profile_card/profile_card_section_title/profile_card_section_title");
@@ -17,21 +21,17 @@ var _profile_card_section_text = require("../../../../commons/profile_card/profi
 
 var _profile_card_animated_back = require("../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back");
 
-var _reactIntl = require("react-intl");
-
-var _remote_utils = require("../../../../../utils/enums/remote/remote_utils");
-
-var _remote_filter_translations = require("../../../../../utils/enums/remote/remote_filter_translations");
-
 var _contract_types = require("../../../../commons/fields/contract_types/contract_types");
 
 var _job_perks_utils = require("../../../../../utils/enums/job_perks/job_perks_utils");
 
+var _use_opener_state = require("../../../../hooks/use_opener_state");
+
 var _job_perks_translations = require("../../../../../utils/enums/job_perks/job_perks_translations");
 
-var _ui = require("@wld/ui");
+var _remote_filter_translations = require("../../../../../utils/enums/remote/remote_filter_translations");
 
-var _use_opener_state = require("../../../../hooks/use_opener_state");
+var _remote_utils = require("../../../../../utils/enums/remote/remote_utils");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -130,7 +130,7 @@ var DreamJobLocations = function DreamJobLocations(_ref4) {
     defaultMessage: "My dreamjob location"
   })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, _react.default.createElement(DreamJobPlaces, {
     places: places
-  }), _react.default.createElement("br", null), remoteFrequency && formatMessage(_remote_filter_translations.RemoteDisplayTranslations[remoteFrequency] || _remote_filter_translations.RemoteDisplayTranslations.others)));
+  }), _react.default.createElement("br", null), remoteFrequency && formatMessage(_remote_filter_translations.remoteDisplayTranslations[remoteFrequency] || _remote_filter_translations.remoteDisplayTranslations.others)));
 };
 
 var DreamJobPerks = function DreamJobPerks(_ref5) {
@@ -149,7 +149,7 @@ var DreamJobPerks = function DreamJobPerks(_ref5) {
       return value;
     }
 
-    return formatMessage(_job_perks_translations.JobPerksTranslations[key.toLowerCase()] || _job_perks_translations.JobPerksTranslations.other);
+    return formatMessage(_job_perks_translations.jobPerksTranslations[key.toLowerCase()] || _job_perks_translations.jobPerksTranslations.other);
   }).join(', ');
 };
 

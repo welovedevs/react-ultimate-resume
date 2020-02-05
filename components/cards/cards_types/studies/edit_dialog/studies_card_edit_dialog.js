@@ -11,31 +11,31 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _range = _interopRequireDefault(require("lodash/range"));
+var _reactJss = require("react-jss");
 
 var _reactIntl = require("react-intl");
 
-var _moment = _interopRequireDefault(require("moment"));
-
 var _reactSortableHoc = require("react-sortable-hoc");
-
-var _v = _interopRequireDefault(require("uuid/v4"));
-
-var _core = require("@material-ui/core");
-
-var _ui = require("@wld/ui");
-
-var _studies_styles = require("./studies_styles");
-
-var _studies_translations = _interopRequireDefault(require("./studies_translations"));
-
-var _edit_dialog = require("../../../../commons/edit_dialog/edit_dialog");
 
 var _formik = require("formik");
 
-var _reactJss = require("react-jss");
+var _range = _interopRequireDefault(require("lodash/range"));
+
+var _moment = _interopRequireDefault(require("moment"));
+
+var _v = _interopRequireDefault(require("uuid/v4"));
+
+var _ui = require("@wld/ui");
+
+var _core = require("@material-ui/core");
+
+var _edit_dialog = require("../../../../commons/edit_dialog/edit_dialog");
 
 var _select = require("../../../../commons/select/select");
+
+var _studies_styles = require("./studies_styles");
+
+var _studies_translations = require("./studies_translations");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -94,13 +94,38 @@ TrashIcon.defaultProps = {
   fill: "#fff",
   xmlns: "http://www.w3.org/2000/svg"
 };
-var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (_ref) {
-  var classes = _ref.classes;
-  return _react.default.createElement(MoveIcon, {
-    className: classes.dragHandle
-  });
-});
 var useStyles = (0, _reactJss.createUseStyles)(_studies_styles.styles);
+
+var StudiesCardEditDialogComponent = function StudiesCardEditDialogComponent(_ref) {
+  var open = _ref.open,
+      onClose = _ref.onClose,
+      data = _ref.data,
+      onEdit = _ref.onEdit,
+      validationSchema = _ref.validationSchema;
+
+  var _useIntl = (0, _reactIntl.useIntl)(),
+      formatMessage = _useIntl.formatMessage;
+
+  var validationSchemaToPass = (0, _react.useMemo)(function () {
+    return validationSchema(formatMessage);
+  }, [validationSchema]);
+  return _react.default.createElement(_edit_dialog.EditDialog, {
+    open: open,
+    onClose: onClose,
+    data: data,
+    onEdit: onEdit,
+    validationSchema: validationSchemaToPass,
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Basics.editDialog.title",
+      defaultMessage: "Your basic information"
+    })
+  }, function (helpers) {
+    return _react.default.createElement(FormationsEditForm, {
+      helpers: helpers
+    });
+  });
+};
+
 var SelectComponent = (0, _react.memo)(function (_ref2) {
   var value = _ref2.value,
       onChange = _ref2.onChange,
@@ -134,17 +159,17 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref3) {
       classes = _ref3.classes,
       index = _ref3.formationIndex;
 
-  var _useIntl = (0, _reactIntl.useIntl)(),
-      formatMessage = _useIntl.formatMessage;
+  var _useIntl2 = (0, _reactIntl.useIntl)(),
+      formatMessage = _useIntl2.formatMessage;
 
-  var handleInstitutionChange = (0, _react.useCallback)(function (e) {
-    return onChange(index, 'institution', e.target.value);
+  var handleInstitutionChange = (0, _react.useCallback)(function (event) {
+    return onChange(index, 'institution', event.target.value);
   }, [index]);
-  var handleStudyType = (0, _react.useCallback)(function (e) {
-    return onChange(index, 'studyType', e.target.value);
+  var handleStudyType = (0, _react.useCallback)(function (event) {
+    return onChange(index, 'studyType', event.target.value);
   }, [index]);
-  var handleAreaChange = (0, _react.useCallback)(function (e) {
-    return onChange(index, 'area', e.target.value);
+  var handleAreaChange = (0, _react.useCallback)(function (event) {
+    return onChange(index, 'area', event.target.value);
   }, [index]);
   var handleEndDate = (0, _react.useCallback)(function (value) {
     return onChange(index, 'endDate', (0, _moment.default)({
@@ -165,7 +190,7 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref3) {
     value: formation.institution,
     onChange: handleInstitutionChange,
     id: "formation_institution_".concat(id),
-    placeholder: formatMessage(_studies_translations.default.schoolNamePlaceholder)
+    placeholder: formatMessage(_studies_translations.translations.schoolNamePlaceholder)
   }), fieldErrors && fieldErrors.institution && _react.default.createElement(_ui.Typography, {
     color: "danger",
     variant: "helper",
@@ -187,8 +212,8 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref3) {
     className: classes.field
   }, _react.default.createElement(_ui.TextField, {
     id: "formation_diploma_".concat(id),
-    label: formatMessage(_studies_translations.default.diplomaTitle),
-    placeholder: formatMessage(_studies_translations.default.diplomaPlaceholder),
+    label: formatMessage(_studies_translations.translations.diplomaTitle),
+    placeholder: formatMessage(_studies_translations.translations.diplomaPlaceholder),
     value: formation.studyType,
     onChange: handleStudyType,
     margin: "normal",
@@ -201,8 +226,8 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref3) {
     className: classes.field
   }, _react.default.createElement(_ui.TextField, {
     id: "formation_area_".concat(id),
-    label: formatMessage(_studies_translations.default.mainCourse),
-    placeholder: formatMessage(_studies_translations.default.mainCoursePlaceholder),
+    label: formatMessage(_studies_translations.translations.mainCourse),
+    placeholder: formatMessage(_studies_translations.translations.mainCoursePlaceholder),
     value: formation.area,
     onChange: handleAreaChange,
     margin: "normal",
@@ -306,33 +331,11 @@ var FormationsEditForm = function FormationsEditForm(_ref5) {
   }, errors));
 };
 
-var StudiesCardEditDialog = function StudiesCardEditDialog(_ref8) {
-  var data = _ref8.data,
-      onEdit = _ref8.onEdit,
-      validationSchema = _ref8.validationSchema,
-      onClose = _ref8.onClose;
-
-  var _useIntl2 = (0, _reactIntl.useIntl)(),
-      formatMessage = _useIntl2.formatMessage;
-
-  var validationSchemaToPass = (0, _react.useMemo)(function () {
-    return validationSchema(formatMessage);
-  }, [validationSchema]);
-  return _react.default.createElement(_edit_dialog.EditDialog, {
-    data: data,
-    onEdit: onEdit,
-    onClose: onClose,
-    validationSchema: validationSchemaToPass,
-    open: true,
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Basics.editDialog.title",
-      defaultMessage: "Your basic information"
-    })
-  }, function (helpers) {
-    return _react.default.createElement(FormationsEditForm, {
-      helpers: helpers
-    });
+var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (_ref8) {
+  var classes = _ref8.classes;
+  return _react.default.createElement(MoveIcon, {
+    className: classes.dragHandle
   });
-};
-
+});
+var StudiesCardEditDialog = StudiesCardEditDialogComponent;
 exports.StudiesCardEditDialog = StudiesCardEditDialog;

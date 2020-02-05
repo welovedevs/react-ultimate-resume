@@ -6,25 +6,24 @@ Object.defineProperty(exports, "__esModule", {
 exports.styles = void 0;
 
 var styles = function styles(theme) {
+  var spacing = theme.miscellaneous.spacing;
   return {
-    currentCities: {
+    locationField: {
+      marginBottom: spacing * 3
+    },
+    places: {
       display: 'flex',
-      flexWrap: 'wrap',
-      width: '100%'
+      flexWrap: 'wrap'
+    },
+    place: {
+      transformOrigin: 'center left'
     },
     deleteIcon: {
-      fill: theme.palette.danger[500],
+      fill: '#fff',
       width: 24,
       height: 24,
-      marginRight: theme.miscellaneous.spacing,
+      marginRight: spacing,
       cursor: 'pointer'
-    },
-    flexColumn: {
-      flexDirection: 'column'
-    },
-    othersCheckbox: {
-      display: 'flex',
-      alignItems: 'center'
     }
   };
 };

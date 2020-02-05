@@ -15,25 +15,25 @@ var _reactJss = require("react-jss");
 
 var _reactIntl = require("react-intl");
 
-var _omit = _interopRequireDefault(require("lodash/omit"));
-
-var _moment = _interopRequireDefault(require("moment"));
+var _reactEmojiRender = require("react-emoji-render");
 
 var _reactSpring = require("react-spring");
 
 var _reactSortableHoc = require("react-sortable-hoc");
 
-var _ui = require("@wld/ui");
-
-var _reactEmojiRender = require("react-emoji-render");
-
-var _edit_dialog = require("../../../../commons/edit_dialog/edit_dialog");
-
 var _formik = require("formik");
+
+var _omit = _interopRequireDefault(require("lodash/omit"));
+
+var _moment = _interopRequireDefault(require("moment"));
 
 var _keyBy = _interopRequireDefault(require("lodash/keyBy"));
 
 var _v = _interopRequireDefault(require("uuid/v4"));
+
+var _ui = require("@wld/ui");
+
+var _edit_dialog = require("../../../../commons/edit_dialog/edit_dialog");
 
 var _year_month = require("../../../../commons/year_month/year_month");
 
@@ -132,11 +132,41 @@ var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (_ref) {
   });
 });
 
-var JobTitle = function JobTitle(_ref2) {
-  var experience = _ref2.experience;
+var ExperiencesEditDialogComponent = function ExperiencesEditDialogComponent(_ref2) {
+  var open = _ref2.open,
+      onClose = _ref2.onClose,
+      data = _ref2.data,
+      onEdit = _ref2.onEdit,
+      validationSchema = _ref2.validationSchema;
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
+
+  var validationSchemaToPass = (0, _react.useMemo)(function () {
+    return validationSchema(formatMessage);
+  }, [validationSchema]);
+  return _react.default.createElement(_edit_dialog.EditDialog, {
+    open: open,
+    onClose: onClose,
+    data: data,
+    onEdit: onEdit,
+    validationSchema: validationSchemaToPass,
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Experiences.editDialog.title",
+      defaultMessage: "Your past and present professional experiences"
+    })
+  }, function (helpers) {
+    return _react.default.createElement(ExperiencesEditForm, {
+      helpers: helpers
+    });
+  });
+};
+
+var JobTitle = function JobTitle(_ref3) {
+  var experience = _ref3.experience;
+
+  var _useIntl2 = (0, _reactIntl.useIntl)(),
+      formatMessage = _useIntl2.formatMessage;
 
   var title = (0, _react.useMemo)(function () {
     var _experience$startDate, _experience$endDate;
@@ -165,19 +195,19 @@ var JobTitle = function JobTitle(_ref2) {
   return title;
 };
 
-var ExperienceItem = (0, _reactSortableHoc.SortableElement)(function (_ref3) {
-  var id = _ref3.id,
-      experience = _ref3.experience,
-      onChange = _ref3.onChange,
-      onRemove = _ref3.onRemove,
-      fieldErrors = _ref3.error,
-      folded = _ref3.folded,
-      toggleFold = _ref3.toggleFold,
-      classes = _ref3.classes,
-      index = _ref3.experienceIndex;
+var ExperienceItem = (0, _reactSortableHoc.SortableElement)(function (_ref4) {
+  var id = _ref4.id,
+      experience = _ref4.experience,
+      onChange = _ref4.onChange,
+      onRemove = _ref4.onRemove,
+      fieldErrors = _ref4.error,
+      folded = _ref4.folded,
+      toggleFold = _ref4.toggleFold,
+      classes = _ref4.classes,
+      index = _ref4.experienceIndex;
 
-  var _useIntl2 = (0, _reactIntl.useIntl)(),
-      formatMessage = _useIntl2.formatMessage;
+  var _useIntl3 = (0, _reactIntl.useIntl)(),
+      formatMessage = _useIntl3.formatMessage;
 
   var _useSpring = (0, _reactSpring.useSpring)({
     rotate: folded ? -90 : 0
@@ -233,16 +263,16 @@ var ExperienceItem = (0, _reactSortableHoc.SortableElement)(function (_ref3) {
   }));
 });
 
-var ContentFields = function ContentFields(_ref4) {
+var ContentFields = function ContentFields(_ref5) {
   var _experience$place;
 
-  var fieldErrors = _ref4.fieldErrors,
-      id = _ref4.id,
-      formatMessage = _ref4.formatMessage,
-      experience = _ref4.experience,
-      onChange = _ref4.onChange,
-      classes = _ref4.classes,
-      index = _ref4.index;
+  var fieldErrors = _ref5.fieldErrors,
+      id = _ref5.id,
+      formatMessage = _ref5.formatMessage,
+      experience = _ref5.experience,
+      onChange = _ref5.onChange,
+      classes = _ref5.classes,
+      index = _ref5.index;
   var stillEmployed = !experience.endDate;
   var handleStillEmployedChange = (0, _react.useCallback)(function () {
     if (!stillEmployed) {
@@ -382,21 +412,21 @@ var ContentFields = function ContentFields(_ref4) {
   }, fieldErrors.summary)))));
 };
 
-var SortableExperiences = (0, _reactSortableHoc.SortableContainer)(function (_ref5) {
-  var _ref5$items = _ref5.items,
-      items = _ref5$items === void 0 ? [] : _ref5$items,
-      experienceChanged = _ref5.experienceChanged,
-      experienceDeleted = _ref5.experienceDeleted,
-      formatMessage = _ref5.formatMessage,
-      errors = _ref5.errors,
-      foldedState = _ref5.foldedState,
-      toggleFold = _ref5.toggleFold,
-      classes = _ref5.classes;
+var SortableExperiences = (0, _reactSortableHoc.SortableContainer)(function (_ref6) {
+  var _ref6$items = _ref6.items,
+      items = _ref6$items === void 0 ? [] : _ref6$items,
+      experienceChanged = _ref6.experienceChanged,
+      experienceDeleted = _ref6.experienceDeleted,
+      formatMessage = _ref6.formatMessage,
+      errors = _ref6.errors,
+      foldedState = _ref6.foldedState,
+      toggleFold = _ref6.toggleFold,
+      classes = _ref6.classes;
   return _react.default.createElement(_ui.List, {
     component: "nav"
-  }, items.filter(Boolean).sort(function (_ref6, _ref7) {
-    var a = _ref6.index;
-    var b = _ref7.index;
+  }, items.filter(Boolean).sort(function (_ref7, _ref8) {
+    var a = _ref7.index;
+    var b = _ref8.index;
     return a - b;
   }).map(function (experience, index) {
     return _react.default.createElement(ExperienceItem, {
@@ -416,11 +446,11 @@ var SortableExperiences = (0, _reactSortableHoc.SortableContainer)(function (_re
   }));
 });
 
-var StillEmployedField = function StillEmployedField(_ref8) {
-  var value = _ref8.value,
-      classes = _ref8.classes,
-      handleStillEmployedChange = _ref8.handleStillEmployedChange,
-      formatMessage = _ref8.formatMessage;
+var StillEmployedField = function StillEmployedField(_ref9) {
+  var value = _ref9.value,
+      classes = _ref9.classes,
+      handleStillEmployedChange = _ref9.handleStillEmployedChange,
+      formatMessage = _ref9.formatMessage;
   return _react.default.createElement("div", {
     className: (0, _classnames.default)(classes.fieldRow, value && (0, _classnames.default)(classes.fieldRowJustifyEnd, classes.withMarginStillEmployedFieldRow))
   }, _react.default.createElement("button", {
@@ -440,8 +470,8 @@ var StillEmployedField = function StillEmployedField(_ref8) {
   }, formatMessage(_experiences_card_edit_dialog_translations.translations.stillEmployed))));
 };
 
-var ExperiencesEditForm = function ExperiencesEditForm(_ref9) {
-  var handleValueChange = _ref9.helpers.handleValueChange;
+var ExperiencesEditForm = function ExperiencesEditForm(_ref10) {
+  var handleValueChange = _ref10.helpers.handleValueChange;
   var classes = useStyles({});
 
   var _useFormikContext = (0, _formik.useFormikContext)(),
@@ -450,8 +480,8 @@ var ExperiencesEditForm = function ExperiencesEditForm(_ref9) {
 
   var errors = validationErrors;
   var keyedValues = (0, _react.useMemo)(function () {
-    return (0, _keyBy.default)(work, function (_ref10) {
-      var id = _ref10.id;
+    return (0, _keyBy.default)(work, function (_ref11) {
+      var id = _ref11.id;
       return id;
     });
   }, [work]);
@@ -494,9 +524,9 @@ var ExperiencesEditForm = function ExperiencesEditForm(_ref9) {
 
     setFoldState(newFoldState);
   }, [JSON.stringify(work)]);
-  var move = (0, _react.useCallback)(function (_ref11) {
-    var oldIndex = _ref11.oldIndex,
-        newIndex = _ref11.newIndex;
+  var move = (0, _react.useCallback)(function (_ref12) {
+    var oldIndex = _ref12.oldIndex,
+        newIndex = _ref12.newIndex;
     handleValueChange('work')((0, _reactSortableHoc.arrayMove)(work, oldIndex, newIndex).map(function (data, index) {
       return _objectSpread({}, data, {
         index: index
@@ -540,33 +570,5 @@ var ExperiencesEditForm = function ExperiencesEditForm(_ref9) {
   }, errors));
 };
 
-var ExperiencesEditDialog = function ExperiencesEditDialog(_ref12) {
-  var data = _ref12.data,
-      onEdit = _ref12.onEdit,
-      validationSchema = _ref12.validationSchema,
-      onClose = _ref12.onClose;
-
-  var _useIntl3 = (0, _reactIntl.useIntl)(),
-      formatMessage = _useIntl3.formatMessage;
-
-  var validationSchemaToPass = (0, _react.useMemo)(function () {
-    return validationSchema(formatMessage);
-  }, [validationSchema]);
-  return _react.default.createElement(_edit_dialog.EditDialog, {
-    data: data,
-    onEdit: onEdit,
-    onClose: onClose,
-    validationSchema: validationSchemaToPass,
-    open: true,
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Experiences.editDialog.title",
-      defaultMessage: "Your past and present professional experiences"
-    })
-  }, function (helpers) {
-    return _react.default.createElement(ExperiencesEditForm, {
-      helpers: helpers
-    });
-  });
-};
-
+var ExperiencesEditDialog = ExperiencesEditDialogComponent;
 exports.ExperiencesEditDialog = ExperiencesEditDialog;

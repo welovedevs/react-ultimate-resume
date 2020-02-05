@@ -3,11 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.JobPerksTranslations = void 0;
+exports.jobPerksTranslations = void 0;
 
 var _reactIntl = require("react-intl");
 
-var JobPerksTranslations = (0, _reactIntl.defineMessages)({
+var jobPerksTranslations = (0, _reactIntl.defineMessages)({
   mood: {
     id: 'Developer.JobPerks.mood',
     defaultMessage: 'Une bonne ambiance'
@@ -41,4 +41,4 @@ var JobPerksTranslations = (0, _reactIntl.defineMessages)({
     defaultMessage: 'Autre'
   }
 });
-exports.JobPerksTranslations = JobPerksTranslations;
+exports.jobPerksTranslations = jobPerksTranslations;

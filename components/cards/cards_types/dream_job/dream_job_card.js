@@ -19,7 +19,7 @@ var _profile = require("../../../profile");
 
 var _mapping = require("./data/mapping");
 
-var _dreamjob_card_edit_dialog = require("./edit_dialog/dreamjob_card_edit_dialog");
+var _dream_job_card_edit_dialog = require("./dream_job_edit_dialog/dream_job_card_edit_dialog");
 
 var _validator = require("./data/validator");
 
@@ -50,7 +50,7 @@ var DreamJobCardComponent = function DreamJobCardComponent(_ref) {
       back: _dream_job_back.DreamJobBack
     },
     editDialog: {
-      component: _dreamjob_card_edit_dialog.DreamjobCardEditDialog,
+      component: _dream_job_card_edit_dialog.DreamJobCardEditDialog,
       validationSchema: _validator.DreamJobValidationSchema,
       onEdit: onDialogEdited
     },

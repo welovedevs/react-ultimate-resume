@@ -273,7 +273,7 @@ var LanguagesCardEditDialog = function LanguagesCardEditDialog(_ref7) {
     onEdit: onEdit,
     onClose: onClose,
     validationSchema: validationSchemaToPass,
-    open: true,
+    open: false,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Languages.editDialog.title",
       defaultMessage: "Your languages"

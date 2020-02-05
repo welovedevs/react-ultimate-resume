@@ -10,14 +10,6 @@ var _styles_utils = require("../../../../../utils/styles/styles_utils");
 var styles = function styles(theme) {
   var spacing = theme.miscellaneous.spacing;
   return {
-    field: {
-      '&:first-child': {
-        marginTop: 0
-      },
-      '&:last-child': {
-        marginBottom: 0
-      }
-    },
     valueSliderContainer: {
       display: 'flex',
       alignItems: 'center',

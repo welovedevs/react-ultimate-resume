@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = void 0;
 
-var _styles_utils = require("../../../utils/styles/styles_utils");
+var _styles_utils = require("../../../../utils/styles/styles_utils");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -13,13 +13,26 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var styles = {
-  paper: {
-    width: '90%',
-    maxWidth: [650, '!important']
-  },
-  content: _objectSpread({
-    overflowX: 'hidden'
-  }, (0, _styles_utils.withCustomVerticalScrollbar)())
+var center = _styles_utils.flex.center;
+
+var styles = function styles(theme) {
+  var spacing = theme.miscellaneous.spacing;
+  return {
+    editButton: _objectSpread({
+      zIndex: 2,
+      position: 'absolute',
+      top: spacing * 2,
+      right: spacing * 2,
+      height: 50,
+      width: 50,
+      borderRadius: '50%',
+      backgroundColor: (0, _styles_utils.getHexFromPaletteColor)(theme, 'light')
+    }, center),
+    editIcon: {
+      height: 24,
+      fill: (0, _styles_utils.getHexFromPaletteColor)(theme, 'dark')
+    }
+  };
 };
+
 exports.styles = styles;
