@@ -22,7 +22,7 @@ const InterestedByEditDialogComponent = ({ open, onClose, data, onEdit, validati
             title={(
                 <FormattedMessage
                     id="InterestedBy.editDialog.title"
-                    defaultMessage="What technologies are you interested in ?"
+                    defaultMessage="What technologies are you interested in?"
                 />
             )}
         >
@@ -46,7 +46,7 @@ const Content = () => {
                     placeholder={(
                         <FormattedMessage
                             id="InterestedBy.editDialog.interestedBy.placeholder"
-                            defaultMessage="Vue.js, blockchain, datadog"
+                            defaultMessage="Vue.js, Blockchain, Datadog..."
                         />
                     )}
                     value={interestedBy}

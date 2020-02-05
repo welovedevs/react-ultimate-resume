@@ -1,9 +1,8 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 import { useFormikContext } from 'formik';
-import { animated } from 'react-spring';
 import { useDebounce } from 'use-debounce';
 
 import { TextField } from '@wld/ui';
@@ -18,8 +17,7 @@ import { styles } from './soundtrack_card_edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
-export const SoundtrackCardEditDialog = ({ open, onClose, data, onEdit }) => {
-    return (
+export const SoundtrackCardEditDialog = ({ open, onClose, data, onEdit }) => (
         <EditDialog
             data={data}
             onEdit={onEdit}
@@ -28,14 +26,13 @@ export const SoundtrackCardEditDialog = ({ open, onClose, data, onEdit }) => {
             title={(
                 <FormattedMessage
                     id="Sountrack.editDialog.title"
-                    defaultMessage="Your embed playlist in your profile!"
+                    defaultMessage="Embed your musical tastes in your profile."
                 />
             )}
         >
             {helpers => <Content helpers={helpers} />}
         </EditDialog>
     );
-};
 
 const Content = () => {
     const classes = useStyles();
@@ -47,26 +44,45 @@ const Content = () => {
     const [hasLoaded, setHasLoaded] = useState(false);
     const handleLoad = useCallback(() => setHasLoaded(true), []);
 
+    const isValidUrl = useMemo(() => /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi.test(iframeUrl), [iframeUrl]);
+
+    useEffect(() => {
+        if (isValidUrl) {
+            setHasLoaded(null);
+        }
+    }, [isValidUrl]);
+
     return (
         <div className={classes.container}>
             <EditDialogField
                 error={errors.codingReason}
-                title={<FormattedMessage id="Soundtrack.editDialog.embedUrl.title" defaultMessage="Embed an url ?" />}
+                title={(
+                    <FormattedMessage
+                        id="Soundtrack.editDialog.embedUrl.title"
+                        defaultMessage="Enter a Spotify embed URL."
+                    />
+                )}
             >
                 <TextField onChange={handleChange} name="embedUrl" value={embedUrl} variant="flat" fullWidth />
             </EditDialogField>
-            <div className={classes.iframe}>
-                {!hasLoaded && <LoadingSpinner color="primary" />}
-                <animated.iframe
-                    key={frameHashCode}
-                    title="Soundtrack"
-                    src={iframeUrl}
-                    height={300}
-                    width={200}
-                    frameBorder="0"
-                    allow="encrypted-media"
-                    onLoad={handleLoad}
-                />
+            <div className={classes.divider} />
+            <div className={classes.iframeContainer}>
+                {hasLoaded === null && (
+                    <LoadingSpinner />
+                )}
+                {isValidUrl && (
+                    <iframe
+                        className={classes.iframe}
+                        key={frameHashCode}
+                        title="Soundtrack"
+                        src={iframeUrl}
+                        height={375}
+                        width={600}
+                        frameBorder="0"
+                        allow="encrypted-media"
+                        onLoad={handleLoad}
+                    />
+                )}
             </div>
         </div>
     );
