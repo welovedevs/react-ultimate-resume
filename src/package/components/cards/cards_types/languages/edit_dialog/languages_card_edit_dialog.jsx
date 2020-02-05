@@ -1,8 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 
 import cn from 'classnames';
-import omit from 'lodash/omit';
-import keyBy from 'lodash/keyBy';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 
@@ -105,23 +103,56 @@ const SortableLanguagesItems = SortableContainer(({ items, onChange, onDelete, e
     </List>
 ));
 
-const LanguagesEditForm = ({ helpers: { handleValueChange } }) => {
+export const LanguagesEditForm = ({ data, move, onValueChange, onDelete, onAdd, errors: validationErrors }) => {
     const classes = useStyles();
+    const globalError = typeof validationErrors === 'string' && validationErrors;
+
+    return (
+        <>
+            <SortableLanguagesItems
+                helperClass={classes.sortableHelper}
+                items={data}
+                onSortEnd={move}
+                distance={20}
+                useDragHandle
+                lockAxis="y"
+                name="education"
+                onChange={onValueChange}
+                onDelete={onDelete}
+                errors={validationErrors.languages}
+                {...{ classes }}
+            />
+            <div className={classes.addButton} onClick={onAdd}>
+                <Tag className={classes.addTag}>
+                    <AddIcon />
+                </Tag>
+                <Typography>
+                    <FormattedMessage id="Main.lang.add" defaultMessage="Ajouter" />
+                </Typography>
+            </div>
+            {globalError && (
+                <Typography color="danger" component="p">
+                    {validationErrors}
+                </Typography>
+            )}
+        </>
+    );
+};
+
+const LanguagesEditFormWrapper = ({ helpers: { handleValueChange } }) => {
     const {
         values: { languages },
         errors: validationErrors
     } = useFormikContext();
 
-    const keyedValues = useMemo(() => keyBy(languages, ({ id }) => id), [languages]);
-
     const languageChanged = useCallback((experienceIndex, field, value) => {
         handleValueChange(`languages[${experienceIndex}].${field}`)(value);
     }, []);
     const languageDeleted = useCallback(
-        id => () => {
-            handleValueChange('languages')(Object.values(omit(keyedValues, id)));
+        deletingId => () => {
+            handleValueChange('languages')(languages.filter(({ id }) => deletingId !== id));
         },
-        [JSON.stringify(keyedValues)]
+        [languages]
     );
 
     const addLanguage = useCallback(() => {
@@ -142,37 +173,16 @@ const LanguagesEditForm = ({ helpers: { handleValueChange } }) => {
         },
         [languages]
     );
-    const globalError = typeof validationErrors === 'string' && validationErrors;
 
     return (
-        <>
-            <SortableLanguagesItems
-                helperClass={classes.sortableHelper}
-                items={languages}
-                onSortEnd={move}
-                distance={20}
-                useDragHandle
-                lockAxis="y"
-                name="education"
-                onChange={languageChanged}
-                onDelete={languageDeleted}
-                errors={validationErrors.languages}
-                {...{ classes }}
-            />
-            <div className={classes.addButton} onClick={addLanguage}>
-                <Tag className={classes.addTag}>
-                    <AddIcon />
-                </Tag>
-                <Typography>
-                    <FormattedMessage id="Main.lang.add" defaultMessage="Ajouter" />
-                </Typography>
-            </div>
-            {globalError && (
-                <Typography color="danger" component="p">
-                    {validationErrors}
-                </Typography>
-            )}
-        </>
+        <LanguagesEditForm
+            data={languages}
+            onMove={move}
+            onValueChange={languageChanged}
+            onDelete={languageDeleted}
+            onAdd={addLanguage}
+            errors={validationErrors}
+        />
     );
 };
 
@@ -189,7 +199,7 @@ export const LanguagesCardEditDialog = ({ data, onEdit, validationSchema, onClos
             open={false}
             title={<FormattedMessage id="Languages.editDialog.title" defaultMessage="Your languages" />}
         >
-            {helpers => <LanguagesEditForm helpers={helpers} />}
+            {helpers => <LanguagesEditFormWrapper helpers={helpers} />}
         </EditDialog>
     );
 };

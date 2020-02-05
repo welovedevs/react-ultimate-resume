@@ -8,8 +8,8 @@ import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'r
 
 import { Button, List, ListItem, Tag, TextField, Tooltip, Typography } from '@wld/ui';
 
-import translations from './experiences_card_edit_dialog_translations';
-import styles from './experiences_card_edit_dialog_styles';
+import translations from './interests_card_edit_dialog_translations';
+import styles from './interests_card_edit_dialog_styles';
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { useFormikContext } from 'formik';
 import keyBy from 'lodash/keyBy';

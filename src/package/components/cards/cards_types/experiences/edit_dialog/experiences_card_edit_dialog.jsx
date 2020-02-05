@@ -7,7 +7,6 @@ import { Twemoji } from 'react-emoji-render';
 import { animated, useSpring } from 'react-spring';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import { useFormikContext } from 'formik';
-import omit from 'lodash/omit';
 import moment from 'moment';
 import keyBy from 'lodash/keyBy';
 import uuid from 'uuid/v4';
@@ -41,15 +40,62 @@ const ExperiencesEditDialogComponent = ({ open, onClose, data, onEdit, validatio
             data={data}
             onEdit={onEdit}
             validationSchema={validationSchemaToPass}
-            title={(
+            title={
                 <FormattedMessage
                     id="Experiences.editDialog.title"
                     defaultMessage="Your past and present professional experiences"
                 />
-            )}
+            }
         >
-            {helpers => <ExperiencesEditForm helpers={helpers} />}
+            {helpers => <ExperiencesEditFormWrapper helpers={helpers} />}
         </EditDialog>
+    );
+};
+
+const ExperiencesEditFormWrapper = ({ helpers: { handleValueChange } }) => {
+    const {
+        values: { work },
+        errors: validationErrors
+    } = useFormikContext();
+
+    const errors = validationErrors;
+
+    const experienceFieldChanged = useCallback((experienceIndex, field, value) => {
+        handleValueChange(`work[${experienceIndex}].${field}`)(value);
+    }, []);
+    const experienceDeleted = useCallback(
+        idToDelete => () => {
+            handleValueChange('work')(work.filter(({ id }) => id !== idToDelete));
+        },
+        [JSON.stringify(work)]
+    );
+
+    const addExperience = useCallback(() => {
+        let id = uuid();
+        handleValueChange('work')(
+            work.concat({
+                index: work.length,
+                id
+            })
+        );
+    }, [JSON.stringify(work)]);
+
+    const move = useCallback(
+        ({ oldIndex, newIndex }) => {
+            handleValueChange('work')(arrayMove(work, oldIndex, newIndex).map((data, index) => ({ ...data, index })));
+        },
+        [work]
+    );
+
+    return (
+        <ExperiencesEditForm
+            data={work}
+            errors={errors}
+            onAdd={addExperience}
+            onMove={move}
+            onFieldChange={experienceFieldChanged}
+            onDelete={experienceDeleted}
+        />
     );
 };
 
@@ -281,7 +327,16 @@ const ContentFields = ({ fieldErrors, id, formatMessage, experience, onChange, c
 };
 
 const SortableExperiences = SortableContainer(
-    ({ items = [], experienceChanged, experienceDeleted, formatMessage, errors, foldedState, toggleFold, classes }) => (
+    ({
+        items = [],
+        experienceFieldChanged,
+        experienceDeleted,
+        formatMessage,
+        errors,
+        foldedState,
+        toggleFold,
+        classes
+    }) => (
         <List component="nav">
             {items
                 .filter(Boolean)
@@ -290,7 +345,7 @@ const SortableExperiences = SortableContainer(
                     <ExperienceItem
                         index={index}
                         key={`work_${experience.id}_${index}`}
-                        onChange={experienceChanged}
+                        onChange={experienceFieldChanged}
                         onRemove={experienceDeleted}
                         id={experience.id}
                         experience={experience}
@@ -326,32 +381,15 @@ const StillEmployedField = ({ value, classes, handleStillEmployedChange, formatM
     </div>
 );
 
-const ExperiencesEditForm = ({ helpers: { handleValueChange } }) => {
+export const ExperiencesEditForm = ({ data, errors, onAdd, onMove, onFieldChange, onDelete }) => {
     const classes = useStyles({});
-    const {
-        values: { work },
-        errors: validationErrors
-    } = useFormikContext();
-
-    const errors = validationErrors;
-
-    const keyedValues = useMemo(() => keyBy(work, ({ id }) => id), [work]);
+    const keyedValues = useMemo(() => keyBy(data, ({ id }) => id), [data]);
 
     const [foldedState, setFoldState] = useState(
         Object.keys(keyedValues || {}).reduce((state, id) => {
             state[id] = true;
             return state;
         }, {})
-    );
-
-    const experienceChanged = useCallback((experienceIndex, field, value) => {
-        handleValueChange(`work[${experienceIndex}].${field}`)(value);
-    }, []);
-    const experienceDeleted = useCallback(
-        id => () => {
-            handleValueChange('work')(Object.values(omit(keyedValues, id)));
-        },
-        [JSON.stringify(keyedValues), foldedState]
     );
 
     const toggleFold = useCallback(
@@ -363,31 +401,6 @@ const ExperiencesEditForm = ({ helpers: { handleValueChange } }) => {
         [foldedState]
     );
 
-    const addExperience = useCallback(() => {
-        let id = uuid();
-        handleValueChange('work')(
-            work.concat({
-                index: work.length,
-                id
-            })
-        );
-
-        const newFoldState = {
-            ...Object.keys(keyedValues).reduce((state, id) => {
-                state[id] = true;
-                return state;
-            }, {}),
-            [id]: false
-        };
-        setFoldState(newFoldState);
-    }, [JSON.stringify(work)]);
-
-    const move = useCallback(
-        ({ oldIndex, newIndex }) => {
-            handleValueChange('work')(arrayMove(work, oldIndex, newIndex).map((data, index) => ({ ...data, index })));
-        },
-        [work]
-    );
     const globalError = typeof errors === 'string' && errors;
 
     return (
@@ -400,21 +413,21 @@ const ExperiencesEditForm = ({ helpers: { handleValueChange } }) => {
             </Typography>
             <SortableExperiences
                 helperClass={classes.sortableHelper}
-                onSortEnd={move}
-                items={work}
+                onSortEnd={onMove}
+                items={data}
                 distance={15}
                 useDragHandle
                 lockAxis="y"
+                experienceFieldChanged={onFieldChange}
+                experienceDeleted={onDelete}
                 {...{
-                    experienceChanged,
-                    experienceDeleted,
                     errors: errors?.work,
                     foldedState,
                     toggleFold,
                     classes
                 }}
             />
-            <div className={classes.addButton} onClick={addExperience}>
+            <div className={classes.addButton} onClick={onAdd}>
                 <Tag className={classes.addTag}>
                     <AddIcon />
                 </Tag>
