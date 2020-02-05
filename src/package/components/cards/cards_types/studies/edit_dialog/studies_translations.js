@@ -1,6 +1,6 @@
 import { defineMessages } from 'react-intl';
 
-export default defineMessages({
+export const translations = defineMessages({
     schoolName: {
         id: 'Studies.editDialog.schoolName.title',
         defaultMessage: 'Formation/Ecole supérieure'

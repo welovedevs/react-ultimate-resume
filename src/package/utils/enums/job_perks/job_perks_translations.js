@@ -1,6 +1,6 @@
 import { defineMessages } from 'react-intl';
 
-export const JobPerksTranslations = defineMessages({
+export const jobPerksTranslations = defineMessages({
     mood: {
         id: 'Developer.JobPerks.mood',
         defaultMessage: 'Une bonne ambiance'

@@ -15,6 +15,7 @@ const EditDialogFieldComponent = ({ title, subtitle, children, error, classes: r
         <div className={cn(classes.container, receivedClasses.container)}>
             {title && (
                 <Typography
+                    customClasses={{ container: classes.title }}
                     component="h3"
                     variant="h4"
                     color="dark"

@@ -6,6 +6,7 @@ export const styles = ({
         maxWidth: [650, '!important']
     },
     content: {
+        overflowX: 'hidden',
         ...withCustomVerticalScrollbar()
     }
 });

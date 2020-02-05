@@ -13,10 +13,25 @@ import SkillsPieChart from '../skills_back/skills_pie_chart/skills_pie_chart';
 
 const useStyles = createUseStyles(styles);
 
-const SkillsCardEditDialogContent = ({ helpers: { handleValueChange } }) => {
+const SkillsCardEditDialogComponent = ({ open, onClose, data, onEdit }) => {
     const classes = useStyles();
-    const { values, errors, handleChange } = useFormikContext();
-    const { embedUrl } = values;
+    return (
+        <EditDialog
+            open={open}
+            onClose={onClose}
+            data={data}
+            onEdit={onEdit}
+            dialogClasses={{ dialog: { root: classes.dialogRoot, paper: classes.dialogPaper } }}
+            title={<FormattedMessage id="Skills.editDialog.title" defaultMessage="What are your main skills?" />}
+        >
+            {helpers => <Content helpers={helpers} />}
+        </EditDialog>
+    );
+};
+
+const Content = ({ helpers: { handleValueChange } }) => {
+    const classes = useStyles();
+    const { values } = useFormikContext();
 
     const addItem = useCallback(
         name =>
@@ -30,7 +45,7 @@ const SkillsCardEditDialogContent = ({ helpers: { handleValueChange } }) => {
     );
     const deleteItem = useCallback(
         id =>
-            handleValueChange(`skills`)(
+            handleValueChange('skills')(
                 values.skills.filter(({ id: skillId }) => skillId !== id).map((skill, index) => ({ ...skill, index }))
             ),
         [values.skills]
@@ -62,19 +77,5 @@ const SkillsCardEditDialogContent = ({ helpers: { handleValueChange } }) => {
         </div>
     );
 };
-export const SkillsCardEditDialog = ({ data, onEdit, onClose }) => {
-    const classes = useStyles();
 
-    return (
-        <EditDialog
-            data={data}
-            onEdit={onEdit}
-            onClose={onClose}
-            open
-            dialogClasses={{ dialog: { root: classes.dialogRoot, paper: classes.dialogPaper } }}
-            title={<FormattedMessage id="Skills.editDialog.title" defaultMessage="What are your main skills?" />}
-        >
-            {helpers => <SkillsCardEditDialogContent helpers={helpers} />}
-        </EditDialog>
-    );
-};
+export const SkillsCardEditDialog = SkillsCardEditDialogComponent;

@@ -5,7 +5,7 @@ import { DreamJobFront } from './dream_job_front/dream_job_front';
 import { DreamJobBack } from './dream_job_back/dream_job_back';
 import { DeveloperProfileContext } from '../../../profile';
 import { mapDreamJobFromJsonResume, mapDreamJobToJsonResume } from './data/mapping';
-import { DreamjobCardEditDialog } from './edit_dialog/dreamjob_card_edit_dialog';
+import { DreamJobCardEditDialog } from './dream_job_edit_dialog/dream_job_card_edit_dialog';
 import { DreamJobValidationSchema } from './data/validator';
 
 const DreamJobCardComponent = ({ variant, side }) => {
@@ -25,7 +25,7 @@ const DreamJobCardComponent = ({ variant, side }) => {
                 back: DreamJobBack
             }}
             editDialog={{
-                component: DreamjobCardEditDialog,
+                component: DreamJobCardEditDialog,
                 validationSchema: DreamJobValidationSchema,
                 onEdit: onDialogEdited
             }}

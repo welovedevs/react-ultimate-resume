@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
+import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { useIntl } from 'react-intl';
 
@@ -12,7 +13,15 @@ import { translations } from './location_field_translations';
 
 const useStyles = createUseStyles(styles);
 
-const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSelect, onChange, fullWidth }) => {
+const LocationFieldComponent = ({
+    variant,
+    onLocationSelected,
+    value,
+    clearOnSelect,
+    onChange,
+    fullWidth,
+    classes: receivedClasses = {}
+}) => {
     const classes = useStyles();
     const { locale, formatMessage } = useIntl();
     const inputRef = useRef();
@@ -27,16 +36,17 @@ const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSel
 
     const clear = useCallback(() => setInput(''), []);
 
-    const handleChange = useCallback(e => {
-        setInput(e.target.value);
+    const handleChange = useCallback(event => {
+        setInput(event.target.value);
         if (typeof onChange === 'function') {
-            e.persist();
-            onChange(e);
+            event.persist();
+            onChange(event);
         }
-        if (typeof onLocationSelected === 'function' && !e.target.value) {
+        if (typeof onLocationSelected === 'function' && !event.target.value) {
             onLocationSelected(null);
         }
-    });
+    }, [onChange, onLocationSelected]);
+
     const onPredictionSelected = useCallback(
         (placeId, description) => {
             if (typeof onLocationSelected === 'function') {
@@ -48,42 +58,40 @@ const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSel
     );
 
     return (
-        <div className={classes.container}>
-            <div style={{ position: 'relative' }}>
-                <TextField
-                    fullWidth={fullWidth}
-                    className={classes.input}
-                    onClick={e => e.target && e.target.select && e.target.select()}
-                    value={input}
-                    onChange={handleChange}
-                    placeholder={formatMessage(translations.placeholder)}
-                    onBlur={() => {
-                        if (!preventBlur) {
-                            setIsFocused(false);
-                        }
+        <div className={cn(classes.container, receivedClasses.container)}>
+            <TextField
+                fullWidth={fullWidth}
+                className={classes.input}
+                onClick={e => e.target && e.target.select && e.target.select()}
+                value={input}
+                onChange={handleChange}
+                placeholder={formatMessage(translations.placeholder)}
+                onBlur={() => {
+                    if (!preventBlur) {
+                        setIsFocused(false);
+                    }
+                }}
+                onFocus={() => setIsFocused(true)}
+                variant={variant || 'outlined'}
+                label={formatMessage(translations.title)}
+                containerRef={inputRef}
+            />
+            {isFocused && (
+                <PredictionsList
+                    setPreventBlur={setPreventBlur}
+                    input={inputRef.current}
+                    {...{
+                        predictions,
+                        classes,
+                        onPredictionSelected,
+                        locale,
+                        setIsFocused,
+                        setInput,
+                        clear,
+                        clearOnSelect
                     }}
-                    onFocus={() => setIsFocused(true)}
-                    variant={variant || 'outlined'}
-                    label={formatMessage(translations.title)}
-                    containerRef={inputRef}
                 />
-                {isFocused && (
-                    <PredictionsList
-                        setPreventBlur={setPreventBlur}
-                        input={inputRef.current}
-                        {...{
-                            predictions,
-                            classes,
-                            onPredictionSelected,
-                            locale,
-                            setIsFocused,
-                            setInput,
-                            clear,
-                            clearOnSelect
-                        }}
-                    />
-                )}
-            </div>
+            )}
         </div>
     );
 };

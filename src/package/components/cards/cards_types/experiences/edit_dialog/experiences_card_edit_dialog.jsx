@@ -3,24 +3,25 @@ import React, { useCallback, useMemo, useState } from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
-import omit from 'lodash/omit';
-import moment from 'moment';
+import { Twemoji } from 'react-emoji-render';
 import { animated, useSpring } from 'react-spring';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
-
-import { Button, Checkbox, List, ListItem, Tag, TextField, Tooltip, Typography } from '@wld/ui';
-import { Twemoji } from 'react-emoji-render';
-
-import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { useFormikContext } from 'formik';
+import omit from 'lodash/omit';
+import moment from 'moment';
 import keyBy from 'lodash/keyBy';
 import uuid from 'uuid/v4';
+
+import { Button, Checkbox, List, ListItem, Tag, TextField, Tooltip, Typography } from '@wld/ui';
+
+import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
+import { YearMonth } from '../../../../commons/year_month/year_month';
+import { LocationField } from '../../../../commons/location_field/location_field';
+
 import { ReactComponent as AddIcon } from '../../../../../assets/icons/add.svg';
 import { ReactComponent as MoveIcon } from '../../../../../assets/icons/move_list.svg';
 import { ReactComponent as DeleteIcon } from '../../../../../assets/icons/trash.svg';
 import { ReactComponent as ArrowIcon } from '../../../../../assets/icons/keyboard_arrow_down.svg';
-import { YearMonth } from '../../../../commons/year_month/year_month';
-import { LocationField } from '../../../../commons/location_field/location_field';
 
 import { styles } from './experiences_card_edit_dialog_styles';
 import { translations } from './experiences_card_edit_dialog_translations';
@@ -28,6 +29,29 @@ import { translations } from './experiences_card_edit_dialog_translations';
 const useStyles = createUseStyles(styles);
 
 const DragHandle = SortableHandle(({ classes }) => <MoveIcon className={classes.dragHandle} />);
+
+const ExperiencesEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
+    const { formatMessage } = useIntl();
+    const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
+
+    return (
+        <EditDialog
+            open={open}
+            onClose={onClose}
+            data={data}
+            onEdit={onEdit}
+            validationSchema={validationSchemaToPass}
+            title={(
+                <FormattedMessage
+                    id="Experiences.editDialog.title"
+                    defaultMessage="Your past and present professional experiences"
+                />
+            )}
+        >
+            {helpers => <ExperiencesEditForm helpers={helpers} />}
+        </EditDialog>
+    );
+};
 
 const JobTitle = ({ experience }) => {
     const { formatMessage } = useIntl();
@@ -407,25 +431,4 @@ const ExperiencesEditForm = ({ helpers: { handleValueChange } }) => {
     );
 };
 
-export const ExperiencesEditDialog = ({ data, onEdit, validationSchema, onClose }) => {
-    const { formatMessage } = useIntl();
-    const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
-
-    return (
-        <EditDialog
-            data={data}
-            onEdit={onEdit}
-            onClose={onClose}
-            validationSchema={validationSchemaToPass}
-            open
-            title={
-                <FormattedMessage
-                    id="Experiences.editDialog.title"
-                    defaultMessage="Your past and present professional experiences"
-                />
-            }
-        >
-            {helpers => <ExperiencesEditForm helpers={helpers} />}
-        </EditDialog>
-    );
-};
+export const ExperiencesEditDialog = ExperiencesEditDialogComponent;

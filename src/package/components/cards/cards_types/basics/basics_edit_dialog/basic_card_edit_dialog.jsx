@@ -17,17 +17,17 @@ import { styles } from './basic_card_edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
-const BasicsCardEditDialogComponent = ({ data, onEdit, validationSchema, onClose }) => {
+const BasicsCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
     const { formatMessage } = useIntl();
     const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
 
     return (
         <EditDialog
+            open={open}
+            onClose={onClose}
             data={data}
             onEdit={onEdit}
-            onClose={onClose}
             validationSchema={validationSchemaToPass}
-            open
             title={(
                 <FormattedMessage
                     id="Basics.editDialog.title"
@@ -144,7 +144,8 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                         max={20}
                         popperCardProps={{
                             customClasses: {
-                                container: classes.sliderPopperCard
+                                container: classes.sliderPopperCard,
+                                arrowContainer: classes.sliderPopperCardArrowContainer
                             }
                         }}
                     />
@@ -185,7 +186,8 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                         max={12}
                         popperCardProps={{
                             customClasses: {
-                                container: classes.sliderPopperCard
+                                container: classes.sliderPopperCard,
+                                arrowContainer: classes.sliderPopperCardArrowContainer
                             }
                         }}
                     />

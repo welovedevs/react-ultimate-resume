@@ -186,7 +186,7 @@ export const LanguagesCardEditDialog = ({ data, onEdit, validationSchema, onClos
             onEdit={onEdit}
             onClose={onClose}
             validationSchema={validationSchemaToPass}
-            open
+            open={false}
             title={<FormattedMessage id="Languages.editDialog.title" defaultMessage="Your languages" />}
         >
             {helpers => <LanguagesEditForm helpers={helpers} />}

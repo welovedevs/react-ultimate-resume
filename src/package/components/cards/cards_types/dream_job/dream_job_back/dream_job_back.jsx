@@ -1,17 +1,22 @@
 import React, { useMemo, useRef } from 'react';
 
+import { FormattedMessage, useIntl } from 'react-intl';
+
+import { List, ListItem, PopperCard, Typography } from '@wld/ui';
+
 import { ProfileCardSection } from '../../../../commons/profile_card/profile_card_section/profile_card_section';
 import { ProfileCardSectionTitle } from '../../../../commons/profile_card/profile_card_section_title/profile_card_section_title';
 import { ProfileCardSectionText } from '../../../../commons/profile_card/profile_card_section_text/profile_card_section_text';
 import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back';
-import { FormattedMessage, useIntl } from 'react-intl';
-import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
-import { RemoteDisplayTranslations } from '../../../../../utils/enums/remote/remote_filter_translations';
 import { ContractType } from '../../../../commons/fields/contract_types/contract_types';
 import { JobPerks } from '../../../../../utils/enums/job_perks/job_perks_utils';
-import { JobPerksTranslations } from '../../../../../utils/enums/job_perks/job_perks_translations';
-import { List, ListItem, PopperCard, Typography } from '@wld/ui';
+
 import { useOpenerState } from '../../../../hooks/use_opener_state';
+
+import { jobPerksTranslations } from '../../../../../utils/enums/job_perks/job_perks_translations';
+import { remoteDisplayTranslations } from '../../../../../utils/enums/remote/remote_filter_translations';
+
+import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
 
 const DreamJobPlaces = ({ places = [] }) => {
     const textAnchor = useRef();
@@ -80,7 +85,7 @@ const DreamJobLocations = ({ remoteFrequency, places }) => {
                 <DreamJobPlaces places={places} />
                 <br />
                 {remoteFrequency &&
-                    formatMessage(RemoteDisplayTranslations[remoteFrequency] || RemoteDisplayTranslations.others)}
+                    formatMessage(remoteDisplayTranslations[remoteFrequency] || remoteDisplayTranslations.others)}
             </ProfileCardSectionText>
         </>
     );
@@ -94,7 +99,7 @@ const DreamJobPerks = ({ perks = {} }) => {
             if (key === JobPerks.OTHER) {
                 return value;
             }
-            return formatMessage(JobPerksTranslations[key.toLowerCase()] || JobPerksTranslations.other);
+            return formatMessage(jobPerksTranslations[key.toLowerCase()] || jobPerksTranslations.other);
         })
         .join(', ');
 };

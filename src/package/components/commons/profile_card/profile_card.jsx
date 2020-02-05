@@ -1,27 +1,27 @@
 import React, {
     createContext,
-    createElement,
     useCallback,
     useEffect,
     useMemo,
     useReducer,
-    useRef,
-    useState
+    useRef
 } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { config, useTransition } from 'react-spring';
 import { useDebounce } from 'use-debounce';
 
-import { Card, Tooltip } from '@wld/ui';
+import { Card } from '@wld/ui';
 
 import { ProfileCardSide } from './profile_card_side/profile_card_side';
-import { getProfileCardInitialState, profileCardReducer } from '../../../store/profile_card/profile_card_reducer';
+import { ProfileCardEditButton } from './profile_card_edit_button/profile_card_edit_button';
 
-import { ReactComponent as EditIcon } from '../../../assets/icons/edit.svg';
+import { SET_SIDE } from '../../../store/profile_card/profile_card_actions_types';
+import { getProfileCardInitialState, profileCardReducer } from '../../../store/profile_card/profile_card_reducer';
+import { useCallbackOpen } from '../../hooks/use_callback_open';
 
 import { styles } from './profile_card_styles';
-import { SET_SIDE } from '../../../store/profile_card/profile_card_actions_types';
+import { ProfileCardEditDialog } from './profile_card_edit_dialog/profile_card_edit_dialog';
 
 const useStyles = createUseStyles(styles);
 
@@ -45,7 +45,7 @@ const ProfileCardComponent = ({
     side: sideProps
 }) => {
     const classes = useStyles({ variant });
-    const [isEditingCard, setIsEditingCard] = useState(false);
+    const [openEditDialog, setEditDialogOpened, setEditDialogClosed] = useCallbackOpen();
     const [state, dispatch] = useReducer(
         profileCardReducer,
         getProfileCardInitialState({ variant, side: sideProps })
@@ -83,12 +83,6 @@ const ProfileCardComponent = ({
         setSide('front');
     }, [hasDialogOpened, dispatch]);
 
-    const enableEditingCard = useCallback(e => {
-        e.preventDefault();
-        e.stopPropagation();
-        setIsEditingCard(true);
-    }, []);
-
     useEffect(() => {
         if (hasSideChanged.current) {
             return;
@@ -102,26 +96,18 @@ const ProfileCardComponent = ({
         immediate: !hasSideChanged.current
     });
 
-    const EditDialogComponent = useMemo(() => {
-        if (!editDialog) {
-            return null;
-        }
-        return createElement(editDialog.component, {
-            onEdit: (...parameters) => {
-                setIsEditingCard(false);
-                editDialog.onEdit(...parameters);
-            },
-            validationSchema: editDialog.validationSchema,
-            data,
-            onClose: () => setIsEditingCard(false)
-        });
-    }, [editDialog]);
-
     const contextData = useMemo(() => ({ state, dispatch }), [state]);
 
     return (
         <>
-            {isEditingCard && EditDialogComponent}
+            {isEditingProfile && (
+                <ProfileCardEditDialog
+                    editDialog={editDialog}
+                    open={openEditDialog}
+                    onClose={setEditDialogClosed}
+                    data={data}
+                />
+            )}
             <Card
                 customClasses={{ container: classes.container }}
                 elevation={1}
@@ -129,11 +115,7 @@ const ProfileCardComponent = ({
                 onMouseLeave={handleMouseLeave}
             >
                 {isEditingProfile && (
-                    <Tooltip title="Editer cette carte">
-                        <button type="button" className={classes.editButton} onClick={enableEditingCard}>
-                            <EditIcon className={classes.editIcon} />
-                        </button>
-                    </Tooltip>
+                    <ProfileCardEditButton setEditDialogOpened={setEditDialogOpened} />
                 )}
                 <ProfileCardContext.Provider value={contextData}>
                     {transitions.map(({ item, key, props }) => {

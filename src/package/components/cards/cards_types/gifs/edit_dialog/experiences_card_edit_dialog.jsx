@@ -302,7 +302,7 @@ export const InterestsEditDialog = ({ data, onEdit, validationSchema, onClose })
             onEdit={onEdit}
             onClose={onClose}
             validationSchema={validationSchemaToPass}
-            open
+            open={false}
             title={
                 <FormattedMessage
                     id="Interests.editDialog.title"

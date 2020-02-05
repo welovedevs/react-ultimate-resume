@@ -1,6 +1,6 @@
 import { defineMessages } from 'react-intl';
 
-export const RemoteSelectTranslations = defineMessages({
+export const remoteSelectTranslations = defineMessages({
     never: {
         id: 'Developer.RemoteFrequency.Select.Never',
         defaultMessage: 'No'
@@ -23,7 +23,7 @@ export const RemoteSelectTranslations = defineMessages({
     }
 });
 
-export const RemoteDisplayTranslations = defineMessages({
+export const remoteDisplayTranslations = defineMessages({
     never: {
         id: 'Developer.RemoteFrequency.Display.never',
         defaultMessage: "I'm not interested by remote work"

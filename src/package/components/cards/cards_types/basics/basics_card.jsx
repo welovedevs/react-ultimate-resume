@@ -7,7 +7,7 @@ import { BasicsBack } from './basics_back/basics_back';
 import { mapBasicsDataToJsonResume, mapJsonResumeToBasicData } from './data/mapping';
 import { DeveloperProfileContext } from '../../../profile';
 
-import { BasicsCardEditDialog } from './edit_dialog/basic_card_edit_dialog';
+import { BasicsCardEditDialog } from './basics_edit_dialog/basic_card_edit_dialog';
 import { BasicsValidationSchema } from './data/validator';
 
 const BasicsCardComponent = ({ variant, side }) => {

@@ -6,14 +6,6 @@ import {
 export const styles = (theme) => {
     const { miscellaneous: { spacing } } = theme;
     return ({
-        field: {
-            '&:first-child': {
-                marginTop: 0
-            },
-            '&:last-child': {
-                marginBottom: 0
-            }
-        },
         valueSliderContainer: {
             display: 'flex',
             alignItems: 'center',
