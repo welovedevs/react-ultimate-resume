@@ -136,6 +136,10 @@ var DEFAULT_THEME = Object.freeze({
     fontFamily: ['Avenir Next', 'Open Sans', 'Roboto', 'Arial'],
     spacing: 8
   },
+  screenSizes: {
+    small: '@media screen and (max-width: 500px)',
+    medium: '@media screen and (max-width: 900px)'
+  },
   components: {
     banner: {
       overlayColor: 'primary',

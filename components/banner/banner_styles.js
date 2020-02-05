@@ -17,9 +17,10 @@ var center = _styles_utils.flex.center;
 
 var styles = function styles(_ref) {
   var palette = _ref.palette,
-      spacing = _ref.miscellaneous.spacing;
+      spacing = _ref.miscellaneous.spacing,
+      screenSizes = _ref.screenSizes;
   var primaryRgb = palette.primary.rgbShades[500].join(', ');
-  return {
+  return _defineProperty({
     container: _objectSpread({
       height: 400,
       width: '100%',
@@ -56,7 +57,12 @@ var styles = function styles(_ref) {
       justifyContent: 'space-between',
       marginBottom: spacing * 12
     }
-  };
+  }, screenSizes.small, {
+    content: {
+      flexDirection: 'column',
+      justifyContent: 'center'
+    }
+  });
 };
 
 exports.styles = styles;

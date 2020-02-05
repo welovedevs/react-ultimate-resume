@@ -5,9 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = void 0;
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var styles = function styles(theme) {
   var spacing = theme.miscellaneous.spacing;
-  return {
+  return _defineProperty({
     container: {
       display: 'flex',
       alignItems: 'center'
@@ -28,7 +30,15 @@ var styles = function styles(theme) {
     description: {
       extend: 'text'
     }
-  };
+  }, theme.screenSizes.small, {
+    container: {
+      flexDirection: 'column',
+      justifyContent: 'center'
+    },
+    textColumn: {
+      marginLeft: 'unset'
+    }
+  });
 };
 
 exports.styles = styles;

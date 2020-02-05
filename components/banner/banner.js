@@ -27,12 +27,12 @@ var BannerComponent = function BannerComponent(_ref) {
   var theme = (0, _reactJss.useTheme)();
   return _react.default.createElement("div", {
     className: classes.container
-  }, _react.default.createElement("img", {
+  }, _react.default.createElement("div", {
+    className: classes.overlay
+  }), _react.default.createElement("img", {
     className: classes.image,
     src: theme === null || theme === void 0 ? void 0 : (_theme$components = theme.components) === null || _theme$components === void 0 ? void 0 : (_theme$components$ban = _theme$components.banner) === null || _theme$components$ban === void 0 ? void 0 : _theme$components$ban.imageSource,
     alt: "Banner"
-  }), _react.default.createElement("div", {
-    className: classes.overlay
   }), _react.default.createElement("div", {
     className: classes.content
   }, _react.default.createElement(_user_informations.UserInformations, null), _react.default.createElement(_social_actions.SocialActions, null, children)));

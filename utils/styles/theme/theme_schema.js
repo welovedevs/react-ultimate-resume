@@ -53,6 +53,10 @@ var THEME_SCHEMA = yup.object({
     spacing: yup.number().required(),
     fontFamily: yup.array().of(yup.string())
   }),
+  sizes: yup.object({
+    small: yup.string().required(),
+    medium: yup.string().required()
+  }),
   components: yup.object({
     banner: yup.object({
       overlayColor: isExistingColorInPalette.required(),
