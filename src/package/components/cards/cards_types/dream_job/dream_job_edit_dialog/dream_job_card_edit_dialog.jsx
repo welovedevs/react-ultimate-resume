@@ -5,7 +5,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { useFormikContext } from 'formik';
 import uuid from 'uuid/v4';
 
-import { ListItem, TextField, Typography } from '@wld/ui';
+import { ListItem, TextField } from '@wld/ui';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { EditDialogField } from '../../../../commons/edit_dialog_field/edit_dialog_field';
@@ -15,14 +15,12 @@ import { CONTRACT_TYPES } from '../../../../../utils/enums/contract_types/contra
 
 import { Select } from '../../../../commons/select/select';
 import { JobPerks } from '../../../../../utils/enums/job_perks/job_perks_utils';
-import { CheckboxField } from '../../../../commons/checkbox_field/checkbox_group';
+import { PerksField } from './perks_field/perks_field';
 import { LocationPlacesField } from './location_places_field/location_places_field';
 
 import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
 import { remoteSelectTranslations } from '../../../../../utils/enums/remote/remote_filter_translations';
 import { contractTypesTranslations } from '../../../../../utils/enums/contract_types/contract_types_translations';
-
-import { jobPerksTranslations } from '../../../../../utils/enums/job_perks/job_perks_translations';
 
 import { styles } from './dream_job_card_edit_dialog_styles';
 
@@ -103,49 +101,21 @@ const Content = ({ helpers: { handleValueChange } }) => {
                 addPlace={addPlace}
                 removePlace={removePlace}
             />
-            <EditDialogField
-                classes={{
-                    containerChildren: classes.column
-                }}
-                error={errors.perks}
-                title={(
-                    <FormattedMessage
-                        id="DreamJob.editDialog.perks.title"
-                        defaultMessage="What perks are important to you ?"
-                    />
-                )}
-            >
-                <CheckboxGroup
-                    values={checkboxGroupPerks}
-                    translations={jobPerksTranslations}
-                    value={checkedPerks}
-                    name="perks"
-                    variant="outlined"
-                    onChange={onChangePerks}
-                />
-                <div className={classes.othersCheckbox}>
-                    <CheckboxField
-                        title={<Typography>{formatMessage(jobPerksTranslations[JobPerks.OTHER])}</Typography>}
-                        onClick={toggleOtherPerk}
-                        checked={otherPerk !== null}
-                        variant="outlined"
-                        color="secondary"
-                    />
-                    {otherPerk !== null && (
-                        <TextField
-                            onChange={handleChange}
-                            name={`perks[${JobPerks.OTHER}]`}
-                            value={perks[JobPerks.OTHER]}
-                            variant="flat"
-                        />
-                    )}
-                </div>
-            </EditDialogField>
+            <PerksField
+                error={errors?.perks}
+                checkboxGroupPerks={checkboxGroupPerks}
+                checkedPerks={checkedPerks}
+                onChange={onChangePerks}
+                toggleOtherPerk={toggleOtherPerk}
+                otherPerk={otherPerk}
+                handleChange={handleChange}
+                perks={perks}
+            />
             <EditDialogField
                 title={(
                     <FormattedMessage
                         id="DreamJob.editDialog.salary.title"
-                        defaultMessage="What's your wanted salary?"
+                        defaultMessage="What's your desired salary?"
                     />
                   )}
                 error={errors.salary}
@@ -157,14 +127,14 @@ const Content = ({ helpers: { handleValueChange } }) => {
                 title={(
                     <FormattedMessage
                         id="DreamJob.editDialog.remoteFrequency.title"
-                        defaultMessage="Do you want to work remotely"
+                        defaultMessage="Do you want to work remotely?"
                     />
                 )}
             >
                 <Select
-                    variant="outlined"
                     value={remoteFrequency}
                     onChange={handleChange('remoteFrequency')}
+                    textFieldProps={{ variant: 'flat' }}
                     textFieldIconProps={{ className: classes.selectIcon }}
                 >
                     {Object.values(REMOTE_FREQUENCY).map((elemValue, index) => (

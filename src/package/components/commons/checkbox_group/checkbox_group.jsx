@@ -1,13 +1,27 @@
 import React, { useCallback } from 'react';
-import { Typography } from '@wld/ui';
-import { useIntl } from 'react-intl';
+
+import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
-import { checkboxGroupStyles } from './checkbox_group_styles';
+import { useIntl } from 'react-intl';
+
+import { Typography } from '@wld/ui';
+
 import { CheckboxField } from '../checkbox_field/checkbox_group';
 
-const useStyles = createUseStyles(checkboxGroupStyles);
+import { styles } from './checkbox_group_styles';
 
-export const CheckboxGroup = ({ values, translations, value = [], name, onChange, color = 'secondary', variant }) => {
+const useStyles = createUseStyles(styles);
+
+const CheckboxGroupComponent = ({
+    values,
+    translations,
+    value = [],
+    name,
+    onChange,
+    color = 'secondary',
+    variant,
+    classes: receivedClasses = {}
+}) => {
     const classes = useStyles();
     const { formatMessage } = useIntl();
 
@@ -16,7 +30,6 @@ export const CheckboxGroup = ({ values, translations, value = [], name, onChange
             if (typeof onChange !== 'function') {
                 return;
             }
-            console.log(value);
             if (!value.includes(enumValue)) {
                 onChange([...value, enumValue]);
                 return;
@@ -25,11 +38,19 @@ export const CheckboxGroup = ({ values, translations, value = [], name, onChange
         },
         [value, onChange]
     );
+
     return (
-        <div className={classes.checkboxGroup}>
+        <div className={cn(classes.container, receivedClasses.container)}>
             {values.map((enumValue, index) => (
                 <CheckboxField
-                    title={<Typography>{formatMessage(translations[enumValue])}</Typography>}
+                    classes={{
+                        container: cn(classes.checkboxField, receivedClasses.checkboxField)
+                    }}
+                    title={(
+                        <Typography>
+                            {formatMessage(translations[enumValue])}
+                        </Typography>
+                    )}
                     onClick={onFieldClicked(enumValue)}
                     checked={value.includes(enumValue)}
                     value={enumValue}
@@ -41,3 +62,5 @@ export const CheckboxGroup = ({ values, translations, value = [], name, onChange
         </div>
     );
 };
+
+export const CheckboxGroup = CheckboxGroupComponent;

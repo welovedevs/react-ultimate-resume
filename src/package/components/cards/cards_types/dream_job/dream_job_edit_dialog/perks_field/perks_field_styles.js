@@ -1,18 +1,14 @@
 export const styles = (theme) => {
     const { miscellaneous: { spacing } } = theme;
     return ({
-        container: {
-            display: 'flex',
-            flexWrap: 'wrap',
+        textField: {
+            margin: [spacing * 2, 0, 0, spacing]
+        },
+        checkboxGroup: {
             marginLeft: -spacing
         },
         checkboxField: {
             margin: spacing
-        },
-        checkbox: {
-            display: 'flex',
-            alignItems: 'center',
-            cursor: 'pointer'
         }
     });
 };
