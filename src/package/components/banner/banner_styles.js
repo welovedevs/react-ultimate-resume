@@ -2,7 +2,7 @@ import { flex } from '../../utils/styles/styles_utils';
 
 const { center } = flex;
 
-export const styles = ({ palette, miscellaneous: { spacing } }) => {
+export const styles = ({ palette, miscellaneous: { spacing }, screenSizes }) => {
     const primaryRgb = palette.primary.rgbShades[500].join(', ');
     return {
         container: {
@@ -40,6 +40,13 @@ export const styles = ({ palette, miscellaneous: { spacing } }) => {
             display: 'flex',
             justifyContent: 'space-between',
             marginBottom: spacing * 12
+        },
+        [screenSizes.small]: {
+            content: {
+                flexDirection: 'column',
+                justifyContent: 'center'
+            }
+
         }
     };
 };

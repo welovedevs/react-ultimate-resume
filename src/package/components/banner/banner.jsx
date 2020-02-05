@@ -13,8 +13,8 @@ const BannerComponent = ({ children }) => {
     const theme = useTheme();
     return (
         <div className={classes.container}>
-            <img className={classes.image} src={theme?.components?.banner?.imageSource} alt="Banner" />
             <div className={classes.overlay} />
+            <img className={classes.image} src={theme?.components?.banner?.imageSource} alt="Banner" />
             <div className={classes.content}>
                 <UserInformations />
                 <SocialActions>{children}</SocialActions>
