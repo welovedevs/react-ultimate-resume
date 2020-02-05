@@ -21,9 +21,9 @@ var _reactSortableHoc = require("react-sortable-hoc");
 
 var _ui = require("@wld/ui");
 
-var _experiences_card_edit_dialog_translations = _interopRequireDefault(require("./experiences_card_edit_dialog_translations"));
+var _interests_card_edit_dialog_translations = _interopRequireDefault(require("./interests_card_edit_dialog_translations"));
 
-var _experiences_card_edit_dialog_styles = _interopRequireDefault(require("./experiences_card_edit_dialog_styles"));
+var _interests_card_edit_dialog_styles = _interopRequireDefault(require("./interests_card_edit_dialog_styles"));
 
 var _edit_dialog = require("../../../../commons/edit_dialog/edit_dialog");
 
@@ -117,7 +117,7 @@ RandomIcon.defaultProps = {
   fill: "none",
   xmlns: "http://www.w3.org/2000/svg"
 };
-var useStyles = (0, _reactJss.createUseStyles)(_experiences_card_edit_dialog_styles.default);
+var useStyles = (0, _reactJss.createUseStyles)(_interests_card_edit_dialog_styles.default);
 var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (_ref) {
   var classes = _ref.classes;
   return _react.default.createElement(MoveIcon, {
@@ -191,7 +191,7 @@ var ContentFields = function ContentFields(_ref3) {
   }, _react.default.createElement(_ui.TextField, {
     id: "interest_name_".concat(id),
     inputClassName: classes.interestNameTextFieldInput,
-    placeholder: formatMessage(_experiences_card_edit_dialog_translations.default.interestNamePlaceholder),
+    placeholder: formatMessage(_interests_card_edit_dialog_translations.default.interestNamePlaceholder),
     value: interest.name,
     onChange: handleNameChange,
     margin: "normal",
@@ -283,7 +283,7 @@ var GifPicker = function GifPicker(_ref7) {
     className: classes.gifSearchField,
     value: input,
     onChange: handleInputChange,
-    placeholder: formatMessage(_experiences_card_edit_dialog_translations.default.gifSearchPlaceholder),
+    placeholder: formatMessage(_interests_card_edit_dialog_translations.default.gifSearchPlaceholder),
     variant: "flat"
   }), gifs && input && _react.default.createElement(_ui.Button, {
     onClick: showNextPage

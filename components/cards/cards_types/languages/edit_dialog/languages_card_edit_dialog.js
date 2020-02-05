@@ -5,15 +5,11 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.LanguagesCardEditDialog = void 0;
+exports.LanguagesCardEditDialog = exports.LanguagesEditForm = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
-
-var _omit = _interopRequireDefault(require("lodash/omit"));
-
-var _keyBy = _interopRequireDefault(require("lodash/keyBy"));
 
 var _reactIntl = require("react-intl");
 
@@ -191,60 +187,30 @@ var SortableLanguagesItems = (0, _reactSortableHoc.SortableContainer)(function (
 });
 
 var LanguagesEditForm = function LanguagesEditForm(_ref4) {
-  var handleValueChange = _ref4.helpers.handleValueChange;
+  var data = _ref4.data,
+      move = _ref4.move,
+      onValueChange = _ref4.onValueChange,
+      onDelete = _ref4.onDelete,
+      onAdd = _ref4.onAdd,
+      validationErrors = _ref4.errors;
   var classes = useStyles();
-
-  var _useFormikContext = (0, _formik.useFormikContext)(),
-      languages = _useFormikContext.values.languages,
-      validationErrors = _useFormikContext.errors;
-
-  var keyedValues = (0, _react.useMemo)(function () {
-    return (0, _keyBy.default)(languages, function (_ref5) {
-      var id = _ref5.id;
-      return id;
-    });
-  }, [languages]);
-  var languageChanged = (0, _react.useCallback)(function (experienceIndex, field, value) {
-    handleValueChange("languages[".concat(experienceIndex, "].").concat(field))(value);
-  }, []);
-  var languageDeleted = (0, _react.useCallback)(function (id) {
-    return function () {
-      handleValueChange('languages')(Object.values((0, _omit.default)(keyedValues, id)));
-    };
-  }, [JSON.stringify(keyedValues)]);
-  var addLanguage = (0, _react.useCallback)(function () {
-    var id = (0, _v.default)();
-    handleValueChange('languages')(languages.concat({
-      index: languages.length,
-      id: id
-    }));
-  }, [JSON.stringify(languages)]);
-  var move = (0, _react.useCallback)(function (_ref6) {
-    var oldIndex = _ref6.oldIndex,
-        newIndex = _ref6.newIndex;
-    handleValueChange('languages')((0, _reactSortableHoc.arrayMove)(languages, oldIndex, newIndex).map(function (data, index) {
-      return _objectSpread({}, data, {
-        index: index
-      });
-    }));
-  }, [languages]);
   var globalError = typeof validationErrors === 'string' && validationErrors;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(SortableLanguagesItems, _extends({
     helperClass: classes.sortableHelper,
-    items: languages,
+    items: data,
     onSortEnd: move,
     distance: 20,
     useDragHandle: true,
     lockAxis: "y",
     name: "education",
-    onChange: languageChanged,
-    onDelete: languageDeleted,
+    onChange: onValueChange,
+    onDelete: onDelete,
     errors: validationErrors.languages
   }, {
     classes: classes
   })), _react.default.createElement("div", {
     className: classes.addButton,
-    onClick: addLanguage
+    onClick: onAdd
   }, _react.default.createElement(_ui.Tag, {
     className: classes.addTag
   }, _react.default.createElement(AddIcon, null)), _react.default.createElement(_ui.Typography, null, _react.default.createElement(_reactIntl.FormattedMessage, {
@@ -256,11 +222,57 @@ var LanguagesEditForm = function LanguagesEditForm(_ref4) {
   }, validationErrors));
 };
 
-var LanguagesCardEditDialog = function LanguagesCardEditDialog(_ref7) {
-  var data = _ref7.data,
-      onEdit = _ref7.onEdit,
-      validationSchema = _ref7.validationSchema,
-      onClose = _ref7.onClose;
+exports.LanguagesEditForm = LanguagesEditForm;
+
+var LanguagesEditFormWrapper = function LanguagesEditFormWrapper(_ref5) {
+  var handleValueChange = _ref5.helpers.handleValueChange;
+
+  var _useFormikContext = (0, _formik.useFormikContext)(),
+      languages = _useFormikContext.values.languages,
+      validationErrors = _useFormikContext.errors;
+
+  var languageChanged = (0, _react.useCallback)(function (experienceIndex, field, value) {
+    handleValueChange("languages[".concat(experienceIndex, "].").concat(field))(value);
+  }, []);
+  var languageDeleted = (0, _react.useCallback)(function (deletingId) {
+    return function () {
+      handleValueChange('languages')(languages.filter(function (_ref6) {
+        var id = _ref6.id;
+        return deletingId !== id;
+      }));
+    };
+  }, [languages]);
+  var addLanguage = (0, _react.useCallback)(function () {
+    var id = (0, _v.default)();
+    handleValueChange('languages')(languages.concat({
+      index: languages.length,
+      id: id
+    }));
+  }, [JSON.stringify(languages)]);
+  var move = (0, _react.useCallback)(function (_ref7) {
+    var oldIndex = _ref7.oldIndex,
+        newIndex = _ref7.newIndex;
+    handleValueChange('languages')((0, _reactSortableHoc.arrayMove)(languages, oldIndex, newIndex).map(function (data, index) {
+      return _objectSpread({}, data, {
+        index: index
+      });
+    }));
+  }, [languages]);
+  return _react.default.createElement(LanguagesEditForm, {
+    data: languages,
+    onMove: move,
+    onValueChange: languageChanged,
+    onDelete: languageDeleted,
+    onAdd: addLanguage,
+    errors: validationErrors
+  });
+};
+
+var LanguagesCardEditDialog = function LanguagesCardEditDialog(_ref8) {
+  var data = _ref8.data,
+      onEdit = _ref8.onEdit,
+      validationSchema = _ref8.validationSchema,
+      onClose = _ref8.onClose;
 
   var _useIntl2 = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl2.formatMessage;
@@ -279,7 +291,7 @@ var LanguagesCardEditDialog = function LanguagesCardEditDialog(_ref7) {
       defaultMessage: "Your languages"
     })
   }, function (helpers) {
-    return _react.default.createElement(LanguagesEditForm, {
+    return _react.default.createElement(LanguagesEditFormWrapper, {
       helpers: helpers
     });
   });

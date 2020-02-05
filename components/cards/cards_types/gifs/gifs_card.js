@@ -19,7 +19,7 @@ var _profile = require("../../../profile");
 
 var _mapping = require("./data/mapping");
 
-var _experiences_card_edit_dialog = require("./edit_dialog/experiences_card_edit_dialog");
+var _interests_card_edit_dialog = require("./edit_dialog/interests_card_edit_dialog");
 
 var _validator = require("./data/validator");
 
@@ -50,7 +50,7 @@ var GifsCardComponent = function GifsCardComponent(_ref) {
       back: _gifs_back.GifsBack
     },
     editDialog: {
-      component: _experiences_card_edit_dialog.InterestsEditDialog,
+      component: _interests_card_edit_dialog.InterestsEditDialog,
       validationSchema: _validator.InterestsValidator,
       onEdit: onDialogEdited
     },

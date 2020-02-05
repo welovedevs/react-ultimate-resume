@@ -44,7 +44,7 @@ var InterestedByEditDialogComponent = function InterestedByEditDialogComponent(_
     validationSchema: validationSchemaToPass,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "InterestedBy.editDialog.title",
-      defaultMessage: "What technologies are you interested in ?"
+      defaultMessage: "What technologies are you interested in?"
     })
   }, function (helpers) {
     return _react.default.createElement(Content, {
@@ -69,7 +69,7 @@ var Content = function Content() {
     rows: 4,
     placeholder: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "InterestedBy.editDialog.interestedBy.placeholder",
-      defaultMessage: "Vue.js, blockchain, datadog"
+      defaultMessage: "Vue.js, Blockchain, Datadog..."
     }),
     value: interestedBy,
     onChange: handleChange,

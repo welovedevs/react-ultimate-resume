@@ -5,7 +5,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ExperiencesEditDialog = void 0;
+exports.ExperiencesEditDialog = exports.ExperiencesEditForm = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -22,8 +22,6 @@ var _reactSpring = require("react-spring");
 var _reactSortableHoc = require("react-sortable-hoc");
 
 var _formik = require("formik");
-
-var _omit = _interopRequireDefault(require("lodash/omit"));
 
 var _moment = _interopRequireDefault(require("moment"));
 
@@ -49,12 +47,6 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -64,6 +56,12 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var AddIcon = function AddIcon(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("path", {
@@ -156,14 +154,59 @@ var ExperiencesEditDialogComponent = function ExperiencesEditDialogComponent(_re
       defaultMessage: "Your past and present professional experiences"
     })
   }, function (helpers) {
-    return _react.default.createElement(ExperiencesEditForm, {
+    return _react.default.createElement(ExperiencesEditFormWrapper, {
       helpers: helpers
     });
   });
 };
 
-var JobTitle = function JobTitle(_ref3) {
-  var experience = _ref3.experience;
+var ExperiencesEditFormWrapper = function ExperiencesEditFormWrapper(_ref3) {
+  var handleValueChange = _ref3.helpers.handleValueChange;
+
+  var _useFormikContext = (0, _formik.useFormikContext)(),
+      work = _useFormikContext.values.work,
+      validationErrors = _useFormikContext.errors;
+
+  var errors = validationErrors;
+  var experienceFieldChanged = (0, _react.useCallback)(function (experienceIndex, field, value) {
+    handleValueChange("work[".concat(experienceIndex, "].").concat(field))(value);
+  }, []);
+  var experienceDeleted = (0, _react.useCallback)(function (idToDelete) {
+    return function () {
+      handleValueChange('work')(work.filter(function (_ref4) {
+        var id = _ref4.id;
+        return id !== idToDelete;
+      }));
+    };
+  }, [JSON.stringify(work)]);
+  var addExperience = (0, _react.useCallback)(function () {
+    var id = (0, _v.default)();
+    handleValueChange('work')(work.concat({
+      index: work.length,
+      id: id
+    }));
+  }, [JSON.stringify(work)]);
+  var move = (0, _react.useCallback)(function (_ref5) {
+    var oldIndex = _ref5.oldIndex,
+        newIndex = _ref5.newIndex;
+    handleValueChange('work')((0, _reactSortableHoc.arrayMove)(work, oldIndex, newIndex).map(function (data, index) {
+      return _objectSpread({}, data, {
+        index: index
+      });
+    }));
+  }, [work]);
+  return _react.default.createElement(ExperiencesEditForm, {
+    data: work,
+    errors: errors,
+    onAdd: addExperience,
+    onMove: move,
+    onFieldChange: experienceFieldChanged,
+    onDelete: experienceDeleted
+  });
+};
+
+var JobTitle = function JobTitle(_ref6) {
+  var experience = _ref6.experience;
 
   var _useIntl2 = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl2.formatMessage;
@@ -195,16 +238,16 @@ var JobTitle = function JobTitle(_ref3) {
   return title;
 };
 
-var ExperienceItem = (0, _reactSortableHoc.SortableElement)(function (_ref4) {
-  var id = _ref4.id,
-      experience = _ref4.experience,
-      onChange = _ref4.onChange,
-      onRemove = _ref4.onRemove,
-      fieldErrors = _ref4.error,
-      folded = _ref4.folded,
-      toggleFold = _ref4.toggleFold,
-      classes = _ref4.classes,
-      index = _ref4.experienceIndex;
+var ExperienceItem = (0, _reactSortableHoc.SortableElement)(function (_ref7) {
+  var id = _ref7.id,
+      experience = _ref7.experience,
+      onChange = _ref7.onChange,
+      onRemove = _ref7.onRemove,
+      fieldErrors = _ref7.error,
+      folded = _ref7.folded,
+      toggleFold = _ref7.toggleFold,
+      classes = _ref7.classes,
+      index = _ref7.experienceIndex;
 
   var _useIntl3 = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl3.formatMessage;
@@ -263,16 +306,16 @@ var ExperienceItem = (0, _reactSortableHoc.SortableElement)(function (_ref4) {
   }));
 });
 
-var ContentFields = function ContentFields(_ref5) {
+var ContentFields = function ContentFields(_ref8) {
   var _experience$place;
 
-  var fieldErrors = _ref5.fieldErrors,
-      id = _ref5.id,
-      formatMessage = _ref5.formatMessage,
-      experience = _ref5.experience,
-      onChange = _ref5.onChange,
-      classes = _ref5.classes,
-      index = _ref5.index;
+  var fieldErrors = _ref8.fieldErrors,
+      id = _ref8.id,
+      formatMessage = _ref8.formatMessage,
+      experience = _ref8.experience,
+      onChange = _ref8.onChange,
+      classes = _ref8.classes,
+      index = _ref8.index;
   var stillEmployed = !experience.endDate;
   var handleStillEmployedChange = (0, _react.useCallback)(function () {
     if (!stillEmployed) {
@@ -412,27 +455,27 @@ var ContentFields = function ContentFields(_ref5) {
   }, fieldErrors.summary)))));
 };
 
-var SortableExperiences = (0, _reactSortableHoc.SortableContainer)(function (_ref6) {
-  var _ref6$items = _ref6.items,
-      items = _ref6$items === void 0 ? [] : _ref6$items,
-      experienceChanged = _ref6.experienceChanged,
-      experienceDeleted = _ref6.experienceDeleted,
-      formatMessage = _ref6.formatMessage,
-      errors = _ref6.errors,
-      foldedState = _ref6.foldedState,
-      toggleFold = _ref6.toggleFold,
-      classes = _ref6.classes;
+var SortableExperiences = (0, _reactSortableHoc.SortableContainer)(function (_ref9) {
+  var _ref9$items = _ref9.items,
+      items = _ref9$items === void 0 ? [] : _ref9$items,
+      experienceFieldChanged = _ref9.experienceFieldChanged,
+      experienceDeleted = _ref9.experienceDeleted,
+      formatMessage = _ref9.formatMessage,
+      errors = _ref9.errors,
+      foldedState = _ref9.foldedState,
+      toggleFold = _ref9.toggleFold,
+      classes = _ref9.classes;
   return _react.default.createElement(_ui.List, {
     component: "nav"
-  }, items.filter(Boolean).sort(function (_ref7, _ref8) {
-    var a = _ref7.index;
-    var b = _ref8.index;
+  }, items.filter(Boolean).sort(function (_ref10, _ref11) {
+    var a = _ref10.index;
+    var b = _ref11.index;
     return a - b;
   }).map(function (experience, index) {
     return _react.default.createElement(ExperienceItem, {
       index: index,
       key: "work_".concat(experience.id, "_").concat(index),
-      onChange: experienceChanged,
+      onChange: experienceFieldChanged,
       onRemove: experienceDeleted,
       id: experience.id,
       experience: experience,
@@ -446,11 +489,11 @@ var SortableExperiences = (0, _reactSortableHoc.SortableContainer)(function (_re
   }));
 });
 
-var StillEmployedField = function StillEmployedField(_ref9) {
-  var value = _ref9.value,
-      classes = _ref9.classes,
-      handleStillEmployedChange = _ref9.handleStillEmployedChange,
-      formatMessage = _ref9.formatMessage;
+var StillEmployedField = function StillEmployedField(_ref12) {
+  var value = _ref12.value,
+      classes = _ref12.classes,
+      handleStillEmployedChange = _ref12.handleStillEmployedChange,
+      formatMessage = _ref12.formatMessage;
   return _react.default.createElement("div", {
     className: (0, _classnames.default)(classes.fieldRow, value && (0, _classnames.default)(classes.fieldRowJustifyEnd, classes.withMarginStillEmployedFieldRow))
   }, _react.default.createElement("button", {
@@ -470,21 +513,20 @@ var StillEmployedField = function StillEmployedField(_ref9) {
   }, formatMessage(_experiences_card_edit_dialog_translations.translations.stillEmployed))));
 };
 
-var ExperiencesEditForm = function ExperiencesEditForm(_ref10) {
-  var handleValueChange = _ref10.helpers.handleValueChange;
+var ExperiencesEditForm = function ExperiencesEditForm(_ref13) {
+  var data = _ref13.data,
+      errors = _ref13.errors,
+      onAdd = _ref13.onAdd,
+      onMove = _ref13.onMove,
+      onFieldChange = _ref13.onFieldChange,
+      onDelete = _ref13.onDelete;
   var classes = useStyles({});
-
-  var _useFormikContext = (0, _formik.useFormikContext)(),
-      work = _useFormikContext.values.work,
-      validationErrors = _useFormikContext.errors;
-
-  var errors = validationErrors;
   var keyedValues = (0, _react.useMemo)(function () {
-    return (0, _keyBy.default)(work, function (_ref11) {
-      var id = _ref11.id;
+    return (0, _keyBy.default)(data, function (_ref14) {
+      var id = _ref14.id;
       return id;
     });
-  }, [work]);
+  }, [data]);
 
   var _useState = (0, _react.useState)(Object.keys(keyedValues || {}).reduce(function (state, id) {
     state[id] = true;
@@ -494,14 +536,6 @@ var ExperiencesEditForm = function ExperiencesEditForm(_ref10) {
       foldedState = _useState2[0],
       setFoldState = _useState2[1];
 
-  var experienceChanged = (0, _react.useCallback)(function (experienceIndex, field, value) {
-    handleValueChange("work[".concat(experienceIndex, "].").concat(field))(value);
-  }, []);
-  var experienceDeleted = (0, _react.useCallback)(function (id) {
-    return function () {
-      handleValueChange('work')(Object.values((0, _omit.default)(keyedValues, id)));
-    };
-  }, [JSON.stringify(keyedValues), foldedState]);
   var toggleFold = (0, _react.useCallback)(function (id) {
     return function (value) {
       var newFoldState = _objectSpread({}, foldedState);
@@ -510,29 +544,6 @@ var ExperiencesEditForm = function ExperiencesEditForm(_ref10) {
       setFoldState(newFoldState);
     };
   }, [foldedState]);
-  var addExperience = (0, _react.useCallback)(function () {
-    var id = (0, _v.default)();
-    handleValueChange('work')(work.concat({
-      index: work.length,
-      id: id
-    }));
-
-    var newFoldState = _objectSpread({}, Object.keys(keyedValues).reduce(function (state, id) {
-      state[id] = true;
-      return state;
-    }, {}), _defineProperty({}, id, false));
-
-    setFoldState(newFoldState);
-  }, [JSON.stringify(work)]);
-  var move = (0, _react.useCallback)(function (_ref12) {
-    var oldIndex = _ref12.oldIndex,
-        newIndex = _ref12.newIndex;
-    handleValueChange('work')((0, _reactSortableHoc.arrayMove)(work, oldIndex, newIndex).map(function (data, index) {
-      return _objectSpread({}, data, {
-        index: index
-      });
-    }));
-  }, [work]);
   var globalError = typeof errors === 'string' && errors;
   return _react.default.createElement("div", {
     className: classes.container
@@ -544,21 +555,21 @@ var ExperiencesEditForm = function ExperiencesEditForm(_ref10) {
     defaultMessage: "Describe all your experiences here"
   })), _react.default.createElement(SortableExperiences, _extends({
     helperClass: classes.sortableHelper,
-    onSortEnd: move,
-    items: work,
+    onSortEnd: onMove,
+    items: data,
     distance: 15,
     useDragHandle: true,
-    lockAxis: "y"
+    lockAxis: "y",
+    experienceFieldChanged: onFieldChange,
+    experienceDeleted: onDelete
   }, {
-    experienceChanged: experienceChanged,
-    experienceDeleted: experienceDeleted,
     errors: errors === null || errors === void 0 ? void 0 : errors.work,
     foldedState: foldedState,
     toggleFold: toggleFold,
     classes: classes
   })), _react.default.createElement("div", {
     className: classes.addButton,
-    onClick: addExperience
+    onClick: onAdd
   }, _react.default.createElement(_ui.Tag, {
     className: classes.addTag
   }, _react.default.createElement(AddIcon, null)), _react.default.createElement(_ui.Typography, null, _react.default.createElement(_reactIntl.FormattedMessage, {
@@ -570,5 +581,6 @@ var ExperiencesEditForm = function ExperiencesEditForm(_ref10) {
   }, errors));
 };
 
+exports.ExperiencesEditForm = ExperiencesEditForm;
 var ExperiencesEditDialog = ExperiencesEditDialogComponent;
 exports.ExperiencesEditDialog = ExperiencesEditDialog;

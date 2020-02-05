@@ -31,7 +31,7 @@ var _select = require("../../../../commons/select/select");
 
 var _job_perks_utils = require("../../../../../utils/enums/job_perks/job_perks_utils");
 
-var _checkbox_group2 = require("../../../../commons/checkbox_field/checkbox_group");
+var _perks_field = require("./perks_field/perks_field");
 
 var _location_places_field = require("./location_places_field/location_places_field");
 
@@ -40,8 +40,6 @@ var _remote_utils = require("../../../../../utils/enums/remote/remote_utils");
 var _remote_filter_translations = require("../../../../../utils/enums/remote/remote_filter_translations");
 
 var _contract_types_translations = require("../../../../../utils/enums/contract_types/contract_types_translations");
-
-var _job_perks_translations = require("../../../../../utils/enums/job_perks/job_perks_translations");
 
 var _dream_job_card_edit_dialog_styles = require("./dream_job_card_edit_dialog_styles");
 
@@ -163,39 +161,19 @@ var Content = function Content(_ref2) {
     places: places,
     addPlace: addPlace,
     removePlace: removePlace
+  }), _react.default.createElement(_perks_field.PerksField, {
+    error: errors === null || errors === void 0 ? void 0 : errors.perks,
+    checkboxGroupPerks: checkboxGroupPerks,
+    checkedPerks: checkedPerks,
+    onChange: onChangePerks,
+    toggleOtherPerk: toggleOtherPerk,
+    otherPerk: otherPerk,
+    handleChange: handleChange,
+    perks: perks
   }), _react.default.createElement(_edit_dialog_field.EditDialogField, {
-    classes: {
-      containerChildren: classes.column
-    },
-    error: errors.perks,
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "DreamJob.editDialog.perks.title",
-      defaultMessage: "What perks are important to you ?"
-    })
-  }, _react.default.createElement(_checkbox_group.CheckboxGroup, {
-    values: checkboxGroupPerks,
-    translations: _job_perks_translations.jobPerksTranslations,
-    value: checkedPerks,
-    name: "perks",
-    variant: "outlined",
-    onChange: onChangePerks
-  }), _react.default.createElement("div", {
-    className: classes.othersCheckbox
-  }, _react.default.createElement(_checkbox_group2.CheckboxField, {
-    title: _react.default.createElement(_ui.Typography, null, formatMessage(_job_perks_translations.jobPerksTranslations[_job_perks_utils.JobPerks.OTHER])),
-    onClick: toggleOtherPerk,
-    checked: otherPerk !== null,
-    variant: "outlined",
-    color: "secondary"
-  }), otherPerk !== null && _react.default.createElement(_ui.TextField, {
-    onChange: handleChange,
-    name: "perks[".concat(_job_perks_utils.JobPerks.OTHER, "]"),
-    value: perks[_job_perks_utils.JobPerks.OTHER],
-    variant: "flat"
-  }))), _react.default.createElement(_edit_dialog_field.EditDialogField, {
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "DreamJob.editDialog.salary.title",
-      defaultMessage: "What's your wanted salary?"
+      defaultMessage: "What's your desired salary?"
     }),
     error: errors.salary
   }, _react.default.createElement(_ui.TextField, {
@@ -208,12 +186,14 @@ var Content = function Content(_ref2) {
     error: errors.remoteFrequency,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "DreamJob.editDialog.remoteFrequency.title",
-      defaultMessage: "Do you want to work remotely"
+      defaultMessage: "Do you want to work remotely?"
     })
   }, _react.default.createElement(_select.Select, {
-    variant: "outlined",
     value: remoteFrequency,
     onChange: handleChange('remoteFrequency'),
+    textFieldProps: {
+      variant: 'flat'
+    },
     textFieldIconProps: {
       className: classes.selectIcon
     }

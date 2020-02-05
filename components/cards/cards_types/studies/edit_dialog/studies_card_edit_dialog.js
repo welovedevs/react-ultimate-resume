@@ -5,7 +5,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.StudiesCardEditDialog = void 0;
+exports.StudiesCardEditDialog = exports.FormationsEditForm = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -43,6 +43,8 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -50,8 +52,6 @@ function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread n
 function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var AddIcon = function AddIcon(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("path", {
@@ -94,14 +94,20 @@ TrashIcon.defaultProps = {
   fill: "#fff",
   xmlns: "http://www.w3.org/2000/svg"
 };
+var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (_ref) {
+  var classes = _ref.classes;
+  return _react.default.createElement(MoveIcon, {
+    className: classes.dragHandle
+  });
+});
 var useStyles = (0, _reactJss.createUseStyles)(_studies_styles.styles);
 
-var StudiesCardEditDialogComponent = function StudiesCardEditDialogComponent(_ref) {
-  var open = _ref.open,
-      onClose = _ref.onClose,
-      data = _ref.data,
-      onEdit = _ref.onEdit,
-      validationSchema = _ref.validationSchema;
+var StudiesCardEditDialogComponent = function StudiesCardEditDialogComponent(_ref2) {
+  var open = _ref2.open,
+      onClose = _ref2.onClose,
+      data = _ref2.data,
+      onEdit = _ref2.onEdit,
+      validationSchema = _ref2.validationSchema;
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
@@ -120,17 +126,58 @@ var StudiesCardEditDialogComponent = function StudiesCardEditDialogComponent(_re
       defaultMessage: "Your basic information"
     })
   }, function (helpers) {
-    return _react.default.createElement(FormationsEditForm, {
+    return _react.default.createElement(FormationsEditFormWrapper, {
       helpers: helpers
     });
   });
 };
 
-var SelectComponent = (0, _react.memo)(function (_ref2) {
-  var value = _ref2.value,
-      onChange = _ref2.onChange,
-      classes = _ref2.classes,
-      id = _ref2.id;
+var FormationsEditFormWrapper = function FormationsEditFormWrapper(_ref3) {
+  var handleValueChange = _ref3.helpers.handleValueChange;
+
+  var _useFormikContext = (0, _formik.useFormikContext)(),
+      education = _useFormikContext.values.education,
+      validationErrors = _useFormikContext.errors;
+
+  var errors = validationErrors === null || validationErrors === void 0 ? void 0 : validationErrors.education;
+  var formationChanged = (0, _react.useCallback)(function (educationsIndex, field, value) {
+    handleValueChange("education[".concat(educationsIndex, "].").concat(field))(value);
+  }, []);
+  var formationDeleted = (0, _react.useCallback)(function (deletedId) {
+    return function () {
+      handleValueChange('education')(education.filter(function (_ref4) {
+        var id = _ref4.id;
+        return deletedId !== id;
+      }));
+    };
+  }, [JSON.stringify(education)]);
+  var formationAdded = (0, _react.useCallback)(function () {
+    var id = (0, _v.default)();
+    return handleValueChange('education')([].concat(_toConsumableArray(education), [{
+      position: education.length,
+      id: id
+    }]));
+  }, [JSON.stringify(education)]);
+  var move = (0, _react.useCallback)(function (_ref5) {
+    var oldIndex = _ref5.oldIndex,
+        newIndex = _ref5.newIndex;
+    handleValueChange('education')((0, _reactSortableHoc.arrayMove)(education, oldIndex, newIndex));
+  }, [JSON.stringify(education)]);
+  return _react.default.createElement(FormationsEditForm, {
+    data: education,
+    onMove: move,
+    onAdd: formationAdded,
+    onFieldChange: formationChanged,
+    onDelete: formationDeleted,
+    errors: errors
+  });
+};
+
+var SelectComponent = (0, _react.memo)(function (_ref6) {
+  var value = _ref6.value,
+      onChange = _ref6.onChange,
+      classes = _ref6.classes,
+      id = _ref6.id;
   var selectYearItems = (0, _react.useMemo)(function () {
     return (0, _range.default)(1980, (0, _moment.default)().year() + 8).sort(function (a, b) {
       return b - a;
@@ -150,14 +197,14 @@ var SelectComponent = (0, _react.memo)(function (_ref2) {
     }
   }, selectYearItems);
 });
-var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref3) {
-  var id = _ref3.id,
-      formation = _ref3.formation,
-      onChange = _ref3.onChange,
-      onRemove = _ref3.onRemove,
-      fieldErrors = _ref3.error,
-      classes = _ref3.classes,
-      index = _ref3.formationIndex;
+var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref7) {
+  var id = _ref7.id,
+      formation = _ref7.formation,
+      onChange = _ref7.onChange,
+      onRemove = _ref7.onRemove,
+      fieldErrors = _ref7.error,
+      classes = _ref7.classes,
+      index = _ref7.formationIndex;
 
   var _useIntl2 = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl2.formatMessage;
@@ -246,14 +293,14 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref3) {
     onClick: onRemove(id)
   }, _react.default.createElement(TrashIcon, null)))));
 });
-var SortableFormationsItems = (0, _reactSortableHoc.SortableContainer)(function (_ref4) {
-  var items = _ref4.items,
-      formationChanged = _ref4.formationChanged,
-      formationDeleted = _ref4.formationDeleted,
-      errors = _ref4.errors,
-      name = _ref4.name,
-      schools = _ref4.schools,
-      classes = _ref4.classes;
+var SortableFormationsItems = (0, _reactSortableHoc.SortableContainer)(function (_ref8) {
+  var items = _ref8.items,
+      formationChanged = _ref8.formationChanged,
+      formationDeleted = _ref8.formationDeleted,
+      errors = _ref8.errors,
+      name = _ref8.name,
+      schools = _ref8.schools,
+      classes = _ref8.classes;
   return _react.default.createElement(_ui.List, null, items.map(function (formation, index) {
     return _react.default.createElement(FormationItem, _extends({
       key: "".concat(name, "_").concat(formation.id, "_").concat(index),
@@ -271,55 +318,31 @@ var SortableFormationsItems = (0, _reactSortableHoc.SortableContainer)(function 
   }));
 });
 
-var FormationsEditForm = function FormationsEditForm(_ref5) {
-  var handleValueChange = _ref5.helpers.handleValueChange;
+var FormationsEditForm = function FormationsEditForm(_ref9) {
+  var data = _ref9.data,
+      onMove = _ref9.onMove,
+      onAdd = _ref9.onAdd,
+      onFieldChange = _ref9.onFieldChange,
+      onDelete = _ref9.onDelete,
+      errors = _ref9.errors;
   var classes = useStyles();
-
-  var _useFormikContext = (0, _formik.useFormikContext)(),
-      education = _useFormikContext.values.education,
-      validationErrors = _useFormikContext.errors;
-
-  var errors = validationErrors === null || validationErrors === void 0 ? void 0 : validationErrors.education;
-  var formationChanged = (0, _react.useCallback)(function (educationsIndex, field, value) {
-    handleValueChange("education[".concat(educationsIndex, "].").concat(field))(value);
-  }, []);
-  var formationDeleted = (0, _react.useCallback)(function (deletedId) {
-    return function () {
-      handleValueChange('education')(education.filter(function (_ref6) {
-        var id = _ref6.id;
-        return deletedId !== id;
-      }));
-    };
-  }, [JSON.stringify(education)]);
-  var formationAdded = (0, _react.useCallback)(function () {
-    var id = (0, _v.default)();
-    return handleValueChange('education')([].concat(_toConsumableArray(education), [{
-      position: education.length,
-      id: id
-    }]));
-  }, [JSON.stringify(education)]);
-  var move = (0, _react.useCallback)(function (_ref7) {
-    var oldIndex = _ref7.oldIndex,
-        newIndex = _ref7.newIndex;
-    handleValueChange('education')((0, _reactSortableHoc.arrayMove)(education, oldIndex, newIndex));
-  }, [JSON.stringify(education)]);
   var globalError = typeof errors === 'string' && errors;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(SortableFormationsItems, _extends({
     helperClass: classes.sortableHelper,
-    items: education,
-    onSortEnd: move,
+    items: data,
+    onSortEnd: onMove,
     distance: 20,
     useDragHandle: true,
     lockAxis: "y",
-    name: "education"
+    name: "education",
+    formationChanged: onFieldChange,
+    formationDeleted: onDelete,
+    errors: errors
   }, {
-    formationChanged: formationChanged,
-    formationDeleted: formationDeleted,
-    errors: errors,
     classes: classes
   })), _react.default.createElement("div", {
     className: classes.addButton,
-    onClick: formationAdded
+    onClick: onAdd
   }, _react.default.createElement(_ui.Tag, {
     className: classes.addTag
   }, _react.default.createElement(AddIcon, null)), _react.default.createElement(_ui.Typography, null, _react.default.createElement(_reactIntl.FormattedMessage, {
@@ -331,11 +354,6 @@ var FormationsEditForm = function FormationsEditForm(_ref5) {
   }, errors));
 };
 
-var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (_ref8) {
-  var classes = _ref8.classes;
-  return _react.default.createElement(MoveIcon, {
-    className: classes.dragHandle
-  });
-});
+exports.FormationsEditForm = FormationsEditForm;
 var StudiesCardEditDialog = StudiesCardEditDialogComponent;
 exports.StudiesCardEditDialog = StudiesCardEditDialog;

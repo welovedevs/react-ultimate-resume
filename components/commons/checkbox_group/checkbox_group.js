@@ -9,15 +9,19 @@ exports.CheckboxGroup = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _ui = require("@wld/ui");
-
-var _reactIntl = require("react-intl");
+var _classnames = _interopRequireDefault(require("classnames"));
 
 var _reactJss = require("react-jss");
 
-var _checkbox_group_styles = require("./checkbox_group_styles");
+var _reactIntl = require("react-intl");
+
+var _ui = require("@wld/ui");
 
 var _checkbox_group = require("../checkbox_field/checkbox_group");
+
+var _checkbox_group_styles = require("./checkbox_group_styles");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -31,9 +35,9 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var useStyles = (0, _reactJss.createUseStyles)(_checkbox_group_styles.checkboxGroupStyles);
+var useStyles = (0, _reactJss.createUseStyles)(_checkbox_group_styles.styles);
 
-var CheckboxGroup = function CheckboxGroup(_ref) {
+var CheckboxGroupComponent = function CheckboxGroupComponent(_ref) {
   var values = _ref.values,
       translations = _ref.translations,
       _ref$value = _ref.value,
@@ -42,7 +46,9 @@ var CheckboxGroup = function CheckboxGroup(_ref) {
       onChange = _ref.onChange,
       _ref$color = _ref.color,
       color = _ref$color === void 0 ? 'secondary' : _ref$color,
-      variant = _ref.variant;
+      variant = _ref.variant,
+      _ref$classes = _ref.classes,
+      receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var classes = useStyles();
 
   var _useIntl = (0, _reactIntl.useIntl)(),
@@ -53,8 +59,6 @@ var CheckboxGroup = function CheckboxGroup(_ref) {
       if (typeof onChange !== 'function') {
         return;
       }
-
-      console.log(value);
 
       if (!value.includes(enumValue)) {
         onChange([].concat(_toConsumableArray(value), [enumValue]));
@@ -67,9 +71,12 @@ var CheckboxGroup = function CheckboxGroup(_ref) {
     };
   }, [value, onChange]);
   return _react.default.createElement("div", {
-    className: classes.checkboxGroup
+    className: (0, _classnames.default)(classes.container, receivedClasses.container)
   }, values.map(function (enumValue, index) {
     return _react.default.createElement(_checkbox_group.CheckboxField, {
+      classes: {
+        container: (0, _classnames.default)(classes.checkboxField, receivedClasses.checkboxField)
+      },
       title: _react.default.createElement(_ui.Typography, null, formatMessage(translations[enumValue])),
       onClick: onFieldClicked(enumValue),
       checked: value.includes(enumValue),
@@ -81,4 +88,5 @@ var CheckboxGroup = function CheckboxGroup(_ref) {
   }));
 };
 
+var CheckboxGroup = CheckboxGroupComponent;
 exports.CheckboxGroup = CheckboxGroup;
