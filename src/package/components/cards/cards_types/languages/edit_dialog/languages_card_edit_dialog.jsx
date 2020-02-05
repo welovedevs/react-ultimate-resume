@@ -8,22 +8,39 @@ import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'r
 
 import uuid from 'uuid/v4';
 
-import { Button, List, ListItem, Tag, TextField, Tooltip, Typography } from '@wld/ui';
+import { List, TextField, Tooltip, Typography } from '@wld/ui';
 
-import { styles } from './languages_styles';
-import translations from './languages_translations';
-import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { useFormikContext } from 'formik';
 import { createUseStyles } from 'react-jss';
+import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
+import { SliderWithPopper } from '../../../../commons/slider_with_popper/slider_with_popper';
+import { AddButton } from '../../../../commons/add_button/add_button';
 
-import { ReactComponent as AddIcon } from '../../../../../assets/icons/add.svg';
 import { ReactComponent as MoveIcon } from '../../../../../assets/icons/move_list.svg';
 import { ReactComponent as TrashIcon } from '../../../../../assets/icons/trash.svg';
-import { SliderWithPopper } from '../../../../commons/slider_with_popper/slider_with_popper';
 
-const DragHandle = SortableHandle(({ classes }) => <MoveIcon className={classes.dragHandle} />);
+import translations from './languages_translations';
+import { styles } from './languages_styles';
 
 const useStyles = createUseStyles(styles);
+
+const LanguagesCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
+    const { formatMessage } = useIntl();
+    const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
+
+    return (
+        <EditDialog
+            open={open}
+            onClose={onClose}
+            data={data}
+            onEdit={onEdit}
+            validationSchema={validationSchemaToPass}
+            title={<FormattedMessage id="Languages.editDialog.title" defaultMessage="Your languages" />}
+        >
+            {helpers => <LanguagesEditForm helpers={helpers} />}
+        </EditDialog>
+    );
+};
 
 const LanguageItem = SortableElement(
     ({ id, language, onChange, onRemove, error: fieldErrors, classes, languageIndex: index }) => {
@@ -34,18 +51,32 @@ const LanguageItem = SortableElement(
         return (
             <div className={classes.itemContainer}>
                 <DragHandle {...{ classes }} />
-                <ListItem className={cn(classes.listItem, fieldErrors && classes.listItemError)}>
+                <div className={classes.divider} />
+                <Tooltip
+                    title={(
+                        <FormattedMessage
+                            id="Main.lang.delete"
+                            defaultMessage="Supprimer"
+                        />
+                    )}
+                >
+                    <button type="button" className={classes.button} onClick={onRemove(id)}>
+                        <TrashIcon className={classes.removeIcon} />
+                    </button>
+                </Tooltip>
+                <div className={classes.divider} />
+                <div className={classes.listItem}>
                     <div className={classes.fieldGroup}>
                         <div className={classes.field}>
                             <Typography color="dark" variant="label">
                                 {formatMessage(translations.language)}
                             </Typography>
                             <TextField
-                                fullwidth
                                 value={language.language}
                                 onChange={handleLanguageChange}
                                 id={`language_language_${id}`}
                                 placeholder={formatMessage(translations.languagePlaceholder)}
+                                variant="flat"
                             />
                             {fieldErrors && fieldErrors.language && (
                                 <Typography color="danger" variant="helper" component="p">
@@ -53,9 +84,15 @@ const LanguageItem = SortableElement(
                                 </Typography>
                             )}
                         </div>
-                        <div className={classes.field}>
-                            <Typography color="dark" variant="label">
-                                {formatMessage(translations.level)}
+                        <div className={cn(classes.field, classes.sliderValueContainer)}>
+                            <Typography
+                                customClasses={{
+                                    container: classes.sliderValue
+                                }}
+                                color="dark"
+                                variant="label"
+                            >
+                                {formatMessage(translations.level, { valueNode: <span className={classes.bolden}>{language.value}</span> })}
                             </Typography>
                             <SliderWithPopper
                                 color="primary"
@@ -65,6 +102,12 @@ const LanguageItem = SortableElement(
                                 min={0}
                                 max={100}
                                 className={classes.slider}
+                                popperCardProps={{
+                                    customClasses: {
+                                        container: classes.sliderPopperCard,
+                                        arrowContainer: classes.sliderPopperCardArrowContainer
+                                    }
+                                }}
                             />
                             {fieldErrors && fieldErrors.value && (
                                 <Typography color="danger" variant="helper" component="p">
@@ -73,12 +116,7 @@ const LanguageItem = SortableElement(
                             )}
                         </div>
                     </div>
-                    <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Supprimer" />}>
-                        <Button className={classes.button} onClick={onRemove(id)}>
-                            <TrashIcon />
-                        </Button>
-                    </Tooltip>
-                </ListItem>
+                </div>
             </div>
         );
     }
@@ -104,6 +142,8 @@ const SortableLanguagesItems = SortableContainer(({ items, onChange, onDelete, e
         ))}
     </List>
 ));
+
+const DragHandle = SortableHandle(({ classes }) => <MoveIcon className={classes.dragHandle} />);
 
 const LanguagesEditForm = ({ helpers: { handleValueChange } }) => {
     const classes = useStyles();
@@ -147,6 +187,7 @@ const LanguagesEditForm = ({ helpers: { handleValueChange } }) => {
     return (
         <>
             <SortableLanguagesItems
+                lockToContainerEdges
                 helperClass={classes.sortableHelper}
                 items={languages}
                 onSortEnd={move}
@@ -159,14 +200,7 @@ const LanguagesEditForm = ({ helpers: { handleValueChange } }) => {
                 errors={validationErrors.languages}
                 {...{ classes }}
             />
-            <div className={classes.addButton} onClick={addLanguage}>
-                <Tag className={classes.addTag}>
-                    <AddIcon />
-                </Tag>
-                <Typography>
-                    <FormattedMessage id="Main.lang.add" defaultMessage="Ajouter" />
-                </Typography>
-            </div>
+            <AddButton onClick={addLanguage} />
             {globalError && (
                 <Typography color="danger" component="p">
                     {validationErrors}
@@ -176,20 +210,4 @@ const LanguagesEditForm = ({ helpers: { handleValueChange } }) => {
     );
 };
 
-export const LanguagesCardEditDialog = ({ data, onEdit, validationSchema, onClose }) => {
-    const { formatMessage } = useIntl();
-    const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
-
-    return (
-        <EditDialog
-            data={data}
-            onEdit={onEdit}
-            onClose={onClose}
-            validationSchema={validationSchemaToPass}
-            open={false}
-            title={<FormattedMessage id="Languages.editDialog.title" defaultMessage="Your languages" />}
-        >
-            {helpers => <LanguagesEditForm helpers={helpers} />}
-        </EditDialog>
-    );
-};
+export const LanguagesCardEditDialog = LanguagesCardEditDialogComponent;

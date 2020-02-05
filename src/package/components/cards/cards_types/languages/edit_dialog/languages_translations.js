@@ -11,6 +11,6 @@ export default defineMessages({
     },
     level: {
         id: 'Languages.editDialog.level.title',
-        defaultMessage: 'Level : '
+        defaultMessage: 'Level: {valueNode}%'
     }
 });
