@@ -13,7 +13,7 @@ import { VisaField } from './visa_field/visa_field';
 import { LocationField } from '../../../../commons/location_field/location_field';
 import { JobSearchStateField } from './job_search_state_field/job_search_state_field';
 
-import { styles } from './basic_card_edit_dialog_styles';
+import { styles } from './basic_edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 

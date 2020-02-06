@@ -3,7 +3,7 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { ExperiencesFront } from './experiences_front/experiences_front';
 import { ExperiencesBack } from './experiences_back/experiences_back';
-import { ExperiencesEditDialog } from './edit_dialog/experiences_card_edit_dialog';
+import { ExperiencesEditDialog } from './experiences_edit_dialog/experiences_edit_dialog';
 import { WorkValidator } from './data/validator';
 import { DeveloperProfileContext } from '../../../profile';
 

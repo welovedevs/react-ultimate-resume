@@ -54,10 +54,6 @@ export const translations = defineMessages({
         id: 'Experiences.editDialog.jobTitleCompanyNoEnd',
         defaultMessage: '{jobTitle} chez {companyName} depuis {start}'
     },
-    warning: {
-        id: 'Experiences.editDialog.warningIcon',
-        defaultMessage: '⚠'
-    },
     jobPlace: {
         id: 'Experiences.editDialog.jobPlace.title',
         defaultMessage: 'Localisation du poste'

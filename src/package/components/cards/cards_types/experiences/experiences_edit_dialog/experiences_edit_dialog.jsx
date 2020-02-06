@@ -3,8 +3,8 @@ import React, { useCallback, useMemo, useState } from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { animated, useTransition, useSpring } from 'react-spring';
 import { Twemoji } from 'react-emoji-render';
-import { animated, useSpring } from 'react-spring';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import { useFormikContext } from 'formik';
 import omit from 'lodash/omit';
@@ -12,23 +12,28 @@ import moment from 'moment';
 import keyBy from 'lodash/keyBy';
 import uuid from 'uuid/v4';
 
-import { Button, Checkbox, List, ListItem, Tag, TextField, Tooltip, Typography } from '@wld/ui';
+import { Checkbox, List, ListItem, TextField, Tooltip, Typography } from '@wld/ui';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { YearMonth } from '../../../../commons/year_month/year_month';
 import { LocationField } from '../../../../commons/location_field/location_field';
+import { AddButton } from '../../../../commons/add_button/add_button';
 
-import { ReactComponent as AddIcon } from '../../../../../assets/icons/add.svg';
 import { ReactComponent as MoveIcon } from '../../../../../assets/icons/move_list.svg';
 import { ReactComponent as DeleteIcon } from '../../../../../assets/icons/trash.svg';
 import { ReactComponent as ArrowIcon } from '../../../../../assets/icons/keyboard_arrow_down.svg';
 
-import { styles } from './experiences_card_edit_dialog_styles';
-import { translations } from './experiences_card_edit_dialog_translations';
+import { styles } from './experiences_edit_dialog_styles';
+import { translations } from './experiences_edit_dialog_translations';
+import { EXPERIENCE_CONTENT_TRANSITION_SPRING_PROPS } from './experiences_edit_dialog_spring_props';
 
 const useStyles = createUseStyles(styles);
 
-const DragHandle = SortableHandle(({ classes }) => <MoveIcon className={classes.dragHandle} />);
+const DragHandle = SortableHandle(({ classes }) => (
+    <button className={classes.dragHandleButton} type="button">
+        <MoveIcon className={classes.dragHandle} />
+    </button>
+));
 
 const ExperiencesEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
     const { formatMessage } = useIntl();
@@ -36,7 +41,7 @@ const ExperiencesEditDialogComponent = ({ open, onClose, data, onEdit, validatio
 
     return (
         <EditDialog
-            open={open}
+            open
             onClose={onClose}
             data={data}
             onEdit={onEdit}
@@ -44,7 +49,7 @@ const ExperiencesEditDialogComponent = ({ open, onClose, data, onEdit, validatio
             title={(
                 <FormattedMessage
                     id="Experiences.editDialog.title"
-                    defaultMessage="Your past and present professional experiences"
+                    defaultMessage="Edit your professional experiences?"
                 />
             )}
         >
@@ -95,11 +100,23 @@ const ExperienceItem = SortableElement(
             rotate: folded ? -90 : 0
         });
 
-        const hasError = !!fieldErrors;
+        const contentTransitions = useTransition(!folded ? experience : null, item => `${item ? 'visible' : 'invisible'}_experience_${item?.id}_content`, ({
+            ...EXPERIENCE_CONTENT_TRANSITION_SPRING_PROPS,
+            unique: true
+        }));
+
+        const hasError = Boolean(fieldErrors);
         return (
             <div className={classes.experience}>
                 <div className={classes.smallItemContainer}>
                     <DragHandle {...{ classes }} />
+                    <div className={classes.divider} />
+                    <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Supprimer" />}>
+                        <button className={classes.removeButton} type="button" onClick={onRemove(id)}>
+                            <DeleteIcon className={classes.removeIcon} />
+                        </button>
+                    </Tooltip>
+                    <div className={classes.divider} />
                     <ListItem
                         button
                         className={cn(classes.listItem, hasError && classes.listItemError)}
@@ -113,30 +130,29 @@ const ExperienceItem = SortableElement(
                         >
                             <ArrowIcon className={cn('refinement-arrow')} />
                         </animated.div>
+                        {hasError && <Twemoji className={classes.warningIcon} svg text="⚠️" />}
                         <Typography className={classes.smallTitle} color="dark">
                             <JobTitle {...{ experience }} />
                         </Typography>
-                        {hasError && <Twemoji svg text={formatMessage(translations.warning)} />}
                     </ListItem>
-                    <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Supprimer" />}>
-                        <Button className={classes.deleteButton} onClick={onRemove(id)}>
-                            <DeleteIcon />
-                        </Button>
-                    </Tooltip>
                 </div>
-                {!folded && (
-                    <ContentFields
-                        {...{
-                            fieldErrors,
-                            id,
-                            formatMessage,
-                            experience,
-                            onChange,
-                            classes,
-                            index
-                        }}
-                    />
-                )}
+                {contentTransitions.map(({ item, key, props }) => item && (
+                    <animated.div
+                        key={key}
+                        style={props}
+                    >
+                        <ContentFields
+                            key={key}
+                            fieldErrors={fieldErrors}
+                            id={id}
+                            formatMessage={formatMessage}
+                            experience={experience}
+                            onChange={onChange}
+                            classes={classes}
+                            index={index}
+                        />
+                    </animated.div>
+                ))}
             </div>
         );
     }
@@ -173,7 +189,7 @@ const ContentFields = ({ fieldErrors, id, formatMessage, experience, onChange, c
             <div className={classes.fields}>
                 <div className={classes.fieldRow}>
                     <div className={classes.fieldContainer}>
-                        <Typography color="dark" variant="label">
+                        <Typography component="p" color="dark" variant="label">
                             {formatMessage(translations.companyName)}
                         </Typography>
                         <TextField
@@ -191,7 +207,7 @@ const ContentFields = ({ fieldErrors, id, formatMessage, experience, onChange, c
                         )}
                     </div>
                     <div className={classes.fieldContainer}>
-                        <Typography color="dark" variant="label">
+                        <Typography component="p" color="dark" variant="label">
                             {formatMessage(translations.jobTitle)}
                         </Typography>
                         <TextField
@@ -211,7 +227,7 @@ const ContentFields = ({ fieldErrors, id, formatMessage, experience, onChange, c
                 </div>
                 <div className={classes.fieldRow}>
                     <div className={classes.fieldContainer}>
-                        <Typography color="dark" variant="label">
+                        <Typography component="p" color="dark" variant="label">
                             {formatMessage(translations.jobPlace)}
                         </Typography>
                         <LocationField
@@ -254,7 +270,7 @@ const ContentFields = ({ fieldErrors, id, formatMessage, experience, onChange, c
                 {!stillEmployed && stillEmployedComponent}
                 <div className={classes.fieldRow}>
                     <div className={cn(classes.fieldContainer, classes.fullWidthFieldContainer)}>
-                        <Typography color="dark" variant="label">
+                        <Typography component="p" color="dark" variant="label">
                             {formatMessage(translations.descriptionTitle)}
                         </Typography>
                         <TextField
@@ -318,7 +334,7 @@ const StillEmployedField = ({ value, classes, handleStillEmployedChange, formatM
             className={cn(classes.fieldContainer, classes.checkboxField)}
             onClick={handleStillEmployedChange}
         >
-            <Checkbox color="secondary" checked={value} variant={'outlined'} />
+            <Checkbox color="secondary" checked={value} variant="outlined" />
             <Typography customClasses={{ container: classes.typography }} color="dark" component="div">
                 {formatMessage(translations.stillEmployed)}
             </Typography>
@@ -364,7 +380,7 @@ const ExperiencesEditForm = ({ helpers: { handleValueChange } }) => {
     );
 
     const addExperience = useCallback(() => {
-        let id = uuid();
+        const id = uuid();
         handleValueChange('work')(
             work.concat({
                 index: work.length,
@@ -392,12 +408,6 @@ const ExperiencesEditForm = ({ helpers: { handleValueChange } }) => {
 
     return (
         <div className={classes.container}>
-            <Typography component="h2" variant="h4">
-                <FormattedMessage
-                    id="Experiences.editDialog.allExperiences"
-                    defaultMessage="Describe all your experiences here"
-                />
-            </Typography>
             <SortableExperiences
                 helperClass={classes.sortableHelper}
                 onSortEnd={move}
@@ -414,14 +424,7 @@ const ExperiencesEditForm = ({ helpers: { handleValueChange } }) => {
                     classes
                 }}
             />
-            <div className={classes.addButton} onClick={addExperience}>
-                <Tag className={classes.addTag}>
-                    <AddIcon />
-                </Tag>
-                <Typography>
-                    <FormattedMessage id="Main.lang.add" defaultMessage="Ajouter" />
-                </Typography>
-            </div>
+            <AddButton onClick={addExperience} />
             {globalError && (
                 <Typography color="danger" component="p">
                     {errors}

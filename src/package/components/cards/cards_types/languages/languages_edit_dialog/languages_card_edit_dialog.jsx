@@ -19,8 +19,8 @@ import { AddButton } from '../../../../commons/add_button/add_button';
 import { ReactComponent as MoveIcon } from '../../../../../assets/icons/move_list.svg';
 import { ReactComponent as TrashIcon } from '../../../../../assets/icons/trash.svg';
 
-import translations from './languages_translations';
-import { styles } from './languages_styles';
+import translations from './languages_edit_dialog_translations';
+import { styles } from './languages_edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
@@ -143,7 +143,11 @@ const SortableLanguagesItems = SortableContainer(({ items, onChange, onDelete, e
     </List>
 ));
 
-const DragHandle = SortableHandle(({ classes }) => <MoveIcon className={classes.dragHandle} />);
+const DragHandle = SortableHandle(({ classes }) => (
+    <button type="button">
+        <MoveIcon className={classes.dragHandle} />
+    </button>
+));
 
 const LanguagesEditForm = ({ helpers: { handleValueChange } }) => {
     const classes = useStyles();
@@ -187,12 +191,12 @@ const LanguagesEditForm = ({ helpers: { handleValueChange } }) => {
     return (
         <>
             <SortableLanguagesItems
+                useDragHandle
                 lockToContainerEdges
                 helperClass={classes.sortableHelper}
                 items={languages}
                 onSortEnd={move}
                 distance={20}
-                useDragHandle
                 lockAxis="y"
                 name="education"
                 onChange={languageChanged}

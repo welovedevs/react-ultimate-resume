@@ -82,9 +82,8 @@ export const styles = (theme) => {
             marginLeft: theme.miscellaneous.spacing
         },
         dragHandle: {
-            cursor: 'Pointer',
-            width: 38,
-            height: 38
+            width: 32,
+            height: 32
         },
         addButton: {
             display: 'flex',

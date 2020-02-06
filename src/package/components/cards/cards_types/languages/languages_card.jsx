@@ -5,7 +5,7 @@ import { LanguagesFront } from './languages_front/languages_front';
 import { LanguagesBack } from './languages_back/languages_back';
 import { DeveloperProfileContext } from '../../../profile';
 import { mapLanguagesFromJsonResume, mapLanguagesToJsonResume } from './data/mapping';
-import { LanguagesCardEditDialog } from './edit_dialog/languages_card_edit_dialog';
+import { LanguagesCardEditDialog } from './languages_edit_dialog/languages_card_edit_dialog';
 import { LanguageValidator } from './data/validator';
 
 const LanguagesCardComponent = ({ variant, side }) => {
