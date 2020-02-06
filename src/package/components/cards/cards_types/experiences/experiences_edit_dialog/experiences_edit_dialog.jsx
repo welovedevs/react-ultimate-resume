@@ -41,7 +41,7 @@ const ExperiencesEditDialogComponent = ({ open, onClose, data, onEdit, validatio
 
     return (
         <EditDialog
-            open
+            open={open}
             onClose={onClose}
             data={data}
             onEdit={onEdit}
