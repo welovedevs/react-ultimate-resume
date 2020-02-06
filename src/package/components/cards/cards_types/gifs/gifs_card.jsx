@@ -5,7 +5,7 @@ import { GifsFront } from './gifs_front/gifs_front';
 import { GifsBack } from './gifs_back/gifs_back';
 import { DeveloperProfileContext } from '../../../profile';
 import { mapInterestsFromJsonResume, mapInterestsToJsonResume } from './data/mapping';
-import { InterestsEditDialog } from './edit_dialog/experiences_card_edit_dialog';
+import { InterestsEditDialog } from './edit_dialog/interests_card_edit_dialog';
 import { InterestsValidator } from './data/validator';
 
 const GifsCardComponent = ({ variant, side }) => {

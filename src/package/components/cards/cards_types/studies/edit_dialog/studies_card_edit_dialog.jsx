@@ -24,6 +24,8 @@ import { ReactComponent as TrashIcon } from '../../../../../assets/icons/trash.s
 import { styles } from './studies_styles';
 import { translations } from './studies_translations';
 
+const DragHandle = SortableHandle(({ classes }) => <MoveIcon className={classes.dragHandle} />);
+
 const useStyles = createUseStyles(styles);
 
 const StudiesCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
@@ -37,15 +39,57 @@ const StudiesCardEditDialogComponent = ({ open, onClose, data, onEdit, validatio
             data={data}
             onEdit={onEdit}
             validationSchema={validationSchemaToPass}
-            title={(
-                <FormattedMessage
-                    id="Basics.editDialog.title"
-                    defaultMessage="Your basic information"
-                />
-            )}
+            title={<FormattedMessage id="Basics.editDialog.title" defaultMessage="Your basic information" />}
         >
-            {helpers => <FormationsEditForm helpers={helpers} />}
+            {helpers => <FormationsEditFormWrapper helpers={helpers} />}
         </EditDialog>
+    );
+};
+
+const FormationsEditFormWrapper = ({ helpers: { handleValueChange } }) => {
+    const {
+        values: { education },
+        errors: validationErrors
+    } = useFormikContext();
+
+    const errors = validationErrors?.education;
+
+    const formationChanged = useCallback((educationsIndex, field, value) => {
+        handleValueChange(`education[${educationsIndex}].${field}`)(value);
+    }, []);
+    const formationDeleted = useCallback(
+        deletedId => () => {
+            handleValueChange('education')(education.filter(({ id }) => deletedId !== id));
+        },
+        [JSON.stringify(education)]
+    );
+
+    const formationAdded = useCallback(() => {
+        const id = uuid();
+        return handleValueChange('education')([
+            ...education,
+            {
+                position: education.length,
+                id
+            }
+        ]);
+    }, [JSON.stringify(education)]);
+    const move = useCallback(
+        ({ oldIndex, newIndex }) => {
+            handleValueChange('education')(arrayMove(education, oldIndex, newIndex));
+        },
+        [JSON.stringify(education)]
+    );
+
+    return (
+        <FormationsEditForm
+            data={education}
+            onMove={move}
+            onAdd={formationAdded}
+            onFieldChange={formationChanged}
+            onDelete={formationDeleted}
+            errors={errors}
+        />
     );
 };
 
@@ -73,88 +117,97 @@ const SelectComponent = memo(({ value, onChange, classes, id }) => {
     );
 });
 
-const FormationItem = SortableElement(({ id, formation, onChange, onRemove, error: fieldErrors, classes, formationIndex: index }) => {
-    const { formatMessage } = useIntl();
+const FormationItem = SortableElement(
+    ({ id, formation, onChange, onRemove, error: fieldErrors, classes, formationIndex: index }) => {
+        const { formatMessage } = useIntl();
 
-    const handleInstitutionChange = useCallback(event => onChange(index, 'institution', event.target.value), [index]);
-    const handleStudyType = useCallback(event => onChange(index, 'studyType', event.target.value), [index]);
-    const handleAreaChange = useCallback(event => onChange(index, 'area', event.target.value), [index]);
-    const handleEndDate = useCallback(value => onChange(index, 'endDate', moment({ year: value })), [index]);
+        const handleInstitutionChange = useCallback(event => onChange(index, 'institution', event.target.value), [
+            index
+        ]);
+        const handleStudyType = useCallback(event => onChange(index, 'studyType', event.target.value), [index]);
+        const handleAreaChange = useCallback(event => onChange(index, 'area', event.target.value), [index]);
+        const handleEndDate = useCallback(value => onChange(index, 'endDate', moment({ year: value })), [index]);
 
-    return (
-        <div className={classes.itemContainer}>
-            <DragHandle classes={classes} />
-            <ListItem className={cn(classes.listItem, fieldErrors && classes.listItemError)}>
-                <div>
-                    <div className={classes.fieldGroup}>
-                        <div className={classes.field}>
-                            <TextField
-                                value={formation.institution}
-                                onChange={handleInstitutionChange}
-                                id={`formation_institution_${id}`}
-                                placeholder={formatMessage(translations.schoolNamePlaceholder)}
-                            />
-                            {fieldErrors && fieldErrors.institution && (
-                                <Typography color="danger" variant="helper" component="p">
-                                    {fieldErrors.institution}
-                                </Typography>
-                            )}
+        return (
+            <div className={classes.itemContainer}>
+                <DragHandle classes={classes} />
+                <ListItem className={cn(classes.listItem, fieldErrors && classes.listItemError)}>
+                    <div>
+                        <div className={classes.fieldGroup}>
+                            <div className={classes.field}>
+                                <TextField
+                                    value={formation.institution}
+                                    onChange={handleInstitutionChange}
+                                    id={`formation_institution_${id}`}
+                                    placeholder={formatMessage(translations.schoolNamePlaceholder)}
+                                />
+                                {fieldErrors && fieldErrors.institution && (
+                                    <Typography color="danger" variant="helper" component="p">
+                                        {fieldErrors.institution}
+                                    </Typography>
+                                )}
+                            </div>
+                            <div className={classes.field}>
+                                <SelectComponent
+                                    onChange={handleEndDate}
+                                    id={formation.id}
+                                    value={formation.endDate}
+                                    classes={classes}
+                                />
+                                {fieldErrors && fieldErrors.endDate && (
+                                    <Typography color="danger" variant="helper" component="p">
+                                        {fieldErrors.endDate}
+                                    </Typography>
+                                )}
+                            </div>
                         </div>
-                        <div className={classes.field}>
-                            <SelectComponent onChange={handleEndDate} id={formation.id} value={formation.endDate} classes={classes} />
-                            {fieldErrors && fieldErrors.endDate && (
-                                <Typography color="danger" variant="helper" component="p">
-                                    {fieldErrors.endDate}
-                                </Typography>
-                            )}
+                        <div className={classes.fieldGroup}>
+                            <div className={classes.field}>
+                                <TextField
+                                    id={`formation_diploma_${id}`}
+                                    label={formatMessage(translations.diplomaTitle)}
+                                    placeholder={formatMessage(translations.diplomaPlaceholder)}
+                                    value={formation.studyType}
+                                    onChange={handleStudyType}
+                                    margin="normal"
+                                    error={fieldErrors && fieldErrors.studyType}
+                                />
+
+                                {fieldErrors && fieldErrors.studyType && (
+                                    <Typography color="danger" variant="helper" component="p">
+                                        {fieldErrors.studyType}
+                                    </Typography>
+                                )}
+                            </div>
+                            <div className={classes.field}>
+                                <TextField
+                                    id={`formation_area_${id}`}
+                                    label={formatMessage(translations.mainCourse)}
+                                    placeholder={formatMessage(translations.mainCoursePlaceholder)}
+                                    value={formation.area}
+                                    onChange={handleAreaChange}
+                                    margin="normal"
+                                    error={fieldErrors && fieldErrors.area}
+                                />
+
+                                {fieldErrors && fieldErrors.area && (
+                                    <Typography color="danger" variant="helper" component="p">
+                                        {fieldErrors.area}
+                                    </Typography>
+                                )}
+                            </div>
                         </div>
                     </div>
-                    <div className={classes.fieldGroup}>
-                        <div className={classes.field}>
-                            <TextField
-                                id={`formation_diploma_${id}`}
-                                label={formatMessage(translations.diplomaTitle)}
-                                placeholder={formatMessage(translations.diplomaPlaceholder)}
-                                value={formation.studyType}
-                                onChange={handleStudyType}
-                                margin="normal"
-                                error={fieldErrors && fieldErrors.studyType}
-                            />
-
-                            {fieldErrors && fieldErrors.studyType && (
-                                <Typography color="danger" variant="helper" component="p">
-                                    {fieldErrors.studyType}
-                                </Typography>
-                            )}
-                        </div>
-                        <div className={classes.field}>
-                            <TextField
-                                id={`formation_area_${id}`}
-                                label={formatMessage(translations.mainCourse)}
-                                placeholder={formatMessage(translations.mainCoursePlaceholder)}
-                                value={formation.area}
-                                onChange={handleAreaChange}
-                                margin="normal"
-                                error={fieldErrors && fieldErrors.area}
-                            />
-
-                            {fieldErrors && fieldErrors.area && (
-                                <Typography color="danger" variant="helper" component="p">
-                                    {fieldErrors.area}
-                                </Typography>
-                            )}
-                        </div>
-                    </div>
-                </div>
-                <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Supprimer" />}>
-                    <Button className={classes.button} onClick={onRemove(id)}>
-                        <TrashIcon />
-                    </Button>
-                </Tooltip>
-            </ListItem>
-        </div>
-    );
-});
+                    <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Supprimer" />}>
+                        <Button className={classes.button} onClick={onRemove(id)}>
+                            <TrashIcon />
+                        </Button>
+                    </Tooltip>
+                </ListItem>
+            </div>
+        );
+    }
+);
 
 const SortableFormationsItems = SortableContainer(
     ({ items, formationChanged, formationDeleted, errors, name, schools, classes }) => (
@@ -179,55 +232,26 @@ const SortableFormationsItems = SortableContainer(
     )
 );
 
-const FormationsEditForm = ({ helpers: { handleValueChange } }) => {
+export const FormationsEditForm = ({ data, onMove, onAdd, onFieldChange, onDelete, errors }) => {
     const classes = useStyles();
-    const {
-        values: { education },
-        errors: validationErrors
-    } = useFormikContext();
-
-    const errors = validationErrors?.education;
-
-    const formationChanged = useCallback(
-        (educationsIndex, field, value) => {
-            handleValueChange(`education[${educationsIndex}].${field}`)(value);
-        }, []
-    );
-    const formationDeleted = useCallback(
-        deletedId => () => {
-            handleValueChange('education')(education.filter(({ id }) => deletedId !== id));
-        },
-        [JSON.stringify(education)]
-    );
-
-    const formationAdded = useCallback(() => {
-        const id = uuid();
-        return handleValueChange('education')([...education, {
-            position: education.length,
-            id
-        }]);
-    }, [JSON.stringify(education)]);
-    const move = useCallback(
-        ({ oldIndex, newIndex }) => {
-            handleValueChange('education')(arrayMove(education, oldIndex, newIndex));
-        },
-        [JSON.stringify(education)]
-    );
     const globalError = typeof errors === 'string' && errors;
 
     return (
         <>
             <SortableFormationsItems
                 helperClass={classes.sortableHelper}
-                items={education}
-                onSortEnd={move}
+                items={data}
+                onSortEnd={onMove}
                 distance={20}
                 useDragHandle
                 lockAxis="y"
                 name="education"
-                {...{ formationChanged, formationDeleted, errors, classes }}
+                formationChanged={onFieldChange}
+                formationDeleted={onDelete}
+                errors={errors}
+                {...{ classes }}
             />
-            <div className={classes.addButton} onClick={formationAdded}>
+            <div className={classes.addButton} onClick={onAdd}>
                 <Tag className={classes.addTag}>
                     <AddIcon />
                 </Tag>
@@ -243,7 +267,5 @@ const FormationsEditForm = ({ helpers: { handleValueChange } }) => {
         </>
     );
 };
-
-const DragHandle = SortableHandle(({ classes }) => <MoveIcon className={classes.dragHandle} />);
 
 export const StudiesCardEditDialog = StudiesCardEditDialogComponent;
