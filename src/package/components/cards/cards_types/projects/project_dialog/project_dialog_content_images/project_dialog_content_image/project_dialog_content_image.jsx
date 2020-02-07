@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { animated, useTransition } from 'react-spring';
@@ -14,6 +14,7 @@ import { ReactComponent as DeleteIcon } from '../../../../../../../assets/icons/
 import { useOpenerState } from '../../../../../../hooks/use_opener_state';
 
 import { styles } from './project_dialog_content_image_styles';
+import { useFormikContext } from 'formik';
 
 const useStyles = createUseStyles(styles);
 
@@ -33,7 +34,7 @@ const ProjectDialogContentImageComponent = ({ component: Component = 'div', url,
         <Component className={classes.container} style={style} {...(isEditing && eventsHandlerElementProps)}>
             <Image url={url} name={name} handleImageClick={handleImageClick} isEditing={isEditing} classes={classes} />
             {editLayerTransitions.map(
-                ({ item, key, props }) => item && <EditLayer key={key} style={props} classes={classes} />
+                ({ item, key, props }) => item && <EditLayer key={key} style={props} classes={classes} url={url} />
             )}
         </Component>
     );
@@ -47,19 +48,28 @@ const Image = ({ url, name, handleImageClick, isEditing, classes }) => {
             </button>
         );
     }
-    return (
-        <img className={classes.image} src={url} alt={`Project ${name}`} />
-    );
+    return <img className={classes.image} src={url} alt={`Project ${name}`} />;
 };
 
-const EditLayer = ({ style, classes }) => (
-    <animated.div className={classes.editLayer} style={style}>
-        <Tooltip title="Supprimer cette image">
-            <button className={classes.deleteButton} type="button">
-                <DeleteIcon className={classes.deleteIcon} />
-            </button>
-        </Tooltip>
-    </animated.div>
-);
+const EditLayer = ({ style, classes, url }) => {
+    const { setFieldValue, values } = useFormikContext();
+
+    const deleteImage = useCallback(() => {
+        setFieldValue(
+            'images',
+            values.images.filter(({ url: urlToKeep }) => url !== urlToKeep)
+        );
+    }, [values.images]);
+
+    return (
+        <animated.div className={classes.editLayer} style={style}>
+            <Tooltip title="Supprimer cette image">
+                <button className={classes.deleteButton} type="button" onClick={deleteImage}>
+                    <DeleteIcon className={classes.deleteIcon} />
+                </button>
+            </Tooltip>
+        </animated.div>
+    );
+};
 
 export const ProjectDialogContentImage = ProjectDialogContentImageComponent;

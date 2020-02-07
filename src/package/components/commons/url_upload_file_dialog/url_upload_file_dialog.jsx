@@ -5,16 +5,12 @@ import { DeveloperProfileContext } from '../../profile';
 import { UploadFileDialog } from '../upload_file_dialog/upload_file_dialog';
 import { UrlInputDialog } from '../url_input_dialog/url_input_dialog';
 
-const UrlUploadFileDialogComponent = (props) => {
+const UrlUploadFileDialogComponent = ({ onAdd, ...props }) => {
     const { onFilesUpload } = useContext(DeveloperProfileContext);
     if (typeof onFilesUpload === 'function') {
-        return (
-            <UploadFileDialog {...props} />
-        );
+        return <UploadFileDialog {...props} onFileUploaded={onAdd} />;
     }
-    return (
-        <UrlInputDialog {...props} />
-    );
+    return <UrlInputDialog {...props} onConfirm={onAdd} />;
 };
 
 export const UrlUploadFileDialog = UrlUploadFileDialogComponent;

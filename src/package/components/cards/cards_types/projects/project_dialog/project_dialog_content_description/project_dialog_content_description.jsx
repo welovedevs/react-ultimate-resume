@@ -7,6 +7,7 @@ import { TextField, Typography } from '@wld/ui';
 import { useIsEditing } from '../../../../../hooks/use_is_editing';
 
 import { styles } from './project_dialog_content_description_styles';
+import { useFormikContext } from 'formik';
 
 const useStyles = createUseStyles(styles);
 
@@ -31,22 +32,33 @@ const DefaultContent = ({ description, classes }) => (
     <Typography customClasses={{ container: classes.typography }}>{description}</Typography>
 );
 
-const EditingContent = ({ description, classes }) => (
-    <>
-        <Typography variant="label" component="div">
-            Description du projet
-        </Typography>
-        <TextField
-            fullWidth
-            multiline
-            rows={8}
-            variant="flat"
-            value={description}
-            customClasses={{
-                container: classes.textField
-            }}
-        />
-    </>
-);
+const EditingContent = ({ classes }) => {
+    const { handleChange, values, errors } = useFormikContext();
+
+    return (
+        <>
+            <Typography variant="label" component="div">
+                Description du projet
+            </Typography>
+            <TextField
+                fullWidth
+                multiline
+                rows={8}
+                variant="flat"
+                onChange={handleChange}
+                name="description"
+                value={values.description}
+                customClasses={{
+                    container: classes.textField
+                }}
+            />
+            {errors?.description && (
+                <Typography color="danger" variant="helper" component="p">
+                    {errors.description}
+                </Typography>
+            )}
+        </>
+    );
+};
 
 export const ProjectDialogContentDescription = ProjectDialogContentDescriptionComponent;

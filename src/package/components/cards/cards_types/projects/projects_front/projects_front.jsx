@@ -11,7 +11,7 @@ import { styles } from './projects_front_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectsFrontComponent = () => {
+const ProjectsFrontComponent = ({ data }) => {
     const classes = useStyles();
     return (
         <>
@@ -24,7 +24,8 @@ const ProjectsFrontComponent = () => {
             </div>
             <div className={classes.content}>
                 <Typography variant="h2" component="h2" customClasses={{ container: classes.text }}>
-                    My 🐶 project: Analytics data platform, 2019
+                    My 🐶 project:
+                    {data.projects?.[0]?.name}
                 </Typography>
             </div>
             <ProfileCardActions>

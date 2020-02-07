@@ -28,17 +28,16 @@ const DeveloperProfileComponent = ({
     onEdit: onEditProps = DEFAULT_FUNCTION,
     isEditing = false,
     onFilesUpload = async () => {
-        await new Promise(resolve => setTimeout(resolve, 5000));
-        return '🧸';
+        return fetch('https://api.thecatapi.com/v1/images/search', {
+            headers: {}
+        })
+            .then(res => res.json())
+            .then(results => results?.[0]?.url);
     },
     ActionButtons,
     BeforeCards
 }) => {
-    const {
-        apikeys,
-        endpoints,
-        cardsOrder
-    } = options;
+    const { apikeys, endpoints, cardsOrder } = options;
     const classes = useStyles(styles);
 
     const onEdit = useCallback(newData => {

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
@@ -15,26 +15,27 @@ import { styles } from './upload_file_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
-const UploadFileDialogComponent = ({ open, onClose }) => {
+const UploadFileDialogComponent = ({ open, onClose, onFileUploaded }) => {
     const classes = useStyles();
     const { onFilesUpload } = useContext(DeveloperProfileContext);
+
+    const onDrop = useCallback(
+        () =>
+            onFilesUpload().then(url => {
+                onFileUploaded(url);
+                return url;
+            }),
+        [onFileUploaded]
+    );
     return (
-        <Dialog
-            open={open}
-            onClose={onClose}
-        >
-            <DialogTitle>
-                Upload un fichier
-            </DialogTitle>
+        <Dialog open={open} onClose={onClose}>
+            <DialogTitle>Upload un fichier</DialogTitle>
             <DialogContent>
-                <FileDropZone onDrop={onFilesUpload} />
+                <FileDropZone onDrop={onDrop} />
             </DialogContent>
             <DialogActions>
                 <Button size="small" onClick={onClose}>
-                    <FormattedMessage
-                        id="Main.lang.close"
-                        defaultMessage="Fermer"
-                    />
+                    <FormattedMessage id="Main.lang.close" defaultMessage="Fermer" />
                 </Button>
             </DialogActions>
         </Dialog>

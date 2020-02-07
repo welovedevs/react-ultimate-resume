@@ -11,7 +11,7 @@ import { styles } from './projects_back_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectsBackComponent = () => {
+const ProjectsBackComponent = ({ data }) => {
     const classes = useStyles();
     return (
         <>
@@ -33,9 +33,9 @@ const ProjectsBackComponent = () => {
                 Projects
             </ProfileCardTitle>
             <ProfileCardContent>
-                <ProjectSection />
-                <ProjectSection />
-                <ProjectSection />
+                {data.projects?.map(project => (
+                    <ProjectSection project={project} key={`project_${project.id}`} />
+                ))}
             </ProfileCardContent>
         </>
     );

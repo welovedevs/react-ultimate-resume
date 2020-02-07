@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Button } from '@wld/ui';
 
@@ -15,71 +15,54 @@ import { ProjectDialogContentDescription } from './project_dialog_content_descri
 import { useHasDialogOpened } from '../../../../commons/profile_card/profile_card_hooks/use_card_has_dialog_opened';
 
 import { styles } from './project_dialog_styles';
+import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
+import { useFormikContext } from 'formik';
+import { ProjectValidator } from '../data/validator';
+import { DeveloperProfileContext } from '../../../../profile';
+import { mapProjectsToJsonResume, mapProjectToJsonResume, updateProjectsArray } from '../data/mapping';
 
 const useStyles = createUseStyles(styles);
 
-const DEFAULT_PROJECT = {
-    title: "Développement d'un serpent connecté",
-    description:
-        "Et oui, vous avez bien entendu !\nUn serpent connecté, c'est comme une montre connectée, mais en serpent, en fait ça ressemble pas une montre, mais ça reste connecté 🚀",
-    images: {
-        random1: {
-            name: 'Random 1',
-            url: 'https://source.unsplash.com/random/1200x600'
-        },
-        random2: {
-            name: 'Random 2',
-            url: 'https://source.unsplash.com/random/1200x600'
-        },
-        random3: {
-            name: 'Random 3',
-            url: 'https://source.unsplash.com/random/1200x600'
-        },
-        random4: {
-            name: 'Random 4',
-            url: 'https://source.unsplash.com/random/1200x600'
-        },
-        random5: {
-            name: 'Random 3',
-            url: 'https://source.unsplash.com/random/1200x600'
-        },
-        random6: {
-            name: 'Random 4',
-            url: 'https://source.unsplash.com/random/1200x600'
-        }
-    }
-};
-
-const ProjectDialogComponent = ({ open, onClose, project }) => {
+const ProjectDialogComponent = ({ open, onClose, project = {} }) => {
     const classes = useStyles();
     const [, setHasDialogOpened] = useHasDialogOpened();
+    const { formatMessage } = useIntl();
+    const { onEdit, data } = useContext(DeveloperProfileContext);
 
+    const onDialogEdited = useCallback(
+        editedData => {
+            console.log({ editedData });
+            onEdit(updateProjectsArray(mapProjectToJsonResume(editedData), data));
+            onClose();
+        },
+        [data]
+    );
+
+    const validator = useMemo(() => ProjectValidator(formatMessage), []);
     useEffect(() => setHasDialogOpened(open), [open]);
 
     return (
-        <Dialog
-            classes={{
-                paper: classes.paper
-            }}
+        <EditDialog
             open={open}
             onClose={onClose}
+            data={project}
+            onEdit={onDialogEdited}
+            validationSchema={validator}
+            title={<FormattedMessage id="Project.editDialog.title" defaultMessage="Le projet en détails" />}
         >
-            <DialogTitle>Le projet en détails</DialogTitle>
-            <DialogContent
-                classes={{
-                    root: classes.content
-                }}
-            >
-                <ProjectDialogContentTitle title={DEFAULT_PROJECT.title} />
-                <ProjectDialogContentDescription description={DEFAULT_PROJECT.description} />
-                <ProjectDialogContentImages images={DEFAULT_PROJECT.images} />
-            </DialogContent>
-            <DialogActions>
-                <Button size="small" onClick={onClose}>
-                    <FormattedMessage id="Main.Lang.Close" defaultMessage="Fermer" />
-                </Button>
-            </DialogActions>
-        </Dialog>
+            {helpers => <ProjectDialogContent helpers={helpers} />}
+        </EditDialog>
+    );
+};
+
+const ProjectDialogContent = () => {
+    const { values: project } = useFormikContext();
+    return (
+        <>
+            <ProjectDialogContentTitle title={project.title} />
+            <ProjectDialogContentDescription description={project.description} />
+            <ProjectDialogContentImages images={project.images} />
+        </>
     );
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { Typography } from '@wld/ui';
@@ -16,49 +16,46 @@ import { styles } from './project_section_styles';
 
 const useStyles = createUseStyles(styles);
 
-const DETAILS = {
-    link: {
-        icon: LinkIcon,
-        value: 'Link'
-    },
-    seeProject: {
-        icon: EyeIcon,
-        value: <SeeProjectDetail />
-    }
-};
-
-const ProjectSectionContainer = ({ projectId, cardVariant }) => {
+const ProjectSectionContainer = ({ project, cardVariant }) => {
     const classes = useStyles();
+
+    const descriptionChunks = useMemo(
+        () =>
+            project.description
+                ?.split('\n')
+                .map((descriptionChunk, index) => (
+                    <p key={`project_description_chunk_${project.id}_${index}`}>{descriptionChunk}</p>
+                )),
+        [project.description]
+    );
+
+    const formattedDate = useMemo(() => project.date?.year(), [project.date]);
     return (
         <ProfileCardSection cardVariant={cardVariant}>
-            <ProfileCardSectionTitle>Analytics platform</ProfileCardSectionTitle>
-            <ProfileCardSectionSubtitle>2019</ProfileCardSectionSubtitle>
+            <ProfileCardSectionTitle>{project.name}</ProfileCardSectionTitle>
+            <ProfileCardSectionSubtitle>{formattedDate}</ProfileCardSectionSubtitle>
             <ProfileCardSectionText customClasses={{ container: classes.sectionText }}>
-                Ruby on Rails backend
-                <br />
-                String interpolation via recursion
-                <br />
-                Bulma CSS frontend
-                <br />
-                Dependency free JS config
-                <br />
-                Just another bullshit here
+                {descriptionChunks}
             </ProfileCardSectionText>
-            <Details classes={classes} projectId={projectId} />
+            <Details classes={classes} project={project} />
         </ProfileCardSection>
     );
 };
 
-const Details = ({ projectId, classes }) => (
+const Details = ({ project, classes }) => (
     <div className={classes.details}>
-        {Object.entries(DETAILS).map(([id, { icon: Icon, value }]) => (
-            <div key={`project_${projectId}_detail_${id}`} className={classes.detail}>
-                <Icon className={classes.detailIcon} />
-                <Typography customClasses={{ container: classes.detailTypography }} color="primary">
-                    {value}
-                </Typography>
-            </div>
-        ))}
+        <div className={classes.detail}>
+            <LinkIcon className={classes.detailIcon} />
+            <Typography customClasses={{ container: classes.detailTypography }} color="primary">
+                Link
+            </Typography>
+        </div>
+        <div className={classes.detail}>
+            <EyeIcon className={classes.detailIcon} />
+            <Typography customClasses={{ container: classes.detailTypography }} color="primary">
+                <SeeProjectDetail project={project} />
+            </Typography>
+        </div>
     </div>
 );
 

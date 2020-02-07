@@ -31,7 +31,8 @@
             "summary": "Description...",
             "location": "Paris, France",
             "highlights": ["Started the company"]
-        }, {
+        },
+        {
             "name": "Company",
             "position": "President",
             "website": "http://company.com",
@@ -84,25 +85,25 @@
         {
             "name": "React",
             "level": "Master",
-            "value" : 100,
+            "value": 100,
             "keywords": ["HTML", "CSS", "Javascript"]
         },
         {
             "name": "Javascript",
             "level": "Master",
-            "value" : 80,
+            "value": 80,
             "keywords": ["HTML", "CSS", "Javascript"]
         },
         {
             "name": "NodeJS",
             "level": "Master",
-            "value" : 40,
+            "value": 40,
             "keywords": ["HTML", "CSS", "Javascript"]
         },
         {
             "name": "Firebase",
             "level": "Master",
-            "value" : 60,
+            "value": 60,
             "keywords": ["HTML", "CSS", "Javascript"]
         }
     ],
@@ -153,14 +154,45 @@
             "reference": "Reference..."
         }
     ],
+    "projects": [
+        {
+            "name": "Développement d'un serpent connecté",
+            "description": "Et oui, vous avez bien entendu !\nUn serpent connecté, c'est comme une montre connectée, mais en serpent, en fait ça ressemble pas une montre, mais ça reste connecté 🚀",
+            "images": [
+                {
+                    "name": "Random 1",
+                    "url": "https://source.unsplash.com/random/1200x600"
+                },
+                {
+                    "name": "Random 2",
+                    "url": "https://source.unsplash.com/random/1200x600"
+                },
+                {
+                    "name": "Random 3",
+                    "url": "https://source.unsplash.com/random/1200x600"
+                },
+                {
+                    "name": "Random 4",
+                    "url": "https://source.unsplash.com/random/1200x600"
+                },
+                {
+                    "name": "Random 3",
+                    "url": "https://source.unsplash.com/random/1200x600"
+                },
+                {
+                    "name": "Random 4",
+                    "url": "https://source.unsplash.com/random/1200x600"
+                }
+            ]
+        }
+    ],
     "specific": {
         "basics": {
             "visaSponsorship": true,
             "personalDescription": "This is a longer description of me, of my backstory, my backyard, my backfire, my backend, my frontend and my friends."
         },
         "dreamJob": {
-            "locations": [
-                {"name": "Lille, France"}, { "name": "Paris,France"}, {"name":"Valenciennes, France"}],
+            "locations": [{ "name": "Lille, France" }, { "name": "Paris,France" }, { "name": "Valenciennes, France" }],
             "remoteFrequency": "regularly",
             "salary": "30k€"
         },
@@ -173,7 +205,7 @@
             "codingYears": 7,
             "codingReason": "J'ai commencé à coder sur Amstrad dans ma cave et je n'ai jamais arrêté depuis",
             "searchState": "activelySearching",
-            "experienceYears" : 9
+            "experienceYears": 9
         },
         "sound": {
             "embedUrl": "https://open.spotify.com/embed/playlist/37i9dQZF1DWWl7MndYYxge"

@@ -7,6 +7,7 @@ import { TextField, Typography } from '@wld/ui';
 import { useIsEditing } from '../../../../../hooks/use_is_editing';
 
 import { styles } from './project_dialog_content_title_styles';
+import { useFormikContext } from 'formik';
 
 const useStyles = createUseStyles(styles);
 
@@ -33,20 +34,31 @@ const DefaultContent = ({ title, classes }) => (
     </Typography>
 );
 
-const EditingContent = ({ title, classes }) => (
-    <>
-        <Typography variant="label" component="div">
-            Titre du projet
-        </Typography>
-        <TextField
-            fullWidth
-            variant="flat"
-            value={title}
-            customClasses={{
-                container: classes.textField
-            }}
-        />
-    </>
-);
+const EditingContent = ({ classes }) => {
+    const { handleChange, values, errors } = useFormikContext();
+
+    return (
+        <>
+            <Typography variant="label" component="div">
+                Titre du projet
+            </Typography>
+            <TextField
+                fullWidth
+                variant="flat"
+                onChange={handleChange}
+                name="name"
+                value={values.name}
+                customClasses={{
+                    container: classes.textField
+                }}
+            />
+            {errors?.name && (
+                <Typography color="danger" variant="helper" component="p">
+                    {errors.name}
+                </Typography>
+            )}
+        </>
+    );
+};
 
 export const ProjectDialogContentTitle = ProjectDialogContentTitleComponent;

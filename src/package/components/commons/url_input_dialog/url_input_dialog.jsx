@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { createUseStyles } from 'react-jss';
 
@@ -14,6 +14,11 @@ const useStyles = createUseStyles(styles);
 
 const UrlInputDialogComponent = ({ open, onClose, onConfirm }) => {
     const classes = useStyles();
+    const [url, setUrl] = useState('');
+
+    const handleTextFieldChange = useCallback(event => setUrl(event.target.value), []);
+    const onClick = useCallback(() => onConfirm(url), [url]);
+
     return (
         <Dialog
             open={open}
@@ -24,11 +29,19 @@ const UrlInputDialogComponent = ({ open, onClose, onConfirm }) => {
         >
             <DialogTitle>Entrer une URL</DialogTitle>
             <DialogContent>
-                <TextField fullWidth placeholder="https://pictures.com/0.jpg" variant="flat" />
+                <TextField
+                    fullWidth
+                    placeholder="https://pictures.com/0.jpg"
+                    variant="flat"
+                    onChange={handleTextFieldChange}
+                    value={url}
+                />
             </DialogContent>
             <DialogActions>
-                <Button onClick={onClose} size="small">Close</Button>
-                <Button color="primary" size="small">
+                <Button onClick={onClose} size="small">
+                    Close
+                </Button>
+                <Button color="primary" size="small" onClick={onClick}>
                     Confirm
                 </Button>
             </DialogActions>
