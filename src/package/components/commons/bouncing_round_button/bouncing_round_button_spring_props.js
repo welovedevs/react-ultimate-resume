@@ -1,4 +1,4 @@
-export const PROFILE_CARD_EDIT_BUTTON_SPRING_PROPS = Object.freeze({
+export const SPRING_PROPS = Object.freeze({
     default: ({
         scale: 1
     }),

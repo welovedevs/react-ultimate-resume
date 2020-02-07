@@ -1,12 +1,14 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 
+import { DeveloperProfileContext } from '../../../profile';
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { GifsFront } from './gifs_front/gifs_front';
 import { GifsBack } from './gifs_back/gifs_back';
-import { DeveloperProfileContext } from '../../../profile';
+import { GifsEditDialog } from './gifs_edit_dialog/gifs_edit_dialog';
+
+import { interestsValidator } from './data/validator';
+
 import { mapInterestsFromJsonResume, mapInterestsToJsonResume } from './data/mapping';
-import { InterestsEditDialog } from './edit_dialog/interests_card_edit_dialog';
-import { InterestsValidator } from './data/validator';
 
 const GifsCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
@@ -25,8 +27,8 @@ const GifsCardComponent = ({ variant, side }) => {
                 back: GifsBack
             }}
             editDialog={{
-                component: InterestsEditDialog,
-                validationSchema: InterestsValidator,
+                component: GifsEditDialog,
+                validationSchema: interestsValidator,
                 onEdit: onDialogEdited
             }}
             variant={variant}

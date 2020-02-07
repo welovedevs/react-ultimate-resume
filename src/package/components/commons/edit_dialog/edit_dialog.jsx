@@ -17,6 +17,7 @@ const useStyles = createUseStyles(styles);
 const EditDialogComponent = ({
     open,
     onClose,
+    fullScreen,
     data,
     onEdit,
     children,
@@ -27,6 +28,7 @@ const EditDialogComponent = ({
     const classes = useStyles();
     return (
         <Dialog
+            fullScreen={fullScreen}
             classes={{
                 paper: cn(classes.paper, receivedClasses.paper)
             }}

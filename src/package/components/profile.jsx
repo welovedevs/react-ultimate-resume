@@ -64,6 +64,8 @@ const DeveloperProfileComponent = ({
         [endpoints, apikeys, data, onEdit, store]
     );
 
+    console.log({ context });
+
     return (
         <div className={classes.container}>
             <DeveloperProfileContext.Provider value={context}>
