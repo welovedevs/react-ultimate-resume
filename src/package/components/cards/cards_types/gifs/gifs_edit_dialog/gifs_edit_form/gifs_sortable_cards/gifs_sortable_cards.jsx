@@ -70,7 +70,7 @@ const SortableGifItem = SortableElement(
          setSelectedIndex,
         classes
      }) => {
-        const handleRemove = useCallback(() => onRemove(index), [index]);
+        const handleRemove = useCallback(() => onRemove(id), [id]);
         const handleChange = useCallback((field) => (value) => onChange(index, field, value), [index]);
         const handleImageEditClick = useCallback(() => setSelectedIndex(index), [index]);
         return (
