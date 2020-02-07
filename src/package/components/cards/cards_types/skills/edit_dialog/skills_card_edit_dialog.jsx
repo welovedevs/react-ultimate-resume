@@ -1,15 +1,16 @@
 import React, { useCallback, useMemo } from 'react';
 
+import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 import { useFormikContext } from 'formik';
 import uuid from 'uuid/v4';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
-import { createUseStyles } from 'react-jss';
-import { styles } from './skills_card_edit_dialog_styles';
 import { TechnologiesPicker } from '../../../../commons/technologies/technologies_picker/technologies_picker';
 import { TechnologiesOrderer } from '../../../../commons/technologies/technologies_ordered/technologies_orderer';
 import SkillsPieChart from '../skills_back/skills_pie_chart/skills_pie_chart';
+
+import { styles } from './skills_card_edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
@@ -17,6 +18,10 @@ const SkillsCardEditDialogComponent = ({ open, onClose, data, onEdit }) => {
     const classes = useStyles();
     return (
         <EditDialog
+            fullScreen
+            classes={{
+                paper: classes.paper
+            }}
             open={open}
             onClose={onClose}
             data={data}
