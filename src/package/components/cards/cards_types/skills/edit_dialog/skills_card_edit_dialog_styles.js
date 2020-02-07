@@ -1,4 +1,8 @@
 export const styles = {
+    paper: {
+        width: '100%',
+        maxWidth: ['none', '!important']
+    },
     container: {
         display: 'flex',
         height: '100%'
