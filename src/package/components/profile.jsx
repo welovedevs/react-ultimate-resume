@@ -34,6 +34,11 @@ const DeveloperProfileComponent = ({
     ActionButtons,
     BeforeCards
 }) => {
+    const {
+        apikeys,
+        endpoints,
+        cardsOrder
+    } = options;
     const classes = useStyles(styles);
 
     const onEdit = useCallback(newData => {
@@ -50,13 +55,13 @@ const DeveloperProfileComponent = ({
             isEditing,
             onEdit,
             onFilesUpload,
-            apiKeys: { giphy: options?.apiKeys?.giphy },
+            apiKeys: { giphy: apikeys?.giphy },
             store,
             endpoints: {
-                devicons: options?.endpoints?.devicons
+                devicons: endpoints?.devicons
             }
         }),
-        [options, data, onEdit, store]
+        [endpoints, apikeys, data, onEdit, store]
     );
 
     return (
@@ -64,7 +69,7 @@ const DeveloperProfileComponent = ({
             <DeveloperProfileContext.Provider value={context}>
                 <Banner>{ActionButtons}</Banner>
                 {BeforeCards}
-                <Cards />
+                <Cards cardsOrder={cardsOrder} />
             </DeveloperProfileContext.Provider>
         </div>
     );
