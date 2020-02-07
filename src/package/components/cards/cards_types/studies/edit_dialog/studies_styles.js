@@ -1,72 +1,54 @@
-export const styles = theme => ({
-    itemContainer: {
-        display: 'flex',
-        alignItems: 'center',
-        padding: theme.miscellaneous.spacing,
-        width: 'fit-content'
-    },
-    listItem: {
-        padding: 0,
-        display: 'flex',
-        alignItems: 'center'
-    },
-    '@media screen and (max-width: 900px)': {
+export const styles = (theme) => {
+    const { palette, miscellaneous: { spacing } } = theme;
+    return ({
+        itemContainer: {
+            width: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            margin: [spacing * 2, 0]
+        },
+        divider: {
+            margin: [0, spacing * 2],
+            height: 50,
+            width: 1,
+            backgroundColor: palette.dark[50]
+        },
+        dragHandleButton: {
+            display: 'flex'
+        },
+        dragHandle: {
+            width: 32,
+            height: 32
+        },
         listItem: {
-            flexWrap: 'wrap'
+            display: 'flex',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            width: '100%'
+        },
+        fieldGroup: {
+            display: 'flex',
+            width: '100%'
+        },
+        field: {
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            margin: spacing
+        },
+        sortableHelper: {
+            zIndex: 1301
+        },
+        button: {
+            padding: spacing * 2,
+            margin: spacing * 2
+        },
+        listItemError: {},
+        removeButton: {
+            display: 'flex'
+        },
+        removeIcon: {
+            fill: palette.danger[500]
         }
-    },
-    sortableHelper: {
-        zIndex: 1301
-    },
-
-    button: {
-        padding: theme.miscellaneous.spacing * 2,
-        margin: theme.miscellaneous.spacing * 2
-    },
-    field: {
-        width: `calc(50% - ${theme.miscellaneous.spacing * 2}px)`,
-        display: 'flex',
-        flexDirection: 'column',
-        margin: theme.miscellaneous.spacing
-    },
-    listItemError: {},
-    handleIcon: {
-        fill: '#5f5f5f !important',
-        marginRight: theme.miscellaneous.spacing * 2,
-        '&:hover': {
-            cursor: 'move'
-        }
-    },
-    tag: {
-        cursor: 'move'
-    },
-    icon: {
-        maxHeight: 18,
-        maxWidth: 18,
-        marginLeft: theme.miscellaneous.spacing
-    },
-    dragHandle: {
-        cursor: 'Pointer',
-        width: 38,
-        height: 38
-    },
-    addButton: {
-        display: 'flex',
-        alignItems: 'center',
-        cursor: 'pointer'
-    },
-    addTag: {
-        padding: theme.miscellaneous.spacing
-    },
-    addIcon: {
-        extend: 'icon'
-    },
-    fieldGroup: {
-        display: 'flex'
-    },
-    selectIcon: {
-        '& svg': {
-            fill: 'none !important'
-        }
-    }
-});
+    })
+};

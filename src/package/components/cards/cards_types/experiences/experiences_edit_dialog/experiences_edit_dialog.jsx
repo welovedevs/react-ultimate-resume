@@ -422,6 +422,7 @@ export const ExperiencesEditForm = ({ data, errors, onAdd, onMove, onFieldChange
     return (
         <div className={classes.container}>
             <SortableExperiences
+                lockToContainerEdges
                 helperClass={classes.sortableHelper}
                 onSortEnd={onMove}
                 items={data}

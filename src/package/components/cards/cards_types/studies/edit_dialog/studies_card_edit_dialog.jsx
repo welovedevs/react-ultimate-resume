@@ -9,7 +9,7 @@ import range from 'lodash/range';
 import moment from 'moment';
 import uuid from 'uuid/v4';
 
-import { Button, List, ListItem, Tag, TextField, Tooltip, Typography } from '@wld/ui';
+import { List, TextField, Tooltip, Typography } from '@wld/ui';
 
 import { MenuItem } from '@material-ui/core';
 
@@ -17,15 +17,19 @@ import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 
 import { Select } from '../../../../commons/select/select';
 
-import { ReactComponent as AddIcon } from '../../../../../assets/icons/add.svg';
 import { ReactComponent as MoveIcon } from '../../../../../assets/icons/move_list.svg';
-import { ReactComponent as TrashIcon } from '../../../../../assets/icons/trash.svg';
+import { ReactComponent as DeleteIcon } from '../../../../../assets/icons/trash.svg';
 
-import { styles } from './studies_styles';
+import { AddButton } from '../../../../commons/add_button/add_button';
+
 import { translations } from './studies_translations';
+import { styles } from './studies_styles';
 
-const DragHandle = SortableHandle(({ classes }) => <MoveIcon className={classes.dragHandle} />);
-
+const DragHandle = SortableHandle(({ classes }) => (
+    <button className={classes.dragHandleButton} type="button">
+        <MoveIcon className={classes.dragHandle} />
+    </button>
+));
 const useStyles = createUseStyles(styles);
 
 const StudiesCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
@@ -107,7 +111,10 @@ const SelectComponent = memo(({ value, onChange, classes, id }) => {
     );
     return (
         <Select
-            variant="outlined"
+            textFieldProps={{
+                fullWidth: true,
+                variant: 'flat'
+            }}
             value={value?.year()}
             onChange={onChange}
             textFieldIconProps={{ className: classes.selectIcon }}
@@ -131,11 +138,19 @@ const FormationItem = SortableElement(
         return (
             <div className={classes.itemContainer}>
                 <DragHandle classes={classes} />
-                <ListItem className={cn(classes.listItem, fieldErrors && classes.listItemError)}>
-                    <div>
+                <div className={classes.divider} />
+                <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Supprimer" />}>
+                    <button className={classes.removeButton} type="button" onClick={onRemove(id)}>
+                        <DeleteIcon className={classes.removeIcon} />
+                    </button>
+                </Tooltip>
+                <div className={classes.divider} />
+                <div className={cn(classes.listItem, fieldErrors && classes.listItemError)}>
                         <div className={classes.fieldGroup}>
                             <div className={classes.field}>
                                 <TextField
+                                    fullWidth
+                                    variant="flat"
                                     value={formation.institution}
                                     onChange={handleInstitutionChange}
                                     id={`formation_institution_${id}`}
@@ -165,6 +180,8 @@ const FormationItem = SortableElement(
                             <div className={classes.field}>
                                 <TextField
                                     id={`formation_diploma_${id}`}
+                                    fullWidth
+                                    variant="flat"
                                     label={formatMessage(translations.diplomaTitle)}
                                     placeholder={formatMessage(translations.diplomaPlaceholder)}
                                     value={formation.studyType}
@@ -182,6 +199,8 @@ const FormationItem = SortableElement(
                             <div className={classes.field}>
                                 <TextField
                                     id={`formation_area_${id}`}
+                                    fullWidth
+                                    variant="flat"
                                     label={formatMessage(translations.mainCourse)}
                                     placeholder={formatMessage(translations.mainCoursePlaceholder)}
                                     value={formation.area}
@@ -196,14 +215,8 @@ const FormationItem = SortableElement(
                                     </Typography>
                                 )}
                             </div>
-                        </div>
                     </div>
-                    <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Supprimer" />}>
-                        <Button className={classes.button} onClick={onRemove(id)}>
-                            <TrashIcon />
-                        </Button>
-                    </Tooltip>
-                </ListItem>
+                </div>
             </div>
         );
     }
@@ -239,6 +252,7 @@ export const FormationsEditForm = ({ data, onMove, onAdd, onFieldChange, onDelet
     return (
         <>
             <SortableFormationsItems
+                lockToContainerEdges
                 helperClass={classes.sortableHelper}
                 items={data}
                 onSortEnd={onMove}
@@ -251,14 +265,7 @@ export const FormationsEditForm = ({ data, onMove, onAdd, onFieldChange, onDelet
                 errors={errors}
                 {...{ classes }}
             />
-            <div className={classes.addButton} onClick={onAdd}>
-                <Tag className={classes.addTag}>
-                    <AddIcon />
-                </Tag>
-                <Typography>
-                    <FormattedMessage id="Main.lang.add" defaultMessage="Ajouter" />
-                </Typography>
-            </div>
+            <AddButton onClick={onAdd} />
             {globalError && (
                 <Typography color="danger" component="p">
                     {errors}

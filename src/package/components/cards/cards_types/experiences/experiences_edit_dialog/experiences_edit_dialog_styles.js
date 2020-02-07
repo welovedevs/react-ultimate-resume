@@ -1,5 +1,3 @@
-import { getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
-
 export const styles = (theme) => {
     const { palette, miscellaneous: { spacing } } = theme;
     return ({
@@ -48,7 +46,6 @@ export const styles = (theme) => {
             display: 'flex',
             alignItems: 'center'
         },
-
         smallTitle: {
             marginLeft: spacing * 2,
             textOverflow: 'ellipsis',
