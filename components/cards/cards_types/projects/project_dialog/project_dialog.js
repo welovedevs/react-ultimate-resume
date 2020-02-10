@@ -1,6 +1,6 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -13,21 +13,29 @@ var _reactJss = require("react-jss");
 
 var _reactIntl = require("react-intl");
 
-var _ui = require("@wld/ui");
-
-var _core = require("@material-ui/core");
-
-var _dialog_title = require("../../../../commons/dialog/dialog_title/dialog_title");
-
 var _project_dialog_content_title = require("./project_dialog_content_title/project_dialog_content_title");
 
 var _project_dialog_content_images = require("./project_dialog_content_images/project_dialog_content_images");
 
 var _project_dialog_content_description = require("./project_dialog_content_description/project_dialog_content_description");
 
+var _project_dialog_content_date = require("./project_dialog_content_date/project_dialog_content_date");
+
 var _use_card_has_dialog_opened = require("../../../../commons/profile_card/profile_card_hooks/use_card_has_dialog_opened");
 
 var _project_dialog_styles = require("./project_dialog_styles");
+
+var _edit_dialog = require("../../../../commons/edit_dialog/edit_dialog");
+
+var _formik = require("formik");
+
+var _validator = require("../data/validator");
+
+var _profile = require("../../../../profile");
+
+var _mapping = require("../data/mapping");
+
+var _project_dialog_content_link = require("./project_dialog_content_link/project_dialog_content_link");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -42,73 +50,78 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var useStyles = (0, _reactJss.createUseStyles)(_project_dialog_styles.styles);
-var DEFAULT_PROJECT = {
-  title: "Développement d'un serpent connecté",
-  description: "Et oui, vous avez bien entendu !\nUn serpent connecté, c'est comme une montre connectée, mais en serpent, en fait ça ressemble pas une montre, mais ça reste connecté 🚀",
-  images: {
-    random1: {
-      name: 'Random 1',
-      url: 'https://source.unsplash.com/random/1200x600'
-    },
-    random2: {
-      name: 'Random 2',
-      url: 'https://source.unsplash.com/random/1200x600'
-    },
-    random3: {
-      name: 'Random 3',
-      url: 'https://source.unsplash.com/random/1200x600'
-    },
-    random4: {
-      name: 'Random 4',
-      url: 'https://source.unsplash.com/random/1200x600'
-    },
-    random5: {
-      name: 'Random 3',
-      url: 'https://source.unsplash.com/random/1200x600'
-    },
-    random6: {
-      name: 'Random 4',
-      url: 'https://source.unsplash.com/random/1200x600'
-    }
-  }
-};
 
 var ProjectDialogComponent = function ProjectDialogComponent(_ref) {
   var open = _ref.open,
       onClose = _ref.onClose,
-      project = _ref.project;
+      _ref$project = _ref.project,
+      project = _ref$project === void 0 ? {} : _ref$project;
   var classes = useStyles();
 
   var _useHasDialogOpened = (0, _use_card_has_dialog_opened.useHasDialogOpened)(),
       _useHasDialogOpened2 = _slicedToArray(_useHasDialogOpened, 2),
       setHasDialogOpened = _useHasDialogOpened2[1];
 
+  var _useIntl = (0, _reactIntl.useIntl)(),
+      formatMessage = _useIntl.formatMessage;
+
+  var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
+      onEdit = _useContext.onEdit,
+      data = _useContext.data;
+
+  var onDialogEdited = (0, _react.useCallback)(function (editedData) {
+    console.log({
+      editedData: editedData
+    });
+    onEdit((0, _mapping.updateProjectsArray)((0, _mapping.mapProjectToJsonResume)(editedData), data));
+    onClose();
+  }, [data]);
+  var validator = (0, _react.useMemo)(function () {
+    return (0, _validator.ProjectValidator)(formatMessage);
+  }, []);
   (0, _react.useEffect)(function () {
     return setHasDialogOpened(open);
   }, [open]);
-  return _react.default.createElement(_core.Dialog, {
+  return _react.default.createElement(_edit_dialog.EditDialog, {
     classes: {
+      content: classes.container,
       paper: classes.paper
     },
     open: open,
-    onClose: onClose
-  }, _react.default.createElement(_dialog_title.DialogTitle, null, "Le projet en d\xE9tails"), _react.default.createElement(_core.DialogContent, {
-    classes: {
-      root: classes.content
-    }
+    onClose: onClose,
+    data: project,
+    onEdit: onDialogEdited,
+    validationSchema: validator,
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Project.editDialog.title",
+      defaultMessage: "Le projet en d\xE9tails"
+    })
+  }, function (helpers) {
+    return _react.default.createElement(ProjectDialogContent, {
+      helpers: helpers
+    });
+  });
+};
+
+var ProjectDialogContent = function ProjectDialogContent() {
+  var classes = useStyles();
+
+  var _useFormikContext = (0, _formik.useFormikContext)(),
+      project = _useFormikContext.values;
+
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: classes.headrow
   }, _react.default.createElement(_project_dialog_content_title.ProjectDialogContentTitle, {
-    title: DEFAULT_PROJECT.title
-  }), _react.default.createElement(_project_dialog_content_description.ProjectDialogContentDescription, {
-    description: DEFAULT_PROJECT.description
+    title: project.title
+  }), _react.default.createElement(_project_dialog_content_date.ProjectDialogContentDate, {
+    date: project.data
+  })), _react.default.createElement(_project_dialog_content_description.ProjectDialogContentDescription, {
+    description: project.description
+  }), _react.default.createElement(_project_dialog_content_link.ProjectDialogContentLink, {
+    link: project.link
   }), _react.default.createElement(_project_dialog_content_images.ProjectDialogContentImages, {
-    images: DEFAULT_PROJECT.images
-  })), _react.default.createElement(_core.DialogActions, null, _react.default.createElement(_ui.Button, {
-    size: "small",
-    onClick: onClose
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Main.Lang.Close",
-    defaultMessage: "Fermer"
-  }))));
+    images: project.images
+  }));
 };
 
 var ProjectDialog = ProjectDialogComponent;

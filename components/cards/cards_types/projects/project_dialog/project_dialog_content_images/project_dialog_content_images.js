@@ -1,6 +1,6 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -29,6 +29,8 @@ var _use_card_variant = require("../../../../../commons/profile_card/profile_car
 
 var _styles_utils = require("../../../../../../utils/styles/styles_utils");
 
+var _string_utils = require("../../../../../../utils/string_utils");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -50,7 +52,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var useStyles = (0, _reactJss.createUseStyles)(_project_dialog_content_images_styles.styles);
 
 var ProjectDialogContentImagesComponent = function ProjectDialogContentImagesComponent(_ref) {
-  var images = _ref.images;
+  var _ref$images = _ref.images,
+      images = _ref$images === void 0 ? [] : _ref$images;
   var classes = useStyles();
   var theme = (0, _reactJss.useTheme)();
 
@@ -67,22 +70,16 @@ var ProjectDialogContentImagesComponent = function ProjectDialogContentImagesCom
       modalCarouselIndex = _useState2[0],
       setModelCarouselIndex = _useState2[1];
 
-  var imagesEntries = (0, _react.useMemo)(function () {
-    return images && Object.entries(images);
-  }, [images]);
   var views = (0, _react.useMemo)(function () {
-    return imagesEntries.map(function (_ref2) {
-      var _ref3 = _slicedToArray(_ref2, 2),
-          _ref3$ = _ref3[1],
-          name = _ref3$.name,
-          url = _ref3$.url;
-
+    return images.map(function (_ref2) {
+      var name = _ref2.name,
+          url = _ref2.url;
       return {
         caption: name,
         src: url
       };
     });
-  }, [imagesEntries]);
+  }, [images]);
   var handleImageClick = (0, _react.useCallback)(function (index) {
     return function () {
       if (isEditing) {
@@ -95,11 +92,9 @@ var ProjectDialogContentImagesComponent = function ProjectDialogContentImagesCom
   var handleModalClose = (0, _react.useCallback)(function () {
     return setModelCarouselIndex(null);
   }, []);
-  var transitions = (0, _reactSpring.useTransition)(imagesEntries, function (_ref4) {
-    var _ref5 = _slicedToArray(_ref4, 1),
-        id = _ref5[0];
-
-    return "project_image_".concat(id);
+  var transitions = (0, _reactSpring.useTransition)(images, function (_ref3, index) {
+    var url = _ref3.url;
+    return "project_image_".concat(index, "_").concat((0, _string_utils.hashCode)(url));
   }, _objectSpread({}, _project_dialog_content_images_transitions_spring_props.PROJECT_DIALOG_CONTENT_IMAGES_TRANSITIONS_SPRING_PROPS, {}, isEditing && {
     immediate: true,
     trail: 0
@@ -121,16 +116,16 @@ var ProjectDialogContentImagesComponent = function ProjectDialogContentImagesCom
   }, [theme, variant]);
   return _react.default.createElement("div", {
     className: classes.container
-  }, isEditing && _react.default.createElement(_project_dialog_content_add_image.ProjectDialogContentAddImage, null), transitions.map(function (_ref6, index) {
-    var item = _ref6.item,
-        key = _ref6.key,
-        props = _ref6.props;
+  }, isEditing && _react.default.createElement(_project_dialog_content_add_image.ProjectDialogContentAddImage, null), transitions.map(function (_ref4, index) {
+    var item = _ref4.item,
+        key = _ref4.key,
+        props = _ref4.props;
     return _react.default.createElement(_project_dialog_content_image.ProjectDialogContentImage, {
       key: key,
       component: isEditing ? _reactSpring.animated.button : _reactSpring.animated.div,
       style: props,
-      url: item[1].url,
-      name: item[1].name,
+      url: item.url,
+      name: item.name,
       handleImageClick: handleImageClick(index)
     });
   }), _react.default.createElement(_reactImages.ModalGateway, null, modalCarouselIndex !== null && _react.default.createElement(_reactImages.Modal, {

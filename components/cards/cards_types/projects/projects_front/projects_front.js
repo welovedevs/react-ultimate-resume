@@ -21,7 +21,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var useStyles = (0, _reactJss.createUseStyles)(_projects_front_styles.styles);
 
-var ProjectsFrontComponent = function ProjectsFrontComponent() {
+var ProjectsFrontComponent = function ProjectsFrontComponent(_ref) {
+  var _data$projects, _data$projects$;
+
+  var data = _ref.data;
   var classes = useStyles();
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: classes.background
@@ -37,7 +40,7 @@ var ProjectsFrontComponent = function ProjectsFrontComponent() {
     customClasses: {
       container: classes.text
     }
-  }, "My \uD83D\uDC36 project: Analytics data platform, 2019")), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, null, "2 more projects")));
+  }, "My \uD83D\uDC36 project:", (_data$projects = data.projects) === null || _data$projects === void 0 ? void 0 : (_data$projects$ = _data$projects[0]) === null || _data$projects$ === void 0 ? void 0 : _data$projects$.name)), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, null, "2 more projects")));
 };
 
 var ProjectsFront = ProjectsFrontComponent;

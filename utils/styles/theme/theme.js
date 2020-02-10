@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.buildTheme = exports.DEFAULT_THEME = void 0;
+exports.buildTheme = exports.getRandomCardVariant = exports.DEFAULT_THEME = void 0;
 
 var _mergeWith = _interopRequireDefault(require("lodash/mergeWith"));
 
@@ -90,6 +90,7 @@ var DEFAULT_PALETTE = Object.freeze({
   },
   light: {
     500: '#fff',
+    800: '#f6f6f6',
     900: '#fff',
     contrastDefaultColor: 'dark'
   },
@@ -173,6 +174,14 @@ var DEFAULT_THEME = Object.freeze({
   }
 });
 exports.DEFAULT_THEME = DEFAULT_THEME;
+
+var getRandomCardVariant = function getRandomCardVariant(theme) {
+  var _theme$components, _theme$components$car, _theme$components$car2;
+
+  return Math.floor(Math.random() * ((_theme$components = theme.components) === null || _theme$components === void 0 ? void 0 : (_theme$components$car = _theme$components.cards) === null || _theme$components$car === void 0 ? void 0 : (_theme$components$car2 = _theme$components$car.variants) === null || _theme$components$car2 === void 0 ? void 0 : _theme$components$car2.length));
+};
+
+exports.getRandomCardVariant = getRandomCardVariant;
 
 var mergeFunction = function mergeFunction(objValue, srcValue) {
   if ((0, _isArray.default)(objValue)) {

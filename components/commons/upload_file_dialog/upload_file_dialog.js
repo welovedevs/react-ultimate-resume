@@ -1,6 +1,6 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -33,17 +33,24 @@ var useStyles = (0, _reactJss.createUseStyles)(_upload_file_dialog_styles.styles
 
 var UploadFileDialogComponent = function UploadFileDialogComponent(_ref) {
   var open = _ref.open,
-      onClose = _ref.onClose;
+      onClose = _ref.onClose,
+      onFileUploaded = _ref.onFileUploaded;
   var classes = useStyles();
 
   var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
       onFilesUpload = _useContext.onFilesUpload;
 
+  var onDrop = (0, _react.useCallback)(function () {
+    return onFilesUpload().then(function (url) {
+      onFileUploaded(url);
+      return url;
+    });
+  }, [onFileUploaded]);
   return _react.default.createElement(_core.Dialog, {
     open: open,
     onClose: onClose
   }, _react.default.createElement(_dialog_title.DialogTitle, null, "Upload un fichier"), _react.default.createElement(_core.DialogContent, null, _react.default.createElement(_file_drop_zone.FileDropZone, {
-    onDrop: onFilesUpload
+    onDrop: onDrop
   })), _react.default.createElement(_core.DialogActions, null, _react.default.createElement(_ui.Button, {
     size: "small",
     onClick: onClose

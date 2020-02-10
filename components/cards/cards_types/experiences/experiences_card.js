@@ -1,6 +1,6 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -15,7 +15,7 @@ var _experiences_front = require("./experiences_front/experiences_front");
 
 var _experiences_back = require("./experiences_back/experiences_back");
 
-var _experiences_card_edit_dialog = require("./edit_dialog/experiences_card_edit_dialog");
+var _experiences_edit_dialog = require("./experiences_edit_dialog/experiences_edit_dialog");
 
 var _validator = require("./data/validator");
 
@@ -50,7 +50,7 @@ var ExperiencesCardComponent = function ExperiencesCardComponent(_ref) {
       back: _experiences_back.ExperiencesBack
     },
     editDialog: {
-      component: _experiences_card_edit_dialog.ExperiencesEditDialog,
+      component: _experiences_edit_dialog.ExperiencesEditDialog,
       validationSchema: _validator.WorkValidator,
       onEdit: onDialogEdited
     },

@@ -15,6 +15,8 @@ var _use_is_editing = require("../../../../../hooks/use_is_editing");
 
 var _project_dialog_content_description_styles = require("./project_dialog_content_description_styles");
 
+var _formik = require("formik");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -75,8 +77,13 @@ var DefaultContent = function DefaultContent(_ref3) {
 };
 
 var EditingContent = function EditingContent(_ref4) {
-  var description = _ref4.description,
-      classes = _ref4.classes;
+  var classes = _ref4.classes;
+
+  var _useFormikContext = (0, _formik.useFormikContext)(),
+      handleChange = _useFormikContext.handleChange,
+      values = _useFormikContext.values,
+      errors = _useFormikContext.errors;
+
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_ui.Typography, {
     variant: "label",
     component: "div"
@@ -85,11 +92,17 @@ var EditingContent = function EditingContent(_ref4) {
     multiline: true,
     rows: 8,
     variant: "flat",
-    value: description,
+    onChange: handleChange,
+    name: "description",
+    value: values.description,
     customClasses: {
       container: classes.textField
     }
-  }));
+  }), (errors === null || errors === void 0 ? void 0 : errors.description) && _react.default.createElement(_ui.Typography, {
+    color: "danger",
+    variant: "helper",
+    component: "p"
+  }, errors.description));
 };
 
 var ProjectDialogContentDescription = ProjectDialogContentDescriptionComponent;

@@ -1,6 +1,6 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -17,13 +17,13 @@ var _interested_by_back = require("./interested_by_back/interested_by_back");
 
 var _data_mapping = require("../../utils/data_mapping");
 
-var _validator = require("./data/validator");
+var _interested_by_edit_dialog = require("./interested_by_edit_dialog/interested_by_edit_dialog");
+
+var _profile = require("../../../profile");
 
 var _mapping = require("./data/mapping");
 
-var _interested_by_edit_dialog = require("./edit_dialog/interested_by_edit_dialog");
-
-var _profile = require("../../../profile");
+var _validator = require("./data/validator");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -39,10 +39,10 @@ var InterestedByCardComponent = function InterestedByCardComponent(_ref) {
       isEditing = _useContext.isEditing;
 
   var mappedData = (0, _react.useMemo)(function () {
-    return (0, _data_mapping.JsonResumeToFlatObject)(data, _mapping.InterestedByMapping);
+    return (0, _data_mapping.JsonResumeToFlatObject)(data, _mapping.interestedByMapping);
   }, [data]);
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
-    onEdit((0, _data_mapping.FlatObjectToJsonResume)(editedData, _mapping.InterestedByMapping));
+    onEdit((0, _data_mapping.FlatObjectToJsonResume)(editedData, _mapping.interestedByMapping));
   }, []);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card.ProfileCard, {
     data: mappedData,
@@ -53,7 +53,7 @@ var InterestedByCardComponent = function InterestedByCardComponent(_ref) {
     },
     editDialog: {
       component: _interested_by_edit_dialog.InterestedByEditDialog,
-      validationSchema: _validator.InterestedByValidationSchema,
+      validationSchema: _validator.interestedByValidationSchema,
       onEdit: onDialogEdited
     },
     variant: variant,

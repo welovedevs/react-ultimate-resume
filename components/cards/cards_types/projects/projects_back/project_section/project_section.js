@@ -1,11 +1,13 @@
 "use strict";
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.ProjectSection = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _reactJss = require("react-jss");
 
@@ -23,15 +25,9 @@ var _see_project_detail = require("../../see_project_detail/see_project_detail")
 
 var _project_section_styles = require("./project_section_styles");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var LinkIcon = function LinkIcon(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("path", {
@@ -71,57 +67,65 @@ EyeIcon.defaultProps = {
   xmlns: "http://www.w3.org/2000/svg"
 };
 var useStyles = (0, _reactJss.createUseStyles)(_project_section_styles.styles);
-var DETAILS = {
-  link: {
-    icon: LinkIcon,
-    value: 'Link'
-  },
-  seeProject: {
-    icon: EyeIcon,
-    value: _react.default.createElement(_see_project_detail.SeeProjectDetail, null)
-  }
-};
 
 var ProjectSectionContainer = function ProjectSectionContainer(_ref) {
-  var projectId = _ref.projectId,
+  var project = _ref.project,
       cardVariant = _ref.cardVariant;
   var classes = useStyles();
+  var descriptionChunks = (0, _react.useMemo)(function () {
+    var _project$description;
+
+    return (_project$description = project.description) === null || _project$description === void 0 ? void 0 : _project$description.split('\n').map(function (descriptionChunk, index) {
+      return _react.default.createElement("p", {
+        key: "project_description_chunk_".concat(project.id, "_").concat(index)
+      }, descriptionChunk);
+    });
+  }, [project.description]);
+  var formattedDate = (0, _react.useMemo)(function () {
+    var _project$date;
+
+    return (_project$date = project.date) === null || _project$date === void 0 ? void 0 : _project$date.year();
+  }, [project.date]);
   return _react.default.createElement(_profile_card_section.ProfileCardSection, {
     cardVariant: cardVariant
-  }, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, "Analytics platform"), _react.default.createElement(_profile_card_section_subtitle.ProfileCardSectionSubtitle, null, "2019"), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, {
+  }, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, project.name), _react.default.createElement(_profile_card_section_subtitle.ProfileCardSectionSubtitle, null, formattedDate), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, {
     customClasses: {
       container: classes.sectionText
     }
-  }, "Ruby on Rails backend", _react.default.createElement("br", null), "String interpolation via recursion", _react.default.createElement("br", null), "Bulma CSS frontend", _react.default.createElement("br", null), "Dependency free JS config", _react.default.createElement("br", null), "Just another bullshit here"), _react.default.createElement(Details, {
+  }, descriptionChunks), _react.default.createElement(Details, {
     classes: classes,
-    projectId: projectId
+    project: project
   }));
 };
 
 var Details = function Details(_ref2) {
-  var projectId = _ref2.projectId,
+  var project = _ref2.project,
       classes = _ref2.classes;
   return _react.default.createElement("div", {
     className: classes.details
-  }, Object.entries(DETAILS).map(function (_ref3) {
-    var _ref4 = _slicedToArray(_ref3, 2),
-        id = _ref4[0],
-        _ref4$ = _ref4[1],
-        Icon = _ref4$.icon,
-        value = _ref4$.value;
-
-    return _react.default.createElement("div", {
-      key: "project_".concat(projectId, "_detail_").concat(id),
-      className: classes.detail
-    }, _react.default.createElement(Icon, {
-      className: classes.detailIcon
-    }), _react.default.createElement(_ui.Typography, {
-      customClasses: {
-        container: classes.detailTypography
-      },
-      color: "primary"
-    }, value));
-  }));
+  }, _react.default.createElement("div", {
+    className: classes.detail
+  }, _react.default.createElement(LinkIcon, {
+    className: classes.detailIcon
+  }), _react.default.createElement("a", {
+    href: project.link
+  }, _react.default.createElement(_ui.Typography, {
+    customClasses: {
+      container: classes.detailTypography
+    },
+    color: "primary"
+  }, "Link"))), _react.default.createElement("div", {
+    className: classes.detail
+  }, _react.default.createElement(EyeIcon, {
+    className: classes.detailIcon
+  }), _react.default.createElement(_ui.Typography, {
+    customClasses: {
+      container: classes.detailTypography
+    },
+    color: "primary"
+  }, _react.default.createElement(_see_project_detail.SeeProjectDetail, {
+    project: project
+  }))));
 };
 
 var ProjectSection = ProjectSectionContainer;

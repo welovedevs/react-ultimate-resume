@@ -1,6 +1,6 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -73,15 +73,17 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
-            return new Promise(function (resolve) {
-              return setTimeout(resolve, 5000);
-            });
+            return _context.abrupt("return", fetch('https://api.thecatapi.com/v1/images/search', {
+              headers: {}
+            }).then(function (res) {
+              return res.json();
+            }).then(function (results) {
+              var _results$;
 
-          case 2:
-            return _context.abrupt("return", '🧸');
+              return results === null || results === void 0 ? void 0 : (_results$ = results[0]) === null || _results$ === void 0 ? void 0 : _results$.url;
+            }));
 
-          case 3:
+          case 1:
           case "end":
             return _context.stop();
         }
@@ -90,6 +92,9 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
   })) : _ref$onFilesUpload,
       ActionButtons = _ref.ActionButtons,
       BeforeCards = _ref.BeforeCards;
+  var apiKeys = options.apiKeys,
+      endpoints = options.endpoints,
+      cardsOrder = options.cardsOrder;
   var classes = useStyles(_profile_styles.styles);
   var onEdit = (0, _react.useCallback)(function (newData) {
     if (typeof onEditProps === 'function') {
@@ -100,27 +105,27 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
     technologies: (0, _react.useReducer)(_technologies_reducer.technologiesReducer, _technologies_reducer.technologiesInitialState)
   };
   var context = (0, _react.useMemo)(function () {
-    var _options$apiKeys, _options$endpoints;
-
     return {
       data: data,
       isEditing: isEditing,
       onEdit: onEdit,
       onFilesUpload: onFilesUpload,
       apiKeys: {
-        giphy: options === null || options === void 0 ? void 0 : (_options$apiKeys = options.apiKeys) === null || _options$apiKeys === void 0 ? void 0 : _options$apiKeys.giphy
+        giphy: apiKeys === null || apiKeys === void 0 ? void 0 : apiKeys.giphy
       },
       store: store,
       endpoints: {
-        devicons: options === null || options === void 0 ? void 0 : (_options$endpoints = options.endpoints) === null || _options$endpoints === void 0 ? void 0 : _options$endpoints.devicons
+        devicons: endpoints === null || endpoints === void 0 ? void 0 : endpoints.devicons
       }
     };
-  }, [options, data, onEdit, store]);
+  }, [endpoints, apiKeys, data, onEdit, store]);
   return _react.default.createElement("div", {
     className: classes.container
   }, _react.default.createElement(DeveloperProfileContext.Provider, {
     value: context
-  }, _react.default.createElement(_banner.Banner, null, ActionButtons), BeforeCards, _react.default.createElement(_cards.Cards, null)));
+  }, _react.default.createElement(_banner.Banner, null, ActionButtons), BeforeCards, _react.default.createElement(_cards.Cards, {
+    cardsOrder: cardsOrder
+  })));
 };
 
 var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3) {

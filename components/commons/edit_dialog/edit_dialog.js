@@ -1,6 +1,6 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -34,6 +34,7 @@ var useStyles = (0, _reactJss.createUseStyles)(_edit_dialog_styles.styles);
 var EditDialogComponent = function EditDialogComponent(_ref) {
   var open = _ref.open,
       onClose = _ref.onClose,
+      fullScreen = _ref.fullScreen,
       data = _ref.data,
       onEdit = _ref.onEdit,
       children = _ref.children,
@@ -44,6 +45,7 @@ var EditDialogComponent = function EditDialogComponent(_ref) {
       receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var classes = useStyles();
   return _react.default.createElement(_core.Dialog, {
+    fullScreen: fullScreen,
     classes: {
       paper: (0, _classnames.default)(classes.paper, receivedClasses.paper)
     },

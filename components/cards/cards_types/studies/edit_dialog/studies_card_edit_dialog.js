@@ -1,6 +1,6 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -33,9 +33,11 @@ var _edit_dialog = require("../../../../commons/edit_dialog/edit_dialog");
 
 var _select = require("../../../../commons/select/select");
 
-var _studies_styles = require("./studies_styles");
+var _add_button = require("../../../../commons/add_button/add_button");
 
 var _studies_translations = require("./studies_translations");
+
+var _studies_styles = require("./studies_styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53,20 +55,6 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var AddIcon = function AddIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("path", {
-    d: "M14.52 8h-6v6h-2V8h-6V6h6V0h2v6h6v2z"
-  }));
-};
-
-AddIcon.defaultProps = {
-  width: "15",
-  height: "14",
-  viewBox: "0 0 15 14",
-  fill: "#230CAE",
-  xmlns: "http://www.w3.org/2000/svg"
-};
-
 var MoveIcon = function MoveIcon(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("path", {
     d: "M3.52 18h18v-2h-18v2zm0-5h18v-2h-18v2zm0-7v2h18V6h-18z"
@@ -81,13 +69,13 @@ MoveIcon.defaultProps = {
   xmlns: "http://www.w3.org/2000/svg"
 };
 
-var TrashIcon = function TrashIcon(props) {
+var DeleteIcon = function DeleteIcon(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("path", {
     d: "M8.277 25.334C8.277 26.8 9.498 28 10.99 28h10.857c1.493 0 2.714-1.2 2.714-2.666v-16H8.277v16zm17.642-20h-4.75L19.813 4h-6.785L11.67 5.333H6.92V8h19V5.333z"
   }));
 };
 
-TrashIcon.defaultProps = {
+DeleteIcon.defaultProps = {
   width: "33",
   height: "32",
   viewBox: "0 0 33 32",
@@ -96,9 +84,12 @@ TrashIcon.defaultProps = {
 };
 var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (_ref) {
   var classes = _ref.classes;
-  return _react.default.createElement(MoveIcon, {
+  return _react.default.createElement("button", {
+    className: classes.dragHandleButton,
+    type: "button"
+  }, _react.default.createElement(MoveIcon, {
     className: classes.dragHandle
-  });
+  }));
 });
 var useStyles = (0, _reactJss.createUseStyles)(_studies_styles.styles);
 
@@ -189,7 +180,10 @@ var SelectComponent = (0, _react.memo)(function (_ref6) {
     });
   }, []);
   return _react.default.createElement(_select.Select, {
-    variant: "outlined",
+    textFieldProps: {
+      fullWidth: true,
+      variant: 'flat'
+    },
     value: value === null || value === void 0 ? void 0 : value.year(),
     onChange: onChange,
     textFieldIconProps: {
@@ -227,13 +221,30 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref7) {
     className: classes.itemContainer
   }, _react.default.createElement(DragHandle, {
     classes: classes
-  }), _react.default.createElement(_ui.ListItem, {
+  }), _react.default.createElement("div", {
+    className: classes.divider
+  }), _react.default.createElement(_ui.Tooltip, {
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Main.lang.delete",
+      defaultMessage: "Supprimer"
+    })
+  }, _react.default.createElement("button", {
+    className: classes.removeButton,
+    type: "button",
+    onClick: onRemove(id)
+  }, _react.default.createElement(DeleteIcon, {
+    className: classes.removeIcon
+  }))), _react.default.createElement("div", {
+    className: classes.divider
+  }), _react.default.createElement("div", {
     className: (0, _classnames.default)(classes.listItem, fieldErrors && classes.listItemError)
-  }, _react.default.createElement("div", null, _react.default.createElement("div", {
+  }, _react.default.createElement("div", {
     className: classes.fieldGroup
   }, _react.default.createElement("div", {
     className: classes.field
   }, _react.default.createElement(_ui.TextField, {
+    fullWidth: true,
+    variant: "flat",
     value: formation.institution,
     onChange: handleInstitutionChange,
     id: "formation_institution_".concat(id),
@@ -259,6 +270,8 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref7) {
     className: classes.field
   }, _react.default.createElement(_ui.TextField, {
     id: "formation_diploma_".concat(id),
+    fullWidth: true,
+    variant: "flat",
     label: formatMessage(_studies_translations.translations.diplomaTitle),
     placeholder: formatMessage(_studies_translations.translations.diplomaPlaceholder),
     value: formation.studyType,
@@ -273,6 +286,8 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref7) {
     className: classes.field
   }, _react.default.createElement(_ui.TextField, {
     id: "formation_area_".concat(id),
+    fullWidth: true,
+    variant: "flat",
     label: formatMessage(_studies_translations.translations.mainCourse),
     placeholder: formatMessage(_studies_translations.translations.mainCoursePlaceholder),
     value: formation.area,
@@ -283,15 +298,7 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref7) {
     color: "danger",
     variant: "helper",
     component: "p"
-  }, fieldErrors.area)))), _react.default.createElement(_ui.Tooltip, {
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Main.lang.delete",
-      defaultMessage: "Supprimer"
-    })
-  }, _react.default.createElement(_ui.Button, {
-    className: classes.button,
-    onClick: onRemove(id)
-  }, _react.default.createElement(TrashIcon, null)))));
+  }, fieldErrors.area)))));
 });
 var SortableFormationsItems = (0, _reactSortableHoc.SortableContainer)(function (_ref8) {
   var items = _ref8.items,
@@ -328,6 +335,7 @@ var FormationsEditForm = function FormationsEditForm(_ref9) {
   var classes = useStyles();
   var globalError = typeof errors === 'string' && errors;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(SortableFormationsItems, _extends({
+    lockToContainerEdges: true,
     helperClass: classes.sortableHelper,
     items: data,
     onSortEnd: onMove,
@@ -340,15 +348,9 @@ var FormationsEditForm = function FormationsEditForm(_ref9) {
     errors: errors
   }, {
     classes: classes
-  })), _react.default.createElement("div", {
-    className: classes.addButton,
+  })), _react.default.createElement(_add_button.AddButton, {
     onClick: onAdd
-  }, _react.default.createElement(_ui.Tag, {
-    className: classes.addTag
-  }, _react.default.createElement(AddIcon, null)), _react.default.createElement(_ui.Typography, null, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Main.lang.add",
-    defaultMessage: "Ajouter"
-  }))), globalError && _react.default.createElement(_ui.Typography, {
+  }), globalError && _react.default.createElement(_ui.Typography, {
     color: "danger",
     component: "p"
   }, errors));

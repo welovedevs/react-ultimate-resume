@@ -1,6 +1,6 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -19,7 +19,7 @@ var _mapping = require("./data/mapping");
 
 var _profile = require("../../../profile");
 
-var _basic_card_edit_dialog = require("./basics_edit_dialog/basic_card_edit_dialog");
+var _basic_edit_dialog = require("./basics_edit_dialog/basic_edit_dialog");
 
 var _validator = require("./data/validator");
 
@@ -46,7 +46,7 @@ var BasicsCardComponent = function BasicsCardComponent(_ref) {
     data: mappedData,
     isEditingProfile: isEditing,
     editDialog: {
-      component: _basic_card_edit_dialog.BasicsCardEditDialog,
+      component: _basic_edit_dialog.BasicsCardEditDialog,
       validationSchema: _validator.BasicsValidationSchema,
       onEdit: onDialogEdited
     },

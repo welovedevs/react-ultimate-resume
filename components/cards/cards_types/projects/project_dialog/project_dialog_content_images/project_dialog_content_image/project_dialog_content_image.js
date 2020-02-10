@@ -1,11 +1,13 @@
 "use strict";
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.ProjectDialogContentImage = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _reactJss = require("react-jss");
 
@@ -21,7 +23,11 @@ var _use_opener_state = require("../../../../../../hooks/use_opener_state");
 
 var _project_dialog_content_image_styles = require("./project_dialog_content_image_styles");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _formik = require("formik");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -85,7 +91,8 @@ var ProjectDialogContentImageComponent = function ProjectDialogContentImageCompo
     return item && _react.default.createElement(EditLayer, {
       key: key,
       style: props,
-      classes: classes
+      classes: classes,
+      url: url
     });
   }));
 };
@@ -118,7 +125,19 @@ var Image = function Image(_ref3) {
 
 var EditLayer = function EditLayer(_ref4) {
   var style = _ref4.style,
-      classes = _ref4.classes;
+      classes = _ref4.classes,
+      url = _ref4.url;
+
+  var _useFormikContext = (0, _formik.useFormikContext)(),
+      setFieldValue = _useFormikContext.setFieldValue,
+      values = _useFormikContext.values;
+
+  var deleteImage = (0, _react.useCallback)(function () {
+    setFieldValue('images', values.images.filter(function (_ref5) {
+      var urlToKeep = _ref5.url;
+      return url !== urlToKeep;
+    }));
+  }, [values.images]);
   return _react.default.createElement(_reactSpring.animated.div, {
     className: classes.editLayer,
     style: style
@@ -126,7 +145,8 @@ var EditLayer = function EditLayer(_ref4) {
     title: "Supprimer cette image"
   }, _react.default.createElement("button", {
     className: classes.deleteButton,
-    type: "button"
+    type: "button",
+    onClick: deleteImage
   }, _react.default.createElement(DeleteIcon, {
     className: classes.deleteIcon
   }))));

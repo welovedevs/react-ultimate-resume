@@ -1,6 +1,6 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -15,11 +15,11 @@ var _skills_front = require("./skills_front/skills_front");
 
 var _skills_back = require("./skills_back/skills_back");
 
-var _mapping = require("./data/mapping");
+var _skills_edit_dialog = require("./skills_edit_dialog/skills_edit_dialog");
 
 var _profile = require("../../../profile");
 
-var _skills_card_edit_dialog = require("./edit_dialog/skills_card_edit_dialog");
+var _mapping = require("./data/mapping");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -47,7 +47,7 @@ var SkillsCardComponent = function SkillsCardComponent(_ref) {
       back: _skills_back.SkillsBack
     },
     editDialog: {
-      component: _skills_card_edit_dialog.SkillsCardEditDialog,
+      component: _skills_edit_dialog.SkillsEditDialog,
       onEdit: onDialogEdited
     },
     data: mappedData,

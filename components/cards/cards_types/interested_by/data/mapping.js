@@ -3,8 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.InterestedByMapping = void 0;
-var InterestedByMapping = Object.freeze({
+exports.interestedByMapping = void 0;
+var interestedByMapping = Object.freeze({
   interestedBy: 'specific.interestedBy'
 });
-exports.InterestedByMapping = InterestedByMapping;
+exports.interestedByMapping = interestedByMapping;

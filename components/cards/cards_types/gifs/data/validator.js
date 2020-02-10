@@ -1,11 +1,11 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.InterestsValidator = void 0;
+exports.interestsValidator = void 0;
 
 var Yup = _interopRequireWildcard(require("yup"));
 
@@ -21,7 +21,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var InterestsValidator = function InterestsValidator(formatMessage) {
+var interestsValidator = function interestsValidator(formatMessage) {
   return Yup.object().shape({
     interests: Yup.array().of(Yup.object().transform(function (value) {
       return _objectSpread({}, value, {
@@ -30,9 +30,10 @@ var InterestsValidator = function InterestsValidator(formatMessage) {
     }).shape({
       name: Yup.string().required(formatMessage(_validation_translations.validationTranslations.required)).min(2, formatMessage(_validation_translations.validationTranslations.min, {
         min: 2
-      }))
+      })),
+      gifUrl: Yup.string().required(formatMessage(_validation_translations.validationTranslations.required))
     })).required(formatMessage(_validation_translations.validationTranslations.required))
   });
 };
 
-exports.InterestsValidator = InterestsValidator;
+exports.interestsValidator = interestsValidator;

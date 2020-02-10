@@ -21,7 +21,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var useStyles = (0, _reactJss.createUseStyles)(_projects_back_styles.styles);
 
-var ProjectsBackComponent = function ProjectsBackComponent() {
+var ProjectsBackComponent = function ProjectsBackComponent(_ref) {
+  var _data$projects;
+
+  var data = _ref.data;
   var classes = useStyles();
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_title.ProfileCardTitle, {
     customClasses: {
@@ -35,7 +38,12 @@ var ProjectsBackComponent = function ProjectsBackComponent() {
       src: "https://source.unsplash.com/random/750x400",
       alt: "Project Background"
     }))
-  }, "Projects"), _react.default.createElement(_profile_card_content.ProfileCardContent, null, _react.default.createElement(_project_section.ProjectSection, null), _react.default.createElement(_project_section.ProjectSection, null), _react.default.createElement(_project_section.ProjectSection, null)));
+  }, "Projects"), _react.default.createElement(_profile_card_content.ProfileCardContent, null, (_data$projects = data.projects) === null || _data$projects === void 0 ? void 0 : _data$projects.map(function (project) {
+    return _react.default.createElement(_project_section.ProjectSection, {
+      project: project,
+      key: "project_".concat(project.id)
+    });
+  })));
 };
 
 var ProjectsBack = ProjectsBackComponent;

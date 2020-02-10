@@ -1,6 +1,6 @@
 "use strict";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -9,19 +9,19 @@ exports.GifsCard = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _profile = require("../../../profile");
+
 var _profile_card = require("../../../commons/profile_card/profile_card");
 
 var _gifs_front = require("./gifs_front/gifs_front");
 
 var _gifs_back = require("./gifs_back/gifs_back");
 
-var _profile = require("../../../profile");
-
-var _mapping = require("./data/mapping");
-
-var _interests_card_edit_dialog = require("./edit_dialog/interests_card_edit_dialog");
+var _gifs_edit_dialog = require("./gifs_edit_dialog/gifs_edit_dialog");
 
 var _validator = require("./data/validator");
+
+var _mapping = require("./data/mapping");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -50,8 +50,8 @@ var GifsCardComponent = function GifsCardComponent(_ref) {
       back: _gifs_back.GifsBack
     },
     editDialog: {
-      component: _interests_card_edit_dialog.InterestsEditDialog,
-      validationSchema: _validator.InterestsValidator,
+      component: _gifs_edit_dialog.GifsEditDialog,
+      validationSchema: _validator.interestsValidator,
       onEdit: onDialogEdited
     },
     variant: variant,

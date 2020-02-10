@@ -21,7 +21,9 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var SeeProjectDetailComponent = function SeeProjectDetailComponent() {
+var SeeProjectDetailComponent = function SeeProjectDetailComponent(_ref) {
+  var project = _ref.project;
+
   var _useCallbackOpen = (0, _use_callback_open.useCallbackOpen)(),
       _useCallbackOpen2 = _slicedToArray(_useCallbackOpen, 3),
       openDialog = _useCallbackOpen2[0],
@@ -29,6 +31,7 @@ var SeeProjectDetailComponent = function SeeProjectDetailComponent() {
       setDialogClosed = _useCallbackOpen2[2];
 
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_project_dialog.ProjectDialog, {
+    project: project,
     open: openDialog,
     onClose: setDialogClosed
   }), _react.default.createElement("button", {

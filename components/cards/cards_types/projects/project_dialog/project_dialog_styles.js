@@ -24,7 +24,10 @@ var styles = function styles(theme) {
       flexDirection: 'column',
       padding: [[spacing, spacing * 6], '!important'],
       overflow: 'overlay'
-    }, (0, _styles_utils.withCustomVerticalScrollbar)())
+    }, (0, _styles_utils.withCustomVerticalScrollbar)()),
+    headrow: {
+      display: 'flex'
+    }
   };
 };
 
