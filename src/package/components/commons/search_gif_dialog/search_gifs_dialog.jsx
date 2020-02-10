@@ -3,12 +3,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useDebounce } from 'use-debounce';
 
-import {
-    Button,
-    Dialog,
-    DialogContent,
-    DialogActions
-} from '@material-ui/core';
+import { Button, Dialog, DialogContent, DialogActions } from '@material-ui/core';
 
 import { TextField, Tooltip } from '@wld/ui';
 
@@ -18,18 +13,16 @@ import { LoadingSpinner } from '../loading_spinner/loading_spinner';
 import { styles } from './search_gifs_dialog_styles';
 import { useGiphyResults } from '../../hooks/giphy/use_giphy_results';
 
+import poweredByGiphy from '../../../assets/images/Poweredby_100px-White_VertText.png';
+
 const useStyles = createUseStyles(styles);
 
-const SearchGifsDialogComponent = ({
-    open,
-    onClose,
-    onSelect
-}) => {
+const SearchGifsDialogComponent = ({ open, onClose, onSelect }) => {
     const classes = useStyles();
     const [query, setQuery] = useState('');
     const [debouncedQuery] = useDebounce(query, 500);
 
-    const handleInputChange = useCallback((event) => setQuery(event.target.value), []);
+    const handleInputChange = useCallback(event => setQuery(event.target.value), []);
 
     return (
         <Dialog
@@ -39,8 +32,9 @@ const SearchGifsDialogComponent = ({
             open={open}
             onClose={onClose}
         >
-            <DialogTitle>
+            <DialogTitle classes={{ root: classes.title }}>
                 Search gifs
+                <img src={poweredByGiphy} />
             </DialogTitle>
             <DialogContent
                 classes={{
@@ -55,18 +49,10 @@ const SearchGifsDialogComponent = ({
                     variant="flat"
                     placeholder="Burrito, development, etc..."
                 />
-                <Results
-                    query={query}
-                    debouncedQuery={debouncedQuery}
-                    onSelect={onSelect}
-                    classes={classes}
-                />
+                <Results query={query} debouncedQuery={debouncedQuery} onSelect={onSelect} classes={classes} />
             </DialogContent>
             <DialogActions>
-                <Button
-                    size="small"
-                    onClick={onClose}
-                >
+                <Button size="small" onClick={onClose}>
                     Close
                 </Button>
             </DialogActions>
@@ -77,31 +63,40 @@ const SearchGifsDialogComponent = ({
 const Results = ({ query, debouncedQuery, onSelect, classes }) => {
     const { gifs, loading: loadingResults } = useGiphyResults(debouncedQuery, 0, 3 * 3);
 
-    const loading = useMemo(() => loadingResults || (query && (query !== debouncedQuery)),
-        [query, debouncedQuery, loadingResults]);
+    const loading = useMemo(() => loadingResults || (query && query !== debouncedQuery), [
+        query,
+        debouncedQuery,
+        loadingResults
+    ]);
 
-    const handleClick = useCallback((url, id, title) => () => {
-        if (typeof onSelect !== 'function') {
-            return;
-        }
-        onSelect({ url, id, title });
-    }, [onSelect]);
+    const handleClick = useCallback(
+        (url, id, title) => () => {
+            if (typeof onSelect !== 'function') {
+                return;
+            }
+            onSelect({ url, id, title });
+        },
+        [onSelect]
+    );
 
     return (
         <div className={classes.results}>
             {loading && <LoadingSpinner />}
-            {!loading && gifs && debouncedQuery && gifs.map(({ id, url, title }) => (
-                <Tooltip title="Select this gif!">
-                    <button
-                        key={`result_${id}`}
-                        type="button"
-                        className={classes.imageContainer}
-                        onClick={handleClick(url, id, title)}
-                    >
-                        <img className={classes.image} src={url} alt={title} />
-                    </button>
-                </Tooltip>
-            ))}
+            {!loading &&
+                gifs &&
+                debouncedQuery &&
+                gifs.map(({ id, url, title }) => (
+                    <Tooltip title="Select this gif!">
+                        <button
+                            key={`result_${id}`}
+                            type="button"
+                            className={classes.imageContainer}
+                            onClick={handleClick(url, id, title)}
+                        >
+                            <img className={classes.image} src={url} alt={title} />
+                        </button>
+                    </Tooltip>
+                ))}
         </div>
     );
 };

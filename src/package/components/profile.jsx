@@ -37,7 +37,7 @@ const DeveloperProfileComponent = ({
     ActionButtons,
     BeforeCards
 }) => {
-    const { apikeys, endpoints, cardsOrder } = options;
+    const { apiKeys, endpoints, cardsOrder } = options;
     const classes = useStyles(styles);
 
     const onEdit = useCallback(newData => {
@@ -54,13 +54,13 @@ const DeveloperProfileComponent = ({
             isEditing,
             onEdit,
             onFilesUpload,
-            apiKeys: { giphy: apikeys?.giphy },
+            apiKeys: { giphy: apiKeys?.giphy },
             store,
             endpoints: {
                 devicons: endpoints?.devicons
             }
         }),
-        [endpoints, apikeys, data, onEdit, store]
+        [endpoints, apiKeys, data, onEdit, store]
     );
 
     console.log({ context });

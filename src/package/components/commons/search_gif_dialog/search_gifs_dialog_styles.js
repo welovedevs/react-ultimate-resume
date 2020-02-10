@@ -1,8 +1,11 @@
 import { withCustomVerticalScrollbar } from '../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
-    const { palette, miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        palette,
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         paper: {
             width: '90%',
             maxWidth: [760, '!important']
@@ -18,6 +21,11 @@ export const styles = (theme) => {
             flexWrap: 'wrap',
             justifyContent: 'center'
         },
+        title: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+        },
         imageContainer: {
             height: 200,
             width: 200,
@@ -31,5 +39,5 @@ export const styles = (theme) => {
             width: '100%',
             objectFit: 'cover'
         }
-    });
+    };
 };
