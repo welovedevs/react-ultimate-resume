@@ -15,6 +15,7 @@ import { useFormikContext } from 'formik';
 import { ProjectValidator } from '../data/validator';
 import { DeveloperProfileContext } from '../../../../profile';
 import { mapProjectToJsonResume, updateProjectsArray } from '../data/mapping';
+import { ProjectDialogContentLink } from './project_dialog_content_link/project_dialog_content_link';
 
 const useStyles = createUseStyles(styles);
 
@@ -63,6 +64,7 @@ const ProjectDialogContent = () => {
                 <ProjectDialogContentDate date={project.data} />
             </div>
             <ProjectDialogContentDescription description={project.description} />
+            <ProjectDialogContentLink link={project.link} />
             <ProjectDialogContentImages images={project.images} />
         </>
     );

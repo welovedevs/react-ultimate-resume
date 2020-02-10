@@ -46,9 +46,11 @@ const Details = ({ project, classes }) => (
     <div className={classes.details}>
         <div className={classes.detail}>
             <LinkIcon className={classes.detailIcon} />
-            <Typography customClasses={{ container: classes.detailTypography }} color="primary">
-                Link
-            </Typography>
+            <a href={project.link}>
+                <Typography customClasses={{ container: classes.detailTypography }} color="primary">
+                    Link
+                </Typography>
+            </a>
         </div>
         <div className={classes.detail}>
             <EyeIcon className={classes.detailIcon} />
