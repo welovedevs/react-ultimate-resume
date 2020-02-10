@@ -21,7 +21,7 @@ const GifsEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema
             <EditDialog
                 fullScreen
                 classes={{
-                    paper: classes.dialogPaper
+                    paper: classes.paper
                 }}
                 open={open}
                 onClose={onClose}
@@ -35,7 +35,7 @@ const GifsEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema
                     />
                 )}
             >
-                {helpers => <GifsEditForm helpers={helpers} classes={classes} />}
+                {helpers => <GifsEditForm helpers={helpers} />}
             </EditDialog>
         </>
     );

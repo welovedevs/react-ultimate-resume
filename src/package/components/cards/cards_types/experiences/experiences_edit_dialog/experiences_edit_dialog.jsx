@@ -22,9 +22,10 @@ import { ReactComponent as MoveIcon } from '../../../../../assets/icons/move_lis
 import { ReactComponent as DeleteIcon } from '../../../../../assets/icons/trash.svg';
 import { ReactComponent as ArrowIcon } from '../../../../../assets/icons/keyboard_arrow_down.svg';
 
-import { styles } from './experiences_edit_dialog_styles';
-import { translations } from './experiences_edit_dialog_translations';
 import { EXPERIENCE_CONTENT_TRANSITION_SPRING_PROPS } from './experiences_edit_dialog_spring_props';
+
+import { translations } from './experiences_edit_dialog_translations';
+import { styles } from './experiences_edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
@@ -45,12 +46,12 @@ const ExperiencesEditDialogComponent = ({ open, onClose, data, onEdit, validatio
             data={data}
             onEdit={onEdit}
             validationSchema={validationSchemaToPass}
-            title={
+            title={(
                 <FormattedMessage
                     id="Experiences.editDialog.title"
                     defaultMessage="Edit your professional experiences?"
                 />
-            }
+            )}
         >
             {helpers => <ExperiencesEditFormWrapper helpers={helpers} />}
         </EditDialog>
@@ -155,7 +156,7 @@ const ExperienceItem = SortableElement(
         return (
             <div className={classes.experience}>
                 <div className={classes.smallItemContainer}>
-                    <DragHandle {...{ classes }} />
+                    <DragHandle classes={classes} />
                     <div className={classes.divider} />
                     <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Supprimer" />}>
                         <button className={classes.removeButton} type="button" onClick={onRemove(id)}>
@@ -397,7 +398,7 @@ const StillEmployedField = ({ value, classes, handleStillEmployedChange, formatM
     </div>
 );
 
-export const ExperiencesEditForm = ({ data, errors, onAdd, onMove, onFieldChange, onDelete }) => {
+const ExperiencesEditForm = ({ data, errors, onAdd, onMove, onFieldChange, onDelete }) => {
     const classes = useStyles({});
     const keyedValues = useMemo(() => keyBy(data, ({ id }) => id), [data]);
 

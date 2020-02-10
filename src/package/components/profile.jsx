@@ -27,13 +27,11 @@ const DeveloperProfileComponent = ({
     options = DEFAULT_OBJECT,
     onEdit: onEditProps = DEFAULT_FUNCTION,
     isEditing = false,
-    onFilesUpload = async () => {
-        return fetch('https://api.thecatapi.com/v1/images/search', {
+    onFilesUpload = async () => fetch('https://api.thecatapi.com/v1/images/search', {
             headers: {}
         })
             .then(res => res.json())
-            .then(results => results?.[0]?.url);
-    },
+            .then(results => results?.[0]?.url),
     ActionButtons,
     BeforeCards
 }) => {
@@ -62,8 +60,6 @@ const DeveloperProfileComponent = ({
         }),
         [endpoints, apiKeys, data, onEdit, store]
     );
-
-    console.log({ context });
 
     return (
         <div className={classes.container}>

@@ -4,7 +4,7 @@ import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { InterestedByFront } from './interested_by_front/interested_by_front';
 import { InterestedByBack } from './interested_by_back/interested_by_back';
 import { FlatObjectToJsonResume, JsonResumeToFlatObject } from '../../utils/data_mapping';
-import { InterestedByEditDialog } from './edit_dialog/interested_by_edit_dialog';
+import { InterestedByEditDialog } from './interested_by_edit_dialog/interested_by_edit_dialog';
 import { DeveloperProfileContext } from '../../../profile';
 
 import { interestedByMapping } from './data/mapping';

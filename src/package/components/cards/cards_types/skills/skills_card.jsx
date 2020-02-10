@@ -3,9 +3,10 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { SkillsFront } from './skills_front/skills_front';
 import { SkillsBack } from './skills_back/skills_back';
-import { mapSkillsFromJsonResume, mapSkillsToJsonResume } from './data/mapping';
+import { SkillsEditDialog } from './skills_edit_dialog/skills_edit_dialog';
 import { DeveloperProfileContext } from '../../../profile';
-import { SkillsCardEditDialog } from './edit_dialog/skills_card_edit_dialog';
+
+import { mapSkillsFromJsonResume, mapSkillsToJsonResume } from './data/mapping';
 
 const SkillsCardComponent = ({ variant, side }) => {
     const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);
@@ -22,7 +23,7 @@ const SkillsCardComponent = ({ variant, side }) => {
                 back: SkillsBack
             }}
             editDialog={{
-                component: SkillsCardEditDialog,
+                component: SkillsEditDialog,
                 onEdit: onDialogEdited
             }}
             data={mappedData}
