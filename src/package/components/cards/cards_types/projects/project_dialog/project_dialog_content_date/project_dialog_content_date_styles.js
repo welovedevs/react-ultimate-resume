@@ -4,7 +4,6 @@ export const styles = theme => {
     } = theme;
     return {
         container: ({ isEditing }) => ({
-            flex: 1,
             marginBottom: spacing * 4,
             ...(!isEditing && {
                 textAlign: 'center'
@@ -12,6 +11,9 @@ export const styles = theme => {
         }),
         typography: {
             fontSize: 32
+        },
+        datePicker: {
+            cursor: 'pointer'
         }
     };
 };

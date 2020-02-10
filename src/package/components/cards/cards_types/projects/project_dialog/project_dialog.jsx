@@ -2,15 +2,10 @@ import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
-
-import { Button } from '@wld/ui';
-
-import { Dialog, DialogContent, DialogActions } from '@material-ui/core';
-
-import { DialogTitle } from '../../../../commons/dialog/dialog_title/dialog_title';
 import { ProjectDialogContentTitle } from './project_dialog_content_title/project_dialog_content_title';
 import { ProjectDialogContentImages } from './project_dialog_content_images/project_dialog_content_images';
 import { ProjectDialogContentDescription } from './project_dialog_content_description/project_dialog_content_description';
+import { ProjectDialogContentDate } from './project_dialog_content_date/project_dialog_content_date';
 
 import { useHasDialogOpened } from '../../../../commons/profile_card/profile_card_hooks/use_card_has_dialog_opened';
 
@@ -19,12 +14,13 @@ import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { useFormikContext } from 'formik';
 import { ProjectValidator } from '../data/validator';
 import { DeveloperProfileContext } from '../../../../profile';
-import { mapProjectsToJsonResume, mapProjectToJsonResume, updateProjectsArray } from '../data/mapping';
+import { mapProjectToJsonResume, updateProjectsArray } from '../data/mapping';
 
 const useStyles = createUseStyles(styles);
 
 const ProjectDialogComponent = ({ open, onClose, project = {} }) => {
     const classes = useStyles();
+
     const [, setHasDialogOpened] = useHasDialogOpened();
     const { formatMessage } = useIntl();
     const { onEdit, data } = useContext(DeveloperProfileContext);
@@ -43,6 +39,7 @@ const ProjectDialogComponent = ({ open, onClose, project = {} }) => {
 
     return (
         <EditDialog
+            classes={{ content: classes.container, paper: classes.paper }}
             open={open}
             onClose={onClose}
             data={project}
@@ -56,10 +53,15 @@ const ProjectDialogComponent = ({ open, onClose, project = {} }) => {
 };
 
 const ProjectDialogContent = () => {
+    const classes = useStyles();
+
     const { values: project } = useFormikContext();
     return (
         <>
-            <ProjectDialogContentTitle title={project.title} />
+            <div className={classes.headrow}>
+                <ProjectDialogContentTitle title={project.title} />
+                <ProjectDialogContentDate date={project.data} />
+            </div>
             <ProjectDialogContentDescription description={project.description} />
             <ProjectDialogContentImages images={project.images} />
         </>

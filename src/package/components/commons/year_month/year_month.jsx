@@ -30,7 +30,6 @@ const YearMonthComponent = ({ className, value, onChange, title, error, variant 
         },
         [onChange]
     );
-    console.log('rendering');
     const date = useMemo(() => (value ? new Date(value.year(), value.month()) : new Date()), [value]);
     return (
         <div className={cn(className, classes.fieldsContainer)}>

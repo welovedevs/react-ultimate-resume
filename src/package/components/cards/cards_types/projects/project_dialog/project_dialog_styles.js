@@ -14,6 +14,9 @@ export const styles = theme => {
             padding: [[spacing, spacing * 6], '!important'],
             overflow: 'overlay',
             ...withCustomVerticalScrollbar()
+        },
+        headrow: {
+            display: 'flex',
         }
     };
 };

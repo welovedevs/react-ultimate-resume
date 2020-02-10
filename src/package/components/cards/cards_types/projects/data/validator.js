@@ -9,6 +9,9 @@ export const ProjectValidator = formatMessage =>
         description: Yup.string()
             .required(formatMessage(validationTranslations.required))
             .min(100, formatMessage(validationTranslations.min, { min: 0 })),
+        date: Yup.object()
+            .nullable()
+            .required(formatMessage(validationTranslations.required)),
         images: Yup.array().of(
             Yup.object().shape({
                 name: Yup.string()
