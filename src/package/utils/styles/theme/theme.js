@@ -60,6 +60,7 @@ const DEFAULT_PALETTE = Object.freeze({
     },
     light: {
         500: '#fff',
+        800: '#f6f6f6',
         900: '#fff',
         contrastDefaultColor: 'dark'
     },

@@ -1,10 +1,10 @@
 export const styles = (theme) => {
     const { palette } = theme;
     return ({
-        dialogPaper: {
-            width: 'unset',
+        paper: {
+            width: ['100%', '!important'],
             maxWidth: ['unset', '!important'],
-            backgroundColor: palette.dark[100]
+            backgroundColor: [palette.light[800], '!important']
         }
     });
 };

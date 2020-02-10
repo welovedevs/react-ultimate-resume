@@ -11,7 +11,6 @@ const useStyles = createUseStyles(styles);
 
 const AddButtonDashedComponent = ({ onClick, title = 'Add', classes: receivedClasses = {} }) => {
     const classes = useStyles();
-    console.log({ receivedClasses });
     return (
         <Tooltip title={title}>
             <button

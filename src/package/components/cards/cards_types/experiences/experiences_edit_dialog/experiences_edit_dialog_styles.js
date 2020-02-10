@@ -30,7 +30,6 @@ export const styles = (theme) => {
         listItem: {
             width: 'auto',
             display: 'flex',
-            borderRadius: 5,
             flex: 1
         },
         warningIcon: {
