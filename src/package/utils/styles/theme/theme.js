@@ -1,4 +1,5 @@
-import merge from 'lodash/mergeWith';
+import mergeWith from 'lodash/mergeWith';
+import merge from 'lodash/merge';
 import cloneDeep from 'lodash/cloneDeep';
 import isArray from 'lodash/isArray';
 
@@ -151,11 +152,14 @@ const mergeFunction = (objValue, srcValue) => {
     if (isArray(objValue)) {
         return srcValue;
     }
-    return objValue;
+    return merge(objValue, srcValue);
 };
 
 export const buildTheme = async theme => {
-    const merged = merge(cloneDeep(DEFAULT_THEME), theme, mergeFunction);
+    console.log('input theme', theme);
+    const merged = mergeWith(cloneDeep(DEFAULT_THEME), theme, mergeFunction);
+    console.log('input theme', merged);
+
     try {
         await THEME_SCHEMA.validate(merged, {
             context: { palette: merged?.palette },

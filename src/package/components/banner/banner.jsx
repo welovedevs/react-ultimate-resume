@@ -5,10 +5,11 @@ import { createUseStyles, useTheme } from 'react-jss';
 import { styles } from './banner_styles';
 import { UserInformations } from './user_actions_row/user_informations/user_informations';
 import { SocialActions } from './user_actions_row/social_actions/social_actions';
+import { CustomizeButton } from './user_actions_row/customize_button/customize_button';
 
 const useStyles = createUseStyles(styles);
 
-const BannerComponent = ({ children }) => {
+const BannerComponent = ({ children, customizationOptions }) => {
     const classes = useStyles();
     const theme = useTheme();
     return (
@@ -17,7 +18,10 @@ const BannerComponent = ({ children }) => {
             <img className={classes.image} src={theme?.components?.banner?.imageSource} alt="Banner" />
             <div className={classes.content}>
                 <UserInformations />
-                <SocialActions>{children}</SocialActions>
+                <SocialActions>
+                    {children}
+                    <CustomizeButton customizationOptions={customizationOptions} />
+                </SocialActions>
             </div>
         </div>
     );

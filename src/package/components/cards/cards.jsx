@@ -15,20 +15,10 @@ import { LanguagesCard } from './cards_types/languages/languages_card';
 
 import { styles } from './cards_styles';
 import { getRandomCardVariant } from '../../utils/styles/theme/theme';
+import { DEFAULT_CARD_ORDER } from './utils/cards_order';
 
 const useStyles = createUseStyles(styles);
-const DEFAULT_CARD_ORDER = [
-    { type: 'basics', variant: 0 },
-    { type: 'projects', variant: 0 },
-    { type: 'language', variant: 0 },
-    { type: 'dreamjob', variant: 0 },
-    { type: 'gifs', variant: 0 },
-    { type: 'experiences', variant: 0 },
-    { type: 'studies', variant: 0 },
-    { type: 'skills', variant: 0 },
-    { type: 'soundtrack', variant: 0 },
-    { type: 'interestedBy', variant: 0 }
-];
+
 const CARD_TYPE_MAPPING = {
     basics: BasicsCard,
     projects: ProjectsCard,

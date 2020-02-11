@@ -11805,6 +11805,11 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
+values.js@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/values.js/-/values.js-1.0.3.tgz#492a372a8184dad9cf06829668be450836ac532e"
+  integrity sha1-SSo3KoGE2tnPBoKWaL5FCDasUy4=
+
 vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"

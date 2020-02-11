@@ -45,6 +45,7 @@
         "recharts": "^2.0.0-beta.1",
         "respinner": "^3.0.2",
         "uuid": "^3.4.0",
+        "values.js": "^1.0.3",
         "whatwg-fetch": "^3.0.0",
         "yup": "^0.28.0"
     },

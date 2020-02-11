@@ -20,14 +20,16 @@ const DEFAULT_OPTIONS = Object.freeze({
 
 export const DeveloperProfileContext = createContext({});
 const DEFAULT_OBJECT = {};
-const DEFAULT_FUNCTION = {};
+const DEFAULT_FUNCTION = () => {};
 
 const DeveloperProfileComponent = ({
     data = DEFAULT_OBJECT,
     options = DEFAULT_OBJECT,
     onEdit: onEditProps = DEFAULT_FUNCTION,
+    onCustomizationChanged = DEFAULT_FUNCTION,
     isEditing = false,
-    onFilesUpload = async () => fetch('https://api.thecatapi.com/v1/images/search', {
+    onFilesUpload = async () =>
+        fetch('https://api.thecatapi.com/v1/images/search', {
             headers: {}
         })
             .then(res => res.json())
@@ -35,7 +37,7 @@ const DeveloperProfileComponent = ({
     ActionButtons,
     BeforeCards
 }) => {
-    const { apiKeys, endpoints, cardsOrder } = options;
+    const { apiKeys, endpoints } = options;
     const classes = useStyles(styles);
 
     const onEdit = useCallback(newData => {
@@ -51,6 +53,7 @@ const DeveloperProfileComponent = ({
             data,
             isEditing,
             onEdit,
+            onCustomizationChanged,
             onFilesUpload,
             apiKeys: { giphy: apiKeys?.giphy },
             store,
@@ -64,21 +67,29 @@ const DeveloperProfileComponent = ({
     return (
         <div className={classes.container}>
             <DeveloperProfileContext.Provider value={context}>
-                <Banner>{ActionButtons}</Banner>
+                <Banner customizationOptions={options.customization}>{ActionButtons}</Banner>
                 {BeforeCards}
-                <Cards cardsOrder={cardsOrder} />
+                <Cards cardsOrder={options.customization?.cardsOrder} />
             </DeveloperProfileContext.Provider>
         </div>
     );
 };
 
-const WithProvidersDeveloperProfile = ({ data, onEdit, options = {}, ActionButtons, BeforeCards, isEditing }) => {
-    const { locale, theme } = useMemo(() => ({ ...DEFAULT_OPTIONS, ...options }), [options]);
+const WithProvidersDeveloperProfile = ({
+    data,
+    onEdit,
+    onCustomizationChanged,
+    options = {},
+    ActionButtons,
+    BeforeCards,
+    isEditing
+}) => {
+    const { locale, customization } = useMemo(() => ({ ...DEFAULT_OPTIONS, ...options }), [options]);
     const [builtTheme, setBuiltTheme] = useState(null);
 
     useEffect(() => {
         const asyncBuild = async () => {
-            const built = await buildTheme(theme);
+            const built = await buildTheme(customization?.theme);
             console.log('🎨 Built theme:', built);
             setBuiltTheme(built);
         };
@@ -96,6 +107,7 @@ const WithProvidersDeveloperProfile = ({ data, onEdit, options = {}, ActionButto
                     isEditing={isEditing}
                     data={data}
                     onEdit={onEdit}
+                    onCustomizationChanged={onCustomizationChanged}
                     options={options}
                     ActionButtons={ActionButtons}
                     BeforeCards={BeforeCards}
