@@ -47,7 +47,7 @@ const CardsComponent = ({ cardsOrder = DEFAULT_CARD_ORDER }) => {
     const classes = useStyles();
     const cards = useMemo(
         () =>
-            DEFAULT_CARD_ORDER
+            cardsOrder
                 .map(({ type, variant }, index) => {
                     if (!CARD_TYPE_MAPPING[type]) {
                         return null;
