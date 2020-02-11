@@ -1,15 +1,32 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+
+import uuid from 'uuid/v4';
 
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { ProjectsFront } from './projects_front/projects_front';
 import { ProjectsBack } from './projects_back/projects_back';
 import { DeveloperProfileContext } from '../../../profile';
-import { mapProjectsFromJsonResume } from './data/mapping';
 import { AddButton } from './add_button/add_button';
+
+import { mapProjectsFromJsonResume } from './data/mapping';
 
 const ProjectsCardComponent = ({ variant, side }) => {
     const { data, isEditing } = useContext(DeveloperProfileContext);
-    const mappedData = useMemo(() => mapProjectsFromJsonResume(data), [data]);
+    const defaultMappedData = useMemo(() => mapProjectsFromJsonResume(data), [data]);
+    const [mappedData, setMappedData] = useState(defaultMappedData);
+
+    useEffect(() => {
+        setMappedData(defaultMappedData);
+    }, [defaultMappedData]);
+
+    const handleAddButtonClick = useCallback(() => {
+        setMappedData({
+            projects: [
+                ...mappedData.projects,
+                { id: uuid() }
+            ]
+        });
+    }, [mappedData]);
 
     return (
         <ProfileCard
@@ -24,7 +41,7 @@ const ProjectsCardComponent = ({ variant, side }) => {
             customEditAction={(
                 <AddButton
                     title="Ajouter un projet"
-                    onClick={alert}
+                    onClick={handleAddButtonClick}
                 />
             )}
         />

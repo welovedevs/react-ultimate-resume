@@ -1,7 +1,7 @@
 import uuid from 'uuid/v4';
 import moment from 'moment';
 
-export const mapProjectsFromJsonResume = jsonResume => ({
+export const mapProjectsFromJsonResume = jsonResume => console.log('Je passe ici !!') || ({
     projects: jsonResume?.projects?.map((project, index) => ({
         ...project,
         //generating uuid for manipulating data if not present
