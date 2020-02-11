@@ -23,6 +23,8 @@ var _profile_card_section = require("../../../../../commons/profile_card/profile
 
 var _see_project_detail = require("../../see_project_detail/see_project_detail");
 
+var _animated_underlined_button = require("../../../../../commons/animated_underlined_button/animated_underlined_button");
+
 var _project_section_styles = require("./project_section_styles");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -43,27 +45,6 @@ LinkIcon.defaultProps = {
   height: "15",
   viewBox: "0 0 15 15",
   fill: "none",
-  xmlns: "http://www.w3.org/2000/svg"
-};
-
-var EyeIcon = function EyeIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("title", null, "Exported from Streamline App (https://app.streamlineicons.com)"), _react.default.createElement("g", {
-    fill: "none",
-    stroke: "#000",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    strokeWidth: "1.5"
-  }, _react.default.createElement("path", {
-    d: "M20 8.752c-6.718-.113-13.667 4.582-18.035 9.39a2.771 2.771 0 0 0 0 3.71C6.238 26.56 13.167 31.362 20 31.247c6.834.115 13.764-4.688 18.04-9.395a2.771 2.771 0 0 0 0-3.71C33.668 13.334 26.72 8.639 20 8.752z",
-    strokeWidth: "2.50005"
-  }), _react.default.createElement("path", {
-    d: "M26.25 20a6.25 6.25 0 1 1-12.5.007 6.25 6.25 0 0 1 12.5-.012V20z",
-    strokeWidth: "2.50005"
-  })));
-};
-
-EyeIcon.defaultProps = {
-  viewBox: "0 0 40 40",
   xmlns: "http://www.w3.org/2000/svg"
 };
 var useStyles = (0, _reactJss.createUseStyles)(_project_section_styles.styles);
@@ -105,7 +86,7 @@ var Details = function Details(_ref2) {
     className: classes.details
   }, _react.default.createElement("div", {
     className: classes.detail
-  }, _react.default.createElement(LinkIcon, {
+  }, _react.default.createElement(_animated_underlined_button.AnimatedUnderlinedButton, null, _react.default.createElement(LinkIcon, {
     className: classes.detailIcon
   }), _react.default.createElement("a", {
     href: project.link
@@ -114,18 +95,11 @@ var Details = function Details(_ref2) {
       container: classes.detailTypography
     },
     color: "primary"
-  }, "Link"))), _react.default.createElement("div", {
+  }, "Link")))), _react.default.createElement("div", {
     className: classes.detail
-  }, _react.default.createElement(EyeIcon, {
-    className: classes.detailIcon
-  }), _react.default.createElement(_ui.Typography, {
-    customClasses: {
-      container: classes.detailTypography
-    },
-    color: "primary"
   }, _react.default.createElement(_see_project_detail.SeeProjectDetail, {
     project: project
-  }))));
+  })));
 };
 
 var ProjectSection = ProjectSectionContainer;

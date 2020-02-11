@@ -74,6 +74,7 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       isEditingProfile = _ref.isEditingProfile,
       editDialog = _ref.editDialog,
       customTransitionsSpringProps = _ref.customTransitionsSpringProps,
+      customEditAction = _ref.customEditAction,
       sideProps = _ref.side;
   var classes = useStyles({
     variant: variant
@@ -147,7 +148,7 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       dispatch: dispatch
     };
   }, [state]);
-  return _react.default.createElement(_react.default.Fragment, null, isEditingProfile && _react.default.createElement(_profile_card_edit_dialog.ProfileCardEditDialog, {
+  return _react.default.createElement(_react.default.Fragment, null, isEditingProfile && !customEditAction && _react.default.createElement(_profile_card_edit_dialog.ProfileCardEditDialog, {
     editDialog: editDialog,
     open: openEditDialog,
     onClose: setEditDialogClosed,
@@ -159,7 +160,8 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
     elevation: 1,
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave
-  }, isEditingProfile && _react.default.createElement(_profile_card_edit_button.ProfileCardEditButton, {
+  }, isEditingProfile && _react.default.createElement(EditAction, {
+    customEditAction: customEditAction,
     setEditDialogOpened: setEditDialogOpened
   }), _react.default.createElement(ProfileCardContext.Provider, {
     value: contextData
@@ -179,6 +181,19 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       data: data
     }));
   }))));
+};
+
+var EditAction = function EditAction(_ref3) {
+  var customEditAction = _ref3.customEditAction,
+      setEditDialogOpened = _ref3.setEditDialogOpened;
+
+  if (customEditAction) {
+    return customEditAction;
+  }
+
+  return _react.default.createElement(_profile_card_edit_button.ProfileCardEditButton, {
+    setEditDialogOpened: setEditDialogOpened
+  });
 };
 
 var ProfileCard = ProfileCardComponent;

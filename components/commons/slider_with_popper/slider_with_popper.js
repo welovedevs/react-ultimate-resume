@@ -101,7 +101,6 @@ var SliderWithPopper = function SliderWithPopper(_ref) {
     onMouseDown: handleFocus,
     onMouseUp: handleBlur,
     thumbReference: thumbReference,
-    fullWidth: true,
     thumbChildren: _react.default.createElement(_ui.PopperCard, _extends({
       open: isFocused,
       anchorElement: thumbReference.current,

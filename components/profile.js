@@ -52,15 +52,20 @@ var DEFAULT_OPTIONS = Object.freeze({
 var DeveloperProfileContext = (0, _react.createContext)({});
 exports.DeveloperProfileContext = DeveloperProfileContext;
 var DEFAULT_OBJECT = {};
-var DEFAULT_FUNCTION = {};
+
+var DEFAULT_FUNCTION = function DEFAULT_FUNCTION() {};
 
 var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
+  var _options$customizatio;
+
   var _ref$data = _ref.data,
       data = _ref$data === void 0 ? DEFAULT_OBJECT : _ref$data,
       _ref$options = _ref.options,
       options = _ref$options === void 0 ? DEFAULT_OBJECT : _ref$options,
       _ref$onEdit = _ref.onEdit,
       onEditProps = _ref$onEdit === void 0 ? DEFAULT_FUNCTION : _ref$onEdit,
+      _ref$onCustomizationC = _ref.onCustomizationChanged,
+      onCustomizationChanged = _ref$onCustomizationC === void 0 ? DEFAULT_FUNCTION : _ref$onCustomizationC,
       _ref$isEditing = _ref.isEditing,
       isEditing = _ref$isEditing === void 0 ? false : _ref$isEditing,
       _ref$onFilesUpload = _ref.onFilesUpload,
@@ -93,8 +98,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       ActionButtons = _ref.ActionButtons,
       BeforeCards = _ref.BeforeCards;
   var apiKeys = options.apiKeys,
-      endpoints = options.endpoints,
-      cardsOrder = options.cardsOrder;
+      endpoints = options.endpoints;
   var classes = useStyles(_profile_styles.styles);
   var onEdit = (0, _react.useCallback)(function (newData) {
     if (typeof onEditProps === 'function') {
@@ -109,6 +113,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       data: data,
       isEditing: isEditing,
       onEdit: onEdit,
+      onCustomizationChanged: onCustomizationChanged,
       onFilesUpload: onFilesUpload,
       apiKeys: {
         giphy: apiKeys === null || apiKeys === void 0 ? void 0 : apiKeys.giphy
@@ -123,14 +128,17 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
     className: classes.container
   }, _react.default.createElement(DeveloperProfileContext.Provider, {
     value: context
-  }, _react.default.createElement(_banner.Banner, null, ActionButtons), BeforeCards, _react.default.createElement(_cards.Cards, {
-    cardsOrder: cardsOrder
+  }, _react.default.createElement(_banner.Banner, {
+    customizationOptions: options.customization
+  }, ActionButtons), BeforeCards, _react.default.createElement(_cards.Cards, {
+    cardsOrder: (_options$customizatio = options.customization) === null || _options$customizatio === void 0 ? void 0 : _options$customizatio.cardsOrder
   })));
 };
 
 var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3) {
   var data = _ref3.data,
       onEdit = _ref3.onEdit,
+      onCustomizationChanged = _ref3.onCustomizationChanged,
       _ref3$options = _ref3.options,
       options = _ref3$options === void 0 ? {} : _ref3$options,
       ActionButtons = _ref3.ActionButtons,
@@ -141,7 +149,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
     return _objectSpread({}, DEFAULT_OPTIONS, {}, options);
   }, [options]),
       locale = _useMemo.locale,
-      theme = _useMemo.theme;
+      customization = _useMemo.customization;
 
   var _useState = (0, _react.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -161,7 +169,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return (0, _theme.buildTheme)(theme);
+                return (0, _theme.buildTheme)(customization === null || customization === void 0 ? void 0 : customization.theme);
 
               case 2:
                 built = _context2.sent;
@@ -196,6 +204,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
     isEditing: isEditing,
     data: data,
     onEdit: onEdit,
+    onCustomizationChanged: onCustomizationChanged,
     options: options,
     ActionButtons: ActionButtons,
     BeforeCards: BeforeCards

@@ -7,6 +7,8 @@ exports.buildTheme = exports.getRandomCardVariant = exports.DEFAULT_THEME = void
 
 var _mergeWith = _interopRequireDefault(require("lodash/mergeWith"));
 
+var _merge = _interopRequireDefault(require("lodash/merge"));
+
 var _cloneDeep = _interopRequireDefault(require("lodash/cloneDeep"));
 
 var _isArray = _interopRequireDefault(require("lodash/isArray"));
@@ -188,7 +190,7 @@ var mergeFunction = function mergeFunction(objValue, srcValue) {
     return srcValue;
   }
 
-  return objValue;
+  return (0, _merge.default)(objValue, srcValue);
 };
 
 var buildTheme =

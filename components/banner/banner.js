@@ -15,6 +15,8 @@ var _user_informations = require("./user_actions_row/user_informations/user_info
 
 var _social_actions = require("./user_actions_row/social_actions/social_actions");
 
+var _customize_button = require("./user_actions_row/customize_button/customize_button");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var useStyles = (0, _reactJss.createUseStyles)(_banner_styles.styles);
@@ -22,7 +24,8 @@ var useStyles = (0, _reactJss.createUseStyles)(_banner_styles.styles);
 var BannerComponent = function BannerComponent(_ref) {
   var _theme$components, _theme$components$ban;
 
-  var children = _ref.children;
+  var children = _ref.children,
+      customizationOptions = _ref.customizationOptions;
   var classes = useStyles();
   var theme = (0, _reactJss.useTheme)();
   return _react.default.createElement("div", {
@@ -35,7 +38,9 @@ var BannerComponent = function BannerComponent(_ref) {
     alt: "Banner"
   }), _react.default.createElement("div", {
     className: classes.content
-  }, _react.default.createElement(_user_informations.UserInformations, null), _react.default.createElement(_social_actions.SocialActions, null, children)));
+  }, _react.default.createElement(_user_informations.UserInformations, null), _react.default.createElement(_social_actions.SocialActions, null, children, _react.default.createElement(_customize_button.CustomizeButton, {
+    customizationOptions: customizationOptions
+  }))));
 };
 
 var Banner = BannerComponent;

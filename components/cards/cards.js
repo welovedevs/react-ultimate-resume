@@ -35,42 +35,13 @@ var _cards_styles = require("./cards_styles");
 
 var _theme = require("../../utils/styles/theme/theme");
 
+var _cards_order = require("./utils/cards_order");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var useStyles = (0, _reactJss.createUseStyles)(_cards_styles.styles);
-var DEFAULT_CARD_ORDER = [{
-  type: 'basics',
-  variant: 3
-}, {
-  type: 'projects',
-  variant: 4
-}, {
-  type: 'language',
-  variant: 3
-}, {
-  type: 'dreamjob',
-  variant: 4
-}, {
-  type: 'gifs',
-  variant: 2
-}, {
-  type: 'experiences',
-  variant: 4
-}, {
-  type: 'studies',
-  variant: 3
-}, {
-  type: 'skills',
-  variant: 0
-}, {
-  type: 'soundtrack',
-  variant: 0
-}, {
-  type: 'interestedBy',
-  variant: 2
-}];
 var CARD_TYPE_MAPPING = {
   basics: _basics_card.BasicsCard,
   projects: _projects_card.ProjectsCard,
@@ -86,7 +57,7 @@ var CARD_TYPE_MAPPING = {
 
 var CardsComponent = function CardsComponent(_ref) {
   var _ref$cardsOrder = _ref.cardsOrder,
-      cardsOrder = _ref$cardsOrder === void 0 ? DEFAULT_CARD_ORDER : _ref$cardsOrder;
+      cardsOrder = _ref$cardsOrder === void 0 ? _cards_order.DEFAULT_CARD_ORDER : _ref$cardsOrder;
   var theme = (0, _reactJss.useTheme)();
   var classes = useStyles();
   var cards = (0, _react.useMemo)(function () {

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg color="#fff" width="470px" height="470px" viewBox="0 0 470 470" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-485.000000, -298.000000)">
+            <g id="Group" transform="translate(485.000000, 298.000000)">
+                <rect class="to-fill" id="Rectangle" fill="#220BAB" x="0" y="0" width="470" height="470" rx="20"></rect>
+                <g class="to-color" id="Group-2" transform="translate(135.000000, 82.000000)" fill="currentColor" fill-rule="nonzero">
+                    <polygon id="Path" points="126.872247 36.123348 163.876652 0 126.872247 0"></polygon>
+                    <polygon id="Path" points="163.380617 36.4828194 126.872247 72.8784141 126.872247 109.251101 163.380617 109.251101 163.380617 72.8784141 200 36.4828194 200 0 163.380617 0"></polygon>
+                    <polygon id="Path" points="200 73.1277533 162.995595 109.251101 200 109.251101"></polygon>
+                    <polygon id="Path" points="0 102.607048 73.4731278 102.607048 73.4731278 139.207048 110.132159 139.207048 110.132159 73.0669604 36.7920705 73.0669604 110.132159 0 73.4731278 0 0 73.0669604"></polygon>
+                </g>
+                <text class="to-color" id="I-graduated-from-Éco" font-family="AvenirNext-Bold, Avenir Next" font-size="36" font-weight="bold" fill="currentColor">
+                    <tspan x="134" y="293">I graduated</tspan>
+                    <tspan x="134" y="342">from</tspan>
+                    <tspan x="134" y="391">École 42</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -29,9 +29,6 @@ var styles = function styles(theme) {
       '& > g': {
         stroke: 'currentColor'
       }
-    },
-    detailTypography: {
-      fontWeight: 500
     }
   };
 };

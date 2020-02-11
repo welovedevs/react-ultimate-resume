@@ -17,11 +17,11 @@ var _dream_job_back = require("./dream_job_back/dream_job_back");
 
 var _profile = require("../../../profile");
 
-var _mapping = require("./data/mapping");
-
 var _dream_job_card_edit_dialog = require("./dream_job_edit_dialog/dream_job_card_edit_dialog");
 
 var _validator = require("./data/validator");
+
+var _mapping = require("./data/mapping");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 

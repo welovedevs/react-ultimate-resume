@@ -1,6 +1,6 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.1.28",
+    "version": "1.1.29",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
@@ -12,7 +12,8 @@
         "postbuild": "cp-cli src/package/readme.md readme.md && cp-cli src/package/i18n i18n && cp-cli src/package/assets assets",
         "test-build": "rimraf ./test-build && ./node_modules/.bin/babel src -d ./test_build",
         "posttest-build": "rimraf ./test_build ./styles ",
-        "build:app": "react-scripts build"
+        "build:app": "react-scripts build",
+        "build-serve": "react-scripts build && serve build"
     },
     "author": "",
     "license": "ISC",
@@ -44,6 +45,7 @@
         "recharts": "^2.0.0-beta.1",
         "respinner": "^3.0.2",
         "uuid": "^3.4.0",
+        "values.js": "^1.0.3",
         "whatwg-fetch": "^3.0.0",
         "yup": "^0.28.0"
     },
@@ -68,6 +70,7 @@
         "ora": "^4.0.3",
         "readline-sync": "^1.4.10",
         "rimraf": "^3.0.0",
+        "serve": "^11.3.0",
         "use-debounce": "^3.3.0"
     },
     "eslintConfig": {

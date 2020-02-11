@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg color="#fff" width="470px" height="470px" viewBox="0 0 470 470" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-511.000000, -290.000000)">
+            <g id="Group" transform="translate(511.000000, 290.000000)">
+                <rect class="to-fill" id="Rectangle" fill="#220BAB" x="0" y="0" width="470" height="470" rx="20"></rect>
+                <text class="to-color" id="Discover-my-favorite" font-family="AvenirNext-Bold, Avenir Next" font-size="40" font-weight="bold" line-spacing="50" fill="currentColor">
+                    <tspan x="115" y="291">Discover my</tspan>
+                    <tspan x="115" y="341">favorite</tspan>
+                    <tspan x="115" y="391">tracks</tspan>
+                </text>
+                <text class="to-color" id="My-playlist" font-family="AvenirNext-Medium, Avenir Next" font-size="18" font-weight="400" fill="currentColor">
+                    <tspan x="314" y="441">My playlist</tspan>
+                </text>
+                <g class="to-color" id="arrow-right" transform="translate(423.000000, 428.000000)" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M0,8 L16,8" id="Path"></path>
+                    <polyline id="Path" points="8 0 16 8 8 16"></polyline>
+                </g>
+                <g class="to-color" id="spotify" transform="translate(153.000000, 53.000000)" fill="currentColor" fill-rule="nonzero">
+                    <path d="M82.4960714,0.272053571 C37.0729464,0.272053571 0.248482143,37.0955357 0.248482143,82.5186607 C0.248482143,127.94375 37.0729464,164.764286 82.4960714,164.764286 C127.924107,164.764286 164.744643,127.94375 164.744643,82.5186607 C164.744643,37.0984821 127.924107,0.275982143 82.4950893,0.275982143 L82.4960714,0.272053571 Z M120.214286,118.895268 C118.741071,121.311339 115.578571,122.077411 113.1625,120.594375 C93.8516071,108.798839 69.5416071,106.127411 40.9121429,112.668482 C38.1533036,113.297054 35.4033036,111.568482 34.7747321,108.808661 C34.1432143,106.048839 35.8649107,103.298839 38.630625,102.670268 C69.9609821,95.5094643 96.8353571,98.594375 118.515179,111.843482 C120.93125,113.326518 121.697321,116.479196 120.214286,118.895268 L120.214286,118.895268 Z M130.28125,96.4975 C128.425,99.5175893 124.476786,100.470268 121.461607,98.6140179 C99.3535714,85.0221429 65.6533036,81.0866964 39.50375,89.024375 C36.1124107,90.04875 32.5305357,88.1375 31.50125,84.7520536 C30.4798214,81.3607143 32.3920536,77.7857143 35.7775,76.7544643 C65.6474107,67.69125 102.78125,72.0814286 128.169643,87.6827679 C131.184821,89.5390179 132.1375,93.4872321 130.28125,96.4984821 L130.28125,96.4975 Z M131.145536,73.1775 C104.6375,57.4327679 60.9026786,55.9850893 35.5938393,63.6664286 C31.5297321,64.8990179 27.231875,62.6047321 26.0002679,58.540625 C24.7686607,54.4745536 27.0609821,50.1796429 31.1280357,48.9441071 C60.1808036,40.1244643 108.477679,41.8284821 138.996786,59.9460714 C142.660179,62.115625 143.858393,66.8367857 141.687857,70.4874107 C139.527143,74.1429464 134.793214,75.3480357 131.149464,73.1775 L131.145536,73.1775 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

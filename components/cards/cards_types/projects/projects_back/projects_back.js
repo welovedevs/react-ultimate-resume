@@ -25,7 +25,13 @@ var ProjectsBackComponent = function ProjectsBackComponent(_ref) {
   var _data$projects;
 
   var data = _ref.data;
-  var classes = useStyles();
+  var classes = useStyles(); //
+  // const openNewProjectDialog = useState();
+  //
+  // useEffect(() => {
+  //
+  // }, []);
+
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_title.ProfileCardTitle, {
     customClasses: {
       container: classes.title,
