@@ -25,8 +25,5 @@ export const styles = theme => {
                 stroke: 'currentColor'
             }
         },
-        detailTypography: {
-            fontWeight: 500
-        }
     };
 };

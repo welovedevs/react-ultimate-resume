@@ -66,7 +66,6 @@ export const SliderWithPopper = ({
             onMouseDown={handleFocus}
             onMouseUp={handleBlur}
             thumbReference={thumbReference}
-            fullWidth
             thumbChildren={(
                 <PopperCard
                     open={isFocused}

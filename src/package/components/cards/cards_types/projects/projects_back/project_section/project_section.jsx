@@ -8,9 +8,9 @@ import { ProfileCardSectionSubtitle } from '../../../../../commons/profile_card/
 import { ProfileCardSectionText } from '../../../../../commons/profile_card/profile_card_section_text/profile_card_section_text';
 import { ProfileCardSection } from '../../../../../commons/profile_card/profile_card_section/profile_card_section';
 import { SeeProjectDetail } from '../../see_project_detail/see_project_detail';
+import { AnimatedUnderlinedButton } from '../../../../../commons/animated_underlined_button/animated_underlined_button';
 
 import { ReactComponent as LinkIcon } from '../../../../../../assets/icons/link.svg';
-import { ReactComponent as EyeIcon } from '../../../../../../assets/icons/eye.svg';
 
 import { styles } from './project_section_styles';
 
@@ -45,18 +45,17 @@ const ProjectSectionContainer = ({ project, cardVariant }) => {
 const Details = ({ project, classes }) => (
     <div className={classes.details}>
         <div className={classes.detail}>
-            <LinkIcon className={classes.detailIcon} />
-            <a href={project.link}>
-                <Typography customClasses={{ container: classes.detailTypography }} color="primary">
-                    Link
-                </Typography>
-            </a>
+            <AnimatedUnderlinedButton>
+                <LinkIcon className={classes.detailIcon} />
+                <a href={project.link}>
+                    <Typography customClasses={{ container: classes.detailTypography }} color="primary">
+                        Link
+                    </Typography>
+                </a>
+            </AnimatedUnderlinedButton>
         </div>
         <div className={classes.detail}>
-            <EyeIcon className={classes.detailIcon} />
-            <Typography customClasses={{ container: classes.detailTypography }} color="primary">
-                <SeeProjectDetail project={project} />
-            </Typography>
+            <SeeProjectDetail project={project} />
         </div>
     </div>
 );

@@ -42,6 +42,7 @@ const ProfileCardComponent = ({
     isEditingProfile,
     editDialog,
     customTransitionsSpringProps,
+    customEditAction,
     side: sideProps
 }) => {
     const classes = useStyles({ variant });
@@ -100,7 +101,7 @@ const ProfileCardComponent = ({
 
     return (
         <>
-            {isEditingProfile && (
+            {isEditingProfile && !customEditAction && (
                 <ProfileCardEditDialog
                     editDialog={editDialog}
                     open={openEditDialog}
@@ -115,7 +116,10 @@ const ProfileCardComponent = ({
                 onMouseLeave={handleMouseLeave}
             >
                 {isEditingProfile && (
-                    <ProfileCardEditButton setEditDialogOpened={setEditDialogOpened} />
+                    <EditAction
+                        customEditAction={customEditAction}
+                        setEditDialogOpened={setEditDialogOpened}
+                    />
                 )}
                 <ProfileCardContext.Provider value={contextData}>
                     {transitions.map(({ item, key, props }) => {
@@ -130,6 +134,13 @@ const ProfileCardComponent = ({
             </Card>
         </>
     );
+};
+
+const EditAction = ({ customEditAction, setEditDialogOpened }) => {
+    if (customEditAction) {
+        return customEditAction;
+    }
+    return <ProfileCardEditButton setEditDialogOpened={setEditDialogOpened} />
 };
 
 export const ProfileCard = ProfileCardComponent;

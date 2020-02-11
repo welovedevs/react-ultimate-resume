@@ -1,5 +1,6 @@
 import React, { useMemo, useRef } from 'react';
 
+import { createUseStyles } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { List, ListItem, PopperCard, Typography } from '@wld/ui';
@@ -18,97 +19,17 @@ import { remoteDisplayTranslations } from '../../../../../utils/enums/remote/rem
 
 import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
 
-const DreamJobPlaces = ({ places = [] }) => {
-    const textAnchor = useRef();
-    const [open, handlers] = useOpenerState();
-    const { firstPlace, remainingPlaces } = useMemo(() => {
-        const placesCopy = [...places];
-        const item = placesCopy.shift();
-        return { firstPlace: item, remainingPlaces: placesCopy };
-    }, [places]);
+import { styles } from './dream_job_back_styles';
 
-    if (!remainingPlaces.length) {
-        return (
-            <ProfileCardSectionText>
-                <FormattedMessage
-                    id="Dreamjob.Back.Location.OnePlace"
-                    defaultMessage="I want to work in {place}"
-                    values={{ place: firstPlace?.name ?? ''}}
-                />
-            </ProfileCardSectionText>
-        );
-    }
-    return (
-        <>
-            <div ref={textAnchor} {...handlers}>
-                <ProfileCardSectionText>
-                    <FormattedMessage
-                        id="Dreamjob.Back.Location.OnePlace"
-                        defaultMessage="I want to work in {place} and {length, plural, one {one other place} other {# other places}}"
-                        values={{ place: firstPlace.name, length: remainingPlaces.length }}
-                    />
-                </ProfileCardSectionText>
-            </div>
-            <PopperCard open={open} anchorElement={textAnchor.current}>
-                <List>
-                    {remainingPlaces
-                        .filter(item => item)
-                        .map(({ name }, index) => (
-                            <ListItem key={`place_popper_${index}`}>
-                                <Typography>{name}</Typography>
-                            </ListItem>
-                        ))}
-                </List>
-            </PopperCard>
-        </>
-    );
-};
-const DreamJobLocations = ({ remoteFrequency, places }) => {
-    const { formatMessage } = useIntl();
-    if (remoteFrequency === REMOTE_FREQUENCY.FULL_TIME) {
-        return (
-            <ProfileCardSectionText>
-                <FormattedMessage
-                    id="Dreamjob.Back.Location.RemoteOnly"
-                    defaultMessage="I only want to work remotely"
-                />
-            </ProfileCardSectionText>
-        );
-    }
+const useStyles = createUseStyles(styles);
 
-    return (
-        <>
-            <ProfileCardSectionTitle>
-                <FormattedMessage id="Dreamjob.Back.Location.Title" defaultMessage="My dreamjob location" />
-            </ProfileCardSectionTitle>
-            <ProfileCardSectionText>
-                <DreamJobPlaces places={places} />
-                <br />
-                {remoteFrequency &&
-                    formatMessage(remoteDisplayTranslations[remoteFrequency] || remoteDisplayTranslations.others)}
-            </ProfileCardSectionText>
-        </>
-    );
-};
-
-const DreamJobPerks = ({ perks = {} }) => {
-    const { formatMessage } = useIntl();
-
-    return Object.entries(perks || {})
-        .map(([key, value]) => {
-            if (key === JobPerks.OTHER) {
-                return value;
-            }
-            return formatMessage(jobPerksTranslations[key.toLowerCase()] || jobPerksTranslations.other);
-        })
-        .join(', ');
-};
 const DreamJobBackComponent = ({ data }) => {
+    const classes = useStyles();
     const { places, perks, salary, remoteFrequency, contractTypes } = data;
     return (
         <ProfileCardAnimatedBack title="Dream job">
             <ProfileCardSection>
-                <DreamJobLocations places={places} remoteFrequency={remoteFrequency} />
+                <DreamJobLocations places={places} remoteFrequency={remoteFrequency} classes={classes} />
             </ProfileCardSection>
             <ProfileCardSection>
                 <ProfileCardSectionTitle>
@@ -139,6 +60,90 @@ const DreamJobBackComponent = ({ data }) => {
             </ProfileCardSection>
         </ProfileCardAnimatedBack>
     );
+};
+
+const DreamJobLocations = ({ remoteFrequency, places, classes }) => {
+    const { formatMessage } = useIntl();
+    if (remoteFrequency === REMOTE_FREQUENCY.FULL_TIME) {
+        return (
+            <FormattedMessage
+                id="Dreamjob.Back.Location.RemoteOnly"
+                defaultMessage="I only want to work remotely"
+            />
+        );
+    }
+
+    return (
+        <>
+            <ProfileCardSectionTitle>
+                <FormattedMessage id="Dreamjob.Back.Location.Title" defaultMessage="My dreamjob location" />
+            </ProfileCardSectionTitle>
+            <ProfileCardSectionText>
+                <DreamJobPlaces places={places} classes={classes} />
+                <br />
+                {remoteFrequency
+                && formatMessage(remoteDisplayTranslations[remoteFrequency] || remoteDisplayTranslations.others)}
+            </ProfileCardSectionText>
+        </>
+    );
+};
+
+const DreamJobPlaces = ({ places = [], classes }) => {
+    const textAnchor = useRef();
+    const [open, handlers] = useOpenerState();
+    const { firstPlace, remainingPlaces } = useMemo(() => {
+        const placesCopy = [...places];
+        const item = placesCopy.shift();
+        return { firstPlace: item, remainingPlaces: placesCopy };
+    }, [places]);
+
+    if (!remainingPlaces.length) {
+        return (
+            <ProfileCardSectionText>
+                <FormattedMessage
+                    id="Dreamjob.Back.Location.OnePlace"
+                    defaultMessage="I want to work in {place}"
+                    values={{ place: firstPlace?.name ?? '' }}
+                />
+            </ProfileCardSectionText>
+        );
+    }
+
+    return (
+        <>
+            <button className={classes.button} type="button" ref={textAnchor} {...handlers}>
+                <FormattedMessage
+                    id="Dreamjob.Back.Location.OnePlace"
+                    defaultMessage="I want to work in {place} and {length, plural, one {one other place} other {# other places}}"
+                    values={{ place: firstPlace.name, length: remainingPlaces.length }}
+                />
+            </button>
+            <PopperCard open={open} anchorElement={textAnchor.current}>
+                <List>
+                    {remainingPlaces
+                        .filter(item => item)
+                        .map(({ name }, index) => (
+                            <ListItem key={`place_popper_${index}`}>
+                                <Typography>{name}</Typography>
+                            </ListItem>
+                        ))}
+                </List>
+            </PopperCard>
+        </>
+    );
+};
+
+const DreamJobPerks = ({ perks = {} }) => {
+    const { formatMessage } = useIntl();
+
+    return Object.entries(perks || {})
+        .map(([key, value]) => {
+            if (key === JobPerks.OTHER) {
+                return value;
+            }
+            return formatMessage(jobPerksTranslations[key.toLowerCase()] || jobPerksTranslations.other);
+        })
+        .join(', ');
 };
 
 export const DreamJobBack = DreamJobBackComponent;

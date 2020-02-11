@@ -5,6 +5,7 @@ import { ProjectsFront } from './projects_front/projects_front';
 import { ProjectsBack } from './projects_back/projects_back';
 import { DeveloperProfileContext } from '../../../profile';
 import { mapProjectsFromJsonResume } from './data/mapping';
+import { AddButton } from './add_button/add_button';
 
 const ProjectsCardComponent = ({ variant, side }) => {
     const { data, isEditing } = useContext(DeveloperProfileContext);
@@ -20,6 +21,12 @@ const ProjectsCardComponent = ({ variant, side }) => {
             }}
             variant={variant}
             side={side}
+            customEditAction={(
+                <AddButton
+                    title="Ajouter un projet"
+                    onClick={alert}
+                />
+            )}
         />
     );
 };

@@ -4,9 +4,10 @@ import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { DreamJobFront } from './dream_job_front/dream_job_front';
 import { DreamJobBack } from './dream_job_back/dream_job_back';
 import { DeveloperProfileContext } from '../../../profile';
-import { mapDreamJobFromJsonResume, mapDreamJobToJsonResume } from './data/mapping';
 import { DreamJobCardEditDialog } from './dream_job_edit_dialog/dream_job_card_edit_dialog';
 import { DreamJobValidationSchema } from './data/validator';
+
+import { mapDreamJobFromJsonResume, mapDreamJobToJsonResume } from './data/mapping';
 
 const DreamJobCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
