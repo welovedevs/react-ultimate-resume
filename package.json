@@ -12,7 +12,8 @@
         "postbuild": "cp-cli src/package/readme.md readme.md && cp-cli src/package/i18n i18n && cp-cli src/package/assets assets",
         "test-build": "rimraf ./test-build && ./node_modules/.bin/babel src -d ./test_build",
         "posttest-build": "rimraf ./test_build ./styles ",
-        "build:app": "react-scripts build"
+        "build:app": "react-scripts build",
+        "build-serve": "react-scripts build && serve build"
     },
     "author": "",
     "license": "ISC",
@@ -68,6 +69,7 @@
         "ora": "^4.0.3",
         "readline-sync": "^1.4.10",
         "rimraf": "^3.0.0",
+        "serve": "^11.3.0",
         "use-debounce": "^3.3.0"
     },
     "eslintConfig": {

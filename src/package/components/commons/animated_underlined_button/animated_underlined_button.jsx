@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 import { createUseStyles } from 'react-jss';
-import { animated, config, useTransition } from 'react-spring';
+import { animated, useTransition } from 'react-spring';
 
 import { useOpenerState } from '../../hooks/use_opener_state';
 

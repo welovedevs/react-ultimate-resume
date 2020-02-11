@@ -14,7 +14,8 @@ export const styles = (theme) => {
             left: 0,
             height: 2,
             width: '100%',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            pointerEvents: 'none'
         }),
         underline: ({ color }) => ({
             height: '100%',
