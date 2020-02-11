@@ -1,8 +1,13 @@
+import { withCustomVerticalScrollbar } from '../../../../utils/styles/styles_utils';
+
 export const styles = (theme) => {
     const { palette, miscellaneous: { spacing } } = theme;
     return ({
         container: {
-            marginRight: spacing * 6
+            paddingRight: spacing * 6,
+            height: '100%',
+            overflowY: 'auto',
+            ...withCustomVerticalScrollbar()
         },
         listItem: {
             display: 'flex',
