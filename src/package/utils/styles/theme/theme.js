@@ -156,9 +156,7 @@ const mergeFunction = (objValue, srcValue) => {
 };
 
 export const buildTheme = async theme => {
-    console.log('input theme', theme);
     const merged = mergeWith(cloneDeep(DEFAULT_THEME), theme, mergeFunction);
-    console.log('input theme', merged);
 
     try {
         await THEME_SCHEMA.validate(merged, {

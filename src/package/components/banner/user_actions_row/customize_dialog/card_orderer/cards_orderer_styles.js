@@ -5,7 +5,8 @@ export const styles = theme => ({
     cardsContainer: {
         width: (150 + 2 * theme.miscellaneous.spacing) * 3,
         display: 'flex',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        justifyContent: 'center'
     },
 
     sortableHelper: {

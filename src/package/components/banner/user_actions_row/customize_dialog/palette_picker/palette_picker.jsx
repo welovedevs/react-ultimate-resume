@@ -71,7 +71,11 @@ export const PalettePicker = ({ value: currentPalette, onChange }) => {
                     onChange={onSelectChanged}
                 >
                     {palettes.map((palette, index) => (
-                        <ListItem className={classes.palette} value={[palette[0], palette[2], palette[4]]}>
+                        <ListItem
+                            className={classes.palette}
+                            key={`palette_${index}`}
+                            value={[palette[0], palette[2], palette[4]]}
+                        >
                             {index}
                             <div className={classes.colorSquare} style={{ backgroundColor: palette[0] }} />
                             <div className={classes.colorSquare} style={{ backgroundColor: palette[2] }} />

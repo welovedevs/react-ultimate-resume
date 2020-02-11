@@ -40,8 +40,8 @@ const VariantItem = ({ colorScheme, value }) => {
     return (
         <>
             <Typography>#{value + 1}</Typography>
-            {colors.map(hex => (
-                <div className={classes.colorSquare} style={{ backgroundColor: hex }} />
+            {colors.map((hex, index) => (
+                <div key={`${hex}_${index}`} className={classes.colorSquare} style={{ backgroundColor: hex }} />
             ))}
         </>
     );

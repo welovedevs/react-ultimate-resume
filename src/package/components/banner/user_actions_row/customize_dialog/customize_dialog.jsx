@@ -4,14 +4,14 @@ import set from 'lodash/set';
 import cloneDeep from 'lodash/cloneDeep';
 
 import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
+import { ThemeProvider } from 'react-jss';
+import { Button } from '@wld/ui';
 
 import { DeveloperProfileContext } from '../../../profile';
 import { DialogTitle } from '../../../commons/dialog/dialog_title/dialog_title';
 import { PalettePicker } from './palette_picker/palette_picker';
 import { CardsOrderer } from './card_orderer/cards_orderer';
-import { Button } from '@wld/ui';
 import { buildTheme } from '../../../../utils/styles/theme/theme';
-import { ThemeProvider } from 'theming';
 
 export const CustomizeDialog = ({ open, onClose, customizationOptions }) => {
     const [value, setValue] = useState(customizationOptions);
@@ -21,7 +21,7 @@ export const CustomizeDialog = ({ open, onClose, customizationOptions }) => {
         setValue(customizationOptions);
     }, [customizationOptions]);
 
-    const [builtTheme, setBuiltTheme] = useState(value.theme);
+    const [builtTheme, setBuiltTheme] = useState({});
 
     useEffect(() => {
         const asyncBuild = async () => {
