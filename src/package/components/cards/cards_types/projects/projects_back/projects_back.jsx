@@ -14,7 +14,6 @@ const useStyles = createUseStyles(styles);
 
 const ProjectsBackComponent = ({ data }) => {
     const classes = useStyles();
-
     return (
         <>
             <ProfileCardTitle

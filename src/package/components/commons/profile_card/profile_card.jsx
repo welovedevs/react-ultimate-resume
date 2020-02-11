@@ -28,6 +28,7 @@ const DEFAULT_TRANSITIONS_SPRING_PROPS = {
 };
 
 const ProfileCardComponent = ({
+    children,
     data,
     sides,
     variant,
@@ -109,6 +110,7 @@ const ProfileCardComponent = ({
                     <EditAction customEditAction={customEditAction} setEditDialogOpened={setEditDialogOpened} />
                 )}
                 <ProfileCardContext.Provider value={contextData}>
+                    {children}
                     {transitions.map(({ item, key, props }) => {
                         const SideComponent = sides[item] || (() => null);
                         return (
