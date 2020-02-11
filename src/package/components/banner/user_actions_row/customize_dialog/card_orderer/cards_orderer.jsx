@@ -2,7 +2,7 @@ import { List, Typography } from '@wld/ui';
 
 import cloneDeep from 'lodash/cloneDeep';
 import { FormattedMessage } from 'react-intl';
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import { styles } from './cards_orderer_styles';
 import { createUseStyles } from 'react-jss';
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
@@ -12,7 +12,7 @@ import { DEFAULT_CARD_ORDER } from '../../../../cards/utils/cards_order';
 
 const useStyles = createUseStyles(styles);
 
-const SortableCard = SortableElement(CardStub);
+const SortableCard = SortableElement(memo(CardStub));
 const SortableCards = SortableContainer(({ items = [], onItemChanged }) => {
     const classes = useStyles();
 
