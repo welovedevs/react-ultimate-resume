@@ -13,6 +13,13 @@ const useStyles = createUseStyles(styles);
 
 const ProjectsBackComponent = ({ data }) => {
     const classes = useStyles();
+    //
+    // const openNewProjectDialog = useState();
+    //
+    // useEffect(() => {
+    //
+    // }, []);
+
     return (
         <>
             <ProfileCardTitle
@@ -20,7 +27,7 @@ const ProjectsBackComponent = ({ data }) => {
                     container: classes.title,
                     typography: classes.typography
                 }}
-                beforeTypography={
+                beforeTypography={(
                     <div className={classes.background}>
                         <img
                             className={classes.backgroundImage}
@@ -28,7 +35,7 @@ const ProjectsBackComponent = ({ data }) => {
                             alt="Project Background"
                         />
                     </div>
-                }
+                )}
             >
                 Projects
             </ProfileCardTitle>

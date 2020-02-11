@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg color="#fff" width="470px" height="470px" viewBox="0 0 470 470" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-511.000000, -290.000000)">
+            <g id="Group" transform="translate(511.000000, 290.000000)">
+                <rect class="to-fill" id="Rectangle" fill="#220BAB" x="0" y="0" width="470" height="470" rx="20"></rect>
+                <text class="currentColor" id="I’m-interested-by-An" font-family="AvenirNext-Bold, Avenir Next" font-size="36" font-weight="bold" line-spacing="50" fill="currentColor">
+                    <tspan x="61" y="196">I’m interested by</tspan>
+                    <tspan x="61" y="246">Angular, Blockchain</tspan>
+                    <tspan x="61" y="296">&amp; React.</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

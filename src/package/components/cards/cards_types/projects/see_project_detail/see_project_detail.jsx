@@ -15,9 +15,9 @@ import { styles } from './see_project_detail_styles';
 
 const useStyles = createUseStyles(styles);
 
-const SeeProjectDetailComponent = ({ project }) => {
+const SeeProjectDetailComponent = ({ openDialog: receivedOpen, project }) => {
     const classes = useStyles();
-    const [openDialog, setDialogOpened, setDialogClosed] = useCallbackOpen();
+    const [openDialog, setDialogOpened, setDialogClosed] = useCallbackOpen(receivedOpen);
     return (
         <>
             <ProjectDialog project={project} open={openDialog} onClose={setDialogClosed} />
