@@ -9,7 +9,8 @@ export const mapWorkFromJsonResume = jsonResume => ({
         startDate: work.startDate && moment(work.startDate, 'YYYY-MM-DD'),
         endDate: work.endDate && moment(work.endDate, 'YYYY-MM-DD'),
         place: {
-            name: work.location
+            name: work.location,
+            placeId: work.placeId
         },
         stillEmployed: !work.endDate,
         index
