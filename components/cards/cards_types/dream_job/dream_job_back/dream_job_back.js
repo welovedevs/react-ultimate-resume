@@ -190,7 +190,7 @@ var DreamJobPerks = function DreamJobPerks(_ref6) {
       return value;
     }
 
-    return formatMessage(_job_perks_translations.jobPerksTranslations[key.toLowerCase()] || _job_perks_translations.jobPerksTranslations.other);
+    return formatMessage(_job_perks_translations.jobPerksTranslations[key.toLowerCase()] || _job_perks_translations.jobPerksTranslations.others);
   }).join(', ');
 };
 

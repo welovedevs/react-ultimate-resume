@@ -24,7 +24,7 @@ var remoteSelectTranslations = (0, _reactIntl.defineMessages)({
     id: 'Developer.RemoteFrequency.Select.FullTime',
     defaultMessage: 'Full-time'
   },
-  other: {
+  others: {
     id: 'Developer.RemoteFrequency.Select.Other',
     defaultMessage: 'Other'
   }
@@ -47,7 +47,7 @@ var remoteDisplayTranslations = (0, _reactIntl.defineMessages)({
     id: 'Developer.RemoteFrequency.Display.fullTime',
     defaultMessage: "I'm interested by full-time remote work"
   },
-  OTHER: {
+  others: {
     id: 'Developer.RemoteFrequency.Display.other',
     defaultMessage: 'Autres'
   }

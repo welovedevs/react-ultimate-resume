@@ -74,7 +74,7 @@ var PerksFieldComponent = function PerksFieldComponent(_ref) {
   }), _react.default.createElement("div", {
     className: classes.othersCheckbox
   }, _react.default.createElement(_checkbox_group2.CheckboxField, {
-    title: _react.default.createElement(_ui.Typography, null, formatMessage(_job_perks_translations.jobPerksTranslations[_job_perks_utils.JobPerks.OTHER])),
+    title: _react.default.createElement(_ui.Typography, null, formatMessage(_job_perks_translations.jobPerksTranslations.others)),
     onClick: toggleOtherPerk,
     checked: otherPerk !== null,
     variant: "outlined",
