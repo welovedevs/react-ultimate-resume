@@ -8,11 +8,18 @@ import { Cards } from './cards/cards';
 
 import { styles } from './profile_styles';
 
+import en from '../i18n/en.json';
+import fr from '../i18n/fr.json';
+
 import '../styles/lib/slick-carousel/slick-theme.css';
 import '../styles/lib/slick-carousel/slick.css';
 import { technologiesInitialState, technologiesReducer } from '../store/technologies/technologies_reducer';
 import { DeveloperProfileContext } from '../utils/context/contexts';
 
+const messages = {
+    en,
+    fr
+};
 const useStyles = createUseStyles(styles);
 
 const DEFAULT_OPTIONS = Object.freeze({
@@ -67,11 +74,11 @@ const DeveloperProfileComponent = ({
 
     return (
         <div className={classes.container}>
-            <DeveloperProfileContext.provider value={context}>
+            <DeveloperProfileContext.Provider value={context}>
                 <Banner customizationOptions={options.customization}>{ActionButtons}</Banner>
                 {BeforeCards}
                 <Cards cardsOrder={options.customization?.cardsOrder} />
-            </DeveloperProfileContext.provider>
+            </DeveloperProfileContext.Provider>
         </div>
     );
 };
@@ -103,7 +110,7 @@ const WithProvidersDeveloperProfile = ({
 
     return (
         <ThemeProvider theme={builtTheme}>
-            <IntlProvider locale={locale}>
+            <IntlProvider locale={locale} messages={messages[locale] || messages.en} defaultLocale={locale}>
                 <DeveloperProfileComponent
                     isEditing={isEditing}
                     data={data}

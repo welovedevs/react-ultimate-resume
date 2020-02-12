@@ -69,10 +69,10 @@ const BasicsBackComponent = ({ data }) => {
                 )
             },
             codingYears: {
-                title: <FormattedMessage id="Basics.Back.CodingYears" defaultMessage="Experience" />,
+                title: <FormattedMessage id="Basics.Back.CodingYears.title" defaultMessage="Experience" />,
                 value: (
                     <FormattedMessage
-                        id="Basics.Back.CodingYears"
+                        id="Basics.Back.CodingYears.value"
                         defaultMessage={'{codingYears} years coding'}
                         values={{ codingYears }}
                     />

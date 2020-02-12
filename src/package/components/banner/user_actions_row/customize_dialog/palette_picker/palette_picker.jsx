@@ -57,7 +57,7 @@ export const PalettePicker = ({ value: currentPalette, onChange }) => {
                 {selectedPalette && (
                     <div className={classes.currentPalette}>
                         <Typography>
-                            <FormattedMessage id="PalettePicker.field.title" defaultMessage="Current palette" />
+                            <FormattedMessage id="PalettePicker.field.currentPalette" defaultMessage="Current palette" />
                         </Typography>
                         <div className={classes.colorSquare} style={{ backgroundColor: selectedPalette[0] }} />
                         <div className={classes.colorSquare} style={{ backgroundColor: selectedPalette[1] }} />

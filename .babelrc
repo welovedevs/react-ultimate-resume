@@ -13,6 +13,12 @@
                 }
             }
         ],
-        "babel-plugin-inline-react-svg"
+        "babel-plugin-inline-react-svg",
+        [
+            "react-intl",
+            {
+                "messagesDir": "./build/messages/"
+            }
+        ]
     ]
 }

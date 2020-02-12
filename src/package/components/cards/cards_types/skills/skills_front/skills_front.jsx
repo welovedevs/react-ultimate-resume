@@ -41,7 +41,7 @@ const SkillsFrontComponent = ({ data }) => {
                         <FormattedMessage
                             id="Skills.front.title"
                             defaultMessage="I mainly write {techno} stuff"
-                            values={{ values: techno?.name }}
+                            values={{ techno: techno?.name }}
                         />
                     </ProfileCardFrontTypography>
                 </CenterContentContainer>

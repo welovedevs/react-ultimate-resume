@@ -170,7 +170,7 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                     <Typography className={classes.sliderValue}>
                         <FormattedMessage
                             id="Main.lang.years"
-                            defaultMessage="{countNode} year{count, plural, one {} other {}}"
+                            defaultMessage="{countNode} year{count, plural, one {} other {s}}"
                             values={{
                                 count: studiesLevel,
                                 countNode: <span className={classes.bolden}>{studiesLevel}</span>
