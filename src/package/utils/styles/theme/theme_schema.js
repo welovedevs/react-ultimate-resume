@@ -11,7 +11,7 @@ const SHADES_SCHEMA = Object.freeze({
 });
 
 const isExistingColorInPalette = yup.string().test(
-    'is-existing-color-in-palette',
+    'is-existing-color-in-palette_visual',
     args => `Color \`${args.value}\` must be present in palette.`,
     value => Boolean(this.options?.context?.palette?.[value])
 );

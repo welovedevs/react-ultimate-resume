@@ -1,27 +1,34 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
+
+import { createUseStyles, ThemeProvider } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 import set from 'lodash/set';
 import cloneDeep from 'lodash/cloneDeep';
 
-import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
-import { ThemeProvider } from 'react-jss';
 import { Button } from '@wld/ui';
 
+import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
+
 import { DialogTitle } from '../../../commons/dialog/dialog_title/dialog_title';
-import { PalettePicker } from './palette_picker/palette_picker';
 import { CardsOrderer } from './card_orderer/cards_orderer';
+import { PalettesList } from './palettes_list/palettes_list';
+
 import { buildTheme } from '../../../../utils/styles/theme/theme';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
-export const CustomizeDialog = ({ open, onClose, customizationOptions }) => {
+import { styles } from './customize_dialog_styles';
+
+const useStyles = createUseStyles(styles);
+
+const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
+    const classes = useStyles();
     const [value, setValue] = useState(customizationOptions);
+    const [builtTheme, setBuiltTheme] = useState({});
     const { onCustomizationChanged } = useContext(DeveloperProfileContext);
 
     useEffect(() => {
         setValue(customizationOptions);
     }, [customizationOptions]);
-
-    const [builtTheme, setBuiltTheme] = useState({});
 
     useEffect(() => {
         const asyncBuild = async () => {
@@ -55,17 +62,41 @@ export const CustomizeDialog = ({ open, onClose, customizationOptions }) => {
     }, [value]);
 
     return (
-        <Dialog open={open} onClose={onClose}>
+        <Dialog
+            fullScreen
+            classes={{
+                paper: classes.paper
+            }}
+            open
+            onClose={onClose}
+        >
             <DialogTitle>
                 <FormattedMessage id="Banner.actions.customize.dialog.title" defaultMessage="Customize your profile" />
             </DialogTitle>
-            <DialogContent>
-                <PalettePicker onChange={onPaletteChanged} value={value?.theme?.palette} />
+            <DialogContent
+                classes={{
+                    root: classes.content
+                }}
+            >
+                <PalettesList
+                    classes={{
+                        container: classes.palettesList
+                    }}
+                    onChange={onPaletteChanged}
+                    value={value?.theme?.palette}
+                />
+                <div className={classes.dividerContainer}>
+                    <div className={classes.divider} />
+                </div>
                 <ThemeProvider theme={builtTheme}>
                     <CardsOrderer onChange={onCardOrdered} value={value?.cardsOrder} />
                 </ThemeProvider>
             </DialogContent>
-            <DialogActions>
+            <DialogActions
+                classes={{
+                    root: classes.actions
+                }}
+            >
                 <Button size="small" onClick={onSave}>
                     <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
                 </Button>
@@ -73,3 +104,5 @@ export const CustomizeDialog = ({ open, onClose, customizationOptions }) => {
         </Dialog>
     );
 };
+
+export const CustomizeDialog = CustomizeDialogComponent;
