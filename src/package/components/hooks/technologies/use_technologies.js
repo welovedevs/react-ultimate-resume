@@ -1,7 +1,6 @@
-import { useContext, useEffect, useReducer } from 'react';
-import { technologiesInitialState, technologiesReducer } from '../../../store/technologies/technologies_reducer';
-import { DeveloperProfileContext } from '../../profile';
+import { useContext, useEffect } from 'react';
 import { TECHNOLOGIES_RECEIVED } from '../../../store/technologies/technologies_actions_types';
+import { DeveloperProfileContext } from '../../../utils/context/contexts';
 
 const DEFAULT_OBJECT = {};
 export const useTechnologies = () => {

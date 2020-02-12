@@ -1,7 +1,8 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
+
 import { Button } from '@wld/ui';
 import { useCallbackOpen } from '../../../hooks/use_callback_open';
-import { FormattedMessage } from 'react-intl';
 import { CustomizeDialog } from '../customize_dialog/customize_dialog';
 
 export const CustomizeButton = ({ customizationOptions }) => {

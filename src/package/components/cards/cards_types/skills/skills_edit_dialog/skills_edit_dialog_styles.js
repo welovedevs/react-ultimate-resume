@@ -1,10 +1,13 @@
-export const styles = (theme) => {
-    const { palette, miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        palette,
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         paper: {
             width: ['100%', '!important'],
             maxWidth: ['unset', '!important'],
-            backgroundColor: [palette.light[800], '!important'],
+            backgroundColor: [palette.light[800], '!important']
         },
         content: {
             padding: [[spacing, spacing * 3, 0], '!important']
@@ -14,5 +17,5 @@ export const styles = (theme) => {
             bottom: 0,
             right: 0
         }
-    });
+    };
 };

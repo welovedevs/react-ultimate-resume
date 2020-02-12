@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { ProfileCardTitle } from '../../../../commons/profile_card/profile_card_title/profile_card_title';
@@ -13,12 +14,6 @@ const useStyles = createUseStyles(styles);
 
 const ProjectsBackComponent = ({ data }) => {
     const classes = useStyles();
-    //
-    // const openNewProjectDialog = useState();
-    //
-    // useEffect(() => {
-    //
-    // }, []);
 
     return (
         <>
@@ -35,9 +30,9 @@ const ProjectsBackComponent = ({ data }) => {
                             alt="Project Background"
                         />
                     </div>
-                )}
+                  )}
             >
-                Projects
+                <FormattedMessage id="Projects.back.title" defaultMessage="Projects" />
             </ProfileCardTitle>
             <ProfileCardContent>
                 {data.projects?.map(project => (

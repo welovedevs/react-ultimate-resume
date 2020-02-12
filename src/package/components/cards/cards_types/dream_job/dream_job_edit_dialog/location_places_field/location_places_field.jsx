@@ -19,7 +19,7 @@ const useStyles = createUseStyles(styles);
 
 const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace }) => {
     const classes = useStyles();
-    const placesValues = useMemo(() => Object.values(places || {}), [places]);
+    const placesValues = useMemo(() => Object.values(places || {}), [places]);
     const transitions = useTransition(placesValues, ({ id }) => `place_${id}`, {
         ...LOCATION_PLACES_FIELD_TRANSITIONS_SPRING_PROPS,
         trail: 200 / placesValues.length
@@ -32,7 +32,7 @@ const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace }) 
                     id="DreamJob.editDialog.location.title"
                     defaultMessage="What's your dream job location?"
                 />
-            )}
+              )}
         >
             <LocationField
                 fullWidth
@@ -44,23 +44,15 @@ const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace }) 
             />
             <div className={classes.places}>
                 {transitions.map(({ item, key, props }) => (
-                    <Tag
-                        key={key}
-                        className={classes.place}
-                        color="secondary"
-                        style={props}
-                    >
-                        <Tooltip
-                            title="Delete this place"
-                        >
-                            <button
-                                type="button"
-                                onClick={removePlace(item.id)}
-                            >
+                    <Tag key={key} className={classes.place} color="secondary" style={props}>
+                        <Tooltip title="Delete this place">
+                            <button type="button" onClick={removePlace(item.id)}>
                                 <TrashIcon className={classes.deleteIcon} />
                             </button>
                         </Tooltip>
-                        <Typography variant="body2" color="light">{item.name}</Typography>
+                        <Typography variant="body2" color="light">
+                            {item.name}
+                        </Typography>
                     </Tag>
                 ))}
             </div>

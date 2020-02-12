@@ -16,7 +16,7 @@ export const styles = theme => {
             ...withCustomVerticalScrollbar()
         },
         headrow: {
-            display: 'flex',
+            display: 'flex'
         }
     };
 };

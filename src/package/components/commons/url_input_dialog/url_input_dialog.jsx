@@ -1,10 +1,11 @@
 import React, { useCallback, useState } from 'react';
 
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { Button, TextField } from '@wld/ui';
 
-import { Dialog, DialogContent, DialogActions } from '@material-ui/core';
+import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
 
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';
 
@@ -27,7 +28,9 @@ const UrlInputDialogComponent = ({ open, onClose, onConfirm }) => {
                 paper: classes.paper
             }}
         >
-            <DialogTitle>Entrer une URL</DialogTitle>
+            <DialogTitle>
+                <FormattedMessage id="Form.Url.input.title" defaultMessage="Enter an url" />
+            </DialogTitle>
             <DialogContent>
                 <TextField
                     fullWidth
@@ -39,10 +42,10 @@ const UrlInputDialogComponent = ({ open, onClose, onConfirm }) => {
             </DialogContent>
             <DialogActions>
                 <Button onClick={onClose} size="small">
-                    Close
+                    <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
                 </Button>
                 <Button color="primary" size="small" onClick={onClick}>
-                    Confirm
+                    <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
                 </Button>
             </DialogActions>
         </Dialog>

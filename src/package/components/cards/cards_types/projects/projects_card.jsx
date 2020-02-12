@@ -5,10 +5,10 @@ import uuid from 'uuid/v4';
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { ProjectsFront } from './projects_front/projects_front';
 import { ProjectsBack } from './projects_back/projects_back';
-import { DeveloperProfileContext } from '../../../profile';
 import { AddButton } from './add_button/add_button';
 
 import { mapProjectsFromJsonResume } from './data/mapping';
+import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const ProjectsCardComponent = ({ variant, side }) => {
     const { data, isEditing } = useContext(DeveloperProfileContext);

@@ -3,10 +3,10 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { StudiesFront } from './studies_front/studies_front';
 import { StudiesBack } from './studies_back/studies_back';
-import { DeveloperProfileContext } from '../../../profile';
 import { mapStudiesFromJsonResume, mapStudiesToJsonResume } from './data/mapping';
 import { StudiesCardEditDialog } from './edit_dialog/studies_card_edit_dialog';
 import { StudiesValidator } from './data/validator';
+import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const StudiesCardComponent = ({ variant, side }) => {
     const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);

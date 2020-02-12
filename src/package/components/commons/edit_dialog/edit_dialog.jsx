@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 
 import cn from 'classnames';
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 import { Formik, useFormikContext } from 'formik';
 
@@ -77,10 +78,10 @@ const Content = ({ children, onClose, classes, receivedClasses }) => {
                 }}
             >
                 <Button size="small" onClick={onClose}>
-                    Close
+                    <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
                 </Button>
                 <Button type="submit" size="small" color="primary" onClick={handleSubmit}>
-                    Save
+                    <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
                 </Button>
             </DialogActions>
         </>

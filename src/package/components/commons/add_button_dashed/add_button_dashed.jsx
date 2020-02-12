@@ -1,6 +1,7 @@
 import React from 'react';
 
 import cn from 'classnames';
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { Tooltip, Typography } from '@wld/ui';
@@ -13,16 +14,9 @@ const AddButtonDashedComponent = ({ onClick, title = 'Add', classes: receivedCla
     const classes = useStyles();
     return (
         <Tooltip title={title}>
-            <button
-                type="button"
-                className={cn(classes.container, receivedClasses.container)}
-                onClick={onClick}
-            >
-                <Typography
-                    customClasses={{ container: receivedClasses.typography }}
-                    variant="h2"
-                >
-                    {'+'}
+            <button type="button" className={cn(classes.container, receivedClasses.container)} onClick={onClick}>
+                <Typography customClasses={{ container: receivedClasses.typography }} variant="h2">
+                    <FormattedMessage id="AddButton.plus" defaultMessage="+" />
                 </Typography>
             </button>
         </Tooltip>

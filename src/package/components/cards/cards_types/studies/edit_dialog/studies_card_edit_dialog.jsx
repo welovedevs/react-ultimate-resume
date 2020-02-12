@@ -146,75 +146,75 @@ const FormationItem = SortableElement(
                 </Tooltip>
                 <div className={classes.divider} />
                 <div className={cn(classes.listItem, fieldErrors && classes.listItemError)}>
-                        <div className={classes.fieldGroup}>
-                            <div className={classes.field}>
-                                <TextField
-                                    fullWidth
-                                    variant="flat"
-                                    value={formation.institution}
-                                    onChange={handleInstitutionChange}
-                                    id={`formation_institution_${id}`}
-                                    placeholder={formatMessage(translations.schoolNamePlaceholder)}
-                                />
-                                {fieldErrors && fieldErrors.institution && (
-                                    <Typography color="danger" variant="helper" component="p">
-                                        {fieldErrors.institution}
-                                    </Typography>
-                                )}
-                            </div>
-                            <div className={classes.field}>
-                                <SelectComponent
-                                    onChange={handleEndDate}
-                                    id={formation.id}
-                                    value={formation.endDate}
-                                    classes={classes}
-                                />
-                                {fieldErrors && fieldErrors.endDate && (
-                                    <Typography color="danger" variant="helper" component="p">
-                                        {fieldErrors.endDate}
-                                    </Typography>
-                                )}
-                            </div>
+                    <div className={classes.fieldGroup}>
+                        <div className={classes.field}>
+                            <TextField
+                                fullWidth
+                                variant="flat"
+                                value={formation.institution}
+                                onChange={handleInstitutionChange}
+                                id={`formation_institution_${id}`}
+                                placeholder={formatMessage(translations.schoolNamePlaceholder)}
+                            />
+                            {fieldErrors && fieldErrors.institution && (
+                                <Typography color="danger" variant="helper" component="p">
+                                    {fieldErrors.institution}
+                                </Typography>
+                            )}
                         </div>
-                        <div className={classes.fieldGroup}>
-                            <div className={classes.field}>
-                                <TextField
-                                    id={`formation_diploma_${id}`}
-                                    fullWidth
-                                    variant="flat"
-                                    label={formatMessage(translations.diplomaTitle)}
-                                    placeholder={formatMessage(translations.diplomaPlaceholder)}
-                                    value={formation.studyType}
-                                    onChange={handleStudyType}
-                                    margin="normal"
-                                    error={fieldErrors && fieldErrors.studyType}
-                                />
+                        <div className={classes.field}>
+                            <SelectComponent
+                                onChange={handleEndDate}
+                                id={formation.id}
+                                value={formation.endDate}
+                                classes={classes}
+                            />
+                            {fieldErrors && fieldErrors.endDate && (
+                                <Typography color="danger" variant="helper" component="p">
+                                    {fieldErrors.endDate}
+                                </Typography>
+                            )}
+                        </div>
+                    </div>
+                    <div className={classes.fieldGroup}>
+                        <div className={classes.field}>
+                            <TextField
+                                id={`formation_diploma_${id}`}
+                                fullWidth
+                                variant="flat"
+                                label={formatMessage(translations.diplomaTitle)}
+                                placeholder={formatMessage(translations.diplomaPlaceholder)}
+                                value={formation.studyType}
+                                onChange={handleStudyType}
+                                margin="normal"
+                                error={fieldErrors && fieldErrors.studyType}
+                            />
 
-                                {fieldErrors && fieldErrors.studyType && (
-                                    <Typography color="danger" variant="helper" component="p">
-                                        {fieldErrors.studyType}
-                                    </Typography>
-                                )}
-                            </div>
-                            <div className={classes.field}>
-                                <TextField
-                                    id={`formation_area_${id}`}
-                                    fullWidth
-                                    variant="flat"
-                                    label={formatMessage(translations.mainCourse)}
-                                    placeholder={formatMessage(translations.mainCoursePlaceholder)}
-                                    value={formation.area}
-                                    onChange={handleAreaChange}
-                                    margin="normal"
-                                    error={fieldErrors && fieldErrors.area}
-                                />
+                            {fieldErrors && fieldErrors.studyType && (
+                                <Typography color="danger" variant="helper" component="p">
+                                    {fieldErrors.studyType}
+                                </Typography>
+                            )}
+                        </div>
+                        <div className={classes.field}>
+                            <TextField
+                                id={`formation_area_${id}`}
+                                fullWidth
+                                variant="flat"
+                                label={formatMessage(translations.mainCourse)}
+                                placeholder={formatMessage(translations.mainCoursePlaceholder)}
+                                value={formation.area}
+                                onChange={handleAreaChange}
+                                margin="normal"
+                                error={fieldErrors && fieldErrors.area}
+                            />
 
-                                {fieldErrors && fieldErrors.area && (
-                                    <Typography color="danger" variant="helper" component="p">
-                                        {fieldErrors.area}
-                                    </Typography>
-                                )}
-                            </div>
+                            {fieldErrors && fieldErrors.area && (
+                                <Typography color="danger" variant="helper" component="p">
+                                    {fieldErrors.area}
+                                </Typography>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

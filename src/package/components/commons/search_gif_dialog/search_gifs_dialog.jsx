@@ -1,19 +1,18 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 import { useDebounce } from 'use-debounce';
 
-import { Button, Dialog, DialogContent, DialogActions } from '@material-ui/core';
-
+import { Button, Dialog, DialogActions, DialogContent } from '@material-ui/core';
 import { TextField, Tooltip } from '@wld/ui';
 
+import poweredByGiphy from '../../../assets/images/Poweredby_100px-White_VertText.png';
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';
 import { LoadingSpinner } from '../loading_spinner/loading_spinner';
 
-import { styles } from './search_gifs_dialog_styles';
 import { useGiphyResults } from '../../hooks/giphy/use_giphy_results';
-
-import poweredByGiphy from '../../../assets/images/Poweredby_100px-White_VertText.png';
+import { styles } from './search_gifs_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
@@ -33,7 +32,7 @@ const SearchGifsDialogComponent = ({ open, onClose, onSelect }) => {
             onClose={onClose}
         >
             <DialogTitle classes={{ root: classes.title }}>
-                Search gifs
+                <FormattedMessage id="Gifs.searchdialog.title" defaultMessage="Search gifs" />
                 <img src={poweredByGiphy} />
             </DialogTitle>
             <DialogContent
@@ -53,7 +52,7 @@ const SearchGifsDialogComponent = ({ open, onClose, onSelect }) => {
             </DialogContent>
             <DialogActions>
                 <Button size="small" onClick={onClose}>
-                    Close
+                    <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
                 </Button>
             </DialogActions>
         </Dialog>

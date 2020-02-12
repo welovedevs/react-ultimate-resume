@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react';
 
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
-
-import { Typography } from '@wld/ui';
 
 import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
@@ -39,7 +38,9 @@ const ExperiencesFrontComponent = ({ data }) => {
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton>See all experiences</ProfileCardButton>
+                <ProfileCardButton>
+                    <FormattedMessage id="Experiences.front.action" defaultMessage="See all experiences" />
+                </ProfileCardButton>
             </ProfileCardActions>
         </>
     );

@@ -1,7 +1,10 @@
 import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 
-import { createUseStyles } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { createUseStyles } from 'react-jss';
+
+import { useFormikContext } from 'formik';
+
 import { ProjectDialogContentTitle } from './project_dialog_content_title/project_dialog_content_title';
 import { ProjectDialogContentImages } from './project_dialog_content_images/project_dialog_content_images';
 import { ProjectDialogContentDescription } from './project_dialog_content_description/project_dialog_content_description';
@@ -11,11 +14,10 @@ import { useHasDialogOpened } from '../../../../commons/profile_card/profile_car
 
 import { styles } from './project_dialog_styles';
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
-import { useFormikContext } from 'formik';
 import { ProjectValidator } from '../data/validator';
-import { DeveloperProfileContext } from '../../../../profile';
 import { mapProjectToJsonResume, updateProjectsArray } from '../data/mapping';
 import { ProjectDialogContentLink } from './project_dialog_content_link/project_dialog_content_link';
+import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
 
 const useStyles = createUseStyles(styles);
 

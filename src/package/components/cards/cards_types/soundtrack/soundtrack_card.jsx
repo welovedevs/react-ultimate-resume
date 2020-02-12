@@ -3,10 +3,10 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { SoundtrackFront } from './soundtrack_front/soundtrack_front';
 import { SoundtrackBack } from './soundtrack_back/soundtrack_back';
-import { DeveloperProfileContext } from '../../../profile';
 import { FlatObjectToJsonResume, JsonResumeToFlatObject } from '../../utils/data_mapping';
 import { SoundtrackCardEditDialog } from './edit_dialog/soundtrack_card_edit_dialog';
 import { SoundtrackMapping } from './data/mapping';
+import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const SoundtrackCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);

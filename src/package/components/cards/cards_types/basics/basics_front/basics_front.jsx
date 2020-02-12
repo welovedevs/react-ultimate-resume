@@ -1,5 +1,7 @@
 import React, { useCallback } from 'react';
 
+import { Twemoji } from 'react-emoji-render';
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
@@ -25,11 +27,14 @@ const BasicsFrontComponent = ({ data }) => {
             <CenterContentContainer customClasses={{ container: classes.container }}>
                 <ProfileCardFrontTypography>{data.summary}</ProfileCardFrontTypography>
                 <ProfileCardFrontTypography level="h4" component="h3" customClasses={{ container: classes.location }}>
-                    📍 {data?.currentCity?.name}
+                    <Twemoji svg text="📍" />
+                    {data?.currentCity?.name}
                 </ProfileCardFrontTypography>
             </CenterContentContainer>
             <ProfileCardActions>
-                <ProfileCardButton onClick={handleButtonClick}>More about me</ProfileCardButton>
+                <ProfileCardButton onClick={handleButtonClick}>
+                    <FormattedMessage id="Basics.front.action" defaultMessage="More about me" />
+                </ProfileCardButton>
             </ProfileCardActions>
         </ProfileCardPaddedFront>
     );

@@ -105,6 +105,18 @@
             "level": "Master",
             "value": 60,
             "keywords": ["HTML", "CSS", "Javascript"]
+        },
+        {
+            "name": "Gmail",
+            "level": "Master",
+            "value": 20,
+            "keywords": ["HTML", "CSS", "Javascript"]
+        },
+        {
+            "name": "K8S",
+            "level": "Master",
+            "value": 80,
+            "keywords": ["HTML", "CSS", "Javascript"]
         }
     ],
     "languages": [
@@ -123,11 +135,11 @@
         },
         {
             "language": "Espagnol",
-            "value": 40
+            "value": 25
         },
         {
             "language": "Italien",
-            "value": 25
+            "value": 0
         }
     ],
     "interests": [

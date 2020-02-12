@@ -6,7 +6,6 @@ import chroma from 'chroma-js';
 
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../../utils/styles/styles_utils';
 import { CustomLabel } from '../utils/skills_back_recharts_utils';
-import { useCardVariant } from '../../../../../commons/profile_card/profile_card_hooks/use_card_variant';
 
 const GRAPH_HEIGHT = 250;
 const GRAPH_PIE_RADIUS = 100;

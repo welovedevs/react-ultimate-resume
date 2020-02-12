@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Twemoji } from 'react-emoji-render';
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { Typography } from '@wld/ui';
@@ -24,12 +26,27 @@ const ProjectsFrontComponent = ({ data }) => {
             </div>
             <div className={classes.content}>
                 <Typography variant="h2" component="h2" customClasses={{ container: classes.text }}>
-                    My 🐶 project:
+                    <FormattedMessage
+                        id="Projects.front.title"
+                        defaultMessage="My <emoji>♥</emoji>: project "
+                        values={{
+                            emoji: value => <Twemoji svg text={value} />
+                        }}
+                    />
+
                     {data.projects?.[0]?.name}
                 </Typography>
             </div>
             <ProfileCardActions>
-                <ProfileCardButton>2 more projects</ProfileCardButton>
+                <ProfileCardButton>
+                    <FormattedMessage
+                        id="Projects.front.action"
+                        defaultMessage="See {count} projects"
+                        values={{
+                            count: data.projects?.length
+                        }}
+                    />
+                </ProfileCardButton>
             </ProfileCardActions>
         </>
     );

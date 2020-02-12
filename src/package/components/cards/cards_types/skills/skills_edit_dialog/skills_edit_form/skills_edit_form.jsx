@@ -4,13 +4,9 @@ import { createUseStyles } from 'react-jss';
 import { useFormikContext } from 'formik';
 import uuid from 'uuid/v4';
 
-import {
-    AllTechnologiesPicker
-} from '../../../../../commons/technologies/all_technologies_picker/all_technologies_picker';
+import { AllTechnologiesPicker } from '../../../../../commons/technologies/all_technologies_picker/all_technologies_picker';
 
-import {
-    SelectedTechnologies
-} from '../../../../../commons/technologies/selected_technologies/selected_technologies';
+import { SelectedTechnologies } from '../../../../../commons/technologies/selected_technologies/selected_technologies';
 
 import { styles } from './skills_edit_form_styles';
 

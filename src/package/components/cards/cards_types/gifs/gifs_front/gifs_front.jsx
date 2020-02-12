@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { ProfileCardActions } from '../../../../commons/profile_card/profile_card_actions/profile_card_actions';
@@ -20,7 +21,9 @@ const GifsFrontComponent = ({ data }) => {
             }
         >
             <ProfileCardActions>
-                <ProfileCardButton overrideColor="light">See all hobbies</ProfileCardButton>
+                <ProfileCardButton overrideColor="light">
+                    <FormattedMessage id="Gifs.front.action" defaultMessage="See all hobbies" />
+                </ProfileCardButton>
             </ProfileCardActions>
         </GifsSidesCommons>
     );

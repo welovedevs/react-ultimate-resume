@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { ProfileCardTitle } from '../../../../commons/profile_card/profile_card_title/profile_card_title';
@@ -20,7 +21,7 @@ const GifsSidesCommonsComponent = ({ underLayer, children }) => {
                     container: classes.title
                 }}
             >
-                Hobbies
+                <FormattedMessage id="Hobbies.side.commons" defaultMessage="Hobbies" />
             </ProfileCardTitle>
             {children}
         </div>

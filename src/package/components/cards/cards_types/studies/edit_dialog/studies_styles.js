@@ -1,6 +1,9 @@
-export const styles = (theme) => {
-    const { palette, miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        palette,
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         itemContainer: {
             width: '100%',
             display: 'flex',
@@ -50,5 +53,5 @@ export const styles = (theme) => {
         removeIcon: {
             fill: palette.danger[500]
         }
-    })
+    };
 };

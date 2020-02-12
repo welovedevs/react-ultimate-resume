@@ -144,9 +144,7 @@ export const DEFAULT_THEME = Object.freeze({
     }
 });
 
-export const getRandomCardVariant = theme => {
-    return Math.floor(Math.random() * theme.components?.cards?.variants?.length);
-};
+export const getRandomCardVariant = theme => Math.floor(Math.random() * theme.components?.cards?.variants?.length);
 
 const mergeFunction = (objValue, srcValue) => {
     if (isArray(objValue)) {

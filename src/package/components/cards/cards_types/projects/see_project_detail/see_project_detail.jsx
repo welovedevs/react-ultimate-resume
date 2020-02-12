@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { Typography } from '@wld/ui';
@@ -24,7 +25,7 @@ const SeeProjectDetailComponent = ({ openDialog: receivedOpen, project }) => {
             <AnimatedUnderlinedButton onClick={setDialogOpened}>
                 <EyeIcon className={classes.icon} />
                 <Typography customClasses={{ container: classes.detailTypography }} color="primary">
-                    See more
+                    <FormattedMessage id="Projects.details.seemore" defaultMessage="See more" />
                 </Typography>
             </AnimatedUnderlinedButton>
         </>

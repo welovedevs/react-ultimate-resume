@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 import { Typography } from '@wld/ui';
 
@@ -49,7 +50,7 @@ const Details = ({ project, classes }) => (
                 <LinkIcon className={classes.detailIcon} />
                 <a href={project.link}>
                     <Typography customClasses={{ container: classes.detailTypography }} color="primary">
-                        Link
+                        <FormattedMessage id="Project.section.link" defaultMessage="Link" />
                     </Typography>
                 </a>
             </AnimatedUnderlinedButton>

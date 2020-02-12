@@ -1,12 +1,12 @@
 import React, { useCallback, useState } from 'react';
-import DeveloperProfile from './package';
-import JsonStub from './data/json_stub.json';
-
+import { FormattedMessage } from 'react-intl';
 import merge from 'lodash/merge';
 import { Button } from '@wld/ui';
 
+import DeveloperProfile from './package';
+import JsonStub from './data/json_stub.json';
+
 function App() {
-    const [flipped, setFlipped] = useState(false);
     const [data, setData] = useState(JsonStub);
 
     const onEdit = useCallback(
@@ -51,11 +51,11 @@ function App() {
                 },
                 customization
             }}
-            ActionButtons={
+            ActionButtons={(
                 <Button style={{ color: '#fff' }} variant="outlined">
-                    {'Get in touch bis'}
+                    <FormattedMessage id="App.main." defaultMessage="See more" />
                 </Button>
-            }
+              )}
         />
     );
 }

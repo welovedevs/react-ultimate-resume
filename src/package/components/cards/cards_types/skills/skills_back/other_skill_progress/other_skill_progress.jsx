@@ -17,7 +17,7 @@ const OtherSkillProgress = ({ color, value, name }) => {
             </Typography>
             <ProgressBar
                 customClasses={{ container: classes.progressBarCustomContainer, bar: classes.progressBarCustomBar }}
-                value={value * 10}
+                value={value}
             />
         </div>
     );

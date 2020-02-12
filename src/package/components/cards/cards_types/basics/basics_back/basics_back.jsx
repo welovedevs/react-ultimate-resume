@@ -37,7 +37,7 @@ const BasicsBackComponent = ({ data }) => {
                     <span className={classes.bold}>
                         <FormattedMessage
                             id="Basics.Back.VisaSponsorship"
-                            defaultMessage={'I require a visa sponsorship'}
+                            defaultMessage="I require a visa sponsorship"
                         />
                     </span>
                 )
@@ -117,11 +117,7 @@ const JobSearchState = ({ searchState }) => {
     if (!searchState) {
         return null;
     }
-    return (
-        <span>
-            {formatMessage(translations[searchState] || translations.unknown)}
-        </span>
-    );
+    return <span>{formatMessage(translations[searchState] || translations.unknown)}</span>;
 };
 
 export const BasicsBack = BasicsBackComponent;

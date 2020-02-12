@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss';
 import { useDebounce } from 'use-debounce';
 import { animated, useChain, useTransition } from 'react-spring';
 
-import { Typography, Card, TextField } from '@wld/ui';
+import { Card, TextField, Typography } from '@wld/ui';
 
 import { useTechnologies } from '../../../hooks/technologies/use_technologies';
 
@@ -19,9 +19,7 @@ import { styles } from './all_technologies_picker_styles';
 const useStyles = createUseStyles(styles);
 
 const TechnologyItem = ({ item, classes, selectedItems = [], onAdd, onDelete }) => {
-    const selectedItem = useMemo(() =>
-        selectedItems.find(({ name }) => name === item.name),
-        [selectedItems, item]);
+    const selectedItem = useMemo(() => selectedItems.find(({ name }) => name === item.name), [selectedItems, item]);
 
     const onClick = useCallback(() => {
         if (!selectedItem) {
@@ -38,34 +36,30 @@ const TechnologyItem = ({ item, classes, selectedItems = [], onAdd, onDelete }) 
         return item.url;
     }, [item]);
 
-    const selectedItemLayerTransitions = useTransition(selectedItem, selected => `selected_item_layer_${selected?.name}`, SELECTED_ITEM_LAYER_TRANSITIONS_SPRING_PROPS);
+    const selectedItemLayerTransitions = useTransition(
+        selectedItem,
+        selected => `selected_item_layer_${selected?.name}`,
+        SELECTED_ITEM_LAYER_TRANSITIONS_SPRING_PROPS
+    );
 
     return (
-        <button
-            className={classes.technologyItem}
-            type="button"
-            onClick={onClick}
-        >
+        <button className={classes.technologyItem} type="button" onClick={onClick}>
             <Card
                 customClasses={{
                     container: classes.technologyImageContainer
                 }}
             >
                 <img src={imgUrl} alt={item.name} className={classes.technologyImage} />
-                {selectedItemLayerTransitions.map(({ item: selected, key, props }) => selected && (
-                    <animated.div
-                        key={key}
-                        className={classes.selectedTechnologyLayer}
-                        style={props}
-                    >
-                        <Typography
-                            color="light"
-                            variant="h3"
-                        >
-                            {selected.index + 1}
-                        </Typography>
-                    </animated.div>
-                ))}
+                {selectedItemLayerTransitions.map(
+                    ({ item: selected, key, props }) =>
+                        selected && (
+                            <animated.div key={key} className={classes.selectedTechnologyLayer} style={props}>
+                                <Typography color="light" variant="h3">
+                                    {selected.index + 1}
+                                </Typography>
+                            </animated.div>
+                        )
+                )}
             </Card>
             <Typography
                 customClasses={{
@@ -90,23 +84,28 @@ const AllTechnologiesPickerComponent = ({ selectedItems, onAdd, onDelete, classe
     const displayedItems = useMemo(
         () =>
             Object.values(technologies ?? {})
-                .filter(({ name, tags }) => [...(tags ?? []), name]
-                    .some(value => value.toLowerCase().includes(debouncedQuery.toLowerCase())))
+                .filter(({ name, tags }) =>
+                    [...(tags ?? []), name].some(value => value.toLowerCase().includes(debouncedQuery.toLowerCase()))
+                )
                 .slice(0, 35),
         [technologies, debouncedQuery]
     );
 
-    const handleTextFieldChange = useCallback((event) => setQuery(event.target.value), []);
+    const handleTextFieldChange = useCallback(event => setQuery(event.target.value), []);
 
-    const displayedItemsTransitions = useTransition(!animationEnded.current ? displayedItems : null, item => `technology_${item?.name}`, ({
-        ...ALL_TECHNOLOGIES_TRANSITIONS_SPRING_PROPS,
-        trail: 1250 / displayedItems.length,
-        onRest: async () => {
-            await new Promise((resolve) => setTimeout(resolve, 200));
-            animationEnded.current = true;
-        },
-        ref: animationReference
-    }));
+    const displayedItemsTransitions = useTransition(
+        !animationEnded.current ? displayedItems : null,
+        item => `technology_${item?.name}`,
+        {
+            ...ALL_TECHNOLOGIES_TRANSITIONS_SPRING_PROPS,
+            trail: 1250 / displayedItems.length,
+            onRest: async () => {
+                await new Promise(resolve => setTimeout(resolve, 200));
+                animationEnded.current = true;
+            },
+            ref: animationReference
+        }
+    );
 
     useChain([animationReference], [0.35, 0]);
 
@@ -137,10 +136,7 @@ const AllTechnologiesPickerComponent = ({ selectedItems, onAdd, onDelete, classe
                     if (!animationEnded.current) {
                         const { key, props } = values;
                         return (
-                            <animated.div
-                                key={key}
-                                style={props}
-                            >
+                            <animated.div key={key} style={props}>
                                 {technologyItem}
                             </animated.div>
                         );

@@ -1,13 +1,14 @@
 import React from 'react';
 
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { TextField, Typography } from '@wld/ui';
+import { useFormikContext } from 'formik';
 
 import { useIsEditing } from '../../../../../hooks/use_is_editing';
 
 import { styles } from './project_dialog_content_description_styles';
-import { useFormikContext } from 'formik';
 
 const useStyles = createUseStyles(styles);
 
@@ -38,7 +39,7 @@ const EditingContent = ({ classes }) => {
     return (
         <>
             <Typography variant="label" component="div">
-                Description du projet
+                <FormattedMessage id="Project.details.dialog.title" defaultMessage="Project details" />
             </Typography>
             <TextField
                 fullWidth

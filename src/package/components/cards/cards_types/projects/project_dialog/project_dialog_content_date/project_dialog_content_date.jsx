@@ -2,14 +2,15 @@ import React, { useCallback } from 'react';
 
 import { createUseStyles } from 'react-jss';
 
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+
+import MomentUtils from '@date-io/moment';
 import { Typography } from '@wld/ui';
+import { useFormikContext } from 'formik';
 
 import { useIsEditing } from '../../../../../hooks/use_is_editing';
-
 import { styles } from './project_dialog_content_date_styles';
-import { useFormikContext } from 'formik';
-import MomentUtils from '@date-io/moment';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+
 import { YearMonth } from '../../../../../commons/year_month/year_month';
 
 const useStyles = createUseStyles(styles);

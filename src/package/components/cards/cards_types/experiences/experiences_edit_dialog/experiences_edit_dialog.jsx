@@ -3,7 +3,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { animated, useTransition, useSpring } from 'react-spring';
+import { animated, useSpring, useTransition } from 'react-spring';
 import { Twemoji } from 'react-emoji-render';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import { useFormikContext } from 'formik';
@@ -46,12 +46,12 @@ const ExperiencesEditDialogComponent = ({ open, onClose, data, onEdit, validatio
             data={data}
             onEdit={onEdit}
             validationSchema={validationSchemaToPass}
-            title={(
+            title={
                 <FormattedMessage
                     id="Experiences.editDialog.title"
                     defaultMessage="Edit your professional experiences?"
                 />
-            )}
+            }
         >
             {helpers => <ExperiencesEditFormWrapper helpers={helpers} />}
         </EditDialog>
@@ -77,7 +77,7 @@ const ExperiencesEditFormWrapper = ({ helpers: { handleValueChange } }) => {
     );
 
     const addExperience = useCallback(() => {
-        let id = uuid();
+        const id = uuid();
         handleValueChange('work')(
             work.concat({
                 index: work.length,
@@ -147,10 +147,14 @@ const ExperienceItem = SortableElement(
             rotate: folded ? -90 : 0
         });
 
-        const contentTransitions = useTransition(!folded ? experience : null, item => `${item ? 'visible' : 'invisible'}_experience_${item?.id}_content`, ({
-            ...EXPERIENCE_CONTENT_TRANSITION_SPRING_PROPS,
-            unique: true
-        }));
+        const contentTransitions = useTransition(
+            !folded ? experience : null,
+            item => `${item ? 'visible' : 'invisible'}_experience_${item?.id}_content`,
+            {
+                ...EXPERIENCE_CONTENT_TRANSITION_SPRING_PROPS,
+                unique: true
+            }
+        );
 
         const hasError = Boolean(fieldErrors);
         return (
@@ -183,23 +187,23 @@ const ExperienceItem = SortableElement(
                         </Typography>
                     </ListItem>
                 </div>
-                {contentTransitions.map(({ item, key, props }) => item && (
-                    <animated.div
-                        key={key}
-                        style={props}
-                    >
-                        <ContentFields
-                            key={key}
-                            fieldErrors={fieldErrors}
-                            id={id}
-                            formatMessage={formatMessage}
-                            experience={experience}
-                            onChange={onChange}
-                            classes={classes}
-                            index={index}
-                        />
-                    </animated.div>
-                ))}
+                {contentTransitions.map(
+                    ({ item, key, props }) =>
+                        item && (
+                            <animated.div key={key} style={props}>
+                                <ContentFields
+                                    key={key}
+                                    fieldErrors={fieldErrors}
+                                    id={id}
+                                    formatMessage={formatMessage}
+                                    experience={experience}
+                                    onChange={onChange}
+                                    classes={classes}
+                                    index={index}
+                                />
+                            </animated.div>
+                        )
+                )}
             </div>
         );
     }
@@ -404,6 +408,7 @@ const ExperiencesEditForm = ({ data, errors, onAdd, onMove, onFieldChange, onDel
 
     const [foldedState, setFoldState] = useState(
         Object.keys(keyedValues || {}).reduce((state, id) => {
+            // eslint-disable-next-line no-param-reassign
             state[id] = true;
             return state;
         }, {})

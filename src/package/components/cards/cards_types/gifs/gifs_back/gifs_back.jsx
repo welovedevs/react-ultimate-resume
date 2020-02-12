@@ -3,7 +3,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import Slider from 'react-slick';
-import { animated, useSpring, useTransition, config } from 'react-spring';
+import { animated, config, useSpring, useTransition } from 'react-spring';
 
 import { Typography } from '@wld/ui';
 
@@ -68,13 +68,13 @@ const GifsBackComponent = ({ data }) => {
                     <Slider
                         {...SETTINGS}
                         beforeChange={handleBeforeChange}
-                        prevArrow={
+                        prevArrow={(
                             <Arrow
                                 classes={classes}
                                 arrowRole="prev"
                                 buttonProps={{ className: classes.previousButton }}
                             />
-                        }
+                          )}
                         nextArrow={
                             <Arrow classes={classes} arrowRole="next" buttonProps={{ className: classes.nextButton }} />
                         }

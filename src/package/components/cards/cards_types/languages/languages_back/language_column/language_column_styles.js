@@ -3,8 +3,9 @@ export const styles = theme => {
         miscellaneous: { spacing }
     } = theme;
     return {
+        // offsetted value = (((OldValue - OldMin) * (NewMax - NewMin)) / (OldMax - OldMin)) + NewMin
         container: ({ value, color, itemsSize }) => ({
-            height: `${value}%`,
+            height: `${((value - 0) * (100 - 22)) / (100 - 0) + 22}%`,
             width: Math.min(90, (theme.components.cards.width * 0.7) / itemsSize),
             backgroundColor: color,
             color: '#fff',

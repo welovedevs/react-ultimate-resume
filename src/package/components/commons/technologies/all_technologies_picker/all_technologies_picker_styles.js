@@ -1,4 +1,8 @@
-import { flex, getContrastDefaultColorFromPaletteColor, getHexFromPaletteColor } from '../../../../utils/styles/styles_utils';
+import {
+    flex,
+    getContrastDefaultColorFromPaletteColor,
+    getHexFromPaletteColor
+} from '../../../../utils/styles/styles_utils';
 
 const { center } = flex;
 

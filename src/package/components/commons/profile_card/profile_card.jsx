@@ -1,11 +1,4 @@
-import React, {
-    createContext,
-    useCallback,
-    useEffect,
-    useMemo,
-    useReducer,
-    useRef
-} from 'react';
+import React, { createContext, useCallback, useEffect, useMemo, useReducer, useRef } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { config, useTransition } from 'react-spring';
@@ -47,10 +40,7 @@ const ProfileCardComponent = ({
 }) => {
     const classes = useStyles({ variant });
     const [openEditDialog, setEditDialogOpened, setEditDialogClosed] = useCallbackOpen();
-    const [state, dispatch] = useReducer(
-        profileCardReducer,
-        getProfileCardInitialState({ variant, side: sideProps })
-    );
+    const [state, dispatch] = useReducer(profileCardReducer, getProfileCardInitialState({ variant, side: sideProps }));
     const { side, hasDialogOpened } = state;
     const [debouncedSide] = useDebounce(side, 200);
 
@@ -116,10 +106,7 @@ const ProfileCardComponent = ({
                 onMouseLeave={handleMouseLeave}
             >
                 {isEditingProfile && (
-                    <EditAction
-                        customEditAction={customEditAction}
-                        setEditDialogOpened={setEditDialogOpened}
-                    />
+                    <EditAction customEditAction={customEditAction} setEditDialogOpened={setEditDialogOpened} />
                 )}
                 <ProfileCardContext.Provider value={contextData}>
                     {transitions.map(({ item, key, props }) => {
@@ -140,7 +127,7 @@ const EditAction = ({ customEditAction, setEditDialogOpened }) => {
     if (customEditAction) {
         return customEditAction;
     }
-    return <ProfileCardEditButton setEditDialogOpened={setEditDialogOpened} />
+    return <ProfileCardEditButton setEditDialogOpened={setEditDialogOpened} />;
 };
 
 export const ProfileCard = ProfileCardComponent;

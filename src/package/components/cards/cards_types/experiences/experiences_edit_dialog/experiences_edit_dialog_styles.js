@@ -1,6 +1,9 @@
-export const styles = (theme) => {
-    const { palette, miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        palette,
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         experience: ({ width }) => ({
             width: width === 'full' ? '100%' : 'fit-content',
             margin: [spacing, 0],
@@ -146,5 +149,5 @@ export const styles = (theme) => {
                 marginLeft: spacing
             }
         }
-    });
-}
+    };
+};

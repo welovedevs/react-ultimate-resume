@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
@@ -13,7 +14,6 @@ import { ReactComponent as HomeLogo } from '../../../../../assets/icons/home.svg
 
 import { styles } from './dream_job_front_styles';
 import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
-import { FormattedMessage } from 'react-intl';
 
 const useStyles = createUseStyles(styles);
 
@@ -28,7 +28,7 @@ const DreamJobFrontComponent = ({ data }) => {
                     <ProfileCardFrontVector customClasses={{ container: classes.logo }} vector={HomeLogo} />
                     <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
                         <FormattedMessage
-                            id={'DreamJob.Front.RemoteFulltime'}
+                            id="DreamJob.Front.RemoteFulltime"
                             defaultMessage="I want to work remotely"
                         />
                     </ProfileCardFrontTypography>
@@ -41,7 +41,7 @@ const DreamJobFrontComponent = ({ data }) => {
                 <ProfileCardFrontVector customClasses={{ container: classes.logo }} vector={HomeLogo} />
                 <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
                     <FormattedMessage
-                        id={'DreamJob.Front.Cities'}
+                        id="DreamJob.Front.Cities"
                         defaultMessage="I want to work in {cities}"
                         values={{
                             cities: places
@@ -62,7 +62,9 @@ const DreamJobFrontComponent = ({ data }) => {
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton>Discover my dream job</ProfileCardButton>
+                <ProfileCardButton>
+                    <FormattedMessage id="Dreamjob.front.action" defaultMessage="Discover my dream job" />
+                </ProfileCardButton>
             </ProfileCardActions>
         </>
     );

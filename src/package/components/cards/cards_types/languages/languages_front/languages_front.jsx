@@ -35,7 +35,9 @@ const LanguagesFrontComponent = ({ data }) => {
                 </ProfileCardFrontTypography>
             </CenterContentContainer>
             <ProfileCardActions>
-                <ProfileCardButton>{'Languages level'}</ProfileCardButton>
+                <ProfileCardButton>
+                    <FormattedMessage id="Languages.front.action" defaultMessage="Languages level" />
+                </ProfileCardButton>
             </ProfileCardActions>
         </>
     );

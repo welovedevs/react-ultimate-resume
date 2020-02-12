@@ -7,7 +7,7 @@ import { Avatar } from '../../../commons/avatar/avatar';
 import { Column } from '../../../commons/column/column';
 
 import { styles } from './user_informations_styles';
-import { DeveloperProfileContext } from '../../../profile';
+import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const useStyles = createUseStyles(styles);
 

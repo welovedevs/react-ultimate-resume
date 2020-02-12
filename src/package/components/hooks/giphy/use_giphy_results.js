@@ -1,11 +1,11 @@
-import { DeveloperProfileContext } from '../../profile';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
 
-const GIPHY_API_ENDPOINT = 'https://api.giphy.com/v1/gifs/search?';
-export const GIPHY_RATINGS = { G: 'G', PG: 'PG', 'PG-13': 'PG-13', R: 'R' };
+import { DeveloperProfileContext } from '../../../utils/context/contexts';
 
-export const useGiphyResults = (input, page = 0, limit = 20, rating = GIPHY_RATINGS.PG, timeout = 800) => {
+const GIPHY_API_ENDPOINT = 'https://api.giphy.com/v1/gifs/search?';
+
+export const useGiphyResults = (input, page = 0, limit = 20, timeout = 800) => {
     const debounceSearch = useRef();
     const { locale } = useIntl();
     const { apiKeys } = useContext(DeveloperProfileContext);
@@ -71,5 +71,5 @@ export const useGiphyResults = (input, page = 0, limit = 20, rating = GIPHY_RATI
         }, timeout);
     }, [input, lastLoaded, page]);
 
-    return { gifs: results, loading };
+    return { gifs: results, loading, error };
 };

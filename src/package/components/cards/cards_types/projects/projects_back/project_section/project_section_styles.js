@@ -24,6 +24,6 @@ export const styles = theme => {
             '& > g': {
                 stroke: 'currentColor'
             }
-        },
+        }
     };
 };

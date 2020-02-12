@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useEffect, useMemo, useReducer, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
@@ -11,6 +11,7 @@ import { styles } from './profile_styles';
 import '../styles/lib/slick-carousel/slick-theme.css';
 import '../styles/lib/slick-carousel/slick.css';
 import { technologiesInitialState, technologiesReducer } from '../store/technologies/technologies_reducer';
+import { DeveloperProfileContext } from '../utils/context/contexts';
 
 const useStyles = createUseStyles(styles);
 
@@ -18,7 +19,6 @@ const DEFAULT_OPTIONS = Object.freeze({
     locale: 'en'
 });
 
-export const DeveloperProfileContext = createContext({});
 const DEFAULT_OBJECT = {};
 const DEFAULT_FUNCTION = () => {};
 
@@ -29,6 +29,7 @@ const DeveloperProfileComponent = ({
     onCustomizationChanged = DEFAULT_FUNCTION,
     isEditing = false,
     onFilesUpload = async () =>
+        // eslint-disable-next-line no-undef
         fetch('https://api.thecatapi.com/v1/images/search', {
             headers: {}
         })
@@ -66,11 +67,11 @@ const DeveloperProfileComponent = ({
 
     return (
         <div className={classes.container}>
-            <DeveloperProfileContext.Provider value={context}>
+            <DeveloperProfileContext.provider value={context}>
                 <Banner customizationOptions={options.customization}>{ActionButtons}</Banner>
                 {BeforeCards}
                 <Cards cardsOrder={options.customization?.cardsOrder} />
-            </DeveloperProfileContext.Provider>
+            </DeveloperProfileContext.provider>
         </div>
     );
 };

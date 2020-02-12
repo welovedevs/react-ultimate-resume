@@ -1,11 +1,12 @@
+import React, { memo, useCallback } from 'react';
+
+import { FormattedMessage } from 'react-intl';
+import { createUseStyles } from 'react-jss';
+import { arrayMove, SortableContainer, SortableElement } from 'react-sortable-hoc';
 import { List, Typography } from '@wld/ui';
 
 import cloneDeep from 'lodash/cloneDeep';
-import { FormattedMessage } from 'react-intl';
-import React, { memo, useCallback } from 'react';
 import { styles } from './cards_orderer_styles';
-import { createUseStyles } from 'react-jss';
-import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 
 import { CardStub } from '../card_stub/card_stub';
 import { DEFAULT_CARD_ORDER } from '../../../../cards/utils/cards_order';
@@ -52,7 +53,7 @@ export const CardsOrderer = ({ onChange, value: cardsOrder = DEFAULT_CARD_ORDER 
     return (
         <div>
             <Typography customClasses={{ container: classes.title }} component="h3" variant="h4" color="dark">
-                <FormattedMessage id={'CardsOrderer.field.title'} defaultMessage={'Order your profile cards'} />
+                <FormattedMessage id="CardsOrderer.field.title" defaultMessage="Order your profile cards" />
             </Typography>
             <SortableCards
                 lockToContainerEdges

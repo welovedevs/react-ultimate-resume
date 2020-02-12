@@ -4,11 +4,11 @@ import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { SkillsFront } from './skills_front/skills_front';
 import { SkillsBack } from './skills_back/skills_back';
 import { SkillsEditDialog } from './skills_edit_dialog/skills_edit_dialog';
-import { DeveloperProfileContext } from '../../../profile';
 
 import { mapSkillsFromJsonResume, mapSkillsToJsonResume } from './data/mapping';
+import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
-const SkillsCardComponent = ({ variant, side }) => {
+const SkillsCardComponent = ({ variant }) => {
     const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);
 
     const mappedData = useMemo(() => mapSkillsFromJsonResume(data), [data]);
@@ -28,7 +28,7 @@ const SkillsCardComponent = ({ variant, side }) => {
             }}
             data={mappedData}
             variant={variant}
-            side={side}
+            side="back"
         />
     );
 };

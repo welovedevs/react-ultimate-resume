@@ -1,6 +1,5 @@
 import * as Yup from 'yup';
 import { validationTranslations } from '../../../../../utils/validation_translations';
-import { basicsValidationTranslations } from './validator_translations';
 
 export const BasicsValidationSchema = formatMessage =>
     Yup.object({

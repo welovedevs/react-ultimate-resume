@@ -33,7 +33,9 @@ const StudiesFrontComponent = ({ data: { education: data } }) => {
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton>All my studies</ProfileCardButton>
+                <ProfileCardButton>
+                    <FormattedMessage id="Studies.front.action" defaultMessage="All my studies" />
+                </ProfileCardButton>
             </ProfileCardActions>
         </>
     );

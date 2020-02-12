@@ -12,7 +12,14 @@ import { styles } from './gifs_sortable_cards_styles';
 
 const useStyles = createUseStyles(styles);
 
-const GifsSortableCardsComponent = ({ items = [], interestDeleted, interestChanged, errors, setSelectedIndex, onSortEnd }) => {
+const GifsSortableCardsComponent = ({
+    items = [],
+    interestDeleted,
+    interestChanged,
+    errors,
+    setSelectedIndex,
+    onSortEnd
+}) => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
@@ -32,7 +39,7 @@ const GifsSortableCardsComponent = ({ items = [], interestDeleted, interestChang
 };
 
 const SortableGifsCards = SortableContainer(
-    ({ items = [], interestDeleted, interestChanged, errors, setSelectedIndex, classes }) =>  (
+    ({ items = [], interestDeleted, interestChanged, errors, setSelectedIndex, classes }) => (
         <ul className={classes.list}>
             {items
                 .filter(Boolean)
@@ -60,18 +67,9 @@ const DragHandle = SortableHandle(() => (
 ));
 
 const SortableGifItem = SortableElement(
-    ({
-         id,
-         interest,
-         onChange,
-         onRemove,
-         error: fieldErrors,
-         interestIndex: index,
-         setSelectedIndex,
-        classes
-     }) => {
+    ({ id, interest, onChange, onRemove, error: fieldErrors, interestIndex: index, setSelectedIndex, classes }) => {
         const handleRemove = useCallback(() => onRemove(id), [id]);
-        const handleChange = useCallback((field) => (value) => onChange(index, field, value), [index]);
+        const handleChange = useCallback(field => value => onChange(index, field, value), [index]);
         const handleImageEditClick = useCallback(() => setSelectedIndex(index), [index]);
         return (
             <li className={classes.listItem}>
@@ -83,14 +81,10 @@ const SortableGifItem = SortableElement(
                     onRemove={handleRemove}
                     onImageEditClick={handleImageEditClick}
                     error={fieldErrors}
-                    additionalActions={(
-                        <>
-                            <DragHandle />
-                        </>
-                    )}
+                    additionalActions={<DragHandle />}
                 />
             </li>
-        )
+        );
     }
 );
 

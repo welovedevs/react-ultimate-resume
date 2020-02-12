@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles, useTheme } from 'react-jss';
 import { animated } from 'react-spring';
 
@@ -30,10 +31,15 @@ const OtherSkills = ({ othersSkills, springOnOpenOpacityProps, springTranslation
             }}
         >
             <Typography variant="h3" component="h3" customClasses={{ container: classes.otherSkillsTitle }}>
-                Je maitrise également...
+                <FormattedMessage id="Skills.otherskills.title" defaultMessage="I also master" />
             </Typography>
             {othersSkills.map(skill => (
-                <OtherSkillProgress key={`other_skill_${skill.name}`} color={color} {...skill} />
+                <OtherSkillProgress
+                    key={`other_skill_${skill.name}`}
+                    color={color}
+                    value={skill.value}
+                    name={skill.name}
+                />
             ))}
         </animated.div>
     );

@@ -3,18 +3,16 @@ import React, { useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { animated, useTransition } from 'react-spring';
 
+import { useFormikContext } from 'formik';
 import { Tooltip } from '@wld/ui';
 
 import { useIsEditing } from '../../../../../../hooks/use_is_editing';
-
-import { PROJECT_DIALOG_CONTENT_IMAGE_EDIT_LAYER_SPRING_PROPS } from './project_dialog_content_image_edit_layer_spring_props';
+import { useOpenerState } from '../../../../../../hooks/use_opener_state';
 
 import { ReactComponent as DeleteIcon } from '../../../../../../../assets/icons/trash.svg';
 
-import { useOpenerState } from '../../../../../../hooks/use_opener_state';
-
+import { PROJECT_DIALOG_CONTENT_IMAGE_EDIT_LAYER_SPRING_PROPS } from './project_dialog_content_image_edit_layer_spring_props';
 import { styles } from './project_dialog_content_image_styles';
-import { useFormikContext } from 'formik';
 
 const useStyles = createUseStyles(styles);
 

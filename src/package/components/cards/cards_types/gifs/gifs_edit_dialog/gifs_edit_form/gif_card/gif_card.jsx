@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { Button, Card, PopperCardActions, TextField, Typography } from '@wld/ui';
@@ -10,11 +10,20 @@ import { styles } from './gif_card_styles';
 
 const useStyles = createUseStyles(styles);
 
-const GifCardComponent = ({ name, gifUrl, imageEditable, additionalActions, onImageEditClick, onChange, onRemove, error }) => {
+const GifCardComponent = ({
+    name,
+    gifUrl,
+    imageEditable,
+    additionalActions,
+    onImageEditClick,
+    onChange,
+    onRemove,
+    error
+}) => {
     const classes = useStyles();
     const [input, setInput] = useState(name);
 
-    const handleTextFieldChange = useCallback((event) => setInput(event.target.value), []);
+    const handleTextFieldChange = useCallback(event => setInput(event.target.value), []);
 
     const isSaveDisabled = useMemo(() => !input || input === name, [input, name]);
 
@@ -30,10 +39,7 @@ const GifCardComponent = ({ name, gifUrl, imageEditable, additionalActions, onIm
             <Card className={classes.container}>
                 <div className={classes.imageContainer}>
                     {error?.gifUrl && (
-                        <Typography
-                            color="danger"
-                            variant="p"
-                        >
+                        <Typography color="danger" variant="p">
                             {error?.gifUrl}
                         </Typography>
                     )}
@@ -57,30 +63,17 @@ const GifCardComponent = ({ name, gifUrl, imageEditable, additionalActions, onIm
                         onChange={handleTextFieldChange}
                     />
                     {error?.name && (
-                        <Typography
-                            color="danger"
-                            component="div"
-                            variant="helper"
-                        >
+                        <Typography color="danger" component="div" variant="helper">
                             {error?.name}
                         </Typography>
                     )}
                 </div>
                 <PopperCardActions>
-                    <Button
-                        color="danger"
-                        size="small"
-                        onClick={onRemove}
-                    >
-                        Remove
+                    <Button color="danger" size="small" onClick={onRemove}>
+                        <FormattedMessage id="Main.lang.remove" defaultMessage="Remove" />
                     </Button>
-                    <Button
-                        disabled={isSaveDisabled}
-                        size="small"
-                        color="primary"
-                        onClick={handleSave}
-                    >
-                        Save
+                    <Button disabled={isSaveDisabled} size="small" color="primary" onClick={handleSave}>
+                        <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
                     </Button>
                 </PopperCardActions>
             </Card>

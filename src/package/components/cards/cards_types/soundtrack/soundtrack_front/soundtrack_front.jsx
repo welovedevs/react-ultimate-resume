@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
@@ -12,7 +13,6 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 import { ReactComponent as SpotifyLogo } from '../../../../../assets/icons/brands/spotify.svg';
 
 import { styles } from './soundtrack_front_styles';
-import { FormattedMessage } from 'react-intl';
 
 const useStyles = createUseStyles(styles);
 

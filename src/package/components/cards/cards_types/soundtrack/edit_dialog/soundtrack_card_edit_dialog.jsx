@@ -18,21 +18,21 @@ import { styles } from './soundtrack_card_edit_dialog_styles';
 const useStyles = createUseStyles(styles);
 
 export const SoundtrackCardEditDialog = ({ open, onClose, data, onEdit }) => (
-        <EditDialog
-            data={data}
-            onEdit={onEdit}
-            onClose={onClose}
-            open={open}
-            title={(
-                <FormattedMessage
-                    id="Sountrack.editDialog.title"
-                    defaultMessage="Embed your musical tastes in your profile."
-                />
-            )}
-        >
-            {helpers => <Content helpers={helpers} />}
-        </EditDialog>
-    );
+    <EditDialog
+        data={data}
+        onEdit={onEdit}
+        onClose={onClose}
+        open={open}
+        title={(
+            <FormattedMessage
+                id="Sountrack.editDialog.title"
+                defaultMessage="Embed your musical tastes in your profile."
+            />
+          )}
+    >
+        {helpers => <Content helpers={helpers} />}
+    </EditDialog>
+);
 
 const Content = () => {
     const classes = useStyles();
@@ -44,7 +44,13 @@ const Content = () => {
     const [hasLoaded, setHasLoaded] = useState(false);
     const handleLoad = useCallback(() => setHasLoaded(true), []);
 
-    const isValidUrl = useMemo(() => /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi.test(iframeUrl), [iframeUrl]);
+    const isValidUrl = useMemo(
+        () =>
+            /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/gi.test(
+                iframeUrl
+            ),
+        [iframeUrl]
+    );
 
     useEffect(() => {
         if (isValidUrl) {
@@ -61,15 +67,13 @@ const Content = () => {
                         id="Soundtrack.editDialog.embedUrl.title"
                         defaultMessage="Enter a Spotify embed URL."
                     />
-                )}
+                  )}
             >
                 <TextField onChange={handleChange} name="embedUrl" value={embedUrl} variant="flat" fullWidth />
             </EditDialogField>
             <div className={classes.divider} />
             <div className={classes.iframeContainer}>
-                {hasLoaded === null && (
-                    <LoadingSpinner />
-                )}
+                {hasLoaded === null && <LoadingSpinner />}
                 {isValidUrl && (
                     <iframe
                         className={classes.iframe}

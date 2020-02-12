@@ -17,11 +17,14 @@ export const DreamJobValidationSchema = formatMessage =>
                 formatMessage(basicsValidationTranslations.atLeastOneContractType),
                 value => !!(value || []).length
             )
-            .test('is-exclusif', formatMessage(basicsValidationTranslations.selectByGroup), value => {
-                return !(
-                    ['permanent', 'fixedTerm', 'freelance'].filter(val => value.includes(val)).length &&
-                    ['apprenticeship', 'internship'].filter(val => value.includes(val)).length
-                );
-            }),
+            .test(
+                'is-exclusif',
+                formatMessage(basicsValidationTranslations.selectByGroup),
+                value =>
+                    !(
+                        ['permanent', 'fixedTerm', 'freelance'].filter(val => value.includes(val)).length &&
+                        ['apprenticeship', 'internship'].filter(val => value.includes(val)).length
+                    )
+            ),
         salary: Yup.string().min(2, formatMessage(validationTranslations.min, { min: 5 }))
     });

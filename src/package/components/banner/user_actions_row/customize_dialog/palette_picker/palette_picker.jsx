@@ -1,13 +1,14 @@
 import React, { useCallback, useMemo } from 'react';
-import { palettes } from './utils/palettes';
-import { DialogContent, ListItem } from '@material-ui/core';
-
+import { FormattedMessage, useIntl } from 'react-intl';
 import { createUseStyles } from 'react-jss';
+import { ListItem } from '@material-ui/core';
 import PaletteHelper from 'values.js';
+import { Typography } from '@wld/ui';
+
+import { palettes } from './utils/palettes';
 import { styles } from './palette_picker_styles';
 import { Select } from '../../../../commons/select/select';
-import { Typography } from '@wld/ui';
-import { FormattedMessage } from 'react-intl';
+import { translations } from './palette_picker_translations';
 
 const useStyles = createUseStyles(styles);
 const buildShadedPalette = hex => {
@@ -27,6 +28,7 @@ const buildShadedPalette = hex => {
     };
 };
 export const PalettePicker = ({ value: currentPalette, onChange }) => {
+    const { formatMessage } = useIntl();
     const classes = useStyles();
     const selectedPalette = useMemo(
         () =>
@@ -48,14 +50,14 @@ export const PalettePicker = ({ value: currentPalette, onChange }) => {
     return (
         <div>
             <Typography customClasses={{ container: classes.title }} component="h3" variant="h4" color="dark">
-                <FormattedMessage id={'PalettePicker.field.title'} defaultMessage={'Choose your palette'} />
+                <FormattedMessage id="PalettePicker.field.title" defaultMessage="Choose your palette" />
             </Typography>
 
             <div className={classes.picker}>
                 {selectedPalette && (
                     <div className={classes.currentPalette}>
                         <Typography>
-                            <FormattedMessage id={'PalettePicker.field.title'} defaultMessage={'Current palette'} />
+                            <FormattedMessage id="PalettePicker.field.title" defaultMessage="Current palette" />
                         </Typography>
                         <div className={classes.colorSquare} style={{ backgroundColor: selectedPalette[0] }} />
                         <div className={classes.colorSquare} style={{ backgroundColor: selectedPalette[1] }} />
@@ -67,7 +69,7 @@ export const PalettePicker = ({ value: currentPalette, onChange }) => {
                         variant: 'flat',
                         size: 'small'
                     }}
-                    value={'Select a palette'}
+                    value={formatMessage(translations.selectStub)}
                     onChange={onSelectChanged}
                 >
                     {palettes.map((palette, index) => (

@@ -1,6 +1,6 @@
-import { flex, getColorsFromCardVariant, getHexFromPaletteColor } from '../../../utils/styles/styles_utils';
+import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
+export const styles = theme => {
     const {
         components: {
             cards: { height, width }

@@ -13,9 +13,7 @@ const SHADES_SCHEMA = Object.freeze({
 const isExistingColorInPalette = yup.string().test(
     'is-existing-color-in-palette',
     args => `Color \`${args.value}\` must be present in palette.`,
-    function(value) {
-        return Boolean(this.options?.context?.palette?.[value]);
-    }
+    value => Boolean(this.options?.context?.palette?.[value])
 );
 
 const CARD_VARIANT_SCHEMA = yup.object({
@@ -48,7 +46,7 @@ export const THEME_SCHEMA = yup.object({
     }),
     sizes: yup.object({
         small: yup.string().required(),
-        medium: yup.string().required(),
+        medium: yup.string().required()
     }),
     components: yup.object({
         banner: yup.object({

@@ -1,7 +1,8 @@
 import React, { memo, useCallback, useMemo } from 'react';
 
+import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
-import { useSpring, config } from 'react-spring';
+import { config, useSpring } from 'react-spring';
 
 import { ProfileCardTitle } from '../../../../commons/profile_card/profile_card_title/profile_card_title';
 
@@ -55,7 +56,9 @@ const SkillsBackComponent = ({ data }) => {
 
     return (
         <>
-            <ProfileCardTitle>Skills</ProfileCardTitle>
+            <ProfileCardTitle>
+                <FormattedMessage id="Skills.back.title" defaultMessage="Skills" />
+            </ProfileCardTitle>
             <div className={classes.container} onScroll={onScroll}>
                 <SkillsPieChart
                     variant={variant}

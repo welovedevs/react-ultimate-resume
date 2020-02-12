@@ -66,10 +66,7 @@ const DreamJobLocations = ({ remoteFrequency, places, classes }) => {
     const { formatMessage } = useIntl();
     if (remoteFrequency === REMOTE_FREQUENCY.FULL_TIME) {
         return (
-            <FormattedMessage
-                id="Dreamjob.Back.Location.RemoteOnly"
-                defaultMessage="I only want to work remotely"
-            />
+            <FormattedMessage id="Dreamjob.Back.Location.RemoteOnly" defaultMessage="I only want to work remotely" />
         );
     }
 
@@ -81,8 +78,8 @@ const DreamJobLocations = ({ remoteFrequency, places, classes }) => {
             <ProfileCardSectionText>
                 <DreamJobPlaces places={places} classes={classes} />
                 <br />
-                {remoteFrequency
-                && formatMessage(remoteDisplayTranslations[remoteFrequency] || remoteDisplayTranslations.others)}
+                {remoteFrequency &&
+                    formatMessage(remoteDisplayTranslations[remoteFrequency] || remoteDisplayTranslations.others)}
             </ProfileCardSectionText>
         </>
     );

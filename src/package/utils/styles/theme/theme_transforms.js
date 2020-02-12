@@ -21,7 +21,7 @@ const THEME_TRANSFORMS = Object.freeze({
             colorAccumulator[colorName] = {
                 ...shades,
                 rgbShades: Object.entries(shades).reduce((shadesAcc, [shade, shadeValue]) => {
-                    if (isNaN(parseInt(shade, 10))) {
+                    if (Number.isNaN(parseInt(shade, 10))) {
                         return shadesAcc;
                     }
                     const shadesAccumulator = shadesAcc;

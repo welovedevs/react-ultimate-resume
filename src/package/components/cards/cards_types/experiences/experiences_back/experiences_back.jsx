@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 
+import { useIntl } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { ProfileCardSection } from '../../../../commons/profile_card/profile_card_section/profile_card_section';
@@ -9,7 +10,6 @@ import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profil
 import { ProfileCardSectionSubtitle } from '../../../../commons/profile_card/profile_card_section_subtitle/profile_card_section_subtitle';
 
 import { styles } from './experiences_back_styles';
-import { useIntl } from 'react-intl';
 import { translations } from './experiences_translations';
 
 const useStyles = createUseStyles(styles);
@@ -46,7 +46,7 @@ const ExperiencesBackComponent = ({ data }) => {
     return (
         <ProfileCardAnimatedBack title="Experiences">
             {data.work?.map(experience => (
-                <ExperienceContent key={`work_experience_${experience.id}`} experience={experience} classes={classes}/>
+                <ExperienceContent key={`work_experience_${experience.id}`} experience={experience} classes={classes} />
             ))}
         </ProfileCardAnimatedBack>
     );

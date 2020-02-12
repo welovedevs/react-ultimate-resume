@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { useIntl } from 'react-intl';
 
-import { TextField, PopperCard, Typography, List, ListItem } from '@wld/ui';
+import { List, ListItem, PopperCard, TextField, Typography } from '@wld/ui';
 
 import { useGoogleMapsPredictions } from '../../hooks/location/use_google_maps_predictions';
 
@@ -36,16 +36,19 @@ const LocationFieldComponent = ({
 
     const clear = useCallback(() => setInput(''), []);
 
-    const handleChange = useCallback(event => {
-        setInput(event.target.value);
-        if (typeof onChange === 'function') {
-            event.persist();
-            onChange(event);
-        }
-        if (typeof onLocationSelected === 'function' && !event.target.value) {
-            onLocationSelected(null);
-        }
-    }, [onChange, onLocationSelected]);
+    const handleChange = useCallback(
+        event => {
+            setInput(event.target.value);
+            if (typeof onChange === 'function') {
+                event.persist();
+                onChange(event);
+            }
+            if (typeof onLocationSelected === 'function' && !event.target.value) {
+                onLocationSelected(null);
+            }
+        },
+        [onChange, onLocationSelected]
+    );
 
     const onPredictionSelected = useCallback(
         (placeId, description) => {
@@ -96,38 +99,43 @@ const LocationFieldComponent = ({
     );
 };
 
-const PredictionsList = ({ predictions = [], setPreventBlur, input, onPredictionSelected, classes, setInput }) => (
-    <PopperCard
-        open
-        anchorElement={input}
-        customClasses={{
-            popper: classes.popperCard
-        }}
-    >
-        <List>
-            {predictions
-                .filter(item => item)
-                .map(({ description, place_id: placeId }) => (
-                    <ListItem
-                        key={`prediction_${placeId}`}
-                        onMouseDown={() => setPreventBlur(true)}
-                        onMouseUp={() => {
-                            setPreventBlur(false);
-                            input && input.focus();
-                        }}
-                        onClick={() => {
-                            if (!placeId) {
-                                return;
-                            }
-                            setInput(description);
-                            onPredictionSelected(placeId, description);
-                        }}
-                    >
-                        <Typography>{description || ''}</Typography>
-                    </ListItem>
-                ))}
-        </List>
-    </PopperCard>
-);
+const PredictionsList = ({ predictions = [], setPreventBlur, input, onPredictionSelected, classes, setInput }) => {
+    const onMouseUp = useCallback(() => {
+        setPreventBlur(false);
+        if (input && input.focus) {
+            input.focus();
+        }
+    }, []);
+    return (
+        <PopperCard
+            open
+            anchorElement={input}
+            customClasses={{
+                popper: classes.popperCard
+            }}
+        >
+            <List>
+                {predictions
+                    .filter(item => item)
+                    .map(({ description, place_id: placeId }) => (
+                        <ListItem
+                            key={`prediction_${placeId}`}
+                            onMouseDown={() => setPreventBlur(true)}
+                            onMouseUp={onMouseUp}
+                            onClick={() => {
+                                if (!placeId) {
+                                    return;
+                                }
+                                setInput(description);
+                                onPredictionSelected(placeId, description);
+                            }}
+                        >
+                            <Typography>{description || ''}</Typography>
+                        </ListItem>
+                    ))}
+            </List>
+        </PopperCard>
+    );
+};
 
 export const LocationField = LocationFieldComponent;

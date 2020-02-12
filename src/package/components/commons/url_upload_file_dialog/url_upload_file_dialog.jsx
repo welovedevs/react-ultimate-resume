@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
 
-import { DeveloperProfileContext } from '../../profile';
-
 import { UploadFileDialog } from '../upload_file_dialog/upload_file_dialog';
 import { UrlInputDialog } from '../url_input_dialog/url_input_dialog';
+import { DeveloperProfileContext } from '../../../utils/context/contexts';
 
 const UrlUploadFileDialogComponent = ({ onAdd, ...props }) => {
     const { onFilesUpload } = useContext(DeveloperProfileContext);

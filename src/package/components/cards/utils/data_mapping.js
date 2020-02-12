@@ -7,9 +7,8 @@ export const JsonResumeToFlatObject = (source, dataMapping) =>
         return acc;
     }, {});
 
-export const FlatObjectToJsonResume = (data, dataMapping) => {
-    return Object.entries(dataMapping).reduce((acc, [key, path]) => {
+export const FlatObjectToJsonResume = (data, dataMapping) =>
+    Object.entries(dataMapping).reduce((acc, [key, path]) => {
         set(acc, path, get(data, key));
         return acc;
     }, {});
-};

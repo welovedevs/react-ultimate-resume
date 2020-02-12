@@ -4,7 +4,7 @@
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
-        "start": "BROWSER=none react-scripts start",
+        "start": "EXTEND_ESLINT=true BROWSER=none react-scripts start",
         "dev": "yarn start",
         "eject": "react-scripts eject",
         "test": "echo \"Error: no test specified\" && exit 1",

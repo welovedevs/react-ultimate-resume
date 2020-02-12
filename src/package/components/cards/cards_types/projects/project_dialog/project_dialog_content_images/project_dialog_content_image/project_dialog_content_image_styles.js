@@ -1,4 +1,4 @@
-import { getHexFromPaletteColor, flex } from '../../../../../../../utils/styles/styles_utils';
+import { flex, getHexFromPaletteColor } from '../../../../../../../utils/styles/styles_utils';
 
 const { center } = flex;
 

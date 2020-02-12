@@ -1,6 +1,8 @@
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         locationField: {
             marginBottom: spacing * 3
         },
@@ -9,7 +11,7 @@ export const styles = (theme) => {
             flexWrap: 'wrap'
         },
         place: {
-            transformOrigin: 'center left',
+            transformOrigin: 'center left'
         },
         deleteIcon: {
             fill: '#fff',
@@ -18,5 +20,5 @@ export const styles = (theme) => {
             marginRight: spacing,
             cursor: 'pointer'
         }
-    });
+    };
 };
