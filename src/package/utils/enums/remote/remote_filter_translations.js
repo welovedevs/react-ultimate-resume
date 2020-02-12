@@ -17,7 +17,7 @@ export const remoteSelectTranslations = defineMessages({
         id: 'Developer.RemoteFrequency.Select.FullTime',
         defaultMessage: 'Full-time'
     },
-    other: {
+    others: {
         id: 'Developer.RemoteFrequency.Select.Other',
         defaultMessage: 'Other'
     }
@@ -40,7 +40,7 @@ export const remoteDisplayTranslations = defineMessages({
         id: 'Developer.RemoteFrequency.Display.fullTime',
         defaultMessage: "I'm interested by full-time remote work"
     },
-    OTHER: {
+    others: {
         id: 'Developer.RemoteFrequency.Display.other',
         defaultMessage: 'Autres'
     }

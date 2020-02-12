@@ -141,7 +141,7 @@ const DreamJobPerks = ({ perks = {} }) => {
             if (key === JobPerks.OTHER) {
                 return value;
             }
-            return formatMessage(jobPerksTranslations[key.toLowerCase()] || jobPerksTranslations.other);
+            return formatMessage(jobPerksTranslations[key.toLowerCase()] || jobPerksTranslations.others);
         })
         .join(', ');
 };

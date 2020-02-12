@@ -57,7 +57,7 @@ const PerksFieldComponent = ({
                 <CheckboxField
                     title={(
                         <Typography>
-                            {formatMessage(jobPerksTranslations[JobPerks.OTHER])}
+                            {formatMessage(jobPerksTranslations.others)}
                         </Typography>
                     )}
                     onClick={toggleOtherPerk}
