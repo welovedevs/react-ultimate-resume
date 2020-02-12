@@ -7,11 +7,9 @@ exports.useTechnologies = void 0;
 
 var _react = require("react");
 
-var _technologies_reducer = require("../../../store/technologies/technologies_reducer");
-
-var _profile = require("../../profile");
-
 var _technologies_actions_types = require("../../../store/technologies/technologies_actions_types");
+
+var _contexts = require("../../../utils/context/contexts");
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -24,7 +22,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var DEFAULT_OBJECT = {};
 
 var useTechnologies = function useTechnologies() {
-  var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       endpoints = _useContext.endpoints,
       _useContext$store$tec = _slicedToArray(_useContext.store.technologies, 2),
       technologies = _useContext$store$tec[0].technologies,

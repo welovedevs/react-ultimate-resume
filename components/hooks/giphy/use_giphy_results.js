@@ -3,13 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.useGiphyResults = exports.GIPHY_RATINGS = void 0;
-
-var _profile = require("../../profile");
+exports.useGiphyResults = void 0;
 
 var _react = require("react");
 
 var _reactIntl = require("react-intl");
+
+var _contexts = require("../../../utils/context/contexts");
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -20,25 +20,17 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var GIPHY_API_ENDPOINT = 'https://api.giphy.com/v1/gifs/search?';
-var GIPHY_RATINGS = {
-  G: 'G',
-  PG: 'PG',
-  'PG-13': 'PG-13',
-  R: 'R'
-};
-exports.GIPHY_RATINGS = GIPHY_RATINGS;
 
 var useGiphyResults = function useGiphyResults(input) {
   var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
   var limit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 20;
-  var rating = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : GIPHY_RATINGS.PG;
-  var timeout = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 800;
+  var timeout = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 800;
   var debounceSearch = (0, _react.useRef)();
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       locale = _useIntl.locale;
 
-  var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       apiKeys = _useContext.apiKeys;
 
   var _useState = (0, _react.useState)(false),
@@ -125,7 +117,8 @@ var useGiphyResults = function useGiphyResults(input) {
   }, [input, lastLoaded, page]);
   return {
     gifs: results,
-    loading: loading
+    loading: loading,
+    error: error
   };
 };
 

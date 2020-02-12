@@ -17,11 +17,11 @@ var _basics_back = require("./basics_back/basics_back");
 
 var _mapping = require("./data/mapping");
 
-var _profile = require("../../../profile");
-
 var _basic_edit_dialog = require("./basics_edit_dialog/basic_edit_dialog");
 
 var _validator = require("./data/validator");
+
+var _contexts = require("../../../../utils/context/contexts");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -31,7 +31,7 @@ var BasicsCardComponent = function BasicsCardComponent(_ref) {
   var variant = _ref.variant,
       side = _ref.side;
 
-  var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data,
       isEditing = _useContext.isEditing,
       onEdit = _useContext.onEdit;

@@ -9,6 +9,8 @@ exports.SearchGifsDialog = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _useDebounce3 = require("use-debounce");
@@ -17,15 +19,15 @@ var _core = require("@material-ui/core");
 
 var _ui = require("@wld/ui");
 
+var _Poweredby_100pxWhite_VertText = _interopRequireDefault(require("../../../assets/images/Poweredby_100px-White_VertText.png"));
+
 var _dialog_title = require("../dialog/dialog_title/dialog_title");
 
 var _loading_spinner = require("../loading_spinner/loading_spinner");
 
-var _search_gifs_dialog_styles = require("./search_gifs_dialog_styles");
-
 var _use_giphy_results = require("../../hooks/giphy/use_giphy_results");
 
-var _Poweredby_100pxWhite_VertText = _interopRequireDefault(require("../../../assets/images/Poweredby_100px-White_VertText.png"));
+var _search_gifs_dialog_styles = require("./search_gifs_dialog_styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -71,7 +73,10 @@ var SearchGifsDialogComponent = function SearchGifsDialogComponent(_ref) {
     classes: {
       root: classes.title
     }
-  }, "Search gifs", _react.default.createElement("img", {
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Gifs.searchdialog.title",
+    defaultMessage: "Search gifs"
+  }), _react.default.createElement("img", {
     src: _Poweredby_100pxWhite_VertText.default
   })), _react.default.createElement(_core.DialogContent, {
     classes: {
@@ -94,7 +99,10 @@ var SearchGifsDialogComponent = function SearchGifsDialogComponent(_ref) {
   })), _react.default.createElement(_core.DialogActions, null, _react.default.createElement(_core.Button, {
     size: "small",
     onClick: onClose
-  }, "Close")));
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.close",
+    defaultMessage: "Close"
+  }))));
 };
 
 var Results = function Results(_ref2) {

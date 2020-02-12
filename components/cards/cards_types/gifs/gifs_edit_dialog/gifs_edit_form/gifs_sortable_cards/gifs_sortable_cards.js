@@ -134,7 +134,7 @@ var SortableGifItem = (0, _reactSortableHoc.SortableElement)(function (_ref5) {
     onRemove: handleRemove,
     onImageEditClick: handleImageEditClick,
     error: fieldErrors,
-    additionalActions: _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(DragHandle, null))
+    additionalActions: _react.default.createElement(DragHandle, null)
   }));
 });
 var GifsSortableCards = GifsSortableCardsComponent;

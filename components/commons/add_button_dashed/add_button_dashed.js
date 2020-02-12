@@ -9,6 +9,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _ui = require("@wld/ui");
@@ -37,7 +39,10 @@ var AddButtonDashedComponent = function AddButtonDashedComponent(_ref) {
       container: receivedClasses.typography
     },
     variant: "h2"
-  }, '+')));
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "AddButton.plus",
+    defaultMessage: "+"
+  }))));
 };
 
 var AddButtonDashed = AddButtonDashedComponent;

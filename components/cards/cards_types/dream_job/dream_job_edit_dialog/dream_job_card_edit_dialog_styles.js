@@ -5,8 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = void 0;
 
-var styles = function styles(theme) {
-  var spacing = theme.miscellaneous.spacing;
+var styles = function styles() {
   return {
     currentCities: {
       display: 'flex',

@@ -19,9 +19,9 @@ var _experiences_edit_dialog = require("./experiences_edit_dialog/experiences_ed
 
 var _validator = require("./data/validator");
 
-var _profile = require("../../../profile");
-
 var _mapping = require("./data/mapping");
+
+var _contexts = require("../../../../utils/context/contexts");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -31,7 +31,7 @@ var ExperiencesCardComponent = function ExperiencesCardComponent(_ref) {
   var variant = _ref.variant,
       side = _ref.side;
 
-  var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data,
       onEdit = _useContext.onEdit,
       isEditing = _useContext.isEditing;

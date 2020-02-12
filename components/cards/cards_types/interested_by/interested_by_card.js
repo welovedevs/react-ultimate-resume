@@ -19,11 +19,11 @@ var _data_mapping = require("../../utils/data_mapping");
 
 var _interested_by_edit_dialog = require("./interested_by_edit_dialog/interested_by_edit_dialog");
 
-var _profile = require("../../../profile");
-
 var _mapping = require("./data/mapping");
 
 var _validator = require("./data/validator");
+
+var _contexts = require("../../../../utils/context/contexts");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -33,7 +33,7 @@ var InterestedByCardComponent = function InterestedByCardComponent(_ref) {
   var variant = _ref.variant,
       side = _ref.side;
 
-  var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data,
       onEdit = _useContext.onEdit,
       isEditing = _useContext.isEditing;

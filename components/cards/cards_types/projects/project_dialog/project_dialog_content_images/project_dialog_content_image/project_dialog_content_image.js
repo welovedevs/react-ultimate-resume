@@ -13,17 +13,17 @@ var _reactJss = require("react-jss");
 
 var _reactSpring = require("react-spring");
 
+var _formik = require("formik");
+
 var _ui = require("@wld/ui");
 
 var _use_is_editing = require("../../../../../../hooks/use_is_editing");
 
-var _project_dialog_content_image_edit_layer_spring_props = require("./project_dialog_content_image_edit_layer_spring_props");
-
 var _use_opener_state = require("../../../../../../hooks/use_opener_state");
 
-var _project_dialog_content_image_styles = require("./project_dialog_content_image_styles");
+var _project_dialog_content_image_edit_layer_spring_props = require("./project_dialog_content_image_edit_layer_spring_props");
 
-var _formik = require("formik");
+var _project_dialog_content_image_styles = require("./project_dialog_content_image_styles");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 

@@ -21,7 +21,7 @@ var mapInterestsFromJsonResume = function mapInterestsFromJsonResume(jsonResume)
   return {
     interests: jsonResume === null || jsonResume === void 0 ? void 0 : (_jsonResume$interests = jsonResume.interests) === null || _jsonResume$interests === void 0 ? void 0 : _jsonResume$interests.map(function (interest, index) {
       return _objectSpread({}, interest, {
-        //generating uuid for manipulating data if not present
+        // generating uuid for manipulating data if not present
         id: interest.id || (0, _v.default)(),
         index: index
       });

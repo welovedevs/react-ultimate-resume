@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.hashCode = void 0;
 
+// eslint-disable-next-line no-bitwise
 var hashCode = function hashCode(str) {
   return Array.from(str).reduce(function (s, c) {
     return Math.imul(31, s) + c.charCodeAt(0) | 0;

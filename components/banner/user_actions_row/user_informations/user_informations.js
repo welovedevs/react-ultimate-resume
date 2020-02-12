@@ -19,7 +19,7 @@ var _column = require("../../../commons/column/column");
 
 var _user_informations_styles = require("./user_informations_styles");
 
-var _profile = require("../../../profile");
+var _contexts = require("../../../../utils/context/contexts");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -30,7 +30,7 @@ var useStyles = (0, _reactJss.createUseStyles)(_user_informations_styles.styles)
 var UserInformationsComponent = function UserInformationsComponent() {
   var _data$basics, _data$basics2, _data$basics3;
 
-  var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data;
 
   var classes = useStyles();

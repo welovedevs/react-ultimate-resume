@@ -9,9 +9,9 @@ exports.ExperiencesFront = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _reactJss = require("react-jss");
+var _reactIntl = require("react-intl");
 
-var _ui = require("@wld/ui");
+var _reactJss = require("react-jss");
 
 var _profile_card_padding_front = require("../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front");
 
@@ -70,7 +70,10 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
     customClasses: {
       container: classes.mainTypography
     }
-  }, title)))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, null, "See all experiences")));
+  }, title)))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Experiences.front.action",
+    defaultMessage: "See all experiences"
+  }))));
 };
 
 var ExperiencesFront = ExperiencesFrontComponent;

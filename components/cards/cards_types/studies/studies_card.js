@@ -15,13 +15,13 @@ var _studies_front = require("./studies_front/studies_front");
 
 var _studies_back = require("./studies_back/studies_back");
 
-var _profile = require("../../../profile");
-
 var _mapping = require("./data/mapping");
 
 var _studies_card_edit_dialog = require("./edit_dialog/studies_card_edit_dialog");
 
 var _validator = require("./data/validator");
+
+var _contexts = require("../../../../utils/context/contexts");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -31,7 +31,7 @@ var StudiesCardComponent = function StudiesCardComponent(_ref) {
   var variant = _ref.variant,
       side = _ref.side;
 
-  var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data,
       onEdit = _useContext.onEdit,
       isEditing = _useContext.isEditing;

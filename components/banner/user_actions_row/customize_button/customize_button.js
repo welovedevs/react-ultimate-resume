@@ -7,11 +7,11 @@ exports.CustomizeButton = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactIntl = require("react-intl");
+
 var _ui = require("@wld/ui");
 
 var _use_callback_open = require("../../../hooks/use_callback_open");
-
-var _reactIntl = require("react-intl");
 
 var _customize_dialog = require("../customize_dialog/customize_dialog");
 

@@ -21,7 +21,7 @@ var mapLanguagesFromJsonResume = function mapLanguagesFromJsonResume(jsonResume)
   return {
     languages: jsonResume === null || jsonResume === void 0 ? void 0 : (_jsonResume$languages = jsonResume.languages) === null || _jsonResume$languages === void 0 ? void 0 : _jsonResume$languages.map(function (language, index) {
       return _objectSpread({}, language, {
-        //generating uuid for manipulating data if not present
+        // generating uuid for manipulating data if not present
         id: language.id || (0, _v.default)(),
         index: index
       });

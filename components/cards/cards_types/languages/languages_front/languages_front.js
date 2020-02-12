@@ -43,7 +43,10 @@ var LanguagesFrontComponent = function LanguagesFrontComponent(_ref) {
     values: {
       languagesNode: languagesNode
     }
-  }))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, null, 'Languages level')));
+  }))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Languages.front.action",
+    defaultMessage: "Languages level"
+  }))));
 };
 
 var LanguagesFront = LanguagesFrontComponent;

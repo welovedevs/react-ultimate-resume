@@ -9,6 +9,8 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _reactSpring = require("react-spring");
@@ -28,8 +30,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -71,11 +71,16 @@ var OtherSkills = function OtherSkills(_ref) {
     customClasses: {
       container: classes.otherSkillsTitle
     }
-  }, "Je maitrise \xE9galement..."), othersSkills.map(function (skill) {
-    return _react.default.createElement(_other_skill_progress.default, _extends({
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Skills.otherskills.title",
+    defaultMessage: "I also master"
+  })), othersSkills.map(function (skill) {
+    return _react.default.createElement(_other_skill_progress.default, {
       key: "other_skill_".concat(skill.name),
-      color: color
-    }, skill));
+      color: color,
+      value: skill.value,
+      name: skill.name
+    });
   }));
 };
 

@@ -178,7 +178,7 @@ var Content = function Content(_ref2) {
     className: classes.sliderValue
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Main.lang.years",
-    defaultMessage: "{countNode} year{count, plural, one {} other {}}",
+    defaultMessage: "{countNode} year{count, plural, one {} other {s}}",
     values: {
       count: studiesLevel,
       countNode: _react.default.createElement("span", {

@@ -9,6 +9,8 @@ exports.SkillsBack = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _reactSpring = require("react-spring");
@@ -128,7 +130,10 @@ var SkillsBackComponent = function SkillsBackComponent(_ref) {
       opacity: 1
     });
   }, []);
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_title.ProfileCardTitle, null, "Skills"), _react.default.createElement("div", {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_title.ProfileCardTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Skills.back.title",
+    defaultMessage: "Skills"
+  })), _react.default.createElement("div", {
     className: classes.container,
     onScroll: onScroll
   }, _react.default.createElement(_skills_pie_chart.default, {

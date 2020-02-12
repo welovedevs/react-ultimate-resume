@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DeveloperProfile = exports.DeveloperProfileContext = void 0;
+exports.DeveloperProfile = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -21,7 +21,15 @@ var _cards = require("./cards/cards");
 
 var _profile_styles = require("./profile_styles");
 
+var _en = _interopRequireDefault(require("../i18n/en.json"));
+
+var _fr = _interopRequireDefault(require("../i18n/fr.json"));
+
 var _technologies_reducer = require("../store/technologies/technologies_reducer");
+
+var _contexts = require("../utils/context/contexts");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -45,12 +53,14 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+var messages = {
+  en: _en.default,
+  fr: _fr.default
+};
 var useStyles = (0, _reactJss.createUseStyles)(_profile_styles.styles);
 var DEFAULT_OPTIONS = Object.freeze({
   locale: 'en'
 });
-var DeveloperProfileContext = (0, _react.createContext)({});
-exports.DeveloperProfileContext = DeveloperProfileContext;
 var DEFAULT_OBJECT = {};
 
 var DEFAULT_FUNCTION = function DEFAULT_FUNCTION() {};
@@ -78,7 +88,8 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            return _context.abrupt("return", fetch('https://api.thecatapi.com/v1/images/search', {
+            return _context.abrupt("return", // eslint-disable-next-line no-undef
+            fetch('https://api.thecatapi.com/v1/images/search', {
               headers: {}
             }).then(function (res) {
               return res.json();
@@ -126,7 +137,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
   }, [endpoints, apiKeys, data, onEdit, store]);
   return _react.default.createElement("div", {
     className: classes.container
-  }, _react.default.createElement(DeveloperProfileContext.Provider, {
+  }, _react.default.createElement(_contexts.DeveloperProfileContext.Provider, {
     value: context
   }, _react.default.createElement(_banner.Banner, {
     customizationOptions: options.customization
@@ -199,7 +210,9 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
   return _react.default.createElement(_reactJss.ThemeProvider, {
     theme: builtTheme
   }, _react.default.createElement(_reactIntl.IntlProvider, {
-    locale: locale
+    locale: locale,
+    messages: messages[locale] || messages.en,
+    defaultLocale: locale
   }, _react.default.createElement(DeveloperProfileComponent, {
     isEditing: isEditing,
     data: data,

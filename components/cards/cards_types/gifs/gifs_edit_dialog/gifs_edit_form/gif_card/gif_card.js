@@ -9,6 +9,8 @@ exports.GifCard = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _ui = require("@wld/ui");
@@ -95,12 +97,18 @@ var GifCardComponent = function GifCardComponent(_ref) {
     color: "danger",
     size: "small",
     onClick: onRemove
-  }, "Remove"), _react.default.createElement(_ui.Button, {
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.remove",
+    defaultMessage: "Remove"
+  })), _react.default.createElement(_ui.Button, {
     disabled: isSaveDisabled,
     size: "small",
     color: "primary",
     onClick: handleSave
-  }, "Save"))));
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.save",
+    defaultMessage: "Save"
+  })))));
 };
 
 var GifCard = GifCardComponent;

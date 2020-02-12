@@ -7,6 +7,8 @@ exports.SeeProjectDetail = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _ui = require("@wld/ui");
@@ -75,7 +77,10 @@ var SeeProjectDetailComponent = function SeeProjectDetailComponent(_ref) {
       container: classes.detailTypography
     },
     color: "primary"
-  }, "See more")));
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Projects.details.seemore",
+    defaultMessage: "See more"
+  }))));
 };
 
 var SeeProjectDetail = SeeProjectDetailComponent;

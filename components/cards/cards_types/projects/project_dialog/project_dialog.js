@@ -9,9 +9,11 @@ exports.ProjectDialog = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
-var _reactIntl = require("react-intl");
+var _formik = require("formik");
 
 var _project_dialog_content_title = require("./project_dialog_content_title/project_dialog_content_title");
 
@@ -27,15 +29,13 @@ var _project_dialog_styles = require("./project_dialog_styles");
 
 var _edit_dialog = require("../../../../commons/edit_dialog/edit_dialog");
 
-var _formik = require("formik");
-
 var _validator = require("../data/validator");
-
-var _profile = require("../../../../profile");
 
 var _mapping = require("../data/mapping");
 
 var _project_dialog_content_link = require("./project_dialog_content_link/project_dialog_content_link");
+
+var _contexts = require("../../../../../utils/context/contexts");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -65,7 +65,7 @@ var ProjectDialogComponent = function ProjectDialogComponent(_ref) {
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
 
-  var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       onEdit = _useContext.onEdit,
       data = _useContext.data;
 

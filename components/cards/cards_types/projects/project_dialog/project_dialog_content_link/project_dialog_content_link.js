@@ -7,15 +7,17 @@ exports.ProjectDialogContentLink = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _ui = require("@wld/ui");
 
+var _formik = require("formik");
+
 var _use_is_editing = require("../../../../../hooks/use_is_editing");
 
 var _project_dialog_content_link_styles = require("./project_dialog_content_link_styles");
-
-var _formik = require("formik");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -89,7 +91,10 @@ var EditingContent = function EditingContent(_ref4) {
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_ui.Typography, {
     variant: "label",
     component: "div"
-  }, "Lien du projet"), _react.default.createElement(_ui.TextField, {
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Project.dialog.link.title",
+    defaultMessage: "Lien du projet"
+  })), _react.default.createElement(_ui.TextField, {
     fullWidth: true,
     variant: "flat",
     onChange: handleChange,

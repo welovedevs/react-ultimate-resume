@@ -55,7 +55,7 @@ var THEME_TRANSFORMS = Object.freeze({
               shade = _ref4[0],
               shadeValue = _ref4[1];
 
-          if (isNaN(parseInt(shade, 10))) {
+          if (Number.isNaN(parseInt(shade, 10))) {
             return shadesAcc;
           }
 

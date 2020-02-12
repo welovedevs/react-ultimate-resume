@@ -1,10 +1,10 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.1.31",
+    "version": "1.1.32",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
-        "start": "BROWSER=none react-scripts start",
+        "start": "EXTEND_ESLINT=true BROWSER=none react-scripts start",
         "dev": "yarn start",
         "eject": "react-scripts eject",
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,7 +13,9 @@
         "test-build": "rimraf ./test-build && ./node_modules/.bin/babel src -d ./test_build",
         "posttest-build": "rimraf ./test_build ./styles ",
         "build:app": "react-scripts build",
-        "build-serve": "react-scripts build && serve build"
+        "build-serve": "react-scripts build && serve build",
+        "build:messages": "NODE_ENV=production babel ./src >/dev/null",
+        "manage:translations": "node ./translationRunner.js"
     },
     "author": "",
     "license": "ISC",
@@ -27,6 +29,7 @@
         "@date-io/moment": "^1.3.13",
         "@material-ui/pickers": "^3.2.9",
         "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.0.14",
+        "babel-plugin-react-intl": "^5.1.18",
         "chroma-js": "^2.1.0",
         "classnames": "^2.2.6",
         "cp-cli": "^2.0.0",
@@ -68,6 +71,7 @@
         "eslint-plugin-react-hooks": "^2.3.0",
         "husky": "^3.1.0",
         "ora": "^4.0.3",
+        "react-intl-translations-manager": "^5.0.3",
         "readline-sync": "^1.4.10",
         "rimraf": "^3.0.0",
         "serve": "^11.3.0",

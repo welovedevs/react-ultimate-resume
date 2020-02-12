@@ -548,6 +548,7 @@ var ExperiencesEditForm = function ExperiencesEditForm(_ref14) {
   }, [data]);
 
   var _useState = (0, _react.useState)(Object.keys(keyedValues || {}).reduce(function (state, id) {
+    // eslint-disable-next-line no-param-reassign
     state[id] = true;
     return state;
   }, {})),

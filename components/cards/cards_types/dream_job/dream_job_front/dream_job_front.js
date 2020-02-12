@@ -9,6 +9,8 @@ exports.DreamJobFront = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _profile_card_padding_front = require("../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front");
@@ -26,8 +28,6 @@ var _profile_card_button = require("../../../../commons/profile_card/profile_car
 var _dream_job_front_styles = require("./dream_job_front_styles");
 
 var _remote_utils = require("../../../../../utils/enums/remote/remote_utils");
-
-var _reactIntl = require("react-intl");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -63,7 +63,7 @@ var DreamJobFrontComponent = function DreamJobFrontComponent(_ref) {
           container: classes.typography
         }
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
-        id: 'DreamJob.Front.RemoteFulltime',
+        id: "DreamJob.Front.RemoteFulltime",
         defaultMessage: "I want to work remotely"
       })));
     }
@@ -78,7 +78,7 @@ var DreamJobFrontComponent = function DreamJobFrontComponent(_ref) {
         container: classes.typography
       }
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: 'DreamJob.Front.Cities',
+      id: "DreamJob.Front.Cities",
       defaultMessage: "I want to work in {cities}",
       values: {
         cities: places.slice(0, 2).map(function (_ref2) {
@@ -92,7 +92,10 @@ var DreamJobFrontComponent = function DreamJobFrontComponent(_ref) {
     customClasses: {
       container: classes.container
     }
-  }, content)), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, null, "Discover my dream job")));
+  }, content)), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Dreamjob.front.action",
+    defaultMessage: "Discover my dream job"
+  }))));
 };
 
 var DreamJobFront = DreamJobFrontComponent;

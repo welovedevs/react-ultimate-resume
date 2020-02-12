@@ -17,11 +17,11 @@ var _projects_front = require("./projects_front/projects_front");
 
 var _projects_back = require("./projects_back/projects_back");
 
-var _profile = require("../../../profile");
-
 var _add_button = require("./add_button/add_button");
 
 var _mapping = require("./data/mapping");
+
+var _contexts = require("../../../../utils/context/contexts");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49,7 +49,7 @@ var ProjectsCardComponent = function ProjectsCardComponent(_ref) {
   var variant = _ref.variant,
       side = _ref.side;
 
-  var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data,
       isEditing = _useContext.isEditing;
 

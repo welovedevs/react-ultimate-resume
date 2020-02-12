@@ -11,15 +11,15 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactJss = require("react-jss");
 
-var _card_stub_styles = require("./card_stub_styles");
-
 var _core = require("@material-ui/core");
+
+var _ui = require("@wld/ui");
+
+var _card_stub_styles = require("./card_stub_styles");
 
 var _select = require("../../../../commons/select/select");
 
 var _styles_utils = require("../../../../../utils/styles/styles_utils");
-
-var _ui = require("@wld/ui");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -589,7 +589,7 @@ var VariantItem = function VariantItem(_ref) {
       return (0, _styles_utils.getHexFromPaletteColor)(theme, color);
     });
   }, [theme]);
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_ui.Typography, null, "#", value + 1), colors.map(function (hex, index) {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_ui.Typography, null, "#".concat(value + 1)), colors.map(function (hex, index) {
     return _react.default.createElement("div", {
       key: "".concat(hex, "_").concat(index),
       className: classes.colorSquare,
@@ -607,7 +607,6 @@ var VariantSelector = function VariantSelector(_ref2) {
       onChange = _ref2.onChange;
   var theme = (0, _reactJss.useTheme)();
   var onSelectChanged = (0, _react.useCallback)(function (newValue) {
-    console.log(newValue);
     return onChange(newValue);
   }, [onChange]);
   return _react.default.createElement(_select.Select, {

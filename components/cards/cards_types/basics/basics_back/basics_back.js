@@ -61,7 +61,7 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
           className: classes.bold
         }, _react.default.createElement(_reactIntl.FormattedMessage, {
           id: "Basics.Back.VisaSponsorship",
-          defaultMessage: 'I require a visa sponsorship'
+          defaultMessage: "I require a visa sponsorship"
         }))
       },
       work: {
@@ -96,11 +96,11 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
       },
       codingYears: {
         title: _react.default.createElement(_reactIntl.FormattedMessage, {
-          id: "Basics.Back.CodingYears",
+          id: "Basics.Back.CodingYears.title",
           defaultMessage: "Experience"
         }),
         value: _react.default.createElement(_reactIntl.FormattedMessage, {
-          id: "Basics.Back.CodingYears",
+          id: "Basics.Back.CodingYears.value",
           defaultMessage: '{codingYears} years coding',
           values: {
             codingYears: codingYears

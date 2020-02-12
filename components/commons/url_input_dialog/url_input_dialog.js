@@ -9,6 +9,8 @@ exports.UrlInputDialog = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _ui = require("@wld/ui");
@@ -56,7 +58,10 @@ var UrlInputDialogComponent = function UrlInputDialogComponent(_ref) {
     classes: {
       paper: classes.paper
     }
-  }, _react.default.createElement(_dialog_title.DialogTitle, null, "Entrer une URL"), _react.default.createElement(_core.DialogContent, null, _react.default.createElement(_ui.TextField, {
+  }, _react.default.createElement(_dialog_title.DialogTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Form.Url.input.title",
+    defaultMessage: "Enter an url"
+  })), _react.default.createElement(_core.DialogContent, null, _react.default.createElement(_ui.TextField, {
     fullWidth: true,
     placeholder: "https://pictures.com/0.jpg",
     variant: "flat",
@@ -65,11 +70,17 @@ var UrlInputDialogComponent = function UrlInputDialogComponent(_ref) {
   })), _react.default.createElement(_core.DialogActions, null, _react.default.createElement(_ui.Button, {
     onClick: onClose,
     size: "small"
-  }, "Close"), _react.default.createElement(_ui.Button, {
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.close",
+    defaultMessage: "Close"
+  })), _react.default.createElement(_ui.Button, {
     color: "primary",
     size: "small",
     onClick: onClick
-  }, "Confirm")));
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.save",
+    defaultMessage: "Save"
+  }))));
 };
 
 var UrlInputDialog = UrlInputDialogComponent;

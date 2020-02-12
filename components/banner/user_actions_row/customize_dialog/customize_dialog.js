@@ -21,8 +21,6 @@ var _reactJss = require("react-jss");
 
 var _ui = require("@wld/ui");
 
-var _profile = require("../../../profile");
-
 var _dialog_title = require("../../../commons/dialog/dialog_title/dialog_title");
 
 var _palette_picker = require("./palette_picker/palette_picker");
@@ -30,6 +28,8 @@ var _palette_picker = require("./palette_picker/palette_picker");
 var _cards_orderer = require("./card_orderer/cards_orderer");
 
 var _theme = require("../../../../utils/styles/theme/theme");
+
+var _contexts = require("../../../../utils/context/contexts");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61,7 +61,7 @@ var CustomizeDialog = function CustomizeDialog(_ref) {
       value = _useState2[0],
       setValue = _useState2[1];
 
-  var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       onCustomizationChanged = _useContext.onCustomizationChanged;
 
   (0, _react.useEffect)(function () {

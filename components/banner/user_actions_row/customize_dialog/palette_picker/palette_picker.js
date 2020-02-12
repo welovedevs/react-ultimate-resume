@@ -9,21 +9,23 @@ exports.PalettePicker = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _palettes = require("./utils/palettes");
-
-var _core = require("@material-ui/core");
+var _reactIntl = require("react-intl");
 
 var _reactJss = require("react-jss");
 
+var _core = require("@material-ui/core");
+
 var _values = _interopRequireDefault(require("values.js"));
+
+var _ui = require("@wld/ui");
+
+var _palettes = require("./utils/palettes");
 
 var _palette_picker_styles = require("./palette_picker_styles");
 
 var _select = require("../../../../commons/select/select");
 
-var _ui = require("@wld/ui");
-
-var _reactIntl = require("react-intl");
+var _palette_picker_translations = require("./palette_picker_translations");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61,6 +63,10 @@ var buildShadedPalette = function buildShadedPalette(hex) {
 var PalettePicker = function PalettePicker(_ref) {
   var currentPalette = _ref.value,
       onChange = _ref.onChange;
+
+  var _useIntl = (0, _reactIntl.useIntl)(),
+      formatMessage = _useIntl.formatMessage;
+
   var classes = useStyles();
   var selectedPalette = (0, _react.useMemo)(function () {
     var _currentPalette$prima, _currentPalette$secon, _currentPalette$terti;
@@ -87,15 +93,15 @@ var PalettePicker = function PalettePicker(_ref) {
     variant: "h4",
     color: "dark"
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: 'PalettePicker.field.title',
-    defaultMessage: 'Choose your palette'
+    id: "PalettePicker.field.title",
+    defaultMessage: "Choose your palette"
   })), _react.default.createElement("div", {
     className: classes.picker
   }, selectedPalette && _react.default.createElement("div", {
     className: classes.currentPalette
   }, _react.default.createElement(_ui.Typography, null, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: 'PalettePicker.field.title',
-    defaultMessage: 'Current palette'
+    id: "PalettePicker.field.currentPalette",
+    defaultMessage: "Current palette"
   })), _react.default.createElement("div", {
     className: classes.colorSquare,
     style: {
@@ -116,7 +122,7 @@ var PalettePicker = function PalettePicker(_ref) {
       variant: 'flat',
       size: 'small'
     },
-    value: 'Select a palette',
+    value: formatMessage(_palette_picker_translations.translations.selectStub),
     onChange: onSelectChanged
   }, _palettes.palettes.map(function (palette, index) {
     return _react.default.createElement(_core.ListItem, {

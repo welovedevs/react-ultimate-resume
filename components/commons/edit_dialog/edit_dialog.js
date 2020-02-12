@@ -11,6 +11,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _formik = require("formik");
@@ -101,12 +103,18 @@ var Content = function Content(_ref2) {
   }, _react.default.createElement(_ui.Button, {
     size: "small",
     onClick: onClose
-  }, "Close"), _react.default.createElement(_ui.Button, {
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.close",
+    defaultMessage: "Close"
+  })), _react.default.createElement(_ui.Button, {
     type: "submit",
     size: "small",
     color: "primary",
     onClick: handleSubmit
-  }, "Save")));
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.save",
+    defaultMessage: "Save"
+  }))));
 };
 
 var EditDialog = EditDialogComponent;

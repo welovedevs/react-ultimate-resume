@@ -9,11 +9,11 @@ exports.UrlUploadFileDialog = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _profile = require("../../profile");
-
 var _upload_file_dialog = require("../upload_file_dialog/upload_file_dialog");
 
 var _url_input_dialog = require("../url_input_dialog/url_input_dialog");
+
+var _contexts = require("../../../utils/context/contexts");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -29,7 +29,7 @@ var UrlUploadFileDialogComponent = function UrlUploadFileDialogComponent(_ref) {
   var onAdd = _ref.onAdd,
       props = _objectWithoutProperties(_ref, ["onAdd"]);
 
-  var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       onFilesUpload = _useContext.onFilesUpload;
 
   if (typeof onFilesUpload === 'function') {

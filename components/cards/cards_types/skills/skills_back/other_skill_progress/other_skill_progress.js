@@ -40,7 +40,7 @@ var OtherSkillProgress = function OtherSkillProgress(_ref) {
       container: classes.progressBarCustomContainer,
       bar: classes.progressBarCustomBar
     },
-    value: value * 10
+    value: value
   }));
 };
 

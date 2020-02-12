@@ -15,13 +15,13 @@ var _soundtrack_front = require("./soundtrack_front/soundtrack_front");
 
 var _soundtrack_back = require("./soundtrack_back/soundtrack_back");
 
-var _profile = require("../../../profile");
-
 var _data_mapping = require("../../utils/data_mapping");
 
 var _soundtrack_card_edit_dialog = require("./edit_dialog/soundtrack_card_edit_dialog");
 
 var _mapping = require("./data/mapping");
+
+var _contexts = require("../../../../utils/context/contexts");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -31,7 +31,7 @@ var SoundtrackCardComponent = function SoundtrackCardComponent(_ref) {
   var variant = _ref.variant,
       side = _ref.side;
 
-  var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data,
       isEditing = _useContext.isEditing,
       onEdit = _useContext.onEdit;

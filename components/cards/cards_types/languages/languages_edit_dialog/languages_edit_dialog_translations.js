@@ -9,16 +9,16 @@ var _reactIntl = require("react-intl");
 
 var _default = (0, _reactIntl.defineMessages)({
   language: {
-    id: 'Languages.editDialog.language.title',
-    defaultMessage: 'Language : '
+    "id": "Languages.editDialog.language.title",
+    "defaultMessage": "Language : "
   },
   languagePlaceholder: {
-    id: 'Languages.editDialog.language.placeholder',
-    defaultMessage: 'Ex : English, Italian...'
+    "id": "Languages.editDialog.language.placeholder",
+    "defaultMessage": "Ex : English, Italian..."
   },
   level: {
-    id: 'Languages.editDialog.level.title',
-    defaultMessage: 'Level: {valueNode}%'
+    "id": "Languages.editDialog.level.title",
+    "defaultMessage": "Level: {valueNode}%"
   }
 });
 

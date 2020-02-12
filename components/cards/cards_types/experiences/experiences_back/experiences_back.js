@@ -9,6 +9,8 @@ exports.ExperiencesBack = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _profile_card_section = require("../../../../commons/profile_card/profile_card_section/profile_card_section");
@@ -22,8 +24,6 @@ var _profile_card_animated_back = require("../../../../commons/profile_card/prof
 var _profile_card_section_subtitle = require("../../../../commons/profile_card/profile_card_section_subtitle/profile_card_section_subtitle");
 
 var _experiences_back_styles = require("./experiences_back_styles");
-
-var _reactIntl = require("react-intl");
 
 var _experiences_translations = require("./experiences_translations");
 

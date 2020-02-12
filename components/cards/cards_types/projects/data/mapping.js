@@ -31,7 +31,7 @@ var mapProjectsFromJsonResume = function mapProjectsFromJsonResume(jsonResume) {
   return {
     projects: jsonResume === null || jsonResume === void 0 ? void 0 : (_jsonResume$projects = jsonResume.projects) === null || _jsonResume$projects === void 0 ? void 0 : _jsonResume$projects.map(function (project, index) {
       return _objectSpread({}, project, {
-        //generating uuid for manipulating data if not present
+        // generating uuid for manipulating data if not present
         id: project.id || (0, _v.default)(),
         date: project.endDate && (0, _moment.default)(project.endDate, 'YYYY-MM-DD'),
         index: project.index || index

@@ -8,12 +8,13 @@ exports.styles = void 0;
 var styles = function styles(theme) {
   var spacing = theme.miscellaneous.spacing;
   return {
+    // offsetted value = (((OldValue - OldMin) * (NewMax - NewMin)) / (OldMax - OldMin)) + NewMin
     container: function container(_ref) {
       var value = _ref.value,
           color = _ref.color,
           itemsSize = _ref.itemsSize;
       return {
-        height: "".concat(value, "%"),
+        height: "".concat((value - 0) * (100 - 22) / (100 - 0) + 22, "%"),
         width: Math.min(90, theme.components.cards.width * 0.7 / itemsSize),
         backgroundColor: color,
         color: '#fff',

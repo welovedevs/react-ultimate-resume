@@ -7,6 +7,8 @@ exports.SoundtrackFront = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _profile_card_padding_front = require("../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front");
@@ -22,8 +24,6 @@ var _profile_card_actions = require("../../../../commons/profile_card/profile_ca
 var _profile_card_button = require("../../../../commons/profile_card/profile_card_button/profile_card_button");
 
 var _soundtrack_front_styles = require("./soundtrack_front_styles");
-
-var _reactIntl = require("react-intl");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

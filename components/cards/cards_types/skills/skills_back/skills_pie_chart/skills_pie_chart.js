@@ -21,8 +21,6 @@ var _styles_utils = require("../../../../../../utils/styles/styles_utils");
 
 var _skills_back_recharts_utils = require("../utils/skills_back_recharts_utils");
 
-var _use_card_variant = require("../../../../../commons/profile_card/profile_card_hooks/use_card_variant");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }

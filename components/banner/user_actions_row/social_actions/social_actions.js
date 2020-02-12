@@ -9,8 +9,6 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactJss = require("react-jss");
 
-var _ui = require("@wld/ui");
-
 var _social_actions_styles = require("./social_actions_styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

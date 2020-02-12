@@ -155,7 +155,7 @@ var DreamJobPlaces = function DreamJobPlaces(_ref3) {
     type: "button",
     ref: textAnchor
   }, handlers), _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Dreamjob.Back.Location.OnePlace",
+    id: "Dreamjob.Back.Location.ManyPlaces",
     defaultMessage: "I want to work in {place} and {length, plural, one {one other place} other {# other places}}",
     values: {
       place: firstPlace.name,

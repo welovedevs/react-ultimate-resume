@@ -9,6 +9,8 @@ exports.ProjectSection = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _ui = require("@wld/ui");
@@ -95,7 +97,10 @@ var Details = function Details(_ref2) {
       container: classes.detailTypography
     },
     color: "primary"
-  }, "Link")))), _react.default.createElement("div", {
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Project.section.link",
+    defaultMessage: "Link"
+  }))))), _react.default.createElement("div", {
     className: classes.detail
   }, _react.default.createElement(_see_project_detail.SeeProjectDetail, {
     project: project

@@ -9,8 +9,8 @@ var _reactIntl = require("react-intl");
 
 var translations = (0, _reactIntl.defineMessages)({
   since: {
-    id: 'Experiences.backCard.dates.since',
-    defaultMessage: 'Since {year}'
+    "id": "Experiences.backCard.dates.since",
+    "defaultMessage": "Since {year}"
   }
 });
 exports.translations = translations;

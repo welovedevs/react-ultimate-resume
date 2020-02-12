@@ -93,7 +93,7 @@ var Content = function Content() {
     return setHasLoaded(true);
   }, []);
   var isValidUrl = (0, _react.useMemo)(function () {
-    return /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi.test(iframeUrl);
+    return /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/gi.test(iframeUrl);
   }, [iframeUrl]);
   (0, _react.useEffect)(function () {
     if (isValidUrl) {

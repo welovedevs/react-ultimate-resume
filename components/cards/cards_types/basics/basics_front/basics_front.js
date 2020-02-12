@@ -9,6 +9,10 @@ exports.BasicsFront = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactEmojiRender = require("react-emoji-render");
+
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _center_content_container = require("../../../../commons/center_content_container/center_content_container");
@@ -63,9 +67,15 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
     customClasses: {
       container: classes.location
     }
-  }, "\uD83D\uDCCD ", data === null || data === void 0 ? void 0 : (_data$currentCity = data.currentCity) === null || _data$currentCity === void 0 ? void 0 : _data$currentCity.name)), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+  }, _react.default.createElement(_reactEmojiRender.Twemoji, {
+    svg: true,
+    text: "\uD83D\uDCCD"
+  }), data === null || data === void 0 ? void 0 : (_data$currentCity = data.currentCity) === null || _data$currentCity === void 0 ? void 0 : _data$currentCity.name)), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick
-  }, "More about me")));
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Basics.front.action",
+    defaultMessage: "More about me"
+  }))));
 };
 
 var BasicsFront = BasicsFrontComponent;

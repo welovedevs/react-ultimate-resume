@@ -7,6 +7,8 @@ exports.GifsFront = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _profile_card_actions = require("../../../../commons/profile_card/profile_card_actions/profile_card_actions");
@@ -34,7 +36,10 @@ var GifsFrontComponent = function GifsFrontComponent(_ref) {
     })
   }, _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     overrideColor: "light"
-  }, "See all hobbies")));
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Gifs.front.action",
+    defaultMessage: "See all hobbies"
+  }))));
 };
 
 var GifsFront = GifsFrontComponent;

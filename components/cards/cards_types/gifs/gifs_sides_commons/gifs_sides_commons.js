@@ -7,6 +7,8 @@ exports.GifsSidesCommons = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactIntl = require("react-intl");
+
 var _reactJss = require("react-jss");
 
 var _profile_card_title = require("../../../../commons/profile_card/profile_card_title/profile_card_title");
@@ -32,7 +34,10 @@ var GifsSidesCommonsComponent = function GifsSidesCommonsComponent(_ref) {
     customClasses: {
       container: classes.title
     }
-  }, "Hobbies"), children);
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Hobbies.side.commons",
+    defaultMessage: "Hobbies"
+  })), children);
 };
 
 var GifsSidesCommons = GifsSidesCommonsComponent;

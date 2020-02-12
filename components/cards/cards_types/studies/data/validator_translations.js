@@ -9,8 +9,8 @@ var _reactIntl = require("react-intl");
 
 var studiesTranslations = (0, _reactIntl.defineMessages)({
   noFutureDate: {
-    id: 'Education.form.validation.noFutureDate',
-    defaultMessage: 'Cette date ne peut pas être dans le futur.'
+    "id": "Education.form.validation.noFutureDate",
+    "defaultMessage": "Cette date ne peut pas \xEAtre dans le futur."
   }
 });
 exports.studiesTranslations = studiesTranslations;

@@ -73,7 +73,10 @@ var StudiesFrontComponent = function StudiesFrontComponent(_ref) {
     values: {
       schoolName: data === null || data === void 0 ? void 0 : (_data$ = data[0]) === null || _data$ === void 0 ? void 0 : _data$.institution
     }
-  })))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, null, "All my studies")));
+  })))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Studies.front.action",
+    defaultMessage: "All my studies"
+  }))));
 };
 
 var StudiesFront = StudiesFrontComponent;

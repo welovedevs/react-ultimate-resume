@@ -8,9 +8,9 @@ exports.translations = void 0;
 var _reactIntl = require("react-intl");
 
 var translations = (0, _reactIntl.defineMessages)({
-  moreText: {
-    "id": "Basics.moreText",
-    "defaultMessage": "More about me"
+  selectStub: {
+    "id": "Palette.picker.select.value",
+    "defaultMessage": "Select a palette"
   }
 });
 exports.translations = translations;

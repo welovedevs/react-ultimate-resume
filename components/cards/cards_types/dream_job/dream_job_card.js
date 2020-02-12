@@ -15,13 +15,13 @@ var _dream_job_front = require("./dream_job_front/dream_job_front");
 
 var _dream_job_back = require("./dream_job_back/dream_job_back");
 
-var _profile = require("../../../profile");
-
 var _dream_job_card_edit_dialog = require("./dream_job_edit_dialog/dream_job_card_edit_dialog");
 
 var _validator = require("./data/validator");
 
 var _mapping = require("./data/mapping");
+
+var _contexts = require("../../../../utils/context/contexts");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -31,7 +31,7 @@ var DreamJobCardComponent = function DreamJobCardComponent(_ref) {
   var variant = _ref.variant,
       side = _ref.side;
 
-  var _useContext = (0, _react.useContext)(_profile.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data,
       isEditing = _useContext.isEditing,
       onEdit = _useContext.onEdit;

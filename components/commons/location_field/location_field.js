@@ -150,6 +150,13 @@ var PredictionsList = function PredictionsList(_ref2) {
       onPredictionSelected = _ref2.onPredictionSelected,
       classes = _ref2.classes,
       setInput = _ref2.setInput;
+  var onMouseUp = (0, _react.useCallback)(function () {
+    setPreventBlur(false);
+
+    if (input && input.focus) {
+      input.focus();
+    }
+  }, []);
   return _react.default.createElement(_ui.PopperCard, {
     open: true,
     anchorElement: input,
@@ -166,10 +173,7 @@ var PredictionsList = function PredictionsList(_ref2) {
       onMouseDown: function onMouseDown() {
         return setPreventBlur(true);
       },
-      onMouseUp: function onMouseUp() {
-        setPreventBlur(false);
-        input && input.focus();
-      },
+      onMouseUp: onMouseUp,
       onClick: function onClick() {
         if (!placeId) {
           return;

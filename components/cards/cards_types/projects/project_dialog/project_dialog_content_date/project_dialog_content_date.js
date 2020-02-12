@@ -11,17 +11,17 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactJss = require("react-jss");
 
+var _pickers = require("@material-ui/pickers");
+
+var _moment = _interopRequireDefault(require("@date-io/moment"));
+
 var _ui = require("@wld/ui");
+
+var _formik = require("formik");
 
 var _use_is_editing = require("../../../../../hooks/use_is_editing");
 
 var _project_dialog_content_date_styles = require("./project_dialog_content_date_styles");
-
-var _formik = require("formik");
-
-var _moment = _interopRequireDefault(require("@date-io/moment"));
-
-var _pickers = require("@material-ui/pickers");
 
 var _year_month = require("../../../../../commons/year_month/year_month");
 
