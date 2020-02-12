@@ -28,7 +28,8 @@ var mapWorkFromJsonResume = function mapWorkFromJsonResume(jsonResume) {
         startDate: work.startDate && (0, _moment.default)(work.startDate, 'YYYY-MM-DD'),
         endDate: work.endDate && (0, _moment.default)(work.endDate, 'YYYY-MM-DD'),
         place: {
-          name: work.location
+          name: work.location,
+          placeId: work.placeId
         },
         stillEmployed: !work.endDate,
         index: index
