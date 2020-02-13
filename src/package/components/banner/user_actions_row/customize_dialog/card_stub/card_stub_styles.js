@@ -1,31 +1,55 @@
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
 
-export const styles = theme => ({
-    wrapper: {
-        margin: theme.miscellaneous.spacing,
-        width: 150
-    },
-    card: ({ variant }) => {
-        const { backgroundColor, color } = getColorsFromCardVariant(theme, variant);
-        return {
-            width: 150,
-            height: 150,
-            color: getHexFromPaletteColor(theme, color),
-            '& .to-color': {
-                transition: 'fill 500ms',
-                fill: 'currentColor'
-            },
-            '& .to-fill': {
-                transition: 'fill 500ms',
-                fill: [getHexFromPaletteColor(theme, backgroundColor), '!important']
-            }
-        };
-    },
-    colorSquare: {
-        width: theme.miscellaneous.spacing * 3,
-        height: theme.miscellaneous.spacing * 3,
-        borderRadius: theme.miscellaneous.spacing,
-        margin: [0, theme.miscellaneous.spacing],
-        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.33)'
-    }
-});
+const CARD_DIMENSION = 200;
+
+export const styles = theme => {
+    const { palette, miscellaneous: { spacing } } = theme;
+    return {
+        container: {
+            position: 'relative'
+        },
+        popper: {
+            zIndex: 130200
+        },
+        cardVariantsTooltipPopper: {
+            extend: 'popper'
+        },
+        cardVariantsList: {
+            listStyle: 'none'
+        },
+        cardVariantsCheckbox: {
+            marginRight: spacing * 4,
+            borderRadius: '50%'
+        },
+        cardVariantsListItem: {
+            display: 'flex',
+            alignItems: 'center',
+            padding: 0
+        },
+        cardVariantsColor: {
+            height: 30,
+            width: 30,
+            margin: [0, spacing],
+            borderRadius: '50%',
+            border: [1, 'solid', palette.dark[100]]
+        },
+        card: ({ variant }) => {
+            const { backgroundColor, color } = getColorsFromCardVariant(theme, variant);
+            return {
+                width: CARD_DIMENSION,
+                height: CARD_DIMENSION,
+                color: getHexFromPaletteColor(theme, color),
+                margin: spacing,
+                userSelect: 'none',
+                '& .to-color': {
+                    transition: 'fill 250ms',
+                    fill: 'currentColor'
+                },
+                '& .to-fill': {
+                    transition: 'fill 250ms',
+                    fill: [getHexFromPaletteColor(theme, backgroundColor), '!important']
+                }
+            };
+        }
+    };
+};

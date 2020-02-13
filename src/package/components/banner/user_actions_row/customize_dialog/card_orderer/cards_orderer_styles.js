@@ -1,17 +1,27 @@
-export const styles = theme => ({
-    title: {
-        padding: theme.miscellaneous.spacing
-    },
-    cardsContainer: {
-        width: (150 + 2 * theme.miscellaneous.spacing) * 3,
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center'
-    },
+import { withCustomVerticalScrollbar } from '../../../../../utils/styles/styles_utils';
 
-    sortableHelper: {
-        zIndex: 1400,
-        width: 150,
-        height: 150
-    }
-});
+const CARD_DIMENSION = 200;
+
+export const styles = theme => {
+    const { miscellaneous: { spacing } } = theme;
+    return ({
+        container: {
+            flex: 1,
+            overflow: 'auto',
+            ...withCustomVerticalScrollbar('transparent'),
+            display: 'flex',
+            justifyContent: 'center'
+        },
+        cardsContainer: {
+            width: (CARD_DIMENSION + 2 * spacing) * 3,
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center'
+        },
+        sortableHelper: {
+            zIndex: 1400,
+            width: CARD_DIMENSION,
+            height: CARD_DIMENSION
+        }
+    });
+};

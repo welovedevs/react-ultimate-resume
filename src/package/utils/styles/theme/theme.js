@@ -155,7 +155,6 @@ const mergeFunction = (objValue, srcValue) => {
 
 export const buildTheme = async theme => {
     const merged = mergeWith(cloneDeep(DEFAULT_THEME), theme, mergeFunction);
-
     try {
         await THEME_SCHEMA.validate(merged, {
             context: { palette: merged?.palette },

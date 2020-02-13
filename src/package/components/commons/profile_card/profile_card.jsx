@@ -8,13 +8,14 @@ import { Card } from '@wld/ui';
 
 import { ProfileCardSide } from './profile_card_side/profile_card_side';
 import { ProfileCardEditButton } from './profile_card_edit_button/profile_card_edit_button';
+import { ProfileCardEditDialog } from './profile_card_edit_dialog/profile_card_edit_dialog';
+import { ProfileCardIncompletePopper } from './profile_card_incomplete_popper/profile_card_incomplete_popper';
 
 import { SET_SIDE } from '../../../store/profile_card/profile_card_actions_types';
 import { getProfileCardInitialState, profileCardReducer } from '../../../store/profile_card/profile_card_reducer';
 import { useCallbackOpen } from '../../hooks/use_callback_open';
 
 import { styles } from './profile_card_styles';
-import { ProfileCardEditDialog } from './profile_card_edit_dialog/profile_card_edit_dialog';
 
 const useStyles = createUseStyles(styles);
 
@@ -28,6 +29,7 @@ const DEFAULT_TRANSITIONS_SPRING_PROPS = {
 };
 
 const ProfileCardComponent = ({
+    children,
     data,
     sides,
     variant,
@@ -39,8 +41,15 @@ const ProfileCardComponent = ({
     side: sideProps
 }) => {
     const classes = useStyles({ variant });
+    const containerReference = useRef();
     const [openEditDialog, setEditDialogOpened, setEditDialogClosed] = useCallbackOpen();
-    const [state, dispatch] = useReducer(profileCardReducer, getProfileCardInitialState({ variant, side: sideProps }));
+    const [state, dispatch] = useReducer(
+        profileCardReducer,
+        getProfileCardInitialState({
+            variant,
+            side: sideProps
+        })
+    );
     const { side, hasDialogOpened } = state;
     const [debouncedSide] = useDebounce(side, 200);
 
@@ -99,7 +108,12 @@ const ProfileCardComponent = ({
                     data={data}
                 />
             )}
+            <ProfileCardIncompletePopper
+                open={false}
+                anchorElement={containerReference.current}
+            />
             <Card
+                containerRef={containerReference}
                 customClasses={{ container: classes.container }}
                 elevation={1}
                 onMouseEnter={handleMouseEnter}
@@ -109,6 +123,7 @@ const ProfileCardComponent = ({
                     <EditAction customEditAction={customEditAction} setEditDialogOpened={setEditDialogOpened} />
                 )}
                 <ProfileCardContext.Provider value={contextData}>
+                    {children}
                     {transitions.map(({ item, key, props }) => {
                         const SideComponent = sides[item] || (() => null);
                         return (

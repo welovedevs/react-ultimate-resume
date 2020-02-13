@@ -3,7 +3,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import Slider from 'react-slick';
-import { animated, config, useSpring, useTransition } from 'react-spring';
+import { animated, useSpring, useTransition } from 'react-spring';
 
 import { Typography } from '@wld/ui';
 
@@ -12,6 +12,8 @@ import { ReactComponent as ArrowIcon } from '../../../../../assets/icons/arrow-r
 import { GifsSidesCommons } from '../gifs_sides_commons/gifs_sides_commons';
 
 import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+
+import { GIFS_BACK_TRANSITIONS_SPRING_PROPS } from './gifs_back_spring_props';
 
 import { styles } from './gifs_back_styles';
 
@@ -44,20 +46,7 @@ const GifsBackComponent = ({ data }) => {
     );
 
     const transitions = useTransition((data.interests?.[currentIndex] ?? {}).name, item => `gif_name_${item}`, {
-        from: {
-            opacity: 0,
-            transform: 'translate3d(25%, 0, 0)'
-        },
-        enter: {
-            opacity: 1,
-            transform: 'translate3d(0%, 0, 0)'
-        },
-        leave: {
-            opacity: 0,
-            transform: 'translate3d(-25%, 0, 0)'
-        },
-        unique: true,
-        config: config.slow,
+        ...GIFS_BACK_TRANSITIONS_SPRING_PROPS,
         immediate: !hasChanged.current
     });
 
@@ -80,7 +69,12 @@ const GifsBackComponent = ({ data }) => {
                         }
                     >
                         {(data.interests ?? []).map(({ gifUrl, name }) => (
-                            <img className={classes.image} src={gifUrl} alt={name} />
+                            <img
+                                key={`gifs_back_carousel_image_${gifUrl}_${name}`}
+                                className={classes.image}
+                                src={gifUrl}
+                                alt={name}
+                            />
                         ))}
                     </Slider>
                 </div>

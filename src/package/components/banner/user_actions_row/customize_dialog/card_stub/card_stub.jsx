@@ -1,9 +1,12 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo, useRef } from 'react';
+
 import { createUseStyles, useTheme } from 'react-jss';
+import { useDebounce } from 'use-debounce';
 
-import { ListItem } from '@material-ui/core';
-import { Typography } from '@wld/ui';
+import { PopperCard, Checkbox } from '@wld/ui';
 
+import { PaletteVisual } from '../palette_visual/palette_visual';
+import { Context } from '../card_orderer/cards_orderer';
 import { ReactComponent as BasicsSvg } from '../../../../../assets/cards/basics.svg';
 import { ReactComponent as HobbiesSvg } from '../../../../../assets/cards/hobbies.svg';
 import { ReactComponent as InterestedBySvg } from '../../../../../assets/cards/interested_by.svg';
@@ -13,13 +16,16 @@ import { ReactComponent as ProjectsSvg } from '../../../../../assets/cards/proje
 import { ReactComponent as SchoolSvg } from '../../../../../assets/cards/school.svg';
 import { ReactComponent as SkillsSvg } from '../../../../../assets/cards/skills.svg';
 import { ReactComponent as SoundtrackSvg } from '../../../../../assets/cards/soundtrack.svg';
-import { styles } from './card_stub_styles';
-import { Select } from '../../../../commons/select/select';
+
+import { useOpenerState } from '../../../../hooks/use_opener_state';
 import { getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
+import { CARD_STUB_TRANSLATIONS } from './card_stub_translations';
+
+import { styles } from './card_stub_styles';
 
 const useStyles = createUseStyles(styles);
 
-const CARD_TYPE_MAPPING = {
+const CARD_TYPE_MAPPING = Object.freeze({
     basics: BasicsSvg,
     projects: ProjectsSvg,
     language: LanguagesSvg,
@@ -30,61 +36,82 @@ const CARD_TYPE_MAPPING = {
     skills: SkillsSvg,
     soundtrack: SoundtrackSvg,
     interestedBy: InterestedBySvg
-};
+});
 
-const VariantItem = ({ colorScheme, value }) => {
-    const classes = useStyles({});
 
-    const theme = useTheme();
-    const colors = useMemo(() => Object.values(colorScheme || {}).map(color => getHexFromPaletteColor(theme, color)), [
-        theme
-    ]);
-    return (
-        <>
-            <Typography>{`#${value + 1}`}</Typography>
-            {colors.map((hex, index) => (
-                <div key={`${hex}_${index}`} className={classes.colorSquare} style={{ backgroundColor: hex }} />
-            ))}
-        </>
-    );
-};
-const VariantSelector = ({ value, onChange }) => {
-    const theme = useTheme();
-    const onSelectChanged = useCallback(
-        newValue => onChange(newValue),
-        [onChange]
-    );
-    return (
-        <Select
-            textFieldProps={{
-                variant: 'flat'
-            }}
-            value={value}
-            onChange={onSelectChanged}
-        >
-            {theme.components?.cards?.variants?.map((colorScheme, variantIndex) => (
-                <ListItem key={`select_variant_${variantIndex}`} value={variantIndex}>
-                    <VariantItem colorScheme={colorScheme} value={variantIndex} />
-                </ListItem>
-            ))}
-        </Select>
-    );
-};
-export const CardStub = ({ data: { type, variant }, cardIndex, onItemChanged }) => {
+const CardStubComponent = ({
+    data: { type, variant },
+    cardIndex,
+    onItemChanged
+}) => {
     const classes = useStyles({ variant });
+    const [openPopperCard, handlers] = useOpenerState();
+    const [debouncedOpenPopperCard] = useDebounce(openPopperCard, openPopperCard ? 300 : 0);
+    const containerReference = useRef();
+    const { isSorting } = useContext(Context);
 
-    const Component = useMemo(() => CARD_TYPE_MAPPING[type], []);
+    const Component = useMemo(() => CARD_TYPE_MAPPING[type] ?? (() => null), []);
 
     const onVariantChanged = useCallback(
-        value => {
+        value => () => {
             onItemChanged(cardIndex, { type, variant: value });
         },
         [onItemChanged]
     );
+
     return (
-        <div className={classes.wrapper}>
-            <VariantSelector onChange={onVariantChanged} value={variant} />
+        <div className={classes.container} ref={containerReference} {...handlers}>
             <Component className={classes.card} />
+            <PopperCard
+                open={!isSorting && debouncedOpenPopperCard}
+                anchorElement={containerReference.current}
+                customClasses={{ popper: classes.popper }}
+                popperProps={{ placement: 'right' }}
+            >
+                <CardVariants variant={variant} onVariantChanged={onVariantChanged} classes={classes} />
+            </PopperCard>
         </div>
     );
 };
+
+const CardVariants = ({ variant, onVariantChanged, classes }) => {
+    const theme = useTheme();
+    const handleMouseDown = useCallback((event) => {
+        event.preventDefault();
+        event.stopPropagation();
+    }, []);
+    return (
+        <div className={classes.popperCardContent}>
+            <li className={classes.cardVariantsList}>
+                {theme.components?.cards?.variants?.map((colorScheme, variantIndex) => (
+                    <ul
+                        className={classes.cardVariantsListItem}
+                        key={`card_variant_${variantIndex}`}
+                    >
+                        <Checkbox
+                            className={classes.cardVariantsCheckbox}
+                            color="primary"
+                            variant="outlined"
+                            checked={variant === variantIndex}
+                            onChange={onVariantChanged(variantIndex)}
+                            onMouseDown={handleMouseDown}
+                        />
+                        <PaletteVisual
+                            classes={{
+                                color: classes.cardVariantsColor,
+                                tooltipPopper: classes.cardVariantsTooltipPopper
+                            }}
+                            translations={CARD_STUB_TRANSLATIONS}
+                            palette={Object.entries(colorScheme || {}).reduce((acc, [key, colorName]) => ({
+                                ...acc,
+                                [key]: { 500: getHexFromPaletteColor(theme, colorName) }
+                            }), {})}
+                        />
+                    </ul>
+                ))}
+            </li>
+        </div>
+    );
+};
+
+export const CardStub = CardStubComponent;

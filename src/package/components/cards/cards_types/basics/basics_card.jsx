@@ -24,7 +24,6 @@ const BasicsCardComponent = ({ variant, side }) => {
         <>
             <ProfileCard
                 data={mappedData}
-                isComplete={isComplete}
                 isEditingProfile={isEditing}
                 editDialog={{
                     component: BasicsCardEditDialog,
@@ -37,6 +36,7 @@ const BasicsCardComponent = ({ variant, side }) => {
                 }}
                 variant={variant}
                 side={side}
+                isComplete={isComplete}
             />
         </>
     );

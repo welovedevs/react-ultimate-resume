@@ -13,7 +13,10 @@ const SHADES_SCHEMA = Object.freeze({
 const isExistingColorInPalette = yup.string().test(
     'is-existing-color-in-palette',
     args => `Color \`${args.value}\` must be present in palette.`,
-    value => Boolean(this.options?.context?.palette?.[value])
+    // eslint-disable-next-line func-names
+    function (value) {
+        return Boolean(this?.options?.context?.palette?.[value]);
+    }
 );
 
 const CARD_VARIANT_SCHEMA = yup.object({
