@@ -47,6 +47,9 @@ const EditingContent = ({ classes }) => {
         <>
             <MuiPickersUtilsProvider utils={MomentUtils}>
                 <YearMonth
+                    textfieldProps={{
+                        fullWidth: true
+                    }}
                     className={classes.datePicker}
                     variant="flat"
                     value={values.date}

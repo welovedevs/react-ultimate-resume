@@ -2,9 +2,10 @@ import React, { useCallback } from 'react';
 
 import cn from 'classnames';
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { Formik, useFormikContext } from 'formik';
 
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Button } from '@wld/ui';
 
 import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
@@ -26,10 +27,12 @@ const EditDialogComponent = ({
     validationSchema,
     classes: receivedClasses = {}
 }) => {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
     const classes = useStyles();
     return (
         <Dialog
-            fullScreen={fullScreen}
+            fullScreen={fullScreen || isMobile}
             classes={{
                 paper: cn(classes.paper, receivedClasses.paper)
             }}

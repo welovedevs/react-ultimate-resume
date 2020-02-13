@@ -132,6 +132,7 @@ const Content = ({ helpers: { handleValueChange } }) => {
                 )}
             >
                 <Select
+                    fullWidth
                     value={remoteFrequency}
                     onChange={handleChange('remoteFrequency')}
                     textFieldProps={{ variant: 'flat' }}

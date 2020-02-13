@@ -3,9 +3,12 @@ import {
     getHexFromPaletteColor
 } from '../../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
-    const { palette, miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        palette,
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         itemContainer: {
             display: 'flex',
             alignItems: 'center',
@@ -13,6 +16,9 @@ export const styles = (theme) => {
             borderRadius: 5,
             margin: [spacing * 2, 0],
             padding: [0, spacing]
+        },
+        actions: {
+            display: 'flex'
         },
         divider: {
             margin: [0, spacing * 2],
@@ -108,6 +114,22 @@ export const styles = (theme) => {
             listItem: {
                 flexWrap: 'wrap'
             }
+        },
+        [`@media screen and (max-width: ${theme.screenSizes.small}px)`]: {
+            itemContainer: {
+                flexDirection: 'column',
+                alignItems: 'unset'
+            },
+            field: {
+                flex: 1
+            },
+            fieldGroup: {
+                flexDirection: 'row'
+            },
+            sliderValueContainer: {
+                alignItems: 'unset',
+                flexDirection: 'column'
+            }
         }
-    });
+    };
 };

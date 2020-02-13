@@ -33,8 +33,7 @@ export const validateDreamjobComplete = data => {
     try {
         Yup.object({
             places: Yup.array().required(),
-            contractTypes: Yup.object()
-                .nullable()
+            contractTypes: Yup.array()
                 .required()
         }).validateSync(data);
     } catch (e) {

@@ -15,7 +15,7 @@ import styles from './year_month_styles';
 
 const useStyles = createUseStyles(styles);
 
-const YearMonthComponent = ({ className, value, onChange, title, error, variant }) => {
+const YearMonthComponent = ({ className, value, onChange, title, error, variant, textfieldProps = {} }) => {
     const classes = useStyles();
     const { formatMessage } = useIntl();
     const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +45,12 @@ const YearMonthComponent = ({ className, value, onChange, title, error, variant 
                         </Typography>
                     )}
                 </>
-                <TextField variant={variant} value={value?.format('MMMM YYYY') || ''} onClick={() => setIsOpen(true)} />
+                <TextField
+                    {...textfieldProps}
+                    variant={variant}
+                    value={value?.format('MMMM YYYY') || ''}
+                    onClick={() => setIsOpen(true)}
+                />
                 <MuiPickersUtilsProvider utils={MomentUtils}>
                     <DatePicker
                         clearable

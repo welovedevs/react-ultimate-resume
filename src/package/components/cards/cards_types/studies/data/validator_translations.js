@@ -1,8 +1,8 @@
 import { defineMessages } from 'react-intl';
 
 export const studiesTranslations = defineMessages({
-    noFutureDate: {
-        id: 'Education.form.validation.noFutureDate',
-        defaultMessage: 'Cette date ne peut pas être dans le futur.'
+    atLeastOne: {
+        id: 'Education.form.validation.atLeastOne',
+        defaultMessage: "Fill at least one study reference, even if you're self taught."
     }
 });

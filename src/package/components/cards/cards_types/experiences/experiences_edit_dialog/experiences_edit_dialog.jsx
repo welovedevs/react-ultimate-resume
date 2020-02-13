@@ -96,7 +96,7 @@ const ExperiencesEditFormWrapper = ({ helpers: { handleValueChange } }) => {
     return (
         <ExperiencesEditForm
             data={work}
-            errors={errors}
+            errors={errors?.work}
             onAdd={addExperience}
             onMove={move}
             onFieldChange={experienceFieldChanged}
@@ -438,7 +438,7 @@ const ExperiencesEditForm = ({ data, errors, onAdd, onMove, onFieldChange, onDel
                 experienceFieldChanged={onFieldChange}
                 experienceDeleted={onDelete}
                 {...{
-                    errors: errors?.work,
+                    errors,
                     foldedState,
                     toggleFold,
                     classes

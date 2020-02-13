@@ -86,6 +86,7 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                 )}
             >
                 <LocationField
+                    fullWidth
                     variant="flat"
                     value={currentCity?.name}
                     onLocationSelected={handleValueChange('currentCity')}

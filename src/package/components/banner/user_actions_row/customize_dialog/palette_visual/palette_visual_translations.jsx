@@ -17,7 +17,7 @@ export const PALETTE_KEY_TRANSLATIONS = Object.freeze({
     ),
     tertiary: (
         <FormattedMessage
-            id="PaletteVisual.Key.Primary"
+            id="PaletteVisual.Key.Tertiary"
             defaultMessage="Tertiaire"
         />
     )

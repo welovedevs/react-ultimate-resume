@@ -19,10 +19,11 @@ const CheckboxGroupComponent = ({
     name,
     onChange,
     color = 'secondary',
+    rows = 2,
     variant,
     classes: receivedClasses = {}
 }) => {
-    const classes = useStyles();
+    const classes = useStyles({ rows });
     const { formatMessage } = useIntl();
 
     const onFieldClicked = useCallback(
@@ -46,11 +47,7 @@ const CheckboxGroupComponent = ({
                     classes={{
                         container: cn(classes.checkboxField, receivedClasses.checkboxField)
                     }}
-                    title={(
-                        <Typography>
-                            {formatMessage(translations[enumValue])}
-                        </Typography>
-                    )}
+                    title={<Typography>{formatMessage(translations[enumValue])}</Typography>}
                     onClick={onFieldClicked(enumValue)}
                     checked={value.includes(enumValue)}
                     value={enumValue}

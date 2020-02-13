@@ -7,9 +7,10 @@ import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'r
 import uuid from 'uuid/v4';
 
 import { List, TextField, Tooltip, Typography } from '@wld/ui';
+import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
 
 import { useFormikContext } from 'formik';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { SliderWithPopper } from '../../../../commons/slider_with_popper/slider_with_popper';
 import { AddButton } from '../../../../commons/add_button/add_button';
@@ -43,26 +44,24 @@ const LanguagesCardEditDialogComponent = ({ open, onClose, data, onEdit, validat
 const LanguageItem = SortableElement(
     ({ id, language, onChange, onRemove, error: fieldErrors, classes, languageIndex: index }) => {
         const { formatMessage } = useIntl();
+        const theme = useTheme();
+        const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
+
         const handleLanguageChange = useCallback(e => onChange(index, 'language', e.target.value), [index]);
         const handleValueChange = useCallback(e => onChange(index, 'value', Number(e.target.value)), [index]);
 
         return (
             <div className={classes.itemContainer}>
-                <DragHandle {...{ classes }} />
-                <div className={classes.divider} />
-                <Tooltip
-                    title={(
-                        <FormattedMessage
-                            id="Main.lang.delete"
-                            defaultMessage="Supprimer"
-                        />
-                    )}
-                >
-                    <button type="button" className={classes.button} onClick={onRemove(id)}>
-                        <TrashIcon className={classes.removeIcon} />
-                    </button>
-                </Tooltip>
-                <div className={classes.divider} />
+                <div className={classes.actions}>
+                    <DragHandle {...{ classes }} />
+                    <div className={classes.divider} />
+                    <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Supprimer" />}>
+                        <button type="button" className={classes.button} onClick={onRemove(id)}>
+                            <TrashIcon className={classes.removeIcon} />
+                        </button>
+                    </Tooltip>
+                    {!isMobile && <div className={classes.divider} />}
+                </div>
                 <div className={classes.listItem}>
                     <div className={classes.fieldGroup}>
                         <div className={classes.field}>
@@ -90,7 +89,9 @@ const LanguageItem = SortableElement(
                                 color="dark"
                                 variant="label"
                             >
-                                {formatMessage(translations.level, { valueNode: <span className={classes.bolden}>{language.value}</span> })}
+                                {formatMessage(translations.level, {
+                                    valueNode: <span className={classes.bolden}>{language.value}</span>
+                                })}
                             </Typography>
                             <SliderWithPopper
                                 color="primary"
@@ -147,7 +148,7 @@ const DragHandle = SortableHandle(({ classes }) => (
     </button>
 ));
 
-export const LanguagesEditForm = ({ data, move, onValueChange, onDelete, onAdd, errors: validationErrors }) => {
+export const LanguagesEditForm = ({ data, onMove, onValueChange, onDelete, onAdd, errors: validationErrors }) => {
     const classes = useStyles();
     const globalError = typeof validationErrors === 'string' && validationErrors;
 
@@ -158,13 +159,13 @@ export const LanguagesEditForm = ({ data, move, onValueChange, onDelete, onAdd, 
                 lockToContainerEdges
                 helperClass={classes.sortableHelper}
                 items={data}
-                onSortEnd={move}
+                onSortEnd={onMove}
                 distance={20}
                 lockAxis="y"
                 name="education"
                 onChange={onValueChange}
                 onDelete={onDelete}
-                errors={validationErrors.languages}
+                errors={validationErrors}
                 {...{ classes }}
             />
             <AddButton onClick={onAdd} />
@@ -219,10 +220,9 @@ const LanguagesEditFormWrapper = ({ helpers: { handleValueChange } }) => {
             onValueChange={languageChanged}
             onDelete={languageDeleted}
             onAdd={addLanguage}
-            errors={validationErrors}
+            errors={validationErrors?.languages}
         />
     );
 };
-
 
 export const LanguagesCardEditDialog = LanguagesCardEditDialogComponent;

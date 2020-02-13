@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import { validationTranslations } from '../../../../../utils/validation_translations';
+import { interestsTranslations } from './validator_translations';
 
 export const interestsValidator = formatMessage =>
     Yup.object().shape({
@@ -14,7 +15,7 @@ export const interestsValidator = formatMessage =>
                         gifUrl: Yup.string().required(formatMessage(validationTranslations.required))
                     })
             )
-            .required(formatMessage(validationTranslations.required))
+            .required(formatMessage(interestsTranslations.atLeastOne))
     });
 
 export const validateInterestsComplete = data => {

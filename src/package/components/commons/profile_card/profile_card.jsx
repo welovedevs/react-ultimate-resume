@@ -38,7 +38,7 @@ const ProfileCardComponent = ({
     editDialog,
     customTransitionsSpringProps,
     customEditAction,
-    isComplete,
+    isComplete = true,
     side: sideProps
 }) => {
     const classes = useStyles({ variant });
@@ -115,7 +115,7 @@ const ProfileCardComponent = ({
                 />
             )}
             <ProfileCardIncompletePopper
-                open={!isComplete}
+                open={isComplete !== true}
                 anchorElement={containerElement}
             />
             <Card

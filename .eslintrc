@@ -35,7 +35,7 @@
         "react/jsx-props-no-spreading": ["off"],
         "react/jsx-no-literals": ["error", { "noStrings": false }],
         "react/jsx-wrap-multilines": ["error", { "declaration": false, "assignment": false }],
-
+        "react/jsx-tag-spacing": "off",
         "react/no-array-index-key": "off",
         "react/prop-types": ["off"],
         "react-hooks/rules-of-hooks": "error",

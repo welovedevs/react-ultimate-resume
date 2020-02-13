@@ -23,19 +23,8 @@ export const CheckboxField = ({
     const classes = useStyles();
 
     return (
-        <button
-            className={cn(classes.container, receivedClasses.container)}
-            type="button"
-            onClick={onClick}
-        >
-            <Checkbox
-                variant={variant}
-                color={color}
-                checked={checked}
-                value={value}
-                name={name}
-                onChange={onChange}
-            />
+        <button className={cn(classes.container, receivedClasses.container)} type="button" onClick={onClick}>
+            <Checkbox className={classes.checkbox} variant={variant} color={color} checked={checked} value={value} name={name} onChange={onChange} />
             {title}
         </button>
     );
