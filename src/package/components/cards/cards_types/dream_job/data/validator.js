@@ -28,3 +28,17 @@ export const DreamJobValidationSchema = formatMessage =>
             ),
         salary: Yup.string().min(2, formatMessage(validationTranslations.min, { min: 5 }))
     });
+
+export const validateDreamjobComplete = data => {
+    try {
+        Yup.object({
+            places: Yup.array().required(),
+            contractTypes: Yup.object()
+                .nullable()
+                .required()
+        }).validateSync(data);
+    } catch (e) {
+        return false;
+    }
+    return true;
+};

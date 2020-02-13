@@ -16,3 +16,16 @@ export const StudiesValidator = formatMessage =>
             })
         )
     });
+
+export const validateStudiesComplete = data => {
+    try {
+        Yup.object({
+            education: Yup.array()
+                .required()
+                .min(1)
+        }).validateSync(data);
+    } catch (e) {
+        return false;
+    }
+    return true;
+};

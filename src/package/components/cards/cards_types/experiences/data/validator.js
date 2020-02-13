@@ -69,3 +69,16 @@ export const WorkValidator = formatMessage =>
             )
             .required(formatMessage(validationTranslations.required))
     });
+
+export const validateWorkComplete = data => {
+    try {
+        Yup.object({
+            work: Yup.array()
+                .required()
+                .min(1)
+        }).validateSync(data);
+    } catch (e) {
+        return false;
+    }
+    return true;
+};

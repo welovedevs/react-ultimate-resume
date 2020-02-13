@@ -23,3 +23,16 @@ export const ProjectValidator = formatMessage =>
             })
         )
     });
+
+export const validateProjectsComplete = data => {
+    try {
+        Yup.object({
+            projects: Yup.array()
+                .required()
+                .min(1)
+        }).validateSync(data);
+    } catch (e) {
+        return false;
+    }
+    return true;
+};

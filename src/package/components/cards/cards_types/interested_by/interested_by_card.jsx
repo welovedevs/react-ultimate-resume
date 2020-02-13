@@ -7,7 +7,7 @@ import { FlatObjectToJsonResume, JsonResumeToFlatObject } from '../../utils/data
 import { InterestedByEditDialog } from './interested_by_edit_dialog/interested_by_edit_dialog';
 
 import { interestedByMapping } from './data/mapping';
-import { interestedByValidationSchema } from './data/validator';
+import { interestedByValidationSchema, validateInterestedByComplete } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const InterestedByCardComponent = ({ variant, side }) => {
@@ -18,10 +18,13 @@ const InterestedByCardComponent = ({ variant, side }) => {
         onEdit(FlatObjectToJsonResume(editedData, interestedByMapping));
     }, []);
 
+    const isComplete = useMemo(() => validateInterestedByComplete(mappedData), [mappedData]);
+
     return (
         <>
             <ProfileCard
                 data={mappedData}
+                isComplete={isComplete}
                 isEditingProfile={isEditing}
                 sides={{
                     front: InterestedByFront,

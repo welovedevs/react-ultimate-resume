@@ -5,7 +5,7 @@ import { GifsFront } from './gifs_front/gifs_front';
 import { GifsBack } from './gifs_back/gifs_back';
 import { GifsEditDialog } from './gifs_edit_dialog/gifs_edit_dialog';
 
-import { interestsValidator } from './data/validator';
+import { interestsValidator, validateInterestsComplete } from './data/validator';
 
 import { mapInterestsFromJsonResume, mapInterestsToJsonResume } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
@@ -18,9 +18,11 @@ const GifsCardComponent = ({ variant, side }) => {
         onEdit(mapInterestsToJsonResume(editedData));
     }, []);
 
+    const isComplete = useMemo(() => validateInterestsComplete(mappedData), [mappedData]);
     return (
         <ProfileCard
             isEditingProfile={isEditing}
+            isComplete={isComplete}
             data={mappedData}
             sides={{
                 front: GifsFront,

@@ -5,7 +5,7 @@ import { LanguagesFront } from './languages_front/languages_front';
 import { LanguagesBack } from './languages_back/languages_back';
 import { mapLanguagesFromJsonResume, mapLanguagesToJsonResume } from './data/mapping';
 import { LanguagesCardEditDialog } from './languages_edit_dialog/languages_card_edit_dialog';
-import { LanguageValidator } from './data/validator';
+import { LanguageValidator, validateLanguagesComplete } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const LanguagesCardComponent = ({ variant, side }) => {
@@ -16,9 +16,12 @@ const LanguagesCardComponent = ({ variant, side }) => {
         onEdit(mapLanguagesToJsonResume(editedData));
     }, []);
 
+    const isComplete = useMemo(() => validateLanguagesComplete(mappedData), [mappedData]);
+
     return (
         <ProfileCard
             isEditingProfile={isEditing}
+            isComplete={isComplete}
             data={mappedData}
             sides={{
                 front: LanguagesFront,

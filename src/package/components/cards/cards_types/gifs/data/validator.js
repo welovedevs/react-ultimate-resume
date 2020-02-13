@@ -11,9 +11,21 @@ export const interestsValidator = formatMessage =>
                         name: Yup.string()
                             .required(formatMessage(validationTranslations.required))
                             .min(2, formatMessage(validationTranslations.min, { min: 2 })),
-                        gifUrl: Yup.string()
-                            .required(formatMessage(validationTranslations.required))
+                        gifUrl: Yup.string().required(formatMessage(validationTranslations.required))
                     })
             )
             .required(formatMessage(validationTranslations.required))
     });
+
+export const validateInterestsComplete = data => {
+    try {
+        Yup.object({
+            interests: Yup.array()
+                .required()
+                .min(1)
+        }).validateSync(data);
+    } catch (e) {
+        return false;
+    }
+    return true;
+};

@@ -4,6 +4,7 @@ import { validationTranslations } from '../../../../../utils/validation_translat
 export const BasicsValidationSchema = formatMessage =>
     Yup.object({
         summary: Yup.string()
+            .required(formatMessage(validationTranslations.required))
             .min(5, formatMessage(validationTranslations.min, { min: 10 }))
             .max(50, formatMessage(validationTranslations.min, { min: 50 })),
         currentCity: Yup.object()
@@ -28,3 +29,20 @@ export const BasicsValidationSchema = formatMessage =>
             .required(formatMessage(validationTranslations.required)),
         codingReason: Yup.string().min(10, formatMessage(validationTranslations.min, { min: 10 }))
     });
+
+export const validateBasicsComplete = data => {
+    try {
+        Yup.object({
+            summary: Yup.string().required(),
+            currentCity: Yup.object()
+                .nullable()
+                .required(),
+            experienceYears: Yup.number().required(),
+            studiesLevel: Yup.number().required(),
+            codingYears: Yup.number().required()
+        }).validateSync(data);
+    } catch (e) {
+        return false;
+    }
+    return true;
+};

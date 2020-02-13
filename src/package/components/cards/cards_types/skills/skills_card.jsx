@@ -7,6 +7,7 @@ import { SkillsEditDialog } from './skills_edit_dialog/skills_edit_dialog';
 
 import { mapSkillsFromJsonResume, mapSkillsToJsonResume } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
+import { validateSkillsComplete } from './data/validator';
 
 const SkillsCardComponent = ({ variant }) => {
     const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);
@@ -15,9 +16,13 @@ const SkillsCardComponent = ({ variant }) => {
     const onDialogEdited = useCallback(editedData => {
         onEdit(mapSkillsToJsonResume(editedData));
     }, []);
+
+    const isComplete = useMemo(() => validateSkillsComplete(mappedData), [mappedData]);
+
     return (
         <ProfileCard
             isEditingProfile={isEditing}
+            isComplete={isComplete}
             sides={{
                 front: SkillsFront,
                 back: SkillsBack

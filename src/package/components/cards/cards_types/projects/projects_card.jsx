@@ -9,6 +9,7 @@ import { AddButton } from './add_button/add_button';
 
 import { mapProjectsFromJsonResume } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
+import { validateProjectsComplete } from './data/validator';
 
 const ProjectsCardComponent = ({ variant, side }) => {
     const { data, isEditing } = useContext(DeveloperProfileContext);
@@ -19,18 +20,18 @@ const ProjectsCardComponent = ({ variant, side }) => {
         setMappedData(defaultMappedData);
     }, [defaultMappedData]);
 
+    const isComplete = useMemo(() => validateProjectsComplete(mappedData), [mappedData]);
+
     const handleAddButtonClick = useCallback(() => {
         setMappedData({
-            projects: [
-                ...mappedData.projects,
-                { id: uuid() }
-            ]
+            projects: [...mappedData.projects, { id: uuid() }]
         });
     }, [mappedData]);
 
     return (
         <ProfileCard
             data={mappedData}
+            isComplete={isComplete}
             isEditingProfile={isEditing}
             sides={{
                 front: ProjectsFront,
@@ -38,12 +39,7 @@ const ProjectsCardComponent = ({ variant, side }) => {
             }}
             variant={variant}
             side={side}
-            customEditAction={(
-                <AddButton
-                    title="Ajouter un projet"
-                    onClick={handleAddButtonClick}
-                />
-            )}
+            customEditAction={<AddButton title="Ajouter un projet" onClick={handleAddButtonClick} />}
         />
     );
 };

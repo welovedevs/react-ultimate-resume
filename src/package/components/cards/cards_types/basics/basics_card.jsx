@@ -7,7 +7,7 @@ import { BasicsBack } from './basics_back/basics_back';
 import { mapBasicsDataToJsonResume, mapJsonResumeToBasicData } from './data/mapping';
 
 import { BasicsCardEditDialog } from './basics_edit_dialog/basic_edit_dialog';
-import { BasicsValidationSchema } from './data/validator';
+import { BasicsValidationSchema, validateBasicsComplete } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const BasicsCardComponent = ({ variant, side }) => {
@@ -18,10 +18,13 @@ const BasicsCardComponent = ({ variant, side }) => {
         onEdit(mapBasicsDataToJsonResume(editedData));
     }, []);
 
+    const isComplete = useMemo(() => validateBasicsComplete(mappedData), [mappedData]);
+
     return (
         <>
             <ProfileCard
                 data={mappedData}
+                isComplete={isComplete}
                 isEditingProfile={isEditing}
                 editDialog={{
                     component: BasicsCardEditDialog,
