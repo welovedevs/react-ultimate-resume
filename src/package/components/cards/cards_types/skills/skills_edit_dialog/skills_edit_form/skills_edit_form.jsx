@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { useFormikContext } from 'formik';
+import { Typography } from '@wld/ui';
 import uuid from 'uuid/v4';
 
 import { AllTechnologiesPicker } from '../../../../../commons/technologies/all_technologies_picker/all_technologies_picker';
@@ -14,8 +15,9 @@ const useStyles = createUseStyles(styles);
 
 const SkillsEditFormComponent = ({ helpers: { handleValueChange } }) => {
     const classes = useStyles();
-    const { values } = useFormikContext();
+    const { values, errors: validationErrors } = useFormikContext();
 
+    const { skills: errors } = validationErrors;
     const addItem = useCallback(
         name =>
             handleValueChange(`skills[${values.skills.length}]`)({
@@ -36,6 +38,8 @@ const SkillsEditFormComponent = ({ helpers: { handleValueChange } }) => {
     const onArrayChange = useCallback(array => handleValueChange('skills')(array), [values.skills]);
     const onItemChange = useCallback(item => handleValueChange(`skills[${item.index}]`)(item), []);
 
+    const globalError = typeof errors === 'string' && errors;
+
     return (
         <div className={classes.container}>
             <AllTechnologiesPicker
@@ -48,13 +52,20 @@ const SkillsEditFormComponent = ({ helpers: { handleValueChange } }) => {
                 }}
             />
             <div className={classes.divider} />
-            <SelectedTechnologies
-                className={classes.selectedTechnologies}
-                items={values.skills}
-                onDelete={deleteItem}
-                onChange={onArrayChange}
-                onItemChange={onItemChange}
-            />
+            <div className={classes.column}>
+                {globalError && (
+                    <Typography color="danger" component="p">
+                        {errors}
+                    </Typography>
+                )}
+                <SelectedTechnologies
+                    className={classes.selectedTechnologies}
+                    items={values.skills}
+                    onDelete={deleteItem}
+                    onChange={onArrayChange}
+                    onItemChange={onItemChange}
+                />
+            </div>
         </div>
     );
 };

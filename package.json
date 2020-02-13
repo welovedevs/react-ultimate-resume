@@ -13,7 +13,7 @@
         "test-build": "rimraf ./test-build && ./node_modules/.bin/babel src -d ./test_build",
         "posttest-build": "rimraf ./test_build ./styles ",
         "build:app": "react-scripts build",
-        "build-serve": "react-scripts build && serve build",
+        "build:serve": "react-scripts build && serve build",
         "build:messages": "NODE_ENV=production babel ./src >/dev/null",
         "manage:translations": "node ./translationRunner.js"
     },

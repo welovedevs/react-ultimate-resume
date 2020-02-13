@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import { validationTranslations } from '../../../../../utils/validation_translations';
+import { studiesTranslations } from './validator_translations';
 
 export const StudiesValidator = formatMessage =>
     Yup.object().shape({
@@ -14,7 +15,7 @@ export const StudiesValidator = formatMessage =>
                     value => !!value && !Number.isNaN(Number(value.year()))
                 )
             })
-        )
+        ).required(formatMessage(studiesTranslations.atLeastOne))
     });
 
 export const validateStudiesComplete = data => {

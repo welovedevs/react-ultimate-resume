@@ -164,7 +164,7 @@ export const LanguagesEditForm = ({ data, move, onValueChange, onDelete, onAdd, 
                 name="education"
                 onChange={onValueChange}
                 onDelete={onDelete}
-                errors={validationErrors.languages}
+                errors={validationErrors}
                 {...{ classes }}
             />
             <AddButton onClick={onAdd} />
@@ -219,7 +219,7 @@ const LanguagesEditFormWrapper = ({ helpers: { handleValueChange } }) => {
             onValueChange={languageChanged}
             onDelete={languageDeleted}
             onAdd={addLanguage}
-            errors={validationErrors}
+            errors={validationErrors?.languages}
         />
     );
 };

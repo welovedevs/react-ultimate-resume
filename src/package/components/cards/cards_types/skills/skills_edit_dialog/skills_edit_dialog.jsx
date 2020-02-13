@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { SkillsEditForm } from './skills_edit_form/skills_edit_form';
@@ -10,8 +10,11 @@ import { styles } from './skills_edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
-const SkillsEditDialogComponent = ({ open, onClose, data, onEdit }) => {
+const SkillsEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
     const classes = useStyles();
+    const { formatMessage } = useIntl();
+    const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
+
     return (
         <EditDialog
             fullScreen
@@ -24,6 +27,7 @@ const SkillsEditDialogComponent = ({ open, onClose, data, onEdit }) => {
             onClose={onClose}
             data={data}
             onEdit={onEdit}
+            validationSchema={validationSchemaToPass}
             dialogClasses={{ dialog: { root: classes.dialogRoot, paper: classes.dialogPaper } }}
             title={<FormattedMessage id="Skills.editDialog.title" defaultMessage="What are your main skills?" />}
         >

@@ -53,7 +53,7 @@ const SortableGifsCards = SortableContainer(
                         setSelectedIndex={setSelectedIndex}
                         id={interest.id}
                         interest={interest}
-                        error={errors?.interests?.[index]}
+                        error={errors?.[index]}
                         interestIndex={index}
                         classes={classes}
                     />

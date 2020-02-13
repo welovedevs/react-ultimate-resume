@@ -7,7 +7,7 @@ import { SkillsEditDialog } from './skills_edit_dialog/skills_edit_dialog';
 
 import { mapSkillsFromJsonResume, mapSkillsToJsonResume } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
-import { validateSkillsComplete } from './data/validator';
+import { SkillsValidationSchema, validateSkillsComplete } from './data/validator';
 
 const SkillsCardComponent = ({ variant }) => {
     const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);
@@ -29,6 +29,7 @@ const SkillsCardComponent = ({ variant }) => {
             }}
             editDialog={{
                 component: SkillsEditDialog,
+                validationSchema: SkillsValidationSchema,
                 onEdit: onDialogEdited
             }}
             data={mappedData}

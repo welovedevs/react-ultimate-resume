@@ -6,6 +6,8 @@ import { workTranslations } from './validator_translations';
 export const WorkValidator = formatMessage =>
     Yup.object().shape({
         work: Yup.array()
+            .required(formatMessage(workTranslations.atLeastOne))
+            .min(1, formatMessage(workTranslations.atLeastOne))
             .of(
                 Yup.object()
                     .transform(value => ({ ...value, stillEmployed: !value.endDate }))
@@ -67,7 +69,6 @@ export const WorkValidator = formatMessage =>
                         })
                     })
             )
-            .required(formatMessage(validationTranslations.required))
     });
 
 export const validateWorkComplete = data => {

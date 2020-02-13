@@ -7,6 +7,11 @@ export const styles = (theme) => {
             display: 'flex',
             height: '100%'
         },
+        column: {
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column'
+        },
         allTechnologies: {
             flex: 1.25,
             marginLeft: spacing * 2

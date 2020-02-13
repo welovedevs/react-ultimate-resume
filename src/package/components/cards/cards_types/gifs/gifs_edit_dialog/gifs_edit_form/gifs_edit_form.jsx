@@ -27,7 +27,7 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
     const [selectedIndex, setSelectedIndex] = useState(null);
     const removeSelectedIndex = useCallback(() => setSelectedIndex(null), []);
 
-    const errors = validationErrors;
+    const { interests: errors } = validationErrors || {};
 
     const keyedValues = useMemo(() => keyBy(interests, ({ id }) => id), [interests]);
 

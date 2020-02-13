@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import { validationTranslations } from '../../../../../utils/validation_translations';
+import { languagesTranslations } from './validator_translations';
 
 export const LanguageValidator = formatMessage =>
     Yup.object().shape({
@@ -17,7 +18,7 @@ export const LanguageValidator = formatMessage =>
                             .max(100, formatMessage(validationTranslations.maxNumber, { max: 100 }))
                     })
             )
-            .required(formatMessage(validationTranslations.required))
+            .required(formatMessage(languagesTranslations.atLeastOne))
     });
 
 export const validateLanguagesComplete = data => {
