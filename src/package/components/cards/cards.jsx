@@ -13,9 +13,10 @@ import { GifsCard } from './cards_types/gifs/gifs_card';
 import { DreamJobCard } from './cards_types/dream_job/dream_job_card';
 import { LanguagesCard } from './cards_types/languages/languages_card';
 
-import { styles } from './cards_styles';
 import { getRandomCardVariant } from '../../utils/styles/theme/theme';
 import { DEFAULT_CARD_ORDER } from './utils/cards_order';
+
+import { styles } from './cards_styles';
 
 const useStyles = createUseStyles(styles);
 

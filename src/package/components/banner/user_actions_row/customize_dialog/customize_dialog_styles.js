@@ -13,6 +13,11 @@ export const styles = (theme) => {
             bottom: 0,
             right: 0
         },
+        palettesList: ({ onlyShowPalettesList }) => ({
+            ...onlyShowPalettesList && {
+                flex: 1
+            }
+        }),
         dividerContainer: {
             height: '100%',
             display: 'flex',

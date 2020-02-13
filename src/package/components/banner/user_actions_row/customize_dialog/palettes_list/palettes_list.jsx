@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 
+import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import InfiniteScroll from 'react-infinite-scroller';
 import { animated, useTransition } from 'react-spring';
@@ -19,7 +20,11 @@ import { styles } from './palettes_list_styles';
 
 const useStyles = createUseStyles(styles);
 
-const PalettesListComponent = ({ value: currentPalette, onChange }) => {
+const PalettesListComponent = ({
+    value: currentPalette,
+    onChange,
+    classes: receivedClasses = {}
+}) => {
     const classes = useStyles();
     const containerReference = useRef();
     const [itemsToShow, setItemsToShow] = useState(10);
@@ -45,7 +50,7 @@ const PalettesListComponent = ({ value: currentPalette, onChange }) => {
         <div
             ref={containerReference}
             id={`scrollable_${classes.container}`}
-            className={classes.container}
+            className={cn(classes.container, receivedClasses.container)}
         >
             {currentPalette && (
                 <div className={classes.selectedPaletteContainer}>
@@ -79,6 +84,9 @@ const PalettesListComponent = ({ value: currentPalette, onChange }) => {
                             {`${paletteIndex + 1}.`}
                         </Typography>
                         <PaletteVisual
+                            classes={{
+                                color: classes.paletteVisualColor
+                            }}
                             palette={['primary', 'secondary', 'tertiary'].reduce((acc, keyName, index) => ({
                                 ...acc,
                                 [keyName]: { 500: item[index] }

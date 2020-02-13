@@ -40,7 +40,7 @@ const BouncingRoundButtonComponent = ({
                     transform: springProps.scale.interpolate(value => `scale3d(${value}, ${value}, ${value})`)
                 }}
             >
-                <Icon className={classes.icon} />
+                <Icon className={cn(classes.icon, classes.iconContainer)} />
             </animated.button>
         </Tooltip>
     );

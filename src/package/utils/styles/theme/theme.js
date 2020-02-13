@@ -110,8 +110,9 @@ export const DEFAULT_THEME = Object.freeze({
         spacing: 8
     },
     screenSizes: {
-        small: '@media screen and (max-width: 500px)',
-        medium: '@media screen and (max-width: 900px)'
+        xs: 400,
+        small: 500,
+        medium: 900
     },
     components: {
         banner: {

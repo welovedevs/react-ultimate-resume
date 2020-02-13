@@ -13,19 +13,19 @@ const useStyles = createUseStyles(styles);
 
 const ProfileCardFrontTypographyComponent = ({
     component = 'h2',
-    level = 'h1',
+    variant = 'h1',
     overrideColor,
     children,
-    customClasses = {}
+    classes: receivedClasses = {}
 }) => {
-    const [variant] = useCardVariant();
-    const classes = useStyles({ variant, overrideColor });
+    const [cardVariant] = useCardVariant();
+    const classes = useStyles({ variant: cardVariant, overrideColor });
 
     return (
         <Typography
-            variant={level}
+            variant={variant}
             component={component}
-            customClasses={{ container: cn(classes.container, customClasses.container) }}
+            customClasses={{ container: cn(classes.container, receivedClasses.container) }}
         >
             {children}
         </Typography>

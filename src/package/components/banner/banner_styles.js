@@ -1,4 +1,4 @@
-import { flex } from '../../utils/styles/styles_utils';
+import { createScreenWidthMediaQuery, flex } from '../../utils/styles/styles_utils';
 
 const { center } = flex;
 
@@ -41,12 +41,27 @@ export const styles = ({ palette, miscellaneous: { spacing }, screenSizes }) => 
             justifyContent: 'space-between',
             marginBottom: spacing * 12
         },
-        [screenSizes.small]: {
+        [createScreenWidthMediaQuery('max-width', screenSizes.medium)]: {
+            container: {
+                padding: [spacing * 4, spacing * 6]
+            }
+        },
+        [createScreenWidthMediaQuery('max-width', screenSizes.small)]: {
             content: {
                 flexDirection: 'column',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                alignItems: 'center'
             }
-
+        },
+        [createScreenWidthMediaQuery('max-width', screenSizes.small - (screenSizes.small - screenSizes.xs) / 2)]: {
+            container: {
+                height: 450
+            }
+        },
+        [createScreenWidthMediaQuery('max-width', screenSizes.xs)]: {
+            container: {
+                padding: [spacing * 4, spacing * 2.5]
+            }
         }
     };
 };

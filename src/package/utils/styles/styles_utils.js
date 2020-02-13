@@ -38,3 +38,5 @@ export const getHexFromPaletteColor = (theme, paletteColor, shade = 500) =>
 
 export const getContrastDefaultColorFromPaletteColor = (theme, paletteColor) =>
     theme.palette[paletteColor].contrastDefaultColor;
+
+export const createScreenWidthMediaQuery = (key = 'max-width', value) => `@media screen and (${key}: ${value}px)`;

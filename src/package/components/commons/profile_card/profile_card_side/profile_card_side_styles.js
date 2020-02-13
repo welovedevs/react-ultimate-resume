@@ -1,4 +1,4 @@
-export const styles = theme => ({
+export const styles = () => ({
     container: {
         willChange: 'transform',
         height: '100%',
@@ -8,8 +8,6 @@ export const styles = theme => ({
         top: 0,
         left: 0,
         display: 'flex',
-        flexDirection: 'column',
-        borderRadius: theme.components.cards.borderRadius,
-        overflow: 'hidden'
+        flexDirection: 'column'
     }
 });

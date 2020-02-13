@@ -25,8 +25,14 @@ const BasicsFrontComponent = ({ data }) => {
     return (
         <ProfileCardPaddedFront>
             <CenterContentContainer customClasses={{ container: classes.container }}>
-                <ProfileCardFrontTypography>{data.summary}</ProfileCardFrontTypography>
-                <ProfileCardFrontTypography level="h4" component="h3" customClasses={{ container: classes.location }}>
+                <ProfileCardFrontTypography
+                    classes={{
+                        container: classes.mainTypography
+                    }}
+                >
+                    {data.summary}
+                </ProfileCardFrontTypography>
+                <ProfileCardFrontTypography variant="h4" component="h3" classes={{ container: classes.location }}>
                     <Twemoji svg text="📍" />
                     {data?.currentCity?.name}
                 </ProfileCardFrontTypography>

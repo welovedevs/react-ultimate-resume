@@ -1,6 +1,9 @@
+import { createScreenWidthMediaQuery } from '../../../../utils/styles/styles_utils';
+
 export const styles = theme => {
     const {
-        miscellaneous: { spacing }
+        miscellaneous: { spacing },
+        screenSizes
     } = theme;
     return {
         container: {
@@ -23,13 +26,18 @@ export const styles = theme => {
         description: {
             extend: 'text'
         },
-        [theme.screenSizes.small]: {
+        [createScreenWidthMediaQuery('max-width', screenSizes.small)]: {
+            container: {
+                justifyContent: 'center'
+            }
+        },
+        [createScreenWidthMediaQuery('max-width', screenSizes.small - (screenSizes.small - screenSizes.xs) / 2)]: {
             container: {
                 flexDirection: 'column',
-                justifyContent: 'center'
+                alignItems: 'center'
             },
             textColumn: {
-                marginLeft: 'unset'
+                margin: [spacing * 2, 0, 0]
             }
         }
     };

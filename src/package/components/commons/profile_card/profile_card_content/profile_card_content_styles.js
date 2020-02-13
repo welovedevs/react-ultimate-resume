@@ -1,4 +1,5 @@
 import {
+    createScreenWidthMediaQuery,
     getColorsFromCardVariant,
     getHexFromPaletteColor,
     withCustomVerticalScrollbar
@@ -14,7 +15,8 @@ const getContentBackgroundColor = (theme, cardVariant) => {
 
 export const styles = theme => {
     const {
-        miscellaneous: { spacing }
+        miscellaneous: { spacing },
+        screenSizes
     } = theme;
     return {
         container: ({ variant }) => {
@@ -29,6 +31,9 @@ export const styles = theme => {
                     getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backColor)
                 )
             };
+        },
+        [createScreenWidthMediaQuery('max-width', screenSizes.small)]: {
+            padding: [spacing * 4, spacing * 5]
         }
     };
 };
