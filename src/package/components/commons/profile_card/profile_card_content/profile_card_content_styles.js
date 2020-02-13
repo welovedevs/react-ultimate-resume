@@ -33,7 +33,14 @@ export const styles = theme => {
             };
         },
         [createScreenWidthMediaQuery('max-width', screenSizes.small)]: {
-            padding: [spacing * 4, spacing * 5]
+            container: {
+                padding: [[spacing * 4, spacing * 5], '!important']
+            }
+        },
+        [createScreenWidthMediaQuery('max-width', screenSizes.xs)]: {
+            container: {
+                padding: [[spacing * 4, spacing * 3], '!important']
+            }
         }
     };
 };

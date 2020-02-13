@@ -2,7 +2,6 @@ import React, { useCallback, useContext, useMemo } from 'react';
 
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 
-import { BasicsFront } from './basics_front/basics_front';
 import { BasicsBack } from './basics_back/basics_back';
 import { mapBasicsDataToJsonResume, mapJsonResumeToBasicData } from './data/mapping';
 
@@ -31,7 +30,7 @@ const BasicsCardComponent = ({ variant, side }) => {
                     onEdit: onDialogEdited
                 }}
                 sides={{
-                    front: BasicsFront,
+                    front: BasicsBack,
                     back: BasicsBack
                 }}
                 variant={variant}
