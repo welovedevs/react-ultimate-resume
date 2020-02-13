@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useRef, useState } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import InfiniteScroll from 'react-infinite-scroller';
-import { animated, config, useTransition } from 'react-spring';
+import { animated, useTransition } from 'react-spring';
 
 import { Typography } from '@wld/ui';
 
@@ -12,6 +12,8 @@ import { LoadingSpinner } from '../../../../commons/loading_spinner/loading_spin
 import { buildShadedPalette } from './utils/build_shaded_palette';
 
 import { palettes } from './utils/palettes';
+
+import { PALETTES_LIST_TRANSITIONS_SPRING_PROPS } from './palettes_list_spring_props';
 
 import { styles } from './palettes_list_styles';
 
@@ -23,16 +25,6 @@ const PalettesListComponent = ({ value: currentPalette, onChange }) => {
     const [itemsToShow, setItemsToShow] = useState(10);
 
     const displayedPalettes = useMemo(() => palettes.slice(0, itemsToShow), [itemsToShow]);
-
-    const selectedPalette = useMemo(
-        () =>
-            currentPalette && [
-                currentPalette?.primary?.[500],
-                currentPalette?.secondary?.[500],
-                currentPalette?.tertiary?.[500]
-            ],
-        [currentPalette]
-    );
 
     const onSelectChanged = useCallback(value => () => {
         const [primary, secondary, tertiary] = value;
@@ -47,23 +39,7 @@ const PalettesListComponent = ({ value: currentPalette, onChange }) => {
         setItemsToShow(itemsToShow + 10);
     }, [itemsToShow, setItemsToShow]);
 
-    const transitions = useTransition(displayedPalettes, (item) => `palette_${item.join('_')}`, ({
-        from: ({
-            opacity: 0,
-            transform: 'translate3d(-20px, 0, 0)'
-        }),
-        enter: ({
-            opacity: 1,
-            transform: 'translate3d(0, 0, 0)'
-        }),
-        leave: ({
-            opacity: 0,
-            transform: 'translate3d(-20px, 0, 0)'
-        }),
-        trail: 1000 / 10,
-        config: config.wobbly,
-        unique: true
-    }));
+    const transitions = useTransition(displayedPalettes, (item) => `palette_${item.join('_')}`, PALETTES_LIST_TRANSITIONS_SPRING_PROPS);
 
     return (
         <div
@@ -79,9 +55,7 @@ const PalettesListComponent = ({ value: currentPalette, onChange }) => {
             )}
             <InfiniteScroll
                 hasMore={itemsToShow < palettes.length}
-                loader={(
-                    <LoadingSpinner />
-                )}
+                loader={<LoadingSpinner />}
                 pageStart={0}
                 useWindow={false}
                 loadMore={setNextDisplayedPalettes}

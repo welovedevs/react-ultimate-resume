@@ -64,10 +64,10 @@ const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
     return (
         <Dialog
             fullScreen
+            open={open}
             classes={{
                 paper: classes.paper
             }}
-            open
             onClose={onClose}
         >
             <DialogTitle>

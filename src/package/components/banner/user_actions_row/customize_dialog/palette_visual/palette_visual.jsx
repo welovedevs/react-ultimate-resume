@@ -24,6 +24,7 @@ const PaletteVisualComponent = ({ palette, classes: receivedClasses = {}, transl
         <div className={cn(classes.container, receivedClasses.container)}>
             {paletteEntries.map(([key, { 500: hex }]) => (
                 <Tooltip
+                    key={`palette_visual_color_${key}_${hex}`}
                     title={translations[key]}
                     customClasses={{
                         popper: receivedClasses.tooltipPopper

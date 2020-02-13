@@ -26,5 +26,5 @@ export const CARD_STUB_TRANSLATIONS = Object.freeze({
             id="CardStub.CardVariantTooltip.BackColor"
             defaultMessage="Card's back texts & icons color"
         />
-    ),
+    )
 });

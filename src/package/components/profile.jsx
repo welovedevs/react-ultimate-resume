@@ -67,11 +67,11 @@ const DeveloperProfileComponent = ({
 
     return (
         <div className={classes.container}>
-            <DeveloperProfileContext.provider value={context}>
+            <DeveloperProfileContext.Provider value={context}>
                 <Banner customizationOptions={options.customization}>{ActionButtons}</Banner>
                 {BeforeCards}
                 <Cards cardsOrder={options.customization?.cardsOrder} />
-            </DeveloperProfileContext.provider>
+            </DeveloperProfileContext.Provider>
         </div>
     );
 };

@@ -1,3 +1,5 @@
+import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
+
 const CARD_DIMENSION = 200;
 
 export const styles = theme => {

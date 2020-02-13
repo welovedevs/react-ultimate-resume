@@ -49,8 +49,9 @@ const SkillsBackComponent = ({ data }) => {
         },
         [othersSkills]
     );
+
     const onAnimationEnd = useCallback(
-        () => console.log('Animation Ended') || setSpringOnOpenOpacityProps({ opacity: 1 }),
+        () => setSpringOnOpenOpacityProps({ opacity: 1 }),
         []
     );
 

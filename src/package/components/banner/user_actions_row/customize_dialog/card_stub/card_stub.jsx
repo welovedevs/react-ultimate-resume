@@ -1,8 +1,10 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
 
 import { createUseStyles, useTheme } from 'react-jss';
+import { useDebounce } from 'use-debounce';
 
 import { PopperCard, Checkbox } from '@wld/ui';
+
 import { PaletteVisual } from '../palette_visual/palette_visual';
 import { Context } from '../card_orderer/cards_orderer';
 import { ReactComponent as BasicsSvg } from '../../../../../assets/cards/basics.svg';
@@ -44,6 +46,7 @@ const CardStubComponent = ({
 }) => {
     const classes = useStyles({ variant });
     const [openPopperCard, handlers] = useOpenerState();
+    const [debouncedOpenPopperCard] = useDebounce(openPopperCard, openPopperCard ? 300 : 0);
     const containerReference = useRef();
     const { isSorting } = useContext(Context);
 
@@ -60,7 +63,7 @@ const CardStubComponent = ({
         <div className={classes.container} ref={containerReference} {...handlers}>
             <Component className={classes.card} />
             <PopperCard
-                open={!isSorting && openPopperCard}
+                open={!isSorting && debouncedOpenPopperCard}
                 anchorElement={containerReference.current}
                 customClasses={{ popper: classes.popper }}
                 popperProps={{ placement: 'right' }}
