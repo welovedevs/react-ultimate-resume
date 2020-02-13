@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useEffect, useMemo, useReducer, useRef } from 'react';
+import React, { createContext, useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { config, useTransition } from 'react-spring';
@@ -38,9 +38,11 @@ const ProfileCardComponent = ({
     editDialog,
     customTransitionsSpringProps,
     customEditAction,
+    isComplete,
     side: sideProps
 }) => {
     const classes = useStyles({ variant });
+    const [containerElement, setContainerElement] = useState();
     const containerReference = useRef();
     const [openEditDialog, setEditDialogOpened, setEditDialogClosed] = useCallbackOpen();
     const [state, dispatch] = useReducer(
@@ -52,6 +54,10 @@ const ProfileCardComponent = ({
     );
     const { side, hasDialogOpened } = state;
     const [debouncedSide] = useDebounce(side, 200);
+
+    useEffect(() => {
+        setContainerElement(containerReference.current);
+    }, []);
 
     const transitionsSpringProps = useMemo(() => {
         if (customTransitionsSpringProps) {
@@ -109,8 +115,8 @@ const ProfileCardComponent = ({
                 />
             )}
             <ProfileCardIncompletePopper
-                open={false}
-                anchorElement={containerReference.current}
+                open={!isComplete}
+                anchorElement={containerElement}
             />
             <Card
                 containerRef={containerReference}
