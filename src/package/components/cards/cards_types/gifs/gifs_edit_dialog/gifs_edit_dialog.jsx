@@ -21,7 +21,8 @@ const GifsEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema
             <EditDialog
                 fullScreen
                 classes={{
-                    paper: classes.paper
+                    paper: classes.paper,
+                    content: classes.dialogRoot
                 }}
                 open={open}
                 onClose={onClose}

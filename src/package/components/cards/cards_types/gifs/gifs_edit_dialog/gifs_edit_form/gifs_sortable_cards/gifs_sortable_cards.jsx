@@ -22,19 +22,17 @@ const GifsSortableCardsComponent = ({
 }) => {
     const classes = useStyles();
     return (
-        <div className={classes.container}>
-            <SortableGifsCards
-                useDragHandle
-                axis="xy"
-                items={items}
-                interestDeleted={interestDeleted}
-                interestChanged={interestChanged}
-                errors={errors}
-                setSelectedIndex={setSelectedIndex}
-                onSortEnd={onSortEnd}
-                classes={classes}
-            />
-        </div>
+        <SortableGifsCards
+            useDragHandle
+            axis="xy"
+            items={items}
+            interestDeleted={interestDeleted}
+            interestChanged={interestChanged}
+            errors={errors}
+            setSelectedIndex={setSelectedIndex}
+            onSortEnd={onSortEnd}
+            classes={classes}
+        />
     );
 };
 

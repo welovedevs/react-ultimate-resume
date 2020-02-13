@@ -1,12 +1,13 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { useFormikContext } from 'formik';
 import keyBy from 'lodash/keyBy';
 import omit from 'lodash/omit';
 import uuid from 'uuid/v4';
 import { arrayMove } from 'react-sortable-hoc';
 
+import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
 import { Typography } from '@wld/ui';
 
 import { SearchGifsDialog } from '../../../../../commons/search_gif_dialog/search_gifs_dialog';
@@ -18,6 +19,8 @@ import { styles } from './gifs_edit_form_styles';
 const useStyles = createUseStyles(styles);
 
 const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
     const classes = useStyles();
     const {
         values: { interests },
@@ -71,10 +74,13 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
         selectedIndex
     ]);
 
-    const handleGifSelection = useCallback(({ url }) => {
-        handleGifChange(url)();
-        removeSelectedIndex();
-    }, [handleGifChange]);
+    const handleGifSelection = useCallback(
+        ({ url }) => {
+            handleGifChange(url)();
+            removeSelectedIndex();
+        },
+        [handleGifChange]
+    );
 
     return (
         <>
@@ -84,13 +90,17 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
                 onSelect={handleGifSelection}
             />
             {globalError && (
-                <Typography
-                    color="danger"
-                    variant="h4"
-                    component="h4"
-                >
+                <Typography color="danger" variant="h4" component="h4">
                     {globalError}
                 </Typography>
+            )}
+            {isMobile && (
+                <AddButtonDashed
+                    classes={{
+                        container: classes.addButtonDashed
+                    }}
+                    onClick={addInterest}
+                />
             )}
             <GifsSortableCards
                 items={interests}
@@ -100,12 +110,14 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
                 onSortEnd={move}
                 setSelectedIndex={setSelectedIndex}
             />
-            <AddButtonDashed
-                classes={{
-                    container: classes.addButtonDashed
-                }}
-                onClick={addInterest}
-            />
+            {!isMobile && (
+                <AddButtonDashed
+                    classes={{
+                        container: classes.addButtonDashed
+                    }}
+                    onClick={addInterest}
+                />
+            )}
         </>
     );
 };
