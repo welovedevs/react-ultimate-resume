@@ -38,7 +38,6 @@ const ProfileCardComponent = ({
     editDialog,
     customTransitionsSpringProps,
     customEditAction,
-    isComplete = false,
     side: sideProps
 }) => {
     const classes = useStyles({ variant });
