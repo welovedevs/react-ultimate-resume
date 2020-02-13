@@ -10,24 +10,19 @@ import { JOB_SEARCH_STATE } from '../../../../../../utils/enums/job_serachstate/
 
 import { translations } from '../../../../../../utils/enums/job_serachstate/job_search_state_translations';
 
-const JobSearchStateFieldComponent = ({
-    value,
-    handleChange
-}) => {
+const JobSearchStateFieldComponent = ({ value, handleChange }) => {
     const { formatMessage } = useIntl();
     return (
         <Select
             value={value}
             onChange={handleChange('searchState')}
             textFieldProps={{
-                variant: 'flat'
+                variant: 'flat',
+                fullWidth: true
             }}
         >
             {JOB_SEARCH_STATE.map((elemValue, index) => (
-                <ListItem
-                    key={`job_search_state${elemValue}_${index}`}
-                    value={elemValue}
-                >
+                <ListItem key={`job_search_state${elemValue}_${index}`} value={elemValue}>
                     {formatMessage(translations[elemValue])}
                 </ListItem>
             ))}

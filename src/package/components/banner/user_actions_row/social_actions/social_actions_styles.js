@@ -5,7 +5,7 @@ export const styles = (theme) => ({
         flexWrap: 'wrap',
         justifyContent: 'flex-end'
     },
-    [theme.screenSizes.small]: {
+    [`@media screen and (max-width: ${theme.screenSizes.small}px)`]: {
         container: {
             flexDirection: 'column',
             justifyContent: 'unset'

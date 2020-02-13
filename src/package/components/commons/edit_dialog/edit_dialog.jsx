@@ -2,9 +2,10 @@ import React, { useCallback } from 'react';
 
 import cn from 'classnames';
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { Formik, useFormikContext } from 'formik';
 
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Button } from '@wld/ui';
 
 import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
@@ -16,20 +17,22 @@ import { styles } from './edit_dialog_styles';
 const useStyles = createUseStyles(styles);
 
 const EditDialogComponent = ({
-    open,
-    onClose,
-    fullScreen,
-    data,
-    onEdit,
-    children,
-    title = '✏️',
-    validationSchema,
-    classes: receivedClasses = {}
-}) => {
+                                 open,
+                                 onClose,
+                                 fullScreen,
+                                 data,
+                                 onEdit,
+                                 children,
+                                 title = '✏️',
+                                 validationSchema,
+                                 classes: receivedClasses = {}
+                             }) => {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
     const classes = useStyles();
     return (
         <Dialog
-            fullScreen={fullScreen}
+            fullScreen={fullScreen || isMobile}
             classes={{
                 paper: cn(classes.paper, receivedClasses.paper)
             }}
@@ -78,10 +81,10 @@ const Content = ({ children, onClose, classes, receivedClasses }) => {
                 }}
             >
                 <Button size="small" onClick={onClose}>
-                    <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
+                    <FormattedMessage id="Main.lang.close" defaultMessage="Close"/>
                 </Button>
                 <Button type="submit" size="small" color="primary" onClick={handleSubmit}>
-                    <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
+                    <FormattedMessage id="Main.lang.save" defaultMessage="Save"/>
                 </Button>
             </DialogActions>
         </>

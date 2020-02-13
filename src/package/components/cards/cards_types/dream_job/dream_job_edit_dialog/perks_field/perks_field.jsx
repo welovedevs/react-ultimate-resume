@@ -38,14 +38,15 @@ const PerksFieldComponent = ({
     return (
         <EditDialogField
             error={error}
-            title={(
+            title={
                 <FormattedMessage
                     id="DreamJob.editDialog.perks.title"
                     defaultMessage="What perks are important to you ?"
                 />
-            )}
+            }
         >
             <CheckboxGroup
+                rows={2}
                 values={checkboxGroupPerks}
                 translations={jobPerksTranslations}
                 value={checkedPerks}
@@ -55,28 +56,28 @@ const PerksFieldComponent = ({
             />
             <div className={classes.othersCheckbox}>
                 <CheckboxField
-                    title={(
-                        <Typography>
-                            {formatMessage(jobPerksTranslations.others)}
-                        </Typography>
-                    )}
+                    title={<Typography>{formatMessage(jobPerksTranslations.others)}</Typography>}
                     onClick={toggleOtherPerk}
                     checked={otherPerk !== null}
                     variant="outlined"
                     color="secondary"
                 />
-                {transitions.map(({ item, key, props }) => item && (
-                    <TextField
-                        key={key}
-                        containerElement={animated.div}
-                        customClasses={{ container: classes.textField }}
-                        onChange={handleChange}
-                        name={`perks[${JobPerks.OTHER}]`}
-                        value={perks[JobPerks.OTHER]}
-                        variant="flat"
-                        containerProps={{ style: props }}
-                    />
-                ))}
+                {transitions.map(
+                    ({ item, key, props }) =>
+                        item && (
+                            <TextField
+                                fullWidth
+                                key={key}
+                                containerElement={animated.div}
+                                customClasses={{ container: classes.textField }}
+                                onChange={handleChange}
+                                name={`perks[${JobPerks.OTHER}]`}
+                                value={perks[JobPerks.OTHER]}
+                                variant="flat"
+                                containerProps={{ style: props }}
+                            />
+                        )
+                )}
             </div>
         </EditDialogField>
     );

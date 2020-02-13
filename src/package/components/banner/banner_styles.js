@@ -41,7 +41,7 @@ export const styles = ({ palette, miscellaneous: { spacing }, screenSizes }) => 
             justifyContent: 'space-between',
             marginBottom: spacing * 12
         },
-        [screenSizes.small]: {
+        [`@media screen and (max-width: ${screenSizes.small}px)`]: {
             content: {
                 flexDirection: 'column',
                 justifyContent: 'center'

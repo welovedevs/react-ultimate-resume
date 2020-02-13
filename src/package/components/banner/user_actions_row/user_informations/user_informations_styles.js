@@ -23,7 +23,7 @@ export const styles = theme => {
         description: {
             extend: 'text'
         },
-        [theme.screenSizes.small]: {
+        [`@media screen and (max-width: ${theme.screenSizes.small}px)`]: {
             container: {
                 flexDirection: 'column',
                 justifyContent: 'center'

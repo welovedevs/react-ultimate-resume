@@ -17,6 +17,11 @@ export const styles = theme => {
         },
         headrow: {
             display: 'flex'
+        },
+        [`@media screen and (max-width: ${theme.screenSizes.small}px)`]: {
+            headrow: {
+                flexDirection: 'column'
+            }
         }
     };
 };

@@ -13,7 +13,14 @@ export const styles = theme => {
             fontSize: 32
         },
         datePicker: {
-            cursor: 'pointer'
+            cursor: 'pointer',
+
+            marginLeft: spacing
+        },
+        [`@media screen and (max-width: ${theme.screenSizes.small}px)`]: {
+            datePicker: {
+                marginLeft: 'unset'
+            }
         }
     };
 };
