@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.BasicsValidationSchema = void 0;
+exports.validateBasicsComplete = exports.BasicsValidationSchema = void 0;
 
 var Yup = _interopRequireWildcard(require("yup"));
 
@@ -17,7 +17,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var BasicsValidationSchema = function BasicsValidationSchema(formatMessage) {
   return Yup.object({
-    summary: Yup.string().min(5, formatMessage(_validation_translations.validationTranslations.min, {
+    summary: Yup.string().required(formatMessage(_validation_translations.validationTranslations.required)).min(5, formatMessage(_validation_translations.validationTranslations.min, {
       min: 10
     })).max(50, formatMessage(_validation_translations.validationTranslations.min, {
       min: 50
@@ -49,3 +49,21 @@ var BasicsValidationSchema = function BasicsValidationSchema(formatMessage) {
 };
 
 exports.BasicsValidationSchema = BasicsValidationSchema;
+
+var validateBasicsComplete = function validateBasicsComplete(data) {
+  try {
+    Yup.object({
+      summary: Yup.string().required(),
+      currentCity: Yup.object().nullable().required(),
+      experienceYears: Yup.number().required(),
+      studiesLevel: Yup.number().required(),
+      codingYears: Yup.number().required()
+    }).validateSync(data);
+  } catch (e) {
+    return false;
+  }
+
+  return true;
+};
+
+exports.validateBasicsComplete = validateBasicsComplete;

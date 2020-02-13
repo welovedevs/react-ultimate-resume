@@ -44,8 +44,12 @@ var InterestedByCardComponent = function InterestedByCardComponent(_ref) {
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     onEdit((0, _data_mapping.FlatObjectToJsonResume)(editedData, _mapping.interestedByMapping));
   }, []);
+  var isComplete = (0, _react.useMemo)(function () {
+    return (0, _validator.validateInterestedByComplete)(mappedData);
+  }, [mappedData]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card.ProfileCard, {
     data: mappedData,
+    isComplete: isComplete,
     isEditingProfile: isEditing,
     sides: {
       front: _interested_by_front.InterestedByFront,

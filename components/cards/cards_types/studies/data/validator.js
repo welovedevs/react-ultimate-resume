@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.StudiesValidator = void 0;
+exports.validateStudiesComplete = exports.StudiesValidator = void 0;
 
 var Yup = _interopRequireWildcard(require("yup"));
 
@@ -29,3 +29,17 @@ var StudiesValidator = function StudiesValidator(formatMessage) {
 };
 
 exports.StudiesValidator = StudiesValidator;
+
+var validateStudiesComplete = function validateStudiesComplete(data) {
+  try {
+    Yup.object({
+      education: Yup.array().required().min(1)
+    }).validateSync(data);
+  } catch (e) {
+    return false;
+  }
+
+  return true;
+};
+
+exports.validateStudiesComplete = validateStudiesComplete;

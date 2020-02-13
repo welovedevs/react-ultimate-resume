@@ -42,8 +42,12 @@ var LanguagesCardComponent = function LanguagesCardComponent(_ref) {
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     onEdit((0, _mapping.mapLanguagesToJsonResume)(editedData));
   }, []);
+  var isComplete = (0, _react.useMemo)(function () {
+    return (0, _validator.validateLanguagesComplete)(mappedData);
+  }, [mappedData]);
   return _react.default.createElement(_profile_card.ProfileCard, {
     isEditingProfile: isEditing,
+    isComplete: isComplete,
     data: mappedData,
     sides: {
       front: _languages_front.LanguagesFront,

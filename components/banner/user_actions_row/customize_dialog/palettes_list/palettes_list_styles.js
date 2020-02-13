@@ -13,28 +13,36 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var CARD_DIMENSION = 200;
-
 var styles = function styles(theme) {
-  var spacing = theme.miscellaneous.spacing;
+  var palette = theme.palette,
+      spacing = theme.miscellaneous.spacing;
   return {
     container: _objectSpread({
-      flex: 1,
-      overflow: 'auto'
-    }, (0, _styles_utils.withCustomVerticalScrollbar)('transparent'), {
+      maxHeight: '100%',
+      overflowY: 'auto',
+      overflowX: 'hidden',
+      paddingRight: spacing * 4
+    }, (0, _styles_utils.withCustomVerticalScrollbar)()),
+    selectedPaletteContainer: {
       display: 'flex',
-      justifyContent: 'center'
-    }),
-    cardsContainer: {
-      width: (CARD_DIMENSION + 2 * spacing) * 3,
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'center'
+      flexDirection: 'column',
+      alignItems: 'center'
     },
-    sortableHelper: {
-      zIndex: 1400,
-      width: CARD_DIMENSION,
-      height: CARD_DIMENSION
+    divider: {
+      height: 1,
+      width: '100%',
+      maxWidth: 200,
+      backgroundColor: palette.dark[100],
+      margin: [spacing * 4, 0, spacing * 3]
+    },
+    selectablePaletteIndex: {
+      width: spacing * 5,
+      marginRight: spacing * 2
+    },
+    selectablePaletteContainer: {
+      display: 'flex',
+      alignItems: 'flex-end',
+      margin: [spacing * 2, 0]
     }
   };
 };

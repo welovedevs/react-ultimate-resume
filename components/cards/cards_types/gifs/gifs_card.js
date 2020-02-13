@@ -42,8 +42,12 @@ var GifsCardComponent = function GifsCardComponent(_ref) {
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     onEdit((0, _mapping.mapInterestsToJsonResume)(editedData));
   }, []);
+  var isComplete = (0, _react.useMemo)(function () {
+    return (0, _validator.validateInterestsComplete)(mappedData);
+  }, [mappedData]);
   return _react.default.createElement(_profile_card.ProfileCard, {
     isEditingProfile: isEditing,
+    isComplete: isComplete,
     data: mappedData,
     sides: {
       front: _gifs_front.GifsFront,

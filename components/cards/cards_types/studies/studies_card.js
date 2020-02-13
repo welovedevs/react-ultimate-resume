@@ -42,8 +42,12 @@ var StudiesCardComponent = function StudiesCardComponent(_ref) {
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     onEdit((0, _mapping.mapStudiesToJsonResume)(editedData));
   }, []);
+  var isComplete = (0, _react.useMemo)(function () {
+    return (0, _validator.validateStudiesComplete)(mappedData);
+  }, [mappedData]);
   return _react.default.createElement(_profile_card.ProfileCard, {
     data: mappedData,
+    isComplete: isComplete,
     isEditingProfile: isEditing,
     sides: {
       front: _studies_front.StudiesFront,

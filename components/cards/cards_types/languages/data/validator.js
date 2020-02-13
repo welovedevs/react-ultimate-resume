@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.LanguageValidator = void 0;
+exports.validateLanguagesComplete = exports.LanguageValidator = void 0;
 
 var Yup = _interopRequireWildcard(require("yup"));
 
@@ -41,3 +41,17 @@ var LanguageValidator = function LanguageValidator(formatMessage) {
 };
 
 exports.LanguageValidator = LanguageValidator;
+
+var validateLanguagesComplete = function validateLanguagesComplete(data) {
+  try {
+    Yup.object({
+      languages: Yup.array().required().min(1)
+    }).validateSync(data);
+  } catch (e) {
+    return false;
+  }
+
+  return true;
+};
+
+exports.validateLanguagesComplete = validateLanguagesComplete;

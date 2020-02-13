@@ -23,6 +23,8 @@ var _gifs_sides_commons = require("../gifs_sides_commons/gifs_sides_commons");
 
 var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
 
+var _gifs_back_spring_props = require("./gifs_back_spring_props");
+
 var _gifs_back_styles = require("./gifs_back_styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -32,6 +34,12 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -98,23 +106,9 @@ var GifsBackComponent = function GifsBackComponent(_ref) {
   }, [hasChanged.current]);
   var transitions = (0, _reactSpring.useTransition)(((_ref2 = (_data$interests = data.interests) === null || _data$interests === void 0 ? void 0 : _data$interests[currentIndex]) !== null && _ref2 !== void 0 ? _ref2 : {}).name, function (item) {
     return "gif_name_".concat(item);
-  }, {
-    from: {
-      opacity: 0,
-      transform: 'translate3d(25%, 0, 0)'
-    },
-    enter: {
-      opacity: 1,
-      transform: 'translate3d(0%, 0, 0)'
-    },
-    leave: {
-      opacity: 0,
-      transform: 'translate3d(-25%, 0, 0)'
-    },
-    unique: true,
-    config: _reactSpring.config.slow,
+  }, _objectSpread({}, _gifs_back_spring_props.GIFS_BACK_TRANSITIONS_SPRING_PROPS, {
     immediate: !hasChanged.current
-  });
+  }));
   return _react.default.createElement(_gifs_sides_commons.GifsSidesCommons, {
     underLayer: _react.default.createElement("div", {
       className: classes.slidesContainer
@@ -138,6 +132,7 @@ var GifsBackComponent = function GifsBackComponent(_ref) {
       var gifUrl = _ref3.gifUrl,
           name = _ref3.name;
       return _react.default.createElement("img", {
+        key: "gifs_back_carousel_image_".concat(gifUrl, "_").concat(name),
         className: classes.image,
         src: gifUrl,
         alt: name

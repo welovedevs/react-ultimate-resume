@@ -42,8 +42,12 @@ var ExperiencesCardComponent = function ExperiencesCardComponent(_ref) {
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     return onEdit((0, _mapping.mapWorkToJsonResume)(editedData));
   }, []);
+  var isComplete = (0, _react.useMemo)(function () {
+    return (0, _validator.validateWorkComplete)(mappedData);
+  }, [mappedData]);
   return _react.default.createElement(_profile_card.ProfileCard, {
     isEditingProfile: isEditing,
+    isComplete: isComplete,
     data: mappedData,
     sides: {
       front: _experiences_front.ExperiencesFront,

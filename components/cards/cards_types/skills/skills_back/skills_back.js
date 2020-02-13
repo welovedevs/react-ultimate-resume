@@ -126,7 +126,7 @@ var SkillsBackComponent = function SkillsBackComponent(_ref) {
     });
   }, [othersSkills]);
   var onAnimationEnd = (0, _react.useCallback)(function () {
-    return console.log('Animation Ended') || setSpringOnOpenOpacityProps({
+    return setSpringOnOpenOpacityProps({
       opacity: 1
     });
   }, []);

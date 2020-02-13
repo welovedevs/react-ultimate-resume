@@ -1,6 +1,6 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.1.33",
+    "version": "1.1.34",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
@@ -23,12 +23,13 @@
         "@material-ui/core": "^4.8.3",
         "formik": "^2.1.2",
         "react": "^16.12.0",
-        "react-dom": "^16.12.0"
+        "react-dom": "^16.12.0",
+        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.0"
     },
     "dependencies": {
         "@date-io/moment": "^1.3.13",
         "@material-ui/pickers": "^3.2.9",
-        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.0.14",
+        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.0",
         "babel-plugin-react-intl": "^5.1.18",
         "chroma-js": "^2.1.0",
         "classnames": "^2.2.6",
@@ -39,6 +40,7 @@
         "react-dropzone": "^10.2.1",
         "react-emoji-render": "^1.2.1",
         "react-images": "^1.1.0-beta.3",
+        "react-infinite-scroller": "^1.2.4",
         "react-intl": "^3.9.3",
         "react-jss": "^10.0.3",
         "react-scripts": "3.3.0",

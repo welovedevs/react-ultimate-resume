@@ -11,19 +11,41 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactJss = require("react-jss");
 
-var _core = require("@material-ui/core");
+var _useDebounce3 = require("use-debounce");
 
 var _ui = require("@wld/ui");
 
-var _card_stub_styles = require("./card_stub_styles");
+var _palette_visual = require("../palette_visual/palette_visual");
 
-var _select = require("../../../../commons/select/select");
+var _cards_orderer = require("../card_orderer/cards_orderer");
+
+var _use_opener_state = require("../../../../hooks/use_opener_state");
 
 var _styles_utils = require("../../../../../utils/styles/styles_utils");
+
+var _card_stub_translations = require("./card_stub_translations");
+
+var _card_stub_styles = require("./card_stub_styles");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var BasicsSvg = function BasicsSvg(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("title", null, "Group"), _react.default.createElement("g", {
@@ -566,7 +588,7 @@ SoundtrackSvg.defaultProps = {
   xmlns: "http://www.w3.org/2000/svg"
 };
 var useStyles = (0, _reactJss.createUseStyles)(_card_stub_styles.styles);
-var CARD_TYPE_MAPPING = {
+var CARD_TYPE_MAPPING = Object.freeze({
   basics: BasicsSvg,
   projects: ProjectsSvg,
   language: LanguagesSvg,
@@ -577,81 +599,112 @@ var CARD_TYPE_MAPPING = {
   skills: SkillsSvg,
   soundtrack: SoundtrackSvg,
   interestedBy: InterestedBySvg
-};
+});
 
-var VariantItem = function VariantItem(_ref) {
-  var colorScheme = _ref.colorScheme,
-      value = _ref.value;
-  var classes = useStyles({});
-  var theme = (0, _reactJss.useTheme)();
-  var colors = (0, _react.useMemo)(function () {
-    return Object.values(colorScheme || {}).map(function (color) {
-      return (0, _styles_utils.getHexFromPaletteColor)(theme, color);
-    });
-  }, [theme]);
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_ui.Typography, null, "#".concat(value + 1)), colors.map(function (hex, index) {
-    return _react.default.createElement("div", {
-      key: "".concat(hex, "_").concat(index),
-      className: classes.colorSquare,
-      style: {
-        backgroundColor: hex
-      }
-    });
-  }));
-};
-
-var VariantSelector = function VariantSelector(_ref2) {
-  var _theme$components, _theme$components$car, _theme$components$car2;
-
-  var value = _ref2.value,
-      onChange = _ref2.onChange;
-  var theme = (0, _reactJss.useTheme)();
-  var onSelectChanged = (0, _react.useCallback)(function (newValue) {
-    return onChange(newValue);
-  }, [onChange]);
-  return _react.default.createElement(_select.Select, {
-    textFieldProps: {
-      variant: 'flat'
-    },
-    value: value,
-    onChange: onSelectChanged
-  }, (_theme$components = theme.components) === null || _theme$components === void 0 ? void 0 : (_theme$components$car = _theme$components.cards) === null || _theme$components$car === void 0 ? void 0 : (_theme$components$car2 = _theme$components$car.variants) === null || _theme$components$car2 === void 0 ? void 0 : _theme$components$car2.map(function (colorScheme, variantIndex) {
-    return _react.default.createElement(_core.ListItem, {
-      key: "select_variant_".concat(variantIndex),
-      value: variantIndex
-    }, _react.default.createElement(VariantItem, {
-      colorScheme: colorScheme,
-      value: variantIndex
-    }));
-  }));
-};
-
-var CardStub = function CardStub(_ref3) {
-  var _ref3$data = _ref3.data,
-      type = _ref3$data.type,
-      variant = _ref3$data.variant,
-      cardIndex = _ref3.cardIndex,
-      onItemChanged = _ref3.onItemChanged;
+var CardStubComponent = function CardStubComponent(_ref) {
+  var _ref$data = _ref.data,
+      type = _ref$data.type,
+      variant = _ref$data.variant,
+      cardIndex = _ref.cardIndex,
+      onItemChanged = _ref.onItemChanged;
   var classes = useStyles({
     variant: variant
   });
+
+  var _useOpenerState = (0, _use_opener_state.useOpenerState)(),
+      _useOpenerState2 = _slicedToArray(_useOpenerState, 2),
+      openPopperCard = _useOpenerState2[0],
+      handlers = _useOpenerState2[1];
+
+  var _useDebounce = (0, _useDebounce3.useDebounce)(openPopperCard, openPopperCard ? 300 : 0),
+      _useDebounce2 = _slicedToArray(_useDebounce, 1),
+      debouncedOpenPopperCard = _useDebounce2[0];
+
+  var containerReference = (0, _react.useRef)();
+
+  var _useContext = (0, _react.useContext)(_cards_orderer.Context),
+      isSorting = _useContext.isSorting;
+
   var Component = (0, _react.useMemo)(function () {
-    return CARD_TYPE_MAPPING[type];
+    var _CARD_TYPE_MAPPING$ty;
+
+    return (_CARD_TYPE_MAPPING$ty = CARD_TYPE_MAPPING[type]) !== null && _CARD_TYPE_MAPPING$ty !== void 0 ? _CARD_TYPE_MAPPING$ty : function () {
+      return null;
+    };
   }, []);
   var onVariantChanged = (0, _react.useCallback)(function (value) {
-    onItemChanged(cardIndex, {
-      type: type,
-      variant: value
-    });
+    return function () {
+      onItemChanged(cardIndex, {
+        type: type,
+        variant: value
+      });
+    };
   }, [onItemChanged]);
-  return _react.default.createElement("div", {
-    className: classes.wrapper
-  }, _react.default.createElement(VariantSelector, {
-    onChange: onVariantChanged,
-    value: variant
-  }), _react.default.createElement(Component, {
+  return _react.default.createElement("div", _extends({
+    className: classes.container,
+    ref: containerReference
+  }, handlers), _react.default.createElement(Component, {
     className: classes.card
-  }));
+  }), _react.default.createElement(_ui.PopperCard, {
+    open: !isSorting && debouncedOpenPopperCard,
+    anchorElement: containerReference.current,
+    customClasses: {
+      popper: classes.popper
+    },
+    popperProps: {
+      placement: 'right'
+    }
+  }, _react.default.createElement(CardVariants, {
+    variant: variant,
+    onVariantChanged: onVariantChanged,
+    classes: classes
+  })));
 };
 
+var CardVariants = function CardVariants(_ref2) {
+  var _theme$components, _theme$components$car, _theme$components$car2;
+
+  var variant = _ref2.variant,
+      onVariantChanged = _ref2.onVariantChanged,
+      classes = _ref2.classes;
+  var theme = (0, _reactJss.useTheme)();
+  var handleMouseDown = (0, _react.useCallback)(function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }, []);
+  return _react.default.createElement("div", {
+    className: classes.popperCardContent
+  }, _react.default.createElement("li", {
+    className: classes.cardVariantsList
+  }, (_theme$components = theme.components) === null || _theme$components === void 0 ? void 0 : (_theme$components$car = _theme$components.cards) === null || _theme$components$car === void 0 ? void 0 : (_theme$components$car2 = _theme$components$car.variants) === null || _theme$components$car2 === void 0 ? void 0 : _theme$components$car2.map(function (colorScheme, variantIndex) {
+    return _react.default.createElement("ul", {
+      className: classes.cardVariantsListItem,
+      key: "card_variant_".concat(variantIndex)
+    }, _react.default.createElement(_ui.Checkbox, {
+      className: classes.cardVariantsCheckbox,
+      color: "primary",
+      variant: "outlined",
+      checked: variant === variantIndex,
+      onChange: onVariantChanged(variantIndex),
+      onMouseDown: handleMouseDown
+    }), _react.default.createElement(_palette_visual.PaletteVisual, {
+      classes: {
+        color: classes.cardVariantsColor,
+        tooltipPopper: classes.cardVariantsTooltipPopper
+      },
+      translations: _card_stub_translations.CARD_STUB_TRANSLATIONS,
+      palette: Object.entries(colorScheme || {}).reduce(function (acc, _ref3) {
+        var _ref4 = _slicedToArray(_ref3, 2),
+            key = _ref4[0],
+            colorName = _ref4[1];
+
+        return _objectSpread({}, acc, _defineProperty({}, key, {
+          500: (0, _styles_utils.getHexFromPaletteColor)(theme, colorName)
+        }));
+      }, {})
+    }));
+  })));
+};
+
+var CardStub = CardStubComponent;
 exports.CardStub = CardStub;

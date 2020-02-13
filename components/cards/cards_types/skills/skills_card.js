@@ -21,6 +21,8 @@ var _mapping = require("./data/mapping");
 
 var _contexts = require("../../../../utils/context/contexts");
 
+var _validator = require("./data/validator");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -39,8 +41,12 @@ var SkillsCardComponent = function SkillsCardComponent(_ref) {
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     onEdit((0, _mapping.mapSkillsToJsonResume)(editedData));
   }, []);
+  var isComplete = (0, _react.useMemo)(function () {
+    return (0, _validator.validateSkillsComplete)(mappedData);
+  }, [mappedData]);
   return _react.default.createElement(_profile_card.ProfileCard, {
     isEditingProfile: isEditing,
+    isComplete: isComplete,
     sides: {
       front: _skills_front.SkillsFront,
       back: _skills_back.SkillsBack

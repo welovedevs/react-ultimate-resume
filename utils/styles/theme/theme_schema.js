@@ -9,8 +9,6 @@ exports.THEME_SCHEMA = void 0;
 
 var yup = _interopRequireWildcard(require("yup"));
 
-var _this = void 0;
-
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -29,10 +27,11 @@ var SHADES_SCHEMA = Object.freeze(_objectSpread({}, [50, 100, 150, 200, 250, 300
 }));
 var isExistingColorInPalette = yup.string().test('is-existing-color-in-palette', function (args) {
   return "Color `".concat(args.value, "` must be present in palette.");
-}, function (value) {
+}, // eslint-disable-next-line func-names
+function (value) {
   var _this$options, _this$options$context, _this$options$context2;
 
-  return Boolean((_this$options = _this.options) === null || _this$options === void 0 ? void 0 : (_this$options$context = _this$options.context) === null || _this$options$context === void 0 ? void 0 : (_this$options$context2 = _this$options$context.palette) === null || _this$options$context2 === void 0 ? void 0 : _this$options$context2[value]);
+  return Boolean(this === null || this === void 0 ? void 0 : (_this$options = this.options) === null || _this$options === void 0 ? void 0 : (_this$options$context = _this$options.context) === null || _this$options$context === void 0 ? void 0 : (_this$options$context2 = _this$options$context.palette) === null || _this$options$context2 === void 0 ? void 0 : _this$options$context2[value]);
 });
 var CARD_VARIANT_SCHEMA = yup.object({
   backgroundColor: isExistingColorInPalette.required(),

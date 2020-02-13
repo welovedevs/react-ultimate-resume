@@ -21,6 +21,10 @@ var _profile_card_side = require("./profile_card_side/profile_card_side");
 
 var _profile_card_edit_button = require("./profile_card_edit_button/profile_card_edit_button");
 
+var _profile_card_edit_dialog = require("./profile_card_edit_dialog/profile_card_edit_dialog");
+
+var _profile_card_incomplete_popper = require("./profile_card_incomplete_popper/profile_card_incomplete_popper");
+
 var _profile_card_actions_types = require("../../../store/profile_card/profile_card_actions_types");
 
 var _profile_card_reducer = require("../../../store/profile_card/profile_card_reducer");
@@ -28,8 +32,6 @@ var _profile_card_reducer = require("../../../store/profile_card/profile_card_re
 var _use_callback_open = require("../../hooks/use_callback_open");
 
 var _profile_card_styles = require("./profile_card_styles");
-
-var _profile_card_edit_dialog = require("./profile_card_edit_dialog/profile_card_edit_dialog");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -66,7 +68,8 @@ var DEFAULT_TRANSITIONS_SPRING_PROPS = {
 };
 
 var ProfileCardComponent = function ProfileCardComponent(_ref) {
-  var data = _ref.data,
+  var children = _ref.children,
+      data = _ref.data,
       sides = _ref.sides,
       variant = _ref.variant,
       _ref$isTransitionUniq = _ref.isTransitionUnique,
@@ -75,10 +78,18 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       editDialog = _ref.editDialog,
       customTransitionsSpringProps = _ref.customTransitionsSpringProps,
       customEditAction = _ref.customEditAction,
+      isComplete = _ref.isComplete,
       sideProps = _ref.side;
   var classes = useStyles({
     variant: variant
   });
+
+  var _useState = (0, _react.useState)(),
+      _useState2 = _slicedToArray(_useState, 2),
+      containerElement = _useState2[0],
+      setContainerElement = _useState2[1];
+
+  var containerReference = (0, _react.useRef)();
 
   var _useCallbackOpen = (0, _use_callback_open.useCallbackOpen)(),
       _useCallbackOpen2 = _slicedToArray(_useCallbackOpen, 3),
@@ -101,6 +112,9 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       _useDebounce2 = _slicedToArray(_useDebounce, 1),
       debouncedSide = _useDebounce2[0];
 
+  (0, _react.useEffect)(function () {
+    setContainerElement(containerReference.current);
+  }, []);
   var transitionsSpringProps = (0, _react.useMemo)(function () {
     if (customTransitionsSpringProps) {
       if (typeof customTransitionsSpringProps === 'function') {
@@ -153,7 +167,11 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
     open: openEditDialog,
     onClose: setEditDialogClosed,
     data: data
+  }), _react.default.createElement(_profile_card_incomplete_popper.ProfileCardIncompletePopper, {
+    open: !isComplete,
+    anchorElement: containerElement
   }), _react.default.createElement(_ui.Card, {
+    containerRef: containerReference,
     customClasses: {
       container: classes.container
     },
@@ -165,7 +183,7 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
     setEditDialogOpened: setEditDialogOpened
   }), _react.default.createElement(ProfileCardContext.Provider, {
     value: contextData
-  }, transitions.map(function (_ref2) {
+  }, children, transitions.map(function (_ref2) {
     var item = _ref2.item,
         key = _ref2.key,
         props = _ref2.props;

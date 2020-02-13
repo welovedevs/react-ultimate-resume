@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DreamJobValidationSchema = void 0;
+exports.validateDreamjobComplete = exports.DreamJobValidationSchema = void 0;
 
 var Yup = _interopRequireWildcard(require("yup"));
 
@@ -40,3 +40,18 @@ var DreamJobValidationSchema = function DreamJobValidationSchema(formatMessage) 
 };
 
 exports.DreamJobValidationSchema = DreamJobValidationSchema;
+
+var validateDreamjobComplete = function validateDreamjobComplete(data) {
+  try {
+    Yup.object({
+      places: Yup.array().required(),
+      contractTypes: Yup.object().nullable().required()
+    }).validateSync(data);
+  } catch (e) {
+    return false;
+  }
+
+  return true;
+};
+
+exports.validateDreamjobComplete = validateDreamjobComplete;

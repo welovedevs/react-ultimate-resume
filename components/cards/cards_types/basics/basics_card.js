@@ -42,6 +42,9 @@ var BasicsCardComponent = function BasicsCardComponent(_ref) {
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     onEdit((0, _mapping.mapBasicsDataToJsonResume)(editedData));
   }, []);
+  var isComplete = (0, _react.useMemo)(function () {
+    return (0, _validator.validateBasicsComplete)(mappedData);
+  }, [mappedData]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card.ProfileCard, {
     data: mappedData,
     isEditingProfile: isEditing,
@@ -55,7 +58,8 @@ var BasicsCardComponent = function BasicsCardComponent(_ref) {
       back: _basics_back.BasicsBack
     },
     variant: variant,
-    side: side
+    side: side,
+    isComplete: isComplete
   }));
 };
 

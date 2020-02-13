@@ -5,25 +5,23 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CardsOrderer = void 0;
+exports.CardsOrderer = exports.Context = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
-
-var _reactIntl = require("react-intl");
 
 var _reactJss = require("react-jss");
 
 var _reactSortableHoc = require("react-sortable-hoc");
 
-var _ui = require("@wld/ui");
-
 var _cloneDeep = _interopRequireDefault(require("lodash/cloneDeep"));
 
-var _cards_orderer_styles = require("./cards_orderer_styles");
+var _ui = require("@wld/ui");
 
 var _card_stub = require("../card_stub/card_stub");
 
 var _cards_order = require("../../../../cards/utils/cards_order");
+
+var _cards_orderer_styles = require("./cards_orderer_styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31,15 +29,69 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 var useStyles = (0, _reactJss.createUseStyles)(_cards_orderer_styles.styles);
 var SortableCard = (0, _reactSortableHoc.SortableElement)((0, _react.memo)(_card_stub.CardStub));
-var SortableCards = (0, _reactSortableHoc.SortableContainer)(function (_ref) {
-  var _ref$items = _ref.items,
-      items = _ref$items === void 0 ? [] : _ref$items,
-      onItemChanged = _ref.onItemChanged;
+var Context = (0, _react.createContext)({});
+exports.Context = Context;
+
+var CardsOrdererComponent = function CardsOrdererComponent(_ref) {
+  var onChange = _ref.onChange,
+      _ref$value = _ref.value,
+      cardsOrder = _ref$value === void 0 ? _cards_order.DEFAULT_CARD_ORDER : _ref$value;
+  var classes = useStyles();
+
+  var _useState = (0, _react.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isSorting = _useState2[0],
+      setIsSorting = _useState2[1];
+
+  var onMove = (0, _react.useCallback)(function (_ref2) {
+    var oldIndex = _ref2.oldIndex,
+        newIndex = _ref2.newIndex;
+    setIsSorting(false);
+    onChange((0, _reactSortableHoc.arrayMove)((0, _cloneDeep.default)(cardsOrder), oldIndex, newIndex));
+  }, [cardsOrder]);
+  var onItemChanged = (0, _react.useCallback)(function (index, value) {
+    var newValue = (0, _cloneDeep.default)(cardsOrder);
+    newValue[index] = value;
+    onChange(newValue);
+  }, [cardsOrder]);
+  var handleSortStart = (0, _react.useCallback)(function () {
+    return setIsSorting(true);
+  }, []);
+  return _react.default.createElement("div", {
+    className: classes.container
+  }, _react.default.createElement(Context.Provider, {
+    value: {
+      isSorting: isSorting
+    }
+  }, _react.default.createElement(SortableCards, {
+    lockToContainerEdges: true,
+    axis: "xy",
+    helperClass: classes.sortableHelper,
+    items: cardsOrder,
+    onItemChanged: onItemChanged,
+    distance: 15,
+    onSortStart: handleSortStart,
+    onSortEnd: onMove,
+    classes: classes
+  })));
+};
+
+var SortableCards = (0, _reactSortableHoc.SortableContainer)(function (_ref3) {
+  var _ref3$items = _ref3.items,
+      items = _ref3$items === void 0 ? [] : _ref3$items,
+      onItemChanged = _ref3.onItemChanged;
   var classes = useStyles();
   return _react.default.createElement(_ui.List, {
-    component: "nav",
     className: classes.cardsContainer
   }, items.map(function (item, index) {
     return _react.default.createElement(SortableCard, {
@@ -52,46 +104,5 @@ var SortableCards = (0, _reactSortableHoc.SortableContainer)(function (_ref) {
     });
   }));
 });
-
-var CardsOrderer = function CardsOrderer(_ref2) {
-  var onChange = _ref2.onChange,
-      _ref2$value = _ref2.value,
-      cardsOrder = _ref2$value === void 0 ? _cards_order.DEFAULT_CARD_ORDER : _ref2$value;
-  var classes = useStyles();
-  var onMove = (0, _react.useCallback)(function (_ref3) {
-    var oldIndex = _ref3.oldIndex,
-        newIndex = _ref3.newIndex;
-    onChange((0, _reactSortableHoc.arrayMove)((0, _cloneDeep.default)(cardsOrder), oldIndex, newIndex));
-  }, [cardsOrder]);
-  var onItemChanged = (0, _react.useCallback)(function (index, value) {
-    console.log({
-      index: index,
-      value: value
-    });
-    var newValue = (0, _cloneDeep.default)(cardsOrder);
-    newValue[index] = value;
-    onChange(newValue);
-  }, [cardsOrder]);
-  return _react.default.createElement("div", null, _react.default.createElement(_ui.Typography, {
-    customClasses: {
-      container: classes.title
-    },
-    component: "h3",
-    variant: "h4",
-    color: "dark"
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "CardsOrderer.field.title",
-    defaultMessage: "Order your profile cards"
-  })), _react.default.createElement(SortableCards, {
-    lockToContainerEdges: true,
-    axis: "xy",
-    helperClass: classes.sortableHelper,
-    onSortEnd: onMove,
-    items: cardsOrder,
-    onItemChanged: onItemChanged,
-    distance: 15,
-    classes: classes
-  }));
-};
-
+var CardsOrderer = CardsOrdererComponent;
 exports.CardsOrderer = CardsOrderer;

@@ -19,9 +19,15 @@ var _projects_back = require("./projects_back/projects_back");
 
 var _add_button = require("./add_button/add_button");
 
+var _project_dialog = require("./project_dialog/project_dialog");
+
+var _use_callback_open = require("../../../hooks/use_callback_open");
+
 var _mapping = require("./data/mapping");
 
 var _contexts = require("../../../../utils/context/contexts");
+
+var _validator = require("./data/validator");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46,6 +52,8 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var ProjectsCardComponent = function ProjectsCardComponent(_ref) {
+  var _mappedData$projects, _mappedData$projects2;
+
   var variant = _ref.variant,
       side = _ref.side;
 
@@ -62,18 +70,31 @@ var ProjectsCardComponent = function ProjectsCardComponent(_ref) {
       mappedData = _useState2[0],
       setMappedData = _useState2[1];
 
+  var _useCallbackOpen = (0, _use_callback_open.useCallbackOpen)(),
+      _useCallbackOpen2 = _slicedToArray(_useCallbackOpen, 3),
+      openNewProjectDialog = _useCallbackOpen2[0],
+      setNewProjectDialogOpened = _useCallbackOpen2[1],
+      setNewProjectDialogClosed = _useCallbackOpen2[2];
+
   (0, _react.useEffect)(function () {
     setMappedData(defaultMappedData);
   }, [defaultMappedData]);
+  var isComplete = (0, _react.useMemo)(function () {
+    return (0, _validator.validateProjectsComplete)(mappedData);
+  }, [mappedData]);
   var handleAddButtonClick = (0, _react.useCallback)(function () {
     setMappedData({
       projects: [].concat(_toConsumableArray(mappedData.projects), [{
-        id: (0, _v.default)()
+        id: (0, _v.default)(),
+        name: 'Nouveau projet',
+        description: 'Description du nouveau projet...'
       }])
     });
+    setNewProjectDialogOpened();
   }, [mappedData]);
   return _react.default.createElement(_profile_card.ProfileCard, {
     data: mappedData,
+    isComplete: isComplete,
     isEditingProfile: isEditing,
     sides: {
       front: _projects_front.ProjectsFront,
@@ -85,7 +106,11 @@ var ProjectsCardComponent = function ProjectsCardComponent(_ref) {
       title: "Ajouter un projet",
       onClick: handleAddButtonClick
     })
-  });
+  }, _react.default.createElement(_project_dialog.ProjectDialog, {
+    open: openNewProjectDialog,
+    onClose: setNewProjectDialogClosed,
+    project: mappedData === null || mappedData === void 0 ? void 0 : (_mappedData$projects = mappedData.projects) === null || _mappedData$projects === void 0 ? void 0 : _mappedData$projects[(mappedData === null || mappedData === void 0 ? void 0 : (_mappedData$projects2 = mappedData.projects) === null || _mappedData$projects2 === void 0 ? void 0 : _mappedData$projects2.length) - 1]
+  }));
 };
 
 var ProjectsCard = ProjectsCardComponent;

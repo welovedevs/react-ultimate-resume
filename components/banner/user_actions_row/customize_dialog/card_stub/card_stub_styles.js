@@ -7,11 +7,39 @@ exports.styles = void 0;
 
 var _styles_utils = require("../../../../../utils/styles/styles_utils");
 
+var CARD_DIMENSION = 200;
+
 var styles = function styles(theme) {
+  var palette = theme.palette,
+      spacing = theme.miscellaneous.spacing;
   return {
-    wrapper: {
-      margin: theme.miscellaneous.spacing,
-      width: 150
+    container: {
+      position: 'relative'
+    },
+    popper: {
+      zIndex: 130200
+    },
+    cardVariantsTooltipPopper: {
+      extend: 'popper'
+    },
+    cardVariantsList: {
+      listStyle: 'none'
+    },
+    cardVariantsCheckbox: {
+      marginRight: spacing * 4,
+      borderRadius: '50%'
+    },
+    cardVariantsListItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: 0
+    },
+    cardVariantsColor: {
+      height: 30,
+      width: 30,
+      margin: [0, spacing],
+      borderRadius: '50%',
+      border: [1, 'solid', palette.dark[100]]
     },
     card: function card(_ref) {
       var variant = _ref.variant;
@@ -21,25 +49,20 @@ var styles = function styles(theme) {
           color = _getColorsFromCardVar.color;
 
       return {
-        width: 150,
-        height: 150,
+        width: CARD_DIMENSION,
+        height: CARD_DIMENSION,
         color: (0, _styles_utils.getHexFromPaletteColor)(theme, color),
+        margin: spacing,
+        userSelect: 'none',
         '& .to-color': {
-          transition: 'fill 500ms',
+          transition: 'fill 250ms',
           fill: 'currentColor'
         },
         '& .to-fill': {
-          transition: 'fill 500ms',
+          transition: 'fill 250ms',
           fill: [(0, _styles_utils.getHexFromPaletteColor)(theme, backgroundColor), '!important']
         }
       };
-    },
-    colorSquare: {
-      width: theme.miscellaneous.spacing * 3,
-      height: theme.miscellaneous.spacing * 3,
-      borderRadius: theme.miscellaneous.spacing,
-      margin: [0, theme.miscellaneous.spacing],
-      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.33)'
     }
   };
 };

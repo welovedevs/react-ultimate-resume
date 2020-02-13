@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.interestedByValidationSchema = void 0;
+exports.validateInterestedByComplete = exports.interestedByValidationSchema = void 0;
 
 var Yup = _interopRequireWildcard(require("yup"));
 
@@ -24,3 +24,17 @@ var interestedByValidationSchema = function interestedByValidationSchema(formatM
 };
 
 exports.interestedByValidationSchema = interestedByValidationSchema;
+
+var validateInterestedByComplete = function validateInterestedByComplete(data) {
+  try {
+    Yup.object({
+      interestedBy: Yup.string().required()
+    }).validateSync(data);
+  } catch (e) {
+    return false;
+  }
+
+  return true;
+};
+
+exports.validateInterestedByComplete = validateInterestedByComplete;
