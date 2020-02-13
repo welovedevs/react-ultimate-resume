@@ -10,7 +10,7 @@ import { BasicsCardEditDialog } from './basics_edit_dialog/basic_edit_dialog';
 import { BasicsValidationSchema } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
-const BasicsCardComponent = ({ variant, side }) => {
+const BasicsCardComponent = ({ variant, side, isComplete }) => {
     const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapJsonResumeToBasicData(data), [data]);
 
@@ -34,6 +34,7 @@ const BasicsCardComponent = ({ variant, side }) => {
                 }}
                 variant={variant}
                 side={side}
+                isComplete={isComplete}
             />
         </>
     );
