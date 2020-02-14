@@ -1,8 +1,11 @@
-import { withCustomVerticalScrollbar } from '../../../../../../utils/styles/styles_utils';
+import { createScreenWidthMediaQuery, withCustomVerticalScrollbar } from '../../../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
-    const { palette, miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        palette,
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: {
             display: 'flex',
             height: '100%'
@@ -28,6 +31,11 @@ export const styles = (theme) => {
         },
         selectedTechnologies: {
             flex: 0.75
+        },
+        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
+            allTechnologies: {
+                width: '100%'
+            }
         }
-    });
+    };
 };

@@ -1,3 +1,5 @@
+import { createScreenWidthMediaQuery } from '../../../../../../utils/styles/styles_utils';
+
 export const styles = theme => {
     const {
         miscellaneous: { spacing }
@@ -17,7 +19,7 @@ export const styles = theme => {
 
             marginLeft: spacing
         },
-        [`@media screen and (max-width: ${theme.screenSizes.small}px)`]: {
+        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
             datePicker: {
                 marginLeft: 'unset'
             }

@@ -1,3 +1,5 @@
+import { createScreenWidthMediaQuery } from '../../../../../../../utils/styles/styles_utils';
+
 export const styles = theme => ({
     list: {
         margin: 0,
@@ -9,7 +11,7 @@ export const styles = theme => ({
         listStyle: 'none',
         zIndex: 2120
     },
-    [`@media screen and (max-width: ${theme.screenSizes.small}px)`]: {
+    [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
         list: {
             justifyContent: 'center'
         }

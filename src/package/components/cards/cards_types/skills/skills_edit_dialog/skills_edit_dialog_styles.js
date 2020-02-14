@@ -1,3 +1,5 @@
+import { createScreenWidthMediaQuery } from '../../../../../utils/styles/styles_utils';
+
 export const styles = theme => {
     const {
         palette,
@@ -16,6 +18,11 @@ export const styles = theme => {
             position: 'absolute',
             bottom: 0,
             right: 0
+        },
+        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
+            actions: {
+                position: 'unset'
+            }
         }
     };
 };

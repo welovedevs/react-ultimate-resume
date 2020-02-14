@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { useFormikContext } from 'formik';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Typography } from '@wld/ui';
 import uuid from 'uuid/v4';
 
@@ -14,6 +15,9 @@ import { styles } from './skills_edit_form_styles';
 const useStyles = createUseStyles(styles);
 
 const SkillsEditFormComponent = ({ helpers: { handleValueChange } }) => {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
+
     const classes = useStyles();
     const { values, errors: validationErrors } = useFormikContext();
 
@@ -51,21 +55,23 @@ const SkillsEditFormComponent = ({ helpers: { handleValueChange } }) => {
                     technologiesList: classes.technologiesList
                 }}
             />
-            <div className={classes.divider} />
-            <div className={classes.column}>
-                {globalError && (
-                    <Typography color="danger" component="p">
-                        {errors}
-                    </Typography>
-                )}
-                <SelectedTechnologies
-                    className={classes.selectedTechnologies}
-                    items={values.skills}
-                    onDelete={deleteItem}
-                    onChange={onArrayChange}
-                    onItemChange={onItemChange}
-                />
-            </div>
+            {!isMobile && <div className={classes.divider} />}
+            {!isMobile && (
+                <div className={classes.column}>
+                    {globalError && (
+                        <Typography color="danger" component="p">
+                            {errors}
+                        </Typography>
+                    )}
+                    <SelectedTechnologies
+                        className={classes.selectedTechnologies}
+                        items={values.skills}
+                        onDelete={deleteItem}
+                        onChange={onArrayChange}
+                        onItemChange={onItemChange}
+                    />
+                </div>
+            )}
         </div>
     );
 };

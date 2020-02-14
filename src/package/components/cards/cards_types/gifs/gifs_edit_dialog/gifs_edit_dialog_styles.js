@@ -1,3 +1,5 @@
+import { createScreenWidthMediaQuery } from '../../../../../utils/styles/styles_utils';
+
 export const styles = theme => {
     const { palette } = theme;
     return {
@@ -7,7 +9,7 @@ export const styles = theme => {
             backgroundColor: [palette.light[800], '!important']
         },
         dialogRoot: {},
-        [`@media screen and (max-width: ${theme.screenSizes.small}px)`]: {
+        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
             dialogRoot: {
                 display: 'flex',
                 flexDirection: 'column',

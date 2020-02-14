@@ -1,4 +1,5 @@
 import {
+    createScreenWidthMediaQuery,
     getContrastDefaultColorFromPaletteColor,
     getHexFromPaletteColor
 } from '../../../../../utils/styles/styles_utils';
@@ -110,12 +111,12 @@ export const styles = theme => {
                 fill: 'none !important'
             }
         },
-        '@media screen and (max-width: 900px)': {
+        [createScreenWidthMediaQuery('max-width', 900)]: {
             listItem: {
                 flexWrap: 'wrap'
             }
         },
-        [`@media screen and (max-width: ${theme.screenSizes.small}px)`]: {
+        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
             itemContainer: {
                 flexDirection: 'column',
                 alignItems: 'unset'

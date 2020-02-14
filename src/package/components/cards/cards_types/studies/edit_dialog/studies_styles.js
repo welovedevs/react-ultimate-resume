@@ -1,3 +1,5 @@
+import { createScreenWidthMediaQuery } from '../../../../../utils/styles/styles_utils';
+
 export const styles = theme => {
     const {
         palette,
@@ -9,6 +11,10 @@ export const styles = theme => {
             display: 'flex',
             alignItems: 'center',
             margin: [spacing * 2, 0]
+        },
+        header: {
+            display: 'flex',
+            alignItems: 'unset'
         },
         divider: {
             margin: [0, spacing * 2],
@@ -39,19 +45,49 @@ export const styles = theme => {
             flexDirection: 'column',
             margin: spacing
         },
-        sortableHelper: {
-            zIndex: 1301
-        },
         button: {
             padding: spacing * 2,
             margin: spacing * 2
         },
-        listItemError: {},
+        warningIcon: {
+            marginLeft: spacing * 2
+        },
+        listItemError: {
+            backgroundColor: [palette.danger[50], '!important']
+        },
+        sortableHelper: {
+            zIndex: 1301
+        },
+        arrowContainer: {
+            display: 'flex',
+            alignItems: 'center'
+        },
+        smallTitle: {
+            marginLeft: spacing * 2,
+            textOverflow: 'ellipsis',
+            wordWrap: 'break-word',
+            overflow: 'hidden',
+            maxHeight: 20 * 2,
+            lineHeight: '20px',
+            animation: 'fade-in-translate-left 500ms',
+            display: '-webkit-box',
+            '-webkit-line-clamp': 2,
+            '-webkit-box-orient': 'vertical'
+        },
         removeButton: {
             display: 'flex'
         },
         removeIcon: {
             fill: palette.danger[500]
+        },
+        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
+            itemContainer: {
+                flexDirection: 'column',
+                alignItems: 'unset'
+            },
+            fieldGroup: {
+                flexDirection: 'column'
+            }
         }
     };
 };

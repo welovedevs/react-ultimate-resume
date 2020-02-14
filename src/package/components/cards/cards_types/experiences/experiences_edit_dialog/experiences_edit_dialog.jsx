@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { animated, useSpring, useTransition } from 'react-spring';
 import { Twemoji } from 'react-emoji-render';
@@ -11,6 +11,7 @@ import moment from 'moment';
 import keyBy from 'lodash/keyBy';
 import uuid from 'uuid/v4';
 
+import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
 import { Checkbox, List, ListItem, TextField, Tooltip, Typography } from '@wld/ui';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
@@ -142,6 +143,8 @@ const ExperienceItem = SortableElement(
         experienceIndex: index
     }) => {
         const { formatMessage } = useIntl();
+        const theme = useTheme();
+        const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
 
         const { rotate } = useSpring({
             rotate: folded ? -90 : 0
@@ -167,7 +170,7 @@ const ExperienceItem = SortableElement(
                             <DeleteIcon className={classes.removeIcon} />
                         </button>
                     </Tooltip>
-                    <div className={classes.divider} />
+                    {!isMobile && <div className={classes.divider} />}
                     <ListItem
                         button
                         className={cn(classes.listItem, hasError && classes.listItemError)}
@@ -300,6 +303,7 @@ const ContentFields = ({ fieldErrors, id, formatMessage, experience, onChange, c
                 <div className={cn(classes.fieldRow, classes.yearMonthRow)}>
                     <div className={classes.yearMonthWrapper}>
                         <YearMonth
+                            textfieldProps={{ fullWidth: true }}
                             variant="flat"
                             value={experience.startDate}
                             onChange={handleStartDate}

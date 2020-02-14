@@ -1,3 +1,5 @@
+import { createScreenWidthMediaQuery } from '../../../../../utils/styles/styles_utils';
+
 export const styles = theme => {
     const {
         palette,
@@ -144,9 +146,28 @@ export const styles = theme => {
                 marginLeft: spacing
             }
         },
-        '@media screen and (max-width: 730px)': {
+        [createScreenWidthMediaQuery('max-width', 730)]: {
             content: {
                 marginLeft: spacing
+            }
+        },
+        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
+            experience: {
+                padding: '0 !important'
+            },
+            divider: {
+                margin: [0, spacing]
+            },
+            yearMonthWrapper: {
+                flexDirection: 'column',
+                margin: spacing,
+                '&> div': {
+                    width: '100%',
+                    marginBottom: spacing
+                }
+            },
+            withMarginStillEmployedFieldRow: {
+                margin: [spacing * 2, 0, 0, 0]
             }
         }
     };

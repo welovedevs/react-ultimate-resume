@@ -1,4 +1,4 @@
-import { withCustomVerticalScrollbar } from '../../../../../utils/styles/styles_utils';
+import { createScreenWidthMediaQuery, withCustomVerticalScrollbar } from '../../../../../utils/styles/styles_utils';
 
 export const styles = theme => {
     const {
@@ -18,7 +18,7 @@ export const styles = theme => {
         headrow: {
             display: 'flex'
         },
-        [`@media screen and (max-width: ${theme.screenSizes.small}px)`]: {
+        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
             headrow: {
                 flexDirection: 'column'
             }

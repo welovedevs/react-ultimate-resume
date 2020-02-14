@@ -1,4 +1,5 @@
 import {
+    createScreenWidthMediaQuery,
     flex,
     getContrastDefaultColorFromPaletteColor,
     getHexFromPaletteColor
@@ -6,9 +7,11 @@ import {
 
 const { center } = flex;
 
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: {
             display: 'flex',
             flexDirection: 'column'
@@ -65,6 +68,16 @@ export const styles = (theme) => {
             color: getHexFromPaletteColor(theme, getContrastDefaultColorFromPaletteColor(theme, 'primary')),
             textAlign: 'center',
             ...center
+        },
+        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
+            textField: {
+                minWidth: 'unset'
+            },
+            technologiesList: {
+                justifyContent: 'center',
+                marginLeft: 'unset'
+
+            }
         }
-    });
+    };
 };
