@@ -1,4 +1,8 @@
-import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
+import {
+    createScreenWidthMediaQuery,
+    getColorsFromCardVariant,
+    getHexFromPaletteColor
+} from '../../../../../utils/styles/styles_utils';
 
 export const styles = theme => {
     const {
@@ -16,6 +20,13 @@ export const styles = theme => {
             color: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).color),
             marginTop: spacing * 3,
             fontWeight: 500
-        })
+        }),
+        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
+            mainTypography: {
+                maxWidth: '80%',
+                fontSize: 36,
+                lineHeight: 1.3
+            }
+        }
     };
 };

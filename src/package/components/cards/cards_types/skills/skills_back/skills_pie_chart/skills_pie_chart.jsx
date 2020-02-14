@@ -1,24 +1,21 @@
 import React, { useMemo } from 'react';
 import { animated } from 'react-spring';
-import { useTheme } from 'react-jss';
-import { Cell, Pie, PieChart } from 'recharts';
+import { createUseStyles, useTheme } from 'react-jss';
+import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts';
 import chroma from 'chroma-js';
+import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
 
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../../utils/styles/styles_utils';
 import { CustomLabel } from '../utils/skills_back_recharts_utils';
+import { styles } from './skills_pie_chart_styles';
 
-const GRAPH_HEIGHT = 250;
-const GRAPH_PIE_RADIUS = 100;
+// const GRAPH_PIE_RADIUS = 100;
 
-const SkillsPieChart = ({
-    data,
-    variant,
-    springOnOpenOpacityProps,
-    springOnScrollOpacityProps,
-    onAnimationEnd,
-    width: widthProps
-}) => {
+const useStyles = createUseStyles(styles);
+const SkillsPieChart = ({ data, variant, springOnOpenOpacityProps, springOnScrollOpacityProps, onAnimationEnd }) => {
+    const classes = useStyles();
     const theme = useTheme();
+    const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
 
     const { contentColor, backgroundColor } = useMemo(
         () => ({
@@ -32,33 +29,35 @@ const SkillsPieChart = ({
         [contentColor, backgroundColor]
     );
 
-    const width = widthProps || theme?.components?.cards?.width;
-
     return (
-        <animated.div style={{ opacity: springOnScrollOpacityProps && springOnScrollOpacityProps.opacity }}>
-            <PieChart width={width} height={GRAPH_HEIGHT}>
-                <Pie
-                    dataKey="value"
-                    animationDuration={750}
-                    labelLine={false}
-                    label={shapeProps => (
-                        <CustomLabel
-                            customColor={contentColor}
-                            springProps={springOnOpenOpacityProps}
-                            {...shapeProps}
-                        />
-                    )}
-                    data={data}
-                    cx={width / 2}
-                    cy={GRAPH_HEIGHT / 2}
-                    outerRadius={GRAPH_PIE_RADIUS}
-                    onAnimationEnd={onAnimationEnd}
-                >
-                    {data.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={colorPalette[index]} stroke={backgroundColor} />
-                    ))}
-                </Pie>
-            </PieChart>
+        <animated.div
+            // ref={wrapperRef}
+            className={classes.wrapper}
+            style={{ opacity: springOnScrollOpacityProps && springOnScrollOpacityProps.opacity }}
+        >
+            <ResponsiveContainer height="100%" width="100%">
+                <PieChart>
+                    <Pie
+                        dataKey="value"
+                        animationDuration={750}
+                        labelLine={false}
+                        label={shapeProps => (
+                            <CustomLabel
+                                customColor={contentColor}
+                                springProps={springOnOpenOpacityProps}
+                                {...shapeProps}
+                            />
+                        )}
+                        data={data}
+                        outerRadius={isMobile ? '50%' : undefined}
+                        onAnimationEnd={onAnimationEnd}
+                    >
+                        {data.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={colorPalette[index]} stroke={backgroundColor} />
+                        ))}
+                    </Pie>
+                </PieChart>
+            </ResponsiveContainer>
         </animated.div>
     );
 };

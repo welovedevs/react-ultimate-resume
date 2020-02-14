@@ -5,6 +5,7 @@ export const styles = theme => ({
         color: getHexFromPaletteColor(theme, overrideColor || getColorsFromCardVariant(theme, variant).color),
         fontWeight: 700,
         fontSize: 64,
-        lineHeight: 1.1
+        lineHeight: 1.1,
+        padding: [theme.miscellaneous.spacing * 3]
     })
 });

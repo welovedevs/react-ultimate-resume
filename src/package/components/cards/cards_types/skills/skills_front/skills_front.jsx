@@ -37,7 +37,7 @@ const SkillsFrontComponent = ({ data }) => {
                         }
                         className={classes.logo}
                     />
-                    <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
+                    <ProfileCardFrontTypography classes={{ container: classes.typography }}>
                         <FormattedMessage
                             id="Skills.front.title"
                             defaultMessage="I mainly write {techno} stuff"

@@ -1,8 +1,13 @@
 import React from 'react';
 
 import { animated } from 'react-spring';
+import { createUseStyles } from 'react-jss';
+import { styles } from './skills_back_recharts_styles';
+
+const useStyles = createUseStyles(styles);
 
 const CustomLabel = props => {
+    const classes = useStyles();
     const RADIAN = Math.PI / 180;
     const { cx, cy, midAngle, customColor, outerRadius, springProps, name } = props;
     const sin = Math.sin(-RADIAN * midAngle);
@@ -27,6 +32,7 @@ const CustomLabel = props => {
                     textAnchor={textAnchor}
                     fill={customColor}
                     fontWeight="500"
+                    className={classes.text}
                 >
                     {name}
                 </text>

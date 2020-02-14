@@ -1,16 +1,14 @@
 import { createScreenWidthMediaQuery } from '../../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
+export const styles = theme => {
     const {
         components: {
-            cards: {
-                width
-            }
+            cards: { width }
         },
         screenSizes,
         miscellaneous: { spacing }
     } = theme;
-    return ({
+    return {
         container: {
             flexDirection: 'column'
         },
@@ -21,9 +19,8 @@ export const styles = (theme) => {
             paddingTop: spacing * 2
         },
         mainTypography: {},
-        [createScreenWidthMediaQuery('max-width', width + (spacing * 2) * 2)]: {
+        [createScreenWidthMediaQuery('max-width', width + spacing * 2 * 2)]: {
             mainTypography: {
-                fontSize: 42
             },
             location: {
                 fontSize: 24
@@ -31,11 +28,12 @@ export const styles = (theme) => {
         },
         [createScreenWidthMediaQuery('max-width', screenSizes.xs)]: {
             mainTypography: {
-                fontSize: 32
+                fontSize: 28,
+                paddingBottom: 0
             },
             location: {
                 fontSize: 20
             }
         }
-    });
+    };
 };

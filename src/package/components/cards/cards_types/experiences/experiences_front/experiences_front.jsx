@@ -31,7 +31,7 @@ const ExperiencesFrontComponent = ({ data }) => {
             <ProfileCardPaddedFront>
                 <CenterContentContainer customClasses={{ container: classes.container }}>
                     <div className={classes.textsContainer}>
-                        <ProfileCardFrontTypography customClasses={{ container: classes.mainTypography }}>
+                        <ProfileCardFrontTypography classes={{ container: classes.mainTypography }}>
                             {title}
                         </ProfileCardFrontTypography>
                     </div>

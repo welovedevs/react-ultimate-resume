@@ -26,7 +26,7 @@ const LanguagesFrontComponent = ({ data }) => {
     return (
         <>
             <CenterContentContainer>
-                <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
+                <ProfileCardFrontTypography classes={{ container: classes.typography }}>
                     <FormattedMessage
                         id="Languages.front.content"
                         defaultMessage="I speak {languagesNode}"

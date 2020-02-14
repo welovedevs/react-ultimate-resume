@@ -22,7 +22,7 @@ const InterestedByFrontComponent = ({
         <ProfileCardPaddedFront customClasses={{ container: cn(classes.container, customClasses.container) }}>
             <CenterContentContainer>
                 <ProfileCardFrontTypography
-                    customClasses={{
+                    classes={{
                         container: classes.typography
                     }}
                     {...profileCardFrontTypographyProps}

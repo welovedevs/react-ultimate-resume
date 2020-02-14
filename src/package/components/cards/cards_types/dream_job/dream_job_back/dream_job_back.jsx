@@ -27,15 +27,15 @@ const DreamJobBackComponent = ({ data }) => {
     const classes = useStyles();
     const { places, perks, salary, remoteFrequency, contractTypes } = data;
     return (
-        <ProfileCardAnimatedBack title="Dream job">
+        <ProfileCardAnimatedBack
+            title={<FormattedMessage id="Dreamjob.Back.Title" defaultMessage="Dream job" />}
+        >
             <ProfileCardSection>
                 <DreamJobLocations places={places} remoteFrequency={remoteFrequency} classes={classes} />
             </ProfileCardSection>
             <ProfileCardSection>
                 <ProfileCardSectionTitle>
-                    <ProfileCardSectionTitle>
-                        <FormattedMessage id="Dreamjob.Back.Salary.Title" defaultMessage="Ideal yearly salary" />
-                    </ProfileCardSectionTitle>
+                    <FormattedMessage id="Dreamjob.Back.Salary.Title" defaultMessage="Ideal yearly salary" />
                 </ProfileCardSectionTitle>
                 <ProfileCardSectionText>{salary}</ProfileCardSectionText>
             </ProfileCardSection>

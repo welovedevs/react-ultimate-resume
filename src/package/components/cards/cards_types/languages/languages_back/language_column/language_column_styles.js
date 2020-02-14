@@ -1,3 +1,5 @@
+import { createScreenWidthMediaQuery } from '../../../../../../utils/styles/styles_utils';
+
 const MIN = 30;
 const MAX = 100;
 
@@ -10,7 +12,7 @@ export const styles = theme => {
         // Offset value = (((OldValue - OldMin) * (NewMax - NewMin)) / (OldMax - OldMin)) + NewMin
         container: ({ value, color, itemsSize }) => ({
             height: `${((value - 0) * (MAX - MIN)) / (MAX - 0) + MIN}%`,
-            width: Math.min(90, (theme.components.cards.width * 0.7) / itemsSize),
+            width: `${100 / itemsSize}%`,
             backgroundColor: color,
             color: '#fff',
             display: 'flex',
@@ -20,6 +22,11 @@ export const styles = theme => {
         }),
         typography: {
             transform: 'rotate(-90deg)'
+        },
+        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
+            columnsContainer: {
+                paddingTop: theme.miscellaneous.spacing * 2
+            }
         }
     };
 };

@@ -10,7 +10,7 @@ import { ProfileCardFrontTypography } from '../../../../commons/profile_card/pro
 import { ProfileCardActions } from '../../../../commons/profile_card/profile_card_actions/profile_card_actions';
 import { ProfileCardButton } from '../../../../commons/profile_card/profile_card_button/profile_card_button';
 
-import { ReactComponent as SchoolLogo } from '../../../../../assets/icons/dev_only/42.svg';
+import { ReactComponent as SchoolLogo } from '../../../../../assets/icons/dev_only/school.svg';
 
 import { styles } from './studies_front_styles';
 
@@ -23,7 +23,7 @@ const StudiesFrontComponent = ({ data: { education: data } }) => {
             <ProfileCardPaddedFront>
                 <CenterContentContainer customClasses={{ container: classes.container }}>
                     <ProfileCardFrontVector customClasses={{ container: classes.logo }} vector={SchoolLogo} />
-                    <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
+                    <ProfileCardFrontTypography classes={{ container: classes.typography }}>
                         <FormattedMessage
                             id="Studies.title"
                             defaultMessage="I gratuated from {schoolName}"

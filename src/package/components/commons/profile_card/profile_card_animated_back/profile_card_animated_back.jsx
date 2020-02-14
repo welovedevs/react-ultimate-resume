@@ -54,6 +54,7 @@ const ProfileCardAnimatedBackComponent = ({ title, children: content, customClas
                     opacity: titleSpringProps.opacity,
                     transform: titleSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION)
                 }}
+                customClasses={{ typography: cn(classes.title, customClasses.title) }}
             >
                 {title}
             </ProfileCardTitle>

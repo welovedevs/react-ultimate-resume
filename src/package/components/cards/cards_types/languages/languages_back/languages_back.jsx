@@ -50,7 +50,11 @@ const LanguagesBackComponent = ({ data }) => {
     return (
         <ProfileCardAnimatedBack
             title="Languages"
-            customClasses={{ content: classes.content, contentAnimated: classes.contentAnimated }}
+            customClasses={{
+                content: classes.content,
+                contentAnimated: classes.contentAnimated,
+                title: classes.cardTitle
+            }}
         >
             <div className={classes.columnsContainer}>
                 {transitions.map(({ item, key, props }, index) => (

@@ -23,7 +23,7 @@ const SoundtrackFrontComponent = () => {
             <ProfileCardPaddedFront>
                 <CenterContentContainer customClasses={{ container: classes.container }}>
                     <ProfileCardFrontVector customClasses={{ container: classes.logo }} vector={SpotifyLogo} />
-                    <ProfileCardFrontTypography customClasses={{ container: classes.typography }}>
+                    <ProfileCardFrontTypography classes={{ container: classes.typography }}>
                         <FormattedMessage id="Soundtrack.front.title" defaultMessage="Discover my favourite tracks" />
                     </ProfileCardFrontTypography>
                 </CenterContentContainer>

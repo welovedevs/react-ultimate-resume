@@ -9,7 +9,7 @@ import { mapSkillsFromJsonResume, mapSkillsToJsonResume } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { SkillsValidationSchema, validateSkillsComplete } from './data/validator';
 
-const SkillsCardComponent = ({ variant }) => {
+const SkillsCardComponent = ({ variant, side }) => {
     const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);
 
     const mappedData = useMemo(() => mapSkillsFromJsonResume(data), [data]);
@@ -34,7 +34,7 @@ const SkillsCardComponent = ({ variant }) => {
             }}
             data={mappedData}
             variant={variant}
-            side="back"
+            side={side}
         />
     );
 };
