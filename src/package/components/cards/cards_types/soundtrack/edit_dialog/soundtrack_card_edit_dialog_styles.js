@@ -1,10 +1,13 @@
-import { flex } from '../../../../../utils/styles/styles_utils';
+import { createScreenWidthMediaQuery, flex } from '../../../../../utils/styles/styles_utils';
 
 const { center } = flex;
 
-export const styles = (theme) => {
-    const { palette, miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        palette,
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: {
             display: 'flex',
             flexDirection: 'column'
@@ -12,13 +15,12 @@ export const styles = (theme) => {
         divider: {
             height: 1,
             width: '100%',
-            maxWidth: 300,
             margin: [0, 0, spacing * 5, 0],
             backgroundColor: palette.dark[50]
         },
         iframeContainer: {
             height: 375,
-            width: 600,
+            width: '100%',
             backgroundColor: palette.dark[50],
             borderRadius: 5,
             overflow: 'hidden',
@@ -31,6 +33,15 @@ export const styles = (theme) => {
             left: 0,
             height: '100%',
             width: '100%'
+        },
+        field: {},
+        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
+            divider: {
+                margin: [0, 0, spacing * 2, 0]
+            },
+            field: {
+                margin: [0, 0, spacing * 2, 0]
+            }
         }
-    });
+    };
 };

@@ -61,13 +61,16 @@ const Content = () => {
     return (
         <div className={classes.container}>
             <EditDialogField
+                classes={{
+                    container: classes.field
+                }}
                 error={errors.codingReason}
-                title={(
+                title={
                     <FormattedMessage
                         id="Soundtrack.editDialog.embedUrl.title"
                         defaultMessage="Enter a Spotify embed URL."
                     />
-                  )}
+                }
             >
                 <TextField onChange={handleChange} name="embedUrl" value={embedUrl} variant="flat" fullWidth />
             </EditDialogField>
