@@ -44,6 +44,9 @@ var styles = function styles(theme) {
     container: _objectSpread({
       minHeight: '100%',
       width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
       margin: 0,
       padding: [0, 0, spacing * 6, 0]
     }, ['fontFamily', 'backgroundColor', 'color'].reduce(function (acc, key) {
