@@ -28,24 +28,27 @@ var _studies_front_styles = require("./studies_front_styles");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SchoolLogo = function SchoolLogo(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("path", {
-    d: "M144 41l42-41h-42v41z",
-    fill: "#FCFCFC"
+  return _react.default.createElement("svg", props, _react.default.createElement("g", {
+    stroke: "#fff",
+    fill: "none",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, _react.default.createElement("path", {
+    d: "M14.167 39.167h-12.5a.834.834 0 0 1-.834-.834v-15c0-.46.374-.833.834-.833H12.5M27.5 22.5h10.833c.46 0 .834.373.834.833v15c0 .46-.374.834-.834.834h-12.5",
+    strokeWidth: "1.66667"
   }), _react.default.createElement("path", {
-    d: "M185.437 41.408L144 82.718V124h41.437V82.717L227 41.408V0h-41.563v41.408z",
-    fill: "#FCFCFC"
+    d: "M31.667 25.833H35c.46 0 .833.374.833.834v1.666c0 .46-.373.834-.833.834h-3.333a.834.834 0 0 1-.834-.834v-1.666c0-.46.374-.834.834-.834zM35.833 35.833h-5v-2.5c0-.46.374-.833.834-.833H35c.46 0 .833.373.833.833v2.5zM5 25.833h3.333c.46 0 .834.374.834.834v1.666c0 .46-.374.834-.834.834H5a.834.834 0 0 1-.833-.834v-1.666c0-.46.373-.834.833-.834zM5 32.5h3.333c.46 0 .834.373.834.833V35c0 .46-.374.833-.834.833H5A.834.834 0 0 1 4.167 35v-1.667c0-.46.373-.833.833-.833zM22.5 31.667a2.5 2.5 0 0 0-5 0v7.5h5v-7.5zM19.167 10.88V5.833M19.167.833h6.666c.46 0 .834.374.834.834V5c0 .46-.374.833-.834.833h-6.666v-5zM20 15.833a2.5 2.5 0 0 1 0 5 2.5 2.5 0 0 1 0-5z",
+    strokeWidth: "1.66667"
   }), _react.default.createElement("path", {
-    d: "M227 83l-42 41h42V83zM0 116.459h83.392V158H125V82.93H41.76L125 0H83.392L0 82.93v33.529z",
-    fill: "#FCFCFC"
-  }));
+    d: "M27.5 18.333a7.5 7.5 0 0 0-15 0v20.834h15V18.333z",
+    strokeWidth: "1.66667"
+  })));
 };
 
 SchoolLogo.defaultProps = {
-  width: "227",
-  height: "158",
-  viewBox: "0 0 227 158",
-  fill: "none",
-  xmlns: "http://www.w3.org/2000/svg"
+  viewBox: "0 0 40 40",
+  width: "40",
+  height: "40"
 };
 var useStyles = (0, _reactJss.createUseStyles)(_studies_front_styles.styles);
 
@@ -64,7 +67,7 @@ var StudiesFrontComponent = function StudiesFrontComponent(_ref) {
     },
     vector: SchoolLogo
   }), _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
-    customClasses: {
+    classes: {
       container: classes.typography
     }
   }, _react.default.createElement(_reactIntl.FormattedMessage, {

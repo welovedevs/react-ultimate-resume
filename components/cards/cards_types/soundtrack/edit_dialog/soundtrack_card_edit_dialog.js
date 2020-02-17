@@ -103,6 +103,9 @@ var Content = function Content() {
   return _react.default.createElement("div", {
     className: classes.container
   }, _react.default.createElement(_edit_dialog_field.EditDialogField, {
+    classes: {
+      container: classes.field
+    },
     error: errors.codingReason,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Soundtrack.editDialog.embedUrl.title",

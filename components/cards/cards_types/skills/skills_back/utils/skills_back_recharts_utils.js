@@ -9,9 +9,16 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactSpring = require("react-spring");
 
+var _reactJss = require("react-jss");
+
+var _skills_back_recharts_styles = require("./skills_back_recharts_styles");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var useStyles = (0, _reactJss.createUseStyles)(_skills_back_recharts_styles.styles);
+
 var CustomLabel = function CustomLabel(props) {
+  var classes = useStyles();
   var RADIAN = Math.PI / 180;
   var cx = props.cx,
       cy = props.cy,
@@ -47,7 +54,8 @@ var CustomLabel = function CustomLabel(props) {
     dy: 5,
     textAnchor: textAnchor,
     fill: customColor,
-    fontWeight: "500"
+    fontWeight: "500",
+    className: classes.text
   }, name)));
 };
 

@@ -7,10 +7,14 @@ exports.styles = void 0;
 
 var _styles_utils = require("../../../../../utils/styles/styles_utils");
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var styles = function styles(theme) {
+  var _ref;
+
   var palette = theme.palette,
       spacing = theme.miscellaneous.spacing;
-  return {
+  return _ref = {
     itemContainer: {
       display: 'flex',
       alignItems: 'center',
@@ -18,6 +22,9 @@ var styles = function styles(theme) {
       borderRadius: 5,
       margin: [spacing * 2, 0],
       padding: [0, spacing]
+    },
+    actions: {
+      display: 'flex'
     },
     divider: {
       margin: [0, spacing * 2],
@@ -108,13 +115,27 @@ var styles = function styles(theme) {
       '& svg': {
         fill: 'none !important'
       }
-    },
-    '@media screen and (max-width: 900px)': {
-      listItem: {
-        flexWrap: 'wrap'
-      }
     }
-  };
+  }, _defineProperty(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', 900), {
+    listItem: {
+      flexWrap: 'wrap'
+    }
+  }), _defineProperty(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
+    itemContainer: {
+      flexDirection: 'column',
+      alignItems: 'unset'
+    },
+    field: {
+      flex: 1
+    },
+    fieldGroup: {
+      flexDirection: 'row'
+    },
+    sliderValueContainer: {
+      alignItems: 'unset',
+      flexDirection: 'column'
+    }
+  }), _ref;
 };
 
 exports.styles = styles;

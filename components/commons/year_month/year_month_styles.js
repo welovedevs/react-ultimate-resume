@@ -11,7 +11,7 @@ var _default = {
   selectContainer: {
     display: 'flex',
     flexDirection: 'column',
-    margin: [0, 15 / 2]
+    flex: 1
   },
   pickerInput: {
     display: 'none !important'

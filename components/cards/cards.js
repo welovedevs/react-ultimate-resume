@@ -31,11 +31,11 @@ var _dream_job_card = require("./cards_types/dream_job/dream_job_card");
 
 var _languages_card = require("./cards_types/languages/languages_card");
 
-var _cards_styles = require("./cards_styles");
-
 var _theme = require("../../utils/styles/theme/theme");
 
 var _cards_order = require("./utils/cards_order");
+
+var _cards_styles = require("./cards_styles");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 

@@ -17,9 +17,13 @@ var _recharts = require("recharts");
 
 var _chromaJs = _interopRequireDefault(require("chroma-js"));
 
+var _useMediaQuery = _interopRequireDefault(require("@material-ui/core/useMediaQuery/useMediaQuery"));
+
 var _styles_utils = require("../../../../../../utils/styles/styles_utils");
 
 var _skills_back_recharts_utils = require("../utils/skills_back_recharts_utils");
+
+var _skills_pie_chart_styles = require("./skills_pie_chart_styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29,19 +33,18 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-var GRAPH_HEIGHT = 250;
-var GRAPH_PIE_RADIUS = 100;
+// const GRAPH_PIE_RADIUS = 100;
+var useStyles = (0, _reactJss.createUseStyles)(_skills_pie_chart_styles.styles);
 
 var SkillsPieChart = function SkillsPieChart(_ref) {
-  var _theme$components, _theme$components$car;
-
   var data = _ref.data,
       variant = _ref.variant,
       springOnOpenOpacityProps = _ref.springOnOpenOpacityProps,
       springOnScrollOpacityProps = _ref.springOnScrollOpacityProps,
-      onAnimationEnd = _ref.onAnimationEnd,
-      widthProps = _ref.width;
+      onAnimationEnd = _ref.onAnimationEnd;
+  var classes = useStyles();
   var theme = (0, _reactJss.useTheme)();
+  var isMobile = (0, _useMediaQuery.default)("(max-width: ".concat(theme.screenSizes.small, "px)"));
 
   var _useMemo = (0, _react.useMemo)(function () {
     return {
@@ -59,15 +62,16 @@ var SkillsPieChart = function SkillsPieChart(_ref) {
       return _chromaJs.default.mix(contentColor, backgroundColor, 2 * k / 10).hex();
     });
   }, [contentColor, backgroundColor]);
-  var width = widthProps || (theme === null || theme === void 0 ? void 0 : (_theme$components = theme.components) === null || _theme$components === void 0 ? void 0 : (_theme$components$car = _theme$components.cards) === null || _theme$components$car === void 0 ? void 0 : _theme$components$car.width);
   return _react.default.createElement(_reactSpring.animated.div, {
+    // ref={wrapperRef}
+    className: classes.wrapper,
     style: {
       opacity: springOnScrollOpacityProps && springOnScrollOpacityProps.opacity
     }
-  }, _react.default.createElement(_recharts.PieChart, {
-    width: width,
-    height: GRAPH_HEIGHT
-  }, _react.default.createElement(_recharts.Pie, {
+  }, _react.default.createElement(_recharts.ResponsiveContainer, {
+    height: "100%",
+    width: "100%"
+  }, _react.default.createElement(_recharts.PieChart, null, _react.default.createElement(_recharts.Pie, {
     dataKey: "value",
     animationDuration: 750,
     labelLine: false,
@@ -78,9 +82,7 @@ var SkillsPieChart = function SkillsPieChart(_ref) {
       }, shapeProps));
     },
     data: data,
-    cx: width / 2,
-    cy: GRAPH_HEIGHT / 2,
-    outerRadius: GRAPH_PIE_RADIUS,
+    outerRadius: isMobile ? '50%' : undefined,
     onAnimationEnd: onAnimationEnd
   }, data.map(function (entry, index) {
     return _react.default.createElement(_recharts.Cell, {
@@ -88,7 +90,7 @@ var SkillsPieChart = function SkillsPieChart(_ref) {
       fill: colorPalette[index],
       stroke: backgroundColor
     });
-  }))));
+  })))));
 };
 
 var _default = SkillsPieChart;

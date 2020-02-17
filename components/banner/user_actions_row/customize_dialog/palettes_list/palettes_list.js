@@ -9,6 +9,8 @@ exports.PalettesList = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _reactJss = require("react-jss");
 
 var _reactInfiniteScroller = _interopRequireDefault(require("react-infinite-scroller"));
@@ -53,7 +55,9 @@ var useStyles = (0, _reactJss.createUseStyles)(_palettes_list_styles.styles);
 
 var PalettesListComponent = function PalettesListComponent(_ref) {
   var currentPalette = _ref.value,
-      onChange = _ref.onChange;
+      onChange = _ref.onChange,
+      _ref$classes = _ref.classes,
+      receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var classes = useStyles();
   var containerReference = (0, _react.useRef)();
 
@@ -88,7 +92,7 @@ var PalettesListComponent = function PalettesListComponent(_ref) {
   return _react.default.createElement("div", {
     ref: containerReference,
     id: "scrollable_".concat(classes.container),
-    className: classes.container
+    className: (0, _classnames.default)(classes.container, receivedClasses.container)
   }, currentPalette && _react.default.createElement("div", {
     className: classes.selectedPaletteContainer
   }, _react.default.createElement(_palette_visual.PaletteVisual, {
@@ -121,6 +125,9 @@ var PalettesListComponent = function PalettesListComponent(_ref) {
       },
       variant: "h3"
     }, "".concat(paletteIndex + 1, ".")), _react.default.createElement(_palette_visual.PaletteVisual, {
+      classes: {
+        color: classes.paletteVisualColor
+      },
       palette: ['primary', 'secondary', 'tertiary'].reduce(function (acc, keyName, index) {
         return _objectSpread({}, acc, _defineProperty({}, keyName, {
           500: item[index]

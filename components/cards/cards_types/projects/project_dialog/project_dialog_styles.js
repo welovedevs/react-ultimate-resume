@@ -15,7 +15,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var styles = function styles(theme) {
   var spacing = theme.miscellaneous.spacing;
-  return {
+  return _defineProperty({
     paper: {
       maxWidth: [1000, '!important']
     },
@@ -28,7 +28,11 @@ var styles = function styles(theme) {
     headrow: {
       display: 'flex'
     }
-  };
+  }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
+    headrow: {
+      flexDirection: 'column'
+    }
+  });
 };
 
 exports.styles = styles;

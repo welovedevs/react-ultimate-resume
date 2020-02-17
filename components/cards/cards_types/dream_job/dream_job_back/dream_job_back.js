@@ -70,15 +70,18 @@ var DreamJobBackComponent = function DreamJobBackComponent(_ref) {
       remoteFrequency = data.remoteFrequency,
       contractTypes = data.contractTypes;
   return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
-    title: "Dream job"
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Dreamjob.Back.Title",
+      defaultMessage: "Dream job"
+    })
   }, _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(DreamJobLocations, {
     places: places,
     remoteFrequency: remoteFrequency,
     classes: classes
-  })), _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+  })), _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Dreamjob.Back.Salary.Title",
     defaultMessage: "Ideal yearly salary"
-  }))), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, salary)), _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+  })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, salary)), _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Dreamjob.Back.ContractTypes.Title",
     defaultMessage: "Contract types"
   })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, _react.default.createElement(_contract_types.ContractType, {

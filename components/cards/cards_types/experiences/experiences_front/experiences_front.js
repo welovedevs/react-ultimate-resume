@@ -67,7 +67,7 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
   }, _react.default.createElement("div", {
     className: classes.textsContainer
   }, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
-    customClasses: {
+    classes: {
       container: classes.mainTypography
     }
   }, title)))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, null, _react.default.createElement(_reactIntl.FormattedMessage, {

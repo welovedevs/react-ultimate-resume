@@ -65,6 +65,7 @@ var PerksFieldComponent = function PerksFieldComponent(_ref) {
       defaultMessage: "What perks are important to you ?"
     })
   }, _react.default.createElement(_checkbox_group.CheckboxGroup, {
+    rows: 2,
     values: checkboxGroupPerks,
     translations: _job_perks_translations.jobPerksTranslations,
     value: checkedPerks,
@@ -84,6 +85,7 @@ var PerksFieldComponent = function PerksFieldComponent(_ref) {
         key = _ref2.key,
         props = _ref2.props;
     return item && _react.default.createElement(_ui.TextField, {
+      fullWidth: true,
       key: key,
       containerElement: _reactSpring.animated.div,
       customClasses: {

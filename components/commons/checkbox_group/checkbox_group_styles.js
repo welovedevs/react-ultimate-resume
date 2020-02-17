@@ -13,8 +13,13 @@ var styles = function styles(theme) {
       flexWrap: 'wrap',
       marginLeft: -spacing
     },
-    checkboxField: {
-      margin: spacing
+    checkboxField: function checkboxField(_ref) {
+      var _ref$rows = _ref.rows,
+          rows = _ref$rows === void 0 ? 2 : _ref$rows;
+      return {
+        width: "calc(".concat(100 / rows, "% - ").concat(rows * 2 * spacing, "px)"),
+        margin: spacing
+      };
     },
     checkbox: {
       display: 'flex',

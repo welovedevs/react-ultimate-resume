@@ -18,7 +18,7 @@ var center = _styles_utils.flex.center;
 var styles = function styles(theme) {
   var palette = theme.palette,
       spacing = theme.miscellaneous.spacing;
-  return {
+  return _defineProperty({
     container: {
       display: 'flex',
       flexDirection: 'column'
@@ -26,13 +26,12 @@ var styles = function styles(theme) {
     divider: {
       height: 1,
       width: '100%',
-      maxWidth: 300,
       margin: [0, 0, spacing * 5, 0],
       backgroundColor: palette.dark[50]
     },
     iframeContainer: _objectSpread({
       height: 375,
-      width: 600,
+      width: '100%',
       backgroundColor: palette.dark[50],
       borderRadius: 5,
       overflow: 'hidden',
@@ -44,8 +43,16 @@ var styles = function styles(theme) {
       left: 0,
       height: '100%',
       width: '100%'
+    },
+    field: {}
+  }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
+    divider: {
+      margin: [0, 0, spacing * 2, 0]
+    },
+    field: {
+      margin: [0, 0, spacing * 2, 0]
     }
-  };
+  });
 };
 
 exports.styles = styles;

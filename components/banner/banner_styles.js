@@ -16,11 +16,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var center = _styles_utils.flex.center;
 
 var styles = function styles(_ref) {
+  var _ref2;
+
   var palette = _ref.palette,
       spacing = _ref.miscellaneous.spacing,
       screenSizes = _ref.screenSizes;
   var primaryRgb = palette.primary.rgbShades[500].join(', ');
-  return _defineProperty({
+  return _ref2 = {
     container: _objectSpread({
       height: 400,
       width: '100%',
@@ -57,12 +59,25 @@ var styles = function styles(_ref) {
       justifyContent: 'space-between',
       marginBottom: spacing * 12
     }
-  }, screenSizes.small, {
+  }, _defineProperty(_ref2, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.medium), {
+    container: {
+      padding: [spacing * 4, spacing * 6]
+    }
+  }), _defineProperty(_ref2, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small), {
     content: {
       flexDirection: 'column',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      alignItems: 'center'
     }
-  });
+  }), _defineProperty(_ref2, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small - (screenSizes.small - screenSizes.xs) / 2), {
+    container: {
+      height: 450
+    }
+  }), _defineProperty(_ref2, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.xs), {
+    container: {
+      padding: [spacing * 4, spacing * 2.5]
+    }
+  }), _ref2;
 };
 
 exports.styles = styles;

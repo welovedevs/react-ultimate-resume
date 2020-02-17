@@ -19,6 +19,8 @@ var _v = _interopRequireDefault(require("uuid/v4"));
 
 var _ui = require("@wld/ui");
 
+var _useMediaQuery = _interopRequireDefault(require("@material-ui/core/useMediaQuery/useMediaQuery"));
+
 var _formik = require("formik");
 
 var _reactJss = require("react-jss");
@@ -118,6 +120,8 @@ var LanguageItem = (0, _reactSortableHoc.SortableElement)(function (_ref2) {
   var _useIntl2 = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl2.formatMessage;
 
+  var theme = (0, _reactJss.useTheme)();
+  var isMobile = (0, _useMediaQuery.default)("(max-width: ".concat(theme.screenSizes.small, "px)"));
   var handleLanguageChange = (0, _react.useCallback)(function (e) {
     return onChange(index, 'language', e.target.value);
   }, [index]);
@@ -126,6 +130,8 @@ var LanguageItem = (0, _reactSortableHoc.SortableElement)(function (_ref2) {
   }, [index]);
   return _react.default.createElement("div", {
     className: classes.itemContainer
+  }, _react.default.createElement("div", {
+    className: classes.actions
   }, _react.default.createElement(DragHandle, {
     classes: classes
   }), _react.default.createElement("div", {
@@ -141,9 +147,9 @@ var LanguageItem = (0, _reactSortableHoc.SortableElement)(function (_ref2) {
     onClick: onRemove(id)
   }, _react.default.createElement(TrashIcon, {
     className: classes.removeIcon
-  }))), _react.default.createElement("div", {
+  }))), !isMobile && _react.default.createElement("div", {
     className: classes.divider
-  }), _react.default.createElement("div", {
+  })), _react.default.createElement("div", {
     className: classes.listItem
   }, _react.default.createElement("div", {
     className: classes.fieldGroup
@@ -229,7 +235,7 @@ var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (_ref4) {
 
 var LanguagesEditForm = function LanguagesEditForm(_ref5) {
   var data = _ref5.data,
-      move = _ref5.move,
+      onMove = _ref5.onMove,
       onValueChange = _ref5.onValueChange,
       onDelete = _ref5.onDelete,
       onAdd = _ref5.onAdd,
@@ -241,13 +247,13 @@ var LanguagesEditForm = function LanguagesEditForm(_ref5) {
     lockToContainerEdges: true,
     helperClass: classes.sortableHelper,
     items: data,
-    onSortEnd: move,
+    onSortEnd: onMove,
     distance: 20,
     lockAxis: "y",
     name: "education",
     onChange: onValueChange,
     onDelete: onDelete,
-    errors: validationErrors.languages
+    errors: validationErrors
   }, {
     classes: classes
   })), _react.default.createElement(_add_button.AddButton, {
@@ -300,7 +306,7 @@ var LanguagesEditFormWrapper = function LanguagesEditFormWrapper(_ref6) {
     onValueChange: languageChanged,
     onDelete: languageDeleted,
     onAdd: addLanguage,
-    errors: validationErrors
+    errors: validationErrors === null || validationErrors === void 0 ? void 0 : validationErrors.languages
   });
 };
 

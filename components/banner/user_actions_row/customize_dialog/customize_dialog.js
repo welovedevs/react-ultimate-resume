@@ -33,6 +33,8 @@ var _contexts = require("../../../../utils/context/contexts");
 
 var _customize_dialog_styles = require("./customize_dialog_styles");
 
+var _styles_utils = require("../../../../utils/styles/styles_utils");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -59,7 +61,13 @@ var CustomizeDialogComponent = function CustomizeDialogComponent(_ref) {
   var open = _ref.open,
       onClose = _ref.onClose,
       customizationOptions = _ref.customizationOptions;
-  var classes = useStyles();
+  var theme = (0, _reactJss.useTheme)();
+  var onlyShowPalettesList = (0, _core.useMediaQuery)((0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
+    defaultMatches: true
+  });
+  var classes = useStyles({
+    onlyShowPalettesList: onlyShowPalettesList
+  });
 
   var _useState = (0, _react.useState)(customizationOptions),
       _useState2 = _slicedToArray(_useState, 2),
@@ -111,19 +119,24 @@ var CustomizeDialogComponent = function CustomizeDialogComponent(_ref) {
 
     asyncBuild();
   }, [JSON.stringify(value.theme)]);
+  var onSave = (0, _react.useCallback)(function () {
+    onCustomizationChanged(value);
+    onClose();
+  }, [value]);
   var onPaletteChanged = (0, _react.useCallback)(function (palette) {
     var newCustomization = (0, _cloneDeep.default)(value || {});
     (0, _set.default)(newCustomization, 'theme.palette', palette);
     setValue(newCustomization);
-  }, [value]);
+
+    if (onlyShowPalettesList) {
+      onCustomizationChanged(newCustomization);
+      onClose();
+    }
+  }, [value, onlyShowPalettesList, onSave]);
   var onCardOrdered = (0, _react.useCallback)(function (cardsOrder) {
     var newCustomization = (0, _cloneDeep.default)(value || {});
     newCustomization.cardsOrder = cardsOrder;
     setValue(newCustomization);
-  }, [value]);
-  var onSave = (0, _react.useCallback)(function () {
-    onCustomizationChanged(value);
-    onClose();
   }, [value]);
   return _react.default.createElement(_core.Dialog, {
     fullScreen: true,
@@ -145,7 +158,7 @@ var CustomizeDialogComponent = function CustomizeDialogComponent(_ref) {
     },
     onChange: onPaletteChanged,
     value: value === null || value === void 0 ? void 0 : (_value$theme = value.theme) === null || _value$theme === void 0 ? void 0 : _value$theme.palette
-  }), _react.default.createElement("div", {
+  }), !onlyShowPalettesList && _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: classes.dividerContainer
   }, _react.default.createElement("div", {
     className: classes.divider
@@ -154,7 +167,7 @@ var CustomizeDialogComponent = function CustomizeDialogComponent(_ref) {
   }, _react.default.createElement(_cards_orderer.CardsOrderer, {
     onChange: onCardOrdered,
     value: value === null || value === void 0 ? void 0 : value.cardsOrder
-  }))), _react.default.createElement(_core.DialogActions, {
+  })))), _react.default.createElement(_core.DialogActions, {
     classes: {
       root: classes.actions
     }

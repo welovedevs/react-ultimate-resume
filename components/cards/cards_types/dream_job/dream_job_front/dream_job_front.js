@@ -74,7 +74,7 @@ var DreamJobFrontComponent = function DreamJobFrontComponent(_ref) {
       },
       vector: HomeLogo
     }), _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
-      customClasses: {
+      classes: {
         container: classes.typography
       }
     }, _react.default.createElement(_reactIntl.FormattedMessage, {

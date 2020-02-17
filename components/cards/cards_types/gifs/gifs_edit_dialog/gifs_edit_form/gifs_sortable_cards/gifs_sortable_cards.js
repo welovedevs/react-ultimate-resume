@@ -51,9 +51,7 @@ var GifsSortableCardsComponent = function GifsSortableCardsComponent(_ref) {
       setSelectedIndex = _ref.setSelectedIndex,
       onSortEnd = _ref.onSortEnd;
   var classes = useStyles();
-  return _react.default.createElement("div", {
-    className: classes.container
-  }, _react.default.createElement(SortableGifsCards, {
+  return _react.default.createElement(SortableGifsCards, {
     useDragHandle: true,
     axis: "xy",
     items: items,
@@ -63,7 +61,7 @@ var GifsSortableCardsComponent = function GifsSortableCardsComponent(_ref) {
     setSelectedIndex: setSelectedIndex,
     onSortEnd: onSortEnd,
     classes: classes
-  }));
+  });
 };
 
 var SortableGifsCards = (0, _reactSortableHoc.SortableContainer)(function (_ref2) {
@@ -81,8 +79,6 @@ var SortableGifsCards = (0, _reactSortableHoc.SortableContainer)(function (_ref2
     var b = _ref4.index;
     return a - b;
   }).map(function (interest, index) {
-    var _errors$interests;
-
     return _react.default.createElement(SortableGifItem, {
       index: index,
       key: "interest_".concat(interest.id, "_").concat(index),
@@ -91,7 +87,7 @@ var SortableGifsCards = (0, _reactSortableHoc.SortableContainer)(function (_ref2
       setSelectedIndex: setSelectedIndex,
       id: interest.id,
       interest: interest,
-      error: errors === null || errors === void 0 ? void 0 : (_errors$interests = errors.interests) === null || _errors$interests === void 0 ? void 0 : _errors$interests[index],
+      error: errors === null || errors === void 0 ? void 0 : errors[index],
       interestIndex: index,
       classes: classes
     });

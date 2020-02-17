@@ -21,6 +21,8 @@ var _v = _interopRequireDefault(require("uuid/v4"));
 
 var _reactSortableHoc = require("react-sortable-hoc");
 
+var _useMediaQuery = _interopRequireDefault(require("@material-ui/core/useMediaQuery/useMediaQuery"));
+
 var _ui = require("@wld/ui");
 
 var _search_gifs_dialog = require("../../../../../commons/search_gif_dialog/search_gifs_dialog");
@@ -55,6 +57,8 @@ var useStyles = (0, _reactJss.createUseStyles)(_gifs_edit_form_styles.styles);
 
 var GifsEditFormComponent = function GifsEditFormComponent(_ref) {
   var handleValueChange = _ref.helpers.handleValueChange;
+  var theme = (0, _reactJss.useTheme)();
+  var isMobile = (0, _useMediaQuery.default)("(max-width: ".concat(theme.screenSizes.small, "px)"));
   var classes = useStyles();
 
   var _useFormikContext = (0, _formik.useFormikContext)(),
@@ -69,10 +73,13 @@ var GifsEditFormComponent = function GifsEditFormComponent(_ref) {
   var removeSelectedIndex = (0, _react.useCallback)(function () {
     return setSelectedIndex(null);
   }, []);
-  var errors = validationErrors;
+
+  var _ref2 = validationErrors || {},
+      errors = _ref2.interests;
+
   var keyedValues = (0, _react.useMemo)(function () {
-    return (0, _keyBy.default)(interests, function (_ref2) {
-      var id = _ref2.id;
+    return (0, _keyBy.default)(interests, function (_ref3) {
+      var id = _ref3.id;
       return id;
     });
   }, [interests]);
@@ -96,9 +103,9 @@ var GifsEditFormComponent = function GifsEditFormComponent(_ref) {
     }));
     setSelectedIndex(interests.length);
   }, [JSON.stringify(interests)]);
-  var move = (0, _react.useCallback)(function (_ref3) {
-    var oldIndex = _ref3.oldIndex,
-        newIndex = _ref3.newIndex;
+  var move = (0, _react.useCallback)(function (_ref4) {
+    var oldIndex = _ref4.oldIndex,
+        newIndex = _ref4.newIndex;
     handleValueChange('interests')((0, _reactSortableHoc.arrayMove)(interests, oldIndex, newIndex).map(function (data, index) {
       return _objectSpread({}, data, {
         index: index
@@ -111,8 +118,8 @@ var GifsEditFormComponent = function GifsEditFormComponent(_ref) {
       return interestChanged(selectedIndex, 'gifUrl', value);
     };
   }, [selectedIndex]);
-  var handleGifSelection = (0, _react.useCallback)(function (_ref4) {
-    var url = _ref4.url;
+  var handleGifSelection = (0, _react.useCallback)(function (_ref5) {
+    var url = _ref5.url;
     handleGifChange(url)();
     removeSelectedIndex();
   }, [handleGifChange]);
@@ -124,14 +131,19 @@ var GifsEditFormComponent = function GifsEditFormComponent(_ref) {
     color: "danger",
     variant: "h4",
     component: "h4"
-  }, globalError), _react.default.createElement(_gifs_sortable_cards.GifsSortableCards, {
+  }, globalError), isMobile && _react.default.createElement(_add_button_dashed.AddButtonDashed, {
+    classes: {
+      container: classes.addButtonDashed
+    },
+    onClick: addInterest
+  }), _react.default.createElement(_gifs_sortable_cards.GifsSortableCards, {
     items: interests,
     interestDeleted: interestDeleted,
     interestChanged: interestChanged,
     errors: errors,
     onSortEnd: move,
     setSelectedIndex: setSelectedIndex
-  }), _react.default.createElement(_add_button_dashed.AddButtonDashed, {
+  }), !isMobile && _react.default.createElement(_add_button_dashed.AddButtonDashed, {
     classes: {
       container: classes.addButtonDashed
     },

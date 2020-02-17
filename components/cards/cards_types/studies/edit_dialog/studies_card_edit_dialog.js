@@ -15,15 +15,23 @@ var _reactJss = require("react-jss");
 
 var _reactIntl = require("react-intl");
 
+var _reactSpring = require("react-spring");
+
+var _reactEmojiRender = require("react-emoji-render");
+
 var _reactSortableHoc = require("react-sortable-hoc");
 
 var _formik = require("formik");
+
+var _keyBy = _interopRequireDefault(require("lodash/keyBy"));
 
 var _range = _interopRequireDefault(require("lodash/range"));
 
 var _moment = _interopRequireDefault(require("moment"));
 
 var _v = _interopRequireDefault(require("uuid/v4"));
+
+var _useMediaQuery = _interopRequireDefault(require("@material-ui/core/useMediaQuery/useMediaQuery"));
 
 var _ui = require("@wld/ui");
 
@@ -39,6 +47,8 @@ var _studies_translations = require("./studies_translations");
 
 var _studies_styles = require("./studies_styles");
 
+var _studies_edit_dialog_spring_props = require("./studies_edit_dialog_spring_props");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -46,6 +56,20 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -82,6 +106,24 @@ DeleteIcon.defaultProps = {
   fill: "#fff",
   xmlns: "http://www.w3.org/2000/svg"
 };
+
+var ArrowIcon = function ArrowIcon(props) {
+  return _react.default.createElement("svg", props, _react.default.createElement("path", {
+    d: "M1.52 1l6 6 6-6",
+    stroke: "#000",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }));
+};
+
+ArrowIcon.defaultProps = {
+  width: "15",
+  height: "8",
+  viewBox: "0 0 15 8",
+  fill: "none",
+  xmlns: "http://www.w3.org/2000/svg"
+};
 var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (_ref) {
   var classes = _ref.classes;
   return _react.default.createElement("button", {
@@ -113,8 +155,8 @@ var StudiesCardEditDialogComponent = function StudiesCardEditDialogComponent(_re
     onEdit: onEdit,
     validationSchema: validationSchemaToPass,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Basics.editDialog.title",
-      defaultMessage: "Your basic information"
+      id: "Studies.editDialog.title",
+      defaultMessage: "Your studies"
     })
   }, function (helpers) {
     return _react.default.createElement(FormationsEditFormWrapper, {
@@ -197,8 +239,12 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref7) {
       onChange = _ref7.onChange,
       onRemove = _ref7.onRemove,
       fieldErrors = _ref7.error,
+      folded = _ref7.folded,
+      toggleFold = _ref7.toggleFold,
       classes = _ref7.classes,
       index = _ref7.formationIndex;
+  var theme = (0, _reactJss.useTheme)();
+  var isMobile = (0, _useMediaQuery.default)("(max-width: ".concat(theme.screenSizes.small, "px)"));
 
   var _useIntl2 = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl2.formatMessage;
@@ -217,8 +263,24 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref7) {
       year: value
     }));
   }, [index]);
+
+  var _useSpring = (0, _reactSpring.useSpring)({
+    rotate: folded ? -90 : 0
+  }),
+      rotate = _useSpring.rotate;
+
+  var contentTransitions = (0, _reactSpring.useTransition)(!folded ? formation : null, function (item) {
+    return "".concat(item ? 'visible' : 'invisible', "_study_").concat(item === null || item === void 0 ? void 0 : item.id, "_content");
+  }, _objectSpread({}, _studies_edit_dialog_spring_props.STUDIES_CONTENT_TRANSITION_SPRING_PROPS, {
+    unique: true
+  }, _reactSpring.config.stiff));
+  var hasError = Boolean(fieldErrors);
   return _react.default.createElement("div", {
+    className: classes.study
+  }, _react.default.createElement("div", {
     className: classes.itemContainer
+  }, _react.default.createElement("div", {
+    className: classes.header
   }, _react.default.createElement(DragHandle, {
     classes: classes
   }), _react.default.createElement("div", {
@@ -234,80 +296,133 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref7) {
     onClick: onRemove(id)
   }, _react.default.createElement(DeleteIcon, {
     className: classes.removeIcon
-  }))), _react.default.createElement("div", {
+  }))), !isMobile && _react.default.createElement("div", {
     className: classes.divider
-  }), _react.default.createElement("div", {
-    className: (0, _classnames.default)(classes.listItem, fieldErrors && classes.listItemError)
-  }, _react.default.createElement("div", {
-    className: classes.fieldGroup
-  }, _react.default.createElement("div", {
-    className: classes.field
-  }, _react.default.createElement(_ui.TextField, {
-    fullWidth: true,
-    variant: "flat",
-    value: formation.institution,
-    onChange: handleInstitutionChange,
-    id: "formation_institution_".concat(id),
-    placeholder: formatMessage(_studies_translations.translations.schoolNamePlaceholder)
-  }), fieldErrors && fieldErrors.institution && _react.default.createElement(_ui.Typography, {
-    color: "danger",
-    variant: "helper",
-    component: "p"
-  }, fieldErrors.institution)), _react.default.createElement("div", {
-    className: classes.field
-  }, _react.default.createElement(SelectComponent, {
-    onChange: handleEndDate,
-    id: formation.id,
-    value: formation.endDate,
-    classes: classes
-  }), fieldErrors && fieldErrors.endDate && _react.default.createElement(_ui.Typography, {
-    color: "danger",
-    variant: "helper",
-    component: "p"
-  }, fieldErrors.endDate))), _react.default.createElement("div", {
-    className: classes.fieldGroup
-  }, _react.default.createElement("div", {
-    className: classes.field
-  }, _react.default.createElement(_ui.TextField, {
-    id: "formation_diploma_".concat(id),
-    fullWidth: true,
-    variant: "flat",
-    label: formatMessage(_studies_translations.translations.diplomaTitle),
-    placeholder: formatMessage(_studies_translations.translations.diplomaPlaceholder),
-    value: formation.studyType,
-    onChange: handleStudyType,
-    margin: "normal",
-    error: fieldErrors && fieldErrors.studyType
-  }), fieldErrors && fieldErrors.studyType && _react.default.createElement(_ui.Typography, {
-    color: "danger",
-    variant: "helper",
-    component: "p"
-  }, fieldErrors.studyType)), _react.default.createElement("div", {
-    className: classes.field
-  }, _react.default.createElement(_ui.TextField, {
-    id: "formation_area_".concat(id),
-    fullWidth: true,
-    variant: "flat",
-    label: formatMessage(_studies_translations.translations.mainCourse),
-    placeholder: formatMessage(_studies_translations.translations.mainCoursePlaceholder),
-    value: formation.area,
-    onChange: handleAreaChange,
-    margin: "normal",
-    error: fieldErrors && fieldErrors.area
-  }), fieldErrors && fieldErrors.area && _react.default.createElement(_ui.Typography, {
-    color: "danger",
-    variant: "helper",
-    component: "p"
-  }, fieldErrors.area)))));
+  }), _react.default.createElement(_ui.ListItem, {
+    button: true,
+    className: (0, _classnames.default)(classes.listItem, hasError && classes.listItemError),
+    onClick: function onClick() {
+      return toggleFold(!folded);
+    }
+  }, _react.default.createElement(_reactSpring.animated.div, {
+    className: classes.arrowContainer,
+    style: {
+      transform: rotate.interpolate(function (value) {
+        return "rotate(".concat(value, "deg)");
+      })
+    }
+  }, _react.default.createElement(ArrowIcon, {
+    className: (0, _classnames.default)('refinement-arrow')
+  })), hasError && _react.default.createElement(_reactEmojiRender.Twemoji, {
+    className: classes.warningIcon,
+    svg: true,
+    text: "\u26A0\uFE0F"
+  }), _react.default.createElement(_ui.Typography, {
+    className: classes.smallTitle,
+    color: "dark"
+  }, formation.institution))), contentTransitions.map(function (_ref8) {
+    var item = _ref8.item,
+        key = _ref8.key,
+        props = _ref8.props;
+    return item && _react.default.createElement(_reactSpring.animated.div, {
+      key: key,
+      style: props,
+      className: (0, _classnames.default)(classes.listItem, fieldErrors && classes.listItemError)
+    }, _react.default.createElement("div", {
+      className: classes.fieldGroup
+    }, _react.default.createElement("div", {
+      className: classes.field
+    }, _react.default.createElement(_ui.TextField, {
+      fullWidth: true,
+      variant: "flat",
+      value: formation.institution,
+      onChange: handleInstitutionChange,
+      id: "formation_institution_".concat(id),
+      placeholder: formatMessage(_studies_translations.translations.schoolNamePlaceholder)
+    }), fieldErrors && fieldErrors.institution && _react.default.createElement(_ui.Typography, {
+      color: "danger",
+      variant: "helper",
+      component: "p"
+    }, fieldErrors.institution)), _react.default.createElement("div", {
+      className: classes.field
+    }, _react.default.createElement(SelectComponent, {
+      onChange: handleEndDate,
+      id: formation.id,
+      value: formation.endDate,
+      classes: classes
+    }), fieldErrors && fieldErrors.endDate && _react.default.createElement(_ui.Typography, {
+      color: "danger",
+      variant: "helper",
+      component: "p"
+    }, fieldErrors.endDate))), _react.default.createElement("div", {
+      className: classes.fieldGroup
+    }, _react.default.createElement("div", {
+      className: classes.field
+    }, _react.default.createElement(_ui.TextField, {
+      id: "formation_diploma_".concat(id),
+      fullWidth: true,
+      variant: "flat",
+      label: formatMessage(_studies_translations.translations.diplomaTitle),
+      placeholder: formatMessage(_studies_translations.translations.diplomaPlaceholder),
+      value: formation.studyType,
+      onChange: handleStudyType,
+      margin: "normal",
+      error: fieldErrors && fieldErrors.studyType
+    }), fieldErrors && fieldErrors.studyType && _react.default.createElement(_ui.Typography, {
+      color: "danger",
+      variant: "helper",
+      component: "p"
+    }, fieldErrors.studyType)), _react.default.createElement("div", {
+      className: classes.field
+    }, _react.default.createElement(_ui.TextField, {
+      id: "formation_area_".concat(id),
+      fullWidth: true,
+      variant: "flat",
+      label: formatMessage(_studies_translations.translations.mainCourse),
+      placeholder: formatMessage(_studies_translations.translations.mainCoursePlaceholder),
+      value: formation.area,
+      onChange: handleAreaChange,
+      margin: "normal",
+      error: fieldErrors && fieldErrors.area
+    }), fieldErrors && fieldErrors.area && _react.default.createElement(_ui.Typography, {
+      color: "danger",
+      variant: "helper",
+      component: "p"
+    }, fieldErrors.area))));
+  })));
 });
-var SortableFormationsItems = (0, _reactSortableHoc.SortableContainer)(function (_ref8) {
-  var items = _ref8.items,
-      formationChanged = _ref8.formationChanged,
-      formationDeleted = _ref8.formationDeleted,
-      errors = _ref8.errors,
-      name = _ref8.name,
-      schools = _ref8.schools,
-      classes = _ref8.classes;
+var SortableFormationsItems = (0, _reactSortableHoc.SortableContainer)(function (_ref9) {
+  var items = _ref9.items,
+      formationChanged = _ref9.formationChanged,
+      formationDeleted = _ref9.formationDeleted,
+      errors = _ref9.errors,
+      name = _ref9.name,
+      schools = _ref9.schools,
+      classes = _ref9.classes;
+  var keyedValues = (0, _react.useMemo)(function () {
+    return (0, _keyBy.default)(items, function (_ref10) {
+      var id = _ref10.id;
+      return id;
+    });
+  }, [items]);
+
+  var _useState = (0, _react.useState)(Object.keys(keyedValues || {}).reduce(function (state, id) {
+    // eslint-disable-next-line no-param-reassign
+    state[id] = true;
+    return state;
+  }, {})),
+      _useState2 = _slicedToArray(_useState, 2),
+      foldedState = _useState2[0],
+      setFoldState = _useState2[1];
+
+  var toggleFold = (0, _react.useCallback)(function (id) {
+    return function (value) {
+      var newFoldState = _objectSpread({}, foldedState);
+
+      newFoldState[id] = value;
+      setFoldState(newFoldState);
+    };
+  }, [foldedState]);
   return _react.default.createElement(_ui.List, null, items.map(function (formation, index) {
     return _react.default.createElement(FormationItem, _extends({
       key: "".concat(name, "_").concat(formation.id, "_").concat(index),
@@ -315,7 +430,9 @@ var SortableFormationsItems = (0, _reactSortableHoc.SortableContainer)(function 
       onRemove: formationDeleted,
       id: formation.id,
       formationIndex: index,
-      error: errors && errors[index]
+      error: errors && errors[index],
+      toggleFold: toggleFold(formation.id),
+      folded: foldedState[formation.id]
     }, {
       index: index,
       formation: formation,
@@ -325,13 +442,13 @@ var SortableFormationsItems = (0, _reactSortableHoc.SortableContainer)(function 
   }));
 });
 
-var FormationsEditForm = function FormationsEditForm(_ref9) {
-  var data = _ref9.data,
-      onMove = _ref9.onMove,
-      onAdd = _ref9.onAdd,
-      onFieldChange = _ref9.onFieldChange,
-      onDelete = _ref9.onDelete,
-      errors = _ref9.errors;
+var FormationsEditForm = function FormationsEditForm(_ref11) {
+  var data = _ref11.data,
+      onMove = _ref11.onMove,
+      onAdd = _ref11.onAdd,
+      onFieldChange = _ref11.onFieldChange,
+      onDelete = _ref11.onDelete,
+      errors = _ref11.errors;
   var classes = useStyles();
   var globalError = typeof errors === 'string' && errors;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(SortableFormationsItems, _extends({

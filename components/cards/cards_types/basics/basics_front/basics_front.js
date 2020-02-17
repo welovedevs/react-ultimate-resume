@@ -61,10 +61,14 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
     customClasses: {
       container: classes.container
     }
-  }, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, null, data.summary), _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
-    level: "h4",
+  }, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
+    classes: {
+      container: classes.mainTypography
+    }
+  }, data.summary), _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
+    variant: "h4",
     component: "h3",
-    customClasses: {
+    classes: {
       container: classes.location
     }
   }, _react.default.createElement(_reactEmojiRender.Twemoji, {

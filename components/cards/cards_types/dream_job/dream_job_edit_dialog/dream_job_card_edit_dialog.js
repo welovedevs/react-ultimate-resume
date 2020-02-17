@@ -189,6 +189,7 @@ var Content = function Content(_ref2) {
       defaultMessage: "Do you want to work remotely?"
     })
   }, _react.default.createElement(_select.Select, {
+    fullWidth: true,
     value: remoteFrequency,
     onChange: handleChange('remoteFrequency'),
     textFieldProps: {

@@ -13,6 +13,10 @@ var _reactJss = require("react-jss");
 
 var _formik = require("formik");
 
+var _useMediaQuery = _interopRequireDefault(require("@material-ui/core/useMediaQuery"));
+
+var _ui = require("@wld/ui");
+
 var _v = _interopRequireDefault(require("uuid/v4"));
 
 var _all_technologies_picker = require("../../../../../commons/technologies/all_technologies_picker/all_technologies_picker");
@@ -37,11 +41,15 @@ var useStyles = (0, _reactJss.createUseStyles)(_skills_edit_form_styles.styles);
 
 var SkillsEditFormComponent = function SkillsEditFormComponent(_ref) {
   var handleValueChange = _ref.helpers.handleValueChange;
+  var theme = (0, _reactJss.useTheme)();
+  var isMobile = (0, _useMediaQuery.default)("(max-width: ".concat(theme.screenSizes.small, "px)"));
   var classes = useStyles();
 
   var _useFormikContext = (0, _formik.useFormikContext)(),
-      values = _useFormikContext.values;
+      values = _useFormikContext.values,
+      validationErrors = _useFormikContext.errors;
 
+  var errors = validationErrors.skills;
   var addItem = (0, _react.useCallback)(function (name) {
     return handleValueChange("skills[".concat(values.skills.length, "]"))({
       name: name,
@@ -66,6 +74,7 @@ var SkillsEditFormComponent = function SkillsEditFormComponent(_ref) {
   var onItemChange = (0, _react.useCallback)(function (item) {
     return handleValueChange("skills[".concat(item.index, "]"))(item);
   }, []);
+  var globalError = typeof errors === 'string' && errors;
   return _react.default.createElement("div", {
     className: classes.container
   }, _react.default.createElement(_all_technologies_picker.AllTechnologiesPicker, {
@@ -76,15 +85,20 @@ var SkillsEditFormComponent = function SkillsEditFormComponent(_ref) {
       container: classes.allTechnologies,
       technologiesList: classes.technologiesList
     }
-  }), _react.default.createElement("div", {
+  }), !isMobile && _react.default.createElement("div", {
     className: classes.divider
-  }), _react.default.createElement(_selected_technologies.SelectedTechnologies, {
+  }), !isMobile && _react.default.createElement("div", {
+    className: classes.column
+  }, globalError && _react.default.createElement(_ui.Typography, {
+    color: "danger",
+    component: "p"
+  }, errors), _react.default.createElement(_selected_technologies.SelectedTechnologies, {
     className: classes.selectedTechnologies,
     items: values.skills,
     onDelete: deleteItem,
     onChange: onArrayChange,
     onItemChange: onItemChange
-  }));
+  })));
 };
 
 var SkillsEditForm = SkillsEditFormComponent;

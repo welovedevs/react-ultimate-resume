@@ -15,7 +15,11 @@ var _reactJss = require("react-jss");
 
 var _useDebounce3 = require("use-debounce");
 
+var _reactIntl = require("react-intl");
+
 var _reactSpring = require("react-spring");
+
+var _useMediaQuery = _interopRequireDefault(require("@material-ui/core/useMediaQuery/useMediaQuery"));
 
 var _ui = require("@wld/ui");
 
@@ -24,6 +28,8 @@ var _use_technologies = require("../../../hooks/technologies/use_technologies");
 var _all_technologies_picker_spring_props = require("./all_technologies_picker_spring_props");
 
 var _all_technologies_picker_styles = require("./all_technologies_picker_styles");
+
+var _checkbox_group = require("../../checkbox_field/checkbox_group");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -127,17 +133,24 @@ var AllTechnologiesPickerComponent = function AllTechnologiesPickerComponent(_re
       onDelete = _ref4.onDelete,
       _ref4$classes = _ref4.classes,
       receivedClasses = _ref4$classes === void 0 ? {} : _ref4$classes;
+  var theme = (0, _reactJss.useTheme)();
+  var isMobile = (0, _useMediaQuery.default)("(max-width: ".concat(theme.screenSizes.small, "px)"));
   var classes = useStyles();
   var animationEnded = (0, _react.useRef)(false);
   var animationReference = (0, _react.useRef)();
 
+  var _useState = (0, _react.useState)(),
+      _useState2 = _slicedToArray(_useState, 2),
+      onlySelected = _useState2[0],
+      setOnlySelected = _useState2[1];
+
   var _useTechnologies = (0, _use_technologies.useTechnologies)(),
       technologies = _useTechnologies.technologies;
 
-  var _useState = (0, _react.useState)(''),
-      _useState2 = _slicedToArray(_useState, 2),
-      query = _useState2[0],
-      setQuery = _useState2[1];
+  var _useState3 = (0, _react.useState)(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      query = _useState4[0],
+      setQuery = _useState4[1];
 
   var _useDebounce = (0, _useDebounce3.useDebounce)(query, 200),
       _useDebounce2 = _slicedToArray(_useDebounce, 1),
@@ -145,13 +158,24 @@ var AllTechnologiesPickerComponent = function AllTechnologiesPickerComponent(_re
 
   var displayedItems = (0, _react.useMemo)(function () {
     return Object.values(technologies !== null && technologies !== void 0 ? technologies : {}).filter(function (_ref5) {
-      var name = _ref5.name,
-          tags = _ref5.tags;
+      var name = _ref5.name;
+
+      if (!onlySelected) {
+        return true;
+      }
+
+      return selectedItems.some(function (_ref6) {
+        var selectedName = _ref6.name;
+        return selectedName === name;
+      });
+    }).filter(function (_ref7) {
+      var name = _ref7.name,
+          tags = _ref7.tags;
       return [].concat(_toConsumableArray(tags !== null && tags !== void 0 ? tags : []), [name]).some(function (value) {
         return value.toLowerCase().includes(debouncedQuery.toLowerCase());
       });
     }).slice(0, 35);
-  }, [technologies, debouncedQuery]);
+  }, [technologies, debouncedQuery, onlySelected]);
   var handleTextFieldChange = (0, _react.useCallback)(function (event) {
     return setQuery(event.target.value);
   }, []);
@@ -192,16 +216,29 @@ var AllTechnologiesPickerComponent = function AllTechnologiesPickerComponent(_re
     ref: animationReference
   }));
   (0, _reactSpring.useChain)([animationReference], [0.35, 0]);
+  var toggleOtherPerk = (0, _react.useCallback)(function () {
+    setOnlySelected(!onlySelected);
+  }, [onlySelected]);
   return _react.default.createElement("div", {
     className: (0, _classnames.default)(classes.container, receivedClasses.container)
   }, _react.default.createElement(_ui.TextField, {
     customClasses: {
       container: classes.textField
     },
+    fullWidth: isMobile,
     variant: "outlined",
     value: query,
     onChange: handleTextFieldChange,
     placeholder: "Mobile, Javascript, etc..."
+  }), isMobile && _react.default.createElement(_checkbox_group.CheckboxField, {
+    title: _react.default.createElement(_ui.Typography, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Skills.EditDialog.onlySelected",
+      defaultMessage: "Only selected"
+    })),
+    onClick: toggleOtherPerk,
+    checked: onlySelected,
+    variant: "outlined",
+    color: "secondary"
   }), _react.default.createElement("div", {
     className: (0, _classnames.default)(classes.technologiesList, receivedClasses.technologiesList)
   }, (animationEnded.current ? displayedItems : displayedItemsTransitions).map(function (values, index) {

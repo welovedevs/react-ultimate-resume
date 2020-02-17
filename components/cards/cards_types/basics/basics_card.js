@@ -11,8 +11,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _profile_card = require("../../../commons/profile_card/profile_card");
 
-var _basics_front = require("./basics_front/basics_front");
-
 var _basics_back = require("./basics_back/basics_back");
 
 var _mapping = require("./data/mapping");
@@ -54,7 +52,7 @@ var BasicsCardComponent = function BasicsCardComponent(_ref) {
       onEdit: onDialogEdited
     },
     sides: {
-      front: _basics_front.BasicsFront,
+      front: _basics_back.BasicsBack,
       back: _basics_back.BasicsBack
     },
     variant: variant,

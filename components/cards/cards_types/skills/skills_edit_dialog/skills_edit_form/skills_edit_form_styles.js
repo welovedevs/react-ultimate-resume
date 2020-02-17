@@ -16,10 +16,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var styles = function styles(theme) {
   var palette = theme.palette,
       spacing = theme.miscellaneous.spacing;
-  return {
+  return _defineProperty({
     container: {
       display: 'flex',
       height: '100%'
+    },
+    column: {
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'column'
     },
     allTechnologies: {
       flex: 1.25,
@@ -37,7 +42,11 @@ var styles = function styles(theme) {
     selectedTechnologies: {
       flex: 0.75
     }
-  };
+  }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
+    allTechnologies: {
+      width: '100%'
+    }
+  });
 };
 
 exports.styles = styles;

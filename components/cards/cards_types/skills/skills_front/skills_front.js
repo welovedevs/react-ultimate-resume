@@ -59,7 +59,7 @@ var SkillsFrontComponent = function SkillsFrontComponent(_ref) {
     src: techno && "https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/".concat(techno === null || techno === void 0 ? void 0 : techno.handle),
     className: classes.logo
   }), _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
-    customClasses: {
+    classes: {
       container: classes.typography
     }
   }, _react.default.createElement(_reactIntl.FormattedMessage, {

@@ -16,9 +16,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var center = _styles_utils.flex.center;
 
 var styles = function styles(theme) {
+  var _ref;
+
   var palette = theme.palette,
       spacing = theme.miscellaneous.spacing;
-  return {
+  return _ref = {
     background: _objectSpread({
       height: '50%',
       minHeight: '50%',
@@ -44,7 +46,25 @@ var styles = function styles(theme) {
       fontSize: 30,
       lineHeight: 1.4
     }
-  };
+  }, _defineProperty(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
+    content: {
+      padding: [spacing * 3, spacing * 6, 0],
+      height: "calc(60% - ".concat(spacing * (7 + 1), "px)")
+    },
+    text: {
+      fontSize: 24,
+      lineHeight: 1.2
+    },
+    background: {
+      height: '40%',
+      minHeight: '40%'
+    }
+  }), _defineProperty(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.xs), {
+    text: {
+      fontSize: 20,
+      lineHeight: 1.2
+    }
+  }), _ref;
 };
 
 exports.styles = styles;

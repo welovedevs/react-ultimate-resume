@@ -5,11 +5,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = void 0;
 
+var _styles_utils = require("../../../../utils/styles/styles_utils");
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var styles = function styles(theme) {
-  var spacing = theme.miscellaneous.spacing;
-  return _defineProperty({
+  var _ref;
+
+  var spacing = theme.miscellaneous.spacing,
+      screenSizes = theme.screenSizes;
+  return _ref = {
     container: {
       display: 'flex',
       alignItems: 'center'
@@ -30,15 +35,19 @@ var styles = function styles(theme) {
     description: {
       extend: 'text'
     }
-  }, theme.screenSizes.small, {
+  }, _defineProperty(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small), {
+    container: {
+      justifyContent: 'center'
+    }
+  }), _defineProperty(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small - (screenSizes.small - screenSizes.xs) / 2), {
     container: {
       flexDirection: 'column',
-      justifyContent: 'center'
+      alignItems: 'center'
     },
     textColumn: {
-      marginLeft: 'unset'
+      margin: [spacing * 2, 0, 0]
     }
-  });
+  }), _ref;
 };
 
 exports.styles = styles;

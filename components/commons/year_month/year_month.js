@@ -57,7 +57,9 @@ var YearMonthComponent = function YearMonthComponent(_ref) {
       onChange = _ref.onChange,
       title = _ref.title,
       error = _ref.error,
-      variant = _ref.variant;
+      variant = _ref.variant,
+      _ref$textfieldProps = _ref.textfieldProps,
+      textfieldProps = _ref$textfieldProps === void 0 ? {} : _ref$textfieldProps;
   var classes = useStyles();
 
   var _useIntl = (0, _reactIntl.useIntl)(),
@@ -96,13 +98,13 @@ var YearMonthComponent = function YearMonthComponent(_ref) {
         text: children
       }, props));
     }
-  }, formatMessage(title))), _react.default.createElement(_ui.TextField, {
+  }, formatMessage(title))), _react.default.createElement(_ui.TextField, _extends({}, textfieldProps, {
     variant: variant,
     value: (value === null || value === void 0 ? void 0 : value.format('MMMM YYYY')) || '',
     onClick: function onClick() {
       return setIsOpen(true);
     }
-  }), _react.default.createElement(_pickers.MuiPickersUtilsProvider, {
+  })), _react.default.createElement(_pickers.MuiPickersUtilsProvider, {
     utils: _moment.default
   }, _react.default.createElement(_pickers.DatePicker, {
     clearable: true,

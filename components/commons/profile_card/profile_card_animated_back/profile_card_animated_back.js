@@ -66,6 +66,9 @@ var ProfileCardAnimatedBackComponent = function ProfileCardAnimatedBackComponent
     style: {
       opacity: titleSpringProps.opacity,
       transform: titleSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION)
+    },
+    customClasses: {
+      typography: (0, _classnames.default)(classes.title, customClasses.title)
     }
   }, title), _react.default.createElement(_profile_card_content.ProfileCardContent, {
     customClasses: {

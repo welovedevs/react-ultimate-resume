@@ -38,6 +38,7 @@ var CheckboxField = function CheckboxField(_ref) {
     type: "button",
     onClick: onClick
   }, _react.default.createElement(_ui.Checkbox, {
+    className: classes.checkbox,
     variant: variant,
     color: color,
     checked: checked,

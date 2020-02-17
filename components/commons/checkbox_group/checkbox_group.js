@@ -46,10 +46,14 @@ var CheckboxGroupComponent = function CheckboxGroupComponent(_ref) {
       onChange = _ref.onChange,
       _ref$color = _ref.color,
       color = _ref$color === void 0 ? 'secondary' : _ref$color,
+      _ref$rows = _ref.rows,
+      rows = _ref$rows === void 0 ? 2 : _ref$rows,
       variant = _ref.variant,
       _ref$classes = _ref.classes,
       receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
-  var classes = useStyles();
+  var classes = useStyles({
+    rows: rows
+  });
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;

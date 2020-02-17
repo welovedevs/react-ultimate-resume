@@ -38,7 +38,7 @@ var InterestedByFrontComponent = function InterestedByFrontComponent(_ref) {
       container: (0, _classnames.default)(classes.container, customClasses.container)
     }
   }, _react.default.createElement(_center_content_container.CenterContentContainer, null, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, _extends({
-    customClasses: {
+    classes: {
       container: classes.typography
     }
   }, profileCardFrontTypographyProps), _react.default.createElement(_reactIntl.FormattedMessage, {

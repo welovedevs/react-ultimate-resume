@@ -5,10 +5,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = void 0;
 
+var _styles_utils = require("../../../../../utils/styles/styles_utils");
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var styles = function styles(theme) {
+  var _ref2;
+
   var palette = theme.palette,
       spacing = theme.miscellaneous.spacing;
-  return {
+  return _ref2 = {
     experience: function experience(_ref) {
       var width = _ref.width;
       return {
@@ -151,13 +157,30 @@ var styles = function styles(theme) {
       '& > $typography': {
         marginLeft: spacing
       }
-    },
-    '@media screen and (max-width: 730px)': {
-      content: {
-        marginLeft: spacing
-      }
     }
-  };
+  }, _defineProperty(_ref2, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', 730), {
+    content: {
+      marginLeft: spacing
+    }
+  }), _defineProperty(_ref2, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
+    experience: {
+      padding: '0 !important'
+    },
+    divider: {
+      margin: [0, spacing]
+    },
+    yearMonthWrapper: {
+      flexDirection: 'column',
+      margin: spacing,
+      '&> div': {
+        width: '100%',
+        marginBottom: spacing
+      }
+    },
+    withMarginStillEmployedFieldRow: {
+      margin: [spacing * 2, 0, 0, 0]
+    }
+  }), _ref2;
 };
 
 exports.styles = styles;

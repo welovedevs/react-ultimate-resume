@@ -88,7 +88,7 @@ var BouncingRoundButtonComponent = function BouncingRoundButtonComponent(_ref) {
       })
     }
   }, _react.default.createElement(Icon, {
-    className: classes.icon
+    className: (0, _classnames.default)(classes.icon, classes.iconContainer)
   })));
 };
 

@@ -111,6 +111,7 @@ var Content = function Content(_ref2) {
       defaultMessage: "What's your current location?"
     })
   }, _react.default.createElement(_location_field.LocationField, {
+    fullWidth: true,
     variant: "flat",
     value: currentCity === null || currentCity === void 0 ? void 0 : currentCity.name,
     onLocationSelected: handleValueChange('currentCity')

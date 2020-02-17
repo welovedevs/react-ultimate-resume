@@ -29,6 +29,8 @@ var _keyBy = _interopRequireDefault(require("lodash/keyBy"));
 
 var _v = _interopRequireDefault(require("uuid/v4"));
 
+var _useMediaQuery = _interopRequireDefault(require("@material-ui/core/useMediaQuery/useMediaQuery"));
+
 var _ui = require("@wld/ui");
 
 var _edit_dialog = require("../../../../commons/edit_dialog/edit_dialog");
@@ -190,7 +192,7 @@ var ExperiencesEditFormWrapper = function ExperiencesEditFormWrapper(_ref3) {
   }, [work]);
   return _react.default.createElement(ExperiencesEditForm, {
     data: work,
-    errors: errors,
+    errors: errors === null || errors === void 0 ? void 0 : errors.work,
     onAdd: addExperience,
     onMove: move,
     onFieldChange: experienceFieldChanged,
@@ -245,6 +247,9 @@ var ExperienceItem = (0, _reactSortableHoc.SortableElement)(function (_ref7) {
   var _useIntl3 = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl3.formatMessage;
 
+  var theme = (0, _reactJss.useTheme)();
+  var isMobile = (0, _useMediaQuery.default)("(max-width: ".concat(theme.screenSizes.small, "px)"));
+
   var _useSpring = (0, _reactSpring.useSpring)({
     rotate: folded ? -90 : 0
   }),
@@ -275,7 +280,7 @@ var ExperienceItem = (0, _reactSortableHoc.SortableElement)(function (_ref7) {
     onClick: onRemove(id)
   }, _react.default.createElement(DeleteIcon, {
     className: classes.removeIcon
-  }))), _react.default.createElement("div", {
+  }))), !isMobile && _react.default.createElement("div", {
     className: classes.divider
   }), _react.default.createElement(_ui.ListItem, {
     button: true,
@@ -438,6 +443,9 @@ var ContentFields = function ContentFields(_ref9) {
   }, _react.default.createElement("div", {
     className: classes.yearMonthWrapper
   }, _react.default.createElement(_year_month.YearMonth, {
+    textfieldProps: {
+      fullWidth: true
+    },
     variant: "flat",
     value: experience.startDate,
     onChange: handleStartDate,
@@ -578,7 +586,7 @@ var ExperiencesEditForm = function ExperiencesEditForm(_ref14) {
     experienceFieldChanged: onFieldChange,
     experienceDeleted: onDelete
   }, {
-    errors: errors === null || errors === void 0 ? void 0 : errors.work,
+    errors: errors,
     foldedState: foldedState,
     toggleFold: toggleFold,
     classes: classes

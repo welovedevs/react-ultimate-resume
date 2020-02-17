@@ -26,8 +26,11 @@ var getContentBackgroundColor = function getContentBackgroundColor(theme, cardVa
 };
 
 var styles = function styles(theme) {
-  var spacing = theme.miscellaneous.spacing;
-  return {
+  var _ref2;
+
+  var spacing = theme.miscellaneous.spacing,
+      screenSizes = theme.screenSizes;
+  return _ref2 = {
     container: function container(_ref) {
       var variant = _ref.variant;
       var backHexColor = (0, _styles_utils.getHexFromPaletteColor)(theme, (0, _styles_utils.getColorsFromCardVariant)(theme, variant).backColor);
@@ -39,7 +42,15 @@ var styles = function styles(theme) {
         overflow: 'auto'
       }, (0, _styles_utils.withCustomVerticalScrollbar)((0, _styles_utils.getHexFromPaletteColor)(theme, (0, _styles_utils.getColorsFromCardVariant)(theme, variant).backColor)));
     }
-  };
+  }, _defineProperty(_ref2, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small), {
+    container: {
+      padding: [[spacing * 4, spacing * 5], '!important']
+    }
+  }), _defineProperty(_ref2, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.xs), {
+    container: {
+      padding: [[spacing * 4, spacing * 3], '!important']
+    }
+  }), _ref2;
 };
 
 exports.styles = styles;

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getContrastDefaultColorFromPaletteColor = exports.getHexFromPaletteColor = exports.getColorsFromCardVariant = exports.withCustomVerticalScrollbar = exports.withCustomHorizontalScrollbar = exports.flex = void 0;
+exports.createScreenWidthMediaQuery = exports.getContrastDefaultColorFromPaletteColor = exports.getHexFromPaletteColor = exports.getColorsFromCardVariant = exports.withCustomVerticalScrollbar = exports.withCustomHorizontalScrollbar = exports.flex = void 0;
 var flex = Object.freeze({
   center: Object.freeze({
     display: 'flex',
@@ -67,3 +67,11 @@ var getContrastDefaultColorFromPaletteColor = function getContrastDefaultColorFr
 };
 
 exports.getContrastDefaultColorFromPaletteColor = getContrastDefaultColorFromPaletteColor;
+
+var createScreenWidthMediaQuery = function createScreenWidthMediaQuery() {
+  var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'max-width';
+  var value = arguments.length > 1 ? arguments[1] : undefined;
+  return "@media screen and (".concat(key, ": ").concat(value, "px)");
+};
+
+exports.createScreenWidthMediaQuery = createScreenWidthMediaQuery;

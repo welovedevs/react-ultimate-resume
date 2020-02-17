@@ -32,26 +32,26 @@ var useStyles = (0, _reactJss.createUseStyles)(_profile_card_front_typography_st
 var ProfileCardFrontTypographyComponent = function ProfileCardFrontTypographyComponent(_ref) {
   var _ref$component = _ref.component,
       component = _ref$component === void 0 ? 'h2' : _ref$component,
-      _ref$level = _ref.level,
-      level = _ref$level === void 0 ? 'h1' : _ref$level,
+      _ref$variant = _ref.variant,
+      variant = _ref$variant === void 0 ? 'h1' : _ref$variant,
       overrideColor = _ref.overrideColor,
       children = _ref.children,
-      _ref$customClasses = _ref.customClasses,
-      customClasses = _ref$customClasses === void 0 ? {} : _ref$customClasses;
+      _ref$classes = _ref.classes,
+      receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
 
   var _useCardVariant = (0, _use_card_variant.useCardVariant)(),
       _useCardVariant2 = _slicedToArray(_useCardVariant, 1),
-      variant = _useCardVariant2[0];
+      cardVariant = _useCardVariant2[0];
 
   var classes = useStyles({
-    variant: variant,
+    variant: cardVariant,
     overrideColor: overrideColor
   });
   return _react.default.createElement(_ui.Typography, {
-    variant: level,
+    variant: variant,
     component: component,
     customClasses: {
-      container: (0, _classnames.default)(classes.container, customClasses.container)
+      container: (0, _classnames.default)(classes.container, receivedClasses.container)
     }
   }, children);
 };

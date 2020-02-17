@@ -104,6 +104,9 @@ var EditingContent = function EditingContent(_ref4) {
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_pickers.MuiPickersUtilsProvider, {
     utils: _moment.default
   }, _react.default.createElement(_year_month.YearMonth, {
+    textfieldProps: {
+      fullWidth: true
+    },
     className: classes.datePicker,
     variant: "flat",
     value: values.date,

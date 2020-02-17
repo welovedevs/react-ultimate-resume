@@ -8,6 +8,9 @@ var checkboxStyles = {
   container: {
     display: 'flex',
     alignItems: 'center'
+  },
+  checkbox: {
+    minWidth: 24
   }
 };
 exports.checkboxStyles = checkboxStyles;

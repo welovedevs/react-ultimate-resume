@@ -17,6 +17,8 @@ var _reactJss = require("react-jss");
 
 var _formik = require("formik");
 
+var _useMediaQuery = _interopRequireDefault(require("@material-ui/core/useMediaQuery"));
+
 var _ui = require("@wld/ui");
 
 var _core = require("@material-ui/core");
@@ -45,9 +47,11 @@ var EditDialogComponent = function EditDialogComponent(_ref) {
       validationSchema = _ref.validationSchema,
       _ref$classes = _ref.classes,
       receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
+  var theme = (0, _reactJss.useTheme)();
+  var isMobile = (0, _useMediaQuery.default)("(max-width: ".concat(theme.screenSizes.small, "px)"));
   var classes = useStyles();
   return _react.default.createElement(_core.Dialog, {
-    fullScreen: fullScreen,
+    fullScreen: fullScreen || isMobile,
     classes: {
       paper: (0, _classnames.default)(classes.paper, receivedClasses.paper)
     },

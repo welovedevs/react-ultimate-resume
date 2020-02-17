@@ -29,7 +29,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var WorkValidator = function WorkValidator(formatMessage) {
   return Yup.object().shape({
-    work: Yup.array().of(Yup.object().transform(function (value) {
+    work: Yup.array().required(formatMessage(_validator_translations.workTranslations.atLeastOne)).min(1, formatMessage(_validator_translations.workTranslations.atLeastOne)).of(Yup.object().transform(function (value) {
       return _objectSpread({}, value, {
         stillEmployed: !value.endDate
       });
@@ -66,7 +66,7 @@ var WorkValidator = function WorkValidator(formatMessage) {
           });
         })
       })
-    })).required(formatMessage(_validation_translations.validationTranslations.required))
+    }))
   });
 };
 

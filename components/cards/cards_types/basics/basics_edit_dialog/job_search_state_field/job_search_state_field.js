@@ -30,7 +30,8 @@ var JobSearchStateFieldComponent = function JobSearchStateFieldComponent(_ref) {
     value: value,
     onChange: handleChange('searchState'),
     textFieldProps: {
-      variant: 'flat'
+      variant: 'flat',
+      fullWidth: true
     }
   }, _job_search_state.JOB_SEARCH_STATE.map(function (elemValue, index) {
     return _react.default.createElement(_ui.ListItem, {

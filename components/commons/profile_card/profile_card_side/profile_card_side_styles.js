@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.styles = void 0;
 
-var styles = function styles(theme) {
+var styles = function styles() {
   return {
     container: {
       willChange: 'transform',
@@ -16,9 +16,7 @@ var styles = function styles(theme) {
       top: 0,
       left: 0,
       display: 'flex',
-      flexDirection: 'column',
-      borderRadius: theme.components.cards.borderRadius,
-      overflow: 'hidden'
+      flexDirection: 'column'
     }
   };
 };

@@ -15,8 +15,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var styles = function styles(theme) {
   var palette = theme.palette,
-      spacing = theme.miscellaneous.spacing;
-  return {
+      spacing = theme.miscellaneous.spacing,
+      screenSizes = theme.screenSizes;
+  return _defineProperty({
     container: _objectSpread({
       maxHeight: '100%',
       overflowY: 'auto',
@@ -43,8 +44,14 @@ var styles = function styles(theme) {
       display: 'flex',
       alignItems: 'flex-end',
       margin: [spacing * 2, 0]
+    },
+    paletteVisualColor: {}
+  }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.xs), {
+    paletteVisualColor: {
+      height: 50,
+      width: 50
     }
-  };
+  });
 };
 
 exports.styles = styles;

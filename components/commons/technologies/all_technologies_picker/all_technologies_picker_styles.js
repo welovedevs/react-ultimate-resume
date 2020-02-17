@@ -17,7 +17,7 @@ var center = _styles_utils.flex.center;
 
 var styles = function styles(theme) {
   var spacing = theme.miscellaneous.spacing;
-  return {
+  return _defineProperty({
     container: {
       display: 'flex',
       flexDirection: 'column'
@@ -74,7 +74,15 @@ var styles = function styles(theme) {
       color: (0, _styles_utils.getHexFromPaletteColor)(theme, (0, _styles_utils.getContrastDefaultColorFromPaletteColor)(theme, 'primary')),
       textAlign: 'center'
     }, center)
-  };
+  }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
+    textField: {
+      minWidth: 'unset'
+    },
+    technologiesList: {
+      justifyContent: 'center',
+      marginLeft: 'unset'
+    }
+  });
 };
 
 exports.styles = styles;

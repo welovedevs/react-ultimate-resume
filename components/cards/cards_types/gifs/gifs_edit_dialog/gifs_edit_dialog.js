@@ -42,7 +42,8 @@ var GifsEditDialogComponent = function GifsEditDialogComponent(_ref) {
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_edit_dialog.EditDialog, {
     fullScreen: true,
     classes: {
-      paper: classes.paper
+      paper: classes.paper,
+      content: classes.dialogRoot
     },
     open: open,
     onClose: onClose,

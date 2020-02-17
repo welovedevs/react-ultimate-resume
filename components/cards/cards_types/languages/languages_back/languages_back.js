@@ -93,7 +93,8 @@ var LanguagesBackComponent = function LanguagesBackComponent(_ref) {
     title: "Languages",
     customClasses: {
       content: classes.content,
-      contentAnimated: classes.contentAnimated
+      contentAnimated: classes.contentAnimated,
+      title: classes.cardTitle
     }
   }, _react.default.createElement("div", {
     className: classes.columnsContainer

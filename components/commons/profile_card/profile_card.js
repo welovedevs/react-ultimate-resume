@@ -78,7 +78,8 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       editDialog = _ref.editDialog,
       customTransitionsSpringProps = _ref.customTransitionsSpringProps,
       customEditAction = _ref.customEditAction,
-      isComplete = _ref.isComplete,
+      _ref$isComplete = _ref.isComplete,
+      isComplete = _ref$isComplete === void 0 ? true : _ref$isComplete,
       sideProps = _ref.side;
   var classes = useStyles({
     variant: variant
@@ -168,7 +169,7 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
     onClose: setEditDialogClosed,
     data: data
   }), _react.default.createElement(_profile_card_incomplete_popper.ProfileCardIncompletePopper, {
-    open: !isComplete,
+    open: isComplete !== true,
     anchorElement: containerElement
   }), _react.default.createElement(_ui.Card, {
     containerRef: containerReference,
