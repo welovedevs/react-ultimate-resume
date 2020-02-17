@@ -20,12 +20,14 @@ var styles = function styles(theme) {
       overflow: 'hidden'
     },
     contentAnimated: {
-      height: '100%'
+      height: '100%',
+      display: 'flex',
+      justifyContent: 'center'
     },
     cardTitle: {},
     columnsContainer: {
       height: '100%',
-      width: '100%',
+      width: '70%',
       display: 'flex',
       alignItems: 'flex-end',
       justifyContent: 'center',
@@ -33,10 +35,12 @@ var styles = function styles(theme) {
     }
   }, _defineProperty(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
     columnsContainer: {
+      width: '100%',
       padding: [theme.miscellaneous.spacing, theme.miscellaneous.spacing * 2, 0, theme.miscellaneous.spacing * 2]
     }
   }), _defineProperty(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.xs), {
     content: {
+      width: '100%',
       padding: [theme.miscellaneous.spacing, '!important']
     },
     cardTitle: {
