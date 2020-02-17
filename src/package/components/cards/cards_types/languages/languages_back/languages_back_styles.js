@@ -8,12 +8,14 @@ export const styles = theme => ({
         overflow: 'hidden'
     },
     contentAnimated: {
-        height: '100%'
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center'
     },
     cardTitle: {},
     columnsContainer: {
         height: '100%',
-        width: '100%',
+        width: '70%',
         display: 'flex',
         alignItems: 'flex-end',
         justifyContent: 'center',
@@ -21,11 +23,13 @@ export const styles = theme => ({
     },
     [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
         columnsContainer: {
+            width: '100%',
             padding: [theme.miscellaneous.spacing, theme.miscellaneous.spacing * 2, 0, theme.miscellaneous.spacing * 2]
         }
     },
     [createScreenWidthMediaQuery('max-width', theme.screenSizes.xs)]: {
         content: {
+            width: '100%',
             padding: [theme.miscellaneous.spacing, '!important']
         },
         cardTitle: {

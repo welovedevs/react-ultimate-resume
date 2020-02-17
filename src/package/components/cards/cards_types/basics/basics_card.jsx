@@ -8,6 +8,7 @@ import { mapBasicsDataToJsonResume, mapJsonResumeToBasicData } from './data/mapp
 import { BasicsCardEditDialog } from './basics_edit_dialog/basic_edit_dialog';
 import { BasicsValidationSchema, validateBasicsComplete } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
+import { BasicsFront } from './basics_front/basics_front';
 
 const BasicsCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
@@ -30,12 +31,12 @@ const BasicsCardComponent = ({ variant, side }) => {
                     onEdit: onDialogEdited
                 }}
                 sides={{
-                    front: BasicsBack,
+                    front: BasicsFront,
                     back: BasicsBack
                 }}
                 variant={variant}
-                side={side}
                 isComplete={isComplete}
+                side={side}
             />
         </>
     );
