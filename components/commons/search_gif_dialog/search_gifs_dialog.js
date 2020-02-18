@@ -23,8 +23,6 @@ var _core = require("@material-ui/core");
 
 var _ui = require("@wld/ui");
 
-var _Poweredby_100pxWhite_VertText = _interopRequireDefault(require("../../../assets/images/Poweredby_100px-White_VertText.png"));
-
 var _dialog_title = require("../dialog/dialog_title/dialog_title");
 
 var _loading_spinner = require("../loading_spinner/loading_spinner");
@@ -66,8 +64,6 @@ var SearchGifsDialogComponent = function SearchGifsDialogComponent(_ref) {
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Gifs.searchdialog.title",
     defaultMessage: "Search gifs"
-  }), _react.default.createElement("img", {
-    src: _Poweredby_100pxWhite_VertText.default
   })), _react.default.createElement(_core.DialogContent, {
     classes: {
       root: classes.content
