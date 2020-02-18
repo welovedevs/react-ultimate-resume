@@ -1,6 +1,6 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.2.4",
+    "version": "1.2.5",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
@@ -52,7 +52,7 @@
         "respinner": "^3.0.2",
         "uuid": "^3.4.0",
         "values.js": "^1.0.3",
-        "whatwg-fetch": "^3.0.0",
+        "whatwg-fetch": "^2.0.4",
         "use-debounce": "^3.3.0",
         "yup": "^0.28.0"
     },
