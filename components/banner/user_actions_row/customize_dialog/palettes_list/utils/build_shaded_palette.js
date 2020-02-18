@@ -1,13 +1,13 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.buildShadedPalette = void 0;
 
 var _values = _interopRequireDefault(require("values.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var buildShadedPalette = function buildShadedPalette(hex) {
   var values = new _values.default(hex);

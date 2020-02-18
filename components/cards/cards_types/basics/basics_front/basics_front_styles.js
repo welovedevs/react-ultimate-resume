@@ -1,13 +1,15 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.styles = void 0;
 
-var _styles_utils = require("../../../../../utils/styles/styles_utils");
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var _styles_utils = require("../../../../../utils/styles/styles_utils");
 
 var styles = function styles(theme) {
   var _ref;
@@ -26,12 +28,12 @@ var styles = function styles(theme) {
       paddingTop: spacing * 2
     },
     mainTypography: {}
-  }, _defineProperty(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', width + spacing * 2 * 2), {
+  }, (0, _defineProperty2.default)(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', width + spacing * 2 * 2), {
     mainTypography: {},
     location: {
       fontSize: 24
     }
-  }), _defineProperty(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.xs), {
+  }), (0, _defineProperty2.default)(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.xs), {
     mainTypography: {
       fontSize: 28,
       paddingBottom: 0

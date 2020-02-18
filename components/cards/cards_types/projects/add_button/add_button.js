@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -12,8 +14,6 @@ var _reactJss = require("react-jss");
 var _bouncing_round_button = require("../../../../commons/bouncing_round_button/bouncing_round_button");
 
 var _add_button_styles = require("./add_button_styles");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var EditIcon = function EditIcon(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("path", {

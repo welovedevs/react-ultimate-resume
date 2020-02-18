@@ -1,6 +1,6 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.2.5",
+    "version": "1.2.6",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
@@ -50,16 +50,17 @@
         "react-use-dimensions": "^1.2.1",
         "recharts": "^2.0.0-beta.1",
         "respinner": "^3.0.2",
+        "use-debounce": "^3.3.0",
         "uuid": "^3.4.0",
         "values.js": "^1.0.3",
         "whatwg-fetch": "^2.0.4",
-        "use-debounce": "^3.3.0",
         "yup": "^0.28.0"
     },
     "devDependencies": {
         "@babel/cli": "^7.7.7",
         "@babel/core": "^7.7.7",
         "@babel/plugin-proposal-optional-chaining": "^7.7.5",
+        "@babel/plugin-transform-runtime": "^7.8.3",
         "@babel/preset-env": "^7.7.7",
         "@babel/preset-react": "^7.7.4",
         "babel-eslint": "^10.0.3",

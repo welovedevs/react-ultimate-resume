@@ -1,13 +1,15 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.styles = void 0;
 
-var _styles_utils = require("../../../../utils/styles/styles_utils");
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var _styles_utils = require("../../../../utils/styles/styles_utils");
 
 var styles = function styles(theme) {
   var _ref;
@@ -35,11 +37,11 @@ var styles = function styles(theme) {
     description: {
       extend: 'text'
     }
-  }, _defineProperty(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small), {
+  }, (0, _defineProperty2.default)(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small), {
     container: {
       justifyContent: 'center'
     }
-  }), _defineProperty(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small - (screenSizes.small - screenSizes.xs) / 2), {
+  }), (0, _defineProperty2.default)(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small - (screenSizes.small - screenSizes.xs) / 2), {
     container: {
       flexDirection: 'column',
       alignItems: 'center'

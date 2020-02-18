@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -8,8 +10,6 @@ exports.PALETTE_KEY_TRANSLATIONS = void 0;
 var _react = _interopRequireDefault(require("react"));
 
 var _reactIntl = require("react-intl");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PALETTE_KEY_TRANSLATIONS = Object.freeze({
   primary: _react.default.createElement(_reactIntl.FormattedMessage, {

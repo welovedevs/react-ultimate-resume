@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -12,8 +14,6 @@ var _reactJss = require("react-jss");
 var _ui = require("@wld/ui");
 
 var _language_column_styles = require("./language_column_styles");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var useStyles = (0, _reactJss.createUseStyles)(_language_column_styles.styles);
 

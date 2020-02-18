@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -16,8 +18,6 @@ var _user_informations = require("./user_actions_row/user_informations/user_info
 var _social_actions = require("./user_actions_row/social_actions/social_actions");
 
 var _customize_button = require("./user_actions_row/customize_button/customize_button");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var useStyles = (0, _reactJss.createUseStyles)(_banner_styles.styles);
 

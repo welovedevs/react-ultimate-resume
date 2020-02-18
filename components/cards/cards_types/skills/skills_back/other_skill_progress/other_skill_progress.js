@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -14,8 +16,6 @@ var _progress_bar = require("@wld/ui/progress_bar/progress_bar");
 var _typography = require("@wld/ui/typography/typography");
 
 var _other_skill_progress_styles = require("./other_skill_progress_styles");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var useStyles = (0, _reactJss.createUseStyles)(_other_skill_progress_styles.styles);
 

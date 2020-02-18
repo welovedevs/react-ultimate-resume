@@ -1,9 +1,13 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.InterestedByFront = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -21,10 +25,6 @@ var _profile_card_front_typography = require("../../../../commons/profile_card/p
 
 var _interested_by_front_styles = require("./interested_by_front_styles");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 var useStyles = (0, _reactJss.createUseStyles)(_interested_by_front_styles.styles);
 
 var InterestedByFrontComponent = function InterestedByFrontComponent(_ref) {
@@ -37,7 +37,7 @@ var InterestedByFrontComponent = function InterestedByFrontComponent(_ref) {
     customClasses: {
       container: (0, _classnames.default)(classes.container, customClasses.container)
     }
-  }, _react.default.createElement(_center_content_container.CenterContentContainer, null, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, _extends({
+  }, _react.default.createElement(_center_content_container.CenterContentContainer, null, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, (0, _extends2.default)({
     classes: {
       container: classes.typography
     }

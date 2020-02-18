@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -18,8 +20,6 @@ var _ui = require("@wld/ui");
 var _checkbox_group = require("../../../../../commons/checkbox_field/checkbox_group");
 
 var _visa_field_styles = require("./visa_field_styles");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var useStyles = (0, _reactJss.createUseStyles)(_visa_field_styles.styles);
 

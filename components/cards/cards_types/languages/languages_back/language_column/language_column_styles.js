@@ -1,20 +1,22 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.styles = void 0;
 
-var _styles_utils = require("../../../../../../utils/styles/styles_utils");
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var _styles_utils = require("../../../../../../utils/styles/styles_utils");
 
 var MIN = 30;
 var MAX = 100;
 
 var styles = function styles(theme) {
   var spacing = theme.miscellaneous.spacing;
-  return _defineProperty({
+  return (0, _defineProperty2.default)({
     // Offset value = (((OldValue - OldMin) * (NewMax - NewMin)) / (OldMax - OldMin)) + NewMin
     container: function container(_ref) {
       var value = _ref.value,

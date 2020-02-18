@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -14,8 +16,6 @@ var _reactJss = require("react-jss");
 var _profile_card_title = require("../../../../commons/profile_card/profile_card_title/profile_card_title");
 
 var _gifs_sides_commons_styles = require("./gifs_sides_commons_styles");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var useStyles = (0, _reactJss.createUseStyles)(_gifs_sides_commons_styles.styles);
 

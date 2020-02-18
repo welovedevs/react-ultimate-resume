@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -16,8 +18,6 @@ var _profile_card_section_title = require("../../../../commons/profile_card/prof
 var _profile_card_section_text = require("../../../../commons/profile_card/profile_card_section_text/profile_card_section_text");
 
 var _profile_card_animated_back = require("../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var StudiesBackComponent = function StudiesBackComponent(_ref) {
   var data = _ref.data.education;

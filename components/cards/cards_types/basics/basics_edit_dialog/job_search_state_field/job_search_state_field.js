@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -16,8 +18,6 @@ var _select = require("../../../../../commons/select/select");
 var _job_search_state = require("../../../../../../utils/enums/job_serachstate/job_search_state");
 
 var _job_search_state_translations = require("../../../../../../utils/enums/job_serachstate/job_search_state_translations");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var JobSearchStateFieldComponent = function JobSearchStateFieldComponent(_ref) {
   var value = _ref.value,
