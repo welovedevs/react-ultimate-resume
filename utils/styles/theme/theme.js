@@ -7,11 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.buildTheme = exports.getRandomCardVariant = exports.DEFAULT_THEME = void 0;
 
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
@@ -188,49 +184,24 @@ var mergeFunction = function mergeFunction(objValue, srcValue) {
   return (0, _merge.default)(objValue, srcValue);
 };
 
-var buildTheme =
-/*#__PURE__*/
-function () {
-  var _ref3 = (0, _asyncToGenerator2.default)(
-  /*#__PURE__*/
-  _regenerator.default.mark(function _callee(theme) {
-    var merged;
-    return _regenerator.default.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            merged = (0, _mergeWith.default)((0, _cloneDeep.default)(DEFAULT_THEME), theme, mergeFunction);
-            _context.prev = 1;
-            _context.next = 4;
-            return _theme_schema.THEME_SCHEMA.validate(merged, {
-              context: {
-                palette: merged === null || merged === void 0 ? void 0 : merged.palette
-              },
-              strict: true
-            });
+var buildTheme = function buildTheme(theme) {
+  var merged = (0, _mergeWith.default)((0, _cloneDeep.default)(DEFAULT_THEME), theme, mergeFunction);
 
-          case 4:
-            return _context.abrupt("return", (0, _theme_transforms.transformTheme)(merged));
+  try {
+    _theme_schema.THEME_SCHEMA.validateSync(merged, {
+      context: {
+        palette: merged === null || merged === void 0 ? void 0 : merged.palette
+      },
+      strict: true
+    });
 
-          case 7:
-            _context.prev = 7;
-            _context.t0 = _context["catch"](1);
-            console.error('Invalid theme! Using default theme instead.', {
-              error: _context.t0
-            });
-            return _context.abrupt("return", (0, _theme_transforms.transformTheme)(_objectSpread({}, DEFAULT_THEME)));
-
-          case 11:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee, null, [[1, 7]]);
-  }));
-
-  return function buildTheme(_x) {
-    return _ref3.apply(this, arguments);
-  };
-}();
+    return (0, _theme_transforms.transformTheme)(merged);
+  } catch (error) {
+    console.error('Invalid theme! Using default theme instead.', {
+      error: error
+    });
+    return (0, _theme_transforms.transformTheme)(_objectSpread({}, DEFAULT_THEME));
+  }
+};
 
 exports.buildTheme = buildTheme;

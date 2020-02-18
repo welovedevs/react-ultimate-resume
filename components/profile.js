@@ -9,8 +9,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.DeveloperProfile = void 0;
 
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
@@ -152,51 +150,12 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
       locale = _useMemo.locale,
       customization = _useMemo.customization;
 
-  var _useState = (0, _react.useState)(null),
-      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
-      builtTheme = _useState2[0],
-      setBuiltTheme = _useState2[1];
-
-  (0, _react.useEffect)(function () {
-    var asyncBuild =
-    /*#__PURE__*/
-    function () {
-      var _ref4 = (0, _asyncToGenerator2.default)(
-      /*#__PURE__*/
-      _regenerator.default.mark(function _callee2() {
-        var built;
-        return _regenerator.default.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return (0, _theme.buildTheme)(customization === null || customization === void 0 ? void 0 : customization.theme);
-
-              case 2:
-                built = _context2.sent;
-                console.log('🎨 Built theme:', built);
-                setBuiltTheme(built);
-
-              case 5:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }));
-
-      return function asyncBuild() {
-        return _ref4.apply(this, arguments);
-      };
-    }();
-
-    asyncBuild();
-  }, [JSON.stringify(options)]);
-
-  if (!builtTheme) {
-    return null;
-  }
-
+  var builtTheme = (0, _react.useMemo)(function () {
+    console.time('theme');
+    var theme = (0, _theme.buildTheme)(customization === null || customization === void 0 ? void 0 : customization.theme);
+    console.timeEnd('theme');
+    return theme;
+  }, [customization === null || customization === void 0 ? void 0 : customization.theme]);
   return _react.default.createElement(_reactJss.ThemeProvider, {
     theme: builtTheme
   }, _react.default.createElement(_reactIntl.IntlProvider, {
