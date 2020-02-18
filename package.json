@@ -1,6 +1,6 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
@@ -53,6 +53,7 @@
         "uuid": "^3.4.0",
         "values.js": "^1.0.3",
         "whatwg-fetch": "^3.0.0",
+        "use-debounce": "^3.3.0",
         "yup": "^0.28.0"
     },
     "devDependencies": {
@@ -77,8 +78,7 @@
         "react-intl-translations-manager": "^5.0.3",
         "readline-sync": "^1.4.10",
         "rimraf": "^3.0.0",
-        "serve": "^11.3.0",
-        "use-debounce": "^3.3.0"
+        "serve": "^11.3.0"
     },
     "eslintConfig": {
         "extends": "react-app"
