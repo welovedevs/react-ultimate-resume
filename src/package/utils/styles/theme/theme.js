@@ -154,10 +154,10 @@ const mergeFunction = (objValue, srcValue) => {
     return merge(objValue, srcValue);
 };
 
-export const buildTheme = async theme => {
+export const buildTheme = theme => {
     const merged = mergeWith(cloneDeep(DEFAULT_THEME), theme, mergeFunction);
     try {
-        await THEME_SCHEMA.validate(merged, {
+        THEME_SCHEMA.validateSync(merged, {
             context: { palette: merged?.palette },
             strict: true
         });

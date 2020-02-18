@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
+import React, { useCallback, useMemo, useReducer } from 'react';
 import { IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
@@ -93,20 +93,12 @@ const WithProvidersDeveloperProfile = ({
     isEditing
 }) => {
     const { locale, customization } = useMemo(() => ({ ...DEFAULT_OPTIONS, ...options }), [options]);
-    const [builtTheme, setBuiltTheme] = useState(null);
-
-    useEffect(() => {
-        const asyncBuild = async () => {
-            const built = await buildTheme(customization?.theme);
-            console.log('🎨 Built theme:', built);
-            setBuiltTheme(built);
-        };
-        asyncBuild();
-    }, [JSON.stringify(options)]);
-
-    if (!builtTheme) {
-        return null;
-    }
+    const builtTheme = useMemo(() => {
+        console.time('theme');
+        const theme = buildTheme(customization?.theme);
+        console.timeEnd('theme');
+        return theme;
+    }, [customization?.theme]);
 
     return (
         <ThemeProvider theme={builtTheme}>
