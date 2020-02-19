@@ -25,7 +25,8 @@ var BannerComponent = function BannerComponent(_ref) {
   var _theme$components, _theme$components$ban;
 
   var children = _ref.children,
-      customizationOptions = _ref.customizationOptions;
+      customizationOptions = _ref.customizationOptions,
+      onCustomizationChanged = _ref.onCustomizationChanged;
   var classes = useStyles();
   var theme = (0, _reactJss.useTheme)();
   return _react.default.createElement("div", {
@@ -38,7 +39,7 @@ var BannerComponent = function BannerComponent(_ref) {
     alt: "Banner"
   }), _react.default.createElement("div", {
     className: classes.content
-  }, _react.default.createElement(_user_informations.UserInformations, null), _react.default.createElement(_social_actions.SocialActions, null, children, _react.default.createElement(_customize_button.CustomizeButton, {
+  }, _react.default.createElement(_user_informations.UserInformations, null), _react.default.createElement(_social_actions.SocialActions, null, children, onCustomizationChanged && _react.default.createElement(_customize_button.CustomizeButton, {
     customizationOptions: customizationOptions
   }))));
 };

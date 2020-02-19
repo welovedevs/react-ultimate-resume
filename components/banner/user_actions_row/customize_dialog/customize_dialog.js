@@ -110,7 +110,10 @@ var CustomizeDialogComponent = function CustomizeDialogComponent(_ref) {
     asyncBuild();
   }, [JSON.stringify(value.theme)]);
   var onSave = (0, _react.useCallback)(function () {
-    onCustomizationChanged(value);
+    if (typeof onCustomizationChanged === 'function') {
+      onCustomizationChanged(value);
+    }
+
     onClose();
   }, [value]);
   var onPaletteChanged = (0, _react.useCallback)(function (palette) {
@@ -118,10 +121,11 @@ var CustomizeDialogComponent = function CustomizeDialogComponent(_ref) {
     (0, _set.default)(newCustomization, 'theme.palette', palette);
     setValue(newCustomization);
 
-    if (onlyShowPalettesList) {
+    if (onlyShowPalettesList && typeof onCustomizationChanged === 'function') {
       onCustomizationChanged(newCustomization);
-      onClose();
     }
+
+    onClose();
   }, [value, onlyShowPalettesList, onSave]);
   var onCardOrdered = (0, _react.useCallback)(function (cardsOrder) {
     var newCustomization = (0, _cloneDeep.default)(value || {});

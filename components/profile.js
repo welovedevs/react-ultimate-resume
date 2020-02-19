@@ -41,6 +41,14 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
+if (!Intl.PluralRules) {
+  require('@formatjs/intl-pluralrules/polyfill');
+
+  require('@formatjs/intl-pluralrules/dist/locale-data/en');
+
+  require('@formatjs/intl-pluralrules/dist/locale-data/fr');
+}
+
 var messages = {
   en: _en.default,
   fr: _fr.default
@@ -62,8 +70,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       options = _ref$options === void 0 ? DEFAULT_OBJECT : _ref$options,
       _ref$onEdit = _ref.onEdit,
       onEditProps = _ref$onEdit === void 0 ? DEFAULT_FUNCTION : _ref$onEdit,
-      _ref$onCustomizationC = _ref.onCustomizationChanged,
-      onCustomizationChanged = _ref$onCustomizationC === void 0 ? DEFAULT_FUNCTION : _ref$onCustomizationC,
+      onCustomizationChanged = _ref.onCustomizationChanged,
       _ref$isEditing = _ref.isEditing,
       isEditing = _ref$isEditing === void 0 ? false : _ref$isEditing,
       _ref$onFilesUpload = _ref.onFilesUpload,
@@ -128,7 +135,8 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
   }, _react.default.createElement(_contexts.DeveloperProfileContext.Provider, {
     value: context
   }, _react.default.createElement(_banner.Banner, {
-    customizationOptions: options.customization
+    customizationOptions: options.customization,
+    onCustomizationChanged: onCustomizationChanged
   }, ActionButtons), BeforeCards, _react.default.createElement(_cards.Cards, {
     cardsOrder: (_options$customizatio = options.customization) === null || _options$customizatio === void 0 ? void 0 : _options$customizatio.cardsOrder
   })));
