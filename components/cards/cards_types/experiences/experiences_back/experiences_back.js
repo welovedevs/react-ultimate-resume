@@ -56,7 +56,7 @@ var ExperienceContent = function ExperienceContent(_ref) {
   }, [experience]);
   var title = (0, _react.useMemo)(function () {
     if (!(place === null || place === void 0 ? void 0 : place.name)) {
-      return title;
+      return name;
     }
 
     return "".concat(name, " - ").concat(place.name);
