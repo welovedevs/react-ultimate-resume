@@ -7,6 +7,7 @@ import { useDebounce } from 'use-debounce';
 import { Button, Dialog, DialogActions, DialogContent } from '@material-ui/core';
 import { TextField, Tooltip } from '@wld/ui';
 
+import poweredByGiphy from '../../../assets/images/Poweredby_100px-White_VertText.png';
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';
 import { LoadingSpinner } from '../loading_spinner/loading_spinner';
 
@@ -32,6 +33,7 @@ const SearchGifsDialogComponent = ({ open, onClose, onSelect }) => {
         >
             <DialogTitle classes={{ root: classes.title }}>
                 <FormattedMessage id="Gifs.searchdialog.title" defaultMessage="Search gifs" />
+                <img src={poweredByGiphy} />
             </DialogTitle>
             <DialogContent
                 classes={{
