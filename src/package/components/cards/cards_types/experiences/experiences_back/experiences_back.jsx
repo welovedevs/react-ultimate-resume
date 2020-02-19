@@ -1,3 +1,4 @@
+
 import React, { useMemo } from 'react';
 
 import { useIntl } from 'react-intl';
@@ -26,7 +27,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
 
     const title = useMemo(() => {
         if (!place?.name) {
-            return title;
+            return name;
         }
         return `${name} - ${place.name}`;
     }, [experience]);
