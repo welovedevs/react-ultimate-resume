@@ -11,6 +11,13 @@ import { styles } from './profile_styles';
 import en from '../i18n/en.json';
 import fr from '../i18n/fr.json';
 
+if (!Intl.PluralRules) {
+    require('@formatjs/intl-pluralrules/polyfill');
+    require('@formatjs/intl-pluralrules/dist/locale-data/en');
+    require('@formatjs/intl-pluralrules/dist/locale-data/fr');
+}
+
+
 import '../styles/lib/slick-carousel/slick-theme.css';
 import '../styles/lib/slick-carousel/slick.css';
 import { technologiesInitialState, technologiesReducer } from '../store/technologies/technologies_reducer';
@@ -33,7 +40,7 @@ const DeveloperProfileComponent = ({
     data = DEFAULT_OBJECT,
     options = DEFAULT_OBJECT,
     onEdit: onEditProps = DEFAULT_FUNCTION,
-    onCustomizationChanged = DEFAULT_FUNCTION,
+    onCustomizationChanged,
     isEditing = false,
     onFilesUpload = async () =>
         // eslint-disable-next-line no-undef
@@ -75,7 +82,7 @@ const DeveloperProfileComponent = ({
     return (
         <div className={classes.container}>
             <DeveloperProfileContext.Provider value={context}>
-                <Banner customizationOptions={options.customization}>{ActionButtons}</Banner>
+                <Banner customizationOptions={options.customization} onCustomizationChanged={onCustomizationChanged}>{ActionButtons}</Banner>
                 {BeforeCards}
                 <Cards cardsOrder={options.customization?.cardsOrder} />
             </DeveloperProfileContext.Provider>

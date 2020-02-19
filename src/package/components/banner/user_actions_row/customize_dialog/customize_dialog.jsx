@@ -44,21 +44,23 @@ const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
     }, [JSON.stringify(value.theme)]);
 
     const onSave = useCallback(() => {
-        onCustomizationChanged(value);
+        if (typeof onCustomizationChanged === 'function') {
+            onCustomizationChanged(value);
+        }
         onClose();
     }, [value]);
 
     const onPaletteChanged = useCallback(
-            palette => {
-                const newCustomization = cloneDeep(value || {});
-                set(newCustomization, 'theme.palette', palette);
-                setValue(newCustomization);
-                if (onlyShowPalettesList) {
-                    onCustomizationChanged(newCustomization);
-                    onClose();
-                }
-            },
-            [value, onlyShowPalettesList, onSave]
+        palette => {
+            const newCustomization = cloneDeep(value || {});
+            set(newCustomization, 'theme.palette', palette);
+            setValue(newCustomization);
+            if (onlyShowPalettesList && typeof onCustomizationChanged === 'function') {
+                onCustomizationChanged(newCustomization);
+            }
+            onClose();
+        },
+        [value, onlyShowPalettesList, onSave]
     );
 
     const onCardOrdered = useCallback(
@@ -80,7 +82,7 @@ const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
             onClose={onClose}
         >
             <DialogTitle>
-                <FormattedMessage id="Banner.actions.customize.dialog.title" defaultMessage="Customize your profile" />
+                <FormattedMessage id="Banner.actions.customize.dialog.title" defaultMessage="Customize your profile"/>
             </DialogTitle>
             <DialogContent
                 classes={{
@@ -97,10 +99,10 @@ const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
                 {!onlyShowPalettesList && (
                     <>
                         <div className={classes.dividerContainer}>
-                            <div className={classes.divider} />
+                            <div className={classes.divider}/>
                         </div>
                         <ThemeProvider theme={builtTheme}>
-                            <CardsOrderer onChange={onCardOrdered} value={value?.cardsOrder} />
+                            <CardsOrderer onChange={onCardOrdered} value={value?.cardsOrder}/>
                         </ThemeProvider>
                     </>
                 )}
@@ -111,7 +113,7 @@ const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
                 }}
             >
                 <Button size="small" onClick={onSave}>
-                    <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
+                    <FormattedMessage id="Main.lang.save" defaultMessage="Save"/>
                 </Button>
             </DialogActions>
         </Dialog>

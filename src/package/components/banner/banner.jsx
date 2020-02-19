@@ -9,7 +9,7 @@ import { CustomizeButton } from './user_actions_row/customize_button/customize_b
 
 const useStyles = createUseStyles(styles);
 
-const BannerComponent = ({ children, customizationOptions }) => {
+const BannerComponent = ({ children, customizationOptions, onCustomizationChanged}) => {
     const classes = useStyles();
     const theme = useTheme();
     return (
@@ -20,7 +20,7 @@ const BannerComponent = ({ children, customizationOptions }) => {
                 <UserInformations />
                 <SocialActions>
                     {children}
-                    <CustomizeButton customizationOptions={customizationOptions} />
+                    {onCustomizationChanged && <CustomizeButton customizationOptions={customizationOptions} />}
                 </SocialActions>
             </div>
         </div>
