@@ -23,7 +23,7 @@ var StudiesBackComponent = function StudiesBackComponent(_ref) {
   var data = _ref.data.education;
   return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
     title: "Studies"
-  }, data.map(function (_ref2, index) {
+  }, data === null || data === void 0 ? void 0 : data.map(function (_ref2, index) {
     var endDate = _ref2.endDate,
         area = _ref2.area,
         studyType = _ref2.studyType,
