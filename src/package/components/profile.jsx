@@ -34,24 +34,25 @@ const DEFAULT_OPTIONS = Object.freeze({
 });
 
 const DEFAULT_OBJECT = {};
-const DEFAULT_FUNCTION = () => {};
+const DEFAULT_FUNCTION = () => {
+};
 
 const DeveloperProfileComponent = ({
-    data = DEFAULT_OBJECT,
-    options = DEFAULT_OBJECT,
-    onEdit: onEditProps = DEFAULT_FUNCTION,
-    onCustomizationChanged,
-    isEditing = false,
-    onFilesUpload = async () =>
-        // eslint-disable-next-line no-undef
-        fetch('https://api.thecatapi.com/v1/images/search', {
-            headers: {}
-        })
-            .then(res => res.json())
-            .then(results => results?.[0]?.url),
-    ActionButtons,
-    BeforeCards
-}) => {
+                                       data = DEFAULT_OBJECT,
+                                       options = DEFAULT_OBJECT,
+                                       onEdit: onEditProps = DEFAULT_FUNCTION,
+                                       onCustomizationChanged,
+                                       isEditing = false,
+                                       onFilesUpload = async () =>
+                                           // eslint-disable-next-line no-undef
+                                           fetch('https://api.thecatapi.com/v1/images/search', {
+                                               headers: {}
+                                           })
+                                               .then(res => res.json())
+                                               .then(results => results?.[0]?.url),
+                                       ActionButtons,
+                                       BeforeCards
+                                   }) => {
     const { apiKeys, endpoints } = options;
     const classes = useStyles(styles);
 
@@ -72,6 +73,7 @@ const DeveloperProfileComponent = ({
             onFilesUpload,
             apiKeys: { giphy: apiKeys?.giphy },
             store,
+            mode: options.mode || 'readOnly',
             endpoints: {
                 devicons: endpoints?.devicons
             }
@@ -82,23 +84,24 @@ const DeveloperProfileComponent = ({
     return (
         <div className={classes.container}>
             <DeveloperProfileContext.Provider value={context}>
-                <Banner customizationOptions={options.customization} onCustomizationChanged={onCustomizationChanged}>{ActionButtons}</Banner>
+                <Banner customizationOptions={options.customization}
+                        onCustomizationChanged={onCustomizationChanged}>{ActionButtons}</Banner>
                 {BeforeCards}
-                <Cards cardsOrder={options.customization?.cardsOrder} />
+                <Cards cardsOrder={options.customization?.cardsOrder}/>
             </DeveloperProfileContext.Provider>
         </div>
     );
 };
 
 const WithProvidersDeveloperProfile = ({
-    data,
-    onEdit,
-    onCustomizationChanged,
-    options = {},
-    ActionButtons,
-    BeforeCards,
-    isEditing
-}) => {
+                                           data,
+                                           onEdit,
+                                           onCustomizationChanged,
+                                           options = {},
+                                           ActionButtons,
+                                           BeforeCards,
+                                           isEditing
+                                       }) => {
     const { locale, customization } = useMemo(() => ({ ...DEFAULT_OPTIONS, ...options }), [options]);
     const builtTheme = useMemo(() => {
         console.time('theme');

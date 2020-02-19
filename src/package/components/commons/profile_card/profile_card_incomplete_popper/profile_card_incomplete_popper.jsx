@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
@@ -8,11 +8,20 @@ import { PopperCard, Typography } from '@wld/ui';
 import { ReactComponent as WarnIcon } from '../../../../assets/icons/warn.svg';
 
 import { styles } from './profile_card_incomplete_popper_styles';
+import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const useStyles = createUseStyles(styles);
 
 const ProfileCardIncompletePopperComponent = ({ open, onClose, anchorElement }) => {
     const classes = useStyles();
+    const [hasBeenMounted, setHasBeenMouneted] = useState(false);
+    const { mode } = useContext(DeveloperProfileContext);
+
+    useEffect(() => setHasBeenMouneted(true), []);
+
+    if (mode !== 'edit' || !open || !hasBeenMounted) {
+        return null;
+    }
     return (
         <PopperCard
             customClasses={{
