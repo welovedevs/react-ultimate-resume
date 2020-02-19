@@ -125,6 +125,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
         giphy: apiKeys === null || apiKeys === void 0 ? void 0 : apiKeys.giphy
       },
       store: store,
+      mode: options.mode || 'readOnly',
       endpoints: {
         devicons: endpoints === null || endpoints === void 0 ? void 0 : endpoints.devicons
       }

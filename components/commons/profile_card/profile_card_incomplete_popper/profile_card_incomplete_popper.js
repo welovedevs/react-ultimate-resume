@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
@@ -7,7 +9,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ProfileCardIncompletePopper = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
+var _react = _interopRequireWildcard(require("react"));
 
 var _reactJss = require("react-jss");
 
@@ -16,6 +20,8 @@ var _reactIntl = require("react-intl");
 var _ui = require("@wld/ui");
 
 var _profile_card_incomplete_popper_styles = require("./profile_card_incomplete_popper_styles");
+
+var _contexts = require("../../../../utils/context/contexts");
 
 var WarnIcon = function WarnIcon(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("title", null, "Exported from Streamline App (https://app.streamlineicons.com)"), _react.default.createElement("path", {
@@ -34,6 +40,23 @@ var ProfileCardIncompletePopperComponent = function ProfileCardIncompletePopperC
       onClose = _ref.onClose,
       anchorElement = _ref.anchorElement;
   var classes = useStyles();
+
+  var _useState = (0, _react.useState)(false),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      hasBeenMounted = _useState2[0],
+      setHasBeenMouneted = _useState2[1];
+
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
+      mode = _useContext.mode;
+
+  (0, _react.useEffect)(function () {
+    return setHasBeenMouneted(true);
+  }, []);
+
+  if (mode !== 'edit' || !open || !hasBeenMounted) {
+    return null;
+  }
+
   return _react.default.createElement(_ui.PopperCard, {
     customClasses: {
       container: classes.container,
