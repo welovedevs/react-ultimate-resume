@@ -8,7 +8,7 @@ import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profil
 
 const StudiesBackComponent = ({ data: { education: data } }) => (
     <ProfileCardAnimatedBack title="Studies">
-        {data.map(({ endDate, area, studyType, institution, id }, index) => (
+        {data?.map(({ endDate, area, studyType, institution, id }, index) => (
             <ProfileCardSection key={`${index}_${id}`}>
                 <ProfileCardSectionTitle>{endDate.year()}</ProfileCardSectionTitle>
                 <ProfileCardSectionText>
