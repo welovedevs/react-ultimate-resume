@@ -58,7 +58,8 @@ var messages = {
 };
 var useStyles = (0, _reactJss.createUseStyles)(_profile_styles.styles);
 var DEFAULT_OPTIONS = Object.freeze({
-  locale: 'en'
+  locale: 'en',
+  customization: {}
 });
 var DEFAULT_OBJECT = {};
 
@@ -71,6 +72,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       data = _ref$data === void 0 ? DEFAULT_OBJECT : _ref$data,
       _ref$options = _ref.options,
       options = _ref$options === void 0 ? DEFAULT_OBJECT : _ref$options,
+      mode = _ref.mode,
       _ref$onEdit = _ref.onEdit,
       onEditProps = _ref$onEdit === void 0 ? DEFAULT_FUNCTION : _ref$onEdit,
       onCustomizationChanged = _ref.onCustomizationChanged,
@@ -128,12 +130,12 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
         giphy: apiKeys === null || apiKeys === void 0 ? void 0 : apiKeys.giphy
       },
       store: store,
-      mode: options.mode || 'readOnly',
+      mode: mode,
       endpoints: {
         devicons: endpoints === null || endpoints === void 0 ? void 0 : endpoints.devicons
       }
     };
-  }, [endpoints, apiKeys, data, onEdit, store]);
+  }, [endpoints, apiKeys, data, onEdit, store, mode]);
   return _react.default.createElement("div", {
     className: classes.container
   }, _react.default.createElement(_contexts.DeveloperProfileContext.Provider, {
@@ -152,6 +154,8 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
       onCustomizationChanged = _ref3.onCustomizationChanged,
       _ref3$options = _ref3.options,
       options = _ref3$options === void 0 ? {} : _ref3$options,
+      _ref3$mode = _ref3.mode,
+      mode = _ref3$mode === void 0 ? 'readOnly' : _ref3$mode,
       ActionButtons = _ref3.ActionButtons,
       BeforeCards = _ref3.BeforeCards,
       isEditing = _ref3.isEditing;
@@ -177,6 +181,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
   }, _react.default.createElement(DeveloperProfileComponent, {
     isEditing: isEditing,
     data: data,
+    mode: mode,
     onEdit: onEdit,
     onCustomizationChanged: onCustomizationChanged,
     options: options,
