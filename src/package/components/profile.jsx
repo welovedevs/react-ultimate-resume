@@ -11,17 +11,19 @@ import { styles } from './profile_styles';
 import en from '../i18n/en.json';
 import fr from '../i18n/fr.json';
 
-if (!Intl.PluralRules) {
-    require('@formatjs/intl-pluralrules/polyfill');
-    require('@formatjs/intl-pluralrules/dist/locale-data/en');
-    require('@formatjs/intl-pluralrules/dist/locale-data/fr');
-}
-
-
 import '../styles/lib/slick-carousel/slick-theme.css';
 import '../styles/lib/slick-carousel/slick.css';
 import { technologiesInitialState, technologiesReducer } from '../store/technologies/technologies_reducer';
 import { DeveloperProfileContext } from '../utils/context/contexts';
+
+if (!Intl.PluralRules) {
+    // eslint-disable-next-line global-require
+    require('@formatjs/intl-pluralrules/polyfill');
+    // eslint-disable-next-line global-require
+    require('@formatjs/intl-pluralrules/dist/locale-data/en');
+    // eslint-disable-next-line global-require
+    require('@formatjs/intl-pluralrules/dist/locale-data/fr');
+}
 
 const messages = {
     en,
@@ -34,25 +36,24 @@ const DEFAULT_OPTIONS = Object.freeze({
 });
 
 const DEFAULT_OBJECT = {};
-const DEFAULT_FUNCTION = () => {
-};
+const DEFAULT_FUNCTION = () => {};
 
 const DeveloperProfileComponent = ({
-                                       data = DEFAULT_OBJECT,
-                                       options = DEFAULT_OBJECT,
-                                       onEdit: onEditProps = DEFAULT_FUNCTION,
-                                       onCustomizationChanged,
-                                       isEditing = false,
-                                       onFilesUpload = async () =>
-                                           // eslint-disable-next-line no-undef
-                                           fetch('https://api.thecatapi.com/v1/images/search', {
-                                               headers: {}
-                                           })
-                                               .then(res => res.json())
-                                               .then(results => results?.[0]?.url),
-                                       ActionButtons,
-                                       BeforeCards
-                                   }) => {
+    data = DEFAULT_OBJECT,
+    options = DEFAULT_OBJECT,
+    onEdit: onEditProps = DEFAULT_FUNCTION,
+    onCustomizationChanged,
+    isEditing = false,
+    onFilesUpload = async () =>
+        // eslint-disable-next-line no-undef
+        fetch('https://api.thecatapi.com/v1/images/search', {
+            headers: {}
+        })
+            .then(res => res.json())
+            .then(results => results?.[0]?.url),
+    ActionButtons,
+    BeforeCards
+}) => {
     const { apiKeys, endpoints } = options;
     const classes = useStyles(styles);
 
@@ -84,24 +85,25 @@ const DeveloperProfileComponent = ({
     return (
         <div className={classes.container}>
             <DeveloperProfileContext.Provider value={context}>
-                <Banner customizationOptions={options.customization}
-                        onCustomizationChanged={onCustomizationChanged}>{ActionButtons}</Banner>
+                <Banner customizationOptions={options.customization} onCustomizationChanged={onCustomizationChanged}>
+                    {ActionButtons}
+                </Banner>
                 {BeforeCards}
-                <Cards cardsOrder={options.customization?.cardsOrder}/>
+                <Cards cardsOrder={options.customization?.cardsOrder} />
             </DeveloperProfileContext.Provider>
         </div>
     );
 };
 
 const WithProvidersDeveloperProfile = ({
-                                           data,
-                                           onEdit,
-                                           onCustomizationChanged,
-                                           options = {},
-                                           ActionButtons,
-                                           BeforeCards,
-                                           isEditing
-                                       }) => {
+    data,
+    onEdit,
+    onCustomizationChanged,
+    options = {},
+    ActionButtons,
+    BeforeCards,
+    isEditing
+}) => {
     const { locale, customization } = useMemo(() => ({ ...DEFAULT_OPTIONS, ...options }), [options]);
     const builtTheme = useMemo(() => {
         console.time('theme');

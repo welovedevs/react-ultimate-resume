@@ -9,7 +9,7 @@ import { CustomizeButton } from './user_actions_row/customize_button/customize_b
 
 const useStyles = createUseStyles(styles);
 
-const BannerComponent = ({ children, customizationOptions, onCustomizationChanged}) => {
+const BannerComponent = ({ children, customizationOptions, onCustomizationChanged }) => {
     const classes = useStyles();
     const theme = useTheme();
     return (

@@ -57,8 +57,8 @@ const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
             setValue(newCustomization);
             if (onlyShowPalettesList && typeof onCustomizationChanged === 'function') {
                 onCustomizationChanged(newCustomization);
+                onClose();
             }
-            onClose();
         },
         [value, onlyShowPalettesList, onSave]
     );
@@ -82,7 +82,7 @@ const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
             onClose={onClose}
         >
             <DialogTitle>
-                <FormattedMessage id="Banner.actions.customize.dialog.title" defaultMessage="Customize your profile"/>
+                <FormattedMessage id="Banner.actions.customize.dialog.title" defaultMessage="Customize your profile" />
             </DialogTitle>
             <DialogContent
                 classes={{
@@ -99,10 +99,10 @@ const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
                 {!onlyShowPalettesList && (
                     <>
                         <div className={classes.dividerContainer}>
-                            <div className={classes.divider}/>
+                            <div className={classes.divider} />
                         </div>
                         <ThemeProvider theme={builtTheme}>
-                            <CardsOrderer onChange={onCardOrdered} value={value?.cardsOrder}/>
+                            <CardsOrderer onChange={onCardOrdered} value={value?.cardsOrder} />
                         </ThemeProvider>
                     </>
                 )}
@@ -113,7 +113,7 @@ const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
                 }}
             >
                 <Button size="small" onClick={onSave}>
-                    <FormattedMessage id="Main.lang.save" defaultMessage="Save"/>
+                    <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
                 </Button>
             </DialogActions>
         </Dialog>
