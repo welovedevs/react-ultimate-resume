@@ -39,6 +39,7 @@ function App() {
     return (
         <DeveloperProfile
             isEditing
+            mode="edit"
             data={data}
             onEdit={onEdit}
             onCustomizationChanged={onCustomizationChanged}
@@ -51,11 +52,11 @@ function App() {
                 },
                 customization
             }}
-            ActionButtons={(
+            ActionButtons={
                 <Button style={{ color: '#fff' }} variant="outlined">
                     <FormattedMessage id="App.main." defaultMessage="See more" />
                 </Button>
-              )}
+            }
         />
     );
 }

@@ -32,7 +32,8 @@ const messages = {
 const useStyles = createUseStyles(styles);
 
 const DEFAULT_OPTIONS = Object.freeze({
-    locale: 'en'
+    locale: 'en',
+    customization: {}
 });
 
 const DEFAULT_OBJECT = {};
@@ -41,6 +42,7 @@ const DEFAULT_FUNCTION = () => {};
 const DeveloperProfileComponent = ({
     data = DEFAULT_OBJECT,
     options = DEFAULT_OBJECT,
+    mode,
     onEdit: onEditProps = DEFAULT_FUNCTION,
     onCustomizationChanged,
     isEditing = false,
@@ -74,12 +76,12 @@ const DeveloperProfileComponent = ({
             onFilesUpload,
             apiKeys: { giphy: apiKeys?.giphy },
             store,
-            mode: options.mode || 'readOnly',
+            mode,
             endpoints: {
                 devicons: endpoints?.devicons
             }
         }),
-        [endpoints, apiKeys, data, onEdit, store]
+        [endpoints, apiKeys, data, onEdit, store, mode]
     );
 
     return (
@@ -100,6 +102,7 @@ const WithProvidersDeveloperProfile = ({
     onEdit,
     onCustomizationChanged,
     options = {},
+    mode = 'readOnly',
     ActionButtons,
     BeforeCards,
     isEditing
@@ -118,6 +121,7 @@ const WithProvidersDeveloperProfile = ({
                 <DeveloperProfileComponent
                     isEditing={isEditing}
                     data={data}
+                    mode={mode}
                     onEdit={onEdit}
                     onCustomizationChanged={onCustomizationChanged}
                     options={options}
