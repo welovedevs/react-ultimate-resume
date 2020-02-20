@@ -123,9 +123,8 @@ var CustomizeDialogComponent = function CustomizeDialogComponent(_ref) {
 
     if (onlyShowPalettesList && typeof onCustomizationChanged === 'function') {
       onCustomizationChanged(newCustomization);
+      onClose();
     }
-
-    onClose();
   }, [value, onlyShowPalettesList, onSave]);
   var onCardOrdered = (0, _react.useCallback)(function (cardsOrder) {
     var newCustomization = (0, _cloneDeep.default)(value || {});

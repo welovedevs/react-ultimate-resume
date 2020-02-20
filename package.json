@@ -1,10 +1,10 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.2.13",
+    "version": "1.2.14",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
-        "start": "EXTEND_ESLINT=true BROWSER=none react-scripts start",
+        "start": "PORT=${PORT:-3000} EXTEND_ESLINT=true BROWSER=none react-scripts start",
         "dev": "yarn start",
         "eject": "react-scripts eject",
         "test": "echo \"Error: no test specified\" && exit 1",
