@@ -119,7 +119,21 @@
             "keywords": ["HTML", "CSS", "Javascript"]
         }
     ],
-
+    "languages": [
+        {
+            "language": "English",
+            "value": 100,
+            "fluency": "Native speaker"
+        },
+        {
+            "language": "French",
+            "value": 70
+        },
+        {
+            "language": "Allemand",
+            "value": 60
+        }
+    ],
     "interests": [
         {
             "name": "Burritos",

@@ -37,11 +37,11 @@ const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
 
     useEffect(() => {
         const asyncBuild = async () => {
-            const built = await buildTheme(value.theme);
+            const built = await buildTheme(value?.theme);
             setBuiltTheme(built);
         };
         asyncBuild();
-    }, [JSON.stringify(value.theme)]);
+    }, [JSON.stringify(value?.theme)]);
 
     const onSave = useCallback(() => {
         if (typeof onCustomizationChanged === 'function') {

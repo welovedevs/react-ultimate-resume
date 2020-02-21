@@ -25,7 +25,7 @@ const CardsOrdererComponent = ({ onChange, value: cardsOrder = DEFAULT_CARD_ORDE
             setIsSorting(false);
             onChange(arrayMove(cloneDeep(cardsOrder), oldIndex, newIndex));
         },
-        [cardsOrder]
+        [cardsOrder, onChange]
     );
     const onItemChanged = useCallback(
         (index, value) => {
@@ -33,7 +33,7 @@ const CardsOrdererComponent = ({ onChange, value: cardsOrder = DEFAULT_CARD_ORDE
             newValue[index] = value;
             onChange(newValue);
         },
-        [cardsOrder]
+        [cardsOrder, onChange]
     );
 
     const handleSortStart = useCallback(() => setIsSorting(true), []);
