@@ -48,12 +48,12 @@ var CardsOrdererComponent = function CardsOrdererComponent(_ref) {
         newIndex = _ref2.newIndex;
     setIsSorting(false);
     onChange((0, _reactSortableHoc.arrayMove)((0, _cloneDeep.default)(cardsOrder), oldIndex, newIndex));
-  }, [cardsOrder]);
+  }, [cardsOrder, onChange]);
   var onItemChanged = (0, _react.useCallback)(function (index, value) {
     var newValue = (0, _cloneDeep.default)(cardsOrder);
     newValue[index] = value;
     onChange(newValue);
-  }, [cardsOrder]);
+  }, [cardsOrder, onChange]);
   var handleSortStart = (0, _react.useCallback)(function () {
     return setIsSorting(true);
   }, []);

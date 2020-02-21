@@ -88,7 +88,7 @@ var CustomizeDialogComponent = function CustomizeDialogComponent(_ref) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return (0, _theme.buildTheme)(value.theme);
+                return (0, _theme.buildTheme)(value === null || value === void 0 ? void 0 : value.theme);
 
               case 2:
                 built = _context.sent;
@@ -108,7 +108,7 @@ var CustomizeDialogComponent = function CustomizeDialogComponent(_ref) {
     }();
 
     asyncBuild();
-  }, [JSON.stringify(value.theme)]);
+  }, [JSON.stringify(value === null || value === void 0 ? void 0 : value.theme)]);
   var onSave = (0, _react.useCallback)(function () {
     if (typeof onCustomizationChanged === 'function') {
       onCustomizationChanged(value);
