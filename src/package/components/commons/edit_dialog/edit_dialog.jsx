@@ -27,36 +27,80 @@ const EditDialogComponent = ({
     validationSchema,
     classes: receivedClasses = {}
 }) => {
+    const classes = useStyles();
     const theme = useTheme();
     const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
-    const classes = useStyles();
+
     return (
         <Dialog
             fullScreen={fullScreen || isMobile}
             classes={{
-                paper: cn(classes.paper, receivedClasses.paper)
+                paper: cn(classes.paper, receivedClasses.paper, fullScreen && classes.fullScreen)
             }}
             open={open}
             onClose={onClose}
         >
-            <DialogTitle>{title}</DialogTitle>
             <Formik
                 validateOnChange={false}
                 initialValues={data}
                 onSubmit={newValues => onEdit(newValues)}
                 validationSchema={validationSchema}
             >
-                <Content onClose={onClose} classes={classes} receivedClasses={receivedClasses}>
+                <TitleContent
+                    title={title}
+                    fullScreen={fullScreen}
+                    onClose={onClose}
+                    classes={classes}
+                    receivedClasses={receivedClasses}
+                >
                     {children}
-                </Content>
+                </TitleContent>
             </Formik>
         </Dialog>
     );
 };
 
-const Content = ({ children, onClose, classes, receivedClasses }) => {
+const TitleContent = ({
+    title,
+    fullScreen,
+    onClose,
+    children,
+    classes,
+    receivedClasses
+}) => {
     const { handleSubmit, setFieldValue, values } = useFormikContext();
+    return (
+        <>
+            <div className={classes.titleContainer}>
+                <DialogTitle>
+                    {title}
+                </DialogTitle>
+                {fullScreen && (
+                    <Actions
+                        fullScreen
+                        onClose={onClose}
+                        handleSubmit={handleSubmit}
+                        classes={classes}
+                        receivedClasses={receivedClasses}
+                    />
+                )}
+            </div>
+            <Content
+                onClose={onClose}
+                handleSubmit={handleSubmit}
+                setFieldValue={setFieldValue}
+                values={values}
+                fullScreen={fullScreen}
+                classes={classes}
+                receivedClasses={receivedClasses}
+            >
+                {children}
+            </Content>
+        </>
+    );
+};
 
+const Content = ({ children, onClose, handleSubmit, setFieldValue, values, fullScreen, classes, receivedClasses }) => {
     const handleValueChange = useCallback(
         name => value => {
             console.debug(`Setting field ${name} to value ${value}`);
@@ -75,20 +119,31 @@ const Content = ({ children, onClose, classes, receivedClasses }) => {
             >
                 {children({ handleValueChange, toggleValue })}
             </DialogContent>
-            <DialogActions
-                classes={{
-                    root: cn(classes.actions, receivedClasses.actions)
-                }}
-            >
-                <Button size="small" onClick={onClose}>
-                    <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
-                </Button>
-                <Button type="submit" size="small" color="primary" onClick={handleSubmit}>
-                    <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
-                </Button>
-            </DialogActions>
+            {!fullScreen && (
+                <Actions
+                    onClose={onClose}
+                    handleSubmit={handleSubmit}
+                    classes={classes}
+                    receivedClasses={receivedClasses}
+                />
+            )}
         </>
     );
 };
+
+const Actions = ({ onClose, handleSubmit, fullScreen, classes, receivedClasses }) => (
+    <DialogActions
+        classes={{
+            root: cn(classes.actions, receivedClasses.actions)
+        }}
+    >
+        <Button size="small" onClick={onClose}>
+            <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
+        </Button>
+        <Button variant={fullScreen ? 'contained' : 'text'} type="submit" size="small" color="primary" onClick={handleSubmit}>
+            <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
+        </Button>
+    </DialogActions>
+);
 
 export const EditDialog = EditDialogComponent;

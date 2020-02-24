@@ -4,8 +4,8 @@ import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 import { useDebounce } from 'use-debounce';
 
-import { Button, Dialog, DialogActions, DialogContent } from '@material-ui/core';
-import { TextField, Tooltip } from '@wld/ui';
+import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
+import { Button, TextField, Tooltip } from '@wld/ui';
 
 import poweredByGiphy from '../../../assets/images/Poweredby_100px-White_VertText.png';
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';

@@ -20,8 +20,7 @@ const SkillsEditDialogComponent = ({ open, onClose, data, onEdit, validationSche
             fullScreen
             classes={{
                 paper: classes.paper,
-                content: classes.content,
-                actions: classes.actions
+                content: classes.content
             }}
             open={open}
             onClose={onClose}
