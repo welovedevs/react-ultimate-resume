@@ -31,6 +31,8 @@ var _use_card_variant = require("../../../../commons/profile_card/profile_card_h
 
 var _experiences_front_styles = require("./experiences_front_styles");
 
+var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
+
 var useStyles = (0, _reactJss.createUseStyles)(_experiences_front_styles.styles);
 
 var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
@@ -40,9 +42,17 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
       _useCardVariant2 = (0, _slicedToArray2.default)(_useCardVariant, 1),
       variant = _useCardVariant2[0];
 
+  var _useCardSide = (0, _use_card_side.useCardSide)(),
+      _useCardSide2 = (0, _slicedToArray2.default)(_useCardSide, 2),
+      side = _useCardSide2[0],
+      setSide = _useCardSide2[1];
+
   var classes = useStyles({
     variant: variant
   });
+  var handleButtonClick = (0, _react.useCallback)(function () {
+    return setSide(side === 'front' ? 'back' : 'front');
+  }, [side, setSide]);
   var title = (0, _react.useMemo)(function () {
     var _data$work;
 
@@ -62,7 +72,9 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
     classes: {
       container: classes.mainTypography
     }
-  }, title)))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+  }, title)))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+    onClick: handleButtonClick
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Experiences.front.action",
     defaultMessage: "See all experiences"
   }))));

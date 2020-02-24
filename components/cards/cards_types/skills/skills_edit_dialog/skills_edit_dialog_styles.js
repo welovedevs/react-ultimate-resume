@@ -22,11 +22,6 @@ var styles = function styles(theme) {
     },
     content: {
       padding: [[spacing, spacing * 3, 0], '!important']
-    },
-    actions: {
-      position: 'absolute',
-      bottom: 0,
-      right: 0
     }
   }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
     actions: {

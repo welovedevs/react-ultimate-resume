@@ -29,7 +29,9 @@ var styles = function styles(theme) {
     },
     mainTypography: {}
   }, (0, _defineProperty2.default)(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', width + spacing * 2 * 2), {
-    mainTypography: {},
+    mainTypography: {
+      fontSize: 42
+    },
     location: {
       fontSize: 24
     }

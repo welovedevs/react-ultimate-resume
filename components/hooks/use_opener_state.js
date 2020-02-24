@@ -23,6 +23,7 @@ var useOpenerState = function useOpenerState() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
       _ref$mobileWidth = _ref.mobileWidth,
       mobileWidth = _ref$mobileWidth === void 0 ? 560 : _ref$mobileWidth,
+      useClickOnMobile = _ref.useClickOnMobile,
       defaultHandlers = _ref.defaultHandlers;
 
   var _useState = (0, _react.useState)(false),
@@ -50,9 +51,9 @@ var useOpenerState = function useOpenerState() {
     defaultMatches: true
   });
   var eventsHandlerElementProps = (0, _react.useMemo)(function () {
-    return _objectSpread({}, isMobile && {
+    return _objectSpread({}, isMobile && useClickOnMobile && {
       onClick: handleClick
-    }, {}, !isMobile && {
+    }, {}, (!isMobile || !useClickOnMobile) && {
       onMouseEnter: setOpened,
       onMouseLeave: setClosed,
       onFocus: setOpened,

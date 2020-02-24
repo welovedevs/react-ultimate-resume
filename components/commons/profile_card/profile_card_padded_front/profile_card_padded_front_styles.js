@@ -12,18 +12,24 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
 var _styles_utils = require("../../../../utils/styles/styles_utils");
 
 var styles = function styles(theme) {
+  var _ref;
+
   var spacing = theme.miscellaneous.spacing,
       screenSizes = theme.screenSizes;
-  return (0, _defineProperty2.default)({
+  return _ref = {
     container: {
       height: '100%',
       padding: spacing * 7
     }
-  }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.xs), {
+  }, (0, _defineProperty2.default)(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small), {
     container: {
-      padding: [spacing * 4, spacing * 5]
+      padding: [spacing * 4, spacing * 4]
     }
-  });
+  }), (0, _defineProperty2.default)(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.xs), {
+    container: {
+      padding: [spacing * 3, spacing * 3]
+    }
+  }), _ref;
 };
 
 exports.styles = styles;

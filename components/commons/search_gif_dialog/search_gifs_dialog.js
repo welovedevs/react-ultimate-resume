@@ -86,7 +86,7 @@ var SearchGifsDialogComponent = function SearchGifsDialogComponent(_ref) {
     debouncedQuery: debouncedQuery,
     onSelect: onSelect,
     classes: classes
-  })), _react.default.createElement(_core.DialogActions, null, _react.default.createElement(_core.Button, {
+  })), _react.default.createElement(_core.DialogActions, null, _react.default.createElement(_ui.Button, {
     size: "small",
     onClick: onClose
   }, _react.default.createElement(_reactIntl.FormattedMessage, {

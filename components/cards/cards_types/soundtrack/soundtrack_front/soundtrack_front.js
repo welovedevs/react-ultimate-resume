@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
@@ -7,7 +9,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SoundtrackFront = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
+var _react = _interopRequireWildcard(require("react"));
 
 var _reactIntl = require("react-intl");
 
@@ -27,6 +31,8 @@ var _profile_card_button = require("../../../../commons/profile_card/profile_car
 
 var _soundtrack_front_styles = require("./soundtrack_front_styles");
 
+var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
+
 var SpotifyLogo = function SpotifyLogo(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("path", {
     fill: "#fff",
@@ -44,6 +50,15 @@ var useStyles = (0, _reactJss.createUseStyles)(_soundtrack_front_styles.styles);
 
 var SoundtrackFrontComponent = function SoundtrackFrontComponent() {
   var classes = useStyles();
+
+  var _useCardSide = (0, _use_card_side.useCardSide)(),
+      _useCardSide2 = (0, _slicedToArray2.default)(_useCardSide, 2),
+      side = _useCardSide2[0],
+      setSide = _useCardSide2[1];
+
+  var handleButtonClick = (0, _react.useCallback)(function () {
+    return setSide(side === 'front' ? 'back' : 'front');
+  }, [side, setSide]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, _react.default.createElement(_center_content_container.CenterContentContainer, {
     customClasses: {
       container: classes.container
@@ -60,7 +75,9 @@ var SoundtrackFrontComponent = function SoundtrackFrontComponent() {
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Soundtrack.front.title",
     defaultMessage: "Discover my favourite tracks"
-  })))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+  })))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+    onClick: handleButtonClick
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Soundtrack.front.button",
     defaultMessage: "My playlist"
   }))));

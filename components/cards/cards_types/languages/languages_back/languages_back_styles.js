@@ -39,11 +39,15 @@ var styles = function styles(theme) {
     columnsContainer: {
       width: '100%',
       padding: [theme.miscellaneous.spacing, theme.miscellaneous.spacing * 2, 0, theme.miscellaneous.spacing * 2]
+    },
+    content: {
+      paddingBottom: [0, '!important']
     }
   }), (0, _defineProperty2.default)(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.xs), {
     content: {
       width: '100%',
-      padding: [theme.miscellaneous.spacing, '!important']
+      padding: [theme.miscellaneous.spacing, '!important'],
+      paddingBottom: [0, '!important']
     },
     cardTitle: {
       fontSize: 28

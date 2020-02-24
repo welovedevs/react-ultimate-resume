@@ -43,33 +43,39 @@ var EditDialogComponent = function EditDialogComponent(_ref) {
       validationSchema = _ref.validationSchema,
       _ref$classes = _ref.classes,
       receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
+  var classes = useStyles();
   var theme = (0, _reactJss.useTheme)();
   var isMobile = (0, _useMediaQuery.default)("(max-width: ".concat(theme.screenSizes.small, "px)"));
-  var classes = useStyles();
   return _react.default.createElement(_core.Dialog, {
     fullScreen: fullScreen || isMobile,
     classes: {
-      paper: (0, _classnames.default)(classes.paper, receivedClasses.paper)
+      paper: (0, _classnames.default)(classes.paper, receivedClasses.paper, fullScreen && classes.fullScreen)
     },
     open: open,
     onClose: onClose
-  }, _react.default.createElement(_dialog_title.DialogTitle, null, title), _react.default.createElement(_formik.Formik, {
+  }, _react.default.createElement(_formik.Formik, {
     validateOnChange: false,
     initialValues: data,
     onSubmit: function onSubmit(newValues) {
       return onEdit(newValues);
     },
     validationSchema: validationSchema
-  }, _react.default.createElement(Content, {
+  }, _react.default.createElement(TitleContent, {
+    title: title,
+    fullScreen: fullScreen,
+    isMobile: isMobile,
     onClose: onClose,
     classes: classes,
     receivedClasses: receivedClasses
   }, children)));
 };
 
-var Content = function Content(_ref2) {
-  var children = _ref2.children,
+var TitleContent = function TitleContent(_ref2) {
+  var title = _ref2.title,
+      fullScreen = _ref2.fullScreen,
+      isMobile = _ref2.isMobile,
       onClose = _ref2.onClose,
+      children = _ref2.children,
       classes = _ref2.classes,
       receivedClasses = _ref2.receivedClasses;
 
@@ -78,6 +84,36 @@ var Content = function Content(_ref2) {
       setFieldValue = _useFormikContext.setFieldValue,
       values = _useFormikContext.values;
 
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: classes.titleContainer
+  }, _react.default.createElement(_dialog_title.DialogTitle, null, title), fullScreen && !isMobile && _react.default.createElement(Actions, {
+    fullScreen: true,
+    onClose: onClose,
+    handleSubmit: handleSubmit,
+    classes: classes,
+    receivedClasses: receivedClasses
+  })), _react.default.createElement(Content, {
+    onClose: onClose,
+    handleSubmit: handleSubmit,
+    setFieldValue: setFieldValue,
+    values: values,
+    fullScreen: fullScreen,
+    isMobile: isMobile,
+    classes: classes,
+    receivedClasses: receivedClasses
+  }, children));
+};
+
+var Content = function Content(_ref3) {
+  var children = _ref3.children,
+      onClose = _ref3.onClose,
+      handleSubmit = _ref3.handleSubmit,
+      setFieldValue = _ref3.setFieldValue,
+      values = _ref3.values,
+      fullScreen = _ref3.fullScreen,
+      isMobile = _ref3.isMobile,
+      classes = _ref3.classes,
+      receivedClasses = _ref3.receivedClasses;
   var handleValueChange = (0, _react.useCallback)(function (name) {
     return function (value) {
       console.debug("Setting field ".concat(name, " to value ").concat(value));
@@ -96,7 +132,21 @@ var Content = function Content(_ref2) {
   }, children({
     handleValueChange: handleValueChange,
     toggleValue: toggleValue
-  })), _react.default.createElement(_core.DialogActions, {
+  })), (!fullScreen || isMobile) && _react.default.createElement(Actions, {
+    onClose: onClose,
+    handleSubmit: handleSubmit,
+    classes: classes,
+    receivedClasses: receivedClasses
+  }));
+};
+
+var Actions = function Actions(_ref4) {
+  var onClose = _ref4.onClose,
+      handleSubmit = _ref4.handleSubmit,
+      fullScreen = _ref4.fullScreen,
+      classes = _ref4.classes,
+      receivedClasses = _ref4.receivedClasses;
+  return _react.default.createElement(_core.DialogActions, {
     classes: {
       root: (0, _classnames.default)(classes.actions, receivedClasses.actions)
     }
@@ -107,6 +157,7 @@ var Content = function Content(_ref2) {
     id: "Main.lang.close",
     defaultMessage: "Close"
   })), _react.default.createElement(_ui.Button, {
+    variant: fullScreen ? 'contained' : 'text',
     type: "submit",
     size: "small",
     color: "primary",
@@ -114,7 +165,7 @@ var Content = function Content(_ref2) {
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Main.lang.save",
     defaultMessage: "Save"
-  }))));
+  })));
 };
 
 var EditDialog = EditDialogComponent;

@@ -39,8 +39,7 @@ var SkillsEditDialogComponent = function SkillsEditDialogComponent(_ref) {
     fullScreen: true,
     classes: {
       paper: classes.paper,
-      content: classes.content,
-      actions: classes.actions
+      content: classes.content
     },
     open: open,
     onClose: onClose,

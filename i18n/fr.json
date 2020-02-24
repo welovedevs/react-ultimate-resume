@@ -136,7 +136,7 @@
   "Projects.back.title": "Projects",
   "Projects.details.seemore": "See more",
   "Projects.dialog.content.title": "Project title",
-  "Projects.front.action": "See {count} projects",
+  "Projects.front.action": "Voir {count} projet{count, plural, one {} other {s}}",
   "Projects.front.title": "My <emoji>♥️</emoji> project : ",
   "Skills.Dialog.SliderValue": "{valueNode}%",
   "Skills.back.title": "Skills",

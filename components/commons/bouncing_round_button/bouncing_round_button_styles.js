@@ -26,7 +26,7 @@ var styles = function styles(theme) {
       backgroundColor: (0, _styles_utils.getHexFromPaletteColor)(theme, 'light')
     }, center),
     icon: {
-      height: '50%',
+      height: '40%',
       fill: (0, _styles_utils.getHexFromPaletteColor)(theme, 'dark')
     }
   };

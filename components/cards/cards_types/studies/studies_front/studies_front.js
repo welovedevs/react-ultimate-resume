@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
@@ -7,7 +9,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.StudiesFront = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
+var _react = _interopRequireWildcard(require("react"));
 
 var _reactJss = require("react-jss");
 
@@ -26,6 +30,8 @@ var _profile_card_actions = require("../../../../commons/profile_card/profile_ca
 var _profile_card_button = require("../../../../commons/profile_card/profile_card_button/profile_card_button");
 
 var _studies_front_styles = require("./studies_front_styles");
+
+var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
 
 var SchoolLogo = function SchoolLogo(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("g", {
@@ -57,6 +63,15 @@ var StudiesFrontComponent = function StudiesFrontComponent(_ref) {
 
   var data = _ref.data.education;
   var classes = useStyles();
+
+  var _useCardSide = (0, _use_card_side.useCardSide)(),
+      _useCardSide2 = (0, _slicedToArray2.default)(_useCardSide, 2),
+      side = _useCardSide2[0],
+      setSide = _useCardSide2[1];
+
+  var handleButtonClick = (0, _react.useCallback)(function () {
+    return setSide(side === 'front' ? 'back' : 'front');
+  }, [side, setSide]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, _react.default.createElement(_center_content_container.CenterContentContainer, {
     customClasses: {
       container: classes.container
@@ -76,7 +91,9 @@ var StudiesFrontComponent = function StudiesFrontComponent(_ref) {
     values: {
       schoolName: data === null || data === void 0 ? void 0 : (_data$ = data[0]) === null || _data$ === void 0 ? void 0 : _data$.institution
     }
-  })))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+  })))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+    onClick: handleButtonClick
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Studies.front.action",
     defaultMessage: "All my studies"
   }))));

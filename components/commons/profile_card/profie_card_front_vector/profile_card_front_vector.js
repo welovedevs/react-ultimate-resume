@@ -15,9 +15,9 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _reactJss = require("react-jss");
 
-var _profile_card_front_vector_styles = require("./profile_card_front_vector_styles");
-
 var _use_card_variant = require("../profile_card_hooks/use_card_variant");
+
+var _profile_card_front_vector_styles = require("./profile_card_front_vector_styles");
 
 var useStyles = (0, _reactJss.createUseStyles)(_profile_card_front_vector_styles.styles);
 

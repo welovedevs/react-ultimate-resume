@@ -18,8 +18,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 var center = _styles_utils.flex.center;
 
 var styles = function styles(theme) {
-  var height = theme.components.cards.height;
-  return {
+  var screenSizes = theme.screenSizes,
+      height = theme.components.cards.height;
+  return (0, _defineProperty2.default)({
     image: {
       height: height,
       width: '100%',
@@ -34,6 +35,10 @@ var styles = function styles(theme) {
       textAlign: 'center'
     },
     slidesContainer: {
+      height: '100%',
+      '& .slick-slider': {
+        height: '100%'
+      },
       '& .slick-dots': {
         zIndex: 3,
         bottom: 35
@@ -71,7 +76,16 @@ var styles = function styles(theme) {
         }
       });
     }
-  };
+  }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.xs), {
+    slidesContainer: {
+      '& .slick-dots': {
+        display: ['none', '!important']
+      }
+    },
+    slideName: {
+      bottom: 35
+    }
+  });
 };
 
 exports.styles = styles;
