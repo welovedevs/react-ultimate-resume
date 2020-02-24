@@ -17,8 +17,8 @@ const ProjectsBackComponent = ({ data }) => {
     const [variant] = useCardVariant();
 
     const classes = useStyles({ variant });
-    const imageSrc = data.projects?.[0].images?.[0]?.url;
-    const alt = data.projects?.[0].title;
+    const imageSrc = data.projects?.[0]?.images?.[0]?.url;
+    const alt = data.projects?.[0]?.title;
 
     return (
         <>

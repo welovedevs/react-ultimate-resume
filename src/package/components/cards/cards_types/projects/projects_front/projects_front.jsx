@@ -21,8 +21,8 @@ const ProjectsFrontComponent = ({ data }) => {
     const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
 
     const [variant] = useCardVariant();
-    const imageSrc = data.projects?.[0].images?.[0]?.url;
-    const alt = data.projects?.[0].title;
+    const imageSrc = data.projects?.[0]?.images?.[0]?.url;
+    const alt = data.projects?.[0]?.title;
 
     const classes = useStyles({ variant, hasImage: !!imageSrc });
     return (
