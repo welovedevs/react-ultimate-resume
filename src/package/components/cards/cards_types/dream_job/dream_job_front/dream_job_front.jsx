@@ -12,8 +12,9 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 
 import { ReactComponent as HomeLogo } from '../../../../../assets/icons/home.svg';
 
-import { styles } from './dream_job_front_styles';
 import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
+
+import { styles } from './dream_job_front_styles';
 
 const useStyles = createUseStyles(styles);
 

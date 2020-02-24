@@ -12,8 +12,9 @@ export const styles = (theme) => {
             ...withCustomVerticalScrollbar()
         },
         actions: {},
+        mobile: {},
         fullScreen: {
-            '& $actions': {
+            '&:not($mobile) $actions': {
                 paddingRight: spacing * 3
             }
         },

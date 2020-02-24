@@ -16,25 +16,12 @@ export const styles = theme => {
         },
         typography: {
             fontSize: 36,
-            lineHeight: 1.3,
-            maxWidth: '70%'
+            lineHeight: 1.3
         },
         [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
-            logo: {
-                marginBottom: 0
-            },
             typography: {
                 maxWidth: 'unset',
                 fontSize: 28
-            }
-        },
-        [createScreenWidthMediaQuery('max-width', theme.screenSizes.xs)]: {
-            logo: {
-                maxHeight: '33%',
-                marginBottom: spacing
-            },
-            typography: {
-                padding: 0
             }
         }
     };

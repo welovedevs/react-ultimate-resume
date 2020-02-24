@@ -49,6 +49,7 @@ const EditDialogComponent = ({
                 <TitleContent
                     title={title}
                     fullScreen={fullScreen}
+                    isMobile={isMobile}
                     onClose={onClose}
                     classes={classes}
                     receivedClasses={receivedClasses}
@@ -63,6 +64,7 @@ const EditDialogComponent = ({
 const TitleContent = ({
     title,
     fullScreen,
+    isMobile,
     onClose,
     children,
     classes,
@@ -75,7 +77,7 @@ const TitleContent = ({
                 <DialogTitle>
                     {title}
                 </DialogTitle>
-                {fullScreen && (
+                {(fullScreen && !isMobile) && (
                     <Actions
                         fullScreen
                         onClose={onClose}
@@ -91,6 +93,7 @@ const TitleContent = ({
                 setFieldValue={setFieldValue}
                 values={values}
                 fullScreen={fullScreen}
+                isMobile={isMobile}
                 classes={classes}
                 receivedClasses={receivedClasses}
             >
@@ -100,7 +103,7 @@ const TitleContent = ({
     );
 };
 
-const Content = ({ children, onClose, handleSubmit, setFieldValue, values, fullScreen, classes, receivedClasses }) => {
+const Content = ({ children, onClose, handleSubmit, setFieldValue, values, fullScreen, isMobile, classes, receivedClasses }) => {
     const handleValueChange = useCallback(
         name => value => {
             console.debug(`Setting field ${name} to value ${value}`);
@@ -119,7 +122,7 @@ const Content = ({ children, onClose, handleSubmit, setFieldValue, values, fullS
             >
                 {children({ handleValueChange, toggleValue })}
             </DialogContent>
-            {!fullScreen && (
+            {(!fullScreen || isMobile) && (
                 <Actions
                     onClose={onClose}
                     handleSubmit={handleSubmit}

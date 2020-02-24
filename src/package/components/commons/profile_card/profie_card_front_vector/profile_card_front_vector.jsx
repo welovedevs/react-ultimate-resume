@@ -3,8 +3,9 @@ import React from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 
-import { styles } from './profile_card_front_vector_styles';
 import { useCardVariant } from '../profile_card_hooks/use_card_variant';
+
+import { styles } from './profile_card_front_vector_styles';
 
 const useStyles = createUseStyles(styles);
 
