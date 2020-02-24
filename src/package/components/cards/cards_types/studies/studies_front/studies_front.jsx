@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
@@ -13,11 +13,16 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 import { ReactComponent as SchoolLogo } from '../../../../../assets/icons/dev_only/school.svg';
 
 import { styles } from './studies_front_styles';
+import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
 
 const useStyles = createUseStyles(styles);
 
 const StudiesFrontComponent = ({ data: { education: data } }) => {
     const classes = useStyles();
+    const [side, setSide] = useCardSide();
+
+    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
+
     return (
         <>
             <ProfileCardPaddedFront>
@@ -33,7 +38,7 @@ const StudiesFrontComponent = ({ data: { education: data } }) => {
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton>
+                <ProfileCardButton onClick={handleButtonClick}>
                     <FormattedMessage id="Studies.front.action" defaultMessage="All my studies" />
                 </ProfileCardButton>
             </ProfileCardActions>

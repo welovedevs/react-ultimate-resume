@@ -21,7 +21,7 @@
     "license": "ISC",
     "peerDependencies": {
         "@material-ui/core": "^4.8.3",
-        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.3",
+        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.4-0",
         "formik": "^2.1.2",
         "react": "^16.12.0",
         "react-dom": "^16.12.0"

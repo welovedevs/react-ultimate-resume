@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { createUseStyles } from 'react-jss';
 
@@ -9,11 +9,16 @@ import { ProfileCardActions } from '../../../../commons/profile_card/profile_car
 import { ProfileCardButton } from '../../../../commons/profile_card/profile_card_button/profile_card_button';
 
 import { styles } from './languages_front_styles';
+import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
 
 const useStyles = createUseStyles(styles);
 
 const LanguagesFrontComponent = ({ data }) => {
     const classes = useStyles();
+    const [side, setSide] = useCardSide();
+
+    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
+
     const languagesNode = (
         <>
             {data.languages?.[0]?.language}
@@ -35,7 +40,7 @@ const LanguagesFrontComponent = ({ data }) => {
                 </ProfileCardFrontTypography>
             </CenterContentContainer>
             <ProfileCardActions>
-                <ProfileCardButton>
+                <ProfileCardButton onClick={handleButtonClick}>
                     <FormattedMessage id="Languages.front.action" defaultMessage="Languages level" />
                 </ProfileCardButton>
             </ProfileCardActions>

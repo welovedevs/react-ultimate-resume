@@ -5,7 +5,7 @@ import {
 } from '../../../../utils/styles/styles_utils';
 
 export const styles = (theme) => {
-    const { screenSizes } = theme;
+    const { screenSizes, miscellaneous: { spacing } } = theme;
     return ({
         container: ({ variant }) => ({
             height: '45%',
@@ -17,7 +17,7 @@ export const styles = (theme) => {
             container: () => ({
                 height: '30%',
                 minHeight: '30%',
-                marginBottom: [0, '!important']
+                marginBottom: [spacing, '!important']
             })
         }
     });
