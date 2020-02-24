@@ -34,7 +34,7 @@ var _use_card_variant = require("../../../../commons/profile_card/profile_card_h
 var useStyles = (0, _reactJss.createUseStyles)(_projects_front_styles.styles);
 
 var ProjectsFrontComponent = function ProjectsFrontComponent(_ref) {
-  var _data$projects, _data$projects$0$imag, _data$projects$0$imag2, _data$projects2, _data$projects3, _data$projects3$, _data$projects4;
+  var _data$projects, _data$projects$, _data$projects$$image, _data$projects$$image2, _data$projects2, _data$projects2$, _data$projects3, _data$projects3$, _data$projects4;
 
   var data = _ref.data;
 
@@ -51,8 +51,8 @@ var ProjectsFrontComponent = function ProjectsFrontComponent(_ref) {
       _useCardVariant2 = (0, _slicedToArray2.default)(_useCardVariant, 1),
       variant = _useCardVariant2[0];
 
-  var imageSrc = (_data$projects = data.projects) === null || _data$projects === void 0 ? void 0 : (_data$projects$0$imag = _data$projects[0].images) === null || _data$projects$0$imag === void 0 ? void 0 : (_data$projects$0$imag2 = _data$projects$0$imag[0]) === null || _data$projects$0$imag2 === void 0 ? void 0 : _data$projects$0$imag2.url;
-  var alt = (_data$projects2 = data.projects) === null || _data$projects2 === void 0 ? void 0 : _data$projects2[0].title;
+  var imageSrc = (_data$projects = data.projects) === null || _data$projects === void 0 ? void 0 : (_data$projects$ = _data$projects[0]) === null || _data$projects$ === void 0 ? void 0 : (_data$projects$$image = _data$projects$.images) === null || _data$projects$$image === void 0 ? void 0 : (_data$projects$$image2 = _data$projects$$image[0]) === null || _data$projects$$image2 === void 0 ? void 0 : _data$projects$$image2.url;
+  var alt = (_data$projects2 = data.projects) === null || _data$projects2 === void 0 ? void 0 : (_data$projects2$ = _data$projects2[0]) === null || _data$projects2$ === void 0 ? void 0 : _data$projects2$.title;
   var classes = useStyles({
     variant: variant,
     hasImage: !!imageSrc
