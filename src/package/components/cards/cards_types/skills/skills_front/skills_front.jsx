@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
@@ -11,11 +11,16 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 
 import { styles } from './skills_front_styles';
 import { useTechnologies } from '../../../../hooks/technologies/use_technologies';
+import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
 
 const useStyles = createUseStyles(styles);
 
 const SkillsFrontComponent = ({ data }) => {
     const classes = useStyles();
+    const [side, setSide] = useCardSide();
+
+    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
+
     const { technologies } = useTechnologies();
 
     const techno = useMemo(() => {
@@ -35,6 +40,7 @@ const SkillsFrontComponent = ({ data }) => {
                             techno &&
                             `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle}`
                         }
+                        alt={techno?.name}
                         className={classes.logo}
                     />
                     <ProfileCardFrontTypography classes={{ container: classes.typography }}>
@@ -47,7 +53,7 @@ const SkillsFrontComponent = ({ data }) => {
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton>
+                <ProfileCardButton onClick={handleButtonClick}>
                     <FormattedMessage id="Skills.front.action" defaultMessage="More skills" />
                 </ProfileCardButton>
             </ProfileCardActions>

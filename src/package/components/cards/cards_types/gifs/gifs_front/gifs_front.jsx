@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
@@ -9,11 +9,16 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 import { GifsSidesCommons } from '../gifs_sides_commons/gifs_sides_commons';
 
 import { styles } from './gifs_front_styles';
+import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
 
 const useStyles = createUseStyles(styles);
 
 const GifsFrontComponent = ({ data }) => {
     const classes = useStyles();
+    const [side, setSide] = useCardSide();
+
+    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
+
     return (
         <GifsSidesCommons
             underLayer={
@@ -21,7 +26,7 @@ const GifsFrontComponent = ({ data }) => {
             }
         >
             <ProfileCardActions>
-                <ProfileCardButton overrideColor="light">
+                <ProfileCardButton onClick={handleButtonClick} overrideColor="light">
                     <FormattedMessage id="Gifs.front.action" defaultMessage="See all hobbies" />
                 </ProfileCardButton>
             </ProfileCardActions>
