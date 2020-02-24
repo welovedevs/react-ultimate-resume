@@ -18,29 +18,43 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 var center = _styles_utils.flex.center;
 
 var styles = function styles(theme) {
-  var _ref;
+  var _ref3;
 
   var palette = theme.palette,
       spacing = theme.miscellaneous.spacing;
-  return _ref = {
-    background: _objectSpread({
-      height: '50%',
-      minHeight: '50%',
-      width: '100%',
-      backgroundColor: palette.dark[50],
-      overflow: 'hidden'
-    }, center),
+  return _ref3 = {
+    background: function background(_ref) {
+      var hasImage = _ref.hasImage;
+      return _objectSpread({
+        height: hasImage ? '50%' : '30%',
+        minHeight: hasImage ? '50%' : '30%',
+        width: '100%',
+        backgroundColor: palette.dark[50],
+        overflow: 'hidden'
+      }, center);
+    },
     backgroundImage: {
       height: '140%',
       width: '110%',
       objectFit: 'cover',
       transform: 'rotate(-10deg)'
     },
-    content: {
-      height: "calc(50% - ".concat(spacing * (7 + 1), "px)"),
-      padding: [spacing * 3, spacing * 12, 0],
-      display: 'flex',
-      alignItems: 'center'
+    content: function content() {
+      return {
+        height: "calc(50% - ".concat(spacing * (7 + 1), "px)"),
+        padding: [spacing * 3, spacing * 12, 0],
+        display: 'flex',
+        alignItems: 'center',
+        flex: 1
+      };
+    },
+    stubBackground: function stubBackground(_ref2) {
+      var variant = _ref2.variant;
+      return {
+        width: '100%',
+        height: '100%',
+        backgroundColor: (0, _styles_utils.getHexFromPaletteColor)(theme, (0, _styles_utils.getColorsFromCardVariant)(theme, variant).color)
+      };
     },
     text: {
       color: 'inherit',
@@ -48,7 +62,7 @@ var styles = function styles(theme) {
       fontSize: 30,
       lineHeight: 1.4
     }
-  }, (0, _defineProperty2.default)(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
+  }, (0, _defineProperty2.default)(_ref3, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
     content: {
       padding: [spacing * 3, spacing * 6, 0],
       height: "calc(60% - ".concat(spacing * (7 + 1), "px)")
@@ -61,12 +75,12 @@ var styles = function styles(theme) {
       height: '40%',
       minHeight: '40%'
     }
-  }), (0, _defineProperty2.default)(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.xs), {
+  }), (0, _defineProperty2.default)(_ref3, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.xs), {
     text: {
       fontSize: 20,
       lineHeight: 1.2
     }
-  }), _ref;
+  }), _ref3;
 };
 
 exports.styles = styles;

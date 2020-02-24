@@ -50,6 +50,14 @@ var styles = function styles(theme) {
         content: "''"
       }
     }),
+    stubBackground: function stubBackground(_ref) {
+      var variant = _ref.variant;
+      return {
+        width: '100%',
+        height: '100%',
+        backgroundColor: (0, _styles_utils.getHexFromPaletteColor)(theme, (0, _styles_utils.getColorsFromCardVariant)(theme, variant).color)
+      };
+    },
     backgroundImage: {
       height: '190%',
       width: '110%',
