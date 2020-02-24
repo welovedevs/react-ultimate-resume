@@ -25,12 +25,16 @@ export const styles = theme => ({
         columnsContainer: {
             width: '100%',
             padding: [theme.miscellaneous.spacing, theme.miscellaneous.spacing * 2, 0, theme.miscellaneous.spacing * 2]
+        },
+        content: {
+            paddingBottom: [0, '!important']
         }
     },
     [createScreenWidthMediaQuery('max-width', theme.screenSizes.xs)]: {
         content: {
             width: '100%',
-            padding: [theme.miscellaneous.spacing, '!important']
+            padding: [theme.miscellaneous.spacing, '!important'],
+            paddingBottom: [0, '!important']
         },
         cardTitle: {
             fontSize: 28

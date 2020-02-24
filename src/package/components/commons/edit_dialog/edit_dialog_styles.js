@@ -22,10 +22,10 @@ export const styles = (theme) => {
             alignItems: 'center',
             justifyContent: 'space-between',
             flexWrap: 'wrap',
-            '& > *:first-child': {
+            '& > *:first-child:not(:last-child)': {
                 marginRight: spacing * 2
             },
-            '& > *:last-child': {
+            '& > *:last-child:not(:first-child)': {
                 marginLeft: spacing * 2
             }
         }

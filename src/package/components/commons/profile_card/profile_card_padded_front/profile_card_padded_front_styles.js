@@ -10,9 +10,14 @@ export const styles = theme => {
             height: '100%',
             padding: spacing * 7
         },
+        [createScreenWidthMediaQuery('max-width', screenSizes.small)]: {
+            container: {
+                padding: [spacing * 4, spacing * 4]
+            }
+        },
         [createScreenWidthMediaQuery('max-width', screenSizes.xs)]: {
             container: {
-                padding: [spacing * 4, spacing * 5]
+                padding: [spacing * 3, spacing * 3]
             }
         }
     };

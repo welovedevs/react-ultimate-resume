@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
@@ -12,12 +12,16 @@ import { ProfileCardFrontTypography } from '../../../../commons/profile_card/pro
 import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
 
 import { styles } from './experiences_front_styles';
+import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
 
 const useStyles = createUseStyles(styles);
 
 const ExperiencesFrontComponent = ({ data }) => {
     const [variant] = useCardVariant();
+    const [side, setSide] = useCardSide();
     const classes = useStyles({ variant });
+
+    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
 
     const title = useMemo(() => {
         if (!data.work?.[0]) {
@@ -38,7 +42,7 @@ const ExperiencesFrontComponent = ({ data }) => {
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton>
+                <ProfileCardButton onClick={handleButtonClick}>
                     <FormattedMessage id="Experiences.front.action" defaultMessage="See all experiences" />
                 </ProfileCardButton>
             </ProfileCardActions>

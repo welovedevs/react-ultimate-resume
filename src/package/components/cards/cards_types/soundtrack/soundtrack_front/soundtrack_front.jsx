@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
@@ -13,11 +13,16 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 import { ReactComponent as SpotifyLogo } from '../../../../../assets/icons/brands/spotify.svg';
 
 import { styles } from './soundtrack_front_styles';
+import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
 
 const useStyles = createUseStyles(styles);
 
 const SoundtrackFrontComponent = () => {
     const classes = useStyles();
+    const [side, setSide] = useCardSide();
+
+    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
+
     return (
         <>
             <ProfileCardPaddedFront>
@@ -29,7 +34,7 @@ const SoundtrackFrontComponent = () => {
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton>
+                <ProfileCardButton onClick={handleButtonClick}>
                     <FormattedMessage id="Soundtrack.front.button" defaultMessage="My playlist" />
                 </ProfileCardButton>
             </ProfileCardActions>

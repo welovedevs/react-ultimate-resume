@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { Twemoji } from 'react-emoji-render';
 import { FormattedMessage } from 'react-intl';
@@ -10,11 +10,16 @@ import { ProfileCardActions } from '../../../../commons/profile_card/profile_car
 import { ProfileCardButton } from '../../../../commons/profile_card/profile_card_button/profile_card_button';
 
 import { styles } from './projects_front_styles';
+import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
 
 const useStyles = createUseStyles(styles);
 
 const ProjectsFrontComponent = ({ data }) => {
     const classes = useStyles();
+    const [side, setSide] = useCardSide();
+
+    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
+
     return (
         <>
             <div className={classes.background}>
@@ -38,10 +43,10 @@ const ProjectsFrontComponent = ({ data }) => {
                 </Typography>
             </div>
             <ProfileCardActions>
-                <ProfileCardButton>
+                <ProfileCardButton onClick={handleButtonClick}>
                     <FormattedMessage
                         id="Projects.front.action"
-                        defaultMessage="See {count} projects"
+                        defaultMessage="See {count} project{count, plural, one {} other {s}}"
                         values={{
                             count: data.projects?.length
                         }}

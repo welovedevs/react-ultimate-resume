@@ -11,7 +11,7 @@ export const styles = (theme) => ({
             ...center
         }),
         icon: ({
-            height: '50%',
+            height: '40%',
             fill: getHexFromPaletteColor(theme, 'dark')
         })
     });

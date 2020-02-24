@@ -21,6 +21,7 @@ export const styles = theme => {
         mainTypography: {},
         [createScreenWidthMediaQuery('max-width', width + spacing * 2 * 2)]: {
             mainTypography: {
+                fontSize: 42
             },
             location: {
                 fontSize: 24

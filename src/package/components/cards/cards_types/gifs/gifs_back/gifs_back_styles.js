@@ -1,9 +1,15 @@
-import { flex, getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
+import {
+    createScreenWidthMediaQuery,
+    flex,
+    getColorsFromCardVariant,
+    getHexFromPaletteColor
+} from '../../../../../utils/styles/styles_utils';
 
 const { center } = flex;
 
 export const styles = theme => {
     const {
+        screenSizes,
         components: {
             cards: { height }
         }
@@ -23,6 +29,10 @@ export const styles = theme => {
             textAlign: 'center'
         },
         slidesContainer: {
+            height: '100%',
+            '& .slick-slider': {
+                height: '100%'
+            },
             '& .slick-dots': {
                 zIndex: 3,
                 bottom: 35
@@ -56,6 +66,16 @@ export const styles = theme => {
                     stroke: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).color)
                 }
             }
-        })
+        }),
+        [createScreenWidthMediaQuery('max-width', screenSizes.xs)]: {
+            slidesContainer: {
+                '& .slick-dots': {
+                    display: ['none', '!important']
+                }
+            },
+            slideName: {
+                bottom: 35
+            }
+        }
     };
 };
