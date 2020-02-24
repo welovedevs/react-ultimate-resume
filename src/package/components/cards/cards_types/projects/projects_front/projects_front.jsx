@@ -11,23 +11,25 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 
 import { styles } from './projects_front_styles';
 import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
+import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
 
 const useStyles = createUseStyles(styles);
 
 const ProjectsFrontComponent = ({ data }) => {
-    const classes = useStyles();
     const [side, setSide] = useCardSide();
 
     const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
 
+    const [variant] = useCardVariant();
+    const imageSrc = data.projects?.[0].images?.[0]?.url;
+    const alt = data.projects?.[0].title;
+
+    const classes = useStyles({ variant, hasImage: !!imageSrc });
     return (
         <>
             <div className={classes.background}>
-                <img
-                    className={classes.backgroundImage}
-                    src="https://source.unsplash.com/random/750x400"
-                    alt="Project Background"
-                />
+                {imageSrc && <img className={classes.backgroundImage} src={imageSrc} alt={alt} />}
+                {!imageSrc && <div className={classes.stubBackground} />}
             </div>
             <div className={classes.content}>
                 <Typography variant="h2" component="h2" customClasses={{ container: classes.text }}>

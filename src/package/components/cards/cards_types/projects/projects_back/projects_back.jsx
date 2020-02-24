@@ -9,11 +9,17 @@ import { ProfileCardContent } from '../../../../commons/profile_card/profile_car
 import { ProjectSection } from './project_section/project_section';
 
 import { styles } from './projects_back_styles';
+import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
 
 const useStyles = createUseStyles(styles);
 
 const ProjectsBackComponent = ({ data }) => {
-    const classes = useStyles();
+    const [variant] = useCardVariant();
+
+    const classes = useStyles({ variant });
+    const imageSrc = data.projects?.[0].images?.[0]?.url;
+    const alt = data.projects?.[0].title;
+
     return (
         <>
             <ProfileCardTitle
@@ -21,15 +27,12 @@ const ProjectsBackComponent = ({ data }) => {
                     container: classes.title,
                     typography: classes.typography
                 }}
-                beforeTypography={(
+                beforeTypography={
                     <div className={classes.background}>
-                        <img
-                            className={classes.backgroundImage}
-                            src="https://source.unsplash.com/random/750x400"
-                            alt="Project Background"
-                        />
+                        {imageSrc && <img className={classes.backgroundImage} src={imageSrc} alt={alt} />}
+                        {!imageSrc && <div className={classes.stubBackground} />}
                     </div>
-                  )}
+                }
             >
                 <FormattedMessage id="Projects.back.title" defaultMessage="Projects" />
             </ProfileCardTitle>

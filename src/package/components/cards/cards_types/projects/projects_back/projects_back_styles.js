@@ -1,4 +1,4 @@
-import { flex } from '../../../../../utils/styles/styles_utils';
+import { flex, getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
 
 const { center } = flex;
 
@@ -35,6 +35,11 @@ export const styles = theme => {
                 content: "''"
             }
         },
+        stubBackground: ({ variant }) => ({
+            width: '100%',
+            height: '100%',
+            backgroundColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).color)
+        }),
         backgroundImage: {
             height: '190%',
             width: '110%',

@@ -163,30 +163,7 @@
             "name": "Développement d'un serpent connecté",
             "description": "Et oui, vous avez bien entendu !\nUn serpent connecté, c'est comme une montre connectée, mais en serpent, en fait ça ressemble pas une montre, mais ça reste connecté 🚀",
             "images": [
-                {
-                    "name": "Random 1",
-                    "url": "https://source.unsplash.com/random/1200x600"
-                },
-                {
-                    "name": "Random 2",
-                    "url": "https://source.unsplash.com/random/1200x600"
-                },
-                {
-                    "name": "Random 3",
-                    "url": "https://source.unsplash.com/random/1200x600"
-                },
-                {
-                    "name": "Random 4",
-                    "url": "https://source.unsplash.com/random/1200x600"
-                },
-                {
-                    "name": "Random 3",
-                    "url": "https://source.unsplash.com/random/1200x600"
-                },
-                {
-                    "name": "Random 4",
-                    "url": "https://source.unsplash.com/random/1200x600"
-                }
+
             ]
         }
     ],
