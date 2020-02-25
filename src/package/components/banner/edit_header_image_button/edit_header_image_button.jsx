@@ -5,8 +5,10 @@ import { FormattedMessage } from 'react-intl';
 import { DeveloperProfileContext } from '../../../utils/context/contexts';
 import { BouncingRoundButton } from '../../commons/bouncing_round_button/bouncing_round_button';
 import { ReactComponent as EditIcon } from '../../../assets/icons/edit.svg';
+import { EditBannerImageDialog } from '../edit_banner_image_dialog/edit_banner_image_dialog';
+
 import { useCallbackOpen } from '../../hooks/use_callback_open';
-import { UnsplashEditDialog } from '../unsplash_edit_dialog/unsplash_edit_dialog';
+
 import { styles } from './edit_header_image_button_styles';
 
 const useStyles = createUseStyles(styles);
@@ -23,7 +25,7 @@ export const EditHeaderImageButton = ({ customizationOptions }) => {
     );
     return (
         <>
-            <UnsplashEditDialog
+            <EditBannerImageDialog
                 open={open}
                 onClose={onClose}
                 value={customizationOptions.imageHeader}

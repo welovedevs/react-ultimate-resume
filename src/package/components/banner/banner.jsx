@@ -2,14 +2,19 @@ import React, { useContext } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
+import { animated, config, useTransition } from 'react-spring';
 
 import { Typography } from '@wld/ui';
-import { styles } from './banner_styles';
+
 import { UserInformations } from './user_actions_row/user_informations/user_informations';
 import { SocialActions } from './user_actions_row/social_actions/social_actions';
 import { CustomizeButton } from './user_actions_row/customize_button/customize_button';
 import { DeveloperProfileContext } from '../../utils/context/contexts';
 import { EditHeaderImageButton } from './edit_header_image_button/edit_header_image_button';
+
+import { OPACITY_TRANSITIONS } from '../../utils/springs/common_transitions/opacity_transitions';
+
+import { styles } from './banner_styles';
 
 const useStyles = createUseStyles(styles);
 
@@ -40,20 +45,30 @@ const UnsplashCredits = ({ credits: { name, url } }) => {
 };
 
 const BannerComponent = ({ children, customizationOptions, onCustomizationChanged }) => {
+    const classes = useStyles();
     const { isEditing } = useContext(DeveloperProfileContext);
 
-    const classes = useStyles();
+    const transitions = useTransition(customizationOptions?.imageHeader, item => item?.alt, {
+        ...OPACITY_TRANSITIONS,
+        unique: true,
+        config: config.molasses
+    });
+
     return (
         <div className={classes.container}>
             {isEditing && onCustomizationChanged && (
                 <EditHeaderImageButton customizationOptions={customizationOptions} />
             )}
             <div className={classes.overlay} />
-            <img
-                className={classes.image}
-                src={customizationOptions?.imageHeader?.url}
-                alt={customizationOptions?.imageHeader?.alt}
-            />
+            {transitions.map(({ item, key, props }) => item && (
+                <animated.img
+                    key={key}
+                    className={classes.image}
+                    src={item?.url}
+                    alt={item?.alt}
+                    style={props}
+                />
+            ))}
             {customizationOptions?.imageHeader?.fromUnsplash && (
                 <UnsplashCredits credits={customizationOptions?.imageHeader?.credits} />
             )}

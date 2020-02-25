@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
@@ -7,16 +7,17 @@ import { useDebounce } from 'use-debounce';
 import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
 import { Button, TextField, Tooltip } from '@wld/ui';
 
-import poweredByGiphy from '../../../assets/images/Poweredby_100px-White_VertText.png';
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';
 import { LoadingSpinner } from '../loading_spinner/loading_spinner';
+import { DeveloperProfileContext } from '../../../utils/context/contexts';
 
-import { useGiphyResults } from '../../hooks/giphy/use_giphy_results';
-import { styles } from './search_gifs_dialog_styles';
+import { useUnsplashResults } from '../../hooks/unsplash/use_unsplash_results';
+
+import { styles } from './search_unsplash_result_styles';
 
 const useStyles = createUseStyles(styles);
 
-const SearchGifsDialogComponent = ({ open, onClose, onSelect }) => {
+const SearchUnsplashDialogComponent = ({ open, onClose, onSelect }) => {
     const classes = useStyles();
     const [query, setQuery] = useState('');
     const [debouncedQuery] = useDebounce(query, 500);
@@ -32,8 +33,7 @@ const SearchGifsDialogComponent = ({ open, onClose, onSelect }) => {
             onClose={onClose}
         >
             <DialogTitle classes={{ root: classes.title }}>
-                <FormattedMessage id="Gifs.searchdialog.title" defaultMessage="Search gifs" />
-                <img src={poweredByGiphy} />
+                <FormattedMessage id="Unsplash.SearchDialog.Title" defaultMessage="Search pictures from unsplash" />
             </DialogTitle>
             <DialogContent
                 classes={{
@@ -60,7 +60,9 @@ const SearchGifsDialogComponent = ({ open, onClose, onSelect }) => {
 };
 
 const Results = ({ query, debouncedQuery, onSelect, classes }) => {
-    const { gifs, loading: loadingResults } = useGiphyResults(debouncedQuery, 0, 3 * 3);
+    const { results, loading: loadingResults } = useUnsplashResults(debouncedQuery, 0, 3 * 3);
+
+    const { apiKeys } = useContext(DeveloperProfileContext);
 
     const loading = useMemo(() => loadingResults || (query && query !== debouncedQuery), [
         query,
@@ -68,12 +70,20 @@ const Results = ({ query, debouncedQuery, onSelect, classes }) => {
         loadingResults
     ]);
 
-    const handleClick = useCallback(
-        (url, id, title) => () => {
-            if (typeof onSelect !== 'function') {
-                return;
-            }
-            onSelect({ url, id, title });
+    const onImageSelected = useCallback(
+        ({ description, urls, id, user, links }) => () => {
+            onSelect({
+                id,
+                url: urls.full,
+                alt: description,
+                credits: {
+                    url: encodeURI(`${user.links.html}?utm_source=W3D Developer Profile&utm_medium=referral`),
+                    name: user.username
+                },
+                fromUnsplash: true
+            });
+            // eslint-disable-next-line no-undef
+            fetch(links.download_location, { headers: { Authorization: `Client-ID ${apiKeys.unsplash}` } });
         },
         [onSelect]
     );
@@ -82,25 +92,25 @@ const Results = ({ query, debouncedQuery, onSelect, classes }) => {
         <div className={classes.results}>
             {loading && <LoadingSpinner />}
             {!loading &&
-                gifs &&
-                debouncedQuery &&
-                gifs.map(({ id, url, title }) => (
-                    <Tooltip
-                        key={`giphy_item_${id}`}
-                        title="Select this gif"
+            results &&
+            debouncedQuery &&
+            results.map(({ id, urls, description, user, links }) => (
+                <Tooltip
+                    key={`unsplash_picture_${id}`}
+                    title="Select this picture"
+                >
+                    <button
+                        key={`result_${id}`}
+                        type="button"
+                        className={classes.imageContainer}
+                        onClick={onImageSelected({ description, urls, id, user, links })}
                     >
-                        <button
-                            key={`result_${id}`}
-                            type="button"
-                            className={classes.imageContainer}
-                            onClick={handleClick(url, id, title)}
-                        >
-                            <img className={classes.image} src={url} alt={title} />
-                        </button>
-                    </Tooltip>
-                ))}
+                        <img className={classes.image} src={urls.regular} alt={description} />
+                    </button>
+                </Tooltip>
+            ))}
         </div>
     );
 };
 
-export const SearchGifsDialog = SearchGifsDialogComponent;
+export const SearchUnsplashDialog = SearchUnsplashDialogComponent;
