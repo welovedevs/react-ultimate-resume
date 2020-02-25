@@ -18,6 +18,10 @@ export const styles = theme => {
         miscellaneous: { spacing },
         screenSizes
     } = theme;
+
+    const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
+    const QUERY_EXTRA_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.xs);
+
     return {
         container: ({ variant }) => {
             const backHexColor = getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backColor);
@@ -32,15 +36,15 @@ export const styles = theme => {
                 )
             };
         },
-        [createScreenWidthMediaQuery('max-width', screenSizes.small)]: {
-            container: {
+        [QUERY_SMALL]: {
+            container: () => ({
                 padding: [[spacing * 4, spacing * 5], '!important']
-            }
+            })
         },
-        [createScreenWidthMediaQuery('max-width', screenSizes.xs)]: {
-            container: {
+        [QUERY_EXTRA_SMALL]: {
+            container: () => ({
                 padding: [[spacing * 4, spacing * 3], '!important']
-            }
+            })
         }
     };
 };

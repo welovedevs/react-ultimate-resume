@@ -1,43 +1,47 @@
 import { createScreenWidthMediaQuery } from '../../../../../utils/styles/styles_utils';
 
-export const styles = theme => ({
-    content: {
-        padding: 0,
-        position: 'relative',
-        flex: 1,
-        overflow: 'hidden'
-    },
-    contentAnimated: {
-        height: '100%',
-        display: 'flex',
-        justifyContent: 'center'
-    },
-    cardTitle: {},
-    columnsContainer: {
-        height: '100%',
-        width: '70%',
-        display: 'flex',
-        alignItems: 'flex-end',
-        justifyContent: 'center',
-        padding: [theme.miscellaneous.spacing * 5, theme.miscellaneous.spacing * 2, 0, theme.miscellaneous.spacing * 2]
-    },
-    [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
-        columnsContainer: {
-            width: '100%',
-            padding: [theme.miscellaneous.spacing, theme.miscellaneous.spacing * 2, 0, theme.miscellaneous.spacing * 2]
+export const styles = (theme) => {
+    const { screenSizes } = theme;
+
+    const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
+    const QUERY_EXTRA_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.xs);
+
+    return ({
+        content: {
+            padding: 0,
+            position: 'relative',
+            flex: 1,
+            overflow: 'hidden',
+            [QUERY_SMALL]: {
+                paddingBottom: [0, '!important']
+            },
+            [QUERY_EXTRA_SMALL]: {
+                width: '100%',
+                padding: [theme.miscellaneous.spacing, '!important'],
+                paddingBottom: [0, '!important']
+            }
         },
-        content: {
-            paddingBottom: [0, '!important']
-        }
-    },
-    [createScreenWidthMediaQuery('max-width', theme.screenSizes.xs)]: {
-        content: {
-            width: '100%',
-            padding: [theme.miscellaneous.spacing, '!important'],
-            paddingBottom: [0, '!important']
+        contentAnimated: {
+            height: '100%',
+            display: 'flex',
+            justifyContent: 'center'
         },
         cardTitle: {
-            fontSize: 28
+            [QUERY_EXTRA_SMALL]: {
+                fontSize: 28
+            }
+        },
+        columnsContainer: {
+            height: '100%',
+            width: '70%',
+            display: 'flex',
+            alignItems: 'flex-end',
+            justifyContent: 'center',
+            padding: [theme.miscellaneous.spacing * 5, theme.miscellaneous.spacing * 2, 0, theme.miscellaneous.spacing * 2],
+            [QUERY_SMALL]: {
+                width: '100%',
+                padding: [theme.miscellaneous.spacing, theme.miscellaneous.spacing * 2, 0, theme.miscellaneous.spacing * 2]
+            }
         }
-    }
-});
+    });
+};

@@ -5,7 +5,10 @@ import {
 } from '../../../../utils/styles/styles_utils';
 
 export const styles = (theme) => {
-    const { screenSizes, miscellaneous: { spacing } } = theme;
+    const { screenSizes } = theme;
+
+    const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
+
     return ({
         container: ({ variant }) => ({
             height: '45%',
@@ -13,11 +16,11 @@ export const styles = (theme) => {
             width: 'auto',
             color: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).color)
         }),
-        [createScreenWidthMediaQuery('max-width', screenSizes.small)]: {
+        [QUERY_SMALL]: {
             container: () => ({
                 height: '30%',
                 minHeight: '30%',
-                marginBottom: [spacing, '!important']
+                marginBottom: [0, '!important']
             })
         }
     });

@@ -4,6 +4,9 @@ export const styles = theme => {
     const {
         miscellaneous: { spacing }
     } = theme;
+
+    const QUERY_SMALL = createScreenWidthMediaQuery('max-width', theme.screenSizes.small);
+
     return {
         container: ({ isEditing }) => ({
             marginBottom: spacing * 4,
@@ -16,11 +19,8 @@ export const styles = theme => {
         },
         datePicker: {
             cursor: 'pointer',
-
-            marginLeft: spacing
-        },
-        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
-            datePicker: {
+            marginLeft: spacing,
+            [QUERY_SMALL]: {
                 marginLeft: 'unset'
             }
         }
