@@ -10,10 +10,9 @@ export const styles = theme => {
         },
         logo: {
             marginBottom: spacing * 4,
-            '& > *': {
-                fill: 'currentColor',
-                stroke: 'currentColor'
-            }
+            height: '45%',
+            minHeight: '45%',
+            width: 'auto'
         },
         typography: {
             fontSize: 36,
@@ -21,20 +20,13 @@ export const styles = theme => {
         },
         [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
             logo: {
+                height: '40%',
+                minHeight: '40%',
                 marginBottom: 0
             },
             typography: {
                 maxWidth: 'unset',
                 fontSize: 28
-            }
-        },
-        [createScreenWidthMediaQuery('max-width', theme.screenSizes.xs)]: {
-            logo: {
-                maxHeight: '33%',
-                marginBottom: spacing
-            },
-            typography: {
-                padding: 0
             }
         }
     };

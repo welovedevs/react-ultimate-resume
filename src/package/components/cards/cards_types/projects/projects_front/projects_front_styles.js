@@ -28,7 +28,6 @@ export const styles = theme => {
             transform: 'rotate(-10deg)'
         },
         content: () => ({
-            height: `calc(50% - ${spacing * (7 + 1)}px)`,
             padding: [spacing * 3, spacing * 12, 0],
             display: 'flex',
             alignItems: 'center',
@@ -46,10 +45,10 @@ export const styles = theme => {
             lineHeight: 1.4
         },
         [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
-            content: {
-                padding: [spacing * 3, spacing * 6, 0],
-                height: `calc(60% - ${spacing * (7 + 1)}px)`
-            },
+            content: () => ({
+                padding: [spacing * 4, spacing * 6, 0],
+                alignItems: 'flex-start'
+            }),
             text: {
                 fontSize: 24,
                 lineHeight: 1.2

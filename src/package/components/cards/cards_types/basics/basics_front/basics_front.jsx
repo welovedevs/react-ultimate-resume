@@ -25,17 +25,19 @@ const BasicsFrontComponent = ({ data }) => {
     return (
         <ProfileCardPaddedFront>
             <CenterContentContainer customClasses={{ container: classes.container }}>
-                <ProfileCardFrontTypography
-                    classes={{
-                        container: classes.mainTypography
-                    }}
-                >
-                    {data.summary}
-                </ProfileCardFrontTypography>
-                <ProfileCardFrontTypography variant="h4" component="h3" classes={{ container: classes.location }}>
-                    <Twemoji svg text="📍" />
-                    {data?.currentCity?.name}
-                </ProfileCardFrontTypography>
+                <div className={classes.texts}>
+                    <ProfileCardFrontTypography
+                        classes={{
+                            container: classes.mainTypography
+                        }}
+                    >
+                        {data.summary}
+                    </ProfileCardFrontTypography>
+                    <ProfileCardFrontTypography variant="h4" component="h3" classes={{ container: classes.location }}>
+                        <Twemoji svg text="📍" />
+                        {data?.currentCity?.name}
+                    </ProfileCardFrontTypography>
+                </div>
             </CenterContentContainer>
             <ProfileCardActions>
                 <ProfileCardButton onClick={handleButtonClick}>

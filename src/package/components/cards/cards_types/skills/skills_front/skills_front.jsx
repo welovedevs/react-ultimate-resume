@@ -9,9 +9,10 @@ import { ProfileCardFrontTypography } from '../../../../commons/profile_card/pro
 import { ProfileCardActions } from '../../../../commons/profile_card/profile_card_actions/profile_card_actions';
 import { ProfileCardButton } from '../../../../commons/profile_card/profile_card_button/profile_card_button';
 
-import { styles } from './skills_front_styles';
 import { useTechnologies } from '../../../../hooks/technologies/use_technologies';
 import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
+
+import { styles } from './skills_front_styles';
 
 const useStyles = createUseStyles(styles);
 

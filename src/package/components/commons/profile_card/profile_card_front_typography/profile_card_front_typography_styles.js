@@ -12,12 +12,10 @@ export const styles = theme => {
             fontWeight: 700,
             fontSize: 64,
             lineHeight: 1.1,
-            padding: spacing * 3
-        }),
-        [createScreenWidthMediaQuery('max-width', screenSizes.small)]: {
-            container: {
-                padding: spacing * 2
+            margin: spacing * 3,
+            [createScreenWidthMediaQuery('max-width', screenSizes.small)]: {
+                margin: spacing * 2
             }
-        }
+        })
     });
 };

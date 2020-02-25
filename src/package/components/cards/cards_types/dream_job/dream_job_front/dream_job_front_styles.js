@@ -20,18 +20,25 @@ export const styles = theme => {
         },
         [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
             logo: {
-                marginBottom: spacing * 2
+                '& > g > path': {
+                    fill: 'currentColor'
+                }
             },
             typography: {
                 maxWidth: 'unset',
-                padding: 0,
-                fontSize: 28
+                fontSize: 28,
+                textOverflow: 'ellipsis',
+                wordWrap: 'break-word',
+                overflow: 'hidden',
+                display: '-webkit-box',
+                '-webkit-line-clamp': 2,
+                '-webkit-box-orient': 'vertical',
+                maxHeight: 28 * 1.3 * 2 + (spacing * 2 * 2)
             }
         },
         [createScreenWidthMediaQuery('max-width', theme.screenSizes.xs)]: {
             typography: {
-                fontSize: 24,
-                lineHeight: 1.1
+                fontSize: 24
             }
         }
     };
