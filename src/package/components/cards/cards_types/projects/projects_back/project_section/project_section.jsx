@@ -47,8 +47,8 @@ const Details = ({ project, classes }) => (
     <div className={classes.details}>
         <div className={classes.detail}>
             <AnimatedUnderlinedButton>
-                <LinkIcon className={classes.detailIcon} />
-                <a href={project.link}>
+                <a className={classes.link} href={project.link}>
+                    <LinkIcon className={classes.detailIcon} />
                     <Typography customClasses={{ container: classes.detailTypography }} color="primary">
                         <FormattedMessage id="Project.section.link" defaultMessage="Link" />
                     </Typography>

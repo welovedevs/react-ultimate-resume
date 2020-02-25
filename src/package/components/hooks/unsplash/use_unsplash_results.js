@@ -15,7 +15,6 @@ export const useUnsplashResults = (input, page = 0, limit = 12, timeout = 800) =
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        console.log({ endpoints });
         if (!input || !endpoints.unsplashProxy) {
             setResults([]);
             return;
