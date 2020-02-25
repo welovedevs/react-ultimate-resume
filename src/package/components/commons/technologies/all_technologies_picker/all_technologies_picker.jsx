@@ -16,8 +16,9 @@ import {
     SELECTED_ITEM_LAYER_TRANSITIONS_SPRING_PROPS
 } from './all_technologies_picker_spring_props';
 
-import { styles } from './all_technologies_picker_styles';
 import { CheckboxField } from '../../checkbox_field/checkbox_group';
+
+import { styles } from './all_technologies_picker_styles';
 
 const useStyles = createUseStyles(styles);
 

@@ -5,6 +5,9 @@ export const styles = theme => {
         palette,
         miscellaneous: { spacing }
     } = theme;
+
+    const QUERY_SMALL = createScreenWidthMediaQuery('max-width', theme.screenSizes.small);
+
     return {
         container: {
             display: 'flex',
@@ -17,7 +20,10 @@ export const styles = theme => {
         },
         allTechnologies: {
             flex: 1.25,
-            marginLeft: spacing * 2
+            marginLeft: spacing * 2,
+            [QUERY_SMALL]: {
+                width: '100%'
+            }
         },
         divider: {
             backgroundColor: palette.dark[100],
@@ -30,12 +36,7 @@ export const styles = theme => {
             ...withCustomVerticalScrollbar()
         },
         selectedTechnologies: {
-            flex: 0.75
-        },
-        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
-            allTechnologies: {
-                width: '100%'
-            }
+            flex: 1
         }
     };
 };

@@ -67,6 +67,7 @@ export const styles = theme => {
             backgroundColor: getHexFromPaletteColor(theme, 'primary'),
             color: getHexFromPaletteColor(theme, getContrastDefaultColorFromPaletteColor(theme, 'primary')),
             textAlign: 'center',
+            borderRadius: 5,
             ...center
         },
         [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
