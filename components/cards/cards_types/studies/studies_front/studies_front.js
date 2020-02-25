@@ -87,7 +87,7 @@ var StudiesFrontComponent = function StudiesFrontComponent(_ref) {
     }
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Studies.title",
-    defaultMessage: "I gratuated from {schoolName}",
+    defaultMessage: "I graduated from {schoolName}",
     values: {
       schoolName: data === null || data === void 0 ? void 0 : (_data$ = data[0]) === null || _data$ === void 0 ? void 0 : _data$.institution
     }

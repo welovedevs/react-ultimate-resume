@@ -14,23 +14,21 @@ var _styles_utils = require("../../../../utils/styles/styles_utils");
 var styles = function styles(theme) {
   var screenSizes = theme.screenSizes,
       spacing = theme.miscellaneous.spacing;
-  return (0, _defineProperty2.default)({
+  return {
     container: function container(_ref) {
       var variant = _ref.variant,
           overrideColor = _ref.overrideColor;
-      return {
+      return (0, _defineProperty2.default)({
         color: (0, _styles_utils.getHexFromPaletteColor)(theme, overrideColor || (0, _styles_utils.getColorsFromCardVariant)(theme, variant).color),
         fontWeight: 700,
         fontSize: 64,
         lineHeight: 1.1,
-        padding: spacing * 3
-      };
+        margin: spacing * 3
+      }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small), {
+        margin: spacing * 2
+      });
     }
-  }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small), {
-    container: {
-      padding: spacing * 2
-    }
-  });
+  };
 };
 
 exports.styles = styles;

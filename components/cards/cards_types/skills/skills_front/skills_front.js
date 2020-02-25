@@ -27,11 +27,11 @@ var _profile_card_actions = require("../../../../commons/profile_card/profile_ca
 
 var _profile_card_button = require("../../../../commons/profile_card/profile_card_button/profile_card_button");
 
-var _skills_front_styles = require("./skills_front_styles");
-
 var _use_technologies = require("../../../../hooks/technologies/use_technologies");
 
 var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
+
+var _skills_front_styles = require("./skills_front_styles");
 
 var useStyles = (0, _reactJss.createUseStyles)(_skills_front_styles.styles);
 

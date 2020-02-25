@@ -25,11 +25,11 @@ var _profile_card_actions = require("../../../../commons/profile_card/profile_ca
 
 var _profile_card_button = require("../../../../commons/profile_card/profile_card_button/profile_card_button");
 
-var _projects_front_styles = require("./projects_front_styles");
-
 var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
 
 var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
+
+var _projects_front_styles = require("./projects_front_styles");
 
 var useStyles = (0, _reactJss.createUseStyles)(_projects_front_styles.styles);
 

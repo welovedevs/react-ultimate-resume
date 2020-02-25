@@ -41,7 +41,6 @@ var styles = function styles(theme) {
     },
     content: function content() {
       return {
-        height: "calc(50% - ".concat(spacing * (7 + 1), "px)"),
         padding: [spacing * 3, spacing * 12, 0],
         display: 'flex',
         alignItems: 'center',
@@ -63,9 +62,11 @@ var styles = function styles(theme) {
       lineHeight: 1.4
     }
   }, (0, _defineProperty2.default)(_ref3, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
-    content: {
-      padding: [spacing * 3, spacing * 6, 0],
-      height: "calc(60% - ".concat(spacing * (7 + 1), "px)")
+    content: function content() {
+      return {
+        padding: [spacing * 4, spacing * 6, 0],
+        alignItems: 'flex-start'
+      };
     },
     text: {
       fontSize: 24,

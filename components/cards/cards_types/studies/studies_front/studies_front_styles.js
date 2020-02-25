@@ -28,9 +28,6 @@ var styles = function styles(theme) {
       lineHeight: 1.3
     }
   }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
-    logo: {
-      marginBottom: spacing * 2
-    },
     typography: {
       maxWidth: 'unset',
       fontSize: 28,

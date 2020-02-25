@@ -53,6 +53,8 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
     customClasses: {
       container: classes.container
     }
+  }, _react.default.createElement("div", {
+    className: classes.texts
   }, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
     classes: {
       container: classes.mainTypography
@@ -66,7 +68,7 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
   }, _react.default.createElement(_reactEmojiRender.Twemoji, {
     svg: true,
     text: "\uD83D\uDCCD"
-  }), data === null || data === void 0 ? void 0 : (_data$currentCity = data.currentCity) === null || _data$currentCity === void 0 ? void 0 : _data$currentCity.name)), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+  }), data === null || data === void 0 ? void 0 : (_data$currentCity = data.currentCity) === null || _data$currentCity === void 0 ? void 0 : _data$currentCity.name))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Basics.front.action",
