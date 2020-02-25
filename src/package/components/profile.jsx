@@ -78,7 +78,8 @@ const DeveloperProfileComponent = ({
             store,
             mode,
             endpoints: {
-                devicons: endpoints?.devicons
+                devicons: endpoints?.devicons,
+                unsplashProxy: endpoints?.unsplashProxy
             }
         }),
         [endpoints, apiKeys, data, onEdit, store, mode]

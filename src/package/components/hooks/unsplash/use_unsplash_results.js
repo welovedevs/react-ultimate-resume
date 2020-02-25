@@ -6,14 +6,17 @@ const UNSPLASH_API = 'https://api.unsplash.com/search/photos?';
 
 export const useUnsplashResults = (input, page = 0, limit = 12, timeout = 800) => {
     const debounceSearch = useRef();
-    const { apiKeys } = useContext(DeveloperProfileContext);
+    const {
+        endpoints
+    } = useContext(DeveloperProfileContext);
     const [lastLoaded, setLastLoaded] = useState(false);
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (!input || !apiKeys.unsplash) {
+        console.log({ endpoints });
+        if (!input || !endpoints.unsplashProxy) {
             setResults([]);
             return;
         }
@@ -31,29 +34,31 @@ export const useUnsplashResults = (input, page = 0, limit = 12, timeout = 800) =
                 page: page * limit,
                 per_page: limit
             };
+            const url = encodeURI(
+                UNSPLASH_API +
+                Object.entries(params)
+                    .map(([key, value]) => `${key}=${value}`)
+                    .join('&'));
             // eslint-disable-next-line no-undef
             fetch(
-                encodeURI(
-                    UNSPLASH_API +
-                        Object.entries(params)
-                            .map(([key, value]) => `${key}=${value}`)
-                            .join('&')
-                ),
+                `${endpoints.unsplashProxy}?url=${url}`,
                 {
-                    headers: {
-                        Authorization: `Client-ID ${apiKeys.unsplash}`
-                    }
+                    method: 'GET'
                 }
             )
-                .then(res => {
-                    if (res.status.toString().startsWith('2')) {
-                        return res.json();
+                .then(async res => {
+                    if (`${res.status}`.startsWith('2')) {
+                        const functionResult = await res.json();
+                        if (`${functionResult?.unsplashStatus}`.startsWith('2')) {
+                            return functionResult;
+                        }
+                        throw new Error(`${functionResult.unsplashStatus}`);
                     }
                     throw new Error(`${res.status} ${res.statusText}`);
                 })
-                .then(data => {
+                .then(res => {
                     setResults(
-                        data.results.map(({ id, user, description, urls, links }) => ({
+                        res?.data?.results.map(({ id, user, description, urls, links }) => ({
                             id,
                             urls,
                             user,
@@ -63,7 +68,7 @@ export const useUnsplashResults = (input, page = 0, limit = 12, timeout = 800) =
                     );
                 })
                 .catch(e => {
-                    console.warn('Failed to fecth from unsplash', e.message);
+                    console.warn('Failed to fetch from unsplash', e.message);
                     setError(e.message);
                 })
                 .finally(() => {
