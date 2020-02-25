@@ -11,6 +11,9 @@ export const styles = theme => {
     const {
         miscellaneous: { spacing }
     } = theme;
+
+    const QUERY_SMALL = createScreenWidthMediaQuery('max-width', theme.screenSizes.small);
+
     return {
         container: {
             display: 'flex',
@@ -19,12 +22,19 @@ export const styles = theme => {
         textField: {
             minHeight: 'fit-content',
             minWidth: 400,
-            marginBottom: spacing * 3
+            marginBottom: spacing * 3,
+            [QUERY_SMALL]: {
+                minWidth: 'unset'
+            }
         },
         technologiesList: {
             display: 'flex',
             flexWrap: 'wrap',
-            marginLeft: -(spacing * 2)
+            marginLeft: -(spacing * 2),
+            [QUERY_SMALL]: {
+                justifyContent: 'center',
+                marginLeft: 'unset'
+            }
         },
         technologyItem: {
             width: 80,
@@ -69,16 +79,6 @@ export const styles = theme => {
             textAlign: 'center',
             borderRadius: 5,
             ...center
-        },
-        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
-            textField: {
-                minWidth: 'unset'
-            },
-            technologiesList: {
-                justifyContent: 'center',
-                marginLeft: 'unset'
-
-            }
         }
     };
 };

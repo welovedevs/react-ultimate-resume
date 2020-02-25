@@ -6,7 +6,7 @@ import { createUseStyles, useTheme } from 'react-jss';
 import { Formik, useFormikContext } from 'formik';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Button } from '@wld/ui';
+import { Button, Tooltip } from '@wld/ui';
 
 import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
 
@@ -140,12 +140,30 @@ const Actions = ({ onClose, handleSubmit, fullScreen, classes, receivedClasses }
             root: cn(classes.actions, receivedClasses.actions)
         }}
     >
-        <Button size="small" onClick={onClose}>
-            <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
-        </Button>
-        <Button variant={fullScreen ? 'contained' : 'text'} type="submit" size="small" color="primary" onClick={handleSubmit}>
-            <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
-        </Button>
+        <Tooltip
+            title={(
+                <FormattedMessage
+                    id="EditDialog.close.tooltip"
+                    defaultMessage="Any modification won't be saved!"
+                />
+            )}
+        >
+            <Button size="small" onClick={onClose}>
+                <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
+            </Button>
+        </Tooltip>
+        <Tooltip
+            title={(
+                <FormattedMessage
+                    id="EditDialog.save.tooltip"
+                    defaultMessage="Save your modifications and close this dialog."
+                />
+            )}
+        >
+            <Button variant={fullScreen ? 'contained' : 'text'} type="submit" size="small" color="primary" onClick={handleSubmit}>
+                <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
+            </Button>
+        </Tooltip>
     </DialogActions>
 );
 
