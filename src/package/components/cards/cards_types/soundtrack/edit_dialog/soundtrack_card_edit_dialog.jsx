@@ -34,8 +34,8 @@ export const SoundtrackCardEditDialog = ({ open, onClose, data, onEdit }) => (
     </EditDialog>
 );
 
-const Content = () => {
-    const classes = useStyles();
+const Content = ({ helpers: { fullScreen, isMobile } }) => {
+    const classes = useStyles({ fullScreen, isMobile });
     const { values, errors, handleChange } = useFormikContext();
     const { embedUrl } = values;
     const [iframeUrl] = useDebounce(embedUrl, 1000);
@@ -83,7 +83,7 @@ const Content = () => {
                         key={frameHashCode}
                         title="Soundtrack"
                         src={iframeUrl}
-                        height={375}
+                        height="100%"
                         width={600}
                         frameBorder="0"
                         allow="encrypted-media"

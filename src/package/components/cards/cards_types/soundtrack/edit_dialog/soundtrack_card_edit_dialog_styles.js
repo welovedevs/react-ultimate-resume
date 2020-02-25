@@ -10,7 +10,8 @@ export const styles = theme => {
     return {
         container: {
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            height: '100%'
         },
         divider: {
             height: 1,
@@ -18,15 +19,18 @@ export const styles = theme => {
             margin: [0, 0, spacing * 5, 0],
             backgroundColor: palette.dark[50]
         },
-        iframeContainer: {
-            height: 375,
+        iframeContainer: ({ fullScreen, isMobile }) => ({
+            flex: 1,
             width: '100%',
             backgroundColor: palette.dark[50],
             borderRadius: 5,
             overflow: 'hidden',
             position: 'relative',
-            ...center
-        },
+            ...center,
+            ...!fullScreen && !isMobile && {
+                minHeight: 375
+            }
+        }),
         iframe: {
             position: 'absolute',
             top: 0,

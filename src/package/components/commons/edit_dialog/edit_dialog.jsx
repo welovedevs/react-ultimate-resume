@@ -120,7 +120,7 @@ const Content = ({ children, onClose, handleSubmit, setFieldValue, values, fullS
                     root: cn(classes.content, receivedClasses.content)
                 }}
             >
-                {children({ handleValueChange, toggleValue })}
+                {children({ handleValueChange, toggleValue, fullScreen, isMobile })}
             </DialogContent>
             {(!fullScreen || isMobile) && (
                 <Actions
@@ -152,18 +152,9 @@ const Actions = ({ onClose, handleSubmit, fullScreen, classes, receivedClasses }
                 <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
             </Button>
         </Tooltip>
-        <Tooltip
-            title={(
-                <FormattedMessage
-                    id="EditDialog.save.tooltip"
-                    defaultMessage="Save your modifications and close this dialog."
-                />
-            )}
-        >
-            <Button variant={fullScreen ? 'contained' : 'text'} type="submit" size="small" color="primary" onClick={handleSubmit}>
-                <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
-            </Button>
-        </Tooltip>
+        <Button variant={fullScreen ? 'contained' : 'text'} type="submit" size="small" color="primary" onClick={handleSubmit}>
+            <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
+        </Button>
     </DialogActions>
 );
 
