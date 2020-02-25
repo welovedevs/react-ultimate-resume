@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 
 import { createUseStyles } from 'react-jss';
-import { Typography } from '@wld/ui/';
+
+import { Typography } from '@wld/ui';
 
 import { Avatar } from '../../../commons/avatar/avatar';
 import { Column } from '../../../commons/column/column';
+import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 import { styles } from './user_informations_styles';
-import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const useStyles = createUseStyles(styles);
 

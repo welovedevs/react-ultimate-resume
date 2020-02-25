@@ -51,14 +51,6 @@ export const styles = (theme) => {
             zIndex: 0,
             objectFit: 'cover'
         },
-        creditsLink: {
-            marginLeft: spacing
-        },
-        credits: {
-            position: 'absolute',
-            bottom: 20,
-            right: 20
-        },
         overlay: {
             extend: 'absolutePositioned',
             zIndex: 1,
@@ -74,6 +66,12 @@ export const styles = (theme) => {
                 justifyContent: 'center',
                 alignItems: 'center'
             }
+        },
+        credits: {
+            color: 'rgba(255, 255, 255, .75)',
+            position: 'absolute',
+            right: spacing * 3,
+            bottom: spacing * 3
         }
     };
 };

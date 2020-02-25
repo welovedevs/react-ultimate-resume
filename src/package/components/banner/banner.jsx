@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
-import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
+import { FormattedMessage } from 'react-intl';
 import { animated, config, useTransition } from 'react-spring';
 
 import { Typography } from '@wld/ui';
@@ -18,32 +18,6 @@ import { styles } from './banner_styles';
 
 const useStyles = createUseStyles(styles);
 
-const UnsplashCredits = ({ credits: { name, url } }) => {
-    const classes = useStyles();
-    return (
-        <div className={classes.credits}>
-            <Typography variant="body3">
-                <FormattedMessage
-                    id="Unsplash.credit"
-                    defaultMessage="Photo by {name} on {unsplashLink}"
-                    values={{
-                        name: <a href={url}>{name}</a>,
-                        unsplashLink: (
-                            <a
-                                href={encodeURI(
-                                    'https://unsplash.com/?utm_source=W3D Developer Profile&utm_medium=referral'
-                                )}
-                            >
-                                <FormattedMessage id="Unsplash.brandName" defaultMessage="Unsplash" />
-                            </a>
-                        )
-                    }}
-                />
-            </Typography>
-        </div>
-    );
-};
-
 const BannerComponent = ({ children, customizationOptions, onCustomizationChanged }) => {
     const classes = useStyles();
     const { isEditing } = useContext(DeveloperProfileContext);
@@ -53,6 +27,8 @@ const BannerComponent = ({ children, customizationOptions, onCustomizationChange
         unique: true,
         config: config.molasses
     });
+
+    const bannerImageCredits = customizationOptions?.imageHeader?.credits;
 
     return (
         <div className={classes.container}>
@@ -69,9 +45,6 @@ const BannerComponent = ({ children, customizationOptions, onCustomizationChange
                     style={props}
                 />
             ))}
-            {customizationOptions?.imageHeader?.fromUnsplash && (
-                <UnsplashCredits credits={customizationOptions?.imageHeader?.credits} />
-            )}
             <div className={classes.content}>
                 <UserInformations />
                 <SocialActions>
@@ -79,6 +52,29 @@ const BannerComponent = ({ children, customizationOptions, onCustomizationChange
                     {onCustomizationChanged && <CustomizeButton customizationOptions={customizationOptions} />}
                 </SocialActions>
             </div>
+            {bannerImageCredits?.name && (
+                    <Typography
+                        customClasses={{ container: classes.credits }}
+                        variant="body3"
+                    >
+                        <FormattedMessage
+                            id="Unsplash.credit"
+                            defaultMessage="Photo by {name} on {unsplashLink}"
+                            values={{
+                                name: <a href={bannerImageCredits.url}>{bannerImageCredits.name}</a>,
+                                unsplashLink: (
+                                    <a
+                                        href={encodeURI(
+                                            'https://unsplash.com/?utm_source=W3D Developer Profile&utm_medium=referral'
+                                        )}
+                                    >
+                                        <FormattedMessage id="Unsplash.brandName" defaultMessage="Unsplash" />
+                                    </a>
+                                )
+                            }}
+                        />
+                    </Typography>
+            )}
         </div>
     );
 };
