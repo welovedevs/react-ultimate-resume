@@ -41,8 +41,6 @@ var _moment = _interopRequireDefault(require("moment"));
 
 var _v = _interopRequireDefault(require("uuid/v4"));
 
-var _useMediaQuery = _interopRequireDefault(require("@material-ui/core/useMediaQuery/useMediaQuery"));
-
 var _ui = require("@wld/ui");
 
 var _core = require("@material-ui/core");
@@ -125,6 +123,7 @@ var StudiesCardEditDialogComponent = function StudiesCardEditDialogComponent(_re
       data = _ref2.data,
       onEdit = _ref2.onEdit,
       validationSchema = _ref2.validationSchema;
+  var classes = useStyles();
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
@@ -133,6 +132,9 @@ var StudiesCardEditDialogComponent = function StudiesCardEditDialogComponent(_re
     return validationSchema(formatMessage);
   }, [validationSchema]);
   return _react.default.createElement(_edit_dialog.EditDialog, {
+    classes: {
+      paper: classes.paper
+    },
     open: open,
     onClose: onClose,
     data: data,
@@ -228,7 +230,7 @@ var FormationItem = (0, _reactSortableHoc.SortableElement)(function (_ref7) {
       classes = _ref7.classes,
       index = _ref7.formationIndex;
   var theme = (0, _reactJss.useTheme)();
-  var isMobile = (0, _useMediaQuery.default)("(max-width: ".concat(theme.screenSizes.small, "px)"));
+  var isMobile = (0, _core.useMediaQuery)("(max-width: ".concat(theme.screenSizes.small, "px)"));
 
   var _useIntl2 = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl2.formatMessage;

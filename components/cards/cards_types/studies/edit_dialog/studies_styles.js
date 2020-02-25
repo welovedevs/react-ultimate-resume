@@ -14,13 +14,20 @@ var _styles_utils = require("../../../../../utils/styles/styles_utils");
 var styles = function styles(theme) {
   var palette = theme.palette,
       spacing = theme.miscellaneous.spacing;
-  return (0, _defineProperty2.default)({
-    itemContainer: {
+  var QUERY_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small);
+  return {
+    paper: {
+      maxWidth: [900, '!important']
+    },
+    itemContainer: (0, _defineProperty2.default)({
       width: '100%',
       display: 'flex',
       alignItems: 'center',
       margin: [spacing * 2, 0]
-    },
+    }, QUERY_SMALL, {
+      flexDirection: 'column',
+      alignItems: 'unset'
+    }),
     header: {
       display: 'flex',
       alignItems: 'unset'
@@ -44,10 +51,12 @@ var styles = function styles(theme) {
       flexWrap: 'wrap',
       width: '100%'
     },
-    fieldGroup: {
+    fieldGroup: (0, _defineProperty2.default)({
       display: 'flex',
       width: '100%'
-    },
+    }, QUERY_SMALL, {
+      flexDirection: 'column'
+    }),
     field: {
       flex: 1,
       display: 'flex',
@@ -89,15 +98,7 @@ var styles = function styles(theme) {
     removeIcon: {
       fill: palette.danger[500]
     }
-  }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
-    itemContainer: {
-      flexDirection: 'column',
-      alignItems: 'unset'
-    },
-    fieldGroup: {
-      flexDirection: 'column'
-    }
-  });
+  };
 };
 
 exports.styles = styles;

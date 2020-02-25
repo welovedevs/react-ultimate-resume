@@ -83,7 +83,9 @@ var ProfileCardButtonComponent = (0, _reactJss.default)(_profile_card_button_sty
     size: "small",
     variant: "text",
     onMouseEnter: setActiveSpringProps,
-    onMouseLeave: setDefaultSpringProps
+    onMouseLeave: setDefaultSpringProps,
+    onFocus: setActiveSpringProps,
+    onBlur: setDefaultSpringProps
   }, other), children), _react.default.createElement(_reactSpring.animated.span, {
     className: classes.arrowContainer,
     style: {

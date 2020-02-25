@@ -9,6 +9,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ProfileCard = exports.ProfileCardContext = void 0;
 
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
@@ -22,6 +24,8 @@ var _reactSpring = require("react-spring");
 var _useDebounce3 = require("use-debounce");
 
 var _ui = require("@wld/ui");
+
+var _core = require("@material-ui/core");
 
 var _profile_card_side = require("./profile_card_side/profile_card_side");
 
@@ -76,6 +80,7 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
   var classes = useStyles({
     variant: variant
   });
+  var theme = (0, _reactJss.useTheme)();
 
   var _useState = (0, _react.useState)(),
       _useState2 = (0, _slicedToArray2.default)(_useState, 2),
@@ -108,6 +113,9 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
   (0, _react.useEffect)(function () {
     setContainerElement(containerReference.current);
   }, []);
+  var isSmall = (0, _core.useMediaQuery)("(max-width: ".concat(theme.screenSizes.small, "px)"), {
+    defaultMatches: true
+  });
   var transitionsSpringProps = (0, _react.useMemo)(function () {
     if (customTransitionsSpringProps) {
       if (typeof customTransitionsSpringProps === 'function') {
@@ -163,15 +171,16 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
   }), _react.default.createElement(_profile_card_incomplete_popper.ProfileCardIncompletePopper, {
     open: isComplete !== true,
     anchorElement: containerElement
-  }), _react.default.createElement(_ui.Card, {
+  }), _react.default.createElement(_ui.Card, (0, _extends2.default)({
     containerRef: containerReference,
     customClasses: {
       container: classes.container
     },
-    elevation: 1,
+    elevation: 1
+  }, !isSmall && {
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave
-  }, isEditingProfile && _react.default.createElement(EditAction, {
+  }), isEditingProfile && _react.default.createElement(EditAction, {
     customEditAction: customEditAction,
     setEditDialogOpened: setEditDialogOpened
   }), _react.default.createElement(ProfileCardContext.Provider, {

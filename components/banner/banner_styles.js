@@ -17,25 +17,35 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 var center = _styles_utils.flex.center;
 
-var styles = function styles(_ref) {
-  var _ref2;
+var styles = function styles(theme) {
+  var _objectSpread2;
 
-  var palette = _ref.palette,
-      spacing = _ref.miscellaneous.spacing,
-      screenSizes = _ref.screenSizes;
+  var palette = theme.palette,
+      screenSizes = theme.screenSizes,
+      spacing = theme.miscellaneous.spacing;
   var primaryRgb = palette.primary.rgbShades[500].join(', ');
-  return _ref2 = {
+  var QUERY_MEDIUM = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.medium);
+  var QUERY_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small);
+  var QUERY_BETWEEN_SMALL_EXTRA_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small - (screenSizes.small - screenSizes.xs) / 2);
+  var QUERY_EXTRA_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.xs);
+  return {
     container: _objectSpread({
       height: 400,
       width: '100%',
       position: 'relative',
       overflow: 'hidden',
       padding: [spacing * 4, spacing * 12]
-    }, center, {
+    }, center, (_objectSpread2 = {
       '& > *:not($image):not($overlay)': {
         zIndex: 2
       }
-    }),
+    }, (0, _defineProperty2.default)(_objectSpread2, QUERY_MEDIUM, {
+      padding: [spacing * 4, spacing * 6]
+    }), (0, _defineProperty2.default)(_objectSpread2, QUERY_BETWEEN_SMALL_EXTRA_SMALL, {
+      height: 450
+    }), (0, _defineProperty2.default)(_objectSpread2, QUERY_EXTRA_SMALL, {
+      padding: [spacing * 4, spacing * 2.5]
+    }), _objectSpread2)),
     absolutePositioned: {
       position: 'absolute',
       top: 0,
@@ -55,31 +65,17 @@ var styles = function styles(_ref) {
       zIndex: 1,
       backgroundImage: "linear-gradient(360deg, rgba(0, 0, 0, .5) -28.58%, rgba(".concat(primaryRgb, ", 0.5) 93.05%)")
     },
-    content: {
+    content: (0, _defineProperty2.default)({
       width: '100%',
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: spacing * 12
-    }
-  }, (0, _defineProperty2.default)(_ref2, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.medium), {
-    container: {
-      padding: [spacing * 4, spacing * 6]
-    }
-  }), (0, _defineProperty2.default)(_ref2, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small), {
-    content: {
+    }, QUERY_SMALL, {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center'
-    }
-  }), (0, _defineProperty2.default)(_ref2, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small - (screenSizes.small - screenSizes.xs) / 2), {
-    container: {
-      height: 450
-    }
-  }), (0, _defineProperty2.default)(_ref2, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.xs), {
-    container: {
-      padding: [spacing * 4, spacing * 2.5]
-    }
-  }), _ref2;
+    })
+  };
 };
 
 exports.styles = styles;
