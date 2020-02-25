@@ -1,10 +1,12 @@
 import React, { createContext, useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { config, useTransition } from 'react-spring';
 import { useDebounce } from 'use-debounce';
 
 import { Card } from '@wld/ui';
+
+import { useMediaQuery } from '@material-ui/core';
 
 import { ProfileCardSide } from './profile_card_side/profile_card_side';
 import { ProfileCardEditButton } from './profile_card_edit_button/profile_card_edit_button';
@@ -42,6 +44,7 @@ const ProfileCardComponent = ({
     side: sideProps
 }) => {
     const classes = useStyles({ variant });
+    const theme = useTheme();
     const [containerElement, setContainerElement] = useState();
     const containerReference = useRef();
     const [openEditDialog, setEditDialogOpened, setEditDialogClosed] = useCallbackOpen();
@@ -58,6 +61,10 @@ const ProfileCardComponent = ({
     useEffect(() => {
         setContainerElement(containerReference.current);
     }, []);
+
+    const isSmall = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`, {
+        defaultMatches: true
+    });
 
     const transitionsSpringProps = useMemo(() => {
         if (customTransitionsSpringProps) {
@@ -122,8 +129,10 @@ const ProfileCardComponent = ({
                 containerRef={containerReference}
                 customClasses={{ container: classes.container }}
                 elevation={1}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+                {...!isSmall && {
+                    onMouseEnter: handleMouseEnter,
+                    onMouseLeave: handleMouseLeave
+                }}
             >
                 {isEditingProfile && (
                     <EditAction customEditAction={customEditAction} setEditDialogOpened={setEditDialogOpened} />

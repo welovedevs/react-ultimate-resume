@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { animated, useSpring, useTransition, config } from 'react-spring';
+
 import { Twemoji } from 'react-emoji-render';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import { useFormikContext } from 'formik';
@@ -11,10 +12,10 @@ import keyBy from 'lodash/keyBy';
 import range from 'lodash/range';
 import moment from 'moment';
 import uuid from 'uuid/v4';
-import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
+
 import { List, ListItem, TextField, Tooltip, Typography } from '@wld/ui';
 
-import { MenuItem } from '@material-ui/core';
+import { MenuItem, useMediaQuery } from '@material-ui/core';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 
@@ -38,11 +39,15 @@ const DragHandle = SortableHandle(({ classes }) => (
 const useStyles = createUseStyles(styles);
 
 const StudiesCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
+    const classes = useStyles();
     const { formatMessage } = useIntl();
     const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
 
     return (
         <EditDialog
+            classes={{
+                paper: classes.paper
+            }}
             open={open}
             onClose={onClose}
             data={data}

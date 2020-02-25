@@ -2,8 +2,20 @@ import { createScreenWidthMediaQuery, flex } from '../../utils/styles/styles_uti
 
 const { center } = flex;
 
-export const styles = ({ palette, miscellaneous: { spacing }, screenSizes }) => {
+export const styles = (theme) => {
+    const {
+        palette,
+        screenSizes,
+        miscellaneous: { spacing }
+    } = theme;
+
     const primaryRgb = palette.primary.rgbShades[500].join(', ');
+
+    const QUERY_MEDIUM = createScreenWidthMediaQuery('max-width', screenSizes.medium);
+    const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
+    const QUERY_BETWEEN_SMALL_EXTRA_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small - (screenSizes.small - screenSizes.xs) / 2);
+    const QUERY_EXTRA_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.xs);
+
     return {
         container: {
             height: 400,
@@ -14,6 +26,15 @@ export const styles = ({ palette, miscellaneous: { spacing }, screenSizes }) => 
             ...center,
             '& > *:not($image):not($overlay)': {
                 zIndex: 2
+            },
+            [QUERY_MEDIUM]: {
+                padding: [spacing * 4, spacing * 6]
+            },
+            [QUERY_BETWEEN_SMALL_EXTRA_SMALL]: {
+                height: 450
+            },
+            [QUERY_EXTRA_SMALL]: {
+                padding: [spacing * 4, spacing * 2.5]
             }
         },
         absolutePositioned: {
@@ -39,28 +60,11 @@ export const styles = ({ palette, miscellaneous: { spacing }, screenSizes }) => 
             width: '100%',
             display: 'flex',
             justifyContent: 'space-between',
-            marginBottom: spacing * 12
-        },
-        [createScreenWidthMediaQuery('max-width', screenSizes.medium)]: {
-            container: {
-                padding: [spacing * 4, spacing * 6]
-            }
-        },
-        [createScreenWidthMediaQuery('max-width', screenSizes.small)]: {
-            content: {
+            marginBottom: spacing * 12,
+            [QUERY_SMALL]: {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center'
-            }
-        },
-        [createScreenWidthMediaQuery('max-width', screenSizes.small - (screenSizes.small - screenSizes.xs) / 2)]: {
-            container: {
-                height: 450
-            }
-        },
-        [createScreenWidthMediaQuery('max-width', screenSizes.xs)]: {
-            container: {
-                padding: [spacing * 4, spacing * 2.5]
             }
         }
     };

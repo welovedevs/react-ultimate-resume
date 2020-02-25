@@ -5,12 +5,22 @@ export const styles = theme => {
         palette,
         miscellaneous: { spacing }
     } = theme;
+
+    const QUERY_SMALL = createScreenWidthMediaQuery('max-width', theme.screenSizes.small);
+
     return {
+        paper: {
+            maxWidth: [900, '!important']
+        },
         itemContainer: {
             width: '100%',
             display: 'flex',
             alignItems: 'center',
-            margin: [spacing * 2, 0]
+            margin: [spacing * 2, 0],
+            [QUERY_SMALL]: {
+                flexDirection: 'column',
+                alignItems: 'unset'
+            }
         },
         header: {
             display: 'flex',
@@ -37,7 +47,10 @@ export const styles = theme => {
         },
         fieldGroup: {
             display: 'flex',
-            width: '100%'
+            width: '100%',
+            [QUERY_SMALL]: {
+                flexDirection: 'column'
+            }
         },
         field: {
             flex: 1,
@@ -79,15 +92,6 @@ export const styles = theme => {
         },
         removeIcon: {
             fill: palette.danger[500]
-        },
-        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
-            itemContainer: {
-                flexDirection: 'column',
-                alignItems: 'unset'
-            },
-            fieldGroup: {
-                flexDirection: 'column'
-            }
         }
     };
 };

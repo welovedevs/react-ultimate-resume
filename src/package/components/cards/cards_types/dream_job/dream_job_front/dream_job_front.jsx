@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
@@ -15,12 +15,16 @@ import { ReactComponent as HomeLogo } from '../../../../../assets/icons/home.svg
 import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
 
 import { styles } from './dream_job_front_styles';
+import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
 
 const useStyles = createUseStyles(styles);
 
 const DreamJobFrontComponent = ({ data }) => {
-    const { remoteFrequency, places } = data;
     const classes = useStyles();
+    const { remoteFrequency, places } = data;
+    const [side, setSide] = useCardSide();
+
+    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
 
     const content = useMemo(() => {
         if (remoteFrequency === REMOTE_FREQUENCY.FULL_TIME) {
@@ -60,7 +64,7 @@ const DreamJobFrontComponent = ({ data }) => {
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
-                <ProfileCardButton>
+                <ProfileCardButton onClick={handleButtonClick}>
                     <FormattedMessage id="Dreamjob.front.action" defaultMessage="Discover my dream job" />
                 </ProfileCardButton>
             </ProfileCardActions>

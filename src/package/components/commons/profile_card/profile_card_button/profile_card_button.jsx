@@ -25,6 +25,8 @@ const ProfileCardButtonComponent = injectSheet(styles)(({ overrideColor, classes
                 variant="text"
                 onMouseEnter={setActiveSpringProps}
                 onMouseLeave={setDefaultSpringProps}
+                onFocus={setActiveSpringProps}
+                onBlur={setDefaultSpringProps}
                 {...other}
             >
                 {children}
