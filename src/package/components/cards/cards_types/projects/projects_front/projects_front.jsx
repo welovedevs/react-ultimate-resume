@@ -30,7 +30,12 @@ const ProjectsFrontComponent = ({ data }) => {
         <>
             <div className={classes.background}>
                 {imageSrc && <img className={classes.backgroundImage} src={imageSrc} alt={alt} />}
-                {!imageSrc && <div className={classes.stubBackground} />}
+                {!imageSrc && (
+                    <>
+                        <div className={classes.overlay} />
+                        <div className={classes.stubBackground} />
+                    </>
+                )}
             </div>
             <div className={classes.content}>
                 <Typography variant="h2" component="h2" customClasses={{ container: classes.text }}>

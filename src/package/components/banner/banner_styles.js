@@ -51,6 +51,14 @@ export const styles = (theme) => {
             zIndex: 0,
             objectFit: 'cover'
         },
+        creditsLink: {
+            marginLeft: spacing
+        },
+        credits: {
+            position: 'absolute',
+            bottom: 20,
+            right: 20
+        },
         overlay: {
             extend: 'absolutePositioned',
             zIndex: 1,

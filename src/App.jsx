@@ -45,7 +45,10 @@ function App() {
             onCustomizationChanged={onCustomizationChanged}
             options={{
                 // flipped,
-                apiKeys: { giphy: process.env.REACT_APP_GIPHY_API_KEY },
+                apiKeys: {
+                    giphy: process.env.REACT_APP_GIPHY_API_KEY,
+                    unsplash: process.env.REACT_APP_UNSPLASH_CLIENT_ID
+                },
                 endpoints: {
                     devicons:
                         'https://firebasestorage.googleapis.com/v0/b/jechercheundev.appspot.com/o/technologies%2Ftechnologies_list.json?alt=media&token=459028ba-d9bc-4480-a3c4-88633afab7e2'

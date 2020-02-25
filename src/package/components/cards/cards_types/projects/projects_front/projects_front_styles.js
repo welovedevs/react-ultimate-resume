@@ -19,6 +19,7 @@ export const styles = theme => {
             width: '100%',
             backgroundColor: palette.dark[50],
             overflow: 'hidden',
+            position: 'relative',
             ...center
         }),
         backgroundImage: {
@@ -33,6 +34,15 @@ export const styles = theme => {
             alignItems: 'center',
             flex: 1
         }),
+        overlay: {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            height: '100%',
+            width: '100%',
+            zIndex: 1,
+            backgroundImage: 'linear-gradient(360deg, rgba(0, 0, 0, .5) -28.58%, rgba(0, 0, 0, 0.2) 93.05%)'
+        },
         stubBackground: ({ variant }) => ({
             width: '100%',
             height: '100%',

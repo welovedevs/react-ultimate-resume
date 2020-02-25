@@ -74,7 +74,7 @@ const DeveloperProfileComponent = ({
             onEdit,
             onCustomizationChanged,
             onFilesUpload,
-            apiKeys: { giphy: apiKeys?.giphy },
+            apiKeys: { giphy: apiKeys?.giphy, unsplash: apiKeys?.unsplash },
             store,
             mode,
             endpoints: {
