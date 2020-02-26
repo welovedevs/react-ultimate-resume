@@ -24,6 +24,7 @@ const useStyles = createUseStyles(styles);
 const BannerComponent = ({ children, customizationOptions, onCustomizationChanged }) => {
     const classes = useStyles();
     const [globalReceivedBannerClasses = {}] = useReceivedGlobalClasses('banner');
+    console.log({ globalReceivedBannerClasses });
     const [isEditing] = useIsEditing();
 
     const transitions = useTransition(customizationOptions?.imageHeader, item => item?.alt, {
