@@ -9740,7 +9740,7 @@ react-is@^16.7.0, react-is@^16.8.0, react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
   integrity sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
 
-react-jss@^10.0.3, react-jss@^10.0.4:
+react-jss@^10.0.4:
   version "10.0.4"
   resolved "https://registry.yarnpkg.com/react-jss/-/react-jss-10.0.4.tgz#7346eaf3e7f7d2d082dfc0fc2b53a4eb3c1cbd4f"
   integrity sha512-Kjida0ILKwuQUVzTo4fvohZFyFFMX8KCYkkYVELVFJfMCTz0KwfUyJVmzltvOxE/YyuF0YoHMz7sV8Ywx+Ws1Q==

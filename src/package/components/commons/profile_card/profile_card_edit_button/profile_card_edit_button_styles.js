@@ -2,16 +2,10 @@ import { createScreenWidthMediaQuery } from '../../../../utils/styles/styles_uti
 
 export const styles = (theme) => {
     const {
-        miscellaneous: { spacing },
         screenSizes
     } = theme;
     return ({
-        container: {
-            zIndex: 2,
-            position: 'absolute',
-            top: spacing * 2,
-            right: spacing * 2
-        },
+        container: {},
         [createScreenWidthMediaQuery('max-width', screenSizes.xs)]: {
             container: {
                 height: 40,

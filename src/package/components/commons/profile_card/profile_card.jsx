@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 
 import { createUseStyles, useTheme } from 'react-jss';
-import { config, useTransition } from 'react-spring';
+import { animated, config, useTransition } from 'react-spring';
 import { useDebounce } from 'use-debounce';
 
 import { Card } from '@wld/ui';
@@ -18,6 +18,7 @@ import { getProfileCardInitialState, profileCardReducer } from '../../../store/p
 import { useCallbackOpen } from '../../hooks/use_callback_open';
 
 import { styles } from './profile_card_styles';
+import { PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_SPRING_PROPS } from './profile_card_spring_props';
 
 const useStyles = createUseStyles(styles);
 
@@ -109,6 +110,11 @@ const ProfileCardComponent = ({
         immediate: !hasSideChanged.current
     });
 
+    const editButtonTransitions = useTransition(isEditingProfile, item => (item ? 'visible_editing_button' : 'invisible_editing_button'), {
+        ...PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_SPRING_PROPS,
+        unique: true
+    });
+
     const contextData = useMemo(() => ({ state, dispatch }), [state]);
 
     return (
@@ -134,9 +140,15 @@ const ProfileCardComponent = ({
                     onMouseLeave: handleMouseLeave
                 }}
             >
-                {isEditingProfile && (
-                    <EditAction customEditAction={customEditAction} setEditDialogOpened={setEditDialogOpened} />
-                )}
+                {editButtonTransitions.map(({ item, key, props }) => item && (
+                    <animated.div
+                        className={classes.editButtonContainer}
+                        key={key}
+                        style={props}
+                    >
+                        <EditAction customEditAction={customEditAction} setEditDialogOpened={setEditDialogOpened} />
+                    </animated.div>
+                ))}
                 <ProfileCardContext.Provider value={contextData}>
                     {children}
                     {transitions.map(({ item, key, props }) => {

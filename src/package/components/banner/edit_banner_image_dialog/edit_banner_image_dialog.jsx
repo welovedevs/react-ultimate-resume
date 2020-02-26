@@ -28,8 +28,10 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
     const onImageSelected = useCallback(
         payload => {
             onChange(payload);
+            onClose();
+            setSearchUnsplashDialogClosed();
         },
-        [onChange]
+        [onChange, onClose]
     );
 
     const onDrop = useCallback(
@@ -46,7 +48,7 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
             <SearchUnsplashDialog
                 open={openSearchUnsplashDialog}
                 onClose={setSearchUnsplashDialogClosed}
-                onSelect={onChange}
+                onSelect={onImageSelected}
             />
             <Dialog
                 open={open}

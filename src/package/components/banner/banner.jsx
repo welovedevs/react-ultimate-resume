@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
+import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 import { animated, config, useTransition } from 'react-spring';
@@ -9,10 +10,12 @@ import { Typography } from '@wld/ui';
 import { UserInformations } from './user_actions_row/user_informations/user_informations';
 import { SocialActions } from './user_actions_row/social_actions/social_actions';
 import { CustomizeButton } from './user_actions_row/customize_button/customize_button';
-import { DeveloperProfileContext } from '../../utils/context/contexts';
 import { EditHeaderImageButton } from './edit_header_image_button/edit_header_image_button';
 
 import { OPACITY_TRANSITIONS } from '../../utils/springs/common_transitions/opacity_transitions';
+
+import { useIsEditing } from '../hooks/use_is_editing';
+import { useReceivedGlobalClasses } from '../hooks/use_received_global_classes';
 
 import { styles } from './banner_styles';
 
@@ -20,7 +23,8 @@ const useStyles = createUseStyles(styles);
 
 const BannerComponent = ({ children, customizationOptions, onCustomizationChanged }) => {
     const classes = useStyles();
-    const { isEditing } = useContext(DeveloperProfileContext);
+    const [globalReceivedBannerClasses = {}] = useReceivedGlobalClasses('banner');
+    const [isEditing] = useIsEditing();
 
     const transitions = useTransition(customizationOptions?.imageHeader, item => item?.alt, {
         ...OPACITY_TRANSITIONS,
@@ -31,11 +35,11 @@ const BannerComponent = ({ children, customizationOptions, onCustomizationChange
     const bannerImageCredits = customizationOptions?.imageHeader?.credits;
 
     return (
-        <div className={classes.container}>
+        <div className={cn(classes.container, globalReceivedBannerClasses.container)}>
             {isEditing && onCustomizationChanged && (
                 <EditHeaderImageButton customizationOptions={customizationOptions} />
             )}
-            <div className={classes.overlay} />
+            <div className={cn(classes.overlay, globalReceivedBannerClasses.overlay)} />
             {transitions.map(({ item, key, props }) => item && (
                 <animated.img
                     key={key}
@@ -45,7 +49,7 @@ const BannerComponent = ({ children, customizationOptions, onCustomizationChange
                     style={props}
                 />
             ))}
-            <div className={classes.content}>
+            <div className={cn(classes.content, globalReceivedBannerClasses.content)}>
                 <UserInformations />
                 <SocialActions>
                     {children}
@@ -54,7 +58,7 @@ const BannerComponent = ({ children, customizationOptions, onCustomizationChange
             </div>
             {bannerImageCredits?.name && (
                     <Typography
-                        customClasses={{ container: classes.credits }}
+                        customClasses={{ container: cn(classes.credits, globalReceivedBannerClasses.credits) }}
                         variant="body3"
                     >
                         <FormattedMessage

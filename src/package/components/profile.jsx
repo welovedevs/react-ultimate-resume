@@ -54,7 +54,8 @@ const DeveloperProfileComponent = ({
             .then(res => res.json())
             .then(results => results?.[0]?.url),
     ActionButtons,
-    BeforeCards
+    BeforeCards,
+    classes: receivedGlobalClasses = {}
 }) => {
     const { apiKeys, endpoints } = options;
     const classes = useStyles(styles);
@@ -80,7 +81,8 @@ const DeveloperProfileComponent = ({
             endpoints: {
                 devicons: endpoints?.devicons,
                 unsplashProxy: endpoints?.unsplashProxy
-            }
+            },
+            receivedGlobalClasses
         }),
         [endpoints, apiKeys, data, onEdit, store, mode]
     );

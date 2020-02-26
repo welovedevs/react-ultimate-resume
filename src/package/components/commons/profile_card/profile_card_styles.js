@@ -4,7 +4,8 @@ export const styles = theme => {
     const {
         components: {
             cards: { width }
-        }
+        },
+        miscellaneous: { spacing }
     } = theme;
     return {
         container: ({ variant }) => {
@@ -23,6 +24,12 @@ export const styles = theme => {
                     content: "''"
                 }
             };
+        },
+        editButtonContainer: {
+            zIndex: 2,
+            position: 'absolute',
+            top: spacing * 2,
+            right: spacing * 2
         }
     };
 };
