@@ -166,6 +166,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
       mode = _ref3$mode === void 0 ? 'readOnly' : _ref3$mode,
       ActionButtons = _ref3.ActionButtons,
       BeforeCards = _ref3.BeforeCards,
+      classes = _ref3.classes,
       isEditing = _ref3.isEditing;
 
   var _useMemo = (0, _react.useMemo)(function () {
@@ -194,7 +195,8 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
     onCustomizationChanged: onCustomizationChanged,
     options: options,
     ActionButtons: ActionButtons,
-    BeforeCards: BeforeCards
+    BeforeCards: BeforeCards,
+    classes: classes
   })));
 };
 
