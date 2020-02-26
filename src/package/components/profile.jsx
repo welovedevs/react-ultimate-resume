@@ -110,6 +110,7 @@ const WithProvidersDeveloperProfile = ({
     mode = 'readOnly',
     ActionButtons,
     BeforeCards,
+    classes,
     isEditing
 }) => {
     const { locale, customization } = useMemo(() => ({ ...DEFAULT_OPTIONS, ...options }), [options]);
@@ -132,6 +133,7 @@ const WithProvidersDeveloperProfile = ({
                     options={options}
                     ActionButtons={ActionButtons}
                     BeforeCards={BeforeCards}
+                    classes={classes}
                 />
             </IntlProvider>
         </ThemeProvider>
