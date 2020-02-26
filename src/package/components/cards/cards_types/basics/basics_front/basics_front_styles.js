@@ -27,11 +27,14 @@ export const styles = theme => {
             display: '-webkit-box',
             '-webkit-line-clamp': 3,
             '-webkit-box-orient': 'vertical',
+            maxHeight: 64 * 1.1 * 3,
             [QUERY_CARD_MARGIN_PADDING]: {
-                fontSize: 42
+                fontSize: 42,
+                maxHeight: 42 * 1.1 * 3
             },
             [QUERY_EXTRA_SMALL]: {
                 fontSize: 28,
+                maxHeight: 28 * 1.1 * 3,
                 paddingBottom: 0
             }
         },
