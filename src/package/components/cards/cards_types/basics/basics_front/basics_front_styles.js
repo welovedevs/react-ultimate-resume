@@ -21,6 +21,12 @@ export const styles = theme => {
         },
         mainTypography: {
             extend: 'text',
+            textOverflow: 'ellipsis',
+            wordWrap: 'break-word',
+            overflow: 'hidden',
+            display: '-webkit-box',
+            '-webkit-line-clamp': 3,
+            '-webkit-box-orient': 'vertical',
             [QUERY_CARD_MARGIN_PADDING]: {
                 fontSize: 42
             },
