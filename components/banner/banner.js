@@ -58,6 +58,10 @@ var BannerComponent = function BannerComponent(_ref) {
       _useReceivedGlobalCla3 = _useReceivedGlobalCla2[0],
       globalReceivedBannerClasses = _useReceivedGlobalCla3 === void 0 ? {} : _useReceivedGlobalCla3;
 
+  console.log({
+    globalReceivedBannerClasses: globalReceivedBannerClasses
+  });
+
   var _useIsEditing = (0, _use_is_editing.useIsEditing)(),
       _useIsEditing2 = (0, _slicedToArray2.default)(_useIsEditing, 1),
       isEditing = _useIsEditing2[0];
