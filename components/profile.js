@@ -107,7 +107,9 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
     }, _callee);
   })) : _ref$onFilesUpload,
       ActionButtons = _ref.ActionButtons,
-      BeforeCards = _ref.BeforeCards;
+      BeforeCards = _ref.BeforeCards,
+      _ref$classes = _ref.classes,
+      receivedGlobalClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var apiKeys = options.apiKeys,
       endpoints = options.endpoints;
   var classes = useStyles(_profile_styles.styles);
@@ -127,13 +129,16 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       onCustomizationChanged: onCustomizationChanged,
       onFilesUpload: onFilesUpload,
       apiKeys: {
-        giphy: apiKeys === null || apiKeys === void 0 ? void 0 : apiKeys.giphy
+        giphy: apiKeys === null || apiKeys === void 0 ? void 0 : apiKeys.giphy,
+        unsplash: apiKeys === null || apiKeys === void 0 ? void 0 : apiKeys.unsplash
       },
       store: store,
       mode: mode,
       endpoints: {
-        devicons: endpoints === null || endpoints === void 0 ? void 0 : endpoints.devicons
-      }
+        devicons: endpoints === null || endpoints === void 0 ? void 0 : endpoints.devicons,
+        unsplashProxy: endpoints === null || endpoints === void 0 ? void 0 : endpoints.unsplashProxy
+      },
+      receivedGlobalClasses: receivedGlobalClasses
     };
   }, [endpoints, apiKeys, data, onEdit, store, mode]);
   return _react.default.createElement("div", {

@@ -11,15 +11,15 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactJss = require("react-jss");
 
-var _ui = require("@wld/ui/");
+var _ui = require("@wld/ui");
 
 var _avatar = require("../../../commons/avatar/avatar");
 
 var _column = require("../../../commons/column/column");
 
-var _user_informations_styles = require("./user_informations_styles");
-
 var _contexts = require("../../../../utils/context/contexts");
+
+var _user_informations_styles = require("./user_informations_styles");
 
 var useStyles = (0, _reactJss.createUseStyles)(_user_informations_styles.styles);
 

@@ -32,6 +32,8 @@ var styles = function styles(theme) {
 
   var spacing = theme.miscellaneous.spacing,
       screenSizes = theme.screenSizes;
+  var QUERY_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small);
+  var QUERY_EXTRA_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.xs);
   return _ref2 = {
     container: function container(_ref) {
       var variant = _ref.variant;
@@ -44,13 +46,17 @@ var styles = function styles(theme) {
         overflow: 'auto'
       }, (0, _styles_utils.withCustomVerticalScrollbar)((0, _styles_utils.getHexFromPaletteColor)(theme, (0, _styles_utils.getColorsFromCardVariant)(theme, variant).backColor)));
     }
-  }, (0, _defineProperty2.default)(_ref2, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small), {
-    container: {
-      padding: [[spacing * 4, spacing * 5], '!important']
+  }, (0, _defineProperty2.default)(_ref2, QUERY_SMALL, {
+    container: function container() {
+      return {
+        padding: [[spacing * 4, spacing * 5], '!important']
+      };
     }
-  }), (0, _defineProperty2.default)(_ref2, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.xs), {
-    container: {
-      padding: [[spacing * 4, spacing * 3], '!important']
+  }), (0, _defineProperty2.default)(_ref2, QUERY_EXTRA_SMALL, {
+    container: function container() {
+      return {
+        padding: [[spacing * 4, spacing * 3], '!important']
+      };
     }
   }), _ref2;
 };

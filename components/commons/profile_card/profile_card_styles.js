@@ -8,7 +8,8 @@ exports.styles = void 0;
 var _styles_utils = require("../../../utils/styles/styles_utils");
 
 var styles = function styles(theme) {
-  var width = theme.components.cards.width;
+  var width = theme.components.cards.width,
+      spacing = theme.miscellaneous.spacing;
   return {
     container: function container(_ref) {
       var variant = _ref.variant;
@@ -31,6 +32,12 @@ var styles = function styles(theme) {
           content: "''"
         }
       };
+    },
+    editButtonContainer: {
+      zIndex: 2,
+      position: 'absolute',
+      top: spacing * 2,
+      right: spacing * 2
     }
   };
 };

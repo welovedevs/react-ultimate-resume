@@ -84,11 +84,12 @@ var Details = function Details(_ref2) {
     className: classes.details
   }, _react.default.createElement("div", {
     className: classes.detail
-  }, _react.default.createElement(_animated_underlined_button.AnimatedUnderlinedButton, null, _react.default.createElement(LinkIcon, {
-    className: classes.detailIcon
-  }), _react.default.createElement("a", {
+  }, _react.default.createElement(_animated_underlined_button.AnimatedUnderlinedButton, null, _react.default.createElement("a", {
+    className: classes.link,
     href: project.link
-  }, _react.default.createElement(_ui.Typography, {
+  }, _react.default.createElement(LinkIcon, {
+    className: classes.detailIcon
+  }), _react.default.createElement(_ui.Typography, {
     customClasses: {
       container: classes.detailTypography
     },

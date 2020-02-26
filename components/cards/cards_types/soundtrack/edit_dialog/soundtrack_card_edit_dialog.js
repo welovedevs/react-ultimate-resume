@@ -58,8 +58,14 @@ var SoundtrackCardEditDialog = function SoundtrackCardEditDialog(_ref) {
 
 exports.SoundtrackCardEditDialog = SoundtrackCardEditDialog;
 
-var Content = function Content() {
-  var classes = useStyles();
+var Content = function Content(_ref2) {
+  var _ref2$helpers = _ref2.helpers,
+      fullScreen = _ref2$helpers.fullScreen,
+      isMobile = _ref2$helpers.isMobile;
+  var classes = useStyles({
+    fullScreen: fullScreen,
+    isMobile: isMobile
+  });
 
   var _useFormikContext = (0, _formik.useFormikContext)(),
       values = _useFormikContext.values,
@@ -118,7 +124,7 @@ var Content = function Content() {
     key: frameHashCode,
     title: "Soundtrack",
     src: iframeUrl,
-    height: 375,
+    height: "100%",
     width: 600,
     frameBorder: "0",
     allow: "encrypted-media",

@@ -22,12 +22,16 @@ var styles = function styles(theme) {
       alignItems: 'center',
       margin: spacing * 1.5
     },
+    link: {
+      display: 'flex',
+      alignItems: 'center'
+    },
     detailIcon: {
       height: 20,
       width: 'auto',
       marginRight: spacing * 1.5,
-      '& > g': {
-        stroke: 'currentColor'
+      '& > path': {
+        fill: 'currentColor'
       }
     }
   };

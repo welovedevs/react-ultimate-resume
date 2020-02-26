@@ -29,11 +29,11 @@ var _profile_card_actions = require("../../../../commons/profile_card/profile_ca
 
 var _profile_card_button = require("../../../../commons/profile_card/profile_card_button/profile_card_button");
 
+var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
+
 var _remote_utils = require("../../../../../utils/enums/remote/remote_utils");
 
 var _dream_job_front_styles = require("./dream_job_front_styles");
-
-var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
 
 var HomeLogo = function HomeLogo(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("path", {

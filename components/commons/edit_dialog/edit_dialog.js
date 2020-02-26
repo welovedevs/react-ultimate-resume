@@ -131,7 +131,9 @@ var Content = function Content(_ref3) {
     }
   }, children({
     handleValueChange: handleValueChange,
-    toggleValue: toggleValue
+    toggleValue: toggleValue,
+    fullScreen: fullScreen,
+    isMobile: isMobile
   })), (!fullScreen || isMobile) && _react.default.createElement(Actions, {
     onClose: onClose,
     handleSubmit: handleSubmit,
@@ -150,13 +152,18 @@ var Actions = function Actions(_ref4) {
     classes: {
       root: (0, _classnames.default)(classes.actions, receivedClasses.actions)
     }
+  }, _react.default.createElement(_ui.Tooltip, {
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "EditDialog.close.tooltip",
+      defaultMessage: "Any modification won't be saved!"
+    })
   }, _react.default.createElement(_ui.Button, {
     size: "small",
     onClick: onClose
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Main.lang.close",
     defaultMessage: "Close"
-  })), _react.default.createElement(_ui.Button, {
+  }))), _react.default.createElement(_ui.Button, {
     variant: fullScreen ? 'contained' : 'text',
     type: "submit",
     size: "small",

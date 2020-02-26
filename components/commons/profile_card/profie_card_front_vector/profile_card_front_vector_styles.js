@@ -12,8 +12,8 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
 var _styles_utils = require("../../../../utils/styles/styles_utils");
 
 var styles = function styles(theme) {
-  var screenSizes = theme.screenSizes,
-      spacing = theme.miscellaneous.spacing;
+  var screenSizes = theme.screenSizes;
+  var QUERY_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small);
   return (0, _defineProperty2.default)({
     container: function container(_ref) {
       var variant = _ref.variant;
@@ -24,12 +24,12 @@ var styles = function styles(theme) {
         color: (0, _styles_utils.getHexFromPaletteColor)(theme, (0, _styles_utils.getColorsFromCardVariant)(theme, variant).color)
       };
     }
-  }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small), {
+  }, QUERY_SMALL, {
     container: function container() {
       return {
         height: '30%',
         minHeight: '30%',
-        marginBottom: [spacing, '!important']
+        marginBottom: [0, '!important']
       };
     }
   });

@@ -15,8 +15,10 @@ var MIN = 30;
 var MAX = 100;
 
 var styles = function styles(theme) {
-  var spacing = theme.miscellaneous.spacing;
-  return (0, _defineProperty2.default)({
+  var spacing = theme.miscellaneous.spacing,
+      screenSizes = theme.screenSizes;
+  var QUERY_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small);
+  return {
     // Offset value = (((OldValue - OldMin) * (NewMax - NewMin)) / (OldMax - OldMin)) + NewMin
     container: function container(_ref) {
       var value = _ref.value,
@@ -35,12 +37,11 @@ var styles = function styles(theme) {
     },
     typography: {
       transform: 'rotate(-90deg)'
-    }
-  }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
-    columnsContainer: {
+    },
+    columnsContainer: (0, _defineProperty2.default)({}, QUERY_SMALL, {
       paddingTop: theme.miscellaneous.spacing * 2
-    }
-  });
+    })
+  };
 };
 
 exports.styles = styles;

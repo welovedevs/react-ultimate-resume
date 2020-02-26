@@ -1,10 +1,10 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.2.20-0",
+    "version": "1.2.20",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
-        "start": "PORT=${PORT:-3000} EXTEND_ESLINT=true BROWSER=none react-scripts start",
+        "start": "sh -ac '. .env.${NODE_ENV:-local}; PORT=${PORT:-3000} EXTEND_ESLINT=true BROWSER=none react-scripts start'",
         "dev": "yarn start",
         "eject": "react-scripts eject",
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -21,7 +21,7 @@
     "license": "ISC",
     "peerDependencies": {
         "@material-ui/core": "^4.8.3",
-        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.5-0",
+        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.6-0",
         "formik": "^2.1.2",
         "react": "^16.12.0",
         "react-dom": "^16.12.0"
@@ -31,7 +31,7 @@
         "@formatjs/intl-pluralrules": "^1.5.2",
         "@formatjs/intl-relativetimeformat": "^4.5.9",
         "@material-ui/pickers": "^3.2.9",
-        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.5-0",
+        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.6-0",
         "babel-plugin-react-intl": "^5.1.18",
         "chroma-js": "^2.1.0",
         "classnames": "^2.2.6",
@@ -44,7 +44,7 @@
         "react-images": "^1.1.0-beta.3",
         "react-infinite-scroller": "^1.2.4",
         "react-intl": "^3.9.3",
-        "react-jss": "^10.0.3",
+        "react-jss": "^10.0.4",
         "react-scripts": "^3.4.0",
         "react-slick": "^0.25.2",
         "react-sortable-hoc": "^1.11.0",

@@ -7,7 +7,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SearchGifsDialog = void 0;
+exports.SearchUnsplashDialog = void 0;
 
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
@@ -23,19 +23,19 @@ var _core = require("@material-ui/core");
 
 var _ui = require("@wld/ui");
 
-var _Poweredby_100pxWhite_VertText = _interopRequireDefault(require("../../../assets/images/Poweredby_100px-White_VertText.png"));
-
 var _dialog_title = require("../dialog/dialog_title/dialog_title");
 
 var _loading_spinner = require("../loading_spinner/loading_spinner");
 
-var _use_giphy_results = require("../../hooks/giphy/use_giphy_results");
+var _contexts = require("../../../utils/context/contexts");
 
-var _search_gifs_dialog_styles = require("./search_gifs_dialog_styles");
+var _use_unsplash_results = require("../../hooks/unsplash/use_unsplash_results");
 
-var useStyles = (0, _reactJss.createUseStyles)(_search_gifs_dialog_styles.styles);
+var _search_unsplash_result_styles = require("./search_unsplash_result_styles");
 
-var SearchGifsDialogComponent = function SearchGifsDialogComponent(_ref) {
+var useStyles = (0, _reactJss.createUseStyles)(_search_unsplash_result_styles.styles);
+
+var SearchUnsplashDialogComponent = function SearchUnsplashDialogComponent(_ref) {
   var open = _ref.open,
       onClose = _ref.onClose,
       onSelect = _ref.onSelect;
@@ -64,10 +64,8 @@ var SearchGifsDialogComponent = function SearchGifsDialogComponent(_ref) {
       root: classes.title
     }
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Gifs.searchdialog.title",
-    defaultMessage: "Search gifs"
-  }), _react.default.createElement("img", {
-    src: _Poweredby_100pxWhite_VertText.default
+    id: "Unsplash.SearchDialog.Title",
+    defaultMessage: "Search pictures from unsplash"
   })), _react.default.createElement(_core.DialogContent, {
     classes: {
       root: classes.content
@@ -101,47 +99,70 @@ var Results = function Results(_ref2) {
       onSelect = _ref2.onSelect,
       classes = _ref2.classes;
 
-  var _useGiphyResults = (0, _use_giphy_results.useGiphyResults)(debouncedQuery, 0, 3 * 3),
-      gifs = _useGiphyResults.gifs,
-      loadingResults = _useGiphyResults.loading;
+  var _useUnsplashResults = (0, _use_unsplash_results.useUnsplashResults)(debouncedQuery, 0, 3 * 3),
+      results = _useUnsplashResults.results,
+      loadingResults = _useUnsplashResults.loading;
+
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
+      apiKeys = _useContext.apiKeys;
 
   var loading = (0, _react.useMemo)(function () {
     return loadingResults || query && query !== debouncedQuery;
   }, [query, debouncedQuery, loadingResults]);
-  var handleClick = (0, _react.useCallback)(function (url, id, title) {
+  var onImageSelected = (0, _react.useCallback)(function (_ref3) {
+    var description = _ref3.description,
+        urls = _ref3.urls,
+        id = _ref3.id,
+        user = _ref3.user,
+        links = _ref3.links;
     return function () {
-      if (typeof onSelect !== 'function') {
-        return;
-      }
-
       onSelect({
-        url: url,
         id: id,
-        title: title
+        url: urls.full,
+        alt: description,
+        credits: {
+          url: encodeURI("".concat(user.links.html, "?utm_source=W3D Developer Profile&utm_medium=referral")),
+          name: user.username
+        },
+        fromUnsplash: true
+      }); // eslint-disable-next-line no-undef
+
+      fetch(links.download_location, {
+        headers: {
+          Authorization: "Client-ID ".concat(apiKeys.unsplash)
+        }
       });
     };
   }, [onSelect]);
   return _react.default.createElement("div", {
     className: classes.results
-  }, loading && _react.default.createElement(_loading_spinner.LoadingSpinner, null), !loading && gifs && debouncedQuery && gifs.map(function (_ref3) {
-    var id = _ref3.id,
-        url = _ref3.url,
-        title = _ref3.title;
+  }, loading && _react.default.createElement(_loading_spinner.LoadingSpinner, null), !loading && results && debouncedQuery && results.map(function (_ref4) {
+    var id = _ref4.id,
+        urls = _ref4.urls,
+        description = _ref4.description,
+        user = _ref4.user,
+        links = _ref4.links;
     return _react.default.createElement(_ui.Tooltip, {
-      key: "giphy_item_".concat(id),
-      title: "Select this gif"
+      key: "unsplash_picture_".concat(id),
+      title: "Select this picture"
     }, _react.default.createElement("button", {
       key: "result_".concat(id),
       type: "button",
       className: classes.imageContainer,
-      onClick: handleClick(url, id, title)
+      onClick: onImageSelected({
+        description: description,
+        urls: urls,
+        id: id,
+        user: user,
+        links: links
+      })
     }, _react.default.createElement("img", {
       className: classes.image,
-      src: url,
-      alt: title
+      src: urls.regular,
+      alt: description
     })));
   }));
 };
 
-var SearchGifsDialog = SearchGifsDialogComponent;
-exports.SearchGifsDialog = SearchGifsDialog;
+var SearchUnsplashDialog = SearchUnsplashDialogComponent;
+exports.SearchUnsplashDialog = SearchUnsplashDialog;

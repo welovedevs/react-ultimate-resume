@@ -74,7 +74,13 @@ var styles = function styles(theme) {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center'
-    })
+    }),
+    credits: {
+      color: 'rgba(255, 255, 255, .75)',
+      position: 'absolute',
+      right: spacing * 3,
+      bottom: spacing * 3
+    }
   };
 };
 

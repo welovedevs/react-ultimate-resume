@@ -30,7 +30,8 @@ var styles = function styles(theme) {
         minHeight: hasImage ? '50%' : '30%',
         width: '100%',
         backgroundColor: palette.dark[50],
-        overflow: 'hidden'
+        overflow: 'hidden',
+        position: 'relative'
       }, center);
     },
     backgroundImage: {
@@ -46,6 +47,15 @@ var styles = function styles(theme) {
         alignItems: 'center',
         flex: 1
       };
+    },
+    overlay: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      height: '100%',
+      width: '100%',
+      zIndex: 1,
+      backgroundImage: 'linear-gradient(360deg, rgba(0, 0, 0, .5) -28.58%, rgba(0, 0, 0, 0.2) 93.05%)'
     },
     stubBackground: function stubBackground(_ref2) {
       var variant = _ref2.variant;

@@ -23,7 +23,8 @@ var styles = function styles(theme) {
   return (0, _defineProperty2.default)({
     container: {
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      height: '100%'
     },
     divider: {
       height: 1,
@@ -31,14 +32,20 @@ var styles = function styles(theme) {
       margin: [0, 0, spacing * 5, 0],
       backgroundColor: palette.dark[50]
     },
-    iframeContainer: _objectSpread({
-      height: 375,
-      width: '100%',
-      backgroundColor: palette.dark[50],
-      borderRadius: 5,
-      overflow: 'hidden',
-      position: 'relative'
-    }, center),
+    iframeContainer: function iframeContainer(_ref) {
+      var fullScreen = _ref.fullScreen,
+          isMobile = _ref.isMobile;
+      return _objectSpread({
+        flex: 1,
+        width: '100%',
+        backgroundColor: palette.dark[50],
+        borderRadius: 5,
+        overflow: 'hidden',
+        position: 'relative'
+      }, center, {}, !fullScreen && !isMobile && {
+        minHeight: 375
+      });
+    },
     iframe: {
       position: 'absolute',
       top: 0,

@@ -63,9 +63,11 @@ var ProjectsFrontComponent = function ProjectsFrontComponent(_ref) {
     className: classes.backgroundImage,
     src: imageSrc,
     alt: alt
-  }), !imageSrc && _react.default.createElement("div", {
+  }), !imageSrc && _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: classes.overlay
+  }), _react.default.createElement("div", {
     className: classes.stubBackground
-  })), _react.default.createElement("div", {
+  }))), _react.default.createElement("div", {
     className: classes.content
   }, _react.default.createElement(_ui.Typography, {
     variant: "h2",

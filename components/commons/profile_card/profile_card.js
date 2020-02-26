@@ -43,6 +43,8 @@ var _use_callback_open = require("../../hooks/use_callback_open");
 
 var _profile_card_styles = require("./profile_card_styles");
 
+var _profile_card_spring_props = require("./profile_card_spring_props");
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -157,6 +159,11 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
     unique: isTransitionUnique,
     immediate: !hasSideChanged.current
   }));
+  var editButtonTransitions = (0, _reactSpring.useTransition)(isEditingProfile, function (item) {
+    return item ? 'visible_editing_button' : 'invisible_editing_button';
+  }, _objectSpread({}, _profile_card_spring_props.PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_SPRING_PROPS, {
+    unique: true
+  }));
   var contextData = (0, _react.useMemo)(function () {
     return {
       state: state,
@@ -180,15 +187,24 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
   }, !isSmall && {
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave
-  }), isEditingProfile && _react.default.createElement(EditAction, {
-    customEditAction: customEditAction,
-    setEditDialogOpened: setEditDialogOpened
-  }), _react.default.createElement(ProfileCardContext.Provider, {
-    value: contextData
-  }, children, transitions.map(function (_ref2) {
+  }), editButtonTransitions.map(function (_ref2) {
     var item = _ref2.item,
         key = _ref2.key,
         props = _ref2.props;
+    return item && _react.default.createElement(_reactSpring.animated.div, {
+      className: classes.editButtonContainer,
+      key: key,
+      style: props
+    }, _react.default.createElement(EditAction, {
+      customEditAction: customEditAction,
+      setEditDialogOpened: setEditDialogOpened
+    }));
+  }), _react.default.createElement(ProfileCardContext.Provider, {
+    value: contextData
+  }, children, transitions.map(function (_ref3) {
+    var item = _ref3.item,
+        key = _ref3.key,
+        props = _ref3.props;
 
     var SideComponent = sides[item] || function () {
       return null;
@@ -203,9 +219,9 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
   }))));
 };
 
-var EditAction = function EditAction(_ref3) {
-  var customEditAction = _ref3.customEditAction,
-      setEditDialogOpened = _ref3.setEditDialogOpened;
+var EditAction = function EditAction(_ref4) {
+  var customEditAction = _ref4.customEditAction,
+      setEditDialogOpened = _ref4.setEditDialogOpened;
 
   if (customEditAction) {
     return customEditAction;

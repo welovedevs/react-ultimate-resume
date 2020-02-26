@@ -19,21 +19,27 @@ var center = _styles_utils.flex.center;
 
 var styles = function styles(theme) {
   var spacing = theme.miscellaneous.spacing;
-  return (0, _defineProperty2.default)({
+  var QUERY_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small);
+  return {
     container: {
       display: 'flex',
       flexDirection: 'column'
     },
-    textField: {
+    textField: (0, _defineProperty2.default)({
       minHeight: 'fit-content',
       minWidth: 400,
       marginBottom: spacing * 3
-    },
-    technologiesList: {
+    }, QUERY_SMALL, {
+      minWidth: 'unset'
+    }),
+    technologiesList: (0, _defineProperty2.default)({
       display: 'flex',
       flexWrap: 'wrap',
       marginLeft: -(spacing * 2)
-    },
+    }, QUERY_SMALL, {
+      justifyContent: 'center',
+      marginLeft: 'unset'
+    }),
     technologyItem: {
       width: 80,
       maxWidth: 80,
@@ -74,17 +80,10 @@ var styles = function styles(theme) {
       height: '100%',
       backgroundColor: (0, _styles_utils.getHexFromPaletteColor)(theme, 'primary'),
       color: (0, _styles_utils.getHexFromPaletteColor)(theme, (0, _styles_utils.getContrastDefaultColorFromPaletteColor)(theme, 'primary')),
-      textAlign: 'center'
+      textAlign: 'center',
+      borderRadius: 5
     }, center)
-  }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
-    textField: {
-      minWidth: 'unset'
-    },
-    technologiesList: {
-      justifyContent: 'center',
-      marginLeft: 'unset'
-    }
-  });
+  };
 };
 
 exports.styles = styles;

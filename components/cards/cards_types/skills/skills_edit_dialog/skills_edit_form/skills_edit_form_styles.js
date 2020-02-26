@@ -18,7 +18,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 var styles = function styles(theme) {
   var palette = theme.palette,
       spacing = theme.miscellaneous.spacing;
-  return (0, _defineProperty2.default)({
+  var QUERY_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small);
+  return {
     container: {
       display: 'flex',
       height: '100%'
@@ -28,10 +29,12 @@ var styles = function styles(theme) {
       display: 'flex',
       flexDirection: 'column'
     },
-    allTechnologies: {
+    allTechnologies: (0, _defineProperty2.default)({
       flex: 1.25,
       marginLeft: spacing * 2
-    },
+    }, QUERY_SMALL, {
+      width: '100%'
+    }),
     divider: {
       backgroundColor: palette.dark[100],
       margin: [0, spacing * 2, 0, spacing * 4]
@@ -42,13 +45,9 @@ var styles = function styles(theme) {
       paddingRight: spacing * 2
     }, (0, _styles_utils.withCustomVerticalScrollbar)()),
     selectedTechnologies: {
-      flex: 0.75
+      flex: 1
     }
-  }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
-    allTechnologies: {
-      width: '100%'
-    }
-  });
+  };
 };
 
 exports.styles = styles;

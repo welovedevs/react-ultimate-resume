@@ -12,22 +12,22 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
 var _styles_utils = require("../../../../../../../utils/styles/styles_utils");
 
 var styles = function styles(theme) {
-  return (0, _defineProperty2.default)({
-    list: {
+  var screenSizes = theme.screenSizes;
+  var QUERY_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small);
+  return {
+    list: (0, _defineProperty2.default)({
       margin: 0,
       padding: 0,
       display: 'flex',
       flexWrap: 'wrap'
-    },
+    }, QUERY_SMALL, {
+      justifyContent: 'center'
+    }),
     listItem: {
       listStyle: 'none',
       zIndex: 2120
     }
-  }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
-    list: {
-      justifyContent: 'center'
-    }
-  });
+  };
 };
 
 exports.styles = styles;
