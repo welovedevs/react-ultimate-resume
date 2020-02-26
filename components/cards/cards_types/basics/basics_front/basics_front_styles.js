@@ -33,11 +33,14 @@ var styles = function styles(theme) {
       overflow: 'hidden',
       display: '-webkit-box',
       '-webkit-line-clamp': 3,
-      '-webkit-box-orient': 'vertical'
+      '-webkit-box-orient': 'vertical',
+      maxHeight: 64 * 1.1 * 3
     }, (0, _defineProperty2.default)(_mainTypography, QUERY_CARD_MARGIN_PADDING, {
-      fontSize: 42
+      fontSize: 42,
+      maxHeight: 42 * 1.1 * 3
     }), (0, _defineProperty2.default)(_mainTypography, QUERY_EXTRA_SMALL, {
       fontSize: 28,
+      maxHeight: 28 * 1.1 * 3,
       paddingBottom: 0
     }), _mainTypography),
     location: (_location = {
