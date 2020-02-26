@@ -27,7 +27,13 @@ var styles = function styles(theme) {
       margin: [0, '!important']
     },
     mainTypography: (_mainTypography = {
-      extend: 'text'
+      extend: 'text',
+      textOverflow: 'ellipsis',
+      wordWrap: 'break-word',
+      overflow: 'hidden',
+      display: '-webkit-box',
+      '-webkit-line-clamp': 3,
+      '-webkit-box-orient': 'vertical'
     }, (0, _defineProperty2.default)(_mainTypography, QUERY_CARD_MARGIN_PADDING, {
       fontSize: 42
     }), (0, _defineProperty2.default)(_mainTypography, QUERY_EXTRA_SMALL, {
