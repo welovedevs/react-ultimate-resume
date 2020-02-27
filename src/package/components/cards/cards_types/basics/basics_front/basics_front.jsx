@@ -28,7 +28,7 @@ const BasicsFrontComponent = ({ data }) => {
 
     useEffect(() => {
         const element = mainTypographyReference.current;
-        if (element.offsetWidth < element.scrollWidth) {
+        if (element.offsetHeight < element.scrollHeight - 1) {
             setIsMainTypographyTruncated(true);
         }
     }, [mainTypographyReference.current]);
@@ -41,6 +41,7 @@ const BasicsFrontComponent = ({ data }) => {
             <CenterContentContainer customClasses={{ container: classes.container }}>
                 <div className={classes.texts}>
                     <ProfileCardFrontTypography
+                        component="div"
                         ref={mainTypographyReference}
                         classes={{
                             container: cn(classes.mainTypography,
