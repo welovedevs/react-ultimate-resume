@@ -46,13 +46,7 @@ const DeveloperProfileComponent = ({
     onEdit: onEditProps = DEFAULT_FUNCTION,
     onCustomizationChanged,
     isEditing = false,
-    onFilesUpload = async () =>
-        // eslint-disable-next-line no-undef
-        fetch('https://api.thecatapi.com/v1/images/search', {
-            headers: {}
-        })
-            .then(res => res.json())
-            .then(results => results?.[0]?.url),
+    onFilesUpload = async () => 'https://source.unsplash.com/random/4000x2000',
     BeforeCards,
     additionalNodes,
     classes: receivedGlobalClasses = {}
