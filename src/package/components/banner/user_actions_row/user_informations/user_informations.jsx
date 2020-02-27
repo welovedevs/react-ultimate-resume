@@ -35,7 +35,6 @@ const UserInformationsComponent = () => {
                     customClasses={{
                         container: classes.description
                     }}
-                    variant="h4"
                     component="h4"
                 >
                     {data.basics?.summary}
