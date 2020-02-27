@@ -1,4 +1,8 @@
-import { createScreenWidthMediaQuery } from '../../../../../utils/styles/styles_utils';
+import {
+    createScreenWidthMediaQuery,
+    getColorsFromCardVariant,
+    getHexFromPaletteColor
+} from '../../../../../utils/styles/styles_utils';
 
 export const styles = theme => {
     const {
@@ -54,6 +58,8 @@ export const styles = theme => {
         location: {
             extend: 'text',
             width: '100%',
+            display: 'flex',
+            alignItems: 'center',
             fontWeight: 500,
             fontSize: 32,
             marginTop: spacing * 2,
@@ -63,6 +69,11 @@ export const styles = theme => {
             [QUERY_EXTRA_SMALL]: {
                 fontSize: 20
             }
-        }
+        },
+        locationIcon: ({ variant }) => ({
+            height: 28,
+            fill: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).color),
+            marginRight: spacing * 2
+        })
     };
 };

@@ -24,7 +24,8 @@ export const styles = theme => {
             fontWeight: 700
         },
         description: {
-            extend: 'text'
+            extend: 'text',
+            fontWeight: 400
         },
         [createScreenWidthMediaQuery('max-width', screenSizes.small)]: {
             container: {
