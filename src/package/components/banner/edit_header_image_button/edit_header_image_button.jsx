@@ -1,4 +1,6 @@
 import React, { useCallback, useContext } from 'react';
+
+import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 
@@ -10,10 +12,13 @@ import { EditBannerImageDialog } from '../edit_banner_image_dialog/edit_banner_i
 import { useCallbackOpen } from '../../hooks/use_callback_open';
 
 import { styles } from './edit_header_image_button_styles';
+import { useReceivedGlobalClasses } from '../../hooks/use_received_global_classes';
 
 const useStyles = createUseStyles(styles);
+
 export const EditHeaderImageButton = ({ customizationOptions }) => {
     const classes = useStyles();
+    const [globalReceivedClasses = {}] = useReceivedGlobalClasses('banner.editHeaderImageButton');
     const { onCustomizationChanged } = useContext(DeveloperProfileContext);
     const [open, onOpen, onClose] = useCallbackOpen();
 
@@ -36,7 +41,7 @@ export const EditHeaderImageButton = ({ customizationOptions }) => {
                 icon={EditIcon}
                 onClick={onOpen}
                 classes={{
-                    container: classes.editButton
+                    container: cn(classes.editButton, globalReceivedClasses)
                 }}
             />
         </>

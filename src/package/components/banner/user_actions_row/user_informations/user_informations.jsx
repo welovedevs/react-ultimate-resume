@@ -36,7 +36,7 @@ const UserInformationsComponent = () => {
                     variant="h4"
                     component="h4"
                 >
-                    {data.basics?.label}
+                    {data.basics?.summary}
                 </Typography>
             </Column>
         </div>
