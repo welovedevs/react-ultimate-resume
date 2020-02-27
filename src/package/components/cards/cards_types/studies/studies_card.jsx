@@ -9,7 +9,7 @@ import { StudiesValidator, validateStudiesComplete } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const StudiesCardComponent = ({ variant, side }) => {
-    const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);
+    const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapStudiesFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(editedData => {
@@ -17,6 +17,10 @@ const StudiesCardComponent = ({ variant, side }) => {
     }, []);
 
     const isComplete = useMemo(() => validateStudiesComplete(mappedData), [mappedData]);
+
+    if (!isComplete && mode !== 'edit') {
+        return null;
+    }
 
     return (
         <ProfileCard

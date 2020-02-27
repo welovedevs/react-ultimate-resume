@@ -38,7 +38,6 @@ function App() {
     );
     return (
         <DeveloperProfile
-            isEditing
             mode="edit"
             data={data}
             onEdit={onEdit}

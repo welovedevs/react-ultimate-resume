@@ -15,7 +15,7 @@ import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { validateProjectsComplete } from './data/validator';
 
 const ProjectsCardComponent = ({ variant, side }) => {
-    const { data, isEditing } = useContext(DeveloperProfileContext);
+    const { data, isEditing, mode } = useContext(DeveloperProfileContext);
     const defaultMappedData = useMemo(() => mapProjectsFromJsonResume(data), [data]);
     const [mappedData, setMappedData] = useState(defaultMappedData);
 
@@ -41,6 +41,9 @@ const ProjectsCardComponent = ({ variant, side }) => {
         setNewProjectDialogOpened();
     }, [mappedData]);
 
+    if (!isComplete && mode !== 'edit') {
+        return null;
+    }
     return (
         <ProfileCard
             data={mappedData}

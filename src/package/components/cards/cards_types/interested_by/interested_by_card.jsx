@@ -11,7 +11,7 @@ import { interestedByValidationSchema, validateInterestedByComplete } from './da
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const InterestedByCardComponent = ({ variant, side }) => {
-    const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);
+    const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => JsonResumeToFlatObject(data, interestedByMapping), [data]);
 
     const onDialogEdited = useCallback(editedData => {
@@ -20,6 +20,9 @@ const InterestedByCardComponent = ({ variant, side }) => {
 
     const isComplete = useMemo(() => validateInterestedByComplete(mappedData), [mappedData]);
 
+    if (!isComplete && mode !== 'edit') {
+        return null;
+    }
     return (
         <>
             <ProfileCard

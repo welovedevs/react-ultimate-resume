@@ -11,7 +11,7 @@ import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { BasicsFront } from './basics_front/basics_front';
 
 const BasicsCardComponent = ({ variant, side }) => {
-    const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
+    const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapJsonResumeToBasicData(data), [data]);
 
     const onDialogEdited = useCallback(editedData => {
@@ -20,6 +20,9 @@ const BasicsCardComponent = ({ variant, side }) => {
 
     const isComplete = useMemo(() => validateBasicsComplete(mappedData), [mappedData]);
 
+    if (!isComplete && mode !== 'edit') {
+        return null;
+    }
     return (
         <>
             <ProfileCard

@@ -11,7 +11,7 @@ import { mapInterestsFromJsonResume, mapInterestsToJsonResume } from './data/map
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const GifsCardComponent = ({ variant, side }) => {
-    const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
+    const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapInterestsFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(editedData => {
@@ -19,6 +19,10 @@ const GifsCardComponent = ({ variant, side }) => {
     }, []);
 
     const isComplete = useMemo(() => validateInterestsComplete(mappedData), [mappedData]);
+
+    if (!isComplete && mode !== 'edit') {
+        return null;
+    }
     return (
         <ProfileCard
             isEditingProfile={isEditing}

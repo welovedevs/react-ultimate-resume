@@ -7,17 +7,26 @@ import { FlatObjectToJsonResume, JsonResumeToFlatObject } from '../../utils/data
 import { SoundtrackCardEditDialog } from './edit_dialog/soundtrack_card_edit_dialog';
 import { SoundtrackMapping } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
+import { validateSoundtrackComplete } from './data/validator';
 
 const SoundtrackCardComponent = ({ variant, side }) => {
-    const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
+    const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => JsonResumeToFlatObject(data, SoundtrackMapping), [data]);
 
     const onDialogEdited = useCallback(editedData => {
         onEdit(FlatObjectToJsonResume(editedData, SoundtrackMapping));
     }, []);
 
+    const isComplete = useMemo(() => validateSoundtrackComplete(mappedData), [mappedData]);
+
+    console.log({ mappedData, isComplete, mode });
+    if (!isComplete && mode !== 'edit') {
+        return null;
+    }
+
     return (
         <ProfileCard
+            isComplete={isComplete}
             isEditingProfile={isEditing}
             data={mappedData}
             sides={{

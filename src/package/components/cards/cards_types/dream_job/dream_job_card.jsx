@@ -10,7 +10,7 @@ import { mapDreamJobFromJsonResume, mapDreamJobToJsonResume } from './data/mappi
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const DreamJobCardComponent = ({ variant, side }) => {
-    const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
+    const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapDreamJobFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(editedData => {
@@ -19,6 +19,9 @@ const DreamJobCardComponent = ({ variant, side }) => {
 
     const isComplete = useMemo(() => validateDreamjobComplete(mappedData), [mappedData]);
 
+    if (!isComplete && mode !== 'edit') {
+        return null;
+    }
     return (
         <ProfileCard
             isEditingProfile={isEditing}

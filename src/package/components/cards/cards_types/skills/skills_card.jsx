@@ -10,7 +10,7 @@ import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { SkillsValidationSchema, validateSkillsComplete } from './data/validator';
 
 const SkillsCardComponent = ({ variant, side }) => {
-    const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);
+    const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
 
     const mappedData = useMemo(() => mapSkillsFromJsonResume(data), [data]);
     const onDialogEdited = useCallback(editedData => {
@@ -19,6 +19,9 @@ const SkillsCardComponent = ({ variant, side }) => {
 
     const isComplete = useMemo(() => validateSkillsComplete(mappedData), [mappedData]);
 
+    if (!isComplete && mode !== 'edit') {
+        return null;
+    }
     return (
         <ProfileCard
             isEditingProfile={isEditing}

@@ -9,7 +9,7 @@ import { LanguageValidator, validateLanguagesComplete } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const LanguagesCardComponent = ({ variant, side }) => {
-    const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
+    const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapLanguagesFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(editedData => {
@@ -18,6 +18,9 @@ const LanguagesCardComponent = ({ variant, side }) => {
 
     const isComplete = useMemo(() => validateLanguagesComplete(mappedData), [mappedData]);
 
+    if (!isComplete && mode !== 'edit') {
+        return null;
+    }
     return (
         <ProfileCard
             isEditingProfile={isEditing}

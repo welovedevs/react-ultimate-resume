@@ -10,13 +10,16 @@ import { mapWorkFromJsonResume, mapWorkToJsonResume } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const ExperiencesCardComponent = ({ variant, side }) => {
-    const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);
+    const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapWorkFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(editedData => onEdit(mapWorkToJsonResume(editedData)), []);
 
     const isComplete = useMemo(() => validateWorkComplete(mappedData), [mappedData]);
 
+    if (!isComplete && mode !== 'edit') {
+        return null;
+    }
     return (
         <ProfileCard
             isEditingProfile={isEditing}
