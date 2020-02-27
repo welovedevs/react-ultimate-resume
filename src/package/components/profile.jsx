@@ -105,7 +105,7 @@ const WithProvidersDeveloperProfile = ({
     onCustomizationChanged,
     options = {},
     mode = 'readOnly',
-    ActionButtons,
+    additionalNodes,
     BeforeCards,
     classes,
     isEditing
@@ -128,7 +128,7 @@ const WithProvidersDeveloperProfile = ({
                     onEdit={onEdit}
                     onCustomizationChanged={onCustomizationChanged}
                     options={options}
-                    ActionButtons={ActionButtons}
+                    additionalNodes={additionalNodes}
                     BeforeCards={BeforeCards}
                     classes={classes}
                 />
