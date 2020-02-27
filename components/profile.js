@@ -88,16 +88,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            return _context.abrupt("return", // eslint-disable-next-line no-undef
-            fetch('https://api.thecatapi.com/v1/images/search', {
-              headers: {}
-            }).then(function (res) {
-              return res.json();
-            }).then(function (results) {
-              var _results$;
-
-              return results === null || results === void 0 ? void 0 : (_results$ = results[0]) === null || _results$ === void 0 ? void 0 : _results$.url;
-            }));
+            return _context.abrupt("return", 'https://source.unsplash.com/random/4000x2000');
 
           case 1:
           case "end":
