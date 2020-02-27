@@ -62,7 +62,16 @@ var DreamJobFrontComponent = function DreamJobFrontComponent(_ref) {
   var handleButtonClick = (0, _react.useCallback)(function () {
     return setSide(side === 'front' ? 'back' : 'front');
   }, [side, setSide]);
+  var andMore = (0, _react.useMemo)(function () {
+    if (places.length < 2) {
+      return '';
+    }
+
+    return " (+ ".concat(places.length - 1, ")");
+  }, [places]);
   var content = (0, _react.useMemo)(function () {
+    var _places$;
+
     if (remoteFrequency === _remote_utils.REMOTE_FREQUENCY.FULL_TIME) {
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_front_vector.ProfileCardFrontVector, {
         customClasses: {
@@ -90,12 +99,10 @@ var DreamJobFrontComponent = function DreamJobFrontComponent(_ref) {
       }
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "DreamJob.Front.Cities",
-      defaultMessage: "I want to work in {cities}",
+      defaultMessage: "I want to work in {cities}{andMore}",
       values: {
-        cities: places.slice(0, 2).map(function (_ref2) {
-          var name = _ref2.name;
-          return name;
-        }).join(', ')
+        cities: places === null || places === void 0 ? void 0 : (_places$ = places[0]) === null || _places$ === void 0 ? void 0 : _places$.name,
+        andMore: andMore
       }
     })));
   }, [remoteFrequency, places]);
