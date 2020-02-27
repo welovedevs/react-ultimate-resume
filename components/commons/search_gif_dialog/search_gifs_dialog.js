@@ -117,10 +117,11 @@ var Results = function Results(_ref2) {
       onSelect({
         url: url,
         id: id,
-        title: title
+        title: title,
+        query: query
       });
     };
-  }, [onSelect]);
+  }, [onSelect, query]);
   return _react.default.createElement("div", {
     className: classes.results
   }, loading && _react.default.createElement(_loading_spinner.LoadingSpinner, null), !loading && gifs && debouncedQuery && gifs.map(function (_ref3) {

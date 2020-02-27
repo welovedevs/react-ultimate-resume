@@ -107,15 +107,15 @@ var SortableGifItem = (0, _reactSortableHoc.SortableElement)(function (_ref5) {
       classes = _ref5.classes;
   var handleRemove = (0, _react.useCallback)(function () {
     return onRemove(id);
-  }, [id]);
+  }, [id, onRemove]);
   var handleChange = (0, _react.useCallback)(function (field) {
     return function (value) {
       return onChange(index, field, value);
     };
-  }, [index]);
+  }, [onChange]);
   var handleImageEditClick = (0, _react.useCallback)(function () {
     return setSelectedIndex(index);
-  }, [index]);
+  }, []);
   return _react.default.createElement("li", {
     className: classes.listItem
   }, _react.default.createElement(_gif_card.GifCard, {

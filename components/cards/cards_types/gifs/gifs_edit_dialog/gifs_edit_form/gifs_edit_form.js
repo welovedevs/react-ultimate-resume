@@ -21,6 +21,8 @@ var _formik = require("formik");
 
 var _keyBy = _interopRequireDefault(require("lodash/keyBy"));
 
+var _capitalize = _interopRequireDefault(require("lodash/capitalize"));
+
 var _omit = _interopRequireDefault(require("lodash/omit"));
 
 var _v = _interopRequireDefault(require("uuid/v4"));
@@ -72,13 +74,13 @@ var GifsEditFormComponent = function GifsEditFormComponent(_ref) {
       var id = _ref3.id;
       return id;
     });
-  }, [interests]);
+  }, [JSON.stringify(interests)]);
   var interestChanged = (0, _react.useCallback)(function (interestIndex, field, value) {
     handleValueChange("interests[".concat(interestIndex, "].").concat(field))(value);
   }, []);
   var interestDeleted = (0, _react.useCallback)(function (id) {
     handleValueChange('interests')(Object.values((0, _omit.default)(keyedValues, id)));
-  }, [JSON.stringify(keyedValues)]);
+  }, [JSON.stringify(keyedValues), JSON.stringify(interests)]);
   var addInterest = (0, _react.useCallback)(function () {
     var id = (0, _v.default)();
     handleValueChange('interests')(interests.concat({
@@ -97,16 +99,13 @@ var GifsEditFormComponent = function GifsEditFormComponent(_ref) {
     }));
   }, [interests]);
   var globalError = typeof errors === 'string' && errors;
-  var handleGifChange = (0, _react.useCallback)(function (value) {
-    return function () {
-      return interestChanged(selectedIndex, 'gifUrl', value);
-    };
-  }, [selectedIndex]);
   var handleGifSelection = (0, _react.useCallback)(function (_ref5) {
-    var url = _ref5.url;
-    handleGifChange(url)();
+    var url = _ref5.url,
+        query = _ref5.query;
+    interestChanged(selectedIndex, 'name', (0, _capitalize.default)(query));
+    interestChanged(selectedIndex, 'gifUrl', url);
     removeSelectedIndex();
-  }, [handleGifChange]);
+  }, [interestChanged, selectedIndex]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_search_gifs_dialog.SearchGifsDialog, {
     open: Boolean(selectedIndex !== null),
     onClose: removeSelectedIndex,

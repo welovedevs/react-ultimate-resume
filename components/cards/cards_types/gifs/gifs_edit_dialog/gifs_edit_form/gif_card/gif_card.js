@@ -54,6 +54,9 @@ var GifCardComponent = function GifCardComponent(_ref) {
 
     onChange('name')(input);
   }, [onChange, isSaveDisabled, input]);
+  (0, _react.useEffect)(function () {
+    return setInput(name);
+  }, [name]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_ui.Card, {
     className: classes.container
   }, _react.default.createElement("div", {
