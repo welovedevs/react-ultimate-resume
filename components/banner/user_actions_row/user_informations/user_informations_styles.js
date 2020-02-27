@@ -35,7 +35,8 @@ var styles = function styles(theme) {
       fontWeight: 700
     },
     description: {
-      extend: 'text'
+      extend: 'text',
+      fontWeight: 400
     }
   }, (0, _defineProperty2.default)(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small), {
     container: {

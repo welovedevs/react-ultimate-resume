@@ -15,8 +15,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _reactEmojiRender = require("react-emoji-render");
-
 var _reactIntl = require("react-intl");
 
 var _reactJss = require("react-jss");
@@ -35,13 +33,28 @@ var _use_card_side = require("../../../../commons/profile_card/profile_card_hook
 
 var _basics_front_styles = require("./basics_front_styles");
 
+var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
+
+var LocationIcon = function LocationIcon(props) {
+  return _react.default.createElement("svg", props, _react.default.createElement("title", null, "Exported from Streamline App (https://app.streamlineicons.com)"), _react.default.createElement("path", {
+    d: "M24 0C15.168.01 8.01 7.168 8 16c0 7.02 10 24.05 14.296 31.048A2 2 0 0 0 24 48a1.98 1.98 0 0 0 1.704-.954C30 40.052 40 23.028 40 16 39.99 7.168 32.832.01 24 0zm0 23a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"
+  }));
+};
+
+LocationIcon.defaultProps = {
+  viewBox: "0 0 48 48",
+  xmlns: "http://www.w3.org/2000/svg"
+};
 var useStyles = (0, _reactJss.createUseStyles)(_basics_front_styles.styles);
 
 var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
   var _data$currentCity;
 
   var data = _ref.data;
-  var classes = useStyles();
+  var variant = (0, _use_card_variant.useCardVariant)();
+  var classes = useStyles({
+    variant: variant
+  });
 
   var _useCardSide = (0, _use_card_side.useCardSide)(),
       _useCardSide2 = (0, _slicedToArray2.default)(_useCardSide, 2),
@@ -65,10 +78,6 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
       setIsMainTypographyTruncated(true);
     }
   }, [mainTypographyReference.current]);
-  console.log({
-    mainTypographyReference: mainTypographyReference,
-    isMainTypographyTruncated: isMainTypographyTruncated
-  });
   return _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, _react.default.createElement(_center_content_container.CenterContentContainer, {
     customClasses: {
       container: classes.container
@@ -87,9 +96,8 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
     classes: {
       container: classes.location
     }
-  }, _react.default.createElement(_reactEmojiRender.Twemoji, {
-    svg: true,
-    text: "\uD83D\uDCCD"
+  }, _react.default.createElement(LocationIcon, {
+    className: classes.locationIcon
   }), data === null || data === void 0 ? void 0 : (_data$currentCity = data.currentCity) === null || _data$currentCity === void 0 ? void 0 : _data$currentCity.name))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick
   }, _react.default.createElement(_reactIntl.FormattedMessage, {

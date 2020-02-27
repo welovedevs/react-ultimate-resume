@@ -57,6 +57,8 @@ var styles = function styles(theme) {
     location: (_location = {
       extend: 'text',
       width: '100%',
+      display: 'flex',
+      alignItems: 'center',
       fontWeight: 500,
       fontSize: 32,
       marginTop: spacing * 2
@@ -64,7 +66,15 @@ var styles = function styles(theme) {
       fontSize: 24
     }), (0, _defineProperty2.default)(_location, QUERY_EXTRA_SMALL, {
       fontSize: 20
-    }), _location)
+    }), _location),
+    locationIcon: function locationIcon(_ref) {
+      var variant = _ref.variant;
+      return {
+        height: 28,
+        fill: (0, _styles_utils.getHexFromPaletteColor)(theme, (0, _styles_utils.getColorsFromCardVariant)(theme, variant).color),
+        marginRight: spacing * 2
+      };
+    }
   };
 };
 
