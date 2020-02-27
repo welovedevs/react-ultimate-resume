@@ -22,7 +22,7 @@ var styles = function styles(theme) {
       left: [spacing * 5, '!important'],
       '& > svg': {
         '& path': {
-          fill: (0, _styles_utils.getHexFromPaletteColor)(theme, 'danger')
+          fill: [(0, _styles_utils.getHexFromPaletteColor)(theme, 'danger'), '!important']
         }
       }
     },

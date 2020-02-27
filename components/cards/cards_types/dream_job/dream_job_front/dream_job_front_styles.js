@@ -22,7 +22,7 @@ var styles = function styles(theme) {
     logo: {
       marginBottom: spacing * 4,
       '& path': {
-        fill: 'currentColor'
+        fill: ['currentColor', '!important']
       }
     },
     typography: {
@@ -32,7 +32,7 @@ var styles = function styles(theme) {
   }, (0, _defineProperty2.default)(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
     logo: {
       '& path': {
-        fill: 'currentColor'
+        fill: ['currentColor', '!important']
       }
     },
     typography: {
