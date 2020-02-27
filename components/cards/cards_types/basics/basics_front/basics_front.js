@@ -72,7 +72,7 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
   }, _react.default.createElement("div", {
     className: classes.texts
   }, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
-    containerRef: mainTypographyReference,
+    ref: mainTypographyReference,
     classes: {
       container: (0, _classnames.default)(classes.mainTypography, isMainTypographyTruncated && classes.truncatedMainTypography)
     }
