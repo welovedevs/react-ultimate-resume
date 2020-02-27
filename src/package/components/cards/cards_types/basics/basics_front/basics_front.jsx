@@ -39,6 +39,7 @@ const BasicsFrontComponent = ({ data }) => {
             <CenterContentContainer customClasses={{ container: classes.container }}>
                 <div className={classes.texts}>
                     <ProfileCardFrontTypography
+                        containerRef={mainTypographyReference}
                         classes={{
                             container: cn(classes.mainTypography,
                                 isMainTypographyTruncated && classes.truncatedMainTypography)
