@@ -43,34 +43,46 @@ var SkillsBackComponent = function SkillsBackComponent(_ref) {
   var classes = useStyles({
     variant: variant
   });
+  var springSkillOpacityPropsRef = (0, _react.useRef)();
+  var springGraphOpacityPropsRef = (0, _react.useRef)();
+  var springSkillOpacityProps = (0, _reactSpring.useSpring)({
+    from: {
+      opacity: 0
+    },
+    to: {
+      opacity: 1
+    },
+    ref: springSkillOpacityPropsRef
+  });
+  var springGraphOpacityProps = (0, _reactSpring.useSpring)({
+    from: {
+      opacity: 0
+    },
+    to: {
+      opacity: 1
+    },
+    ref: springGraphOpacityPropsRef
+  });
+  (0, _reactSpring.useChain)([springGraphOpacityPropsRef, springSkillOpacityPropsRef], [0, 0.1]);
 
   var _useSpring = (0, _reactSpring.useSpring)(function () {
-    return {
-      opacity: 0
-    };
-  }),
-      _useSpring2 = (0, _slicedToArray2.default)(_useSpring, 2),
-      springOnOpenOpacityProps = _useSpring2[0],
-      setSpringOnOpenOpacityProps = _useSpring2[1];
-
-  var _useSpring3 = (0, _reactSpring.useSpring)(function () {
     return {
       opacity: 1
     };
   }),
-      _useSpring4 = (0, _slicedToArray2.default)(_useSpring3, 2),
-      springOnScrollOpacityProps = _useSpring4[0],
-      setSpringOnScrollOpacityProps = _useSpring4[1];
+      _useSpring2 = (0, _slicedToArray2.default)(_useSpring, 2),
+      springOnScrollOpacityProps = _useSpring2[0],
+      setSpringOnScrollOpacityProps = _useSpring2[1];
 
-  var _useSpring5 = (0, _reactSpring.useSpring)(function () {
+  var _useSpring3 = (0, _reactSpring.useSpring)(function () {
     return {
       yt: 0,
       config: _reactSpring.config.slow
     };
   }),
-      _useSpring6 = (0, _slicedToArray2.default)(_useSpring5, 2),
-      springTranslationProps = _useSpring6[0],
-      setSpringTranslationProps = _useSpring6[1];
+      _useSpring4 = (0, _slicedToArray2.default)(_useSpring3, 2),
+      springTranslationProps = _useSpring4[0],
+      setSpringTranslationProps = _useSpring4[1];
 
   var _useMemo = (0, _react.useMemo)(function () {
     var _data$skills;
@@ -108,26 +120,20 @@ var SkillsBackComponent = function SkillsBackComponent(_ref) {
       opacity: newOpacity
     });
   }, [othersSkills]);
-  var onAnimationEnd = (0, _react.useCallback)(function () {
-    return setSpringOnOpenOpacityProps({
-      opacity: 1
-    });
-  }, []);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_title.ProfileCardTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Skills.back.title",
     defaultMessage: "Skills"
   })), _react.default.createElement("div", {
     className: classes.container,
-    onScroll: onScroll
+    onScroll: onScroll,
+    style: springGraphOpacityProps
   }, _react.default.createElement(_skills_pie_chart.default, {
     variant: variant,
     data: top3Skills,
-    springOnScrollOpacityProps: springOnScrollOpacityProps,
-    springOnOpenOpacityProps: springOnOpenOpacityProps,
-    onAnimationEnd: onAnimationEnd
+    springOnScrollOpacityProps: springOnScrollOpacityProps
   }), _react.default.createElement(_other_skills.default, {
+    style: springSkillOpacityProps,
     othersSkills: othersSkills,
-    springOnOpenOpacityProps: springOnOpenOpacityProps,
     springTranslationProps: springTranslationProps
   })));
 };

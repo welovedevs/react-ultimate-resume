@@ -9,8 +9,6 @@ exports.CustomLabel = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _reactSpring = require("react-spring");
-
 var _reactJss = require("react-jss");
 
 var _skills_back_recharts_styles = require("./skills_back_recharts_styles");
@@ -25,7 +23,6 @@ var CustomLabel = function CustomLabel(props) {
       midAngle = props.midAngle,
       customColor = props.customColor,
       outerRadius = props.outerRadius,
-      springProps = props.springProps,
       name = props.name;
   var sin = Math.sin(-RADIAN * midAngle);
   var cos = Math.cos(-RADIAN * midAngle);
@@ -36,9 +33,7 @@ var CustomLabel = function CustomLabel(props) {
   var ex = mx + (cos >= 0 ? 1 : -1) * 20;
   var ey = my;
   var textAnchor = cos >= 0 ? 'start' : 'end';
-  return _react.default.createElement("g", null, _react.default.createElement(_reactSpring.animated.g, {
-    style: springProps
-  }, _react.default.createElement("path", {
+  return _react.default.createElement("g", null, _react.default.createElement("g", null, _react.default.createElement("path", {
     d: "M".concat(sx, ",").concat(sy, "L").concat(mx, ",").concat(my, "L").concat(ex, ",").concat(ey),
     stroke: customColor,
     fill: "none"

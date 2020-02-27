@@ -61,7 +61,7 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
   (0, _react.useEffect)(function () {
     var element = mainTypographyReference.current;
 
-    if (element.offsetWidth < element.scrollWidth) {
+    if (element.offsetHeight < element.scrollHeight - 1) {
       setIsMainTypographyTruncated(true);
     }
   }, [mainTypographyReference.current]);
@@ -76,6 +76,7 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
   }, _react.default.createElement("div", {
     className: classes.texts
   }, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
+    component: "div",
     ref: mainTypographyReference,
     classes: {
       container: (0, _classnames.default)(classes.mainTypography, isMainTypographyTruncated && classes.truncatedMainTypography)

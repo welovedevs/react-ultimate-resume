@@ -32,8 +32,8 @@ var _other_skills_styles = require("./other_skills_styles");
 var useStyles = (0, _reactJss.createUseStyles)(_other_skills_styles.styles);
 
 var OtherSkills = function OtherSkills(_ref) {
-  var othersSkills = _ref.othersSkills,
-      springOnOpenOpacityProps = _ref.springOnOpenOpacityProps,
+  var style = _ref.style,
+      othersSkills = _ref.othersSkills,
       yt = _ref.springTranslationProps.yt;
 
   var _useCardVariant = (0, _use_card_variant.useCardVariant)(),
@@ -50,7 +50,7 @@ var OtherSkills = function OtherSkills(_ref) {
   return _react.default.createElement(_reactSpring.animated.div, {
     className: classes.otherSkillsContainer,
     style: {
-      opacity: springOnOpenOpacityProps.opacity,
+      opacity: style.opacity,
       transform: yt.interpolate(function (value) {
         return "translate3d(0, ".concat(value, "px,0)");
       })

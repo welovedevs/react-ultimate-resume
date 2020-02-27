@@ -36,8 +36,7 @@ var SkillsPieChart = function SkillsPieChart(_ref) {
   var data = _ref.data,
       variant = _ref.variant,
       springOnOpenOpacityProps = _ref.springOnOpenOpacityProps,
-      springOnScrollOpacityProps = _ref.springOnScrollOpacityProps,
-      onAnimationEnd = _ref.onAnimationEnd;
+      springOnScrollOpacityProps = _ref.springOnScrollOpacityProps;
   var classes = useStyles();
   var theme = (0, _reactJss.useTheme)();
   var isMobile = (0, _useMediaQuery.default)("(max-width: ".concat(theme.screenSizes.small, "px)"));
@@ -68,8 +67,8 @@ var SkillsPieChart = function SkillsPieChart(_ref) {
     height: "100%",
     width: "100%"
   }, _react.default.createElement(_recharts.PieChart, null, _react.default.createElement(_recharts.Pie, {
+    isAnimationActive: false,
     dataKey: "value",
-    animationDuration: 750,
     labelLine: false,
     label: function label(shapeProps) {
       return _react.default.createElement(_skills_back_recharts_utils.CustomLabel, (0, _extends2.default)({
@@ -78,8 +77,7 @@ var SkillsPieChart = function SkillsPieChart(_ref) {
       }, shapeProps));
     },
     data: data,
-    outerRadius: isMobile ? '50%' : undefined,
-    onAnimationEnd: onAnimationEnd
+    outerRadius: isMobile ? '50%' : undefined
   }, data.map(function (entry, index) {
     return _react.default.createElement(_recharts.Cell, {
       key: "cell-".concat(index),
