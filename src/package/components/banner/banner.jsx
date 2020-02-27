@@ -67,12 +67,23 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
                             id="Unsplash.credit"
                             defaultMessage="Photo by {name} on {unsplashLink}"
                             values={{
-                                name: <a href={bannerImageCredits.url}>{bannerImageCredits.name}</a>,
+                                name: (
+                                    <a
+                                        className={classes.author}
+                                        href={bannerImageCredits.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {bannerImageCredits.name}
+                                    </a>
+                                ),
                                 unsplashLink: (
                                     <a
                                         href={encodeURI(
                                             'https://unsplash.com/?utm_source=W3D Developer Profile&utm_medium=referral'
                                         )}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                     >
                                         <FormattedMessage id="Unsplash.brandName" defaultMessage="Unsplash" />
                                     </a>

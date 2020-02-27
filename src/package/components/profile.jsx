@@ -53,7 +53,6 @@ const DeveloperProfileComponent = ({
         })
             .then(res => res.json())
             .then(results => results?.[0]?.url),
-    ActionButtons,
     BeforeCards,
     additionalNodes,
     classes: receivedGlobalClasses = {}
