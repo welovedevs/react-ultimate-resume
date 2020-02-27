@@ -108,6 +108,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
   })) : _ref$onFilesUpload,
       ActionButtons = _ref.ActionButtons,
       BeforeCards = _ref.BeforeCards,
+      additionalNodes = _ref.additionalNodes,
       _ref$classes = _ref.classes,
       receivedGlobalClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var apiKeys = options.apiKeys,
@@ -134,10 +135,8 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       },
       store: store,
       mode: mode,
-      endpoints: {
-        devicons: endpoints === null || endpoints === void 0 ? void 0 : endpoints.devicons,
-        unsplashProxy: endpoints === null || endpoints === void 0 ? void 0 : endpoints.unsplashProxy
-      },
+      additionalNodes: additionalNodes,
+      endpoints: endpoints,
       receivedGlobalClasses: receivedGlobalClasses
     };
   }, [endpoints, apiKeys, data, onEdit, store, mode]);
@@ -151,7 +150,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
   }, _react.default.createElement(_banner.Banner, {
     customizationOptions: options.customization,
     onCustomizationChanged: onCustomizationChanged
-  }, ActionButtons), BeforeCards, _react.default.createElement(_cards.Cards, {
+  }), BeforeCards, _react.default.createElement(_cards.Cards, {
     cardsOrder: (_options$customizatio = options.customization) === null || _options$customizatio === void 0 ? void 0 : _options$customizatio.cardsOrder
   })));
 };

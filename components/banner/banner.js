@@ -35,6 +35,8 @@ var _opacity_transitions = require("../../utils/springs/common_transitions/opaci
 
 var _use_is_editing = require("../hooks/use_is_editing");
 
+var _use_additional_nodes = require("../hooks/use_additional_nodes");
+
 var _use_received_global_classes = require("../hooks/use_received_global_classes");
 
 var _banner_styles = require("./banner_styles");
@@ -48,19 +50,18 @@ var useStyles = (0, _reactJss.createUseStyles)(_banner_styles.styles);
 var BannerComponent = function BannerComponent(_ref) {
   var _customizationOptions;
 
-  var children = _ref.children,
-      customizationOptions = _ref.customizationOptions,
+  var customizationOptions = _ref.customizationOptions,
       onCustomizationChanged = _ref.onCustomizationChanged;
   var classes = useStyles();
+
+  var _useAdditionalNodes = (0, _use_additional_nodes.useAdditionalNodes)('banner.actionsButtons'),
+      _useAdditionalNodes2 = (0, _slicedToArray2.default)(_useAdditionalNodes, 1),
+      actionsButtons = _useAdditionalNodes2[0];
 
   var _useReceivedGlobalCla = (0, _use_received_global_classes.useReceivedGlobalClasses)('banner'),
       _useReceivedGlobalCla2 = (0, _slicedToArray2.default)(_useReceivedGlobalCla, 1),
       _useReceivedGlobalCla3 = _useReceivedGlobalCla2[0],
       globalReceivedBannerClasses = _useReceivedGlobalCla3 === void 0 ? {} : _useReceivedGlobalCla3;
-
-  console.log({
-    globalReceivedBannerClasses: globalReceivedBannerClasses
-  });
 
   var _useIsEditing = (0, _use_is_editing.useIsEditing)(),
       _useIsEditing2 = (0, _slicedToArray2.default)(_useIsEditing, 1),
@@ -92,7 +93,7 @@ var BannerComponent = function BannerComponent(_ref) {
     });
   }), _react.default.createElement("div", {
     className: (0, _classnames.default)(classes.content, globalReceivedBannerClasses.content)
-  }, _react.default.createElement(_user_informations.UserInformations, null), _react.default.createElement(_social_actions.SocialActions, null, children, onCustomizationChanged && _react.default.createElement(_customize_button.CustomizeButton, {
+  }, _react.default.createElement(_user_informations.UserInformations, null), _react.default.createElement(_social_actions.SocialActions, null, actionsButtons, onCustomizationChanged && _react.default.createElement(_customize_button.CustomizeButton, {
     customizationOptions: customizationOptions
   }))), (bannerImageCredits === null || bannerImageCredits === void 0 ? void 0 : bannerImageCredits.name) && _react.default.createElement(_ui.Typography, {
     customClasses: {
