@@ -50,7 +50,7 @@ var UserInformationsComponent = function UserInformationsComponent() {
     },
     variant: "h4",
     component: "h4"
-  }, (_data$basics3 = data.basics) === null || _data$basics3 === void 0 ? void 0 : _data$basics3.label)));
+  }, (_data$basics3 = data.basics) === null || _data$basics3 === void 0 ? void 0 : _data$basics3.summary)));
 };
 
 var UserInformations = UserInformationsComponent;

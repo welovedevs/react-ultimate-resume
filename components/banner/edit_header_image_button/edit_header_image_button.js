@@ -15,6 +15,8 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/sli
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _reactJss = require("react-jss");
 
 var _reactIntl = require("react-intl");
@@ -28,6 +30,8 @@ var _edit_banner_image_dialog = require("../edit_banner_image_dialog/edit_banner
 var _use_callback_open = require("../../hooks/use_callback_open");
 
 var _edit_header_image_button_styles = require("./edit_header_image_button_styles");
+
+var _use_received_global_classes = require("../../hooks/use_received_global_classes");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -48,6 +52,11 @@ var useStyles = (0, _reactJss.createUseStyles)(_edit_header_image_button_styles.
 var EditHeaderImageButton = function EditHeaderImageButton(_ref) {
   var customizationOptions = _ref.customizationOptions;
   var classes = useStyles();
+
+  var _useReceivedGlobalCla = (0, _use_received_global_classes.useReceivedGlobalClasses)('banner.editHeaderImageButton'),
+      _useReceivedGlobalCla2 = (0, _slicedToArray2.default)(_useReceivedGlobalCla, 1),
+      _useReceivedGlobalCla3 = _useReceivedGlobalCla2[0],
+      globalReceivedClasses = _useReceivedGlobalCla3 === void 0 ? {} : _useReceivedGlobalCla3;
 
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       onCustomizationChanged = _useContext.onCustomizationChanged;
@@ -76,7 +85,7 @@ var EditHeaderImageButton = function EditHeaderImageButton(_ref) {
     icon: EditIcon,
     onClick: onOpen,
     classes: {
-      container: classes.editButton
+      container: (0, _classnames.default)(classes.editButton, globalReceivedClasses)
     }
   }));
 };

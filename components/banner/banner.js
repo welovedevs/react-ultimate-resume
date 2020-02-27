@@ -105,10 +105,15 @@ var BannerComponent = function BannerComponent(_ref) {
     defaultMessage: "Photo by {name} on {unsplashLink}",
     values: {
       name: _react.default.createElement("a", {
-        href: bannerImageCredits.url
+        className: classes.author,
+        href: bannerImageCredits.url,
+        target: "_blank",
+        rel: "noopener noreferrer"
       }, bannerImageCredits.name),
       unsplashLink: _react.default.createElement("a", {
-        href: encodeURI('https://unsplash.com/?utm_source=W3D Developer Profile&utm_medium=referral')
+        href: encodeURI('https://unsplash.com/?utm_source=W3D Developer Profile&utm_medium=referral'),
+        target: "_blank",
+        rel: "noopener noreferrer"
       }, _react.default.createElement(_reactIntl.FormattedMessage, {
         id: "Unsplash.brandName",
         defaultMessage: "Unsplash"

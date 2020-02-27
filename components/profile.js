@@ -106,7 +106,6 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       }
     }, _callee);
   })) : _ref$onFilesUpload,
-      ActionButtons = _ref.ActionButtons,
       BeforeCards = _ref.BeforeCards,
       additionalNodes = _ref.additionalNodes,
       _ref$classes = _ref.classes,

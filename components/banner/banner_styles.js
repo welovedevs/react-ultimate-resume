@@ -76,10 +76,22 @@ var styles = function styles(theme) {
       alignItems: 'center'
     }),
     credits: {
+      zIndex: [3, '!important'],
       color: 'rgba(255, 255, 255, .75)',
       position: 'absolute',
-      right: spacing * 3,
-      bottom: spacing * 3
+      right: spacing * 2,
+      bottom: spacing * 3,
+      maxWidth: 190,
+      whiteSpace: 'nowrap',
+      display: 'flex',
+      '& > a': {
+        margin: [0, spacing / 2]
+      }
+    },
+    author: {
+      flex: 1,
+      textOverflow: 'ellipsis',
+      overflow: 'hidden'
     }
   };
 };
