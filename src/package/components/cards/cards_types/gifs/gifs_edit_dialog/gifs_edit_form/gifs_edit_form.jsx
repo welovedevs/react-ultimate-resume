@@ -40,8 +40,6 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
 
     const interestDeleted = useCallback(
         id => {
-            console.log({ id });
-            console.log({ keyedValues });
             handleValueChange('interests')(Object.values(omit(keyedValues, id)));
         },
         [JSON.stringify(keyedValues)]

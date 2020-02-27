@@ -19,7 +19,6 @@ const SoundtrackCardComponent = ({ variant, side }) => {
 
     const isComplete = useMemo(() => validateSoundtrackComplete(mappedData), [mappedData]);
 
-    console.log({ mappedData, isComplete, mode });
     if (!isComplete && mode !== 'edit') {
         return null;
     }
