@@ -1,5 +1,6 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
+import cn from 'classnames';
 import { Twemoji } from 'react-emoji-render';
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
@@ -22,13 +23,25 @@ const BasicsFrontComponent = ({ data }) => {
 
     const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
 
+    const [isMainTypographyTruncated, setIsMainTypographyTruncated] = useState(false);
+    const mainTypographyReference = useRef();
+
+    useEffect(() => {
+        const element = mainTypographyReference.current;
+        if (element.offsetWidth < element.scrollWidth) {
+            setIsMainTypographyTruncated(true);
+        }
+    }, [mainTypographyReference.current]);
+
+
     return (
         <ProfileCardPaddedFront>
             <CenterContentContainer customClasses={{ container: classes.container }}>
                 <div className={classes.texts}>
                     <ProfileCardFrontTypography
                         classes={{
-                            container: classes.mainTypography
+                            container: cn(classes.mainTypography,
+                                isMainTypographyTruncated && classes.truncatedMainTypography)
                         }}
                     >
                         {data.summary}

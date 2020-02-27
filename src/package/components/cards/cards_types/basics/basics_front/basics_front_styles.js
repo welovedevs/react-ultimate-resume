@@ -38,6 +38,19 @@ export const styles = theme => {
                 paddingBottom: 0
             }
         },
+        truncatedMainTypography: {
+            fontSize: 42,
+            lineHeight: 1.3,
+            [QUERY_CARD_MARGIN_PADDING]: {
+                fontSize: 36,
+                maxHeight: 36 * 1.3 * 3
+            },
+            [QUERY_EXTRA_SMALL]: {
+                fontSize: 24,
+                maxHeight: 24 * 1.3 * 3,
+                paddingBottom: 0
+            }
+        },
         location: {
             extend: 'text',
             width: '100%',
