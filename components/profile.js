@@ -163,7 +163,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
       options = _ref3$options === void 0 ? {} : _ref3$options,
       _ref3$mode = _ref3.mode,
       mode = _ref3$mode === void 0 ? 'readOnly' : _ref3$mode,
-      ActionButtons = _ref3.ActionButtons,
+      additionalNodes = _ref3.additionalNodes,
       BeforeCards = _ref3.BeforeCards,
       classes = _ref3.classes,
       isEditing = _ref3.isEditing;
@@ -193,7 +193,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
     onEdit: onEdit,
     onCustomizationChanged: onCustomizationChanged,
     options: options,
-    ActionButtons: ActionButtons,
+    additionalNodes: additionalNodes,
     BeforeCards: BeforeCards,
     classes: classes
   })));
