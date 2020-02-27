@@ -13,7 +13,7 @@ export const styles = (theme) => {
         arrowContainer: {
             left: [spacing * 5, '!important'],
             '& > svg': {
-                '& > g > path': {
+                '& path': {
                     fill: getHexFromPaletteColor(theme, 'danger')
                 }
             }

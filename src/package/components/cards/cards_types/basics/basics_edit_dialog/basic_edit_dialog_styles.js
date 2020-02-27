@@ -23,7 +23,7 @@ export const styles = (theme) => {
         },
         sliderPopperCardArrowContainer: {
             '& > svg': {
-                '& > g > path': {
+                '& path': {
                     fill: getHexFromPaletteColor(theme, 'primary')
                 }
             }
