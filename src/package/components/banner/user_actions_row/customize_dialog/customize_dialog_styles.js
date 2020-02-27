@@ -1,6 +1,9 @@
 export const styles = (theme) => {
     const { palette, miscellaneous: { spacing } } = theme;
     return ({
+        root: {
+            zIndex: [9999999999, '!important']
+        },
         paper: {
             backgroundColor: [palette.dark[50], '!important']
         },

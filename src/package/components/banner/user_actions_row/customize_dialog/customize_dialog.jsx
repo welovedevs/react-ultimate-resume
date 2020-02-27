@@ -77,6 +77,7 @@ const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
             fullScreen
             open={open}
             classes={{
+                root: classes.root,
                 paper: classes.paper
             }}
             onClose={onClose}
@@ -112,7 +113,10 @@ const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
                     root: classes.actions
                 }}
             >
-                <Button size="small" onClick={onSave}>
+                <Button size="small" onClick={onClose}>
+                    <FormattedMessage id="Main.lang.close" deaultMessage="Close" />
+                </Button>
+                <Button color="primary" variant="contained" size="small" onClick={onSave}>
                     <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
                 </Button>
             </DialogActions>
