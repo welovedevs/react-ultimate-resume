@@ -65,6 +65,10 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
       setIsMainTypographyTruncated(true);
     }
   }, [mainTypographyReference.current]);
+  console.log({
+    mainTypographyReference: mainTypographyReference,
+    isMainTypographyTruncated: isMainTypographyTruncated
+  });
   return _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, _react.default.createElement(_center_content_container.CenterContentContainer, {
     customClasses: {
       container: classes.container
