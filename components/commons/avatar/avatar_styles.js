@@ -23,6 +23,8 @@ var styles = function styles(_ref) {
     container: _objectSpread({
       height: 110,
       width: 110,
+      minHeight: 110,
+      minWidth: 110,
       borderRadius: '50%',
       backgroundColor: palette.dark[50],
       overflow: 'hidden'
