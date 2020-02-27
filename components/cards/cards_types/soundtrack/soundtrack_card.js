@@ -44,11 +44,6 @@ var SoundtrackCardComponent = function SoundtrackCardComponent(_ref) {
   var isComplete = (0, _react.useMemo)(function () {
     return (0, _validator.validateSoundtrackComplete)(mappedData);
   }, [mappedData]);
-  console.log({
-    mappedData: mappedData,
-    isComplete: isComplete,
-    mode: mode
-  });
 
   if (!isComplete && mode !== 'edit') {
     return null;

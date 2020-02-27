@@ -77,12 +77,6 @@ var GifsEditFormComponent = function GifsEditFormComponent(_ref) {
     handleValueChange("interests[".concat(interestIndex, "].").concat(field))(value);
   }, []);
   var interestDeleted = (0, _react.useCallback)(function (id) {
-    console.log({
-      id: id
-    });
-    console.log({
-      keyedValues: keyedValues
-    });
     handleValueChange('interests')(Object.values((0, _omit.default)(keyedValues, id)));
   }, [JSON.stringify(keyedValues)]);
   var addInterest = (0, _react.useCallback)(function () {

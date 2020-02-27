@@ -62,9 +62,6 @@ var ProjectDialogComponent = function ProjectDialogComponent(_ref) {
       data = _useContext.data;
 
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
-    console.log({
-      editedData: editedData
-    });
     onEdit((0, _mapping.updateProjectsArray)((0, _mapping.mapProjectToJsonResume)(editedData), data));
     onClose();
   }, [data]);

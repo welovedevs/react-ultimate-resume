@@ -130,9 +130,6 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       receivedGlobalClasses: receivedGlobalClasses
     };
   }, [endpoints, apiKeys, data, onEdit, store, mode]);
-  console.log({
-    context: context
-  });
   return _react.default.createElement("div", {
     className: classes.container
   }, _react.default.createElement(_contexts.DeveloperProfileContext.Provider, {
