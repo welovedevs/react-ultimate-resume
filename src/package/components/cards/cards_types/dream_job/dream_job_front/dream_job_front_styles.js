@@ -11,7 +11,7 @@ export const styles = theme => {
         logo: {
             marginBottom: spacing * 4,
             '& path': {
-                fill: 'currentColor'
+                fill: ['currentColor', '!important']
             }
         },
         typography: {
@@ -21,7 +21,7 @@ export const styles = theme => {
         [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
             logo: {
                 '& path': {
-                    fill: 'currentColor'
+                    fill: ['currentColor', '!important']
                 }
             },
             typography: {

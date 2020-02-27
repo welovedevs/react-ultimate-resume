@@ -24,7 +24,7 @@ export const styles = (theme) => {
         sliderPopperCardArrowContainer: {
             '& > svg': {
                 '& path': {
-                    fill: getHexFromPaletteColor(theme, 'primary')
+                    fill: [getHexFromPaletteColor(theme, 'primary'), '!important']
                 }
             }
         }

@@ -14,7 +14,7 @@ export const styles = (theme) => {
             left: [spacing * 5, '!important'],
             '& > svg': {
                 '& path': {
-                    fill: getHexFromPaletteColor(theme, 'danger')
+                    fill: [getHexFromPaletteColor(theme, 'danger'), '!important']
                 }
             }
         },
