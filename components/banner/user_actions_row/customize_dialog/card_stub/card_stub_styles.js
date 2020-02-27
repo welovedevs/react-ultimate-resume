@@ -14,10 +14,11 @@ var styles = function styles(theme) {
       spacing = theme.miscellaneous.spacing;
   return {
     container: {
-      position: 'relative'
+      position: 'relative',
+      cursor: 'move'
     },
     popper: {
-      zIndex: 130200
+      zIndex: 10000000001
     },
     cardVariantsTooltipPopper: {
       extend: 'popper'

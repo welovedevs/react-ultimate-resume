@@ -34,7 +34,7 @@ var styles = function styles(theme) {
       justifyContent: 'center'
     },
     sortableHelper: {
-      zIndex: 1400,
+      zIndex: 10000000000,
       width: CARD_DIMENSION,
       height: CARD_DIMENSION
     }
