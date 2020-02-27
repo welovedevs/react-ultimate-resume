@@ -15,7 +15,7 @@ import { styles } from './other_skills_styles';
 
 const useStyles = createUseStyles(styles);
 
-const OtherSkills = ({ othersSkills, springOnOpenOpacityProps, springTranslationProps: { yt } }) => {
+const OtherSkills = ({ style, othersSkills, springTranslationProps: { yt } }) => {
     const [variant] = useCardVariant();
     const classes = useStyles({ variant });
     const theme = useTheme();
@@ -26,12 +26,12 @@ const OtherSkills = ({ othersSkills, springOnOpenOpacityProps, springTranslation
         <animated.div
             className={classes.otherSkillsContainer}
             style={{
-                opacity: springOnOpenOpacityProps.opacity,
+                opacity: style.opacity,
                 transform: yt.interpolate(value => `translate3d(0, ${value}px,0)`)
             }}
         >
             <Typography variant="h3" component="h3" customClasses={{ container: classes.otherSkillsTitle }}>
-                <FormattedMessage id="Skills.otherskills.title" defaultMessage="I also master" />
+                <FormattedMessage id="Skills.otherskills.title" defaultMessage="I also master"/>
             </Typography>
             {othersSkills.map(skill => (
                 <OtherSkillProgress

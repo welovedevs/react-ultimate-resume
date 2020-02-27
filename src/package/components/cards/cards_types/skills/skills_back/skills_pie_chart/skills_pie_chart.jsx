@@ -12,7 +12,7 @@ import { styles } from './skills_pie_chart_styles';
 // const GRAPH_PIE_RADIUS = 100;
 
 const useStyles = createUseStyles(styles);
-const SkillsPieChart = ({ data, variant, springOnOpenOpacityProps, springOnScrollOpacityProps, onAnimationEnd }) => {
+const SkillsPieChart = ({ data, variant, springOnOpenOpacityProps, springOnScrollOpacityProps }) => {
     const classes = useStyles();
     const theme = useTheme();
     const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
@@ -38,8 +38,8 @@ const SkillsPieChart = ({ data, variant, springOnOpenOpacityProps, springOnScrol
             <ResponsiveContainer height="100%" width="100%">
                 <PieChart>
                     <Pie
+                        isAnimationActive={false}
                         dataKey="value"
-                        animationDuration={750}
                         labelLine={false}
                         label={shapeProps => (
                             <CustomLabel
@@ -50,7 +50,6 @@ const SkillsPieChart = ({ data, variant, springOnOpenOpacityProps, springOnScrol
                         )}
                         data={data}
                         outerRadius={isMobile ? '50%' : undefined}
-                        onAnimationEnd={onAnimationEnd}
                     >
                         {data.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={colorPalette[index]} stroke={backgroundColor} />

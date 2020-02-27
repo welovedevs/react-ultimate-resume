@@ -1,8 +1,8 @@
-import React, { memo, useCallback, useMemo } from 'react';
+import React, { memo, useCallback, useMemo, useRef } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
-import { config, useSpring } from 'react-spring';
+import { config, useSpring, useChain } from 'react-spring';
 
 import { ProfileCardTitle } from '../../../../commons/profile_card/profile_card_title/profile_card_title';
 
@@ -18,8 +18,27 @@ const SkillsBackComponent = ({ data }) => {
     const [variant] = useCardVariant();
 
     const classes = useStyles({ variant });
-    const [springOnOpenOpacityProps, setSpringOnOpenOpacityProps] = useSpring(() => ({ opacity: 0 }));
-    const [springOnScrollOpacityProps, setSpringOnScrollOpacityProps] = useSpring(() => ({ opacity: 1 }));
+
+    const springSkillOpacityPropsRef = useRef();
+    const springGraphOpacityPropsRef = useRef();
+
+    const springSkillOpacityProps = useSpring({
+        from: { opacity: 0 },
+        to: { opacity: 1 },
+        ref: springSkillOpacityPropsRef
+    });
+    const springGraphOpacityProps = useSpring({
+        from: { opacity: 0 },
+        to: { opacity: 1 },
+        ref: springGraphOpacityPropsRef
+    });
+
+    useChain([springGraphOpacityPropsRef, springSkillOpacityPropsRef], [0, 0.1]);
+
+
+    const [springOnScrollOpacityProps, setSpringOnScrollOpacityProps] = useSpring(() => ({
+        opacity: 1
+    }));
     const [springTranslationProps, setSpringTranslationProps] = useSpring(() => ({ yt: 0, config: config.slow }));
 
     const { top3Skills, othersSkills } = useMemo(() => {
@@ -49,28 +68,24 @@ const SkillsBackComponent = ({ data }) => {
         },
         [othersSkills]
     );
-
-    const onAnimationEnd = useCallback(
-        () => setSpringOnOpenOpacityProps({ opacity: 1 }),
-        []
-    );
-
     return (
         <>
             <ProfileCardTitle>
-                <FormattedMessage id="Skills.back.title" defaultMessage="Skills" />
+                <FormattedMessage id="Skills.back.title" defaultMessage="Skills"/>
             </ProfileCardTitle>
-            <div className={classes.container} onScroll={onScroll}>
+            <div
+                className={classes.container}
+                onScroll={onScroll}
+                style={springGraphOpacityProps}
+            >
                 <SkillsPieChart
                     variant={variant}
                     data={top3Skills}
                     springOnScrollOpacityProps={springOnScrollOpacityProps}
-                    springOnOpenOpacityProps={springOnOpenOpacityProps}
-                    onAnimationEnd={onAnimationEnd}
                 />
                 <OtherSkills
+                    style={springSkillOpacityProps}
                     othersSkills={othersSkills}
-                    springOnOpenOpacityProps={springOnOpenOpacityProps}
                     springTranslationProps={springTranslationProps}
                 />
             </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { animated } from 'react-spring';
 import { createUseStyles } from 'react-jss';
 import { styles } from './skills_back_recharts_styles';
 
@@ -9,7 +8,7 @@ const useStyles = createUseStyles(styles);
 const CustomLabel = props => {
     const classes = useStyles();
     const RADIAN = Math.PI / 180;
-    const { cx, cy, midAngle, customColor, outerRadius, springProps, name } = props;
+    const { cx, cy, midAngle, customColor, outerRadius, name } = props;
     const sin = Math.sin(-RADIAN * midAngle);
     const cos = Math.cos(-RADIAN * midAngle);
     const sx = cx + outerRadius * cos;
@@ -22,7 +21,7 @@ const CustomLabel = props => {
 
     return (
         <g>
-            <animated.g style={springProps}>
+            <g>
                 <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={customColor} fill="none" />
                 <circle cx={ex} cy={ey} r={2} fill={customColor} stroke="none" />
                 <text
@@ -36,7 +35,7 @@ const CustomLabel = props => {
                 >
                     {name}
                 </text>
-            </animated.g>
+            </g>
         </g>
     );
 };
