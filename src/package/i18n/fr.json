@@ -62,7 +62,7 @@
   "DeveloperProfile.contractTypes.unknown": "Unknown",
   "DeveloperProfile.locationField.label": "Localisation",
   "DeveloperProfile.locationField.placeholder": "Paris, France",
-  "DreamJob.Front.Cities": "I want to work in {cities}",
+  "DreamJob.Front.Cities": "I want to work in {cities}{andMore}",
   "DreamJob.Front.RemoteFulltime": "I want to work remotely",
   "DreamJob.editDialog.contractTypes.title": "What contract types are you currently looking for?",
   "DreamJob.editDialog.location.title": "What's your dream job location?",

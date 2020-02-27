@@ -26,6 +26,12 @@ const DreamJobFrontComponent = ({ data }) => {
 
     const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
 
+    const andMore = useMemo(() => {
+        if (places.length < 2) {
+            return '';
+        }
+        return ` (+ ${places.length - 1})`;
+    }, [places]);
     const content = useMemo(() => {
         if (remoteFrequency === REMOTE_FREQUENCY.FULL_TIME) {
             return (
@@ -44,12 +50,10 @@ const DreamJobFrontComponent = ({ data }) => {
                 <ProfileCardFrontTypography classes={{ container: classes.typography }}>
                     <FormattedMessage
                         id="DreamJob.Front.Cities"
-                        defaultMessage="I want to work in {cities}"
+                        defaultMessage="I want to work in {cities}{andMore}"
                         values={{
-                            cities: places
-                                .slice(0, 2)
-                                .map(({ name }) => name)
-                                .join(', ')
+                            cities: places?.[0]?.name,
+                            andMore
                         }}
                     />
                 </ProfileCardFrontTypography>
