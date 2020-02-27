@@ -9,11 +9,13 @@ import { Column } from '../../../commons/column/column';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 import { styles } from './user_informations_styles';
+import { useAdditionalNodes } from '../../../hooks/use_additional_nodes';
 
 const useStyles = createUseStyles(styles);
 
 const UserInformationsComponent = () => {
     const { data } = useContext(DeveloperProfileContext);
+    const [additionalNodes] = useAdditionalNodes('banner.userInformations');
 
     const classes = useStyles();
     return (
@@ -38,6 +40,7 @@ const UserInformationsComponent = () => {
                 >
                     {data.basics?.summary}
                 </Typography>
+                {additionalNodes}
             </Column>
         </div>
     );

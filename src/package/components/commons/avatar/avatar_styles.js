@@ -6,6 +6,8 @@ export const styles = ({ palette }) => ({
     container: {
         height: 110,
         width: 110,
+        minHeight: 110,
+        minWidth: 110,
         borderRadius: '50%',
         backgroundColor: palette.dark[50],
         overflow: 'hidden',
