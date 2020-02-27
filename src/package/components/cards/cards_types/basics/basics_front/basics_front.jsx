@@ -33,6 +33,8 @@ const BasicsFrontComponent = ({ data }) => {
         }
     }, [mainTypographyReference.current]);
 
+    console.log({ mainTypographyReference, isMainTypographyTruncated });
+
 
     return (
         <ProfileCardPaddedFront>
