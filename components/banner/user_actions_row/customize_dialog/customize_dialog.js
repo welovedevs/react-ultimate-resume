@@ -135,6 +135,7 @@ var CustomizeDialogComponent = function CustomizeDialogComponent(_ref) {
     fullScreen: true,
     open: open,
     classes: {
+      root: classes.root,
       paper: classes.paper
     },
     onClose: onClose
@@ -165,6 +166,14 @@ var CustomizeDialogComponent = function CustomizeDialogComponent(_ref) {
       root: classes.actions
     }
   }, _react.default.createElement(_ui.Button, {
+    size: "small",
+    onClick: onClose
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.close",
+    deaultMessage: "Close"
+  })), _react.default.createElement(_ui.Button, {
+    color: "primary",
+    variant: "contained",
     size: "small",
     onClick: onSave
   }, _react.default.createElement(_reactIntl.FormattedMessage, {

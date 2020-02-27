@@ -17,6 +17,9 @@ var styles = function styles(theme) {
   var palette = theme.palette,
       spacing = theme.miscellaneous.spacing;
   return {
+    root: {
+      zIndex: [9999999999, '!important']
+    },
     paper: {
       backgroundColor: [palette.dark[50], '!important']
     },
