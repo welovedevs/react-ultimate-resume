@@ -13,6 +13,8 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/sli
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _reactEmojiRender = require("react-emoji-render");
 
 var _reactIntl = require("react-intl");
@@ -49,6 +51,20 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
   var handleButtonClick = (0, _react.useCallback)(function () {
     return setSide(side === 'front' ? 'back' : 'front');
   }, [side, setSide]);
+
+  var _useState = (0, _react.useState)(false),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      isMainTypographyTruncated = _useState2[0],
+      setIsMainTypographyTruncated = _useState2[1];
+
+  var mainTypographyReference = (0, _react.useRef)();
+  (0, _react.useEffect)(function () {
+    var element = mainTypographyReference.current;
+
+    if (element.offsetWidth < element.scrollWidth) {
+      setIsMainTypographyTruncated(true);
+    }
+  }, [mainTypographyReference.current]);
   return _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, _react.default.createElement(_center_content_container.CenterContentContainer, {
     customClasses: {
       container: classes.container
@@ -57,7 +73,7 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
     className: classes.texts
   }, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
     classes: {
-      container: classes.mainTypography
+      container: (0, _classnames.default)(classes.mainTypography, isMainTypographyTruncated && classes.truncatedMainTypography)
     }
   }, data.summary), _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
     variant: "h4",

@@ -12,7 +12,7 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
 var _styles_utils = require("../../../../../utils/styles/styles_utils");
 
 var styles = function styles(theme) {
-  var _mainTypography, _location;
+  var _mainTypography, _truncatedMainTypogra, _location;
 
   var width = theme.components.cards.width,
       screenSizes = theme.screenSizes,
@@ -43,6 +43,17 @@ var styles = function styles(theme) {
       maxHeight: 28 * 1.1 * 3,
       paddingBottom: 0
     }), _mainTypography),
+    truncatedMainTypography: (_truncatedMainTypogra = {
+      fontSize: 42,
+      lineHeight: 1.3
+    }, (0, _defineProperty2.default)(_truncatedMainTypogra, QUERY_CARD_MARGIN_PADDING, {
+      fontSize: 36,
+      maxHeight: 36 * 1.3 * 3
+    }), (0, _defineProperty2.default)(_truncatedMainTypogra, QUERY_EXTRA_SMALL, {
+      fontSize: 24,
+      maxHeight: 24 * 1.3 * 3,
+      paddingBottom: 0
+    }), _truncatedMainTypogra),
     location: (_location = {
       extend: 'text',
       width: '100%',
