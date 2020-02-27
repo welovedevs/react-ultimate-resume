@@ -58,7 +58,6 @@ var UserInformationsComponent = function UserInformationsComponent() {
     customClasses: {
       container: classes.description
     },
-    variant: "h4",
     component: "h4"
   }, (_data$basics3 = data.basics) === null || _data$basics3 === void 0 ? void 0 : _data$basics3.summary), additionalNodes));
 };
