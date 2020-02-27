@@ -43,7 +43,8 @@ var ProjectsCardComponent = function ProjectsCardComponent(_ref) {
 
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data,
-      isEditing = _useContext.isEditing;
+      isEditing = _useContext.isEditing,
+      mode = _useContext.mode;
 
   var defaultMappedData = (0, _react.useMemo)(function () {
     return (0, _mapping.mapProjectsFromJsonResume)(data);
@@ -76,6 +77,11 @@ var ProjectsCardComponent = function ProjectsCardComponent(_ref) {
     });
     setNewProjectDialogOpened();
   }, [mappedData]);
+
+  if (!isComplete && mode !== 'edit') {
+    return null;
+  }
+
   return _react.default.createElement(_profile_card.ProfileCard, {
     data: mappedData,
     isComplete: isComplete,

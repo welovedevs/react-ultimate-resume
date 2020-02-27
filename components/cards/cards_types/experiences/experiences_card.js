@@ -30,7 +30,8 @@ var ExperiencesCardComponent = function ExperiencesCardComponent(_ref) {
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data,
       onEdit = _useContext.onEdit,
-      isEditing = _useContext.isEditing;
+      isEditing = _useContext.isEditing,
+      mode = _useContext.mode;
 
   var mappedData = (0, _react.useMemo)(function () {
     return (0, _mapping.mapWorkFromJsonResume)(data);
@@ -41,6 +42,11 @@ var ExperiencesCardComponent = function ExperiencesCardComponent(_ref) {
   var isComplete = (0, _react.useMemo)(function () {
     return (0, _validator.validateWorkComplete)(mappedData);
   }, [mappedData]);
+
+  if (!isComplete && mode !== 'edit') {
+    return null;
+  }
+
   return _react.default.createElement(_profile_card.ProfileCard, {
     isEditingProfile: isEditing,
     isComplete: isComplete,

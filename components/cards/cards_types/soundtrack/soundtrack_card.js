@@ -23,6 +23,8 @@ var _mapping = require("./data/mapping");
 
 var _contexts = require("../../../../utils/context/contexts");
 
+var _validator = require("./data/validator");
+
 var SoundtrackCardComponent = function SoundtrackCardComponent(_ref) {
   var variant = _ref.variant,
       side = _ref.side;
@@ -30,7 +32,8 @@ var SoundtrackCardComponent = function SoundtrackCardComponent(_ref) {
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data,
       isEditing = _useContext.isEditing,
-      onEdit = _useContext.onEdit;
+      onEdit = _useContext.onEdit,
+      mode = _useContext.mode;
 
   var mappedData = (0, _react.useMemo)(function () {
     return (0, _data_mapping.JsonResumeToFlatObject)(data, _mapping.SoundtrackMapping);
@@ -38,7 +41,21 @@ var SoundtrackCardComponent = function SoundtrackCardComponent(_ref) {
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     onEdit((0, _data_mapping.FlatObjectToJsonResume)(editedData, _mapping.SoundtrackMapping));
   }, []);
+  var isComplete = (0, _react.useMemo)(function () {
+    return (0, _validator.validateSoundtrackComplete)(mappedData);
+  }, [mappedData]);
+  console.log({
+    mappedData: mappedData,
+    isComplete: isComplete,
+    mode: mode
+  });
+
+  if (!isComplete && mode !== 'edit') {
+    return null;
+  }
+
   return _react.default.createElement(_profile_card.ProfileCard, {
+    isComplete: isComplete,
     isEditingProfile: isEditing,
     data: mappedData,
     sides: {

@@ -30,7 +30,8 @@ var DreamJobCardComponent = function DreamJobCardComponent(_ref) {
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data,
       isEditing = _useContext.isEditing,
-      onEdit = _useContext.onEdit;
+      onEdit = _useContext.onEdit,
+      mode = _useContext.mode;
 
   var mappedData = (0, _react.useMemo)(function () {
     return (0, _mapping.mapDreamJobFromJsonResume)(data);
@@ -41,6 +42,11 @@ var DreamJobCardComponent = function DreamJobCardComponent(_ref) {
   var isComplete = (0, _react.useMemo)(function () {
     return (0, _validator.validateDreamjobComplete)(mappedData);
   }, [mappedData]);
+
+  if (!isComplete && mode !== 'edit') {
+    return null;
+  }
+
   return _react.default.createElement(_profile_card.ProfileCard, {
     isEditingProfile: isEditing,
     isComplete: isComplete,
