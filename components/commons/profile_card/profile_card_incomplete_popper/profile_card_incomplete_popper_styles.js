@@ -21,7 +21,7 @@ var styles = function styles(theme) {
     arrowContainer: {
       left: [spacing * 5, '!important'],
       '& > svg': {
-        '& > g > path': {
+        '& path': {
           fill: (0, _styles_utils.getHexFromPaletteColor)(theme, 'danger')
         }
       }

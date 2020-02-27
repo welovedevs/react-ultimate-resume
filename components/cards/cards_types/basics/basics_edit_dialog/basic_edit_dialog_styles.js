@@ -27,7 +27,7 @@ var styles = function styles(theme) {
     },
     sliderPopperCardArrowContainer: {
       '& > svg': {
-        '& > g > path': {
+        '& path': {
           fill: (0, _styles_utils.getHexFromPaletteColor)(theme, 'primary')
         }
       }
