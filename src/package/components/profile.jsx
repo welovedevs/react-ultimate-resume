@@ -55,6 +55,7 @@ const DeveloperProfileComponent = ({
             .then(results => results?.[0]?.url),
     ActionButtons,
     BeforeCards,
+    additionalNodes,
     classes: receivedGlobalClasses = {}
 }) => {
     const { apiKeys, endpoints } = options;
@@ -78,10 +79,8 @@ const DeveloperProfileComponent = ({
             apiKeys: { giphy: apiKeys?.giphy, unsplash: apiKeys?.unsplash },
             store,
             mode,
-            endpoints: {
-                devicons: endpoints?.devicons,
-                unsplashProxy: endpoints?.unsplashProxy
-            },
+            additionalNodes,
+            endpoints,
             receivedGlobalClasses
         }),
         [endpoints, apiKeys, data, onEdit, store, mode]
@@ -92,9 +91,7 @@ const DeveloperProfileComponent = ({
     return (
         <div className={classes.container}>
             <DeveloperProfileContext.Provider value={context}>
-                <Banner customizationOptions={options.customization} onCustomizationChanged={onCustomizationChanged}>
-                    {ActionButtons}
-                </Banner>
+                <Banner customizationOptions={options.customization} onCustomizationChanged={onCustomizationChanged} />
                 {BeforeCards}
                 <Cards cardsOrder={options.customization?.cardsOrder} />
             </DeveloperProfileContext.Provider>

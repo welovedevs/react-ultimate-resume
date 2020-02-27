@@ -15,16 +15,17 @@ import { EditHeaderImageButton } from './edit_header_image_button/edit_header_im
 import { OPACITY_TRANSITIONS } from '../../utils/springs/common_transitions/opacity_transitions';
 
 import { useIsEditing } from '../hooks/use_is_editing';
+import { useAdditionalNodes } from '../hooks/use_additional_nodes';
 import { useReceivedGlobalClasses } from '../hooks/use_received_global_classes';
 
 import { styles } from './banner_styles';
 
 const useStyles = createUseStyles(styles);
 
-const BannerComponent = ({ children, customizationOptions, onCustomizationChanged }) => {
+const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
     const classes = useStyles();
+    const [actionsButtons] = useAdditionalNodes('banner.actionsButtons');
     const [globalReceivedBannerClasses = {}] = useReceivedGlobalClasses('banner');
-    console.log({ globalReceivedBannerClasses });
     const [isEditing] = useIsEditing();
 
     const transitions = useTransition(customizationOptions?.imageHeader, item => item?.alt, {
@@ -53,7 +54,7 @@ const BannerComponent = ({ children, customizationOptions, onCustomizationChange
             <div className={cn(classes.content, globalReceivedBannerClasses.content)}>
                 <UserInformations />
                 <SocialActions>
-                    {children}
+                    {actionsButtons}
                     {onCustomizationChanged && <CustomizeButton customizationOptions={customizationOptions} />}
                 </SocialActions>
             </div>
