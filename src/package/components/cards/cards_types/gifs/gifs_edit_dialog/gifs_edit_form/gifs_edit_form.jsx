@@ -3,6 +3,8 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { useFormikContext } from 'formik';
 import keyBy from 'lodash/keyBy';
+import capitalize from 'lodash/capitalize';
+
 import omit from 'lodash/omit';
 import uuid from 'uuid/v4';
 import { arrayMove } from 'react-sortable-hoc';
@@ -32,7 +34,7 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
 
     const { interests: errors } = validationErrors || {};
 
-    const keyedValues = useMemo(() => keyBy(interests, ({ id }) => id), [interests]);
+    const keyedValues = useMemo(() => keyBy(interests, ({ id }) => id), [JSON.stringify(interests)]);
 
     const interestChanged = useCallback((interestIndex, field, value) => {
         handleValueChange(`interests[${interestIndex}].${field}`)(value);
@@ -42,7 +44,7 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
         id => {
             handleValueChange('interests')(Object.values(omit(keyedValues, id)));
         },
-        [JSON.stringify(keyedValues)]
+        [JSON.stringify(keyedValues), JSON.stringify(interests)]
     );
 
     const addInterest = useCallback(() => {
@@ -68,16 +70,14 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
 
     const globalError = typeof errors === 'string' && errors;
 
-    const handleGifChange = useCallback(value => () => interestChanged(selectedIndex, 'gifUrl', value), [
-        selectedIndex
-    ]);
 
     const handleGifSelection = useCallback(
-        ({ url }) => {
-            handleGifChange(url)();
+        ({ url, query }) => {
+            interestChanged(selectedIndex, 'name', capitalize(query));
+            interestChanged(selectedIndex, 'gifUrl', url);
             removeSelectedIndex();
         },
-        [handleGifChange]
+        [interestChanged, selectedIndex]
     );
 
     return (

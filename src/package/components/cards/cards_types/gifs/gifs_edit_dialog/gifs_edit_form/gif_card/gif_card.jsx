@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
@@ -11,16 +11,17 @@ import { styles } from './gif_card_styles';
 const useStyles = createUseStyles(styles);
 
 const GifCardComponent = ({
-    name,
-    gifUrl,
-    imageEditable,
-    additionalActions,
-    onImageEditClick,
-    onChange,
-    onRemove,
-    error
-}) => {
+                              name,
+                              gifUrl,
+                              imageEditable,
+                              additionalActions,
+                              onImageEditClick,
+                              onChange,
+                              onRemove,
+                              error
+                          }) => {
     const classes = useStyles();
+
     const [input, setInput] = useState(name);
 
     const handleTextFieldChange = useCallback(event => setInput(event.target.value), []);
@@ -34,6 +35,8 @@ const GifCardComponent = ({
         onChange('name')(input);
     }, [onChange, isSaveDisabled, input]);
 
+    useEffect(() => setInput(name), [name]);
+
     return (
         <>
             <Card className={classes.container}>
@@ -43,11 +46,11 @@ const GifCardComponent = ({
                             {error?.gifUrl}
                         </Typography>
                     )}
-                    {gifUrl && <img className={classes.image} src={gifUrl} alt={name} />}
+                    {gifUrl && <img className={classes.image} src={gifUrl} alt={name}/>}
                     {(imageEditable || additionalActions) && (
                         <div className={classes.actions}>
                             {imageEditable && (
-                                <BouncingRoundButton title="Change this gif" onClick={onImageEditClick} />
+                                <BouncingRoundButton title="Change this gif" onClick={onImageEditClick}/>
                             )}
                             {additionalActions}
                         </div>
@@ -70,10 +73,10 @@ const GifCardComponent = ({
                 </div>
                 <PopperCardActions>
                     <Button color="danger" size="small" onClick={onRemove}>
-                        <FormattedMessage id="Main.lang.remove" defaultMessage="Remove" />
+                        <FormattedMessage id="Main.lang.remove" defaultMessage="Remove"/>
                     </Button>
                     <Button disabled={isSaveDisabled} size="small" color="primary" onClick={handleSave}>
-                        <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
+                        <FormattedMessage id="Main.lang.save" defaultMessage="Save"/>
                     </Button>
                 </PopperCardActions>
             </Card>
