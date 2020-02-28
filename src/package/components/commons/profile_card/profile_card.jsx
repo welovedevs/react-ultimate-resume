@@ -32,6 +32,7 @@ const DEFAULT_TRANSITIONS_SPRING_PROPS = {
 };
 
 const ProfileCardComponent = ({
+    id,
     children,
     data,
     sides,
@@ -134,6 +135,7 @@ const ProfileCardComponent = ({
             <Card
                 containerRef={containerReference}
                 customClasses={{ container: classes.container }}
+                id={id}
                 elevation={1}
                 {...!isSmall && {
                     onMouseEnter: handleMouseEnter,
