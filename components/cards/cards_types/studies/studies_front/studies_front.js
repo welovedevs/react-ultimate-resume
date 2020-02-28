@@ -21,7 +21,7 @@ var _profile_card_padding_front = require("../../../../commons/profile_card/prof
 
 var _center_content_container = require("../../../../commons/center_content_container/center_content_container");
 
-var _profile_card_front_vector = require("../../../../commons/profile_card/profie_card_front_vector/profile_card_front_vector");
+var _profile_card_front_vector = require("../../../../commons/profile_card/profile_card_front_vector/profile_card_front_vector");
 
 var _profile_card_front_typography = require("../../../../commons/profile_card/profile_card_front_typography/profile_card_front_typography");
 
