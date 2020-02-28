@@ -8,7 +8,8 @@ var styles = {
   container: {
     color: 'inherit',
     margin: 0,
-    lineHeight: 1.6
+    lineHeight: 1.6,
+    whiteSpace: 'pre-line'
   }
 };
 exports.styles = styles;
