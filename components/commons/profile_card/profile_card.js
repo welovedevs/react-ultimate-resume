@@ -66,7 +66,8 @@ var DEFAULT_TRANSITIONS_SPRING_PROPS = {
 };
 
 var ProfileCardComponent = function ProfileCardComponent(_ref) {
-  var children = _ref.children,
+  var id = _ref.id,
+      children = _ref.children,
       data = _ref.data,
       sides = _ref.sides,
       variant = _ref.variant,
@@ -183,6 +184,7 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
     customClasses: {
       container: classes.container
     },
+    id: id,
     elevation: 1
   }, !isSmall && {
     onMouseEnter: handleMouseEnter,
