@@ -24,7 +24,7 @@ const useStyles = createUseStyles(styles);
 
 const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
     const classes = useStyles();
-    const [actionsButtons] = useAdditionalNodes('banner.actionsButtons');
+    const [actionsButtons] = useAdditionalNodes('banner.actionsButtons', null);
     const [globalReceivedBannerClasses = {}] = useReceivedGlobalClasses('banner');
     const [isEditing] = useIsEditing();
 

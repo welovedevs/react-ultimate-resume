@@ -17,6 +17,7 @@ import { getRandomCardVariant } from '../../utils/styles/theme/theme';
 import { DEFAULT_CARD_ORDER } from './utils/cards_order';
 
 import { styles } from './cards_styles';
+import { useAdditionalNodes } from '../hooks/use_additional_nodes';
 
 const useStyles = createUseStyles(styles);
 
@@ -34,8 +35,9 @@ const CARD_TYPE_MAPPING = {
 };
 
 const CardsComponent = ({ cardsOrder = DEFAULT_CARD_ORDER }) => {
-    const theme = useTheme();
     const classes = useStyles();
+    const theme = useTheme();
+    const [{ before: beforeNode, after: afterNode }] = useAdditionalNodes('cards');
     const cards = useMemo(
         () =>
             cardsOrder
@@ -51,7 +53,13 @@ const CardsComponent = ({ cardsOrder = DEFAULT_CARD_ORDER }) => {
                 .filter(Boolean),
         [cardsOrder]
     );
-    return <div className={classes.container}>{cards}</div>;
+    return (
+        <div className={classes.container}>
+            {beforeNode}
+            {cards}
+            {afterNode}
+        </div>
+    );
 };
 
 export const Cards = CardsComponent;

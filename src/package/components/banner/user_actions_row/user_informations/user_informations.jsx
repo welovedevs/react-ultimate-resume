@@ -15,7 +15,7 @@ const useStyles = createUseStyles(styles);
 
 const UserInformationsComponent = () => {
     const { data } = useContext(DeveloperProfileContext);
-    const [additionalNodes] = useAdditionalNodes('banner.userInformations');
+    const [additionalNodes] = useAdditionalNodes('banner.userInformations', null);
 
     const classes = useStyles();
     return (
