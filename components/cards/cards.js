@@ -2,10 +2,14 @@
 
 var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Cards = void 0;
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -37,6 +41,8 @@ var _cards_order = require("./utils/cards_order");
 
 var _cards_styles = require("./cards_styles");
 
+var _use_additional_nodes = require("../hooks/use_additional_nodes");
+
 var useStyles = (0, _reactJss.createUseStyles)(_cards_styles.styles);
 var CARD_TYPE_MAPPING = {
   basics: _basics_card.BasicsCard,
@@ -54,8 +60,15 @@ var CARD_TYPE_MAPPING = {
 var CardsComponent = function CardsComponent(_ref) {
   var _ref$cardsOrder = _ref.cardsOrder,
       cardsOrder = _ref$cardsOrder === void 0 ? _cards_order.DEFAULT_CARD_ORDER : _ref$cardsOrder;
-  var theme = (0, _reactJss.useTheme)();
   var classes = useStyles();
+  var theme = (0, _reactJss.useTheme)();
+
+  var _useAdditionalNodes = (0, _use_additional_nodes.useAdditionalNodes)('cards'),
+      _useAdditionalNodes2 = (0, _slicedToArray2.default)(_useAdditionalNodes, 1),
+      _useAdditionalNodes2$ = _useAdditionalNodes2[0],
+      beforeNode = _useAdditionalNodes2$.before,
+      afterNode = _useAdditionalNodes2$.after;
+
   var cards = (0, _react.useMemo)(function () {
     return cardsOrder.map(function (_ref2, index) {
       var type = _ref2.type,
@@ -73,7 +86,7 @@ var CardsComponent = function CardsComponent(_ref) {
   }, [cardsOrder]);
   return _react.default.createElement("div", {
     className: classes.container
-  }, cards);
+  }, beforeNode, cards, afterNode);
 };
 
 var Cards = CardsComponent;

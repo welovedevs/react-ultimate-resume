@@ -35,7 +35,7 @@ var UserInformationsComponent = function UserInformationsComponent() {
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data;
 
-  var _useAdditionalNodes = (0, _use_additional_nodes.useAdditionalNodes)('banner.userInformations'),
+  var _useAdditionalNodes = (0, _use_additional_nodes.useAdditionalNodes)('banner.userInformations', null),
       _useAdditionalNodes2 = (0, _slicedToArray2.default)(_useAdditionalNodes, 1),
       additionalNodes = _useAdditionalNodes2[0];
 

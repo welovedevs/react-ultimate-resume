@@ -54,7 +54,7 @@ var BannerComponent = function BannerComponent(_ref) {
       onCustomizationChanged = _ref.onCustomizationChanged;
   var classes = useStyles();
 
-  var _useAdditionalNodes = (0, _use_additional_nodes.useAdditionalNodes)('banner.actionsButtons'),
+  var _useAdditionalNodes = (0, _use_additional_nodes.useAdditionalNodes)('banner.actionsButtons', null),
       _useAdditionalNodes2 = (0, _slicedToArray2.default)(_useAdditionalNodes, 1),
       actionsButtons = _useAdditionalNodes2[0];
 
