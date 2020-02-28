@@ -15,14 +15,26 @@ export const styles = theme => {
             }
         },
         typography: {
+            overflow: 'hidden',
+            minHeight: 'fit-content',
             fontSize: 36,
-            lineHeight: 1.3
+            lineHeight: 1.3,
+            textOverflow: 'ellipsis',
+            display: '-webkit-box',
+            '-webkit-line-clamp': 3,
+            '-webkit-box-orient': 'vertical'
         },
         [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
             typography: {
-                maxWidth: 'unset',
                 fontSize: 28,
+                wordWrap: 'break-word',
+                '-webkit-line-clamp': 2,
                 lineHeight: 1.2
+            }
+        },
+        [createScreenWidthMediaQuery('max-width', theme.screenSizes.xs)]: {
+            typography: {
+                fontSize: 24
             }
         }
     };

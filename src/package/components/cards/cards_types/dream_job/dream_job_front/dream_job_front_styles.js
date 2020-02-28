@@ -15,8 +15,14 @@ export const styles = theme => {
             }
         },
         typography: {
+            overflow: 'hidden',
+            minHeight: 'fit-content',
             fontSize: 36,
-            lineHeight: 1.3
+            lineHeight: 1.3,
+            textOverflow: 'ellipsis',
+            display: '-webkit-box',
+            '-webkit-line-clamp': 3,
+            '-webkit-box-orient': 'vertical'
         },
         [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
             logo: {
@@ -25,15 +31,10 @@ export const styles = theme => {
                 }
             },
             typography: {
-                maxWidth: 'unset',
                 fontSize: 28,
-                textOverflow: 'ellipsis',
                 wordWrap: 'break-word',
-                overflow: 'hidden',
-                display: '-webkit-box',
                 '-webkit-line-clamp': 2,
-                '-webkit-box-orient': 'vertical',
-                maxHeight: 28 * 1.3 * 2 + (spacing * 2 * 2)
+                lineHeight: 1.2
             }
         },
         [createScreenWidthMediaQuery('max-width', theme.screenSizes.xs)]: {
