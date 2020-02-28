@@ -28,7 +28,7 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
     const [globalReceivedBannerClasses = {}] = useReceivedGlobalClasses('banner');
     const [isEditing] = useIsEditing();
 
-    const transitions = useTransition(customizationOptions?.imageHeader, item => item?.alt, {
+    const transitions = useTransition(customizationOptions?.imageHeader || null, item => item?.alt, {
         ...OPACITY_TRANSITIONS,
         unique: true,
         config: config.molasses
@@ -42,15 +42,18 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
                 <EditHeaderImageButton customizationOptions={customizationOptions} />
             )}
             <div className={cn(classes.overlay, globalReceivedBannerClasses.overlay)} />
-            {transitions.map(({ item, key, props }) => item && (
-                <animated.img
-                    key={key}
-                    className={classes.image}
-                    src={item?.url}
-                    alt={item?.alt}
-                    style={props}
-                />
-            ))}
+            {transitions?.map(
+                ({ item, key, props }) =>
+                    item && (
+                        <animated.img
+                            key={key}
+                            className={classes.image}
+                            src={item?.url}
+                            alt={item?.alt}
+                            style={props}
+                        />
+                    )
+            )}
             <div className={cn(classes.content, globalReceivedBannerClasses.content)}>
                 <UserInformations />
                 <SocialActions>
@@ -59,38 +62,38 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
                 </SocialActions>
             </div>
             {bannerImageCredits?.name && (
-                    <Typography
-                        customClasses={{ container: cn(classes.credits, globalReceivedBannerClasses.credits) }}
-                        variant="body3"
-                    >
-                        <FormattedMessage
-                            id="Unsplash.credit"
-                            defaultMessage="Photo by {name} on {unsplashLink}"
-                            values={{
-                                name: (
-                                    <a
-                                        className={classes.author}
-                                        href={bannerImageCredits.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        {bannerImageCredits.name}
-                                    </a>
-                                ),
-                                unsplashLink: (
-                                    <a
-                                        href={encodeURI(
-                                            'https://unsplash.com/?utm_source=W3D Developer Profile&utm_medium=referral'
-                                        )}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <FormattedMessage id="Unsplash.brandName" defaultMessage="Unsplash" />
-                                    </a>
-                                )
-                            }}
-                        />
-                    </Typography>
+                <Typography
+                    customClasses={{ container: cn(classes.credits, globalReceivedBannerClasses.credits) }}
+                    variant="body3"
+                >
+                    <FormattedMessage
+                        id="Unsplash.credit"
+                        defaultMessage="Photo by {name} on {unsplashLink}"
+                        values={{
+                            name: (
+                                <a
+                                    className={classes.author}
+                                    href={bannerImageCredits.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {bannerImageCredits.name}
+                                </a>
+                            ),
+                            unsplashLink: (
+                                <a
+                                    href={encodeURI(
+                                        'https://unsplash.com/?utm_source=W3D Developer Profile&utm_medium=referral'
+                                    )}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <FormattedMessage id="Unsplash.brandName" defaultMessage="Unsplash" />
+                                </a>
+                            )
+                        }}
+                    />
+                </Typography>
             )}
         </div>
     );
