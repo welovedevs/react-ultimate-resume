@@ -67,7 +67,7 @@ var BannerComponent = function BannerComponent(_ref) {
       _useIsEditing2 = (0, _slicedToArray2.default)(_useIsEditing, 1),
       isEditing = _useIsEditing2[0];
 
-  var transitions = (0, _reactSpring.useTransition)(customizationOptions === null || customizationOptions === void 0 ? void 0 : customizationOptions.imageHeader, function (item) {
+  var transitions = (0, _reactSpring.useTransition)((customizationOptions === null || customizationOptions === void 0 ? void 0 : customizationOptions.imageHeader) || null, function (item) {
     return item === null || item === void 0 ? void 0 : item.alt;
   }, _objectSpread({}, _opacity_transitions.OPACITY_TRANSITIONS, {
     unique: true,
@@ -80,7 +80,7 @@ var BannerComponent = function BannerComponent(_ref) {
     customizationOptions: customizationOptions
   }), _react.default.createElement("div", {
     className: (0, _classnames.default)(classes.overlay, globalReceivedBannerClasses.overlay)
-  }), transitions.map(function (_ref2) {
+  }), transitions === null || transitions === void 0 ? void 0 : transitions.map(function (_ref2) {
     var item = _ref2.item,
         key = _ref2.key,
         props = _ref2.props;

@@ -1,6 +1,6 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.2.24-18",
+    "version": "1.2.24-19",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
@@ -48,7 +48,7 @@
         "react-scripts": "^3.4.0",
         "react-slick": "^0.25.2",
         "react-sortable-hoc": "^1.11.0",
-        "react-spring": "9.0.0-beta.34",
+        "react-spring": "9.0.0-beta.33",
         "react-use-dimensions": "^1.2.1",
         "recharts": "^2.0.0-beta.1",
         "respinner": "^3.0.2",
