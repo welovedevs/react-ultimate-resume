@@ -35,13 +35,13 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
     });
 
     const bannerImageCredits = customizationOptions?.imageHeader?.credits;
-
+    console.log({ bannerImageCredits });
     return (
         <div className={cn(classes.container, globalReceivedBannerClasses.container)}>
             {isEditing && onCustomizationChanged && (
-                <EditHeaderImageButton customizationOptions={customizationOptions} />
+                <EditHeaderImageButton customizationOptions={customizationOptions}/>
             )}
-            <div className={cn(classes.overlay, globalReceivedBannerClasses.overlay)} />
+            <div className={cn(classes.overlay, globalReceivedBannerClasses.overlay)}/>
             {transitions?.map(
                 ({ item, key, props }) =>
                     item && (
@@ -55,10 +55,10 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
                     )
             )}
             <div className={cn(classes.content, globalReceivedBannerClasses.content)}>
-                <UserInformations />
+                <UserInformations/>
                 <SocialActions>
                     {actionsButtons}
-                    {onCustomizationChanged && <CustomizeButton customizationOptions={customizationOptions} />}
+                    {onCustomizationChanged && <CustomizeButton customizationOptions={customizationOptions}/>}
                 </SocialActions>
             </div>
             {bannerImageCredits?.name && (
@@ -76,6 +76,7 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
                                     href={bannerImageCredits.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    title={bannerImageCredits.name}
                                 >
                                     {bannerImageCredits.name}
                                 </a>
@@ -88,7 +89,7 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <FormattedMessage id="Unsplash.brandName" defaultMessage="Unsplash" />
+                                    <FormattedMessage id="Unsplash.brandName" defaultMessage="Unsplash"/>
                                 </a>
                             )
                         }}

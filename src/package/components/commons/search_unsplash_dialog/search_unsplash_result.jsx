@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
@@ -33,7 +33,7 @@ const SearchUnsplashDialogComponent = ({ open, onClose, onSelect }) => {
             onClose={onClose}
         >
             <DialogTitle classes={{ root: classes.title }}>
-                <FormattedMessage id="Unsplash.SearchDialog.Title" defaultMessage="Search pictures from unsplash" />
+                <FormattedMessage id="Unsplash.SearchDialog.Title" defaultMessage="Search pictures from unsplash"/>
             </DialogTitle>
             <DialogContent
                 classes={{
@@ -48,11 +48,11 @@ const SearchUnsplashDialogComponent = ({ open, onClose, onSelect }) => {
                     variant="flat"
                     placeholder="Burrito, development, etc..."
                 />
-                <Results query={query} debouncedQuery={debouncedQuery} onSelect={onSelect} classes={classes} />
+                <Results query={query} debouncedQuery={debouncedQuery} onSelect={onSelect} classes={classes}/>
             </DialogContent>
             <DialogActions>
                 <Button size="small" onClick={onClose}>
-                    <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
+                    <FormattedMessage id="Main.lang.close" defaultMessage="Close"/>
                 </Button>
             </DialogActions>
         </Dialog>
@@ -61,14 +61,22 @@ const SearchUnsplashDialogComponent = ({ open, onClose, onSelect }) => {
 
 const Results = ({ query, debouncedQuery, onSelect, classes }) => {
     const { results, loading: loadingResults } = useUnsplashResults(debouncedQuery, 0, 3 * 3);
+    const [showLoadingSpinner, setShowLoadingSpinner] = useState(false);
+    const { endpoints } = useContext(DeveloperProfileContext);
 
-    const { apiKeys } = useContext(DeveloperProfileContext);
+    useEffect(() => {
+        if (loadingResults) {
+            return;
+        }
+        setShowLoadingSpinner(!!query);
+    }, [query]);
 
-    const loading = useMemo(() => loadingResults || (query && query !== debouncedQuery), [
-        query,
-        debouncedQuery,
-        loadingResults
-    ]);
+    useEffect(() => {
+        if (loadingResults === true) {
+            return;
+        }
+        setShowLoadingSpinner(false);
+    }, [results, loadingResults]);
 
     const onImageSelected = useCallback(
         ({ description, urls, id, user, links }) => () => {
@@ -83,18 +91,15 @@ const Results = ({ query, debouncedQuery, onSelect, classes }) => {
                 fromUnsplash: true
             });
             // eslint-disable-next-line no-undef
-            fetch(links.download_location, { headers: { Authorization: `Client-ID ${apiKeys.unsplash}` } });
+            fetch(`${endpoints?.unsplashProxy}?url=${links.download_location}`);
         },
         [onSelect]
     );
 
     return (
         <div className={classes.results}>
-            {loading && <LoadingSpinner />}
-            {!loading &&
-            results &&
-            debouncedQuery &&
-            results.map(({ id, urls, description, user, links }) => (
+            {showLoadingSpinner && <LoadingSpinner/>}
+            {!showLoadingSpinner && results?.map(({ id, urls, description, user, links }) => (
                 <Tooltip
                     key={`unsplash_picture_${id}`}
                     title="Select this picture"
@@ -105,7 +110,7 @@ const Results = ({ query, debouncedQuery, onSelect, classes }) => {
                         className={classes.imageContainer}
                         onClick={onImageSelected({ description, urls, id, user, links })}
                     >
-                        <img className={classes.image} src={urls.regular} alt={description} />
+                        <img className={classes.image} src={urls.regular} alt={description}/>
                     </button>
                 </Tooltip>
             ))}

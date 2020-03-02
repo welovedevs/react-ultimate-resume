@@ -41,12 +41,12 @@ function App() {
             mode="edit"
             data={data}
             onEdit={onEdit}
+            isEditing
             onCustomizationChanged={onCustomizationChanged}
             options={{
                 side: 'back',
                 apiKeys: {
-                    giphy: process.env.REACT_APP_GIPHY_API_KEY,
-                    unsplash: process.env.REACT_APP_UNSPLASH_CLIENT_ID
+                    giphy: process.env.REACT_APP_GIPHY_API_KEY
                 },
                 endpoints: {
                     devicons:

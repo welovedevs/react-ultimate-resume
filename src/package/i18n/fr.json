@@ -174,7 +174,7 @@
   "Studies.title": "I gratuated from {schoolName}",
   "Unsplash.SearchDialog.Title": "Trouver une image sur unsplash",
   "Unsplash.brandName": "Unsplash",
-  "Unsplash.credit": "Photo par",
+  "Unsplash.credit": "Photo par {name} via {unsplashLink}",
   "Unsplash.dialog.title": "Trouver une image sur unsplash",
   "UploadDialog.title": "Téléverser un fichier",
   "Work.form.validation.atLeastOne": "Remplissez au moins une expérience pro.",
