@@ -28,13 +28,13 @@ const BasicsFrontComponent = ({ data }) => {
 
     const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
 
-    const [isMainTypographyTruncated, setIsMainTypographyTruncated] = useState(false);
+    const [isMainTypographyTruncated, setIsMainTypographyTruncated] = useState(true);
     const mainTypographyReference = useRef();
 
     useEffect(() => {
         const element = mainTypographyReference.current;
-        if (element.offsetHeight < element.scrollHeight - 1) {
-            setIsMainTypographyTruncated(true);
+        if (element.offsetHeight >= element.scrollHeight - 1) {
+            setIsMainTypographyTruncated(false);
         }
     }, [mainTypographyReference.current]);
 
