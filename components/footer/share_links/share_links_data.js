@@ -106,10 +106,10 @@ var SHARE_LINKS_DATA = Object.freeze({
   },
   copyShareUrl: {
     icon: function icon(props) {
-      var _window, _window$location;
+      var _location;
 
       return _react.default.createElement(_copy_wrapper.CopyWrapper, {
-        value: (_window = window) === null || _window === void 0 ? void 0 : (_window$location = _window.location) === null || _window$location === void 0 ? void 0 : _window$location.href
+        value: (_location = (typeof window === 'undefined' ? {} : window).location) === null || _location === void 0 ? void 0 : _location.href
       }, _react.default.createElement(ShareIcon, props));
     },
     tooltipTranslation: _react.default.createElement(_reactIntl.FormattedMessage, {
