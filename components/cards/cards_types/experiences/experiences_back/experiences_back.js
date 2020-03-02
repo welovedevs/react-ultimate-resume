@@ -55,11 +55,17 @@ var ExperienceContent = function ExperienceContent(_ref) {
     return "".concat(((_experience$startDate2 = experience.startDate) === null || _experience$startDate2 === void 0 ? void 0 : _experience$startDate2.year()) || '', " - ").concat(experience.endDate.year());
   }, [experience]);
   var title = (0, _react.useMemo)(function () {
-    if (!(place === null || place === void 0 ? void 0 : place.name)) {
-      return name;
+    var builder = [];
+
+    if (name) {
+      builder.push(name);
     }
 
-    return "".concat(name, " - ").concat(place.name);
+    if (place === null || place === void 0 ? void 0 : place.name) {
+      builder.push(place.name);
+    }
+
+    return builder.join(' - ');
   }, [experience]);
   return _react.default.createElement(_profile_card_section.ProfileCardSection, {
     key: id,
