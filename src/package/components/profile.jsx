@@ -34,7 +34,8 @@ const useStyles = createUseStyles(styles);
 
 const DEFAULT_OPTIONS = Object.freeze({
     locale: 'en',
-    customization: {}
+    customization: {},
+    dismissFooter: false
 });
 
 const DEFAULT_OBJECT = {};
@@ -86,7 +87,7 @@ const DeveloperProfileComponent = ({
                 <Banner customizationOptions={options.customization} onCustomizationChanged={onCustomizationChanged} />
                 {BeforeCards}
                 <Cards cardsOrder={options.customization?.cardsOrder} side={options?.side} />
-                <Footer />
+                {!options.dismissFooter && <Footer />}
             </DeveloperProfileContext.Provider>
         </div>
     );
