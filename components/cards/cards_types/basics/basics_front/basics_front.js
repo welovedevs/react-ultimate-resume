@@ -36,7 +36,7 @@ var _basics_front_styles = require("./basics_front_styles");
 var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
 
 var LocationIcon = function LocationIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("title", null, "Exported from Streamline App (https://app.streamlineicons.com)"), _react.default.createElement("path", {
+  return _react.default.createElement("svg", props, _react.default.createElement("path", {
     d: "M24 0C15.168.01 8.01 7.168 8 16c0 7.02 10 24.05 14.296 31.048A2 2 0 0 0 24 48a1.98 1.98 0 0 0 1.704-.954C30 40.052 40 23.028 40 16 39.99 7.168 32.832.01 24 0zm0 23a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"
   }));
 };

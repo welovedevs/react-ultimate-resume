@@ -26,7 +26,7 @@ var _use_callback_open = require("../../../../hooks/use_callback_open");
 var _see_project_detail_styles = require("./see_project_detail_styles");
 
 var EyeIcon = function EyeIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("title", null, "Exported from Streamline App (https://app.streamlineicons.com)"), _react.default.createElement("g", {
+  return _react.default.createElement("svg", props, _react.default.createElement("g", {
     fill: "none",
     stroke: "#000",
     strokeLinecap: "round",

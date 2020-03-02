@@ -24,7 +24,7 @@ var _profile_card_incomplete_popper_styles = require("./profile_card_incomplete_
 var _contexts = require("../../../../utils/context/contexts");
 
 var WarnIcon = function WarnIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("title", null, "Exported from Streamline App (https://app.streamlineicons.com)"), _react.default.createElement("path", {
+  return _react.default.createElement("svg", props, _react.default.createElement("path", {
     d: "M19.972 0A20.345 20.345 0 0 0 5.788 6.088 19.668 19.668 0 0 0 0 20.345c-.013 10.842 8.767 19.642 19.609 19.656h.415C31.154 39.886 40.09 30.782 40 19.652 40.026 8.822 31.267.022 20.437-.005c-.155 0-.31.002-.465.005zM17.5 27.57a2.46 2.46 0 0 1 2.369-2.548l.046-.001h.045a2.547 2.547 0 0 1 2.539 2.45 2.459 2.459 0 0 1-2.365 2.548l-.05.002h-.045a2.549 2.549 0 0 1-2.539-2.45zm.834-6.736v-10a1.667 1.667 0 0 1 3.333 0v10a1.667 1.667 0 0 1-3.333 0z"
   }));
 };

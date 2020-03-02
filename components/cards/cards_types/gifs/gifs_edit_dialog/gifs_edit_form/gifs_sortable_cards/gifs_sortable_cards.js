@@ -20,7 +20,7 @@ var _bouncing_round_button = require("../../../../../../commons/bouncing_round_b
 var _gifs_sortable_cards_styles = require("./gifs_sortable_cards_styles");
 
 var MoveIcon = function MoveIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("title", null, "Exported from Streamline App (https://app.streamlineicons.com)"), _react.default.createElement("g", {
+  return _react.default.createElement("svg", props, _react.default.createElement("g", {
     fill: "none",
     stroke: "#000",
     strokeLinecap: "round",

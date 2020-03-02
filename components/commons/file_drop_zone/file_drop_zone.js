@@ -30,7 +30,7 @@ var _loading_spinner = require("../loading_spinner/loading_spinner");
 var _file_drop_zone_styles = require("./file_drop_zone_styles");
 
 var DropFileIcon = function DropFileIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("title", null, "Exported from Streamline App (https://app.streamlineicons.com)"), _react.default.createElement("g", {
+  return _react.default.createElement("svg", props, _react.default.createElement("g", {
     fill: "none",
     stroke: "#000",
     strokeLinecap: "round",
