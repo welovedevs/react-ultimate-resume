@@ -34,7 +34,7 @@ var _projects_front_styles = require("./projects_front_styles");
 var useStyles = (0, _reactJss.createUseStyles)(_projects_front_styles.styles);
 
 var ProjectsFrontComponent = function ProjectsFrontComponent(_ref) {
-  var _data$projects, _data$projects$, _data$projects$$image, _data$projects$$image2, _data$projects2, _data$projects2$, _data$projects3, _data$projects3$, _data$projects4;
+  var _data$projects, _data$projects$, _data$projects$$image, _data$projects$$image2, _data$projects2, _data$projects2$, _data$projects7, _data$projects8;
 
   var data = _ref.data;
 
@@ -53,6 +53,21 @@ var ProjectsFrontComponent = function ProjectsFrontComponent(_ref) {
 
   var imageSrc = (_data$projects = data.projects) === null || _data$projects === void 0 ? void 0 : (_data$projects$ = _data$projects[0]) === null || _data$projects$ === void 0 ? void 0 : (_data$projects$$image = _data$projects$.images) === null || _data$projects$$image === void 0 ? void 0 : (_data$projects$$image2 = _data$projects$$image[0]) === null || _data$projects$$image2 === void 0 ? void 0 : _data$projects$$image2.url;
   var alt = (_data$projects2 = data.projects) === null || _data$projects2 === void 0 ? void 0 : (_data$projects2$ = _data$projects2[0]) === null || _data$projects2$ === void 0 ? void 0 : _data$projects2$.title;
+  var projectTitle = (0, _react.useMemo)(function () {
+    var _data$projects3, _data$projects4, _ref2, _data$projects6, _data$projects6$0$des;
+
+    if (!((_data$projects3 = data.projects) === null || _data$projects3 === void 0 ? void 0 : _data$projects3[0])) {
+      return '';
+    }
+
+    if ((_data$projects4 = data.projects) === null || _data$projects4 === void 0 ? void 0 : _data$projects4[0].name) {
+      var _data$projects5;
+
+      return (_data$projects5 = data.projects) === null || _data$projects5 === void 0 ? void 0 : _data$projects5[0].name;
+    }
+
+    return (_ref2 = (_data$projects6 = data.projects) === null || _data$projects6 === void 0 ? void 0 : (_data$projects6$0$des = _data$projects6[0].description) === null || _data$projects6$0$des === void 0 ? void 0 : _data$projects6$0$des.slice(0, 20)) !== null && _ref2 !== void 0 ? _ref2 : '';
+  }, [(_data$projects7 = data.projects) === null || _data$projects7 === void 0 ? void 0 : _data$projects7[0]]);
   var classes = useStyles({
     variant: variant,
     hasImage: !!imageSrc
@@ -86,13 +101,13 @@ var ProjectsFrontComponent = function ProjectsFrontComponent(_ref) {
         });
       }
     }
-  }), (_data$projects3 = data.projects) === null || _data$projects3 === void 0 ? void 0 : (_data$projects3$ = _data$projects3[0]) === null || _data$projects3$ === void 0 ? void 0 : _data$projects3$.name)), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+  }), projectTitle)), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Projects.front.action",
     defaultMessage: "See {count} project{count, plural, one {} other {s}}",
     values: {
-      count: (_data$projects4 = data.projects) === null || _data$projects4 === void 0 ? void 0 : _data$projects4.length
+      count: (_data$projects8 = data.projects) === null || _data$projects8 === void 0 ? void 0 : _data$projects8.length
     }
   }))));
 };

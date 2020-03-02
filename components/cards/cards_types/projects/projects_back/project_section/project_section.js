@@ -82,7 +82,7 @@ var Details = function Details(_ref2) {
       classes = _ref2.classes;
   return _react.default.createElement("div", {
     className: classes.details
-  }, _react.default.createElement("div", {
+  }, project.link && _react.default.createElement("div", {
     className: classes.detail
   }, _react.default.createElement(_animated_underlined_button.AnimatedUnderlinedButton, null, _react.default.createElement("a", {
     className: classes.link,
