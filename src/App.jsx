@@ -6,6 +6,19 @@ import { Button } from '@wld/ui';
 import DeveloperProfile from './package';
 import JsonStub from './data/json_stub.json';
 
+const DEFAULT_CARD_ORDER = [
+    { type: 'basics', variant: 0 },
+    { type: 'projects', variant: 1 },
+    { type: 'language', variant: 2 },
+    { type: 'dreamjob', variant: 4 },
+    { type: 'gifs', variant: 5 },
+    { type: 'experiences', variant: 4 },
+    { type: 'studies', variant: 3 },
+    { type: 'skills', variant: 0 },
+    { type: 'soundtrack', variant: 0 },
+    { type: 'interestedBy', variant: 2 }
+];
+
 function App() {
     const [data, setData] = useState(JsonStub);
 
@@ -15,25 +28,9 @@ function App() {
         },
         [data]
     );
-    const [customization, setCustomization] = useState({
-        cardsOrder: [
-            { type: 'basics', variant: 0 },
-            { type: 'projects', variant: 1 },
-            { type: 'language', variant: 2 },
-            { type: 'dreamjob', variant: 4 },
-            { type: 'gifs', variant: 5 },
-            { type: 'experiences', variant: 4 },
-            { type: 'studies', variant: 3 },
-            { type: 'skills', variant: 0 },
-            { type: 'soundtrack', variant: 0 },
-            { type: 'interestedBy', variant: 2 }
-        ]
-    });
+    const [customization, setCustomization] = useState({ cardsOrder: DEFAULT_CARD_ORDER });
 
-    const onCustomizationChanged = useCallback(
-        newCustomization => {
-            setCustomization(merge({}, customization, newCustomization));
-        },
+    const onCustomizationChanged = useCallback(setCustomization,
         [data]
     );
     return (

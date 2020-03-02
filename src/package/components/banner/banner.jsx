@@ -34,8 +34,9 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
         config: config.molasses
     });
 
+    console.log({ customizationOptions });
+
     const bannerImageCredits = customizationOptions?.imageHeader?.credits;
-    console.log({ bannerImageCredits });
     return (
         <div className={cn(classes.container, globalReceivedBannerClasses.container)}>
             {isEditing && onCustomizationChanged && (

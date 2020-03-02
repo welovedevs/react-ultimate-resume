@@ -2,6 +2,8 @@ import React, { useCallback, useMemo, useReducer } from 'react';
 import { IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
+import merge from 'lodash/merge';
+
 import { buildTheme } from '../utils/styles/theme/theme';
 import { Banner } from './banner/banner';
 import { Cards } from './cards/cards';
@@ -34,7 +36,12 @@ const useStyles = createUseStyles(styles);
 
 const DEFAULT_OPTIONS = Object.freeze({
     locale: 'en',
-    customization: {},
+    customization: {
+        imageHeader: {
+            url: 'https://cdn.filestackcontent.com/rCpFCPtfRFSSPcPICclF',
+            alt: 'Default Banner'
+        }
+    },
     dismissFooter: false
 });
 
@@ -43,7 +50,7 @@ const DEFAULT_FUNCTION = () => {};
 
 const DeveloperProfileComponent = ({
     data = DEFAULT_OBJECT,
-    options = DEFAULT_OBJECT,
+    options,
     mode,
     onEdit: onEditProps = DEFAULT_FUNCTION,
     onCustomizationChanged,
@@ -104,11 +111,10 @@ const WithProvidersDeveloperProfile = ({
     classes,
     isEditing
 }) => {
-    const { locale, customization } = useMemo(() => ({ ...DEFAULT_OPTIONS, ...options }), [options]);
+    const mergedOptions = useMemo(() => merge(options, DEFAULT_OPTIONS), [options]);
+    const { locale, customization } = mergedOptions;
     const builtTheme = useMemo(() => {
-        console.time('theme');
         const theme = buildTheme(customization?.theme);
-        console.timeEnd('theme');
         return theme;
     }, [customization?.theme]);
 
@@ -121,7 +127,7 @@ const WithProvidersDeveloperProfile = ({
                     mode={mode}
                     onEdit={onEdit}
                     onCustomizationChanged={onCustomizationChanged}
-                    options={options}
+                    options={mergedOptions}
                     additionalNodes={additionalNodes}
                     BeforeCards={BeforeCards}
                     classes={classes}
