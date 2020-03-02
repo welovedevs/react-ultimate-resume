@@ -73,6 +73,9 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
   var mainTypographyReference = (0, _react.useRef)();
   (0, _react.useEffect)(function () {
     var element = mainTypographyReference.current;
+    console.log({
+      element: element
+    }, element.offsetHeight, element.scrollHeight);
 
     if (element.offsetHeight >= element.scrollHeight - 1) {
       setIsMainTypographyTruncated(false);
