@@ -49,7 +49,7 @@ var ShareLinksComponent = function ShareLinksComponent(_ref) {
       setBackgroundLineSpringProps = _useSpring2[1];
 
   (0, _react.useEffect)(function () {
-    if (!('IntersectionObserver' in window)) {
+    if (!('IntersectionObserver' in (typeof window !== 'undefined' ? window : {}))) {
       return;
     } // eslint-disable-next-line no-undef
 
