@@ -73,10 +73,10 @@ var BannerComponent = function BannerComponent(_ref) {
     unique: true,
     config: _reactSpring.config.molasses
   }));
-  var bannerImageCredits = customizationOptions === null || customizationOptions === void 0 ? void 0 : (_customizationOptions = customizationOptions.imageHeader) === null || _customizationOptions === void 0 ? void 0 : _customizationOptions.credits;
   console.log({
-    bannerImageCredits: bannerImageCredits
+    customizationOptions: customizationOptions
   });
+  var bannerImageCredits = customizationOptions === null || customizationOptions === void 0 ? void 0 : (_customizationOptions = customizationOptions.imageHeader) === null || _customizationOptions === void 0 ? void 0 : _customizationOptions.credits;
   return _react.default.createElement("div", {
     className: (0, _classnames.default)(classes.container, globalReceivedBannerClasses.container)
   }, isEditing && onCustomizationChanged && _react.default.createElement(_edit_header_image_button.EditHeaderImageButton, {

@@ -9,8 +9,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.DeveloperProfile = void 0;
 
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
@@ -20,6 +18,8 @@ var _react = _interopRequireWildcard(require("react"));
 var _reactIntl = require("react-intl");
 
 var _reactJss = require("react-jss");
+
+var _merge = _interopRequireDefault(require("lodash/merge"));
 
 var _theme = require("../utils/styles/theme/theme");
 
@@ -39,10 +39,6 @@ var _contexts = require("../utils/context/contexts");
 
 var _footer = require("./footer/footer");
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
 if (!Intl.PluralRules) {
   // eslint-disable-next-line global-require
   require('@formatjs/intl-pluralrules/polyfill'); // eslint-disable-next-line global-require
@@ -61,7 +57,12 @@ var messages = {
 var useStyles = (0, _reactJss.createUseStyles)(_profile_styles.styles);
 var DEFAULT_OPTIONS = Object.freeze({
   locale: 'en',
-  customization: {},
+  customization: {
+    imageHeader: {
+      url: 'https://cdn.filestackcontent.com/rCpFCPtfRFSSPcPICclF',
+      alt: 'Default Banner'
+    }
+  },
   dismissFooter: false
 });
 var DEFAULT_OBJECT = {};
@@ -73,8 +74,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
 
   var _ref$data = _ref.data,
       data = _ref$data === void 0 ? DEFAULT_OBJECT : _ref$data,
-      _ref$options = _ref.options,
-      options = _ref$options === void 0 ? DEFAULT_OBJECT : _ref$options,
+      options = _ref.options,
       mode = _ref.mode,
       _ref$onEdit = _ref.onEdit,
       onEditProps = _ref$onEdit === void 0 ? DEFAULT_FUNCTION : _ref$onEdit,
@@ -158,17 +158,13 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
       BeforeCards = _ref3.BeforeCards,
       classes = _ref3.classes,
       isEditing = _ref3.isEditing;
-
-  var _useMemo = (0, _react.useMemo)(function () {
-    return _objectSpread({}, DEFAULT_OPTIONS, {}, options);
-  }, [options]),
-      locale = _useMemo.locale,
-      customization = _useMemo.customization;
-
+  var mergedOptions = (0, _react.useMemo)(function () {
+    return (0, _merge.default)(options, DEFAULT_OPTIONS);
+  }, [options]);
+  var locale = mergedOptions.locale,
+      customization = mergedOptions.customization;
   var builtTheme = (0, _react.useMemo)(function () {
-    console.time('theme');
     var theme = (0, _theme.buildTheme)(customization === null || customization === void 0 ? void 0 : customization.theme);
-    console.timeEnd('theme');
     return theme;
   }, [customization === null || customization === void 0 ? void 0 : customization.theme]);
   return _react.default.createElement(_reactJss.ThemeProvider, {
@@ -183,7 +179,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
     mode: mode,
     onEdit: onEdit,
     onCustomizationChanged: onCustomizationChanged,
-    options: options,
+    options: mergedOptions,
     additionalNodes: additionalNodes,
     BeforeCards: BeforeCards,
     classes: classes
