@@ -1,4 +1,3 @@
-
 import React, { useMemo } from 'react';
 
 import { useIntl } from 'react-intl';
@@ -26,10 +25,14 @@ const ExperienceContent = ({ experience, variant, classes }) => {
     }, [experience]);
 
     const title = useMemo(() => {
-        if (!place?.name) {
-            return name;
+        const builder = [];
+        if (name) {
+            builder.push(name);
         }
-        return `${name} - ${place.name}`;
+        if (place?.name) {
+            builder.push(place.name);
+        }
+        return builder.join(' - ');
     }, [experience]);
     return (
         <ProfileCardSection key={id} cardVariant={variant}>
@@ -47,7 +50,7 @@ const ExperiencesBackComponent = ({ data }) => {
     return (
         <ProfileCardAnimatedBack title="Experiences">
             {data.work?.map(experience => (
-                <ExperienceContent key={`work_experience_${experience.id}`} experience={experience} classes={classes} />
+                <ExperienceContent key={`work_experience_${experience.id}`} experience={experience} classes={classes}/>
             ))}
         </ProfileCardAnimatedBack>
     );
