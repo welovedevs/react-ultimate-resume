@@ -45,7 +45,7 @@ export const SHARE_LINKS_DATA = Object.freeze({
     },
     copyShareUrl: {
         icon: (props) => (
-            <CopyWrapper value={window?.location?.href}>
+            <CopyWrapper value={(typeof window === 'undefined' ? {} : window).location?.href}>
                 <ShareIcon {...props} />
             </CopyWrapper>
         ),
