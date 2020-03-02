@@ -37,6 +37,8 @@ var _technologies_reducer = require("../store/technologies/technologies_reducer"
 
 var _contexts = require("../utils/context/contexts");
 
+var _footer = require("./footer/footer");
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -140,7 +142,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
   }), BeforeCards, _react.default.createElement(_cards.Cards, {
     cardsOrder: (_options$customizatio = options.customization) === null || _options$customizatio === void 0 ? void 0 : _options$customizatio.cardsOrder,
     side: options === null || options === void 0 ? void 0 : options.side
-  })));
+  }), _react.default.createElement(_footer.Footer, null)));
 };
 
 var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3) {

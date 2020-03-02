@@ -14,7 +14,6 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var styles = function styles(theme) {
-  var spacing = theme.miscellaneous.spacing;
   return {
     '@global': {
       '*': {
@@ -50,7 +49,7 @@ var styles = function styles(theme) {
       flexDirection: 'column',
       alignItems: 'center',
       margin: 0,
-      padding: [0, 0, spacing * 6, 0]
+      padding: 0
     }, ['fontFamily', 'backgroundColor', 'color'].reduce(function (acc, key) {
       return _objectSpread({}, acc, (0, _defineProperty2.default)({}, key, theme.miscellaneous[key]));
     }, {}))

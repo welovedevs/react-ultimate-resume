@@ -31,9 +31,9 @@ var _profile_card_front_typography = require("../../../../commons/profile_card/p
 
 var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
 
-var _basics_front_styles = require("./basics_front_styles");
-
 var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
+
+var _basics_front_styles = require("./basics_front_styles");
 
 var LocationIcon = function LocationIcon(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("path", {
@@ -65,7 +65,7 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
     return setSide(side === 'front' ? 'back' : 'front');
   }, [side, setSide]);
 
-  var _useState = (0, _react.useState)(false),
+  var _useState = (0, _react.useState)(true),
       _useState2 = (0, _slicedToArray2.default)(_useState, 2),
       isMainTypographyTruncated = _useState2[0],
       setIsMainTypographyTruncated = _useState2[1];
@@ -74,8 +74,8 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
   (0, _react.useEffect)(function () {
     var element = mainTypographyReference.current;
 
-    if (element.offsetHeight < element.scrollHeight - 1) {
-      setIsMainTypographyTruncated(true);
+    if (element.offsetHeight >= element.scrollHeight - 1) {
+      setIsMainTypographyTruncated(false);
     }
   }, [mainTypographyReference.current]);
   return _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, _react.default.createElement(_center_content_container.CenterContentContainer, {
