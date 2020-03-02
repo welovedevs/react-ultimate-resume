@@ -21,7 +21,7 @@ const ShareLinksComponent = ({ useSmallLayout }) => {
     }));
 
     useEffect(() => {
-        if (!('IntersectionObserver' in window)) {
+        if (!('IntersectionObserver' in (typeof window !== 'undefined' ? window : {}))) {
             return;
         }
         // eslint-disable-next-line no-undef
