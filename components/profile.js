@@ -61,7 +61,8 @@ var messages = {
 var useStyles = (0, _reactJss.createUseStyles)(_profile_styles.styles);
 var DEFAULT_OPTIONS = Object.freeze({
   locale: 'en',
-  customization: {}
+  customization: {},
+  dismissFooter: false
 });
 var DEFAULT_OBJECT = {};
 
@@ -142,7 +143,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
   }), BeforeCards, _react.default.createElement(_cards.Cards, {
     cardsOrder: (_options$customizatio = options.customization) === null || _options$customizatio === void 0 ? void 0 : _options$customizatio.cardsOrder,
     side: options === null || options === void 0 ? void 0 : options.side
-  }), _react.default.createElement(_footer.Footer, null)));
+  }), !options.dismissFooter && _react.default.createElement(_footer.Footer, null)));
 };
 
 var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3) {
