@@ -38,6 +38,10 @@ var styles = function styles(theme) {
     typography: {
       transform: 'rotate(-90deg)'
     },
+    popperTitle: {
+      display: 'flex',
+      justifyContent: 'center'
+    },
     columnsContainer: (0, _defineProperty2.default)({}, QUERY_SMALL, {
       paddingTop: theme.miscellaneous.spacing * 2
     })

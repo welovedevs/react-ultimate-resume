@@ -24,8 +24,7 @@ var _validator = require("./data/validator");
 var _contexts = require("../../../../utils/context/contexts");
 
 var LanguagesCardComponent = function LanguagesCardComponent(_ref) {
-  var variant = _ref.variant,
-      side = _ref.side;
+  var variant = _ref.variant;
 
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data,
@@ -56,7 +55,7 @@ var LanguagesCardComponent = function LanguagesCardComponent(_ref) {
       back: _languages_back.LanguagesBack
     },
     variant: variant,
-    side: side,
+    side: "back",
     editDialog: {
       component: _languages_card_edit_dialog.LanguagesCardEditDialog,
       validationSchema: _validator.LanguageValidator,

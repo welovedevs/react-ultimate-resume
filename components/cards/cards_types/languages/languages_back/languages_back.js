@@ -98,7 +98,7 @@ var LanguagesBackComponent = function LanguagesBackComponent(_ref) {
       itemsSize: (_ref6 = (_data$languages3 = data.languages) === null || _data$languages3 === void 0 ? void 0 : _data$languages3.length) !== null && _ref6 !== void 0 ? _ref6 : 0,
       key: key,
       component: _reactSpring.animated.div,
-      value: item.value,
+      item: item,
       style: _objectSpread({}, props, {
         backgroundColor: colorPalette[index],
         color: backColor
