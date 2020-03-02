@@ -132,7 +132,11 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
   }, [customTransitionsSpringProps, side]);
   var hasSideChanged = (0, _react.useRef)(false);
   var setSide = (0, _react.useCallback)(function (newSide) {
-    return dispatch({
+    if (sideProps) {
+      return;
+    }
+
+    dispatch({
       type: _profile_card_actions_types.SET_SIDE,
       side: newSide
     });
@@ -186,7 +190,7 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
     },
     id: id,
     elevation: 1
-  }, !isSmall && {
+  }, !isSmall && !sideProps && {
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave
   }), editButtonTransitions.map(function (_ref2) {

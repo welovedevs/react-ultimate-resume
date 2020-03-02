@@ -59,7 +59,8 @@ var CARD_TYPE_MAPPING = {
 
 var CardsComponent = function CardsComponent(_ref) {
   var _ref$cardsOrder = _ref.cardsOrder,
-      cardsOrder = _ref$cardsOrder === void 0 ? _cards_order.DEFAULT_CARD_ORDER : _ref$cardsOrder;
+      cardsOrder = _ref$cardsOrder === void 0 ? _cards_order.DEFAULT_CARD_ORDER : _ref$cardsOrder,
+      side = _ref.side;
   var classes = useStyles();
   var theme = (0, _reactJss.useTheme)();
 
@@ -80,7 +81,8 @@ var CardsComponent = function CardsComponent(_ref) {
 
       return _react.default.createElement(CARD_TYPE_MAPPING[type], {
         variant: !Number.isNaN(Number(variant)) ? variant : (0, _theme.getRandomCardVariant)(theme),
-        key: "card_".concat(type, "_").concat(index)
+        key: "card_".concat(type, "_").concat(index),
+        side: side
       });
     }).filter(Boolean);
   }, [cardsOrder]);

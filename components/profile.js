@@ -138,7 +138,8 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
     customizationOptions: options.customization,
     onCustomizationChanged: onCustomizationChanged
   }), BeforeCards, _react.default.createElement(_cards.Cards, {
-    cardsOrder: (_options$customizatio = options.customization) === null || _options$customizatio === void 0 ? void 0 : _options$customizatio.cardsOrder
+    cardsOrder: (_options$customizatio = options.customization) === null || _options$customizatio === void 0 ? void 0 : _options$customizatio.cardsOrder,
+    side: options === null || options === void 0 ? void 0 : options.side
   })));
 };
 
