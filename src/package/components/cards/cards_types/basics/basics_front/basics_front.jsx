@@ -14,9 +14,9 @@ import { ProfileCardFrontTypography } from '../../../../commons/profile_card/pro
 import { ReactComponent as LocationIcon } from '../../../../../assets/icons/location.svg';
 
 import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
+import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
 
 import { styles } from './basics_front_styles';
-import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
 
 const useStyles = createUseStyles(styles);
 

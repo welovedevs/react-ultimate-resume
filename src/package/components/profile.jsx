@@ -15,6 +15,7 @@ import '../styles/lib/slick-carousel/slick-theme.css';
 import '../styles/lib/slick-carousel/slick.css';
 import { technologiesInitialState, technologiesReducer } from '../store/technologies/technologies_reducer';
 import { DeveloperProfileContext } from '../utils/context/contexts';
+import { Footer } from './footer/footer';
 
 if (!Intl.PluralRules) {
     // eslint-disable-next-line global-require
@@ -85,6 +86,7 @@ const DeveloperProfileComponent = ({
                 <Banner customizationOptions={options.customization} onCustomizationChanged={onCustomizationChanged} />
                 {BeforeCards}
                 <Cards cardsOrder={options.customization?.cardsOrder} side={options?.side} />
+                <Footer />
             </DeveloperProfileContext.Provider>
         </div>
     );

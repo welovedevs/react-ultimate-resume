@@ -1,8 +1,4 @@
-export const styles = theme => {
-    const {
-        miscellaneous: { spacing }
-    } = theme;
-    return {
+export const styles = (theme) => ({
         '@global': {
             '*': {
                 'box-sizing': 'border-box'
@@ -37,7 +33,7 @@ export const styles = theme => {
             flexDirection: 'column',
             alignItems: 'center',
             margin: 0,
-            padding: [0, 0, spacing * 6, 0],
+            padding: 0,
             ...['fontFamily', 'backgroundColor', 'color'].reduce(
                 (acc, key) => ({
                     ...acc,
@@ -46,5 +42,4 @@ export const styles = theme => {
                 {}
             )
         }
-    };
-};
+    });
