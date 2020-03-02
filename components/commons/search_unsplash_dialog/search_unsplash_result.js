@@ -103,12 +103,28 @@ var Results = function Results(_ref2) {
       results = _useUnsplashResults.results,
       loadingResults = _useUnsplashResults.loading;
 
-  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
-      apiKeys = _useContext.apiKeys;
+  var _useState3 = (0, _react.useState)(false),
+      _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
+      showLoadingSpinner = _useState4[0],
+      setShowLoadingSpinner = _useState4[1];
 
-  var loading = (0, _react.useMemo)(function () {
-    return loadingResults || query && query !== debouncedQuery;
-  }, [query, debouncedQuery, loadingResults]);
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
+      endpoints = _useContext.endpoints;
+
+  (0, _react.useEffect)(function () {
+    if (loadingResults) {
+      return;
+    }
+
+    setShowLoadingSpinner(!!query);
+  }, [query]);
+  (0, _react.useEffect)(function () {
+    if (loadingResults === true) {
+      return;
+    }
+
+    setShowLoadingSpinner(false);
+  }, [results, loadingResults]);
   var onImageSelected = (0, _react.useCallback)(function (_ref3) {
     var description = _ref3.description,
         urls = _ref3.urls,
@@ -127,16 +143,12 @@ var Results = function Results(_ref2) {
         fromUnsplash: true
       }); // eslint-disable-next-line no-undef
 
-      fetch(links.download_location, {
-        headers: {
-          Authorization: "Client-ID ".concat(apiKeys.unsplash)
-        }
-      });
+      fetch("".concat(endpoints === null || endpoints === void 0 ? void 0 : endpoints.unsplashProxy, "?url=").concat(links.download_location));
     };
   }, [onSelect]);
   return _react.default.createElement("div", {
     className: classes.results
-  }, loading && _react.default.createElement(_loading_spinner.LoadingSpinner, null), !loading && results && debouncedQuery && results.map(function (_ref4) {
+  }, showLoadingSpinner && _react.default.createElement(_loading_spinner.LoadingSpinner, null), !showLoadingSpinner && (results === null || results === void 0 ? void 0 : results.map(function (_ref4) {
     var id = _ref4.id,
         urls = _ref4.urls,
         description = _ref4.description,
@@ -161,7 +173,7 @@ var Results = function Results(_ref2) {
       src: urls.regular,
       alt: description
     })));
-  }));
+  })));
 };
 
 var SearchUnsplashDialog = SearchUnsplashDialogComponent;

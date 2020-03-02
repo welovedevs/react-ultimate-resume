@@ -74,6 +74,9 @@ var BannerComponent = function BannerComponent(_ref) {
     config: _reactSpring.config.molasses
   }));
   var bannerImageCredits = customizationOptions === null || customizationOptions === void 0 ? void 0 : (_customizationOptions = customizationOptions.imageHeader) === null || _customizationOptions === void 0 ? void 0 : _customizationOptions.credits;
+  console.log({
+    bannerImageCredits: bannerImageCredits
+  });
   return _react.default.createElement("div", {
     className: (0, _classnames.default)(classes.container, globalReceivedBannerClasses.container)
   }, isEditing && onCustomizationChanged && _react.default.createElement(_edit_header_image_button.EditHeaderImageButton, {
@@ -108,7 +111,8 @@ var BannerComponent = function BannerComponent(_ref) {
         className: classes.author,
         href: bannerImageCredits.url,
         target: "_blank",
-        rel: "noopener noreferrer"
+        rel: "noopener noreferrer",
+        title: bannerImageCredits.name
       }, bannerImageCredits.name),
       unsplashLink: _react.default.createElement("a", {
         href: encodeURI('https://unsplash.com/?utm_source=W3D Developer Profile&utm_medium=referral'),
