@@ -1,6 +1,6 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.2.24-29",
+    "version": "1.2.24-30",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
