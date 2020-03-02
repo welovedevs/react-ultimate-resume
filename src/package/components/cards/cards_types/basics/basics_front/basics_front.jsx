@@ -33,6 +33,7 @@ const BasicsFrontComponent = ({ data }) => {
 
     useEffect(() => {
         const element = mainTypographyReference.current;
+        console.log({ element }, element.offsetHeight, element.scrollHeight);
         if (element.offsetHeight >= element.scrollHeight - 1) {
             setIsMainTypographyTruncated(false);
         }
