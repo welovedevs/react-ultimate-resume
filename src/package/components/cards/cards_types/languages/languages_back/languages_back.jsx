@@ -62,7 +62,7 @@ const LanguagesBackComponent = ({ data }) => {
                         itemsSize={data.languages?.length ?? 0}
                         key={key}
                         component={animated.div}
-                        value={item.value}
+                        item={item}
                         style={{
                             ...props,
                             backgroundColor: colorPalette[index],

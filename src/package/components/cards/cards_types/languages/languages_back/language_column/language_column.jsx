@@ -8,11 +8,20 @@ import { styles } from './language_column_styles';
 
 const useStyles = createUseStyles(styles);
 
-const LanguageColumnComponent = ({ component: Component = 'div', color, style, value, children, itemsSize }) => {
+const LanguageColumnComponent = ({ component: Component = 'div', color, style, item: { value, language } = {}, children, itemsSize }) => {
     const classes = useStyles({ value, color, itemsSize });
 
     return (
-        <Tooltip title={`${value}%`}>
+        <Tooltip
+            open
+            customClasses={{ container: classes.popper }}
+            title={
+                <>
+                    <div className={classes.popperTitle}>{language}</div>
+                    <div className={classes.popperTitle}>{`${value}%`}</div>
+                </>
+            }
+        >
             <Component className={classes.container} style={style}>
                 <Typography variant="h2" color="light" customClasses={{ container: classes.typography }}>
                     {children}

@@ -8,7 +8,7 @@ import { LanguagesCardEditDialog } from './languages_edit_dialog/languages_card_
 import { LanguageValidator, validateLanguagesComplete } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
-const LanguagesCardComponent = ({ variant, side }) => {
+const LanguagesCardComponent = ({ variant }) => {
     const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapLanguagesFromJsonResume(data), [data]);
 
@@ -31,7 +31,7 @@ const LanguagesCardComponent = ({ variant, side }) => {
                 back: LanguagesBack
             }}
             variant={variant}
-            side={side}
+            side="back"
             editDialog={{
                 component: LanguagesCardEditDialog,
                 validationSchema: LanguageValidator,

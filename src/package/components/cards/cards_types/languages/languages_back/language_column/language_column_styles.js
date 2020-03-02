@@ -26,6 +26,10 @@ export const styles = (theme) => {
         typography: {
             transform: 'rotate(-90deg)'
         },
+        popperTitle: {
+            display: 'flex',
+            justifyContent: 'center'
+        },
         columnsContainer: {
             [QUERY_SMALL]: {
                 paddingTop: theme.miscellaneous.spacing * 2
