@@ -36,7 +36,7 @@ var styles = function styles(theme) {
     logo: {
       height: 26,
       width: 'unset',
-      '& > g > g': {
+      '& > g': {
         stroke: 'currentColor'
       }
     },

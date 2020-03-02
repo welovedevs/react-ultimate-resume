@@ -39,6 +39,7 @@ var Logo = function Logo(props) {
 };
 
 Logo.defaultProps = {
+  className: "clogo-0-2-221",
   width: "271",
   height: "92",
   viewBox: "0 0 271 92",
