@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { Twemoji } from 'react-emoji-render';
 import { FormattedMessage } from 'react-intl';
@@ -25,15 +25,25 @@ const ProjectsFrontComponent = ({ data }) => {
     const imageSrc = data.projects?.[0]?.images?.[0]?.url;
     const alt = data.projects?.[0]?.title;
 
+    const projectTitle = useMemo(() => {
+        if (!data.projects?.[0]) {
+            return '';
+        }
+        if (data.projects?.[0].name) {
+            return data.projects?.[0].name;
+        }
+        return data.projects?.[0].description?.slice(0, 20) ?? '';
+    }, [data.projects?.[0]]);
+
     const classes = useStyles({ variant, hasImage: !!imageSrc });
     return (
         <>
             <div className={classes.background}>
-                {imageSrc && <img className={classes.backgroundImage} src={imageSrc} alt={alt} />}
+                {imageSrc && <img className={classes.backgroundImage} src={imageSrc} alt={alt}/>}
                 {!imageSrc && (
                     <>
-                        <div className={classes.overlay} />
-                        <div className={classes.stubBackground} />
+                        <div className={classes.overlay}/>
+                        <div className={classes.stubBackground}/>
                     </>
                 )}
             </div>
@@ -43,11 +53,10 @@ const ProjectsFrontComponent = ({ data }) => {
                         id="Projects.front.title"
                         defaultMessage="My <emoji>♥️</emoji> project : "
                         values={{
-                            emoji: value => <Twemoji svg text={value} />
+                            emoji: value => <Twemoji svg text={value}/>
                         }}
                     />
-
-                    {data.projects?.[0]?.name}
+                    {projectTitle}
                 </Typography>
             </div>
             <ProfileCardActions>

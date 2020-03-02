@@ -38,25 +38,28 @@ const ProjectSectionContainer = ({ project, cardVariant }) => {
             <ProfileCardSectionText customClasses={{ container: classes.sectionText }}>
                 {descriptionChunks}
             </ProfileCardSectionText>
-            <Details classes={classes} project={project} />
+            <Details classes={classes} project={project}/>
         </ProfileCardSection>
     );
 };
 
 const Details = ({ project, classes }) => (
     <div className={classes.details}>
+        {
+            project.link &&
+            <div className={classes.detail}>
+                <AnimatedUnderlinedButton>
+                    <a className={classes.link} href={project.link}>
+                        <LinkIcon className={classes.detailIcon}/>
+                        <Typography customClasses={{ container: classes.detailTypography }} color="primary">
+                            <FormattedMessage id="Project.section.link" defaultMessage="Link"/>
+                        </Typography>
+                    </a>
+                </AnimatedUnderlinedButton>
+            </div>
+        }
         <div className={classes.detail}>
-            <AnimatedUnderlinedButton>
-                <a className={classes.link} href={project.link}>
-                    <LinkIcon className={classes.detailIcon} />
-                    <Typography customClasses={{ container: classes.detailTypography }} color="primary">
-                        <FormattedMessage id="Project.section.link" defaultMessage="Link" />
-                    </Typography>
-                </a>
-            </AnimatedUnderlinedButton>
-        </div>
-        <div className={classes.detail}>
-            <SeeProjectDetail project={project} />
+            <SeeProjectDetail project={project}/>
         </div>
     </div>
 );
