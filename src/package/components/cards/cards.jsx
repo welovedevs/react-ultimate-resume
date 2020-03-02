@@ -34,7 +34,7 @@ const CARD_TYPE_MAPPING = {
     interestedBy: InterestedByCard
 };
 
-const CardsComponent = ({ cardsOrder = DEFAULT_CARD_ORDER }) => {
+const CardsComponent = ({ cardsOrder = DEFAULT_CARD_ORDER, side }) => {
     const classes = useStyles();
     const theme = useTheme();
     const [{ before: beforeNode, after: afterNode }] = useAdditionalNodes('cards');
@@ -47,7 +47,8 @@ const CardsComponent = ({ cardsOrder = DEFAULT_CARD_ORDER }) => {
                     }
                     return React.createElement(CARD_TYPE_MAPPING[type], {
                         variant: !Number.isNaN(Number(variant)) ? variant : getRandomCardVariant(theme),
-                        key: `card_${type}_${index}`
+                        key: `card_${type}_${index}`,
+                        side
                     });
                 })
                 .filter(Boolean),

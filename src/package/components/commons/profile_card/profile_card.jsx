@@ -80,14 +80,15 @@ const ProfileCardComponent = ({
 
     const hasSideChanged = useRef(false);
 
-    const setSide = useCallback(
-        newSide =>
-            dispatch({
-                type: SET_SIDE,
-                side: newSide
-            }),
-        []
-    );
+    const setSide = useCallback(newSide => {
+        if (sideProps) {
+            return;
+        }
+        dispatch({
+            type: SET_SIDE,
+            side: newSide
+        });
+    }, []);
 
     const handleMouseEnter = useCallback(() => setSide('back'), [dispatch]);
 
@@ -111,10 +112,14 @@ const ProfileCardComponent = ({
         immediate: !hasSideChanged.current
     });
 
-    const editButtonTransitions = useTransition(isEditingProfile, item => (item ? 'visible_editing_button' : 'invisible_editing_button'), {
-        ...PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_SPRING_PROPS,
-        unique: true
-    });
+    const editButtonTransitions = useTransition(
+        isEditingProfile,
+        item => (item ? 'visible_editing_button' : 'invisible_editing_button'),
+        {
+            ...PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_SPRING_PROPS,
+            unique: true
+        }
+    );
 
     const contextData = useMemo(() => ({ state, dispatch }), [state]);
 
@@ -128,29 +133,29 @@ const ProfileCardComponent = ({
                     data={data}
                 />
             )}
-            <ProfileCardIncompletePopper
-                open={isComplete !== true}
-                anchorElement={containerElement}
-            />
+            <ProfileCardIncompletePopper open={isComplete !== true} anchorElement={containerElement} />
             <Card
                 containerRef={containerReference}
                 customClasses={{ container: classes.container }}
                 id={id}
                 elevation={1}
-                {...!isSmall && {
-                    onMouseEnter: handleMouseEnter,
-                    onMouseLeave: handleMouseLeave
-                }}
+                {...(!isSmall &&
+                    !sideProps && {
+                        onMouseEnter: handleMouseEnter,
+                        onMouseLeave: handleMouseLeave
+                    })}
             >
-                {editButtonTransitions.map(({ item, key, props }) => item && (
-                    <animated.div
-                        className={classes.editButtonContainer}
-                        key={key}
-                        style={props}
-                    >
-                        <EditAction customEditAction={customEditAction} setEditDialogOpened={setEditDialogOpened} />
-                    </animated.div>
-                ))}
+                {editButtonTransitions.map(
+                    ({ item, key, props }) =>
+                        item && (
+                            <animated.div className={classes.editButtonContainer} key={key} style={props}>
+                                <EditAction
+                                    customEditAction={customEditAction}
+                                    setEditDialogOpened={setEditDialogOpened}
+                                />
+                            </animated.div>
+                        )
+                )}
                 <ProfileCardContext.Provider value={contextData}>
                     {children}
                     {transitions.map(({ item, key, props }) => {
