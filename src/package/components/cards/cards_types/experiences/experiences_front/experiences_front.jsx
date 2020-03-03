@@ -52,7 +52,6 @@ const ExperiencesFrontComponent = ({ data }) => {
                                 container: cn(classes.typography, isTypographyTruncated && classes.truncatedTypography)
                             }}
                         >
-                            {'Chargée de projets humanitaires @Secours Islamique France Chargée de projets humanitaires @Secours Islamique France'}
                             {title}
                         </ProfileCardFrontTypography>
                     </div>

@@ -176,6 +176,13 @@
             "locations": [{ "name": "Lille, France" }, { "name": "Paris,France" }, { "name": "Valenciennes, France" }],
             "remoteFrequency": "regularly"
         },
+        "currentJob": {
+            "issues": {
+                "boring_management": true,
+                "boring_team": true
+            }
+
+        },
         "education": {
             "studiesLevel": 5
         },

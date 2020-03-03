@@ -28,6 +28,7 @@ const useStyles = createUseStyles(styles);
 const DreamJobBackComponent = ({ data }) => {
     const classes = useStyles();
     const { places, perks, salary, remoteFrequency, contractTypes } = data;
+    console.log({ data });
     return (
         <ProfileCardAnimatedBack
             title={<FormattedMessage id="Dreamjob.Back.Title" defaultMessage="Dream job" />}
