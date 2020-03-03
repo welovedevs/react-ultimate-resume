@@ -1,31 +1,28 @@
 import {
-    createScreenWidthMediaQuery,
-    getColorsFromCardVariant,
-    getHexFromPaletteColor
+    createScreenWidthMediaQuery
 } from '../../../../../utils/styles/styles_utils';
 
 export const styles = theme => {
-    const {
-        miscellaneous: { spacing }
-    } = theme;
+    const { screenSizes } = theme;
+    const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
     return {
         container: {
             flexDirection: 'column'
         },
-        mainTypography: {
+        typography: {
             fontSize: 44,
-            lineHeight: 1.3
-        },
-        locationTypography: ({ variant }) => ({
-            color: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).color),
-            marginTop: spacing * 3,
-            fontWeight: 500
-        }),
-        [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
-            mainTypography: {
+            lineHeight: 1.3,
+            wordWrap: 'break-word',
+            overflow: 'hidden',
+            display: '-webkit-box',
+            '-webkit-line-clamp': 5,
+            '-webkit-box-orient': 'vertical',
+            maxHeight: 44 * 1.3 * 5,
+            [QUERY_SMALL]: {
                 maxWidth: '80%',
-                fontSize: 36,
-                lineHeight: 1.3
+                fontSize: 24,
+                '-webkit-line-clamp': 4,
+                maxHeight: 24 * 1.3 * 4
             }
         }
     };
