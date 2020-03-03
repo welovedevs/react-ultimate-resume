@@ -48,7 +48,10 @@ var styles = function styles(theme) {
     }, QUERY_SMALL, {
       width: '100%',
       padding: [theme.miscellaneous.spacing, theme.miscellaneous.spacing * 2, 0, theme.miscellaneous.spacing * 2]
-    })
+    }),
+    languageLettersButton: {
+      display: 'flex'
+    }
   };
 };
 

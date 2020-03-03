@@ -21,15 +21,19 @@ var _reactSpring = require("react-spring");
 
 var _chromaJs = _interopRequireDefault(require("chroma-js"));
 
+var _ui = require("@wld/ui");
+
 var _profile_card_animated_back = require("../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back");
 
 var _language_column = require("./language_column/language_column");
 
 var _styles_utils = require("../../../../../utils/styles/styles_utils");
 
-var _languages_back_styles = require("./languages_back_styles");
-
 var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
+
+var _languages_back_spring_props = require("./languages_back_spring_props");
+
+var _languages_back_styles = require("./languages_back_styles");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -51,15 +55,9 @@ var LanguagesBackComponent = function LanguagesBackComponent(_ref) {
   var transitions = (0, _reactSpring.useTransition)((_data$languages = data.languages) !== null && _data$languages !== void 0 ? _data$languages : [], function (_ref2) {
     var id = _ref2.id;
     return "language_column_".concat(id);
-  }, {
-    from: {
-      transform: 'translate3d(0, 50%, 0)'
-    },
-    enter: {
-      transform: 'translate3d(0, 0, 0)'
-    },
+  }, _objectSpread({}, _languages_back_spring_props.LANGUAGES_COLUMN_TRANSITIONS_SPRING_PROPS, {
     trail: 175 * 3 / ((_ref3 = data === null || data === void 0 ? void 0 : data.languages) !== null && _ref3 !== void 0 ? _ref3 : []).length
-  });
+  }));
 
   var _useMemo = (0, _react.useMemo)(function () {
     return {
@@ -104,7 +102,12 @@ var LanguagesBackComponent = function LanguagesBackComponent(_ref) {
         color: backColor
       }),
       cardVariant: variant
-    }, (_item$language = item.language) === null || _item$language === void 0 ? void 0 : _item$language.substring(0, 2).toUpperCase());
+    }, _react.default.createElement(_ui.Tooltip, {
+      title: item.language
+    }, _react.default.createElement("button", {
+      className: classes.languageLettersButton,
+      type: "button"
+    }, (_item$language = item.language) === null || _item$language === void 0 ? void 0 : _item$language.substring(0, 2).toUpperCase())));
   })));
 };
 

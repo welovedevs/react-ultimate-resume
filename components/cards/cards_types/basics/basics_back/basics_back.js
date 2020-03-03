@@ -27,6 +27,8 @@ var _profile_card_section = require("../../../../commons/profile_card/profile_ca
 
 var _contract_types = require("../../../../commons/fields/contract_types/contract_types");
 
+var _exists_and_not_empty = require("../../../utils/exists_and_not_empty");
+
 var _job_search_state_translations = require("../../../../../utils/enums/job_serachstate/job_search_state_translations");
 
 var _basics_back_styles = require("./basics_back_styles");
@@ -112,9 +114,11 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
     title: "Who ?"
   }, Object.entries(sections).filter(function (_ref2) {
     var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
-        hide = _ref3[1].hide;
+        _ref3$ = _ref3[1],
+        value = _ref3$.value,
+        hide = _ref3$.hide;
 
-    return !hide;
+    return (0, _exists_and_not_empty.existsAndNotEmpty)(value) && !hide;
   }).map(function (_ref4) {
     var _ref5 = (0, _slicedToArray2.default)(_ref4, 2),
         id = _ref5[0],

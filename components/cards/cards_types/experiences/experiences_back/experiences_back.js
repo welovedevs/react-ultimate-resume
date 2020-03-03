@@ -82,9 +82,14 @@ var ExperiencesBackComponent = function ExperiencesBackComponent(_ref2) {
 
   var data = _ref2.data;
   var classes = useStyles();
+  var experiences = (_data$work = data.work) === null || _data$work === void 0 ? void 0 : _data$work.filter(function (_ref3) {
+    var name = _ref3.name,
+        summary = _ref3.summary;
+    return Boolean(name && summary);
+  });
   return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
     title: "Experiences"
-  }, (_data$work = data.work) === null || _data$work === void 0 ? void 0 : _data$work.map(function (experience) {
+  }, experiences.map(function (experience) {
     return _react.default.createElement(ExperienceContent, {
       key: "work_experience_".concat(experience.id),
       experience: experience,

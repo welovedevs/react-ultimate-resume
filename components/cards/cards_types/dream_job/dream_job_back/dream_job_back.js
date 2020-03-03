@@ -15,6 +15,8 @@ var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers
 
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
+var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
+
 var _react = _interopRequireWildcard(require("react"));
 
 var _reactJss = require("react-jss");
@@ -41,6 +43,8 @@ var _job_perks_translations = require("../../../../../utils/enums/job_perks/job_
 
 var _remote_filter_translations = require("../../../../../utils/enums/remote/remote_filter_translations");
 
+var _exists_and_not_empty = require("../../../utils/exists_and_not_empty");
+
 var _remote_utils = require("../../../../../utils/enums/remote/remote_utils");
 
 var _dream_job_back_styles = require("./dream_job_back_styles");
@@ -60,19 +64,21 @@ var DreamJobBackComponent = function DreamJobBackComponent(_ref) {
       id: "Dreamjob.Back.Title",
       defaultMessage: "Dream job"
     })
-  }, _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(DreamJobLocations, {
+  }, (0, _exists_and_not_empty.existsAndNotEmpty)(places) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(DreamJobLocations, {
     places: places,
     remoteFrequency: remoteFrequency,
     classes: classes
-  })), _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+  })), (0, _exists_and_not_empty.existsAndNotEmpty)(salary) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Dreamjob.Back.Salary.Title",
     defaultMessage: "Ideal yearly salary"
-  })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, salary)), _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+  })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, salary)), (0, _exists_and_not_empty.existsAndNotEmpty)(contractTypes) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Dreamjob.Back.ContractTypes.Title",
     defaultMessage: "Contract types"
   })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, _react.default.createElement(_contract_types.ContractType, {
     contractTypes: contractTypes
-  }))), _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+  }))), (0, _exists_and_not_empty.existsAndNotEmpty)(perks) && (0, _typeof2.default)(perks) === 'object' && Object.values(perks).some(function (value) {
+    return (0, _exists_and_not_empty.existsAndNotEmpty)(value);
+  }) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Dreamjob.Back.Location.Perks.Title",
     defaultMessage: "Important perks in my job"
   })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, _react.default.createElement(DreamJobPerks, {
