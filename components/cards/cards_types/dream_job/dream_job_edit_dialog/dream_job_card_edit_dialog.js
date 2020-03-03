@@ -37,7 +37,11 @@ var _select = require("../../../../commons/select/select");
 
 var _job_perks_utils = require("../../../../../utils/enums/job_perks/job_perks_utils");
 
+var _job_issues_utils = require("../../../../../utils/enums/job_issues/job_issues_utils");
+
 var _perks_field = require("./perks_field/perks_field");
+
+var _current_job_issues_field = require("./current_job_issues_field/current_job_issues_field");
 
 var _location_places_field = require("./location_places_field/location_places_field");
 
@@ -56,6 +60,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 var useStyles = (0, _reactJss.createUseStyles)(_dream_job_card_edit_dialog_styles.styles);
 var checkboxGroupPerks = Object.values(_job_perks_utils.JobPerks).filter(function (perk) {
   return perk !== _job_perks_utils.JobPerks.OTHER;
+});
+var checkboxGroupCurrentJobIssues = Object.values(_job_issues_utils.JobIssues).filter(function (key) {
+  return key !== _job_issues_utils.JobIssues.OTHER;
 });
 var DEFAULT_OBJECT = {};
 
@@ -90,6 +97,8 @@ var DreamJobCardEditDialogComponent = function DreamJobCardEditDialogComponent(_
 };
 
 var Content = function Content(_ref2) {
+  var _values$perks, _values$currentJobIss;
+
   var handleValueChange = _ref2.helpers.handleValueChange;
 
   var _useIntl2 = (0, _reactIntl.useIntl)(),
@@ -106,7 +115,8 @@ var Content = function Content(_ref2) {
       salary = values.salary,
       remoteFrequency = values.remoteFrequency,
       contractTypes = values.contractTypes;
-  var perks = values.perks || DEFAULT_OBJECT;
+  var perks = (_values$perks = values.perks) !== null && _values$perks !== void 0 ? _values$perks : DEFAULT_OBJECT;
+  var currentJobIssues = (_values$currentJobIss = values.currentJobIssues) !== null && _values$currentJobIss !== void 0 ? _values$currentJobIss : DEFAULT_OBJECT;
   var addPlace = (0, _react.useCallback)(function (place) {
     return handleValueChange('places')(places.concat(_objectSpread({}, place, {
       id: (0, _v.default)()
@@ -125,6 +135,12 @@ var Content = function Content(_ref2) {
       return acc;
     }, {}), (0, _defineProperty2.default)({}, _job_perks_utils.JobPerks.OTHER, perks[_job_perks_utils.JobPerks.OTHER])));
   }, [perks]);
+  var onChangeCurrentJobIssues = (0, _react.useCallback)(function (newCurrentJobIssues) {
+    return handleValueChange('currentJobIssues')(_objectSpread({}, newCurrentJobIssues.reduce(function (acc, issue) {
+      acc[issue] = true;
+      return acc;
+    }, {}), (0, _defineProperty2.default)({}, _job_issues_utils.JobIssues.OTHER, currentJobIssues[_job_issues_utils.JobIssues.OTHER])));
+  }, [currentJobIssues]);
   var checkedPerks = (0, _react.useMemo)(function () {
     return Object.entries(perks || {}).filter(function (_ref3) {
       var _ref4 = (0, _slicedToArray2.default)(_ref3, 2),
@@ -138,14 +154,35 @@ var Content = function Content(_ref2) {
       return perk;
     });
   }, [perks]);
+  var checkedCurrentJobIssues = (0, _react.useMemo)(function () {
+    return Object.entries(currentJobIssues || {}).filter(function (_ref7) {
+      var _ref8 = (0, _slicedToArray2.default)(_ref7, 2),
+          value = _ref8[1];
+
+      return value === true;
+    }).map(function (_ref9) {
+      var _ref10 = (0, _slicedToArray2.default)(_ref9, 1),
+          issue = _ref10[0];
+
+      return issue;
+    });
+  }, [currentJobIssues]);
   var toggleOtherPerk = (0, _react.useCallback)(function () {
     return handleValueChange('perks')(_objectSpread({}, perks, (0, _defineProperty2.default)({}, _job_perks_utils.JobPerks.OTHER, perks[_job_perks_utils.JobPerks.OTHER] !== null ? null : '')));
   }, [perks]);
+  var toggleOtherCurrentJobIssue = (0, _react.useCallback)(function () {
+    return handleValueChange('currentJobIssues')(_objectSpread({}, currentJobIssues, (0, _defineProperty2.default)({}, _job_issues_utils.JobIssues.OTHER, currentJobIssues[_job_issues_utils.JobIssues.OTHER] !== null ? null : '')));
+  }, [currentJobIssues]);
   var otherPerk = (0, _react.useMemo)(function () {
     var _perks$JobPerks$OTHER;
 
     return (_perks$JobPerks$OTHER = perks[_job_perks_utils.JobPerks.OTHER]) !== null && _perks$JobPerks$OTHER !== void 0 ? _perks$JobPerks$OTHER : null;
   }, [perks]);
+  var otherCurrentJobIssue = (0, _react.useMemo)(function () {
+    var _currentJobIssues$Job;
+
+    return (_currentJobIssues$Job = currentJobIssues[_job_issues_utils.JobIssues.OTHER]) !== null && _currentJobIssues$Job !== void 0 ? _currentJobIssues$Job : null;
+  }, [currentJobIssues]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_location_places_field.LocationPlacesField, {
     error: errors === null || errors === void 0 ? void 0 : errors.places,
     places: places,
@@ -206,7 +243,16 @@ var Content = function Content(_ref2) {
     name: "contractTypes",
     variant: "outlined",
     onChange: handleValueChange('contractTypes')
-  })));
+  })), _react.default.createElement(_current_job_issues_field.CurrentJobIssuesField, {
+    error: errors === null || errors === void 0 ? void 0 : errors.currentJobIssues,
+    checkboxGroupCurrentJobIssues: checkboxGroupCurrentJobIssues,
+    checkedCurrentJobIssues: checkedCurrentJobIssues,
+    onChange: onChangeCurrentJobIssues,
+    toggleOtherCurrentJobIssue: toggleOtherCurrentJobIssue,
+    otherCurrentJobIssue: otherCurrentJobIssue,
+    handleChange: handleChange,
+    currentJobIssues: currentJobIssues
+  }));
 };
 
 var DreamJobCardEditDialog = DreamJobCardEditDialogComponent;

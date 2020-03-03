@@ -11,6 +11,7 @@ var JobIssues = Object.freeze({
   BORING_TEAM: 'boring_team',
   BORING_MANAGEMENT: 'boring_management',
   SALARY: 'salary',
-  LOCATION: 'location'
+  LOCATION: 'location',
+  OTHER: 'other'
 });
 exports.JobIssues = JobIssues;

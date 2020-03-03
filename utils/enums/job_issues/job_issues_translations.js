@@ -8,35 +8,35 @@ exports.translations = void 0;
 var _reactIntl = require("react-intl");
 
 var translations = (0, _reactIntl.defineMessages)({
-  NO_TECH: {
+  no_tech: {
     "id": "Developer.jobIssues.tech",
     "defaultMessage": "Pas assez technique"
   },
-  NO_RESPONSABILITIES: {
+  no_responsabilities: {
     "id": "Developer.jobIssues.responsabilities",
     "defaultMessage": "Pas assez de responsabilit\xE9s"
   },
-  NO_CHALLENGE: {
+  no_challenge: {
     "id": "Developer.jobIssues.challenge",
     "defaultMessage": "Pas assez de challenge"
   },
-  BORING_TEAM: {
+  boring_team: {
     "id": "Developer.jobIssues.team",
     "defaultMessage": "Soucis d'\xE9quipe"
   },
-  BORING_MANAGEMENT: {
+  boring_management: {
     "id": "Developer.jobIssues.management",
     "defaultMessage": "Soucis de management"
   },
-  SALARY: {
+  salary: {
     "id": "Developer.jobIssues.salary",
     "defaultMessage": "Salaire trop bas"
   },
-  LOCATION: {
+  location: {
     "id": "Developer.jobIssues.location",
     "defaultMessage": "L'emplacement"
   },
-  OTHER: {
+  other: {
     "id": "Developer.jobIssues.other",
     "defaultMessage": "Autre"
   }

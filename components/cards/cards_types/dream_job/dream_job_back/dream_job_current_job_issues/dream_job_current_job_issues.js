@@ -15,11 +15,9 @@ var _reactJss = require("react-jss");
 
 var _reactIntl = require("react-intl");
 
-var _job_issues_utils = require("../../utils/job_issues/job_issues_utils");
-
 var _dream_job_current_job_issues_styles = require("./dream_job_current_job_issues_styles");
 
-var _job_issues_translations = require("../../utils/job_issues/job_issues_translations");
+var _job_issues_translations = require("../../../../../../utils/enums/job_issues/job_issues_translations");
 
 var useStyles = (0, _reactJss.createUseStyles)(_dream_job_current_job_issues_styles.styles);
 
@@ -39,26 +37,17 @@ var DreamJobCurrentJobIssuesComponent = function DreamJobCurrentJobIssuesCompone
 
     return Boolean(value);
   }).map(function (_ref4) {
-    var _Object$entries$find;
-
     var _ref5 = (0, _slicedToArray2.default)(_ref4, 1),
         issueId = _ref5[0];
 
-    var correspondingIssueKey = (_Object$entries$find = Object.entries(_job_issues_utils.JobIssues).find(function (_ref6) {
-      var _ref7 = (0, _slicedToArray2.default)(_ref6, 2),
-          id = _ref7[1];
-
-      return id === issueId;
-    })) === null || _Object$entries$find === void 0 ? void 0 : _Object$entries$find[0];
-
-    if (!correspondingIssueKey) {
+    if (!_job_issues_translations.translations[issueId]) {
       return null;
     }
 
     return _react.default.createElement("li", {
       className: classes.listItem,
       key: "dream_job_current_job_issue_".concat(issueId)
-    }, formatMessage(_job_issues_translations.translations[correspondingIssueKey]));
+    }, formatMessage(_job_issues_translations.translations[issueId]));
   }));
 };
 
