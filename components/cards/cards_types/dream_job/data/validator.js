@@ -30,7 +30,7 @@ var DreamJobValidationSchema = function DreamJobValidationSchema(formatMessage) 
       }).length);
     }),
     salary: Yup.string().min(2, formatMessage(_validation_translations.validationTranslations.min, {
-      min: 5
+      min: 2
     }))
   });
 };
