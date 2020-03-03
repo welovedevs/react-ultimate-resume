@@ -111,7 +111,7 @@ const WithProvidersDeveloperProfile = ({
     classes,
     isEditing
 }) => {
-    const mergedOptions = useMemo(() => merge(options, DEFAULT_OPTIONS), [options]);
+    const mergedOptions = useMemo(() => merge(DEFAULT_OPTIONS, options), [options]);
     const { locale, customization } = mergedOptions;
     const builtTheme = useMemo(() => {
         const theme = buildTheme(customization?.theme);
