@@ -26,7 +26,7 @@ export const DreamJobValidationSchema = formatMessage =>
                         ['apprenticeship', 'internship'].filter(val => value.includes(val)).length
                     )
             ),
-        salary: Yup.string().min(2, formatMessage(validationTranslations.min, { min: 5 }))
+        salary: Yup.string().min(2, formatMessage(validationTranslations.min, { min: 2 }))
     });
 
 export const validateDreamjobComplete = data => {
