@@ -8,32 +8,31 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { TextField, Typography } from '@wld/ui';
 import { CheckboxGroup } from '../../../../../commons/checkbox_group/checkbox_group';
 import { CheckboxField } from '../../../../../commons/checkbox_field/checkbox_group';
-import { JobPerks } from '../../../../../../utils/enums/job_perks/job_perks_utils';
+import { JobIssues } from '../../../../../../utils/enums/job_issues/job_issues_utils';
 import { EditDialogField } from '../../../../../commons/edit_dialog_field/edit_dialog_field';
 
-import { jobPerksTranslations } from '../../../../../../utils/enums/job_perks/job_perks_translations';
+import { CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS } from './current_job_issues_field_spring_props';
 
-import { PERKS_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS } from './perks_field_transitions_spring_props';
-
-import { styles } from './perks_field_styles';
+import { translations } from '../../../../../../utils/enums/job_issues/job_issues_translations';
+import { styles } from './current_job_issues_field_styles';
 
 const useStyles = createUseStyles(styles);
 
-const PerksFieldComponent = ({
-    error,
-    checkboxGroupPerks,
-    checkedPerks,
-    onChange,
-    toggleOtherPerk,
-    otherPerk,
-    handleChange,
-    perks
-}) => {
+const CurrentJobIssuesFieldComponent = ({
+                                 error,
+                                 checkboxGroupCurrentJobIssues,
+                                 checkedCurrentJobIssues,
+                                 onChange,
+                                 toggleOtherCurrentJobIssue,
+                                 otherCurrentJobIssue,
+                                 handleChange,
+                                 currentJobIssues
+                             }) => {
     const classes = useStyles();
     const { formatMessage } = useIntl();
 
-    const transitions = useTransition(otherPerk !== null, item => `other_field_${item ? 'visible' : 'invisible'}`, {
-        ...PERKS_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS,
+    const transitions = useTransition(otherCurrentJobIssue !== null, item => `other_field_${item ? 'visible' : 'invisible'}`, {
+        ...CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS,
         unique: true
     });
 
@@ -42,25 +41,25 @@ const PerksFieldComponent = ({
             error={error}
             title={
                 <FormattedMessage
-                    id="DreamJob.editDialog.perks.title"
-                    defaultMessage="What perks are important to you ?"
+                    id="DreamJob.editDialog.currentJobIssues.title"
+                    defaultMessage="Which issues do you encounter in your current job?"
                 />
             }
         >
             <CheckboxGroup
                 rows={2}
-                values={checkboxGroupPerks}
-                translations={jobPerksTranslations}
-                value={checkedPerks}
+                values={checkboxGroupCurrentJobIssues}
+                translations={translations}
+                value={checkedCurrentJobIssues}
                 name="perks"
                 variant="outlined"
                 onChange={onChange}
             />
             <div className={classes.othersCheckbox}>
                 <CheckboxField
-                    title={<Typography>{formatMessage(jobPerksTranslations.others)}</Typography>}
-                    onClick={toggleOtherPerk}
-                    checked={otherPerk !== null}
+                    title={<Typography>{formatMessage(translations.other)}</Typography>}
+                    onClick={toggleOtherCurrentJobIssue}
+                    checked={otherCurrentJobIssue !== null}
                     variant="outlined"
                     color="secondary"
                 />
@@ -74,8 +73,8 @@ const PerksFieldComponent = ({
                             containerElement={animated.div}
                             customClasses={{ container: cn(classes.textField, classes.otherTextField) }}
                             onChange={handleChange}
-                            name={`perks[${JobPerks.OTHER}]`}
-                            value={perks[JobPerks.OTHER]}
+                            name={`currentJobIssue[${JobIssues.OTHER}]`}
+                            value={currentJobIssues[JobIssues.OTHER]}
                             variant="flat"
                             containerProps={{ style: props }}
                         />
@@ -85,4 +84,4 @@ const PerksFieldComponent = ({
     );
 };
 
-export const PerksField = PerksFieldComponent;
+export const CurrentJobIssuesField = CurrentJobIssuesFieldComponent;

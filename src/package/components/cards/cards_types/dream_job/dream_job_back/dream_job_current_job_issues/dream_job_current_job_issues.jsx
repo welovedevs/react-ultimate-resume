@@ -3,10 +3,8 @@ import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { useIntl } from 'react-intl';
 
-import { JobIssues } from '../../utils/job_issues/job_issues_utils';
-
 import { styles } from './dream_job_current_job_issues_styles';
-import { translations } from '../../utils/job_issues/job_issues_translations';
+import { translations } from '../../../../../../utils/enums/job_issues/job_issues_translations';
 
 const useStyles = createUseStyles(styles);
 
@@ -18,8 +16,7 @@ const DreamJobCurrentJobIssuesComponent = ({ currentJobIssues = {} }) => {
             {Object.entries(currentJobIssues)
                 .filter(([, value]) => Boolean(value))
                 .map(([issueId]) => {
-                    const correspondingIssueKey = Object.entries(JobIssues).find(([, id]) => id === issueId)?.[0];
-                    if (!correspondingIssueKey) {
+                    if (!translations[issueId]) {
                         return null;
                     }
                     return (
@@ -27,7 +24,7 @@ const DreamJobCurrentJobIssuesComponent = ({ currentJobIssues = {} }) => {
                             className={classes.listItem}
                             key={`dream_job_current_job_issue_${issueId}`}
                         >
-                            {formatMessage(translations[correspondingIssueKey])}
+                            {formatMessage(translations[issueId])}
                         </li>
                     );
                 })}

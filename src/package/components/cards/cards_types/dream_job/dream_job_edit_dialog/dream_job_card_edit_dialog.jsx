@@ -15,7 +15,10 @@ import { CONTRACT_TYPES } from '../../../../../utils/enums/contract_types/contra
 
 import { Select } from '../../../../commons/select/select';
 import { JobPerks } from '../../../../../utils/enums/job_perks/job_perks_utils';
+import { JobIssues } from '../../../../../utils/enums/job_issues/job_issues_utils';
+
 import { PerksField } from './perks_field/perks_field';
+import { CurrentJobIssuesField } from './current_job_issues_field/current_job_issues_field';
 import { LocationPlacesField } from './location_places_field/location_places_field';
 
 import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
@@ -27,6 +30,7 @@ import { styles } from './dream_job_card_edit_dialog_styles';
 const useStyles = createUseStyles(styles);
 
 const checkboxGroupPerks = Object.values(JobPerks).filter(perk => perk !== JobPerks.OTHER);
+const checkboxGroupCurrentJobIssues = Object.values(JobIssues).filter(key => key !== JobIssues.OTHER);
 
 const DEFAULT_OBJECT = {};
 
@@ -54,7 +58,8 @@ const Content = ({ helpers: { handleValueChange } }) => {
     const { values, errors, handleChange } = useFormikContext();
     const { places, salary, remoteFrequency, contractTypes } = values;
 
-    const perks = values.perks || DEFAULT_OBJECT;
+    const perks = values.perks ?? DEFAULT_OBJECT;
+    const currentJobIssues = values.currentJobIssues ?? DEFAULT_OBJECT;
 
     const addPlace = useCallback(place => handleValueChange('places')(places.concat({ ...place, id: uuid() })), [
         places
@@ -76,6 +81,18 @@ const Content = ({ helpers: { handleValueChange } }) => {
         [perks]
     );
 
+    const onChangeCurrentJobIssues = useCallback(
+        newCurrentJobIssues =>
+            handleValueChange('currentJobIssues')({
+                ...newCurrentJobIssues.reduce((acc, issue) => {
+                    acc[issue] = true;
+                    return acc;
+                }, {}),
+                [JobIssues.OTHER]: currentJobIssues[JobIssues.OTHER]
+            }),
+        [currentJobIssues]
+    );
+
     const checkedPerks = useMemo(
         () =>
             Object.entries(perks || {})
@@ -83,6 +100,15 @@ const Content = ({ helpers: { handleValueChange } }) => {
                 .map(([perk]) => perk),
         [perks]
     );
+
+    const checkedCurrentJobIssues = useMemo(
+        () =>
+            Object.entries(currentJobIssues || {})
+                .filter(([, value]) => value === true)
+                .map(([issue]) => issue),
+        [currentJobIssues]
+    );
+
     const toggleOtherPerk = useCallback(
         () =>
             handleValueChange('perks')({
@@ -92,7 +118,17 @@ const Content = ({ helpers: { handleValueChange } }) => {
         [perks]
     );
 
+    const toggleOtherCurrentJobIssue = useCallback(
+        () =>
+            handleValueChange('currentJobIssues')({
+                ...currentJobIssues,
+                [JobIssues.OTHER]: currentJobIssues[JobIssues.OTHER] !== null ? null : ''
+            }),
+        [currentJobIssues]
+    );
+
     const otherPerk = useMemo(() => perks[JobPerks.OTHER] ?? null, [perks]);
+    const otherCurrentJobIssue = useMemo(() => currentJobIssues[JobIssues.OTHER] ?? null, [currentJobIssues]);
     return (
         <>
             <LocationPlacesField
@@ -163,6 +199,16 @@ const Content = ({ helpers: { handleValueChange } }) => {
                     onChange={handleValueChange('contractTypes')}
                 />
             </EditDialogField>
+            <CurrentJobIssuesField
+                error={errors?.currentJobIssues}
+                checkboxGroupCurrentJobIssues={checkboxGroupCurrentJobIssues}
+                checkedCurrentJobIssues={checkedCurrentJobIssues}
+                onChange={onChangeCurrentJobIssues}
+                toggleOtherCurrentJobIssue={toggleOtherCurrentJobIssue}
+                otherCurrentJobIssue={otherCurrentJobIssue}
+                handleChange={handleChange}
+                currentJobIssues={currentJobIssues}
+            />
         </>
     );
 };
