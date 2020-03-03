@@ -48,7 +48,7 @@ LocationIcon.defaultProps = {
 var useStyles = (0, _reactJss.createUseStyles)(_basics_front_styles.styles);
 
 var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
-  var _data$currentCity;
+  var _data$currentCity, _data$currentCity2;
 
   var data = _ref.data;
   var variant = (0, _use_card_variant.useCardVariant)();
@@ -78,6 +78,7 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
       setIsMainTypographyTruncated(false);
     }
   }, [mainTypographyReference.current]);
+  var currentCityName = data === null || data === void 0 ? void 0 : (_data$currentCity = data.currentCity) === null || _data$currentCity === void 0 ? void 0 : _data$currentCity.name;
   return _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, _react.default.createElement(_center_content_container.CenterContentContainer, {
     customClasses: {
       container: classes.container
@@ -90,7 +91,7 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
     classes: {
       container: (0, _classnames.default)(classes.mainTypography, isMainTypographyTruncated && classes.truncatedMainTypography)
     }
-  }, data.summary), _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
+  }, data.summary), currentCityName && _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
     variant: "h4",
     component: "h3",
     classes: {
@@ -98,7 +99,7 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
     }
   }, _react.default.createElement(LocationIcon, {
     className: classes.locationIcon
-  }), data === null || data === void 0 ? void 0 : (_data$currentCity = data.currentCity) === null || _data$currentCity === void 0 ? void 0 : _data$currentCity.name))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+  }), data === null || data === void 0 ? void 0 : (_data$currentCity2 = data.currentCity) === null || _data$currentCity2 === void 0 ? void 0 : _data$currentCity2.name))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Basics.front.action",
