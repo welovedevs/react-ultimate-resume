@@ -1,6 +1,6 @@
 import { defineMessages } from 'react-intl';
 
-export default defineMessages({
+export const translations = defineMessages({
     NO_TECH: {
         id: 'Developer.jobIssues.tech',
         defaultMessage: 'Pas assez technique'

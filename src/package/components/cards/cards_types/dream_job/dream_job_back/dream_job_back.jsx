@@ -10,11 +10,11 @@ import { ProfileCardSectionTitle } from '../../../../commons/profile_card/profil
 import { ProfileCardSectionText } from '../../../../commons/profile_card/profile_card_section_text/profile_card_section_text';
 import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back';
 import { ContractType } from '../../../../commons/fields/contract_types/contract_types';
-import { JobPerks } from '../../../../../utils/enums/job_perks/job_perks_utils';
+import { DreamJobCurrentJobIssues } from './dream_job_current_job_issues/dream_job_current_job_issues';
+import { DreamJobPerks } from './dream_job_perks/dream_job_perks';
 
 import { useOpenerState } from '../../../../hooks/use_opener_state';
 
-import { jobPerksTranslations } from '../../../../../utils/enums/job_perks/job_perks_translations';
 import { remoteDisplayTranslations } from '../../../../../utils/enums/remote/remote_filter_translations';
 
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
@@ -27,8 +27,7 @@ const useStyles = createUseStyles(styles);
 
 const DreamJobBackComponent = ({ data }) => {
     const classes = useStyles();
-    const { places, perks, salary, remoteFrequency, contractTypes } = data;
-    console.log({ data });
+    const { places, perks, salary, remoteFrequency, contractTypes, currentJobIssues } = data;
     return (
         <ProfileCardAnimatedBack
             title={<FormattedMessage id="Dreamjob.Back.Title" defaultMessage="Dream job" />}
@@ -67,6 +66,19 @@ const DreamJobBackComponent = ({ data }) => {
                     </ProfileCardSectionTitle>
                     <ProfileCardSectionText>
                         <DreamJobPerks perks={perks} />
+                    </ProfileCardSectionText>
+                </ProfileCardSection>
+            )}
+            {existsAndNotEmpty(currentJobIssues) && (
+                <ProfileCardSection>
+                    <ProfileCardSectionTitle>
+                        <FormattedMessage
+                            id="Dreamjob.Back.Location.CurrentJobIssues.Title"
+                            defaultMessage="Current job's issues"
+                        />
+                    </ProfileCardSectionTitle>
+                    <ProfileCardSectionText>
+                        <DreamJobCurrentJobIssues currentJobIssues={currentJobIssues} />
                     </ProfileCardSectionText>
                 </ProfileCardSection>
             )}
@@ -140,19 +152,6 @@ const DreamJobPlaces = ({ places = [], classes }) => {
             </PopperCard>
         </>
     );
-};
-
-const DreamJobPerks = ({ perks = {} }) => {
-    const { formatMessage } = useIntl();
-
-    return Object.entries(perks || {})
-        .map(([key, value]) => {
-            if (key === JobPerks.OTHER) {
-                return value;
-            }
-            return formatMessage(jobPerksTranslations[key.toLowerCase()] || jobPerksTranslations.others);
-        })
-        .join(', ');
 };
 
 export const DreamJobBack = DreamJobBackComponent;
