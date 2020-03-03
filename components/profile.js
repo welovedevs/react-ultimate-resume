@@ -161,6 +161,11 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
   var mergedOptions = (0, _react.useMemo)(function () {
     return (0, _merge.default)(DEFAULT_OPTIONS, options);
   }, [options]);
+  console.log({
+    mergedOptions: mergedOptions,
+    options: options,
+    DEFAULT_OPTIONS: DEFAULT_OPTIONS
+  });
   var locale = mergedOptions.locale,
       customization = mergedOptions.customization;
   var builtTheme = (0, _react.useMemo)(function () {
