@@ -51,8 +51,6 @@ const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace }) 
                                 <TrashIcon className={classes.deleteIcon} />
                             </button>
                         </Tooltip>
-                        <Typography variant="body2" color="light">
-                        </Typography>
                     </Tag>
                 ))}
             </div>
