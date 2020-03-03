@@ -101,7 +101,7 @@ var LocationPlacesFieldComponent = function LocationPlacesFieldComponent(_ref) {
     }))), _react.default.createElement(_ui.Typography, {
       variant: "body2",
       color: "light"
-    }, item.name));
+    }));
   })));
 };
 
