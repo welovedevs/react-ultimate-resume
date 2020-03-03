@@ -89,7 +89,7 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
     classes: {
       container: (0, _classnames.default)(classes.typography, isTypographyTruncated && classes.truncatedTypography)
     }
-  }, 'Chargée de projets humanitaires @Secours Islamique France Chargée de projets humanitaires @Secours Islamique France', title)))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+  }, title)))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Experiences.front.action",

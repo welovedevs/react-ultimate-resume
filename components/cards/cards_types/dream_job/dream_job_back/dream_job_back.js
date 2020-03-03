@@ -35,11 +35,11 @@ var _profile_card_animated_back = require("../../../../commons/profile_card/prof
 
 var _contract_types = require("../../../../commons/fields/contract_types/contract_types");
 
-var _job_perks_utils = require("../../../../../utils/enums/job_perks/job_perks_utils");
+var _dream_job_current_job_issues = require("./dream_job_current_job_issues/dream_job_current_job_issues");
+
+var _dream_job_perks = require("./dream_job_perks/dream_job_perks");
 
 var _use_opener_state = require("../../../../hooks/use_opener_state");
-
-var _job_perks_translations = require("../../../../../utils/enums/job_perks/job_perks_translations");
 
 var _remote_filter_translations = require("../../../../../utils/enums/remote/remote_filter_translations");
 
@@ -58,7 +58,8 @@ var DreamJobBackComponent = function DreamJobBackComponent(_ref) {
       perks = data.perks,
       salary = data.salary,
       remoteFrequency = data.remoteFrequency,
-      contractTypes = data.contractTypes;
+      contractTypes = data.contractTypes,
+      currentJobIssues = data.currentJobIssues;
   return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Dreamjob.Back.Title",
@@ -81,8 +82,13 @@ var DreamJobBackComponent = function DreamJobBackComponent(_ref) {
   }) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Dreamjob.Back.Location.Perks.Title",
     defaultMessage: "Important perks in my job"
-  })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, _react.default.createElement(DreamJobPerks, {
+  })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, _react.default.createElement(_dream_job_perks.DreamJobPerks, {
     perks: perks
+  }))), (0, _exists_and_not_empty.existsAndNotEmpty)(currentJobIssues) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Dreamjob.Back.Location.CurrentJobIssues.Title",
+    defaultMessage: "Current job's issues"
+  })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, _react.default.createElement(_dream_job_current_job_issues.DreamJobCurrentJobIssues, {
+    currentJobIssues: currentJobIssues
   }))));
 };
 
@@ -166,26 +172,6 @@ var DreamJobPlaces = function DreamJobPlaces(_ref3) {
       key: "place_popper_".concat(index)
     }, _react.default.createElement(_ui.Typography, null, name));
   }))));
-};
-
-var DreamJobPerks = function DreamJobPerks(_ref6) {
-  var _ref6$perks = _ref6.perks,
-      perks = _ref6$perks === void 0 ? {} : _ref6$perks;
-
-  var _useIntl2 = (0, _reactIntl.useIntl)(),
-      formatMessage = _useIntl2.formatMessage;
-
-  return Object.entries(perks || {}).map(function (_ref7) {
-    var _ref8 = (0, _slicedToArray2.default)(_ref7, 2),
-        key = _ref8[0],
-        value = _ref8[1];
-
-    if (key === _job_perks_utils.JobPerks.OTHER) {
-      return value;
-    }
-
-    return formatMessage(_job_perks_translations.jobPerksTranslations[key.toLowerCase()] || _job_perks_translations.jobPerksTranslations.others);
-  }).join(', ');
 };
 
 var DreamJobBack = DreamJobBackComponent;
