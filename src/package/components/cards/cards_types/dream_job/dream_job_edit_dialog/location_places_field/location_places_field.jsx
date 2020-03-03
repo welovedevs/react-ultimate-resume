@@ -52,7 +52,6 @@ const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace }) 
                             </button>
                         </Tooltip>
                         <Typography variant="body2" color="light">
-                            {item.name}
                         </Typography>
                     </Tag>
                 ))}
