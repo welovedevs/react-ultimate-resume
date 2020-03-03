@@ -159,7 +159,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
       classes = _ref3.classes,
       isEditing = _ref3.isEditing;
   var mergedOptions = (0, _react.useMemo)(function () {
-    return (0, _merge.default)(options, DEFAULT_OPTIONS);
+    return (0, _merge.default)(DEFAULT_OPTIONS, options);
   }, [options]);
   var locale = mergedOptions.locale,
       customization = mergedOptions.customization;
