@@ -57,6 +57,10 @@ var LocationPlacesFieldComponent = function LocationPlacesFieldComponent(_ref) {
   var placesValues = (0, _react.useMemo)(function () {
     return Object.values(places || {});
   }, [places]);
+  console.log({
+    placesValues: placesValues,
+    places: places
+  });
   var transitions = (0, _reactSpring.useTransition)(placesValues, function (_ref2) {
     var id = _ref2.id;
     return "place_".concat(id);
