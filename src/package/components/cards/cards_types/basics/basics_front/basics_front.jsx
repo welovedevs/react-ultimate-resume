@@ -38,6 +38,8 @@ const BasicsFrontComponent = ({ data }) => {
         }
     }, [mainTypographyReference.current]);
 
+    const currentCityName = data?.currentCity?.name;
+
     return (
         <ProfileCardPaddedFront>
             <CenterContentContainer customClasses={{ container: classes.container }}>
@@ -52,10 +54,12 @@ const BasicsFrontComponent = ({ data }) => {
                     >
                         {data.summary}
                     </ProfileCardFrontTypography>
-                    <ProfileCardFrontTypography variant="h4" component="h3" classes={{ container: classes.location }}>
-                        <LocationIcon className={classes.locationIcon} />
-                        {data?.currentCity?.name}
-                    </ProfileCardFrontTypography>
+                    {currentCityName && (
+                        <ProfileCardFrontTypography variant="h4" component="h3" classes={{ container: classes.location }}>
+                            <LocationIcon className={classes.locationIcon} />
+                            {data?.currentCity?.name}
+                        </ProfileCardFrontTypography>
+                    )}
                 </div>
             </CenterContentContainer>
             <ProfileCardActions>
