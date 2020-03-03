@@ -79,7 +79,7 @@
   "Dreamjob.Back.ContractTypes.Title": "Contract types",
   "Dreamjob.Back.Location.ManyPlaces": "I want to work in {place} and {length, plural, one {one other place} other {# other places}}",
   "Dreamjob.Back.Location.OnePlace": "I want to work in {place}",
-  "Dreamjob.Back.Location.Perks.Title": "Important perks in my job",
+  "Dreamjob.Back.Location.Perks.Title": "Important perks",
   "Dreamjob.Back.Location.RemoteOnly": "I only want to work remotely",
   "Dreamjob.Back.Location.Title": "My dreamjob location",
   "Dreamjob.Back.Salary.Title": "Ideal yearly salary",

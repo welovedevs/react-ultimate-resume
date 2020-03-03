@@ -13,9 +13,11 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/sli
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _reactIntl = require("react-intl");
+var _classnames = _interopRequireDefault(require("classnames"));
 
 var _reactJss = require("react-jss");
+
+var _reactIntl = require("react-intl");
 
 var _profile_card_padding_front = require("../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front");
 
@@ -29,9 +31,9 @@ var _profile_card_front_typography = require("../../../../commons/profile_card/p
 
 var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
 
-var _experiences_front_styles = require("./experiences_front_styles");
-
 var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
+
+var _experiences_front_styles = require("./experiences_front_styles");
 
 var useStyles = (0, _reactJss.createUseStyles)(_experiences_front_styles.styles);
 
@@ -50,6 +52,20 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
   var classes = useStyles({
     variant: variant
   });
+
+  var _useState = (0, _react.useState)(true),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      isTypographyTruncated = _useState2[0],
+      setIsTypographyTruncated = _useState2[1];
+
+  var typographyReference = (0, _react.useRef)();
+  (0, _react.useEffect)(function () {
+    var element = typographyReference.current;
+
+    if (element.offsetHeight > element.scrollHeight - 1) {
+      setIsTypographyTruncated(false);
+    }
+  }, [typographyReference.current]);
   var handleButtonClick = (0, _react.useCallback)(function () {
     return setSide(side === 'front' ? 'back' : 'front');
   }, [side, setSide]);
@@ -69,10 +85,11 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
   }, _react.default.createElement("div", {
     className: classes.textsContainer
   }, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
+    ref: typographyReference,
     classes: {
-      container: classes.mainTypography
+      container: (0, _classnames.default)(classes.typography, isTypographyTruncated && classes.truncatedTypography)
     }
-  }, title)))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+  }, 'Chargée de projets humanitaires @Secours Islamique France Chargée de projets humanitaires @Secours Islamique France', title)))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Experiences.front.action",

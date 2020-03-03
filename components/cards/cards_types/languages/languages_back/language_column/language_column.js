@@ -25,7 +25,6 @@ var LanguageColumnComponent = function LanguageColumnComponent(_ref) {
       _ref$item = _ref.item;
   _ref$item = _ref$item === void 0 ? {} : _ref$item;
   var value = _ref$item.value,
-      language = _ref$item.language,
       children = _ref.children,
       itemsSize = _ref.itemsSize;
   var classes = useStyles({
@@ -38,11 +37,7 @@ var LanguageColumnComponent = function LanguageColumnComponent(_ref) {
     customClasses: {
       container: classes.popper
     },
-    title: _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-      className: classes.popperTitle
-    }, language), _react.default.createElement("div", {
-      className: classes.popperTitle
-    }, "".concat(value, "%")))
+    title: "".concat(value, "%")
   }, _react.default.createElement(Component, {
     className: classes.container,
     style: style
