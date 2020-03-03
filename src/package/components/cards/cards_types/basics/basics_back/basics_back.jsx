@@ -9,6 +9,8 @@ import { ProfileCardSectionText } from '../../../../commons/profile_card/profile
 import { ProfileCardSection } from '../../../../commons/profile_card/profile_card_section/profile_card_section';
 import { ContractType } from '../../../../commons/fields/contract_types/contract_types';
 
+import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
+
 import { translations } from '../../../../../utils/enums/job_serachstate/job_search_state_translations';
 import { styles } from './basics_back_styles';
 
@@ -101,7 +103,7 @@ const BasicsBackComponent = ({ data }) => {
     return (
         <ProfileCardAnimatedBack title="Who ?">
             {Object.entries(sections)
-                .filter(([, { hide }]) => !hide)
+                .filter(([, { value, hide }]) => existsAndNotEmpty(value) && !hide)
                 .map(([id, { title, value }]) => (
                     <ProfileCardSection key={id}>
                         {title && <ProfileCardSectionTitle>{title}</ProfileCardSectionTitle>}

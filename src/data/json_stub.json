@@ -174,8 +174,7 @@
         },
         "dreamJob": {
             "locations": [{ "name": "Lille, France" }, { "name": "Paris,France" }, { "name": "Valenciennes, France" }],
-            "remoteFrequency": "regularly",
-            "salary": "30k€"
+            "remoteFrequency": "regularly"
         },
         "education": {
             "studiesLevel": 5

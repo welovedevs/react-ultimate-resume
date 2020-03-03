@@ -17,6 +17,8 @@ import { useOpenerState } from '../../../../hooks/use_opener_state';
 import { jobPerksTranslations } from '../../../../../utils/enums/job_perks/job_perks_translations';
 import { remoteDisplayTranslations } from '../../../../../utils/enums/remote/remote_filter_translations';
 
+import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
+
 import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
 
 import { styles } from './dream_job_back_styles';
@@ -30,34 +32,43 @@ const DreamJobBackComponent = ({ data }) => {
         <ProfileCardAnimatedBack
             title={<FormattedMessage id="Dreamjob.Back.Title" defaultMessage="Dream job" />}
         >
-            <ProfileCardSection>
-                <DreamJobLocations places={places} remoteFrequency={remoteFrequency} classes={classes} />
-            </ProfileCardSection>
-            <ProfileCardSection>
-                <ProfileCardSectionTitle>
-                    <FormattedMessage id="Dreamjob.Back.Salary.Title" defaultMessage="Ideal yearly salary" />
-                </ProfileCardSectionTitle>
-                <ProfileCardSectionText>{salary}</ProfileCardSectionText>
-            </ProfileCardSection>
-            <ProfileCardSection>
-                <ProfileCardSectionTitle>
-                    <FormattedMessage id="Dreamjob.Back.ContractTypes.Title" defaultMessage="Contract types" />
-                </ProfileCardSectionTitle>
-                <ProfileCardSectionText>
-                    <ContractType contractTypes={contractTypes} />
-                </ProfileCardSectionText>
-            </ProfileCardSection>
-            <ProfileCardSection>
-                <ProfileCardSectionTitle>
-                    <FormattedMessage
-                        id="Dreamjob.Back.Location.Perks.Title"
-                        defaultMessage="Important perks in my job"
-                    />
-                </ProfileCardSectionTitle>
-                <ProfileCardSectionText>
-                    <DreamJobPerks perks={perks} />
-                </ProfileCardSectionText>
-            </ProfileCardSection>
+            {existsAndNotEmpty(places) && (
+                <ProfileCardSection>
+                    <DreamJobLocations places={places} remoteFrequency={remoteFrequency} classes={classes} />
+                </ProfileCardSection>
+            )}
+            {existsAndNotEmpty(salary) && (
+                <ProfileCardSection>
+                    <ProfileCardSectionTitle>
+                        <FormattedMessage id="Dreamjob.Back.Salary.Title" defaultMessage="Ideal yearly salary" />
+                    </ProfileCardSectionTitle>
+                    <ProfileCardSectionText>{salary}</ProfileCardSectionText>
+                </ProfileCardSection>
+            )}
+            {existsAndNotEmpty(contractTypes) && (
+                <ProfileCardSection>
+                    <ProfileCardSectionTitle>
+                        <FormattedMessage id="Dreamjob.Back.ContractTypes.Title" defaultMessage="Contract types" />
+                    </ProfileCardSectionTitle>
+                    <ProfileCardSectionText>
+                        <ContractType contractTypes={contractTypes} />
+                    </ProfileCardSectionText>
+                </ProfileCardSection>
+            )}
+            {(existsAndNotEmpty(perks) &&
+                (typeof perks === 'object' && Object.values(perks).some(value => existsAndNotEmpty(value)))) && (
+                <ProfileCardSection>
+                    <ProfileCardSectionTitle>
+                        <FormattedMessage
+                            id="Dreamjob.Back.Location.Perks.Title"
+                            defaultMessage="Important perks in my job"
+                        />
+                    </ProfileCardSectionTitle>
+                    <ProfileCardSectionText>
+                        <DreamJobPerks perks={perks} />
+                    </ProfileCardSectionText>
+                </ProfileCardSection>
+            )}
         </ProfileCardAnimatedBack>
     );
 };

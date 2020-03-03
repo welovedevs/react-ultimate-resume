@@ -4,13 +4,17 @@ import { createUseStyles, useTheme } from 'react-jss';
 import { animated, useTransition } from 'react-spring';
 import chroma from 'chroma-js';
 
+import { Tooltip } from '@wld/ui';
+
 import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back';
 import { LanguageColumn } from './language_column/language_column';
 
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
 
-import { styles } from './languages_back_styles';
 import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { LANGUAGES_COLUMN_TRANSITIONS_SPRING_PROPS } from './languages_back_spring_props';
+
+import { styles } from './languages_back_styles';
 
 const useStyles = createUseStyles(styles);
 
@@ -19,12 +23,7 @@ const LanguagesBackComponent = ({ data }) => {
     const theme = useTheme();
     const [variant] = useCardVariant();
     const transitions = useTransition(data.languages ?? [], ({ id }) => `language_column_${id}`, {
-        from: {
-            transform: 'translate3d(0, 50%, 0)'
-        },
-        enter: {
-            transform: 'translate3d(0, 0, 0)'
-        },
+        ...LANGUAGES_COLUMN_TRANSITIONS_SPRING_PROPS,
         trail: (175 * 3) / (data?.languages ?? []).length
     });
 
@@ -70,7 +69,13 @@ const LanguagesBackComponent = ({ data }) => {
                         }}
                         cardVariant={variant}
                     >
-                        {item.language?.substring(0, 2).toUpperCase()}
+                        <Tooltip
+                            title={item.language}
+                        >
+                            <button className={classes.languageLettersButton} type="button">
+                                {item.language?.substring(0, 2).toUpperCase()}
+                            </button>
+                        </Tooltip>
                     </LanguageColumn>
                 ))}
             </div>
