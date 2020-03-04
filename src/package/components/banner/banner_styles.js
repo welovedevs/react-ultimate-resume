@@ -34,7 +34,7 @@ export const styles = (theme) => {
                 height: 450
             },
             [QUERY_EXTRA_SMALL]: {
-                height: 550,
+                height: [550, '!important'],
                 padding: [spacing * 4, spacing * 2.5]
             }
         },
