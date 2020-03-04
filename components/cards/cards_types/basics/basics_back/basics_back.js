@@ -50,7 +50,7 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
   var sections = (0, _react.useMemo)(function () {
     return {
       visaSponsorship: {
-        hide: !visaSponsorship,
+        hide: !(0, _exists_and_not_empty.existsAndNotEmpty)(visaSponsorship),
         value: _react.default.createElement("span", {
           className: classes.bold
         }, _react.default.createElement(_reactIntl.FormattedMessage, {
@@ -63,6 +63,7 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
           id: "Basics.Back.Work.Title",
           defaultMessage: "Work"
         }),
+        hide: !experienceYears && !(0, _exists_and_not_empty.existsAndNotEmpty)(contractTypes) && !(0, _exists_and_not_empty.existsAndNotEmpty)(searchState),
         value: _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
           id: "Basics.Back.Work",
           defaultMessage: '{experienceYears} years of experience',
@@ -80,6 +81,7 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
           id: "Basics.Back.StudiesLevel.Title",
           defaultMessage: "Training"
         }),
+        hide: !studiesLevel,
         value: _react.default.createElement(_reactIntl.FormattedMessage, {
           id: "Basics.Back.StudiesLevel",
           defaultMessage: '{studiesLevel} years of higher education',
@@ -93,6 +95,7 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
           id: "Basics.Back.CodingYears.title",
           defaultMessage: "Experience"
         }),
+        hide: !personalDescription,
         value: _react.default.createElement(_reactIntl.FormattedMessage, {
           id: "Basics.Back.CodingYears.value",
           defaultMessage: '{codingYears} years coding',
@@ -106,19 +109,21 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
           id: "Basics.Back.PersonalDescription",
           defaultMessage: "A bit more about me : "
         }),
+        hide: !personalDescription,
         value: _react.default.createElement("span", null, personalDescription)
       }
     };
   }, [currentCityName, experienceYears, contractTypes, studiesLevel, codingYears, codingReason, visaSponsorship, personalDescription, searchState]);
+  console.log({
+    personalDescription: personalDescription
+  });
   return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
     title: "Who ?"
   }, Object.entries(sections).filter(function (_ref2) {
     var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
-        _ref3$ = _ref3[1],
-        value = _ref3$.value,
-        hide = _ref3$.hide;
+        hide = _ref3[1].hide;
 
-    return (0, _exists_and_not_empty.existsAndNotEmpty)(value) && !hide;
+    return !hide;
   }).map(function (_ref4) {
     var _ref5 = (0, _slicedToArray2.default)(_ref4, 2),
         id = _ref5[0],

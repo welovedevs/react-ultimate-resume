@@ -98,7 +98,10 @@ var LocationPlacesFieldComponent = function LocationPlacesFieldComponent(_ref) {
       onClick: removePlace(item.id)
     }, _react.default.createElement(TrashIcon, {
       className: classes.deleteIcon
-    }))));
+    }))), _react.default.createElement(_ui.Typography, {
+      variant: "body2",
+      color: "light"
+    }, item.name));
   })));
 };
 
