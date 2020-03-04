@@ -30,6 +30,7 @@
         "operator-linebreak": ["error", "after"],
         "prefer-destructuring": "warn",
         "react/destructuring-assignment": ["warn", "always"],
+        "react/jsx-curly-brace-presence": ["off"],
         "react/jsx-indent": ["off"],
         "react/jsx-indent-props": ["off"],
         "react/jsx-props-no-spreading": ["off"],

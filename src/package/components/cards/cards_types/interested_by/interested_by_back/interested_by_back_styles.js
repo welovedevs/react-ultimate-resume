@@ -1,7 +1,25 @@
-import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
+import {
+    getColorsFromCardVariant,
+    getHexFromPaletteColor,
+    withCustomVerticalScrollbar
+} from '../../../../../utils/styles/styles_utils';
 
-export const styles = theme => ({
-    container: ({ variant }) => ({
-        backgroundColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).color)
-    })
-});
+export const styles = (theme) => {
+    const { miscellaneous: { spacing } } = theme;
+    return ({
+        container: ({ variant }) => ({
+            backgroundColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).color)
+        }),
+        typography: ({ variant }) => ({
+            display: 'block',
+            overflow: 'auto',
+            textOverflow: 'unset',
+            '-webkit-line-clamp': 'unset',
+            '-webkit-box-orient': 'unset',
+            margin: 0,
+            paddingRight: spacing * 3,
+            maxHeight: '100%',
+            ...withCustomVerticalScrollbar(getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backgroundColor))
+        })
+    });
+};

@@ -19,11 +19,13 @@ const InterestedByBackComponent = props => {
     return (
         <InterestedByFront
             customClasses={{
-                container: classes.container
+                container: classes.container,
+                typography: classes.typography
             }}
             profileCardFrontTypographyProps={{
                 overrideColor
             }}
+            dismissButton
             {...props}
         />
     );
