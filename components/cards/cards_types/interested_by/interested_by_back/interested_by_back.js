@@ -41,11 +41,13 @@ var InterestedByBackComponent = function InterestedByBackComponent(props) {
   }, [theme, variant]);
   return _react.default.createElement(_interested_by_front.InterestedByFront, (0, _extends2.default)({
     customClasses: {
-      container: classes.container
+      container: classes.container,
+      typography: classes.typography
     },
     profileCardFrontTypographyProps: {
       overrideColor: overrideColor
-    }
+    },
+    dismissButton: true
   }, props));
 };
 
