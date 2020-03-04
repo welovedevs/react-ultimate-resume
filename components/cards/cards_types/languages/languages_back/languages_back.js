@@ -21,8 +21,6 @@ var _reactSpring = require("react-spring");
 
 var _chromaJs = _interopRequireDefault(require("chroma-js"));
 
-var _ui = require("@wld/ui");
-
 var _profile_card_animated_back = require("../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back");
 
 var _language_column = require("./language_column/language_column");
@@ -102,12 +100,10 @@ var LanguagesBackComponent = function LanguagesBackComponent(_ref) {
         color: backColor
       }),
       cardVariant: variant
-    }, _react.default.createElement(_ui.Tooltip, {
-      title: item.language
     }, _react.default.createElement("button", {
       className: classes.languageLettersButton,
       type: "button"
-    }, (_item$language = item.language) === null || _item$language === void 0 ? void 0 : _item$language.substring(0, 2).toUpperCase())));
+    }, (_item$language = item.language) === null || _item$language === void 0 ? void 0 : _item$language.substring(0, 2).toUpperCase()));
   })));
 };
 
