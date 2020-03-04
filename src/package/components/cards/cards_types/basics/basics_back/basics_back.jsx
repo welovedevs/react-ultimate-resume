@@ -34,7 +34,7 @@ const BasicsBackComponent = ({ data }) => {
     const sections = useMemo(
         () => ({
             visaSponsorship: {
-                hide: !visaSponsorship,
+                hide: !existsAndNotEmpty(visaSponsorship),
                 value: (
                     <span className={classes.bold}>
                         <FormattedMessage
@@ -46,6 +46,7 @@ const BasicsBackComponent = ({ data }) => {
             },
             work: {
                 title: <FormattedMessage id="Basics.Back.Work.Title" defaultMessage="Work" />,
+                hide: (!experienceYears && !existsAndNotEmpty(contractTypes) && !existsAndNotEmpty(searchState)),
                 value: (
                     <>
                         <FormattedMessage
@@ -62,6 +63,7 @@ const BasicsBackComponent = ({ data }) => {
             },
             studies: {
                 title: <FormattedMessage id="Basics.Back.StudiesLevel.Title" defaultMessage="Training" />,
+                hide: !studiesLevel,
                 value: (
                     <FormattedMessage
                         id="Basics.Back.StudiesLevel"
@@ -72,6 +74,7 @@ const BasicsBackComponent = ({ data }) => {
             },
             codingYears: {
                 title: <FormattedMessage id="Basics.Back.CodingYears.title" defaultMessage="Experience" />,
+                hide: !personalDescription,
                 value: (
                     <FormattedMessage
                         id="Basics.Back.CodingYears.value"
@@ -84,6 +87,7 @@ const BasicsBackComponent = ({ data }) => {
                 title: (
                     <FormattedMessage id="Basics.Back.PersonalDescription" defaultMessage="A bit more about me : " />
                 ),
+                hide: !personalDescription,
                 value: <span>{personalDescription}</span>
             }
         }),
@@ -100,10 +104,12 @@ const BasicsBackComponent = ({ data }) => {
         ]
     );
 
+    console.log({ personalDescription });
+
     return (
         <ProfileCardAnimatedBack title="Who ?">
             {Object.entries(sections)
-                .filter(([, { value, hide }]) => existsAndNotEmpty(value) && !hide)
+                .filter(([, { hide }]) => !hide)
                 .map(([id, { title, value }]) => (
                     <ProfileCardSection key={id}>
                         {title && <ProfileCardSectionTitle>{title}</ProfileCardSectionTitle>}

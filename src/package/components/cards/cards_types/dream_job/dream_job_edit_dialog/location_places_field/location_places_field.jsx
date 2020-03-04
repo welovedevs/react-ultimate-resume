@@ -33,7 +33,7 @@ const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace }) 
                     id="DreamJob.editDialog.location.title"
                     defaultMessage="What's your dream job location?"
                 />
-              )}
+            )}
         >
             <LocationField
                 fullWidth
@@ -51,6 +51,9 @@ const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace }) 
                                 <TrashIcon className={classes.deleteIcon} />
                             </button>
                         </Tooltip>
+                        <Typography variant="body2" color="light">
+                            {item.name}
+                        </Typography>
                     </Tag>
                 ))}
             </div>
