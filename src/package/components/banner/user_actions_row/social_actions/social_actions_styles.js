@@ -2,22 +2,22 @@ import { createScreenWidthMediaQuery } from '../../../../utils/styles/styles_uti
 
 export const styles = (theme) => {
     const { screenSizes, miscellaneous: { spacing } } = theme;
+    const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
     return ({
         container: {
             display: 'flex',
             alignItems: 'center',
             flexWrap: 'wrap',
             justifyContent: 'flex-end',
-            marginLeft: spacing * 3
-        },
-        [createScreenWidthMediaQuery('max-width', screenSizes.small)]: {
-            container: {
+            marginLeft: spacing * 3,
+            [QUERY_SMALL]: {
                 width: '100%',
                 marginTop: spacing * 2,
+                flexDirection: 'column',
                 justifyContent: 'center',
                 marginLeft: 'unset',
                 '& > *': {
-                    flex: 1
+                    width: '100%'
                 }
             }
         }

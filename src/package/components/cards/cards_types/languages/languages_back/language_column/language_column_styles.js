@@ -10,6 +10,7 @@ export const styles = (theme) => {
     } = theme;
 
     const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
+    const QUERY_EXTRA_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
 
     return {
         // Offset value = (((OldValue - OldMin) * (NewMax - NewMin)) / (OldMax - OldMin)) + NewMin
@@ -30,9 +31,15 @@ export const styles = (theme) => {
             display: 'flex',
             justifyContent: 'center'
         },
-        columnsContainer: {
-            [QUERY_SMALL]: {
-                paddingTop: theme.miscellaneous.spacing * 2
+        [QUERY_SMALL]: {
+            columnsContainer: { paddingTop: theme.miscellaneous.spacing * 2 }
+        },
+        [QUERY_EXTRA_SMALL]: {
+            container: {
+                paddingBottom: [spacing * 2, '!important']
+            },
+            typography: {
+                fontSize: 30
             }
         }
     };

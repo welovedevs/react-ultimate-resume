@@ -12,8 +12,8 @@ export const styles = (theme) => {
     const primaryRgb = palette.primary.rgbShades[500].join(', ');
 
     const QUERY_MEDIUM = createScreenWidthMediaQuery('max-width', screenSizes.medium);
+    const QUERY_BETWEEN_MEDIUM_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.medium - (screenSizes.medium - screenSizes.small) / 2);
     const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
-    const QUERY_BETWEEN_SMALL_EXTRA_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small - (screenSizes.small - screenSizes.xs) / 2);
     const QUERY_EXTRA_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.xs);
 
     return {
@@ -30,10 +30,11 @@ export const styles = (theme) => {
             [QUERY_MEDIUM]: {
                 padding: [spacing * 4, spacing * 6]
             },
-            [QUERY_BETWEEN_SMALL_EXTRA_SMALL]: {
+            [QUERY_SMALL]: {
                 height: 450
             },
             [QUERY_EXTRA_SMALL]: {
+                height: 550,
                 padding: [spacing * 4, spacing * 2.5]
             }
         },
@@ -61,7 +62,7 @@ export const styles = (theme) => {
             display: 'flex',
             justifyContent: 'space-between',
             marginBottom: spacing * 12,
-            [QUERY_SMALL]: {
+            [QUERY_BETWEEN_MEDIUM_SMALL]: {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center'
