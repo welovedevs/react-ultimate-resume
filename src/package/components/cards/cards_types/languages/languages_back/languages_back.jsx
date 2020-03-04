@@ -4,8 +4,6 @@ import { createUseStyles, useTheme } from 'react-jss';
 import { animated, useTransition } from 'react-spring';
 import chroma from 'chroma-js';
 
-import { Tooltip } from '@wld/ui';
-
 import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back';
 import { LanguageColumn } from './language_column/language_column';
 
@@ -69,13 +67,9 @@ const LanguagesBackComponent = ({ data }) => {
                         }}
                         cardVariant={variant}
                     >
-                        <Tooltip
-                            title={item.language}
-                        >
-                            <button className={classes.languageLettersButton} type="button">
-                                {item.language?.substring(0, 2).toUpperCase()}
-                            </button>
-                        </Tooltip>
+                        <button className={classes.languageLettersButton} type="button">
+                            {item.language?.substring(0, 2).toUpperCase()}
+                        </button>
                     </LanguageColumn>
                 ))}
             </div>
