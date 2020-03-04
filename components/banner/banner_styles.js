@@ -44,7 +44,7 @@ var styles = function styles(theme) {
     }), (0, _defineProperty2.default)(_objectSpread2, QUERY_SMALL, {
       height: 450
     }), (0, _defineProperty2.default)(_objectSpread2, QUERY_EXTRA_SMALL, {
-      height: 550,
+      height: [550, '!important'],
       padding: [spacing * 4, spacing * 2.5]
     }), _objectSpread2)),
     absolutePositioned: {
