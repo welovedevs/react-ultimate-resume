@@ -25,8 +25,8 @@ var styles = function styles(theme) {
       spacing = theme.miscellaneous.spacing;
   var primaryRgb = palette.primary.rgbShades[500].join(', ');
   var QUERY_MEDIUM = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.medium);
+  var QUERY_BETWEEN_MEDIUM_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.medium - (screenSizes.medium - screenSizes.small) / 2);
   var QUERY_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small);
-  var QUERY_BETWEEN_SMALL_EXTRA_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small - (screenSizes.small - screenSizes.xs) / 2);
   var QUERY_EXTRA_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.xs);
   return {
     container: _objectSpread({
@@ -41,9 +41,10 @@ var styles = function styles(theme) {
       }
     }, (0, _defineProperty2.default)(_objectSpread2, QUERY_MEDIUM, {
       padding: [spacing * 4, spacing * 6]
-    }), (0, _defineProperty2.default)(_objectSpread2, QUERY_BETWEEN_SMALL_EXTRA_SMALL, {
+    }), (0, _defineProperty2.default)(_objectSpread2, QUERY_SMALL, {
       height: 450
     }), (0, _defineProperty2.default)(_objectSpread2, QUERY_EXTRA_SMALL, {
+      height: 550,
       padding: [spacing * 4, spacing * 2.5]
     }), _objectSpread2)),
     absolutePositioned: {
@@ -70,7 +71,7 @@ var styles = function styles(theme) {
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: spacing * 12
-    }, QUERY_SMALL, {
+    }, QUERY_BETWEEN_MEDIUM_SMALL, {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center'

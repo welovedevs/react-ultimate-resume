@@ -15,10 +15,13 @@ var MIN = 30;
 var MAX = 100;
 
 var styles = function styles(theme) {
+  var _ref2;
+
   var spacing = theme.miscellaneous.spacing,
       screenSizes = theme.screenSizes;
   var QUERY_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small);
-  return {
+  var QUERY_EXTRA_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small);
+  return _ref2 = {
     // Offset value = (((OldValue - OldMin) * (NewMax - NewMin)) / (OldMax - OldMin)) + NewMin
     container: function container(_ref) {
       var value = _ref.value,
@@ -41,11 +44,19 @@ var styles = function styles(theme) {
     popperTitle: {
       display: 'flex',
       justifyContent: 'center'
-    },
-    columnsContainer: (0, _defineProperty2.default)({}, QUERY_SMALL, {
+    }
+  }, (0, _defineProperty2.default)(_ref2, QUERY_SMALL, {
+    columnsContainer: {
       paddingTop: theme.miscellaneous.spacing * 2
-    })
-  };
+    }
+  }), (0, _defineProperty2.default)(_ref2, QUERY_EXTRA_SMALL, {
+    container: {
+      paddingBottom: [spacing * 2, '!important']
+    },
+    typography: {
+      fontSize: 30
+    }
+  }), _ref2;
 };
 
 exports.styles = styles;

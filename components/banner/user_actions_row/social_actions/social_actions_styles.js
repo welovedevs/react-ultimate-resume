@@ -14,25 +14,25 @@ var _styles_utils = require("../../../../utils/styles/styles_utils");
 var styles = function styles(theme) {
   var screenSizes = theme.screenSizes,
       spacing = theme.miscellaneous.spacing;
-  return (0, _defineProperty2.default)({
-    container: {
+  var QUERY_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small);
+  return {
+    container: (0, _defineProperty2.default)({
       display: 'flex',
       alignItems: 'center',
       flexWrap: 'wrap',
       justifyContent: 'flex-end',
       marginLeft: spacing * 3
-    }
-  }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small), {
-    container: {
+    }, QUERY_SMALL, {
       width: '100%',
       marginTop: spacing * 2,
+      flexDirection: 'column',
       justifyContent: 'center',
       marginLeft: 'unset',
       '& > *': {
-        flex: 1
+        width: '100%'
       }
-    }
-  });
+    })
+  };
 };
 
 exports.styles = styles;
