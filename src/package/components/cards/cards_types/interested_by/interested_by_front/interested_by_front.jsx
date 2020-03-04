@@ -52,7 +52,6 @@ const InterestedByFrontComponent = ({
                         defaultMessage="I'm interested by {interestedBy} "
                         values={{ interestedBy }}
                     />
-                    <span>{'React, Lille, Angular, Les petits avions en carton, Les retards de la SNCF & pleins de choses.'}</span>
                 </ProfileCardFrontTypography>
             </CenterContentContainer>
         </ProfileCardPaddedFront>
