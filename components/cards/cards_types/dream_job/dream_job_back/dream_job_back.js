@@ -72,7 +72,7 @@ var DreamJobBackComponent = function DreamJobBackComponent(_ref) {
   })), (0, _exists_and_not_empty.existsAndNotEmpty)(salary) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Dreamjob.Back.Salary.Title",
     defaultMessage: "Ideal yearly salary"
-  })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, salary)), (0, _exists_and_not_empty.existsAndNotEmpty)(contractTypes) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+  })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, "".concat(salary, " k\u20AC"))), (0, _exists_and_not_empty.existsAndNotEmpty)(contractTypes) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Dreamjob.Back.ContractTypes.Title",
     defaultMessage: "Contract types"
   })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, _react.default.createElement(_contract_types.ContractType, {

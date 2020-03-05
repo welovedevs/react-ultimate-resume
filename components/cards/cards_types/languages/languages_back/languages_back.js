@@ -40,21 +40,23 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 var useStyles = (0, _reactJss.createUseStyles)(_languages_back_styles.styles);
 
 var LanguagesBackComponent = function LanguagesBackComponent(_ref) {
-  var _data$languages, _ref3;
+  var _ref2, _data$languages, _data$languages2, _ref4;
 
   var data = _ref.data;
-  var classes = useStyles();
+  var classes = useStyles({
+    itemSize: (_ref2 = (_data$languages = data.languages) === null || _data$languages === void 0 ? void 0 : _data$languages.length) !== null && _ref2 !== void 0 ? _ref2 : 0
+  });
   var theme = (0, _reactJss.useTheme)();
 
   var _useCardVariant = (0, _use_card_variant.useCardVariant)(),
       _useCardVariant2 = (0, _slicedToArray2.default)(_useCardVariant, 1),
       variant = _useCardVariant2[0];
 
-  var transitions = (0, _reactSpring.useTransition)((_data$languages = data.languages) !== null && _data$languages !== void 0 ? _data$languages : [], function (_ref2) {
-    var id = _ref2.id;
+  var transitions = (0, _reactSpring.useTransition)((_data$languages2 = data.languages) !== null && _data$languages2 !== void 0 ? _data$languages2 : [], function (_ref3) {
+    var id = _ref3.id;
     return "language_column_".concat(id);
   }, _objectSpread({}, _languages_back_spring_props.LANGUAGES_COLUMN_TRANSITIONS_SPRING_PROPS, {
-    trail: 175 * 3 / ((_ref3 = data === null || data === void 0 ? void 0 : data.languages) !== null && _ref3 !== void 0 ? _ref3 : []).length
+    trail: 175 * 3 / ((_ref4 = data === null || data === void 0 ? void 0 : data.languages) !== null && _ref4 !== void 0 ? _ref4 : []).length
   }));
 
   var _useMemo = (0, _react.useMemo)(function () {
@@ -67,10 +69,10 @@ var LanguagesBackComponent = function LanguagesBackComponent(_ref) {
       backBackgroundColor = _useMemo.backBackgroundColor;
 
   var colorPalette = (0, _react.useMemo)(function () {
-    var _ref4, _data$languages2;
+    var _ref5, _data$languages3;
 
     return Array.from({
-      length: (_ref4 = (_data$languages2 = data.languages) === null || _data$languages2 === void 0 ? void 0 : _data$languages2.length) !== null && _ref4 !== void 0 ? _ref4 : 0
+      length: (_ref5 = (_data$languages3 = data.languages) === null || _data$languages3 === void 0 ? void 0 : _data$languages3.length) !== null && _ref5 !== void 0 ? _ref5 : 0
     }, function (v, k) {
       return _chromaJs.default.mix(backColor, backBackgroundColor, 2 * k / 15).hex();
     });
@@ -84,14 +86,14 @@ var LanguagesBackComponent = function LanguagesBackComponent(_ref) {
     }
   }, _react.default.createElement("div", {
     className: classes.columnsContainer
-  }, transitions.map(function (_ref5, index) {
-    var _ref6, _data$languages3, _item$language;
+  }, transitions.map(function (_ref6, index) {
+    var _ref7, _data$languages4, _item$language;
 
-    var item = _ref5.item,
-        key = _ref5.key,
-        props = _ref5.props;
+    var item = _ref6.item,
+        key = _ref6.key,
+        props = _ref6.props;
     return _react.default.createElement(_language_column.LanguageColumn, {
-      itemsSize: (_ref6 = (_data$languages3 = data.languages) === null || _data$languages3 === void 0 ? void 0 : _data$languages3.length) !== null && _ref6 !== void 0 ? _ref6 : 0,
+      itemsSize: (_ref7 = (_data$languages4 = data.languages) === null || _data$languages4 === void 0 ? void 0 : _data$languages4.length) !== null && _ref7 !== void 0 ? _ref7 : 0,
       key: key,
       component: _reactSpring.animated.div,
       item: item,

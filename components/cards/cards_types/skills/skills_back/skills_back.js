@@ -131,7 +131,7 @@ var SkillsBackComponent = function SkillsBackComponent(_ref) {
     variant: variant,
     data: top3Skills,
     springOnScrollOpacityProps: springOnScrollOpacityProps
-  }), _react.default.createElement(_other_skills.default, {
+  }), othersSkills.length > 1 && _react.default.createElement(_other_skills.default, {
     style: springSkillOpacityProps,
     othersSkills: othersSkills,
     springTranslationProps: springTranslationProps

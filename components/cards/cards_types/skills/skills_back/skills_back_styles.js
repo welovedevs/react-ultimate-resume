@@ -22,7 +22,8 @@ var styles = function styles(theme) {
       return _objectSpread({
         display: 'flex',
         flexWrap: 'wrap',
-        overflow: 'auto'
+        overflow: 'auto',
+        height: '100%'
       }, (0, _styles_utils.withCustomVerticalScrollbar)((0, _styles_utils.getHexFromPaletteColor)(theme, (0, _styles_utils.getColorsFromCardVariant)(theme, variant).backBackgroundColor)));
     },
     otherSkillsContainer: {

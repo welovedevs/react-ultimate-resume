@@ -7,11 +7,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.TextSection = void 0;
 
-var _text_section_styles = _interopRequireDefault(require("./text_section_styles"));
-
 var _reactJss = require("react-jss");
 
 var _react = _interopRequireDefault(require("react"));
+
+var _text_section_styles = _interopRequireDefault(require("./text_section_styles"));
 
 var useStyles = (0, _reactJss.createUseStyles)(_text_section_styles.default);
 

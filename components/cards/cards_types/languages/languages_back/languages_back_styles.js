@@ -38,17 +38,20 @@ var styles = function styles(theme) {
     cardTitle: (0, _defineProperty2.default)({}, QUERY_EXTRA_SMALL, {
       fontSize: 28
     }),
-    columnsContainer: (0, _defineProperty2.default)({
-      height: '100%',
-      width: '70%',
-      display: 'flex',
-      alignItems: 'flex-end',
-      justifyContent: 'center',
-      padding: [theme.miscellaneous.spacing * 5, theme.miscellaneous.spacing * 2, 0, theme.miscellaneous.spacing * 2]
-    }, QUERY_SMALL, {
-      width: '100%',
-      padding: [theme.miscellaneous.spacing, theme.miscellaneous.spacing * 2, 0, theme.miscellaneous.spacing * 2]
-    }),
+    columnsContainer: function columnsContainer(_ref) {
+      var itemSize = _ref.itemSize;
+      return (0, _defineProperty2.default)({
+        height: '100%',
+        width: itemSize > 1 ? '70%' : '40%',
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        padding: [theme.miscellaneous.spacing * 5, theme.miscellaneous.spacing * 2, 0, theme.miscellaneous.spacing * 2]
+      }, QUERY_SMALL, {
+        width: itemSize > 1 ? '100%' : '70%',
+        padding: [theme.miscellaneous.spacing, theme.miscellaneous.spacing * 2, 0, theme.miscellaneous.spacing * 2]
+      });
+    },
     languageLettersButton: {
       display: 'flex'
     }
