@@ -47,7 +47,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
 
 const ExperiencesBackComponent = ({ data }) => {
     const classes = useStyles();
-    const experiences = data.work?.filter(({ name, summary }) => Boolean(name && summary));
+    const experiences = data.work?.filter(({ position, summary }) => Boolean(position && summary));
     return (
         <ProfileCardAnimatedBack title="Experiences">
             {experiences.map(experience => (
