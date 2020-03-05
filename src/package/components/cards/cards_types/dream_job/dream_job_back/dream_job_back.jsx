@@ -29,9 +29,7 @@ const DreamJobBackComponent = ({ data }) => {
     const classes = useStyles();
     const { places, perks, salary, remoteFrequency, contractTypes, currentJobIssues } = data;
     return (
-        <ProfileCardAnimatedBack
-            title={<FormattedMessage id="Dreamjob.Back.Title" defaultMessage="Dream job" />}
-        >
+        <ProfileCardAnimatedBack title={<FormattedMessage id="Dreamjob.Back.Title" defaultMessage="Dream job" />}>
             {existsAndNotEmpty(places) && (
                 <ProfileCardSection>
                     <DreamJobLocations places={places} remoteFrequency={remoteFrequency} classes={classes} />
@@ -42,7 +40,7 @@ const DreamJobBackComponent = ({ data }) => {
                     <ProfileCardSectionTitle>
                         <FormattedMessage id="Dreamjob.Back.Salary.Title" defaultMessage="Ideal yearly salary" />
                     </ProfileCardSectionTitle>
-                    <ProfileCardSectionText>{salary}</ProfileCardSectionText>
+                    <ProfileCardSectionText>{`${salary} k€`}</ProfileCardSectionText>
                 </ProfileCardSection>
             )}
             {existsAndNotEmpty(contractTypes) && (
@@ -55,20 +53,20 @@ const DreamJobBackComponent = ({ data }) => {
                     </ProfileCardSectionText>
                 </ProfileCardSection>
             )}
-            {(existsAndNotEmpty(perks) &&
-                (typeof perks === 'object' && Object.values(perks).some(value => existsAndNotEmpty(value)))) && (
-                <ProfileCardSection>
-                    <ProfileCardSectionTitle>
-                        <FormattedMessage
-                            id="Dreamjob.Back.Location.Perks.Title"
-                            defaultMessage="Important perks in my job"
-                        />
-                    </ProfileCardSectionTitle>
-                    <ProfileCardSectionText>
-                        <DreamJobPerks perks={perks} />
-                    </ProfileCardSectionText>
-                </ProfileCardSection>
-            )}
+            {existsAndNotEmpty(perks) &&
+                (typeof perks === 'object' && Object.values(perks).some(value => existsAndNotEmpty(value))) && (
+                    <ProfileCardSection>
+                        <ProfileCardSectionTitle>
+                            <FormattedMessage
+                                id="Dreamjob.Back.Location.Perks.Title"
+                                defaultMessage="Important perks in my job"
+                            />
+                        </ProfileCardSectionTitle>
+                        <ProfileCardSectionText>
+                            <DreamJobPerks perks={perks} />
+                        </ProfileCardSectionText>
+                    </ProfileCardSection>
+                )}
             {existsAndNotEmpty(currentJobIssues) && (
                 <ProfileCardSection>
                     <ProfileCardSectionTitle>

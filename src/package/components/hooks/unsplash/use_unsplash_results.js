@@ -37,7 +37,8 @@ export const useUnsplashResults = (input, page = 0, limit = 12, timeout = 800) =
                 UNSPLASH_API +
                 Object.entries(params)
                     .map(([key, value]) => `${key}=${value}`)
-                    .join('&'));
+                    .join('&')
+);
             // eslint-disable-next-line no-undef
             fetch(
                 `${endpoints.unsplashProxy}?url=${url}`,

@@ -98,8 +98,7 @@ const AllTechnologiesPickerComponent = ({ selectedItems, onAdd, onDelete, classe
                     return selectedItems.some(({ name: selectedName }) => selectedName === name);
                 })
                 .filter(({ name, tags }) =>
-                    [...(tags ?? []), name].some(value => value.toLowerCase().includes(debouncedQuery.toLowerCase()))
-                )
+                    [...(tags ?? []), name].some(value => value.toLowerCase().includes(debouncedQuery.toLowerCase())))
                 .slice(0, 35),
         [technologies, debouncedQuery, onlySelected]
     );
