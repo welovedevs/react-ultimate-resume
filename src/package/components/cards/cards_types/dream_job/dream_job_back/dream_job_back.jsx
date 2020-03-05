@@ -40,7 +40,7 @@ const DreamJobBackComponent = ({ data }) => {
                     <ProfileCardSectionTitle>
                         <FormattedMessage id="Dreamjob.Back.Salary.Title" defaultMessage="Ideal yearly salary" />
                     </ProfileCardSectionTitle>
-                    <ProfileCardSectionText>{`${salary} k`}</ProfileCardSectionText>
+                    <ProfileCardSectionText>{`${salary} k€`}</ProfileCardSectionText>
                 </ProfileCardSection>
             )}
             {existsAndNotEmpty(contractTypes) && (
