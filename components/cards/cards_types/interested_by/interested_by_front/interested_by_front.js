@@ -75,13 +75,7 @@ var InterestedByFrontComponent = function InterestedByFrontComponent(_ref) {
     classes: {
       container: (0, _classnames.default)(classes.typography, customClasses.typography)
     }
-  }, profileCardFrontTypographyProps), _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "InterestedBy.front.content",
-    defaultMessage: "I'm interested by {interestedBy} ",
-    values: {
-      interestedBy: interestedBy
-    }
-  })))), isTypographyTruncated && !dismissButton && _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+  }, profileCardFrontTypographyProps), interestedBy))), isTypographyTruncated && !dismissButton && _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "InterestedBy.front.action",

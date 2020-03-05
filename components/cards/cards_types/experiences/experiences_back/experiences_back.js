@@ -40,12 +40,17 @@ var ExperienceContent = function ExperienceContent(_ref) {
   var id = experience.id,
       name = experience.name,
       summary = experience.summary,
-      place = experience.place;
+      place = experience.place,
+      position = experience.position;
   var dateString = (0, _react.useMemo)(function () {
     var _experience$startDate2;
 
     if (!experience.endDate) {
       var _experience$startDate;
+
+      if (!experience.startDate) {
+        return '';
+      }
 
       return formatMessage(_experiences_translations.translations.since, {
         year: ((_experience$startDate = experience.startDate) === null || _experience$startDate === void 0 ? void 0 : _experience$startDate.year()) || ''
@@ -62,15 +67,24 @@ var ExperienceContent = function ExperienceContent(_ref) {
     }
 
     if (place === null || place === void 0 ? void 0 : place.name) {
+      if (builder.length) {
+        builder.push(' - ');
+      }
+
       builder.push(place.name);
     }
 
-    return builder.join(' - ');
+    if (builder.length) {
+      builder.push(_react.default.createElement("br", null));
+    }
+
+    builder.push(dateString);
+    return builder;
   }, [experience]);
   return _react.default.createElement(_profile_card_section.ProfileCardSection, {
     key: id,
     cardVariant: variant
-  }, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, dateString), _react.default.createElement(_profile_card_section_subtitle.ProfileCardSectionSubtitle, {
+  }, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, position), _react.default.createElement(_profile_card_section_subtitle.ProfileCardSectionSubtitle, {
     customClasses: {
       container: classes.subtitle
     }
