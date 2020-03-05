@@ -83,9 +83,9 @@ var ExperiencesBackComponent = function ExperiencesBackComponent(_ref2) {
   var data = _ref2.data;
   var classes = useStyles();
   var experiences = (_data$work = data.work) === null || _data$work === void 0 ? void 0 : _data$work.filter(function (_ref3) {
-    var name = _ref3.name,
+    var position = _ref3.position,
         summary = _ref3.summary;
-    return Boolean(name && summary);
+    return Boolean(position && summary);
   });
   return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
     title: "Experiences"
