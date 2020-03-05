@@ -70,13 +70,21 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
     return setSide(side === 'front' ? 'back' : 'front');
   }, [side, setSide]);
   var title = (0, _react.useMemo)(function () {
-    var _data$work;
+    var _data$work, _data$work$, _data$work3, _data$work3$;
 
-    if (!((_data$work = data.work) === null || _data$work === void 0 ? void 0 : _data$work[0])) {
-      return null;
+    var builder = [];
+
+    if ((_data$work = data.work) === null || _data$work === void 0 ? void 0 : (_data$work$ = _data$work[0]) === null || _data$work$ === void 0 ? void 0 : _data$work$.position) {
+      var _data$work2;
+
+      builder.push((_data$work2 = data.work) === null || _data$work2 === void 0 ? void 0 : _data$work2[0].position);
     }
 
-    return "".concat(data.work[0].position, " @").concat(data.work[0].name);
+    if ((_data$work3 = data.work) === null || _data$work3 === void 0 ? void 0 : (_data$work3$ = _data$work3[0]) === null || _data$work3$ === void 0 ? void 0 : _data$work3$.name) {
+      builder.push("@".concat(data.work[0].name));
+    }
+
+    return builder.join(' ');
   }, [data.work]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, _react.default.createElement(_center_content_container.CenterContentContainer, {
     customClasses: {
