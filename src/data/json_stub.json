@@ -188,7 +188,14 @@
             "personalDescription": "This is a longer description of me, of my backstory, my backyard, my backfire, my backend, my frontend and my friends."
         },
         "dreamJob": {
-            "locations": [{ "name": "Lille, France" }, { "name": "Paris,France" }, { "name": "Valenciennes, France" }],
+            "locations": [
+                { "name": "Lille, France" },
+                { "name": "Paris,France" },
+                { "name": "Valenciennes, France" },
+                { "name": "Lille, France" },
+                { "name": "Paris,France" },
+                { "name": "Valenciennes, France" }
+            ],
             "remoteFrequency": "regularly"
         },
         "currentJob": {

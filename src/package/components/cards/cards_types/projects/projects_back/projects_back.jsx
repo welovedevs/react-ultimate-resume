@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
@@ -8,6 +8,7 @@ import { ProfileCardTitle } from '../../../../commons/profile_card/profile_card_
 import { ProfileCardContent } from '../../../../commons/profile_card/profile_card_content/profile_card_content';
 import { ProjectSection } from './project_section/project_section';
 
+import { DEFAULT_PROJECT_IMAGE } from '../utils/images';
 import { styles } from './projects_back_styles';
 import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
 
@@ -17,7 +18,9 @@ const ProjectsBackComponent = ({ data }) => {
     const [variant] = useCardVariant();
 
     const classes = useStyles({ variant });
-    const imageSrc = data.projects?.[0]?.images?.[0]?.url;
+    const imageSrc = useMemo(() => data.projects?.[0]?.images?.url ?? DEFAULT_PROJECT_IMAGE, [
+        data.projects?.[0]?.images
+    ]);
     const alt = data.projects?.[0]?.title;
 
     return (
