@@ -35,10 +35,14 @@ const ExperiencesFrontComponent = ({ data }) => {
     const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
 
     const title = useMemo(() => {
-        if (!data.work?.[0]) {
-            return null;
+        const builder = [];
+        if (data.work?.[0]?.position) {
+            builder.push(data.work?.[0].position);
         }
-        return `${data.work[0].position} @${data.work[0].name}`;
+        if (data.work?.[0]?.name) {
+            builder.push(`@${data.work[0].name}`);
+        }
+        return builder.join(' ');
     }, [data.work]);
 
     return (
