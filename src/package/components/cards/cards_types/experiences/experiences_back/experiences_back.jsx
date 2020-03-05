@@ -19,20 +19,30 @@ const ExperienceContent = ({ experience, variant, classes }) => {
     const { id, name, summary, place, position } = experience;
     const dateString = useMemo(() => {
         if (!experience.endDate) {
+            if (!experience.startDate) {
+                return '';
+            }
             return formatMessage(translations.since, { year: experience.startDate?.year() || '' });
         }
         return `${experience.startDate?.year() || ''} - ${experience.endDate.year()}`;
     }, [experience]);
 
     const title = useMemo(() => {
-        const builder = [dateString];
+        const builder = [];
         if (name) {
             builder.push(name);
         }
         if (place?.name) {
+            if (builder.length) {
+                builder.push(' - ');
+            }
             builder.push(place.name);
         }
-        return builder.join(' - ');
+        if (builder.length) {
+            builder.push(<br />);
+        }
+        builder.push(dateString);
+        return builder;
     }, [experience]);
     return (
         <ProfileCardSection key={id} cardVariant={variant}>
