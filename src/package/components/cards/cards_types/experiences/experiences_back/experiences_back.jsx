@@ -16,7 +16,7 @@ const useStyles = createUseStyles(styles);
 
 const ExperienceContent = ({ experience, variant, classes }) => {
     const { formatMessage } = useIntl();
-    const { id, name, summary, place } = experience;
+    const { id, name, summary, place, position } = experience;
     const dateString = useMemo(() => {
         if (!experience.endDate) {
             return formatMessage(translations.since, { year: experience.startDate?.year() || '' });
@@ -25,7 +25,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
     }, [experience]);
 
     const title = useMemo(() => {
-        const builder = [];
+        const builder = [dateString];
         if (name) {
             builder.push(name);
         }
@@ -36,7 +36,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
     }, [experience]);
     return (
         <ProfileCardSection key={id} cardVariant={variant}>
-            <ProfileCardSectionTitle>{dateString}</ProfileCardSectionTitle>
+            <ProfileCardSectionTitle>{position}</ProfileCardSectionTitle>
             <ProfileCardSectionSubtitle customClasses={{ container: classes.subtitle }}>
                 {title}
             </ProfileCardSectionSubtitle>
@@ -51,7 +51,7 @@ const ExperiencesBackComponent = ({ data }) => {
     return (
         <ProfileCardAnimatedBack title="Experiences">
             {experiences.map(experience => (
-                <ExperienceContent key={`work_experience_${experience.id}`} experience={experience} classes={classes}/>
+                <ExperienceContent key={`work_experience_${experience.id}`} experience={experience} classes={classes} />
             ))}
         </ProfileCardAnimatedBack>
     );
