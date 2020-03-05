@@ -31,8 +31,7 @@ function App() {
     const [customization, setCustomization] = useState({ cardsOrder: DEFAULT_CARD_ORDER });
 
     const onCustomizationChanged = useCallback(setCustomization,
-        [data]
-    );
+        [data]);
     return (
         <DeveloperProfile
             mode="edit"

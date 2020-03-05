@@ -35,7 +35,6 @@ const SkillsBackComponent = ({ data }) => {
 
     useChain([springGraphOpacityPropsRef, springSkillOpacityPropsRef], [0, 0.1]);
 
-
     const [springOnScrollOpacityProps, setSpringOnScrollOpacityProps] = useSpring(() => ({
         opacity: 1
     }));
@@ -71,23 +70,21 @@ const SkillsBackComponent = ({ data }) => {
     return (
         <>
             <ProfileCardTitle>
-                <FormattedMessage id="Skills.back.title" defaultMessage="Skills"/>
+                <FormattedMessage id="Skills.back.title" defaultMessage="Skills" />
             </ProfileCardTitle>
-            <div
-                className={classes.container}
-                onScroll={onScroll}
-                style={springGraphOpacityProps}
-            >
+            <div className={classes.container} onScroll={onScroll} style={springGraphOpacityProps}>
                 <SkillsPieChart
                     variant={variant}
                     data={top3Skills}
                     springOnScrollOpacityProps={springOnScrollOpacityProps}
                 />
-                <OtherSkills
-                    style={springSkillOpacityProps}
-                    othersSkills={othersSkills}
-                    springTranslationProps={springTranslationProps}
-                />
+                {othersSkills.length > 1 && (
+                    <OtherSkills
+                        style={springSkillOpacityProps}
+                        othersSkills={othersSkills}
+                        springTranslationProps={springTranslationProps}
+                    />
+                )}
             </div>
         </>
     );
