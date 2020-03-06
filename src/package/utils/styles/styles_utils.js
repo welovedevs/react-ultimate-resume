@@ -15,7 +15,9 @@ export const withCustomHorizontalScrollbar = (color = '#c1c1c1') => ({
     },
     '&::-webkit-scrollbar-thumb': {
         backgroundColor: color
-    }
+    },
+    scrollbarWidth: 'thin',
+    scrollbarColor: `${color} transparent`
 });
 
 export const withCustomVerticalScrollbar = (color = '#c1c1c1') => ({
@@ -27,7 +29,9 @@ export const withCustomVerticalScrollbar = (color = '#c1c1c1') => ({
     },
     '&::-webkit-scrollbar-thumb': {
         backgroundColor: color
-    }
+    },
+    scrollbarWidth: 'thin',
+    scrollbarColor: `${color} transparent`
 });
 
 export const getColorsFromCardVariant = (theme, cardVariant) =>
