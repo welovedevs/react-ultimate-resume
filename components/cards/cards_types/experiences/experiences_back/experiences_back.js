@@ -49,12 +49,12 @@ var ExperienceContent = function ExperienceContent(_ref) {
       }
 
       return formatMessage(_experiences_translations.translations.since, {
-        year: experience.startDate.format('MMM[.] YYYY')
+        year: experience.startDate.format('MMM YYYY')
       });
     }
 
-    var startDate = experience.startDate.isValid() ? experience.startDate.format('MMM[.] YYYY') : '';
-    var endDate = experience.endDate.isValid() ? experience.startDate.format('MMM[.] YYYY') : '';
+    var startDate = experience.startDate.isValid() ? experience.startDate.format('MMM YYYY') : '';
+    var endDate = experience.endDate.isValid() ? experience.startDate.format('MMM YYYY') : '';
     return "".concat(startDate, " - ").concat(endDate);
   }, [experience]);
   var title = (0, _react.useMemo)(function () {
