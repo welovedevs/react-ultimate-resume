@@ -28,7 +28,6 @@ const CheckboxGroupComponent = ({
 
     const onFieldClicked = useCallback(
         enumValue => () => {
-            console.log({ enumValue });
             if (typeof onChange !== 'function') {
                 return;
             }

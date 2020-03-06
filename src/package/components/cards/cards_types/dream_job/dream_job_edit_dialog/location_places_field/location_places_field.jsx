@@ -20,7 +20,6 @@ const useStyles = createUseStyles(styles);
 const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace }) => {
     const classes = useStyles();
     const placesValues = useMemo(() => Object.values(places || {}), [places]);
-    console.log({ placesValues, places });
     const transitions = useTransition(placesValues, ({ id }) => `place_${id}`, {
         ...LOCATION_PLACES_FIELD_TRANSITIONS_SPRING_PROPS,
         trail: 200 / placesValues.length

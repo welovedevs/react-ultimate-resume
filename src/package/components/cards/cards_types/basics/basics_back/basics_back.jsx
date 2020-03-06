@@ -104,8 +104,6 @@ const BasicsBackComponent = ({ data }) => {
         ]
     );
 
-    console.log({ personalDescription });
-
     return (
         <ProfileCardAnimatedBack title="Who ?">
             {Object.entries(sections)
