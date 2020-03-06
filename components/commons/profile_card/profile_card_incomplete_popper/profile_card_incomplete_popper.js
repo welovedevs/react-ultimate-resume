@@ -72,6 +72,9 @@ var ProfileCardIncompletePopperComponent = function ProfileCardIncompletePopperC
         preventOverflow: {
           enabled: false
         },
+        hide: {
+          enabled: false
+        },
         flip: {
           behavior: ['top-start']
         }
@@ -87,5 +90,5 @@ var ProfileCardIncompletePopperComponent = function ProfileCardIncompletePopperC
   })));
 };
 
-var ProfileCardIncompletePopper = ProfileCardIncompletePopperComponent;
+var ProfileCardIncompletePopper = (0, _react.memo)(ProfileCardIncompletePopperComponent);
 exports.ProfileCardIncompletePopper = ProfileCardIncompletePopper;

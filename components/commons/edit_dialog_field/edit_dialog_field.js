@@ -27,9 +27,6 @@ var EditDialogFieldComponent = function EditDialogFieldComponent(_ref) {
       _ref$classes = _ref.classes,
       receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var classes = useStyles();
-  console.log({
-    error: error
-  });
   return _react.default.createElement("div", {
     className: (0, _classnames.default)(classes.container, receivedClasses.container)
   }, title && _react.default.createElement(_ui.Typography, {

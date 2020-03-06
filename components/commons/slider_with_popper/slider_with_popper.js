@@ -99,6 +99,9 @@ var SliderWithPopper = function SliderWithPopper(_ref) {
         modifiers: {
           preventOverflow: {
             boundariesElement: 'viewport'
+          },
+          hide: {
+            enabled: false
           }
         }
       }
