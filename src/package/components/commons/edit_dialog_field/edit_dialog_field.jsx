@@ -11,7 +11,6 @@ const useStyles = createUseStyles(styles);
 
 const EditDialogFieldComponent = ({ title, subtitle, children, error, classes: receivedClasses = {} }) => {
     const classes = useStyles();
-    console.log({ error });
     return (
         <div className={cn(classes.container, receivedClasses.container)}>
             {title && (

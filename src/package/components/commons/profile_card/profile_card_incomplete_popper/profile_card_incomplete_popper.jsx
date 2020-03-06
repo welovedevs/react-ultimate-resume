@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { memo, useContext, useEffect, useState } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
@@ -38,6 +38,9 @@ const ProfileCardIncompletePopperComponent = ({ open, onClose, anchorElement }) 
                     preventOverflow: {
                         enabled: false
                     },
+                    hide: {
+                        enabled: false
+                    },
                     flip: {
                         behavior: ['top-start']
                     }
@@ -59,4 +62,4 @@ const ProfileCardIncompletePopperComponent = ({ open, onClose, anchorElement }) 
     );
 };
 
-export const ProfileCardIncompletePopper = ProfileCardIncompletePopperComponent;
+export const ProfileCardIncompletePopper = memo(ProfileCardIncompletePopperComponent);

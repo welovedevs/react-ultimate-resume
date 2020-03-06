@@ -75,6 +75,9 @@ export const SliderWithPopper = ({
                         modifiers: {
                             preventOverflow: {
                                 boundariesElement: 'viewport'
+                            },
+                            hide: {
+                                enabled: false
                             }
                         }
                     }}
