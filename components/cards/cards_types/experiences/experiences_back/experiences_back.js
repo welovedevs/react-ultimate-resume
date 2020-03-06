@@ -43,21 +43,19 @@ var ExperienceContent = function ExperienceContent(_ref) {
       place = experience.place,
       position = experience.position;
   var dateString = (0, _react.useMemo)(function () {
-    var _experience$startDate2;
-
     if (!experience.endDate) {
-      var _experience$startDate;
-
       if (!experience.startDate) {
         return '';
       }
 
       return formatMessage(_experiences_translations.translations.since, {
-        year: ((_experience$startDate = experience.startDate) === null || _experience$startDate === void 0 ? void 0 : _experience$startDate.year()) || ''
+        year: experience.startDate.format('MMM[.] YYYY')
       });
     }
 
-    return "".concat(((_experience$startDate2 = experience.startDate) === null || _experience$startDate2 === void 0 ? void 0 : _experience$startDate2.year()) || '', " - ").concat(experience.endDate.year());
+    var startDate = experience.startDate.isValid() ? experience.startDate.format('MMM[.] YYYY') : '';
+    var endDate = experience.endDate.isValid() ? experience.startDate.format('MMM[.] YYYY') : '';
+    return "".concat(startDate, " - ").concat(endDate);
   }, [experience]);
   var title = (0, _react.useMemo)(function () {
     var builder = [];
