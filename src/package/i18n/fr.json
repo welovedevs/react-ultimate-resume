@@ -145,6 +145,7 @@
   "Languages.front.content": "Je parle {languagesNode}",
   "Main.Lang.Add": "Ajouter",
   "Main.Lang.Or": "ou",
+  "Main.lang.clear": "Effacer",
   "Main.lang.close": "Close",
   "Main.lang.copied": "Copié dans le presse-papiers",
   "Main.lang.delete": "Delete",

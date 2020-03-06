@@ -42,6 +42,10 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
             }),
         [onImageSelected]
     );
+    const onClear = useCallback(
+        () => onImageSelected(null),
+        [onImageSelected]
+    );
 
     return (
         <>
@@ -62,19 +66,19 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
                 </DialogTitle>
                 <DialogContent classes={{ root: classes.content }}>
                     <div className={classes.buttonContainer}>
-                    <Button
-                        color="primary"
-                        variant="outlined"
-                        onClick={setSearchUnsplashDialogOpened}
-                        customClasses={{
-                            container: classes.button
-                        }}
-                    >
-                        <FormattedMessage
-                            id="Banner.EditImageDialog.unsplashButton"
-                            defaultMessage="Chercher via unsplash"
-                        />
-                    </Button>
+                        <Button
+                            color="primary"
+                            variant="outlined"
+                            onClick={setSearchUnsplashDialogOpened}
+                            customClasses={{
+                                container: classes.button
+                            }}
+                        >
+                            <FormattedMessage
+                                id="Banner.EditImageDialog.unsplashButton"
+                                defaultMessage="Chercher via unsplash"
+                            />
+                        </Button>
                     </div>
                     <div className={classes.divider}>
                         <Typography
@@ -88,9 +92,12 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
                             />
                         </Typography>
                     </div>
-                    <FileDropZone onDrop={onDrop} />
+                    <FileDropZone onDrop={onDrop}/>
                 </DialogContent>
-                <DialogActions>
+                <DialogActions classes={{ root: classes.buttons }}>
+                    <Button size="small" color="danger" onClick={onClear}>
+                        <FormattedMessage id="Main.lang.clear" defaultMessage="Clear"/>
+                    </Button>
                     <Button
                         size="small"
                         onClick={onClose}
