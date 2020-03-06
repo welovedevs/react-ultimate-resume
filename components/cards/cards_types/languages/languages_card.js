@@ -24,7 +24,8 @@ var _validator = require("./data/validator");
 var _contexts = require("../../../../utils/context/contexts");
 
 var LanguagesCardComponent = function LanguagesCardComponent(_ref) {
-  var variant = _ref.variant;
+  var variant = _ref.variant,
+      side = _ref.side;
 
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data,
