@@ -3,6 +3,7 @@ import { IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
 import merge from 'lodash/merge';
+import cloneDeep from 'lodash/cloneDeep';
 
 import { buildTheme } from '../utils/styles/theme/theme';
 import { Banner } from './banner/banner';
@@ -111,8 +112,7 @@ const WithProvidersDeveloperProfile = ({
     classes,
     isEditing
 }) => {
-    const mergedOptions = useMemo(() => merge({ ...DEFAULT_OPTIONS }, options), [options]);
-    console.log({ mergedOptions, options, DEFAULT_OPTIONS });
+    const mergedOptions = useMemo(() => merge(cloneDeep(DEFAULT_OPTIONS), options), [options]);
 
     const { locale, customization } = mergedOptions;
     const builtTheme = useMemo(() => {
