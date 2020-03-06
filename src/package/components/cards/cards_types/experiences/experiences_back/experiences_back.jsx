@@ -22,10 +22,10 @@ const ExperienceContent = ({ experience, variant, classes }) => {
             if (!experience.startDate) {
                 return '';
             }
-            return formatMessage(translations.since, { year: experience.startDate.format('MMM[.] YYYY') });
+            return formatMessage(translations.since, { year: experience.startDate.format('MMM YYYY') });
         }
-        const startDate = experience.startDate.isValid() ? experience.startDate.format('MMM[.] YYYY') : '';
-        const endDate = experience.endDate.isValid() ? experience.startDate.format('MMM[.] YYYY') : '';
+        const startDate = experience.startDate.isValid() ? experience.startDate.format('MMM YYYY') : '';
+        const endDate = experience.endDate.isValid() ? experience.startDate.format('MMM YYYY') : '';
         return `${startDate} - ${endDate}`;
     }, [experience]);
 
