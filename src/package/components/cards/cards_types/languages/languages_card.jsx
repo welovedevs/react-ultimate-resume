@@ -31,7 +31,7 @@ const LanguagesCardComponent = ({ variant }) => {
                 back: LanguagesBack
             }}
             variant={variant}
-            side="back"
+            side={side}
             editDialog={{
                 component: LanguagesCardEditDialog,
                 validationSchema: LanguageValidator,
