@@ -114,9 +114,6 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
       }
     };
   }, [currentCityName, experienceYears, contractTypes, studiesLevel, codingYears, codingReason, visaSponsorship, personalDescription, searchState]);
-  console.log({
-    personalDescription: personalDescription
-  });
   return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
     title: "Who ?"
   }, Object.entries(sections).filter(function (_ref2) {

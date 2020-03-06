@@ -50,10 +50,6 @@ var CheckboxGroupComponent = function CheckboxGroupComponent(_ref) {
 
   var onFieldClicked = (0, _react.useCallback)(function (enumValue) {
     return function () {
-      console.log({
-        enumValue: enumValue
-      });
-
       if (typeof onChange !== 'function') {
         return;
       }
