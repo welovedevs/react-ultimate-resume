@@ -24,7 +24,9 @@ var withCustomHorizontalScrollbar = function withCustomHorizontalScrollbar() {
     },
     '&::-webkit-scrollbar-thumb': {
       backgroundColor: color
-    }
+    },
+    scrollbarWidth: 'thin',
+    scrollbarColor: "".concat(color, " transparent")
   };
 };
 
@@ -41,7 +43,9 @@ var withCustomVerticalScrollbar = function withCustomVerticalScrollbar() {
     },
     '&::-webkit-scrollbar-thumb': {
       backgroundColor: color
-    }
+    },
+    scrollbarWidth: 'thin',
+    scrollbarColor: "".concat(color, " transparent")
   };
 };
 
