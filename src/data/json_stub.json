@@ -41,6 +41,14 @@
             "summary": "Description...",
             "location": "Paris, France",
             "highlights": ["Started the company"]
+        },
+        {
+            "name": "What a nice experience",
+            "position": "Lead dev",
+            "website": "http://company.com",
+            "summary": "Description...",
+            "location": "Paris, France",
+            "highlights": ["Started the company"]
         }
     ],
     "volunteer": [
@@ -55,11 +63,20 @@
     ],
     "education": [
         {
-            "institution": "University",
+            "institution": "ISEN",
             "area": "Software Development",
-            "studyType": "Bachelor",
+            "studyType": "Engineer Degree",
             "startDate": "2011-01-01",
             "endDate": "2013-01-01",
+            "gpa": "4.0",
+            "courses": ["DB1101 - Basic SQL"]
+        },
+        {
+            "institution": "Université d'artois",
+            "area": "",
+            "studyType": "",
+            "startDate": "2011-01-01",
+            "endDate": "",
             "gpa": "4.0",
             "courses": ["DB1101 - Basic SQL"]
         }
@@ -162,9 +179,7 @@
         {
             "name": "Développement d'un serpent connecté",
             "description": "Et oui, vous avez bien entendu !\nUn serpent connecté, c'est comme une montre connectée, mais en serpent, en fait ça ressemble pas une montre, mais ça reste connecté 🚀",
-            "images": [
-
-            ]
+            "images": []
         }
     ],
     "specific": {
@@ -173,7 +188,14 @@
             "personalDescription": "This is a longer description of me, of my backstory, my backyard, my backfire, my backend, my frontend and my friends."
         },
         "dreamJob": {
-            "locations": [{ "name": "Lille, France" }, { "name": "Paris,France" }, { "name": "Valenciennes, France" }],
+            "locations": [
+                { "name": "Lille, France" },
+                { "name": "Paris,France" },
+                { "name": "Valenciennes, France" },
+                { "name": "Lille, France" },
+                { "name": "Paris,France" },
+                { "name": "Valenciennes, France" }
+            ],
             "remoteFrequency": "regularly"
         },
         "currentJob": {
@@ -181,7 +203,6 @@
                 "boring_management": true,
                 "boring_team": true
             }
-
         },
         "education": {
             "studiesLevel": 5

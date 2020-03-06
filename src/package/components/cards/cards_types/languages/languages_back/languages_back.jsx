@@ -17,7 +17,7 @@ import { styles } from './languages_back_styles';
 const useStyles = createUseStyles(styles);
 
 const LanguagesBackComponent = ({ data }) => {
-    const classes = useStyles();
+    const classes = useStyles({ itemSize: data.languages?.length ?? 0 });
     const theme = useTheme();
     const [variant] = useCardVariant();
     const transitions = useTransition(data.languages ?? [], ({ id }) => `language_column_${id}`, {

@@ -38,23 +38,19 @@ const InterestedByFrontComponent = ({
 
     return (
         <>
-        <ProfileCardPaddedFront customClasses={{ container: cn(classes.container, customClasses.container) }}>
-            <CenterContentContainer>
-                <ProfileCardFrontTypography
-                    ref={typographyReference}
-                    classes={{
-                        container: cn(classes.typography, customClasses.typography)
-                    }}
-                    {...profileCardFrontTypographyProps}
-                >
-                    <FormattedMessage
-                        id="InterestedBy.front.content"
-                        defaultMessage="I'm interested by {interestedBy} "
-                        values={{ interestedBy }}
-                    />
-                </ProfileCardFrontTypography>
-            </CenterContentContainer>
-        </ProfileCardPaddedFront>
+            <ProfileCardPaddedFront customClasses={{ container: cn(classes.container, customClasses.container) }}>
+                <CenterContentContainer>
+                    <ProfileCardFrontTypography
+                        ref={typographyReference}
+                        classes={{
+                            container: cn(classes.typography, customClasses.typography)
+                        }}
+                        {...profileCardFrontTypographyProps}
+                    >
+                        {interestedBy}
+                    </ProfileCardFrontTypography>
+                </CenterContentContainer>
+            </ProfileCardPaddedFront>
             {isTypographyTruncated && !dismissButton && (
                 <ProfileCardActions>
                     <ProfileCardButton onClick={handleButtonClick}>

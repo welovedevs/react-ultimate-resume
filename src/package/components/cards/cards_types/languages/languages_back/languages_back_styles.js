@@ -1,12 +1,12 @@
 import { createScreenWidthMediaQuery } from '../../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
+export const styles = theme => {
     const { screenSizes } = theme;
 
     const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
     const QUERY_EXTRA_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.xs);
 
-    return ({
+    return {
         content: {
             padding: 0,
             position: 'relative',
@@ -31,20 +31,30 @@ export const styles = (theme) => {
                 fontSize: 28
             }
         },
-        columnsContainer: {
+        columnsContainer: ({ itemSize }) => ({
             height: '100%',
-            width: '70%',
+            width: itemSize > 1 ? '70%' : '40%',
             display: 'flex',
             alignItems: 'flex-end',
             justifyContent: 'center',
-            padding: [theme.miscellaneous.spacing * 5, theme.miscellaneous.spacing * 2, 0, theme.miscellaneous.spacing * 2],
+            padding: [
+                theme.miscellaneous.spacing * 5,
+                theme.miscellaneous.spacing * 2,
+                0,
+                theme.miscellaneous.spacing * 2
+            ],
             [QUERY_SMALL]: {
-                width: '100%',
-                padding: [theme.miscellaneous.spacing, theme.miscellaneous.spacing * 2, 0, theme.miscellaneous.spacing * 2]
+                width: itemSize > 1 ? '100%' : '70%',
+                padding: [
+                    theme.miscellaneous.spacing,
+                    theme.miscellaneous.spacing * 2,
+                    0,
+                    theme.miscellaneous.spacing * 2
+                ]
             }
-        },
+        }),
         languageLettersButton: {
             display: 'flex'
         }
-    });
+    };
 };

@@ -1,10 +1,10 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.2.24-54",
+    "version": "1.2.24-56",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
-        "start": "touch .env.local && sh -ac '. .env.${NODE_ENV:-local}; PORT=${PORT:-3000} EXTEND_ESLINT=true BROWSER=none react-scripts start'",
+        "start": "touch .env.local && sh -ac 'sh .env.${NODE_ENV:-local}; PORT=${PORT:-3000} EXTEND_ESLINT=true BROWSER=none react-scripts start'",
         "dev": "yarn start",
         "eject": "react-scripts eject",
         "test": "echo \"Error: no test specified\" && exit 1",

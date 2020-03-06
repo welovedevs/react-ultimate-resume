@@ -5,6 +5,6 @@ export const styles = theme => {
     return {
         subtitle: {
             marginBottom: spacing * 2
-        },
+        }
     };
 };

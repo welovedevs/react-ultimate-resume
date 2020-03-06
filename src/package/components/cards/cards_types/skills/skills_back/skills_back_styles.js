@@ -9,6 +9,7 @@ export const styles = theme => ({
         display: 'flex',
         flexWrap: 'wrap',
         overflow: 'auto',
+        height: '100%',
         ...withCustomVerticalScrollbar(
             getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backBackgroundColor)
         )
