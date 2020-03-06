@@ -63,6 +63,9 @@ var EditBannerImageDialogComponent = function EditBannerImageDialogComponent(_re
       return url;
     });
   }, [onImageSelected]);
+  var onClear = (0, _react.useCallback)(function () {
+    return onImageSelected(null);
+  }, [onImageSelected]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_search_unsplash_result.SearchUnsplashDialog, {
     open: openSearchUnsplashDialog,
     onClose: setSearchUnsplashDialogClosed,
@@ -100,7 +103,18 @@ var EditBannerImageDialogComponent = function EditBannerImageDialogComponent(_re
     defaultMessage: "ou"
   }))), _react.default.createElement(_file_drop_zone.FileDropZone, {
     onDrop: onDrop
-  })), _react.default.createElement(_core.DialogActions, null, _react.default.createElement(_ui.Button, {
+  })), _react.default.createElement(_core.DialogActions, {
+    classes: {
+      root: classes.buttons
+    }
+  }, _react.default.createElement(_ui.Button, {
+    size: "small",
+    color: "danger",
+    onClick: onClear
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.clear",
+    defaultMessage: "Clear"
+  })), _react.default.createElement(_ui.Button, {
     size: "small",
     onClick: onClose
   }, _react.default.createElement(_reactIntl.FormattedMessage, {

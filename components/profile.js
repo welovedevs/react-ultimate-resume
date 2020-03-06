@@ -19,7 +19,7 @@ var _reactIntl = require("react-intl");
 
 var _reactJss = require("react-jss");
 
-var _merge = _interopRequireDefault(require("lodash/merge"));
+var _mergeWith = _interopRequireDefault(require("lodash/mergeWith"));
 
 var _cloneDeep = _interopRequireDefault(require("lodash/cloneDeep"));
 
@@ -40,6 +40,8 @@ var _technologies_reducer = require("../store/technologies/technologies_reducer"
 var _contexts = require("../utils/context/contexts");
 
 var _footer = require("./footer/footer");
+
+var _data_utils = require("../utils/data_utils");
 
 if (!Intl.PluralRules) {
   // eslint-disable-next-line global-require
@@ -161,7 +163,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
       classes = _ref3.classes,
       isEditing = _ref3.isEditing;
   var mergedOptions = (0, _react.useMemo)(function () {
-    return (0, _merge.default)((0, _cloneDeep.default)(DEFAULT_OPTIONS), options);
+    return (0, _mergeWith.default)((0, _cloneDeep.default)(DEFAULT_OPTIONS), JSON.parse(JSON.stringify(options || {})), _data_utils.mergeOmitNull);
   }, [options]);
   var locale = mergedOptions.locale,
       customization = mergedOptions.customization;
