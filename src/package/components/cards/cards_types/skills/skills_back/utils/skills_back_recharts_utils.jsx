@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { styles } from './skills_back_recharts_styles';
+import { useTechnologies } from '../../../../../hooks/technologies/use_technologies';
 
 const useStyles = createUseStyles(styles);
 
 const CustomLabel = props => {
     const classes = useStyles();
-    const RADIAN = Math.PI / 180;
+    const { technologies } = useTechnologies();
     const { cx, cy, midAngle, customColor, outerRadius, name } = props;
+
+    const techno = useMemo(() => {
+        if (!technologies) {
+            return null;
+        }
+        return technologies[name];
+    }, [technologies, name]);
+
+    const RADIAN = Math.PI / 180;
     const sin = Math.sin(-RADIAN * midAngle);
     const cos = Math.cos(-RADIAN * midAngle);
     const sx = cx + outerRadius * cos;
@@ -35,6 +45,14 @@ const CustomLabel = props => {
                 >
                     {name}
                 </text>
+                <image
+                    width="40"
+                    height="40"
+                    x={ex + (cos >= 0 ? 1 : -1) * 55}
+                    y={ey * 0.75}
+                    xlinkHref={`https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle}`}
+                    clipPath="url(#circleView)"
+                />
             </g>
         </g>
     );
