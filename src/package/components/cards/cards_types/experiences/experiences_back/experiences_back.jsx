@@ -22,9 +22,11 @@ const ExperienceContent = ({ experience, variant, classes }) => {
             if (!experience.startDate) {
                 return '';
             }
-            return formatMessage(translations.since, { year: experience.startDate?.year() || '' });
+            return formatMessage(translations.since, { year: experience.startDate.format('MMM[.] YYYY') });
         }
-        return `${experience.startDate?.year() || ''} - ${experience.endDate.year()}`;
+        const startDate = experience.startDate.isValid() ? experience.startDate.format('MMM[.] YYYY') : '';
+        const endDate = experience.endDate.isValid() ? experience.startDate.format('MMM[.] YYYY') : '';
+        return `${startDate} - ${endDate}`;
     }, [experience]);
 
     const title = useMemo(() => {
@@ -39,7 +41,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
             builder.push(place.name);
         }
         if (builder.length) {
-            builder.push(<br />);
+            builder.push(<br/>);
         }
         builder.push(dateString);
         return builder;
@@ -61,7 +63,7 @@ const ExperiencesBackComponent = ({ data }) => {
     return (
         <ProfileCardAnimatedBack title="Experiences">
             {experiences.map(experience => (
-                <ExperienceContent key={`work_experience_${experience.id}`} experience={experience} classes={classes} />
+                <ExperienceContent key={`work_experience_${experience.id}`} experience={experience} classes={classes}/>
             ))}
         </ProfileCardAnimatedBack>
     );
