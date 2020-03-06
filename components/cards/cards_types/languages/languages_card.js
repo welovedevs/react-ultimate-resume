@@ -55,7 +55,7 @@ var LanguagesCardComponent = function LanguagesCardComponent(_ref) {
       back: _languages_back.LanguagesBack
     },
     variant: variant,
-    side: "back",
+    side: side,
     editDialog: {
       component: _languages_card_edit_dialog.LanguagesCardEditDialog,
       validationSchema: _validator.LanguageValidator,
