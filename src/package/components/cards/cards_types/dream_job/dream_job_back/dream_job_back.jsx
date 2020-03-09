@@ -12,22 +12,22 @@ import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profil
 import { ContractType } from '../../../../commons/fields/contract_types/contract_types';
 import { DreamJobCurrentJobIssues } from './dream_job_current_job_issues/dream_job_current_job_issues';
 import { DreamJobPerks } from './dream_job_perks/dream_job_perks';
+import { DreamJobSalarySectionContent } from './dream_job_salary_section_content/dream_job_salary_section_content';
 
 import { useOpenerState } from '../../../../hooks/use_opener_state';
-
-import { remoteDisplayTranslations } from '../../../../../utils/enums/remote/remote_filter_translations';
-
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 
 import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
+import { remoteDisplayTranslations } from '../../../../../utils/enums/remote/remote_filter_translations';
 
 import { styles } from './dream_job_back_styles';
+import { hasOnlyFreelanceContract } from '../../../utils/has_only_freelance_contract';
 
 const useStyles = createUseStyles(styles);
 
 const DreamJobBackComponent = ({ data }) => {
     const classes = useStyles();
-    const { places, perks, salary, remoteFrequency, contractTypes, currentJobIssues } = data;
+    const { averageDailyRate, places, perks, salary, remoteFrequency, contractTypes, currentJobIssues } = data;
     return (
         <ProfileCardAnimatedBack title={<FormattedMessage id="Dreamjob.Back.Title" defaultMessage="Dream job" />}>
             {existsAndNotEmpty(places) && (
@@ -35,12 +35,13 @@ const DreamJobBackComponent = ({ data }) => {
                     <DreamJobLocations places={places} remoteFrequency={remoteFrequency} classes={classes} />
                 </ProfileCardSection>
             )}
-            {existsAndNotEmpty(salary) && (
+            {existsAndNotEmpty(hasOnlyFreelanceContract(contractTypes) ? averageDailyRate : salary) && (
                 <ProfileCardSection>
-                    <ProfileCardSectionTitle>
-                        <FormattedMessage id="Dreamjob.Back.Salary.Title" defaultMessage="Ideal yearly salary" />
-                    </ProfileCardSectionTitle>
-                    <ProfileCardSectionText>{`${salary} k€`}</ProfileCardSectionText>
+                    <DreamJobSalarySectionContent
+                        contractTypes={contractTypes}
+                        averageDailyRate={averageDailyRate}
+                        salary={salary}
+                    />
                 </ProfileCardSection>
             )}
             {existsAndNotEmpty(contractTypes) && (
