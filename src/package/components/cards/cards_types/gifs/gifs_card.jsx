@@ -12,7 +12,9 @@ import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const GifsCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
+    console.log({ data });
     const mappedData = useMemo(() => mapInterestsFromJsonResume(data), [data]);
+
 
     const onDialogEdited = useCallback(editedData => {
         onEdit(mapInterestsToJsonResume(editedData));
