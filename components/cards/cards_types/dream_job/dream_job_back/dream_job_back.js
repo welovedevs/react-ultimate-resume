@@ -39,22 +39,27 @@ var _dream_job_current_job_issues = require("./dream_job_current_job_issues/drea
 
 var _dream_job_perks = require("./dream_job_perks/dream_job_perks");
 
-var _use_opener_state = require("../../../../hooks/use_opener_state");
+var _dream_job_salary_section_content = require("./dream_job_salary_section_content/dream_job_salary_section_content");
 
-var _remote_filter_translations = require("../../../../../utils/enums/remote/remote_filter_translations");
+var _use_opener_state = require("../../../../hooks/use_opener_state");
 
 var _exists_and_not_empty = require("../../../utils/exists_and_not_empty");
 
 var _remote_utils = require("../../../../../utils/enums/remote/remote_utils");
 
+var _remote_filter_translations = require("../../../../../utils/enums/remote/remote_filter_translations");
+
 var _dream_job_back_styles = require("./dream_job_back_styles");
+
+var _has_only_freelance_contract = require("../../../utils/has_only_freelance_contract");
 
 var useStyles = (0, _reactJss.createUseStyles)(_dream_job_back_styles.styles);
 
 var DreamJobBackComponent = function DreamJobBackComponent(_ref) {
   var data = _ref.data;
   var classes = useStyles();
-  var places = data.places,
+  var averageDailyRate = data.averageDailyRate,
+      places = data.places,
       perks = data.perks,
       salary = data.salary,
       remoteFrequency = data.remoteFrequency,
@@ -69,10 +74,11 @@ var DreamJobBackComponent = function DreamJobBackComponent(_ref) {
     places: places,
     remoteFrequency: remoteFrequency,
     classes: classes
-  })), (0, _exists_and_not_empty.existsAndNotEmpty)(salary) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Dreamjob.Back.Salary.Title",
-    defaultMessage: "Ideal yearly salary"
-  })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, "".concat(salary, " k\u20AC"))), (0, _exists_and_not_empty.existsAndNotEmpty)(contractTypes) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+  })), (0, _exists_and_not_empty.existsAndNotEmpty)((0, _has_only_freelance_contract.hasOnlyFreelanceContract)(contractTypes) ? averageDailyRate : salary) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_dream_job_salary_section_content.DreamJobSalarySectionContent, {
+    contractTypes: contractTypes,
+    averageDailyRate: averageDailyRate,
+    salary: salary
+  })), (0, _exists_and_not_empty.existsAndNotEmpty)(contractTypes) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Dreamjob.Back.ContractTypes.Title",
     defaultMessage: "Contract types"
   })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, _react.default.createElement(_contract_types.ContractType, {
@@ -163,7 +169,14 @@ var DreamJobPlaces = function DreamJobPlaces(_ref3) {
     }
   })), _react.default.createElement(_ui.PopperCard, {
     open: open,
-    anchorElement: textAnchor.current
+    anchorElement: textAnchor.current,
+    popperProps: {
+      modifiers: {
+        preventOverflow: {
+          boundariesElement: 'viewport'
+        }
+      }
+    }
   }, _react.default.createElement(_ui.List, null, remainingPlaces.filter(function (item) {
     return item;
   }).map(function (_ref5, index) {

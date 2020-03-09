@@ -39,6 +39,8 @@ var _job_perks_utils = require("../../../../../utils/enums/job_perks/job_perks_u
 
 var _job_issues_utils = require("../../../../../utils/enums/job_issues/job_issues_utils");
 
+var _salary_field = require("./salary_field/salary_field");
+
 var _perks_field = require("./perks_field/perks_field");
 
 var _current_job_issues_field = require("./current_job_issues_field/current_job_issues_field");
@@ -111,7 +113,8 @@ var Content = function Content(_ref2) {
       errors = _useFormikContext.errors,
       handleChange = _useFormikContext.handleChange;
 
-  var places = values.places,
+  var averageDailyRate = values.averageDailyRate,
+      places = values.places,
       salary = values.salary,
       remoteFrequency = values.remoteFrequency,
       contractTypes = values.contractTypes;
@@ -198,18 +201,6 @@ var Content = function Content(_ref2) {
     handleChange: handleChange,
     perks: perks
   }), _react.default.createElement(_edit_dialog_field.EditDialogField, {
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "DreamJob.editDialog.salary.title",
-      defaultMessage: "What's your desired salary?"
-    }),
-    error: errors.salary
-  }, _react.default.createElement(_ui.TextField, {
-    onChange: handleChange,
-    name: "salary",
-    value: salary,
-    variant: "flat",
-    fullWidth: true
-  })), _react.default.createElement(_edit_dialog_field.EditDialogField, {
     error: errors.remoteFrequency,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "DreamJob.editDialog.remoteFrequency.title",
@@ -243,7 +234,13 @@ var Content = function Content(_ref2) {
     name: "contractTypes",
     variant: "outlined",
     onChange: handleValueChange('contractTypes')
-  })), _react.default.createElement(_current_job_issues_field.CurrentJobIssuesField, {
+  })), _react.default.createElement(_salary_field.SalaryField, {
+    salary: salary,
+    contractTypes: contractTypes,
+    averageDailyRate: averageDailyRate,
+    errors: errors,
+    handleChange: handleChange
+  }), _react.default.createElement(_current_job_issues_field.CurrentJobIssuesField, {
     error: errors === null || errors === void 0 ? void 0 : errors.currentJobIssues,
     checkboxGroupCurrentJobIssues: checkboxGroupCurrentJobIssues,
     checkedCurrentJobIssues: checkedCurrentJobIssues,

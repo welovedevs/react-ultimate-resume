@@ -27,13 +27,14 @@ var styles = function styles(theme) {
     typography: function typography(_ref2) {
       var variant = _ref2.variant;
       return _objectSpread({
-        display: 'block',
+        display: 'flex',
         overflow: 'auto',
         textOverflow: 'unset',
         '-webkit-line-clamp': 'unset',
         '-webkit-box-orient': 'unset',
         margin: 0,
         paddingRight: spacing * 3,
+        lineHeight: 'unset',
         maxHeight: '100%'
       }, (0, _styles_utils.withCustomVerticalScrollbar)((0, _styles_utils.getHexFromPaletteColor)(theme, (0, _styles_utils.getColorsFromCardVariant)(theme, variant).backgroundColor)));
     }
