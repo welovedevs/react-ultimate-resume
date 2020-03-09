@@ -137,7 +137,17 @@ const DreamJobPlaces = ({ places = [], classes }) => {
                     values={{ place: firstPlace.name, length: remainingPlaces.length }}
                 />
             </button>
-            <PopperCard open={open} anchorElement={textAnchor.current}>
+            <PopperCard
+                open={open}
+                anchorElement={textAnchor.current}
+                popperProps={{
+                    modifiers: {
+                        preventOverflow: {
+                            boundariesElement: 'viewport'
+                        }
+                    }
+                }}
+            >
                 <List>
                     {remainingPlaces
                         .filter(item => item)
