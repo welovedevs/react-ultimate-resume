@@ -94,8 +94,19 @@ var GifsBackComponent = function GifsBackComponent(_ref) {
 
     setCurrentIndex(next);
   }, [hasChanged.current]);
-  var transitions = (0, _reactSpring.useTransition)(((_ref2 = (_data$interests = data.interests) === null || _data$interests === void 0 ? void 0 : _data$interests[currentIndex]) !== null && _ref2 !== void 0 ? _ref2 : {}).name, function (item) {
-    return "gif_name_".concat(item);
+  var sliderReference = (0, _react.useRef)();
+  var pauseSlider = (0, _react.useCallback)(function () {
+    var _sliderReference$curr;
+
+    return (_sliderReference$curr = sliderReference.current) === null || _sliderReference$curr === void 0 ? void 0 : _sliderReference$curr.slickPause();
+  }, []);
+  var resumeSlider = (0, _react.useCallback)(function () {
+    var _sliderReference$curr2;
+
+    return (_sliderReference$curr2 = sliderReference.current) === null || _sliderReference$curr2 === void 0 ? void 0 : _sliderReference$curr2.slickPlay();
+  }, []);
+  var transitions = (0, _reactSpring.useTransition)((_ref2 = (_data$interests = data.interests) === null || _data$interests === void 0 ? void 0 : _data$interests[currentIndex]) !== null && _ref2 !== void 0 ? _ref2 : {}, function (item) {
+    return "gif_name_".concat(item.name);
   }, _objectSpread({}, _gifs_back_spring_props.GIFS_BACK_TRANSITIONS_SPRING_PROPS, {
     immediate: !hasChanged.current
   }));
@@ -103,6 +114,7 @@ var GifsBackComponent = function GifsBackComponent(_ref) {
     underLayer: _react.default.createElement("div", {
       className: classes.slidesContainer
     }, _react.default.createElement(_reactSlick.default, (0, _extends2.default)({}, SETTINGS, {
+      ref: sliderReference,
       beforeChange: handleBeforeChange,
       prevArrow: _react.default.createElement(Arrow, {
         classes: classes,
@@ -121,27 +133,24 @@ var GifsBackComponent = function GifsBackComponent(_ref) {
     }), ((_data$interests2 = data.interests) !== null && _data$interests2 !== void 0 ? _data$interests2 : []).map(function (_ref3) {
       var gifUrl = _ref3.gifUrl,
           name = _ref3.name;
-      return _react.default.createElement("img", {
-        key: "gifs_back_carousel_image_".concat(gifUrl, "_").concat(name),
-        className: classes.image,
-        src: gifUrl,
-        alt: name
+      return _react.default.createElement(SlideItem, {
+        gifUrl: gifUrl,
+        name: name,
+        classes: classes
       });
     })))
   }, transitions.map(function (_ref4) {
     var item = _ref4.item,
         key = _ref4.key,
         props = _ref4.props;
-    return _react.default.createElement(_ui.Typography, {
+    return (item === null || item === void 0 ? void 0 : item.name) && _react.default.createElement(TransitioningItem, {
+      item: item,
       key: key,
-      component: _reactSpring.animated.div,
-      style: props,
-      color: "light",
-      variant: "h2",
-      customClasses: {
-        container: classes.slideName
-      }
-    }, item);
+      props: props,
+      classes: classes,
+      pauseSlider: pauseSlider,
+      resumeSlider: resumeSlider
+    });
   }));
 };
 
@@ -184,6 +193,62 @@ var Arrow = function Arrow(_ref5) {
       })
     }
   }, _react.default.createElement(ArrowIcon, null));
+};
+
+var SlideItem = function SlideItem(_ref6) {
+  var gifUrl = _ref6.gifUrl,
+      name = _ref6.name,
+      classes = _ref6.classes;
+
+  if (!gifUrl) {
+    return _react.default.createElement("div", {
+      className: classes.solidBackground
+    });
+  }
+
+  return _react.default.createElement("img", {
+    key: "gifs_back_carousel_image_".concat(gifUrl, "_").concat(name),
+    className: classes.image,
+    src: gifUrl,
+    alt: name
+  });
+};
+
+var TransitioningItem = function TransitioningItem(_ref7) {
+  var item = _ref7.item,
+      key = _ref7.key,
+      props = _ref7.props,
+      pauseSlider = _ref7.pauseSlider,
+      resumeSlider = _ref7.resumeSlider,
+      classes = _ref7.classes;
+
+  if (!(item === null || item === void 0 ? void 0 : item.gifUrl)) {
+    return _react.default.createElement(_reactSpring.animated.div, {
+      key: key,
+      className: classes.transitioningItemWithoutGif,
+      style: props,
+      onMouseEnter: pauseSlider,
+      onMouseLeave: resumeSlider
+    }, _react.default.createElement(_ui.Typography, {
+      customClasses: {
+        container: classes.slideNameWithoutGif
+      },
+      color: "light",
+      variant: "h3",
+      component: "h4"
+    }, item.name));
+  }
+
+  return _react.default.createElement(_ui.Typography, {
+    key: key,
+    customClasses: {
+      container: classes.slideName
+    },
+    component: _reactSpring.animated.div,
+    style: props,
+    color: "light",
+    variant: "h2"
+  }, item.name);
 };
 
 var GifsBack = GifsBackComponent;

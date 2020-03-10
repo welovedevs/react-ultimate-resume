@@ -13,6 +13,8 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/sli
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _reactIntl = require("react-intl");
 
 var _reactJss = require("react-jss");
@@ -23,14 +25,16 @@ var _profile_card_button = require("../../../../commons/profile_card/profile_car
 
 var _gifs_sides_commons = require("../gifs_sides_commons/gifs_sides_commons");
 
-var _gifs_front_styles = require("./gifs_front_styles");
-
 var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
+
+var _profile_card_front_typography = require("../../../../commons/profile_card/profile_card_front_typography/profile_card_front_typography");
+
+var _gifs_front_styles = require("./gifs_front_styles");
 
 var useStyles = (0, _reactJss.createUseStyles)(_gifs_front_styles.styles);
 
 var GifsFrontComponent = function GifsFrontComponent(_ref) {
-  var _data$interests, _data$interests$, _data$interests2, _data$interests2$;
+  var _ref3, _data$interests;
 
   var data = _ref.data;
   var classes = useStyles();
@@ -43,13 +47,36 @@ var GifsFrontComponent = function GifsFrontComponent(_ref) {
   var handleButtonClick = (0, _react.useCallback)(function () {
     return setSide(side === 'front' ? 'back' : 'front');
   }, [side, setSide]);
+
+  var _ref2 = (_ref3 = (_data$interests = data.interests) === null || _data$interests === void 0 ? void 0 : _data$interests[0]) !== null && _ref3 !== void 0 ? _ref3 : {},
+      gifUrl = _ref2.gifUrl,
+      name = _ref2.name;
+
+  var _useState = (0, _react.useState)(true),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      isTypographyTruncated = _useState2[0],
+      setIsTypographyTruncated = _useState2[1];
+
+  var typographyReference = (0, _react.useRef)();
+  (0, _react.useEffect)(function () {
+    var element = typographyReference.current;
+
+    if (element.offsetHeight > element.scrollHeight - 1) {
+      setIsTypographyTruncated(false);
+    }
+  }, [typographyReference.current]);
   return _react.default.createElement(_gifs_sides_commons.GifsSidesCommons, {
-    underLayer: _react.default.createElement("img", {
+    underLayer: gifUrl && _react.default.createElement("img", {
       className: classes.image,
-      src: (_data$interests = data.interests) === null || _data$interests === void 0 ? void 0 : (_data$interests$ = _data$interests[0]) === null || _data$interests$ === void 0 ? void 0 : _data$interests$.gifUrl,
-      alt: (_data$interests2 = data.interests) === null || _data$interests2 === void 0 ? void 0 : (_data$interests2$ = _data$interests2[0]) === null || _data$interests2$ === void 0 ? void 0 : _data$interests2$.name
+      src: gifUrl,
+      alt: name
     })
-  }, _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+  }, !gifUrl && _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
+    ref: typographyReference,
+    classes: {
+      container: (0, _classnames.default)(classes.withoutGifTypography, isTypographyTruncated && classes.truncatedTypography)
+    }
+  }, name), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick,
     overrideColor: "light"
   }, _react.default.createElement(_reactIntl.FormattedMessage, {

@@ -31,7 +31,7 @@ var interestsValidator = function interestsValidator(formatMessage) {
       name: Yup.string().required(formatMessage(_validation_translations.validationTranslations.required)).min(2, formatMessage(_validation_translations.validationTranslations.min, {
         min: 2
       })),
-      gifUrl: Yup.string().required(formatMessage(_validation_translations.validationTranslations.required))
+      gifUrl: Yup.string()
     })).required(formatMessage(_validator_translations.interestsTranslations.atLeastOne))
   });
 };

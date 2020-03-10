@@ -59,21 +59,21 @@ var GifCardComponent = function GifCardComponent(_ref) {
   }, [name]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_ui.Card, {
     className: classes.container
-  }, _react.default.createElement("div", {
-    className: classes.imageContainer
-  }, (error === null || error === void 0 ? void 0 : error.gifUrl) && _react.default.createElement(_ui.Typography, {
-    color: "danger",
-    variant: "p"
-  }, error === null || error === void 0 ? void 0 : error.gifUrl), gifUrl && _react.default.createElement("img", {
-    className: classes.image,
-    src: gifUrl,
-    alt: name
-  }), (imageEditable || additionalActions) && _react.default.createElement("div", {
+  }, (imageEditable || additionalActions) && _react.default.createElement("div", {
     className: classes.actions
-  }, imageEditable && _react.default.createElement(_bouncing_round_button.BouncingRoundButton, {
-    title: "Change this gif",
+  }, imageEditable && gifUrl && _react.default.createElement(_bouncing_round_button.BouncingRoundButton, {
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "GifsEditDialog.gifCard.changeGif",
+      defaultMessage: "Changer this gif"
+    }),
     onClick: onImageEditClick
-  }), additionalActions)), _react.default.createElement("div", {
+  }), additionalActions), _react.default.createElement(CardTopHalf, {
+    error: error,
+    gifUrl: gifUrl,
+    name: name,
+    onImageEditClick: onImageEditClick,
+    classes: classes
+  }), _react.default.createElement("div", {
     className: classes.content
   }, _react.default.createElement(_ui.TextField, {
     customClasses: {
@@ -104,6 +104,41 @@ var GifCardComponent = function GifCardComponent(_ref) {
     id: "Main.lang.save",
     defaultMessage: "Save"
   })))));
+};
+
+var CardTopHalf = function CardTopHalf(_ref2) {
+  var error = _ref2.error,
+      gifUrl = _ref2.gifUrl,
+      classes = _ref2.classes,
+      name = _ref2.name,
+      onImageEditClick = _ref2.onImageEditClick;
+
+  if (!gifUrl) {
+    return _react.default.createElement("div", {
+      className: classes.addGifButtonContainer
+    }, _react.default.createElement(_ui.Button, {
+      customClasses: {
+        container: classes.addGifButton
+      },
+      color: "primary",
+      variant: "outlined",
+      onClick: onImageEditClick
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "GifsEditDialog.gifCard.addGif",
+      defaultMessage: "Add a gif"
+    })));
+  }
+
+  return _react.default.createElement("div", {
+    className: classes.imageContainer
+  }, (error === null || error === void 0 ? void 0 : error.gifUrl) && _react.default.createElement(_ui.Typography, {
+    color: "danger",
+    variant: "p"
+  }, error === null || error === void 0 ? void 0 : error.gifUrl), _react.default.createElement("img", {
+    className: classes.image,
+    src: gifUrl,
+    alt: name
+  }));
 };
 
 var GifCard = GifCardComponent;

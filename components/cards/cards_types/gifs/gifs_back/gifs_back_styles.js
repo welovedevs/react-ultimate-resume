@@ -19,7 +19,8 @@ var center = _styles_utils.flex.center;
 
 var styles = function styles(theme) {
   var screenSizes = theme.screenSizes,
-      height = theme.components.cards.height;
+      height = theme.components.cards.height,
+      spacing = theme.miscellaneous.spacing;
   return (0, _defineProperty2.default)({
     image: {
       height: height,
@@ -34,6 +35,21 @@ var styles = function styles(theme) {
       left: 0,
       textAlign: 'center'
     },
+    transitioningItemWithoutGif: _objectSpread({
+      height: '100%',
+      width: '100%',
+      padding: [spacing * 12, spacing * 14],
+      zIndex: 4,
+      position: 'absolute',
+      top: 0,
+      left: 0
+    }, center),
+    slideNameWithoutGif: _objectSpread({
+      maxHeight: '100%',
+      overflow: 'auto',
+      paddingRight: spacing,
+      lineHeight: 'unset'
+    }, (0, _styles_utils.withCustomVerticalScrollbar)('#fff')),
     slidesContainer: {
       height: '100%',
       '& .slick-slider': {
