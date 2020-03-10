@@ -17,6 +17,9 @@ import { styles } from './soundtrack_card_edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
+const URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/g;
+const SPOTIFY_DOMAIN = 'https://open.spotify.com';
+
 export const SoundtrackCardEditDialog = ({ open, onClose, data, onEdit }) => (
     <EditDialog
         data={data}
@@ -36,7 +39,7 @@ export const SoundtrackCardEditDialog = ({ open, onClose, data, onEdit }) => (
 
 const Content = ({ helpers: { fullScreen, isMobile } }) => {
     const classes = useStyles({ fullScreen, isMobile });
-    const { values, errors, handleChange } = useFormikContext();
+    const { values, errors, setFieldValue } = useFormikContext();
     const { embedUrl } = values;
     const [iframeUrl] = useDebounce(embedUrl, 1000);
     const frameHashCode = useMemo(() => hashCode(iframeUrl), [iframeUrl]);
@@ -44,11 +47,25 @@ const Content = ({ helpers: { fullScreen, isMobile } }) => {
     const [hasLoaded, setHasLoaded] = useState(false);
     const handleLoad = useCallback(() => setHasLoaded(true), []);
 
+    const handleFieldChange = useCallback((event) => {
+        const { target: { value } } = event;
+        if (!URL_REGEX.test(value) || !value.startsWith(SPOTIFY_DOMAIN)) {
+            return;
+        }
+        let finalValue = value;
+        if (!value.includes('/embed')) {
+            finalValue = `${value.substring(0, SPOTIFY_DOMAIN.length)}/embed/${value.substring(SPOTIFY_DOMAIN.length + 1, value.length)}`;
+        }
+        setFieldValue('embedUrl', finalValue);
+    }, [setFieldValue, embedUrl]);
+
+    const clearField = useCallback(() => {
+        setFieldValue('embedUrl', '');
+    }, [setFieldValue]);
+
     const isValidUrl = useMemo(
         () =>
-            /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/gi.test(
-                iframeUrl
-            ),
+            URL_REGEX.test(iframeUrl) && iframeUrl?.includes('/embed'),
         [iframeUrl]
     );
 
@@ -61,9 +78,7 @@ const Content = ({ helpers: { fullScreen, isMobile } }) => {
     return (
         <div className={classes.container}>
             <EditDialogField
-                classes={{
-                    container: classes.field
-                }}
+                classes={{ container: classes.field }}
                 error={errors.codingReason}
                 title={
                     <FormattedMessage
@@ -71,13 +86,27 @@ const Content = ({ helpers: { fullScreen, isMobile } }) => {
                         defaultMessage="Enter a Spotify embed URL."
                     />
                 }
+                subtitle={(
+                    <FormattedMessage
+                        id="Soundtrack.editDialog.embedUrl.subtitle"
+                        defaultMessage="Ex: https://open.spotify.com/embed/album/79dL7FLiJFOO0EoehUHQBv"
+                    />
+                )}
             >
-                <TextField onChange={handleChange} name="embedUrl" value={embedUrl} variant="flat" fullWidth />
+                <TextField
+                    onChange={handleFieldChange}
+                    name="embedUrl"
+                    value={embedUrl}
+                    variant="flat"
+                    onClick={clearField}
+                    onFocus={clearField}
+                    fullWidth
+                />
             </EditDialogField>
             <div className={classes.divider} />
             <div className={classes.iframeContainer}>
                 {hasLoaded === null && <LoadingSpinner />}
-                {isValidUrl && (
+                {iframeUrl && (
                     <iframe
                         className={classes.iframe}
                         key={frameHashCode}
