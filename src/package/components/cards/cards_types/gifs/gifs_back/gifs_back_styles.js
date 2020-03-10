@@ -43,7 +43,7 @@ export const styles = theme => {
             maxHeight: '100%',
             overflow: 'auto',
             paddingRight: spacing,
-            lineHeight: 'unset',
+            lineHeight: 'initial',
             ...withCustomVerticalScrollbar('#fff')
         },
         slidesContainer: {

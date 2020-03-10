@@ -18,7 +18,7 @@ export const styles = (theme) => {
             '-webkit-box-orient': 'unset',
             margin: 0,
             paddingRight: spacing * 3,
-            lineHeight: 'unset',
+            lineHeight: 'initial',
             maxHeight: '100%',
             ...withCustomVerticalScrollbar(getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backgroundColor))
         })
