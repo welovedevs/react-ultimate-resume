@@ -77,7 +77,7 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
     if (element.offsetHeight > element.scrollHeight - 1) {
       setIsMainTypographyTruncated(false);
     }
-  }, [mainTypographyReference.current]);
+  }, []);
   var currentCityName = data === null || data === void 0 ? void 0 : (_data$currentCity = data.currentCity) === null || _data$currentCity === void 0 ? void 0 : _data$currentCity.name;
   return _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, _react.default.createElement(_center_content_container.CenterContentContainer, {
     customClasses: {

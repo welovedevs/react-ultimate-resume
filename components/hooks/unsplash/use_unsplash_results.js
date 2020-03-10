@@ -81,12 +81,8 @@ var useUnsplashResults = function useUnsplashResults(input) {
 
       fetch("".concat(endpoints.unsplashProxy, "?url=").concat(url), {
         method: 'GET'
-      }).then(
-      /*#__PURE__*/
-      function () {
-        var _ref3 = (0, _asyncToGenerator2.default)(
-        /*#__PURE__*/
-        _regenerator.default.mark(function _callee(res) {
+      }).then( /*#__PURE__*/function () {
+        var _ref3 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(res) {
           var functionResult;
           return _regenerator.default.wrap(function _callee$(_context) {
             while (1) {

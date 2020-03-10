@@ -168,9 +168,7 @@ var AllTechnologiesPickerComponent = function AllTechnologiesPickerComponent(_re
   }, _objectSpread({}, _all_technologies_picker_spring_props.ALL_TECHNOLOGIES_TRANSITIONS_SPRING_PROPS, {
     trail: 1250 / displayedItems.length,
     onRest: function () {
-      var _onRest = (0, _asyncToGenerator2.default)(
-      /*#__PURE__*/
-      _regenerator.default.mark(function _callee() {
+      var _onRest = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
         return _regenerator.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {

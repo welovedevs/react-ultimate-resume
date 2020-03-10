@@ -76,12 +76,8 @@ var CustomizeDialogComponent = function CustomizeDialogComponent(_ref) {
     setValue(customizationOptions);
   }, [customizationOptions]);
   (0, _react.useEffect)(function () {
-    var asyncBuild =
-    /*#__PURE__*/
-    function () {
-      var _ref2 = (0, _asyncToGenerator2.default)(
-      /*#__PURE__*/
-      _regenerator.default.mark(function _callee() {
+    var asyncBuild = /*#__PURE__*/function () {
+      var _ref2 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
         var built;
         return _regenerator.default.wrap(function _callee$(_context) {
           while (1) {

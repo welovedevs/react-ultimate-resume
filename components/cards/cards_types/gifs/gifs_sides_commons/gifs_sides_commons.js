@@ -9,6 +9,8 @@ exports.GifsSidesCommons = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _reactIntl = require("react-intl");
 
 var _reactJss = require("react-jss");
@@ -21,10 +23,12 @@ var useStyles = (0, _reactJss.createUseStyles)(_gifs_sides_commons_styles.styles
 
 var GifsSidesCommonsComponent = function GifsSidesCommonsComponent(_ref) {
   var underLayer = _ref.underLayer,
-      children = _ref.children;
+      children = _ref.children,
+      _ref$classes = _ref.classes,
+      receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var classes = useStyles();
   return _react.default.createElement("div", {
-    className: classes.container
+    className: (0, _classnames.default)(classes.container, receivedClasses.container)
   }, _react.default.createElement("div", {
     className: classes.underLayerContainer
   }, underLayer), _react.default.createElement("div", {

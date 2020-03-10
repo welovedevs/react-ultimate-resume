@@ -117,12 +117,8 @@ var FileDropZoneComponent = function FileDropZoneComponent(_ref) {
       loading = _useMemo.loading,
       success = _useMemo.success;
 
-  var handleDrop = (0, _react.useCallback)(
-  /*#__PURE__*/
-  function () {
-    var _ref2 = (0, _asyncToGenerator2.default)(
-    /*#__PURE__*/
-    _regenerator.default.mark(function _callee(parameters) {
+  var handleDrop = (0, _react.useCallback)( /*#__PURE__*/function () {
+    var _ref2 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(parameters) {
       var url;
       return _regenerator.default.wrap(function _callee$(_context) {
         while (1) {

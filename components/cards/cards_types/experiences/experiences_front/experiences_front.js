@@ -65,7 +65,7 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
     if (element.offsetHeight > element.scrollHeight - 1) {
       setIsTypographyTruncated(false);
     }
-  }, [typographyReference.current]);
+  }, []);
   var handleButtonClick = (0, _react.useCallback)(function () {
     return setSide(side === 'front' ? 'back' : 'front');
   }, [side, setSide]);

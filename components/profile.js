@@ -86,11 +86,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       _ref$isEditing = _ref.isEditing,
       isEditing = _ref$isEditing === void 0 ? false : _ref$isEditing,
       _ref$onFilesUpload = _ref.onFilesUpload,
-      onFilesUpload = _ref$onFilesUpload === void 0 ?
-  /*#__PURE__*/
-  (0, _asyncToGenerator2.default)(
-  /*#__PURE__*/
-  _regenerator.default.mark(function _callee() {
+      onFilesUpload = _ref$onFilesUpload === void 0 ? /*#__PURE__*/(0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
     return _regenerator.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {

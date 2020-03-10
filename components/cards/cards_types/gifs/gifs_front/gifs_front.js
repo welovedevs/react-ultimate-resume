@@ -31,6 +31,8 @@ var _profile_card_front_typography = require("../../../../commons/profile_card/p
 
 var _gifs_front_styles = require("./gifs_front_styles");
 
+var _profile_card_padding_front = require("../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front");
+
 var useStyles = (0, _reactJss.createUseStyles)(_gifs_front_styles.styles);
 
 var GifsFrontComponent = function GifsFrontComponent(_ref) {
@@ -61,22 +63,33 @@ var GifsFrontComponent = function GifsFrontComponent(_ref) {
   (0, _react.useEffect)(function () {
     var element = typographyReference.current;
 
+    if (!element) {
+      return;
+    }
+
     if (element.offsetHeight > element.scrollHeight - 1) {
       setIsTypographyTruncated(false);
     }
-  }, [typographyReference.current]);
+  }, []);
   return _react.default.createElement(_gifs_sides_commons.GifsSidesCommons, {
+    classes: {
+      container: classes.container
+    },
     underLayer: gifUrl && _react.default.createElement("img", {
       className: classes.image,
       src: gifUrl,
       alt: name
     })
-  }, !gifUrl && _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
+  }, !gifUrl && _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, {
+    customClasses: {
+      container: classes.paddedFront
+    }
+  }, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
     ref: typographyReference,
     classes: {
       container: (0, _classnames.default)(classes.withoutGifTypography, isTypographyTruncated && classes.truncatedTypography)
     }
-  }, name), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+  }, name)), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick,
     overrideColor: "light"
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
