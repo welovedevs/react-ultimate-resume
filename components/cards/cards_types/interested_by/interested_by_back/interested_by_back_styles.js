@@ -34,7 +34,7 @@ var styles = function styles(theme) {
         '-webkit-box-orient': 'unset',
         margin: 0,
         paddingRight: spacing * 3,
-        lineHeight: 'unset',
+        lineHeight: 'initial',
         maxHeight: '100%'
       }, (0, _styles_utils.withCustomVerticalScrollbar)((0, _styles_utils.getHexFromPaletteColor)(theme, (0, _styles_utils.getColorsFromCardVariant)(theme, variant).backgroundColor)));
     }

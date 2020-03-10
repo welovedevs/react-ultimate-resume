@@ -48,7 +48,7 @@ var styles = function styles(theme) {
       maxHeight: '100%',
       overflow: 'auto',
       paddingRight: spacing,
-      lineHeight: 'unset'
+      lineHeight: 'initial'
     }, (0, _styles_utils.withCustomVerticalScrollbar)('#fff')),
     slidesContainer: {
       height: '100%',
