@@ -42,9 +42,8 @@ var styles = function styles(theme) {
     },
     content: function content() {
       return {
-        padding: [spacing * 3, spacing * 12, 0],
+        padding: [spacing * 6, spacing * 12, 0],
         display: 'flex',
-        alignItems: 'center',
         flex: 1
       };
     },
@@ -69,7 +68,13 @@ var styles = function styles(theme) {
       color: 'inherit',
       fontWeight: 700,
       fontSize: 30,
-      lineHeight: 1.4
+      lineHeight: 1.3,
+      wordWrap: 'break-word',
+      overflow: 'hidden',
+      display: '-webkit-box',
+      '-webkit-line-clamp': 3,
+      '-webkit-box-orient': 'vertical',
+      maxHeight: 30 * 1.3 * 3
     }
   }, (0, _defineProperty2.default)(_ref3, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
     content: function content() {
