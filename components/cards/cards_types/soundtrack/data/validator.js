@@ -11,7 +11,7 @@ var Yup = _interopRequireWildcard(require("yup"));
 
 var SoundtrackValidationSchema = function SoundtrackValidationSchema() {
   return Yup.object({
-    embedUrl: Yup.string().url().required()
+    embedUrl: Yup.string().max(100).url().required()
   });
 };
 

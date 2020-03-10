@@ -59,7 +59,8 @@ var SoundtrackCardComponent = function SoundtrackCardComponent(_ref) {
     },
     editDialog: {
       component: _soundtrack_card_edit_dialog.SoundtrackCardEditDialog,
-      onEdit: onDialogEdited
+      onEdit: onDialogEdited,
+      validationSchema: _validator.SoundtrackValidationSchema
     },
     variant: variant,
     side: side,

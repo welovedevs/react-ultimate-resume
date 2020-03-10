@@ -34,6 +34,8 @@ var _string_utils = require("../../../../../utils/string_utils");
 var _soundtrack_card_edit_dialog_styles = require("./soundtrack_card_edit_dialog_styles");
 
 var useStyles = (0, _reactJss.createUseStyles)(_soundtrack_card_edit_dialog_styles.styles);
+var URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/g;
+var SPOTIFY_DOMAIN = 'https://open.spotify.com';
 
 var SoundtrackCardEditDialog = function SoundtrackCardEditDialog(_ref) {
   var open = _ref.open,
@@ -70,7 +72,7 @@ var Content = function Content(_ref2) {
   var _useFormikContext = (0, _formik.useFormikContext)(),
       values = _useFormikContext.values,
       errors = _useFormikContext.errors,
-      handleChange = _useFormikContext.handleChange;
+      setFieldValue = _useFormikContext.setFieldValue;
 
   var embedUrl = values.embedUrl;
 
@@ -90,8 +92,26 @@ var Content = function Content(_ref2) {
   var handleLoad = (0, _react.useCallback)(function () {
     return setHasLoaded(true);
   }, []);
+  var handleFieldChange = (0, _react.useCallback)(function (event) {
+    var value = event.target.value;
+
+    if (!URL_REGEX.test(value) || !value.startsWith(SPOTIFY_DOMAIN)) {
+      return;
+    }
+
+    var finalValue = value;
+
+    if (!value.includes('/embed')) {
+      finalValue = "".concat(value.substring(0, SPOTIFY_DOMAIN.length), "/embed/").concat(value.substring(SPOTIFY_DOMAIN.length + 1, value.length));
+    }
+
+    setFieldValue('embedUrl', finalValue);
+  }, [setFieldValue, embedUrl]);
+  var clearField = (0, _react.useCallback)(function () {
+    setFieldValue('embedUrl', '');
+  }, [setFieldValue]);
   var isValidUrl = (0, _react.useMemo)(function () {
-    return /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/gi.test(iframeUrl);
+    return URL_REGEX.test(iframeUrl) && (iframeUrl === null || iframeUrl === void 0 ? void 0 : iframeUrl.includes('/embed'));
   }, [iframeUrl]);
   (0, _react.useEffect)(function () {
     if (isValidUrl) {
@@ -108,18 +128,24 @@ var Content = function Content(_ref2) {
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Soundtrack.editDialog.embedUrl.title",
       defaultMessage: "Enter a Spotify embed URL."
+    }),
+    subtitle: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Soundtrack.editDialog.embedUrl.subtitle",
+      defaultMessage: "Ex: https://open.spotify.com/embed/album/79dL7FLiJFOO0EoehUHQBv"
     })
   }, _react.default.createElement(_ui.TextField, {
-    onChange: handleChange,
+    onChange: handleFieldChange,
     name: "embedUrl",
     value: embedUrl,
     variant: "flat",
+    onClick: clearField,
+    onFocus: clearField,
     fullWidth: true
   })), _react.default.createElement("div", {
     className: classes.divider
   }), _react.default.createElement("div", {
     className: classes.iframeContainer
-  }, hasLoaded === null && _react.default.createElement(_loading_spinner.LoadingSpinner, null), isValidUrl && _react.default.createElement("iframe", {
+  }, hasLoaded === null && _react.default.createElement(_loading_spinner.LoadingSpinner, null), iframeUrl && _react.default.createElement("iframe", {
     className: classes.iframe,
     key: frameHashCode,
     title: "Soundtrack",
