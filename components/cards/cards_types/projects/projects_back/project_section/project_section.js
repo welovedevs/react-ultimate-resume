@@ -2,10 +2,14 @@
 
 var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.ProjectSection = void 0;
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -27,6 +31,12 @@ var _see_project_detail = require("../../see_project_detail/see_project_detail")
 
 var _animated_underlined_button = require("../../../../../commons/animated_underlined_button/animated_underlined_button");
 
+var _confirm_dialog = require("../../../../../commons/confirm_dialog/confirm_dialog");
+
+var _use_is_editing = require("../../../../../hooks/use_is_editing");
+
+var _use_callback_open = require("../../../../../hooks/use_callback_open");
+
 var _project_section_styles = require("./project_section_styles");
 
 var LinkIcon = function LinkIcon(props) {
@@ -45,18 +55,38 @@ LinkIcon.defaultProps = {
   fill: "none",
   xmlns: "http://www.w3.org/2000/svg"
 };
+
+var RemoveIcon = function RemoveIcon(props) {
+  return _react.default.createElement("svg", props, _react.default.createElement("g", {
+    fill: "none",
+    stroke: "#000",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "1.5"
+  }, _react.default.createElement("path", {
+    d: "M25.304 14.697L14.697 25.302M14.697 14.697l10.607 10.605M20 1.25c10.356 0 18.75 8.395 18.75 18.75S30.357 38.75 20 38.75 1.25 30.357 1.25 20 9.645 1.25 20 1.25z",
+    strokeWidth: "2.50005"
+  })));
+};
+
+RemoveIcon.defaultProps = {
+  viewBox: "0 0 40 40",
+  xmlns: "http://www.w3.org/2000/svg"
+};
 var useStyles = (0, _reactJss.createUseStyles)(_project_section_styles.styles);
 
 var ProjectSectionContainer = function ProjectSectionContainer(_ref) {
   var project = _ref.project,
-      cardVariant = _ref.cardVariant;
+      cardVariant = _ref.cardVariant,
+      onDelete = _ref.onDelete,
+      index = _ref.index;
   var classes = useStyles();
   var descriptionChunks = (0, _react.useMemo)(function () {
     var _project$description;
 
-    return (_project$description = project.description) === null || _project$description === void 0 ? void 0 : _project$description.split('\n').map(function (descriptionChunk, index) {
+    return (_project$description = project.description) === null || _project$description === void 0 ? void 0 : _project$description.split('\n').map(function (descriptionChunk, chunkIndex) {
       return _react.default.createElement("p", {
-        key: "project_description_chunk_".concat(project.id, "_").concat(index)
+        key: "project_description_chunk_".concat(project.id, "_").concat(chunkIndex)
       }, descriptionChunk);
     });
   }, [project.description]);
@@ -73,13 +103,22 @@ var ProjectSectionContainer = function ProjectSectionContainer(_ref) {
     }
   }, descriptionChunks), _react.default.createElement(Details, {
     classes: classes,
-    project: project
+    project: project,
+    onDelete: onDelete,
+    index: index
   }));
 };
 
 var Details = function Details(_ref2) {
   var project = _ref2.project,
+      index = _ref2.index,
+      onDelete = _ref2.onDelete,
       classes = _ref2.classes;
+
+  var _useIsEditing = (0, _use_is_editing.useIsEditing)(),
+      _useIsEditing2 = (0, _slicedToArray2.default)(_useIsEditing, 1),
+      isEditing = _useIsEditing2[0];
+
   return _react.default.createElement("div", {
     className: classes.details
   }, project.link && _react.default.createElement("div", {
@@ -101,7 +140,46 @@ var Details = function Details(_ref2) {
     className: classes.detail
   }, _react.default.createElement(_see_project_detail.SeeProjectDetail, {
     project: project
-  })));
+  })), isEditing && _react.default.createElement(RemoveProjectDetail, {
+    index: index,
+    onDelete: onDelete,
+    classes: classes
+  }));
+};
+
+var RemoveProjectDetail = function RemoveProjectDetail(_ref3) {
+  var index = _ref3.index,
+      onDelete = _ref3.onDelete,
+      classes = _ref3.classes;
+
+  var _useCallbackOpen = (0, _use_callback_open.useCallbackOpen)(),
+      _useCallbackOpen2 = (0, _slicedToArray2.default)(_useCallbackOpen, 3),
+      openDialog = _useCallbackOpen2[0],
+      setDialogOpened = _useCallbackOpen2[1],
+      setDialogClosed = _useCallbackOpen2[2];
+
+  var handleConfirm = (0, _react.useCallback)(function () {
+    return onDelete(index);
+  }, [onDelete, index]);
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_confirm_dialog.ConfirmDialog, {
+    open: openDialog,
+    onClose: setDialogClosed,
+    onConfirm: handleConfirm
+  }), _react.default.createElement("div", {
+    className: classes.detail
+  }, _react.default.createElement(_animated_underlined_button.AnimatedUnderlinedButton, {
+    onClick: setDialogOpened
+  }, _react.default.createElement(RemoveIcon, {
+    className: classes.detailDeleteIcon
+  }), _react.default.createElement(_ui.Typography, {
+    customClasses: {
+      container: classes.detailTypography
+    },
+    color: "primary"
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.delete",
+    defaultMessage: "Delete"
+  })))));
 };
 
 var ProjectSection = ProjectSectionContainer;

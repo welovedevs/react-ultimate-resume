@@ -9,6 +9,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ProjectsBack = void 0;
 
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
+
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
 var _react = _interopRequireWildcard(require("react"));
@@ -29,6 +31,8 @@ var _projects_back_styles = require("./projects_back_styles");
 
 var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
 
+var _contexts = require("../../../../../utils/context/contexts");
+
 var useStyles = (0, _reactJss.createUseStyles)(_projects_back_styles.styles);
 
 var ProjectsBackComponent = function ProjectsBackComponent(_ref) {
@@ -40,6 +44,9 @@ var ProjectsBackComponent = function ProjectsBackComponent(_ref) {
       _useCardVariant2 = (0, _slicedToArray2.default)(_useCardVariant, 1),
       variant = _useCardVariant2[0];
 
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
+      onEdit = _useContext.onEdit;
+
   var classes = useStyles({
     variant: variant
   });
@@ -49,6 +56,13 @@ var ProjectsBackComponent = function ProjectsBackComponent(_ref) {
     return (_ref2 = (_data$projects = data.projects) === null || _data$projects === void 0 ? void 0 : (_data$projects$ = _data$projects[0]) === null || _data$projects$ === void 0 ? void 0 : (_data$projects$$image = _data$projects$.images) === null || _data$projects$$image === void 0 ? void 0 : _data$projects$$image.url) !== null && _ref2 !== void 0 ? _ref2 : _images.DEFAULT_PROJECT_IMAGE;
   }, [(_data$projects2 = data.projects) === null || _data$projects2 === void 0 ? void 0 : (_data$projects2$ = _data$projects2[0]) === null || _data$projects2$ === void 0 ? void 0 : _data$projects2$.images]);
   var alt = (_data$projects3 = data.projects) === null || _data$projects3 === void 0 ? void 0 : (_data$projects3$ = _data$projects3[0]) === null || _data$projects3$ === void 0 ? void 0 : _data$projects3$.title;
+  var handleProjectDeletion = (0, _react.useCallback)(function (index) {
+    var newProjects = (0, _toConsumableArray2.default)(data.projects);
+    newProjects.splice(index, 1);
+    onEdit({
+      projects: newProjects
+    });
+  }, [onEdit]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_title.ProfileCardTitle, {
     customClasses: {
       container: classes.title,
@@ -69,7 +83,8 @@ var ProjectsBackComponent = function ProjectsBackComponent(_ref) {
   })), _react.default.createElement(_profile_card_content.ProfileCardContent, null, (_data$projects4 = data.projects) === null || _data$projects4 === void 0 ? void 0 : _data$projects4.map(function (project) {
     return _react.default.createElement(_project_section.ProjectSection, {
       project: project,
-      key: "project_".concat(project.id)
+      key: "project_".concat(project.id),
+      onDelete: handleProjectDeletion
     });
   })));
 };
