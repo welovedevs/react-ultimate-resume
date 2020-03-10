@@ -66,7 +66,6 @@
         "@babel/plugin-transform-runtime": "^7.8.3",
         "@babel/preset-env": "^7.7.7",
         "@babel/preset-react": "^7.7.4",
-        "babel-eslint": "^10.0.3",
         "babel-plugin-css-modules-transform": "^1.6.2",
         "babel-plugin-inline-react-svg": "^1.1.0",
         "babel-plugin-transform-import-styles": "^0.0.11",
