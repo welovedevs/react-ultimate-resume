@@ -12,7 +12,7 @@ export const interestsValidator = formatMessage =>
                         name: Yup.string()
                             .required(formatMessage(validationTranslations.required))
                             .min(2, formatMessage(validationTranslations.min, { min: 2 })),
-                        gifUrl: Yup.string().required(formatMessage(validationTranslations.required))
+                        gifUrl: Yup.string()
                     })
             )
             .required(formatMessage(interestsTranslations.atLeastOne))

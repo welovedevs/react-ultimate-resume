@@ -40,22 +40,29 @@ const GifCardComponent = ({
     return (
         <>
             <Card className={classes.container}>
-                <div className={classes.imageContainer}>
-                    {error?.gifUrl && (
-                        <Typography color="danger" variant="p">
-                            {error?.gifUrl}
-                        </Typography>
-                    )}
-                    {gifUrl && <img className={classes.image} src={gifUrl} alt={name}/>}
-                    {(imageEditable || additionalActions) && (
-                        <div className={classes.actions}>
-                            {imageEditable && (
-                                <BouncingRoundButton title="Change this gif" onClick={onImageEditClick}/>
+                {(imageEditable || additionalActions) && (
+                    <div className={classes.actions}>
+                        {(imageEditable && gifUrl) && (
+                            <BouncingRoundButton
+                                title={(
+                                <FormattedMessage
+                                    id="GifsEditDialog.gifCard.changeGif"
+                                    defaultMessage="Changer this gif"
+                                />
                             )}
-                            {additionalActions}
-                        </div>
-                    )}
-                </div>
+                                onClick={onImageEditClick}
+                            />
+                        )}
+                        {additionalActions}
+                    </div>
+                )}
+                <CardTopHalf
+                    error={error}
+                    gifUrl={gifUrl}
+                    name={name}
+                    onImageEditClick={onImageEditClick}
+                    classes={classes}
+                />
                 <div className={classes.content}>
                     <TextField
                         customClasses={{ container: classes.textField }}
@@ -81,6 +88,44 @@ const GifCardComponent = ({
                 </PopperCardActions>
             </Card>
         </>
+    );
+};
+
+const CardTopHalf = ({
+    error,
+    gifUrl,
+    classes,
+    name,
+    onImageEditClick
+}) => {
+    if (!gifUrl) {
+        return (
+            <div className={classes.addGifButtonContainer}>
+                <Button
+                    customClasses={{
+                        container: classes.addGifButton
+                    }}
+                    color="primary"
+                    variant="outlined"
+                    onClick={onImageEditClick}
+                >
+                    <FormattedMessage
+                        id="GifsEditDialog.gifCard.addGif"
+                        defaultMessage="Add a gif"
+                    />
+                </Button>
+            </div>
+        );
+    }
+    return (
+        <div className={classes.imageContainer}>
+            {error?.gifUrl && (
+                <Typography color="danger" variant="p">
+                    {error?.gifUrl}
+                </Typography>
+            )}
+            <img className={classes.image} src={gifUrl} alt={name}/>
+        </div>
     );
 };
 

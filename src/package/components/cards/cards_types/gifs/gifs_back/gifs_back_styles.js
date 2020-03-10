@@ -2,7 +2,7 @@ import {
     createScreenWidthMediaQuery,
     flex,
     getColorsFromCardVariant,
-    getHexFromPaletteColor
+    getHexFromPaletteColor, withCustomVerticalScrollbar
 } from '../../../../../utils/styles/styles_utils';
 
 const { center } = flex;
@@ -12,7 +12,8 @@ export const styles = theme => {
         screenSizes,
         components: {
             cards: { height }
-        }
+        },
+        miscellaneous: { spacing }
     } = theme;
     return {
         image: {
@@ -27,6 +28,23 @@ export const styles = theme => {
             bottom: 80,
             left: 0,
             textAlign: 'center'
+        },
+        transitioningItemWithoutGif: {
+            height: '100%',
+            width: '100%',
+            padding: [spacing * 12, spacing * 14],
+            zIndex: 4,
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            ...center
+        },
+        slideNameWithoutGif: {
+            maxHeight: '100%',
+            overflow: 'auto',
+            paddingRight: spacing,
+            lineHeight: 'unset',
+            ...withCustomVerticalScrollbar('#fff')
         },
         slidesContainer: {
             height: '100%',

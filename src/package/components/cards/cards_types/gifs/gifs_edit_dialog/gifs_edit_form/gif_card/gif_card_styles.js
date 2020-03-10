@@ -9,6 +9,7 @@ export const styles = (theme) => {
             width: 300,
             margin: spacing * 2,
             padding: 0,
+            position: 'relative',
             overflow: 'hidden'
         },
         imageContainer: {
@@ -25,6 +26,13 @@ export const styles = (theme) => {
             position: 'absolute',
             top: 0,
             left: 0
+        },
+        addGifButtonContainer: {
+            padding: [spacing * 10, spacing * 2, 0],
+            display: 'flex'
+        },
+        addGifButton: {
+            width: '100%'
         },
         actions: {
             zIndex: 2,

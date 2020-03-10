@@ -45,7 +45,13 @@ const GifsBackComponent = ({ data }) => {
         [hasChanged.current]
     );
 
-    const transitions = useTransition((data.interests?.[currentIndex] ?? {}).name, item => `gif_name_${item}`, {
+    const sliderReference = useRef();
+
+    const pauseSlider = useCallback(() => sliderReference.current?.slickPause(), []);
+
+    const resumeSlider = useCallback(() => sliderReference.current?.slickPlay(), []);
+
+    const transitions = useTransition((data.interests?.[currentIndex] ?? {}), item => `gif_name_${item.name}`, {
         ...GIFS_BACK_TRANSITIONS_SPRING_PROPS,
         immediate: !hasChanged.current
     });
@@ -56,6 +62,7 @@ const GifsBackComponent = ({ data }) => {
                 <div className={classes.slidesContainer}>
                     <Slider
                         {...SETTINGS}
+                        ref={sliderReference}
                         beforeChange={handleBeforeChange}
                         prevArrow={(
                             <Arrow
@@ -69,28 +76,25 @@ const GifsBackComponent = ({ data }) => {
                         }
                     >
                         {(data.interests ?? []).map(({ gifUrl, name }) => (
-                            <img
-                                key={`gifs_back_carousel_image_${gifUrl}_${name}`}
-                                className={classes.image}
-                                src={gifUrl}
-                                alt={name}
+                            <SlideItem
+                                gifUrl={gifUrl}
+                                name={name}
+                                classes={classes}
                             />
                         ))}
                     </Slider>
                 </div>
             }
         >
-            {transitions.map(({ item, key, props }) => (
-                <Typography
+            {transitions.map(({ item, key, props }) => item?.name && (
+                <TransitioningItem
+                    item={item}
                     key={key}
-                    component={animated.div}
-                    style={props}
-                    color="light"
-                    variant="h2"
-                    customClasses={{ container: classes.slideName }}
-                >
-                    {item}
-                </Typography>
+                    props={props}
+                    classes={classes}
+                    pauseSlider={pauseSlider}
+                    resumeSlider={resumeSlider}
+                />
             ))}
         </GifsSidesCommons>
     );
@@ -128,6 +132,57 @@ const Arrow = ({ classes, onClick, arrowRole }) => {
         >
             <ArrowIcon />
         </animated.button>
+    );
+};
+
+const SlideItem = ({ gifUrl, name, classes }) => {
+    if (!gifUrl) {
+        return <div className={classes.solidBackground} />;
+    }
+    return (
+        <img
+            key={`gifs_back_carousel_image_${gifUrl}_${name}`}
+            className={classes.image}
+            src={gifUrl}
+            alt={name}
+        />
+    );
+};
+
+const TransitioningItem = ({ item, key, props, pauseSlider, resumeSlider, classes }) => {
+    if (!item?.gifUrl) {
+        return (
+            <animated.div
+                key={key}
+                className={classes.transitioningItemWithoutGif}
+                style={props}
+                onMouseEnter={pauseSlider}
+                onMouseLeave={resumeSlider}
+            >
+                <Typography
+                    customClasses={{
+                        container: classes.slideNameWithoutGif
+                    }}
+                    color="light"
+                    variant="h3"
+                    component="h4"
+                >
+                    {item.name}
+                </Typography>
+            </animated.div>
+        );
+    }
+    return (
+        <Typography
+            key={key}
+            customClasses={{ container: classes.slideName }}
+            component={animated.div}
+            style={props}
+            color="light"
+            variant="h2"
+        >
+            {item.name}
+        </Typography>
     );
 };
 
