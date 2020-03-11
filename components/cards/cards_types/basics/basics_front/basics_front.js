@@ -51,7 +51,11 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
   var _data$currentCity, _data$currentCity2;
 
   var data = _ref.data;
-  var variant = (0, _use_card_variant.useCardVariant)();
+
+  var _useCardVariant = (0, _use_card_variant.useCardVariant)(),
+      _useCardVariant2 = (0, _slicedToArray2.default)(_useCardVariant, 1),
+      variant = _useCardVariant2[0];
+
   var classes = useStyles({
     variant: variant
   });

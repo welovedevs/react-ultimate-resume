@@ -117,6 +117,34 @@ var DreamJobFrontComponent = function DreamJobFrontComponent(_ref) {
     defaultMessage: "Discover my dream job"
   }))));
 };
+/*
+* React-JSS remove styles for whatever reason when theme change. Unmount & Remounting the component fixes the issue.
+* */
 
-var DreamJobFront = DreamJobFrontComponent;
+
+var ThemeChangeHandlerDreamJobFront = function ThemeChangeHandlerDreamJobFront(props) {
+  var theme = (0, _reactJss.useTheme)();
+
+  var _useState = (0, _react.useState)(false),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      isRefreshing = _useState2[0],
+      setIsRefreshing = _useState2[1];
+
+  (0, _react.useEffect)(function () {
+    setIsRefreshing(true);
+  }, [JSON.stringify(theme)]);
+  (0, _react.useEffect)(function () {
+    if (isRefreshing) {
+      setIsRefreshing(false);
+    }
+  }, [isRefreshing]);
+
+  if (isRefreshing) {
+    return null;
+  }
+
+  return _react.default.createElement(DreamJobFrontComponent, props);
+};
+
+var DreamJobFront = ThemeChangeHandlerDreamJobFront;
 exports.DreamJobFront = DreamJobFront;

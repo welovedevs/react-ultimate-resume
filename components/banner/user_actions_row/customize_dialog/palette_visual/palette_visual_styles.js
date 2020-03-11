@@ -13,6 +13,9 @@ var styles = {
     height: DIMENSION,
     width: DIMENSION,
     backgroundColor: 'currentColor'
+  },
+  tooltipPopper: {
+    zIndex: 99999999999
   }
 };
 exports.styles = styles;

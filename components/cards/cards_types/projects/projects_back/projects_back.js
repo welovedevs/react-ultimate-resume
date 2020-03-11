@@ -62,7 +62,7 @@ var ProjectsBackComponent = function ProjectsBackComponent(_ref) {
     onEdit({
       projects: newProjects
     });
-  }, [onEdit]);
+  }, [data, onEdit]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_title.ProfileCardTitle, {
     customClasses: {
       container: classes.title,

@@ -9,6 +9,8 @@ exports.styles = void 0;
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
+var _chromaJs = _interopRequireDefault(require("chroma-js"));
+
 var _styles_utils = require("../../utils/styles/styles_utils");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -24,6 +26,7 @@ var styles = function styles(theme) {
       screenSizes = theme.screenSizes,
       spacing = theme.miscellaneous.spacing;
   var primaryRgb = palette.primary.rgbShades[500].join(', ');
+  var darkenPrimaryRgb = (0, _chromaJs.default)(palette.primary.rgbShades[500]).darken(2).rgb().join(', ');
   var QUERY_MEDIUM = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.medium);
   var QUERY_BETWEEN_MEDIUM_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.medium - (screenSizes.medium - screenSizes.small) / 2);
   var QUERY_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small);
@@ -64,7 +67,7 @@ var styles = function styles(theme) {
     overlay: {
       extend: 'absolutePositioned',
       zIndex: 1,
-      backgroundImage: "linear-gradient(360deg, rgba(0, 0, 0, .5) -28.58%, rgba(".concat(primaryRgb, ", 0.5) 93.05%)")
+      backgroundImage: "linear-gradient(360deg, rgba(".concat(darkenPrimaryRgb, ", .9) -28.58%, rgba(").concat(primaryRgb, ", 0.7) 93.05%)")
     },
     content: (0, _defineProperty2.default)({
       width: '100%',

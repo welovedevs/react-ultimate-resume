@@ -159,7 +159,8 @@ var RemoveProjectDetail = function RemoveProjectDetail(_ref3) {
       setDialogClosed = _useCallbackOpen2[2];
 
   var handleConfirm = (0, _react.useCallback)(function () {
-    return onDelete(index);
+    onDelete(index);
+    setDialogClosed();
   }, [onDelete, index]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_confirm_dialog.ConfirmDialog, {
     open: openDialog,
