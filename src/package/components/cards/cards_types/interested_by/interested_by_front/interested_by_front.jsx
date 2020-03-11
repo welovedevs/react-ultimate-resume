@@ -47,6 +47,11 @@ const InterestedByFrontComponent = ({
                         }}
                         {...profileCardFrontTypographyProps}
                     >
+                        <FormattedMessage
+                            id="InterestedBy.front.content"
+                            defaultMessage="I'm interested by {interestedBy}"
+                            values={{ interestedBy }}
+                        />
                         {interestedBy}
                     </ProfileCardFrontTypography>
                 </CenterContentContainer>
