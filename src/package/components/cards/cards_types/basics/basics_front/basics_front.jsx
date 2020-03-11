@@ -21,7 +21,7 @@ import { styles } from './basics_front_styles';
 const useStyles = createUseStyles(styles);
 
 const BasicsFrontComponent = ({ data }) => {
-    const variant = useCardVariant();
+    const [variant] = useCardVariant();
     const classes = useStyles({ variant });
 
     const [side, setSide] = useCardSide();

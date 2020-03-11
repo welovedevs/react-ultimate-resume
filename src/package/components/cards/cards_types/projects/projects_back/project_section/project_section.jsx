@@ -77,7 +77,10 @@ const Details = ({ project, index, onDelete, classes }) => {
 const RemoveProjectDetail = ({ index, onDelete, classes }) => {
     const [openDialog, setDialogOpened, setDialogClosed] = useCallbackOpen();
 
-    const handleConfirm = useCallback(() => onDelete(index), [onDelete, index]);
+    const handleConfirm = useCallback(() => {
+        onDelete(index);
+        setDialogClosed();
+    }, [onDelete, index]);
 
     return (
         <>

@@ -29,7 +29,7 @@ const ProjectsBackComponent = ({ data }) => {
         const newProjects = [...data.projects];
         newProjects.splice(index, 1);
         onEdit({ projects: newProjects });
-    }, [onEdit]);
+    }, [data, onEdit]);
 
     return (
         <>

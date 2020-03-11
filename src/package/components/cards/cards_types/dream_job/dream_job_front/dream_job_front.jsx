@@ -1,7 +1,7 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 
 import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
@@ -76,4 +76,29 @@ const DreamJobFrontComponent = ({ data }) => {
     );
 };
 
-export const DreamJobFront = DreamJobFrontComponent;
+/*
+* React-JSS remove styles for whatever reason when theme change. Unmount & Remounting the component fixes the issue.
+* */
+const ThemeChangeHandlerDreamJobFront = (props) => {
+    const theme = useTheme();
+    const [isRefreshing, setIsRefreshing] = useState(false);
+
+    useEffect(() => {
+        setIsRefreshing(true);
+    }, [JSON.stringify(theme)]);
+
+    useEffect(() => {
+        if (isRefreshing) {
+            setIsRefreshing(false);
+        }
+    }, [isRefreshing]);
+
+    if (isRefreshing) {
+        return null;
+    }
+
+    return <DreamJobFrontComponent {...props} />;
+};
+
+
+export const DreamJobFront = ThemeChangeHandlerDreamJobFront;
