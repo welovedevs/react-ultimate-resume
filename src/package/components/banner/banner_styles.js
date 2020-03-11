@@ -1,3 +1,4 @@
+import chroma from 'chroma-js';
 import { createScreenWidthMediaQuery, flex } from '../../utils/styles/styles_utils';
 
 const { center } = flex;
@@ -10,6 +11,7 @@ export const styles = (theme) => {
     } = theme;
 
     const primaryRgb = palette.primary.rgbShades[500].join(', ');
+    const darkenPrimaryRgb = chroma(palette.primary.rgbShades[500]).darken(2).rgb().join(', ');
 
     const QUERY_MEDIUM = createScreenWidthMediaQuery('max-width', screenSizes.medium);
     const QUERY_BETWEEN_MEDIUM_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.medium - (screenSizes.medium - screenSizes.small) / 2);
@@ -55,7 +57,7 @@ export const styles = (theme) => {
         overlay: {
             extend: 'absolutePositioned',
             zIndex: 1,
-            backgroundImage: `linear-gradient(360deg, rgba(0, 0, 0, .5) -28.58%, rgba(${primaryRgb}, 0.5) 93.05%)`
+            backgroundImage: `linear-gradient(360deg, rgba(${darkenPrimaryRgb}, .9) -28.58%, rgba(${primaryRgb}, 0.7) 93.05%)`
         },
         content: {
             width: '100%',
