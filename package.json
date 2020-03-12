@@ -45,7 +45,7 @@
         "react-images": "^1.1.0-beta.3",
         "react-infinite-scroller": "^1.2.4",
         "react-intl": "^3.9.3",
-        "react-jss": "^10.0.4",
+        "react-jss": "10.0.0",
         "react-scripts": "^3.4.0",
         "react-slick": "^0.25.2",
         "react-sortable-hoc": "^1.11.0",

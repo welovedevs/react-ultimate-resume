@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -20,8 +20,10 @@ import { styles } from './dream_job_front_styles';
 const useStyles = createUseStyles(styles);
 
 const DreamJobFrontComponent = ({ data }) => {
-    const classes = useStyles();
+    const theme = useTheme();
+    const classes = useStyles({ theme });
     const { remoteFrequency, places } = data;
+    console.log({ classes });
     const [side, setSide] = useCardSide();
 
     const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
@@ -76,30 +78,5 @@ const DreamJobFrontComponent = ({ data }) => {
     );
 };
 
-/*
-* React-JSS remove styles for whatever reason when theme change. Unmount & Remounting the component fixes the issue.
-* */
-const ThemeChangeHandlerDreamJobFront = (props) => {
-    const theme = useTheme();
-    const [isRefreshing, setIsRefreshing] = useState(false);
 
-    useEffect(() => {
-        setIsRefreshing(true);
-    }, [JSON.stringify(theme)]);
-
-    useEffect(() => {
-        if (isRefreshing) {
-            setIsRefreshing(false);
-        }
-    }, [isRefreshing]);
-
-    if (isRefreshing) {
-        console.log('[Dream Job][Front] Refreshing...');
-        return null;
-    }
-
-    return <DreamJobFrontComponent {...props} />;
-};
-
-
-export const DreamJobFront = ThemeChangeHandlerDreamJobFront;
+export const DreamJobFront = DreamJobFrontComponent;
