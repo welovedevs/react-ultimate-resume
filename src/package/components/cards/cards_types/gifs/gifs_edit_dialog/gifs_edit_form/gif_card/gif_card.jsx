@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
@@ -24,16 +24,11 @@ const GifCardComponent = ({
 
     const [input, setInput] = useState(name);
 
-    const handleTextFieldChange = useCallback(event => setInput(event.target.value), []);
-
-    const isSaveDisabled = useMemo(() => !input || input === name, [input, name]);
-
-    const handleSave = useCallback(() => {
-        if (isSaveDisabled || typeof onChange !== 'function') {
-            return;
-        }
-        onChange('name')(input);
-    }, [onChange, isSaveDisabled, input]);
+    const handleTextFieldChange = useCallback((event) => {
+        const { target: { value } } = event;
+        setInput(value);
+        onChange('name')(value);
+    }, []);
 
     useEffect(() => setInput(name), [name]);
 
@@ -81,9 +76,6 @@ const GifCardComponent = ({
                 <PopperCardActions>
                     <Button color="danger" size="small" onClick={onRemove}>
                         <FormattedMessage id="Main.lang.remove" defaultMessage="Remove"/>
-                    </Button>
-                    <Button disabled={isSaveDisabled} size="small" color="primary" onClick={handleSave}>
-                        <FormattedMessage id="Main.lang.save" defaultMessage="Save"/>
                     </Button>
                 </PopperCardActions>
             </Card>
