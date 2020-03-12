@@ -116,6 +116,7 @@ var PalettesListComponent = function PalettesListComponent(_ref) {
       variant: "h3"
     }, "".concat(paletteIndex + 1, ".")), _react.default.createElement(_palette_visual.PaletteVisual, {
       classes: {
+        tooltipPopper: classes.tooltipPopper,
         color: classes.paletteVisualColor
       },
       palette: ['primary', 'secondary', 'tertiary'].reduce(function (acc, keyName, index) {

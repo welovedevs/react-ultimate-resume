@@ -47,7 +47,10 @@ var styles = function styles(theme) {
       alignItems: 'flex-end',
       margin: [spacing * 2, 0]
     },
-    paletteVisualColor: {}
+    paletteVisualColor: {},
+    tooltipPopper: {
+      zIndex: 9999999999
+    }
   }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.xs), {
     paletteVisualColor: {
       height: 50,
