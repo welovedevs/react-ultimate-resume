@@ -140,6 +140,7 @@ var ThemeChangeHandlerDreamJobFront = function ThemeChangeHandlerDreamJobFront(p
   }, [isRefreshing]);
 
   if (isRefreshing) {
+    console.log('[Dream Job][Front] Refreshing...');
     return null;
   }
 
