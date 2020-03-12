@@ -42,18 +42,10 @@ var GifCardComponent = function GifCardComponent(_ref) {
       setInput = _useState2[1];
 
   var handleTextFieldChange = (0, _react.useCallback)(function (event) {
-    return setInput(event.target.value);
+    var value = event.target.value;
+    setInput(value);
+    onChange('name')(value);
   }, []);
-  var isSaveDisabled = (0, _react.useMemo)(function () {
-    return !input || input === name;
-  }, [input, name]);
-  var handleSave = (0, _react.useCallback)(function () {
-    if (isSaveDisabled || typeof onChange !== 'function') {
-      return;
-    }
-
-    onChange('name')(input);
-  }, [onChange, isSaveDisabled, input]);
   (0, _react.useEffect)(function () {
     return setInput(name);
   }, [name]);
@@ -95,14 +87,6 @@ var GifCardComponent = function GifCardComponent(_ref) {
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Main.lang.remove",
     defaultMessage: "Remove"
-  })), _react.default.createElement(_ui.Button, {
-    disabled: isSaveDisabled,
-    size: "small",
-    color: "primary",
-    onClick: handleSave
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Main.lang.save",
-    defaultMessage: "Save"
   })))));
 };
 
