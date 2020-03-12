@@ -28,7 +28,7 @@ const DreamJobCardComponent = ({ variant, side }) => {
             isComplete={isComplete}
             data={mappedData}
             sides={{
-                front: DreamJobFront,
+                front: () => null,
                 back: DreamJobBack
             }}
             editDialog={{
