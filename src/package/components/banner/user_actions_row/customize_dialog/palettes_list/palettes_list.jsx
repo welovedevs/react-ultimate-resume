@@ -85,6 +85,7 @@ const PalettesListComponent = ({
                         </Typography>
                         <PaletteVisual
                             classes={{
+                                tooltipPopper: classes.tooltipPopper,
                                 color: classes.paletteVisualColor
                             }}
                             palette={['primary', 'secondary', 'tertiary'].reduce((acc, keyName, index) => ({

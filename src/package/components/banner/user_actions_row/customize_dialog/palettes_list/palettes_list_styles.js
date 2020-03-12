@@ -36,6 +36,9 @@ export const styles = (theme) => {
             margin: [spacing * 2, 0]
         },
         paletteVisualColor: {},
+        tooltipPopper: {
+            zIndex: 9999999999
+        },
         [createScreenWidthMediaQuery('max-width', screenSizes.xs)]: {
             paletteVisualColor: {
                 height: 50,
