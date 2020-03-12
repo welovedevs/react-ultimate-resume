@@ -52,7 +52,9 @@ var DreamJobCardComponent = function DreamJobCardComponent(_ref) {
     isComplete: isComplete,
     data: mappedData,
     sides: {
-      front: _dream_job_front.DreamJobFront,
+      front: function front() {
+        return null;
+      },
       back: _dream_job_back.DreamJobBack
     },
     editDialog: {
