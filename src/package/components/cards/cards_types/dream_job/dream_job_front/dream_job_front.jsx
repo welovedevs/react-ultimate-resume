@@ -94,6 +94,7 @@ const ThemeChangeHandlerDreamJobFront = (props) => {
     }, [isRefreshing]);
 
     if (isRefreshing) {
+        console.log('[Dream Job][Front] Refreshing...');
         return null;
     }
 
