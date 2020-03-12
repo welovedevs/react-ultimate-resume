@@ -50,9 +50,15 @@ var useStyles = (0, _reactJss.createUseStyles)(_dream_job_front_styles.styles);
 
 var DreamJobFrontComponent = function DreamJobFrontComponent(_ref) {
   var data = _ref.data;
-  var classes = useStyles();
+  var theme = (0, _reactJss.useTheme)();
+  var classes = useStyles({
+    theme: theme
+  });
   var remoteFrequency = data.remoteFrequency,
       places = data.places;
+  console.log({
+    classes: classes
+  });
 
   var _useCardSide = (0, _use_card_side.useCardSide)(),
       _useCardSide2 = (0, _slicedToArray2.default)(_useCardSide, 2),
@@ -117,35 +123,6 @@ var DreamJobFrontComponent = function DreamJobFrontComponent(_ref) {
     defaultMessage: "Discover my dream job"
   }))));
 };
-/*
-* React-JSS remove styles for whatever reason when theme change. Unmount & Remounting the component fixes the issue.
-* */
 
-
-var ThemeChangeHandlerDreamJobFront = function ThemeChangeHandlerDreamJobFront(props) {
-  var theme = (0, _reactJss.useTheme)();
-
-  var _useState = (0, _react.useState)(false),
-      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
-      isRefreshing = _useState2[0],
-      setIsRefreshing = _useState2[1];
-
-  (0, _react.useEffect)(function () {
-    setIsRefreshing(true);
-  }, [JSON.stringify(theme)]);
-  (0, _react.useEffect)(function () {
-    if (isRefreshing) {
-      setIsRefreshing(false);
-    }
-  }, [isRefreshing]);
-
-  if (isRefreshing) {
-    console.log('[Dream Job][Front] Refreshing...');
-    return null;
-  }
-
-  return _react.default.createElement(DreamJobFrontComponent, props);
-};
-
-var DreamJobFront = ThemeChangeHandlerDreamJobFront;
+var DreamJobFront = DreamJobFrontComponent;
 exports.DreamJobFront = DreamJobFront;

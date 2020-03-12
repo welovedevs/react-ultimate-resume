@@ -11,21 +11,28 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
 
 var _styles_utils = require("../../../../../utils/styles/styles_utils");
 
-var styles = function styles(theme) {
-  var _ref;
-
-  var spacing = theme.miscellaneous.spacing;
-  return _ref = {
-    container: {
-      flexDirection: 'column'
-    },
-    logo: {
-      marginBottom: spacing * 4,
+var styles = {
+  container: {
+    flexDirection: 'column'
+  },
+  logo: function logo(_ref) {
+    var theme = _ref.theme;
+    return (0, _defineProperty2.default)({
+      marginBottom: theme.miscellaneous.spacing * 4,
       '& path': {
         fill: ['currentColor', '!important']
       }
-    },
-    typography: {
+    }, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
+      '& path': {
+        fill: ['currentColor', '!important']
+      }
+    });
+  },
+  typography: function typography(_ref3) {
+    var _ref4;
+
+    var theme = _ref3.theme;
+    return _ref4 = {
       overflow: 'hidden',
       minHeight: 'fit-content',
       fontSize: 36,
@@ -34,24 +41,14 @@ var styles = function styles(theme) {
       display: '-webkit-box',
       '-webkit-line-clamp': 3,
       '-webkit-box-orient': 'vertical'
-    }
-  }, (0, _defineProperty2.default)(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
-    logo: {
-      '& path': {
-        fill: ['currentColor', '!important']
-      }
-    },
-    typography: {
+    }, (0, _defineProperty2.default)(_ref4, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
       fontSize: 28,
       wordWrap: 'break-word',
       '-webkit-line-clamp': 2,
       lineHeight: 1.2
-    }
-  }), (0, _defineProperty2.default)(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.xs), {
-    typography: {
+    }), (0, _defineProperty2.default)(_ref4, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.xs), {
       fontSize: 24
-    }
-  }), _ref;
+    }), _ref4;
+  }
 };
-
 exports.styles = styles;
