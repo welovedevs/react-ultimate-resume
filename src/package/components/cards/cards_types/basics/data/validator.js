@@ -5,8 +5,8 @@ export const BasicsValidationSchema = formatMessage =>
     Yup.object({
         summary: Yup.string()
             .required(formatMessage(validationTranslations.required))
-            .min(5, formatMessage(validationTranslations.min, { min: 10 }))
-            .max(50, formatMessage(validationTranslations.min, { min: 50 })),
+            .min(5, formatMessage(validationTranslations.min, { min: 5 }))
+            .max(50, formatMessage(validationTranslations.max, { max: 50 })),
         currentCity: Yup.object()
             .nullable()
             .required(formatMessage(validationTranslations.required))
