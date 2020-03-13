@@ -75,6 +75,19 @@ var styles = function styles(theme) {
       '-webkit-line-clamp': 3,
       '-webkit-box-orient': 'vertical',
       maxHeight: 30 * 1.3 * 3
+    },
+    noProject: {
+      display: 'flex',
+      flexDirection: 'column'
+    },
+    noProjectTypography: {
+      color: 'inherit',
+      fontWeight: 700,
+      lineHeight: 1.3
+    },
+    addButton: {
+      marginTop: spacing * 4,
+      marginLeft: -spacing
     }
   }, (0, _defineProperty2.default)(_ref3, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
     content: function content() {

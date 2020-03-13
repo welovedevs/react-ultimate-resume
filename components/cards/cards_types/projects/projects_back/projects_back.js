@@ -33,12 +33,17 @@ var _use_card_variant = require("../../../../commons/profile_card/profile_card_h
 
 var _contexts = require("../../../../../utils/context/contexts");
 
+var _exists_and_not_empty = require("../../../utils/exists_and_not_empty");
+
+var _no_project = require("./no_project/no_project");
+
 var useStyles = (0, _reactJss.createUseStyles)(_projects_back_styles.styles);
 
 var ProjectsBackComponent = function ProjectsBackComponent(_ref) {
   var _data$projects2, _data$projects2$, _data$projects3, _data$projects3$, _data$projects4;
 
-  var data = _ref.data;
+  var data = _ref.data,
+      handleAddButtonClick = _ref.handleAddButtonClick;
 
   var _useCardVariant = (0, _use_card_variant.useCardVariant)(),
       _useCardVariant2 = (0, _slicedToArray2.default)(_useCardVariant, 1),
@@ -86,6 +91,8 @@ var ProjectsBackComponent = function ProjectsBackComponent(_ref) {
       key: "project_".concat(project.id),
       onDelete: handleProjectDeletion
     });
+  }), !(0, _exists_and_not_empty.existsAndNotEmpty)(data === null || data === void 0 ? void 0 : data.projects) && _react.default.createElement(_no_project.NoProject, {
+    handleAddButtonClick: handleAddButtonClick
   })));
 };
 

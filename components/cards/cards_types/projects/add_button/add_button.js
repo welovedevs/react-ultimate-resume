@@ -7,33 +7,27 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.AddButton = void 0;
 
+var _reactIntl = require("react-intl");
+
+var _ui = require("@wld/ui");
+
 var _react = _interopRequireDefault(require("react"));
 
-var _bouncing_round_button = require("../../../../commons/bouncing_round_button/bouncing_round_button");
-
-var EditIcon = function EditIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("path", {
-    d: "M14.52 8h-6v6h-2V8h-6V6h6V0h2v6h6v2z"
-  }));
-};
-
-EditIcon.defaultProps = {
-  width: "15",
-  height: "14",
-  viewBox: "0 0 15 14",
-  fill: "#230CAE",
-  xmlns: "http://www.w3.org/2000/svg"
-};
-
 var AddButtonComponent = function AddButtonComponent(_ref) {
-  var _ref$title = _ref.title,
-      title = _ref$title === void 0 ? 'Ajouter' : _ref$title,
-      onClick = _ref.onClick;
-  return _react.default.createElement(_bouncing_round_button.BouncingRoundButton, {
-    title: title,
-    icon: EditIcon,
-    onClick: onClick
-  });
+  var handleAddButtonClick = _ref.handleAddButtonClick,
+      _ref$classes = _ref.classes,
+      receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
+  return _react.default.createElement(_ui.Button, {
+    customClasses: {
+      container: receivedClasses.container
+    },
+    color: "primary",
+    variant: "outlined",
+    onClick: handleAddButtonClick
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Projects.noProject.buttonLabel",
+    defaultMessage: "Ajouter un projet"
+  }));
 };
 
 var AddButton = AddButtonComponent;

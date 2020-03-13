@@ -9,6 +9,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ProjectsCard = void 0;
 
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
 
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
@@ -23,7 +25,7 @@ var _projects_front = require("./projects_front/projects_front");
 
 var _projects_back = require("./projects_back/projects_back");
 
-var _add_button = require("./add_button/add_button");
+var _add_button_rounded = require("./add_button_rounded/add_button_rounded");
 
 var _project_dialog = require("./project_dialog/project_dialog");
 
@@ -87,12 +89,20 @@ var ProjectsCardComponent = function ProjectsCardComponent(_ref) {
     isComplete: isComplete,
     isEditingProfile: isEditing,
     sides: {
-      front: _projects_front.ProjectsFront,
-      back: _projects_back.ProjectsBack
+      front: function front(props) {
+        return _react.default.createElement(_projects_front.ProjectsFront, (0, _extends2.default)({
+          handleAddButtonClick: handleAddButtonClick
+        }, props));
+      },
+      back: function back(props) {
+        return _react.default.createElement(_projects_back.ProjectsBack, (0, _extends2.default)({
+          handleAddButtonClick: handleAddButtonClick
+        }, props));
+      }
     },
     variant: variant,
     side: side,
-    customEditAction: _react.default.createElement(_add_button.AddButton, {
+    customEditAction: _react.default.createElement(_add_button_rounded.AddButton, {
       title: "Ajouter un projet",
       onClick: handleAddButtonClick
     })

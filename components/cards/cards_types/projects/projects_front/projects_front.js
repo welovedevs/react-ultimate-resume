@@ -33,12 +33,17 @@ var _images = require("../utils/images");
 
 var _projects_front_styles = require("./projects_front_styles");
 
+var _exists_and_not_empty = require("../../../utils/exists_and_not_empty");
+
+var _add_button = require("../add_button/add_button");
+
 var useStyles = (0, _reactJss.createUseStyles)(_projects_front_styles.styles);
 
 var ProjectsFrontComponent = function ProjectsFrontComponent(_ref) {
   var _data$projects2, _data$projects2$, _data$projects3, _data$projects3$, _data$projects8, _data$projects9;
 
-  var data = _ref.data;
+  var data = _ref.data,
+      handleAddButtonClick = _ref.handleAddButtonClick;
 
   var _useCardSide = (0, _use_card_side.useCardSide)(),
       _useCardSide2 = (0, _slicedToArray2.default)(_useCardSide, 2),
@@ -78,6 +83,9 @@ var ProjectsFrontComponent = function ProjectsFrontComponent(_ref) {
     variant: variant,
     hasImage: !!imageSrc
   });
+  var hasProject = (0, _react.useMemo)(function () {
+    return (0, _exists_and_not_empty.existsAndNotEmpty)(data === null || data === void 0 ? void 0 : data.projects);
+  }, [data]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: classes.background
   }, imageSrc && _react.default.createElement("img", {
@@ -86,24 +94,12 @@ var ProjectsFrontComponent = function ProjectsFrontComponent(_ref) {
     alt: alt
   })), _react.default.createElement("div", {
     className: classes.content
-  }, _react.default.createElement(_ui.Typography, {
-    variant: "h2",
-    component: "h2",
-    customClasses: {
-      container: classes.text
-    }
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Projects.front.title",
-    defaultMessage: "My <emoji>\u2665\uFE0F</emoji> project : ",
-    values: {
-      emoji: function emoji(value) {
-        return _react.default.createElement(_reactEmojiRender.Twemoji, {
-          svg: true,
-          text: value
-        });
-      }
-    }
-  }), projectTitle)), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+  }, _react.default.createElement(Content, {
+    hasProject: hasProject,
+    projectTitle: projectTitle,
+    handleAddButtonClick: handleAddButtonClick,
+    classes: classes
+  })), hasProject && _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Projects.front.action",
@@ -112,6 +108,52 @@ var ProjectsFrontComponent = function ProjectsFrontComponent(_ref) {
       count: (_data$projects9 = data.projects) === null || _data$projects9 === void 0 ? void 0 : _data$projects9.length
     }
   }))));
+};
+
+var Content = function Content(_ref4) {
+  var hasProject = _ref4.hasProject,
+      projectTitle = _ref4.projectTitle,
+      handleAddButtonClick = _ref4.handleAddButtonClick,
+      classes = _ref4.classes;
+
+  if (hasProject) {
+    return _react.default.createElement(_ui.Typography, {
+      variant: "h2",
+      component: "h2",
+      customClasses: {
+        container: classes.text
+      }
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Projects.front.title",
+      defaultMessage: "My <emoji>\u2665\uFE0F</emoji> project : ",
+      values: {
+        emoji: function emoji(value) {
+          return _react.default.createElement(_reactEmojiRender.Twemoji, {
+            svg: true,
+            text: value
+          });
+        }
+      }
+    }), projectTitle);
+  }
+
+  return _react.default.createElement("div", {
+    className: classes.noProject
+  }, _react.default.createElement(_ui.Typography, {
+    variant: "h3",
+    component: "h3",
+    customClasses: {
+      container: classes.noProjectTypography
+    }
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Projects.front.noProject",
+    defaultMessage: "Vous n'avez pas encore ajout\xE9 de projet !"
+  }), projectTitle), _react.default.createElement(_add_button.AddButton, {
+    classes: {
+      container: classes.addButton
+    },
+    handleAddButtonClick: handleAddButtonClick
+  }));
 };
 
 var ProjectsFront = ProjectsFrontComponent;
