@@ -35,7 +35,8 @@ var styles = function styles(theme) {
         margin: 0,
         paddingRight: spacing * 3,
         lineHeight: 'initial',
-        maxHeight: '100%'
+        maxHeight: '100%',
+        wordBreak: 'break-all'
       }, (0, _styles_utils.withCustomVerticalScrollbar)((0, _styles_utils.getHexFromPaletteColor)(theme, (0, _styles_utils.getColorsFromCardVariant)(theme, variant).backgroundColor)));
     }
   };
