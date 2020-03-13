@@ -49,6 +49,14 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
       personalDescription = data.personalDescription;
   var sections = (0, _react.useMemo)(function () {
     return {
+      personalDescription: {
+        title: _react.default.createElement(_reactIntl.FormattedMessage, {
+          id: "Basics.Back.PersonalDescription",
+          defaultMessage: "A bit more about me : "
+        }),
+        hide: !personalDescription,
+        value: _react.default.createElement("span", null, personalDescription)
+      },
       visaSponsorship: {
         hide: !(0, _exists_and_not_empty.existsAndNotEmpty)(visaSponsorship),
         value: _react.default.createElement("span", {
@@ -103,14 +111,6 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
             codingYears: codingYears
           }
         })
-      },
-      personalDescription: {
-        title: _react.default.createElement(_reactIntl.FormattedMessage, {
-          id: "Basics.Back.PersonalDescription",
-          defaultMessage: "A bit more about me : "
-        }),
-        hide: !personalDescription,
-        value: _react.default.createElement("span", null, personalDescription)
       }
     };
   }, [currentCityName, experienceYears, contractTypes, studiesLevel, codingYears, codingReason, visaSponsorship, personalDescription, searchState]);
