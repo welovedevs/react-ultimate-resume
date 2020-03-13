@@ -17,6 +17,8 @@ var _reactIntl = require("react-intl");
 
 var _reactJss = require("react-jss");
 
+var _chromaJs = _interopRequireDefault(require("chroma-js"));
+
 var _profile_card_padding_front = require("../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front");
 
 var _center_content_container = require("../../../../commons/center_content_container/center_content_container");
@@ -32,6 +34,10 @@ var _use_technologies = require("../../../../hooks/technologies/use_technologies
 var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
 
 var _skills_front_styles = require("./skills_front_styles");
+
+var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
+
+var _styles_utils = require("../../../../../utils/styles/styles_utils");
 
 var useStyles = (0, _reactJss.createUseStyles)(_skills_front_styles.styles);
 
@@ -66,10 +72,9 @@ var SkillsFrontComponent = function SkillsFrontComponent(_ref) {
     customClasses: {
       container: classes.container
     }
-  }, _react.default.createElement("img", {
-    src: techno && "https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/".concat(techno === null || techno === void 0 ? void 0 : techno.handle),
-    alt: techno === null || techno === void 0 ? void 0 : techno.name,
-    className: classes.logo
+  }, _react.default.createElement(Picture, {
+    techno: techno,
+    classes: classes
   }), _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
     classes: {
       container: classes.typography
@@ -86,6 +91,42 @@ var SkillsFrontComponent = function SkillsFrontComponent(_ref) {
     id: "Skills.front.action",
     defaultMessage: "More skills"
   }))));
+};
+
+var Picture = function Picture(_ref2) {
+  var techno = _ref2.techno,
+      classes = _ref2.classes;
+  var theme = (0, _reactJss.useTheme)();
+
+  var _useCardVariant = (0, _use_card_variant.useCardVariant)(),
+      _useCardVariant2 = (0, _slicedToArray2.default)(_useCardVariant, 1),
+      variant = _useCardVariant2[0];
+
+  var _getColorsFromCardVar = (0, _styles_utils.getColorsFromCardVariant)(theme, variant),
+      color = _getColorsFromCardVar.color;
+
+  var src = null;
+
+  if (color === 'light') {
+    src = "https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/".concat(techno === null || techno === void 0 ? void 0 : techno.handle);
+  } else {
+    var _chroma$hsl = (0, _chromaJs.default)((0, _styles_utils.getHexFromPaletteColor)(theme, color)).hsl(),
+        _chroma$hsl2 = (0, _slicedToArray2.default)(_chroma$hsl, 2),
+        hue = _chroma$hsl2[0],
+        saturation = _chroma$hsl2[1];
+
+    src = "https://process.filestackapi.com/output=format:png/negative/modulate=hue:".concat(Math.trunc(hue), ",brightness:200,saturation:").concat(Math.trunc(saturation * 100), "/").concat(techno === null || techno === void 0 ? void 0 : techno.handle);
+  }
+
+  if (!src || !techno) {
+    return null;
+  }
+
+  return _react.default.createElement("img", {
+    src: src,
+    alt: techno === null || techno === void 0 ? void 0 : techno.name,
+    className: classes.logo
+  });
 };
 
 var SkillsFront = SkillsFrontComponent;

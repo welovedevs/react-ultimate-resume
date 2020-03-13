@@ -46,9 +46,6 @@ var styles = function styles(theme) {
         content: '\'\''
       }
     }),
-    buttons: {
-      justifyContent: 'space-between'
-    },
     dividerOr: {
       zIndex: 1,
       padding: [0, spacing * 2],

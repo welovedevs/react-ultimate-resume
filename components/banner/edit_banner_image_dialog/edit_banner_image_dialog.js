@@ -103,11 +103,7 @@ var EditBannerImageDialogComponent = function EditBannerImageDialogComponent(_re
     defaultMessage: "ou"
   }))), _react.default.createElement(_file_drop_zone.FileDropZone, {
     onDrop: onDrop
-  })), _react.default.createElement(_core.DialogActions, {
-    classes: {
-      root: classes.buttons
-    }
-  }, _react.default.createElement(_ui.Button, {
+  })), _react.default.createElement(_core.DialogActions, null, _react.default.createElement(_ui.Button, {
     size: "small",
     color: "danger",
     onClick: onClear

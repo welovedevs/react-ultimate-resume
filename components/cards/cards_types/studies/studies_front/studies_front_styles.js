@@ -20,10 +20,7 @@ var styles = function styles(theme) {
       flexDirection: 'column'
     },
     logo: {
-      marginBottom: spacing * 4,
-      '& > path': {
-        fill: 'currentColor'
-      }
+      marginBottom: spacing * 4
     },
     typography: {
       overflow: 'hidden',
