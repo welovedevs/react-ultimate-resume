@@ -77,7 +77,7 @@ var SkillsPieChart = function SkillsPieChart(_ref) {
       }, shapeProps));
     },
     data: data,
-    outerRadius: isMobile ? '50%' : undefined
+    outerRadius: isMobile ? '50%' : '70%'
   }, data.map(function (entry, index) {
     return _react.default.createElement(_recharts.Cell, {
       key: "cell-".concat(index),

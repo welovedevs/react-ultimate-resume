@@ -37,12 +37,6 @@ var CustomLabel = function CustomLabel(props) {
     d: "M".concat(sx, ",").concat(sy, "L").concat(mx, ",").concat(my, "L").concat(ex, ",").concat(ey),
     stroke: customColor,
     fill: "none"
-  }), _react.default.createElement("circle", {
-    cx: ex,
-    cy: ey,
-    r: 2,
-    fill: customColor,
-    stroke: "none"
   }), _react.default.createElement("text", {
     x: ex + (cos >= 0 ? 1 : -1) * 8,
     y: ey,

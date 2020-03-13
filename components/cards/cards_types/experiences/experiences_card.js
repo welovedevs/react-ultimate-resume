@@ -33,6 +33,9 @@ var ExperiencesCardComponent = function ExperiencesCardComponent(_ref) {
       isEditing = _useContext.isEditing,
       mode = _useContext.mode;
 
+  console.log({
+    data: data
+  });
   var mappedData = (0, _react.useMemo)(function () {
     return (0, _mapping.mapWorkFromJsonResume)(data);
   }, [data]);

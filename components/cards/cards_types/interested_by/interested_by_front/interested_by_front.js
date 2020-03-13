@@ -81,7 +81,7 @@ var InterestedByFrontComponent = function InterestedByFrontComponent(_ref) {
     values: {
       interestedBy: interestedBy
     }
-  }), interestedBy))), isTypographyTruncated && !dismissButton && _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+  })))), isTypographyTruncated && !dismissButton && _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "InterestedBy.front.action",
