@@ -20,6 +20,7 @@ export const styles = (theme) => {
             paddingRight: spacing * 3,
             lineHeight: 'initial',
             maxHeight: '100%',
+            wordBreak: 'break-all',
             ...withCustomVerticalScrollbar(getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backgroundColor))
         })
     });
