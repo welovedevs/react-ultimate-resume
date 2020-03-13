@@ -10,7 +10,7 @@ import { ProfileCardFrontTypography } from '../../../../commons/profile_card/pro
 import { ProfileCardActions } from '../../../../commons/profile_card/profile_card_actions/profile_card_actions';
 import { ProfileCardButton } from '../../../../commons/profile_card/profile_card_button/profile_card_button';
 
-import { ReactComponent as SchoolLogo } from '../../../../../assets/icons/dev_only/school.svg';
+import { ReactComponent as SchoolLogo } from '../../../../../assets/icons/school.svg';
 
 import { styles } from './studies_front_styles';
 import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';

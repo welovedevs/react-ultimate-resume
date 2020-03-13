@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { Typography } from '@wld/ui';
 
 import { ProfileCardSectionTitle } from '../../../../../commons/profile_card/profile_card_section_title/profile_card_section_title';
@@ -19,6 +19,8 @@ import { useIsEditing } from '../../../../../hooks/use_is_editing';
 import { useCallbackOpen } from '../../../../../hooks/use_callback_open';
 
 import { styles } from './project_section_styles';
+import { useCardVariant } from '../../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { getColorsFromCardVariant } from '../../../../../../utils/styles/styles_utils';
 
 const useStyles = createUseStyles(styles);
 
@@ -49,12 +51,17 @@ const ProjectSectionContainer = ({ project, cardVariant, onDelete, index }) => {
 };
 
 const Details = ({ project, index, onDelete, classes }) => {
+    const theme = useTheme();
     const [isEditing] = useIsEditing();
+    const [variant] = useCardVariant();
+
+    const color = getColorsFromCardVariant(theme, variant).backColor;
+
     return (
         <div className={classes.details}>
             {project.link && (
                 <div className={classes.detail}>
-                    <AnimatedUnderlinedButton>
+                    <AnimatedUnderlinedButton color={color}>
                         <a className={classes.link} href={project.link}>
                             <LinkIcon className={classes.detailIcon}/>
                             <Typography customClasses={{ container: classes.detailTypography }} color="primary">
@@ -65,16 +72,16 @@ const Details = ({ project, index, onDelete, classes }) => {
                 </div>
             )}
             <div className={classes.detail}>
-                <SeeProjectDetail project={project}/>
+                <SeeProjectDetail color={color} project={project} />
             </div>
             {isEditing && (
-                <RemoveProjectDetail index={index} onDelete={onDelete} classes={classes} />
+                <RemoveProjectDetail color={color} index={index} onDelete={onDelete} classes={classes} />
             )}
         </div>
     );
 };
 
-const RemoveProjectDetail = ({ index, onDelete, classes }) => {
+const RemoveProjectDetail = ({ color, index, onDelete, classes }) => {
     const [openDialog, setDialogOpened, setDialogClosed] = useCallbackOpen();
 
     const handleConfirm = useCallback(() => {
@@ -90,7 +97,7 @@ const RemoveProjectDetail = ({ index, onDelete, classes }) => {
                 onConfirm={handleConfirm}
             />
             <div className={classes.detail}>
-                <AnimatedUnderlinedButton onClick={setDialogOpened}>
+                <AnimatedUnderlinedButton color={color} onClick={setDialogOpened}>
                     <RemoveIcon className={classes.detailDeleteIcon}/>
                     <Typography customClasses={{ container: classes.detailTypography }} color="primary">
                         <FormattedMessage id="Main.lang.delete" defaultMessage="Delete"/>
