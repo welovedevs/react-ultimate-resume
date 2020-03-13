@@ -52,7 +52,6 @@ const InterestedByFrontComponent = ({
                             defaultMessage="I'm interested by {interestedBy}"
                             values={{ interestedBy }}
                         />
-                        {interestedBy}
                     </ProfileCardFrontTypography>
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
