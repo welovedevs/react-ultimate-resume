@@ -26,6 +26,7 @@ const InterestedByBackComponent = props => {
                 overrideColor
             }}
             dismissButton
+            dismissTitle
             {...props}
         />
     );

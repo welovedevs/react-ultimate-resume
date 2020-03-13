@@ -2,12 +2,16 @@ import { createScreenWidthMediaQuery } from '../../../../../utils/styles/styles_
 
 export const styles = (theme) => {
     const {
+        miscellaneous: { spacing },
         screenSizes
     } = theme;
     const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
     const QUERY_EXTRA_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.xs);
     return ({
         container: {},
+        interestedByValue: {
+            marginTop: spacing * 4
+        },
         typography: {
             fontSize: 36,
             lineHeight: 1.3,
