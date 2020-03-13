@@ -94,7 +94,7 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
                     </div>
                     <FileDropZone onDrop={onDrop}/>
                 </DialogContent>
-                <DialogActions classes={{ root: classes.buttons }}>
+                <DialogActions>
                     <Button size="small" color="danger" onClick={onClear}>
                         <FormattedMessage id="Main.lang.clear" defaultMessage="Clear"/>
                     </Button>
