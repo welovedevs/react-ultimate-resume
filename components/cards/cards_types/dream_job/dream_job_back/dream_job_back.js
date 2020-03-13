@@ -65,6 +65,7 @@ var DreamJobBackComponent = function DreamJobBackComponent(_ref) {
       remoteFrequency = data.remoteFrequency,
       contractTypes = data.contractTypes,
       currentJobIssues = data.currentJobIssues;
+  var isFreelance = (0, _has_only_freelance_contract.hasOnlyFreelanceContract)(contractTypes) ? averageDailyRate : salary;
   return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Dreamjob.Back.Title",
@@ -74,7 +75,7 @@ var DreamJobBackComponent = function DreamJobBackComponent(_ref) {
     places: places,
     remoteFrequency: remoteFrequency,
     classes: classes
-  })), (0, _exists_and_not_empty.existsAndNotEmpty)((0, _has_only_freelance_contract.hasOnlyFreelanceContract)(contractTypes) ? averageDailyRate : salary) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_dream_job_salary_section_content.DreamJobSalarySectionContent, {
+  })), (0, _exists_and_not_empty.existsAndNotEmpty)(isFreelance ? averageDailyRate : salary) && (isFreelance ? averageDailyRate !== '0' : salary !== '0') && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_dream_job_salary_section_content.DreamJobSalarySectionContent, {
     contractTypes: contractTypes,
     averageDailyRate: averageDailyRate,
     salary: salary

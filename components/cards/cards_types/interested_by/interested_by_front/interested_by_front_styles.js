@@ -14,11 +14,15 @@ var _styles_utils = require("../../../../../utils/styles/styles_utils");
 var styles = function styles(theme) {
   var _typography;
 
-  var screenSizes = theme.screenSizes;
+  var spacing = theme.miscellaneous.spacing,
+      screenSizes = theme.screenSizes;
   var QUERY_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small);
   var QUERY_EXTRA_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.xs);
   return {
     container: {},
+    interestedByValue: {
+      marginTop: spacing * 4
+    },
     typography: (_typography = {
       fontSize: 36,
       lineHeight: 1.3,

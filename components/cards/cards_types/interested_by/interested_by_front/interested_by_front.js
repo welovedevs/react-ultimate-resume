@@ -41,6 +41,7 @@ var InterestedByFrontComponent = function InterestedByFrontComponent(_ref) {
   var interestedBy = _ref.data.interestedBy,
       profileCardFrontTypographyProps = _ref.profileCardFrontTypographyProps,
       dismissButton = _ref.dismissButton,
+      dismissTitle = _ref.dismissTitle,
       _ref$customClasses = _ref.customClasses,
       customClasses = _ref$customClasses === void 0 ? {} : _ref$customClasses;
   var classes = useStyles();
@@ -75,13 +76,12 @@ var InterestedByFrontComponent = function InterestedByFrontComponent(_ref) {
     classes: {
       container: (0, _classnames.default)(classes.typography, customClasses.typography)
     }
-  }, profileCardFrontTypographyProps), _react.default.createElement(_reactIntl.FormattedMessage, {
+  }, profileCardFrontTypographyProps), !dismissTitle && _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "InterestedBy.front.content",
-    defaultMessage: "I'm interested by {interestedBy}",
-    values: {
-      interestedBy: interestedBy
-    }
-  })))), isTypographyTruncated && !dismissButton && _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+    defaultMessage: "Interested by:"
+  }), _react.default.createElement("div", {
+    className: classes.interestedByValue
+  }, interestedBy)))), isTypographyTruncated && !dismissButton && _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "InterestedBy.front.action",

@@ -29,8 +29,8 @@ var DreamJobValidationSchema = function DreamJobValidationSchema(formatMessage) 
         return value.includes(val);
       }).length);
     }),
-    salary: Yup.string().min(2, formatMessage(_validation_translations.validationTranslations.min, {
-      min: 2
+    salary: Yup.number().min(1, formatMessage(_validation_translations.validationTranslations.min, {
+      min: 1
     }))
   });
 };

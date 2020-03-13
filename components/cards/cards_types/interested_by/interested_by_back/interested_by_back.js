@@ -47,7 +47,8 @@ var InterestedByBackComponent = function InterestedByBackComponent(props) {
     profileCardFrontTypographyProps: {
       overrideColor: overrideColor
     },
-    dismissButton: true
+    dismissButton: true,
+    dismissTitle: true
   }, props));
 };
 
