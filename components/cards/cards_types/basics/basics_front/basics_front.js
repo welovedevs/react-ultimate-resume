@@ -56,6 +56,9 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
       _useCardVariant2 = (0, _slicedToArray2.default)(_useCardVariant, 1),
       variant = _useCardVariant2[0];
 
+  console.log({
+    variant: variant
+  });
   var classes = useStyles({
     variant: variant
   });

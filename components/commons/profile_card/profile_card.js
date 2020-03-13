@@ -106,6 +106,12 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       state = _useReducer2[0],
       dispatch = _useReducer2[1];
 
+  (0, _react.useEffect)(function () {
+    dispatch({
+      type: _profile_card_actions_types.SET_VARIANT,
+      variant: variant
+    });
+  }, [variant]);
   var side = state.side,
       hasDialogOpened = state.hasDialogOpened;
 

@@ -130,7 +130,7 @@
   "Form.validation.global.url": "Ce champ doit être une URL valide",
   "Gifs.front.action": "Voir tous les hobbies",
   "Gifs.searchdialog.title": "Chercher des gifs",
-  "Hobbies.side.commons": "Activités",
+  "Hobbies.side.commons": "Hobbies",
   "InterestedBy.editDialog.interestedBy.placeholder": "Vue.js, Blockchain, Datadog...",
   "InterestedBy.editDialog.title": "Quelles technologies vous intéressent?",
   "InterestedBy.front.action": "Voir tout",
