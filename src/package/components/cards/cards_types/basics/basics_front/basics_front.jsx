@@ -22,6 +22,7 @@ const useStyles = createUseStyles(styles);
 
 const BasicsFrontComponent = ({ data }) => {
     const [variant] = useCardVariant();
+    console.log({ variant });
     const classes = useStyles({ variant });
 
     const [side, setSide] = useCardSide();
