@@ -21,7 +21,13 @@ var styles = function styles(theme) {
         height: '45%',
         minHeight: '45%',
         width: 'auto',
-        color: (0, _styles_utils.getHexFromPaletteColor)(theme, (0, _styles_utils.getColorsFromCardVariant)(theme, variant).color)
+        color: (0, _styles_utils.getHexFromPaletteColor)(theme, (0, _styles_utils.getColorsFromCardVariant)(theme, variant).color),
+        '& .to-fill': {
+          fill: 'currentColor'
+        },
+        '& .to-stroke': {
+          stroke: 'currentColor'
+        }
       };
     }
   }, QUERY_SMALL, {

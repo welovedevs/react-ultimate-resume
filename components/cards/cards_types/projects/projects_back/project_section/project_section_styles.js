@@ -39,6 +39,9 @@ var styles = function styles(theme) {
       '& > g > path': {
         stroke: 'currentColor'
       }
+    },
+    detailTypography: {
+      color: ['inherit', '!important']
     }
   };
 };

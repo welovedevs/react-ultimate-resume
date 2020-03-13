@@ -48,7 +48,8 @@ EyeIcon.defaultProps = {
 var useStyles = (0, _reactJss.createUseStyles)(_see_project_detail_styles.styles);
 
 var SeeProjectDetailComponent = function SeeProjectDetailComponent(_ref) {
-  var project = _ref.project;
+  var color = _ref.color,
+      project = _ref.project;
   var classes = useStyles();
 
   var _useCallbackOpen = (0, _use_callback_open.useCallbackOpen)(),
@@ -63,6 +64,7 @@ var SeeProjectDetailComponent = function SeeProjectDetailComponent(_ref) {
     onClose: setDialogClosed,
     handleProfileCardHasDialogOpened: true
   }), _react.default.createElement(_animated_underlined_button.AnimatedUnderlinedButton, {
+    color: color,
     onClick: setDialogOpened
   }, _react.default.createElement(EyeIcon, {
     className: classes.icon

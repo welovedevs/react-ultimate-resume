@@ -39,6 +39,10 @@ var _use_callback_open = require("../../../../../hooks/use_callback_open");
 
 var _project_section_styles = require("./project_section_styles");
 
+var _use_card_variant = require("../../../../../commons/profile_card/profile_card_hooks/use_card_variant");
+
+var _styles_utils = require("../../../../../../utils/styles/styles_utils");
+
 var LinkIcon = function LinkIcon(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("path", {
     fillRule: "evenodd",
@@ -114,16 +118,24 @@ var Details = function Details(_ref2) {
       index = _ref2.index,
       onDelete = _ref2.onDelete,
       classes = _ref2.classes;
+  var theme = (0, _reactJss.useTheme)();
 
   var _useIsEditing = (0, _use_is_editing.useIsEditing)(),
       _useIsEditing2 = (0, _slicedToArray2.default)(_useIsEditing, 1),
       isEditing = _useIsEditing2[0];
 
+  var _useCardVariant = (0, _use_card_variant.useCardVariant)(),
+      _useCardVariant2 = (0, _slicedToArray2.default)(_useCardVariant, 1),
+      variant = _useCardVariant2[0];
+
+  var color = (0, _styles_utils.getColorsFromCardVariant)(theme, variant).backColor;
   return _react.default.createElement("div", {
     className: classes.details
   }, project.link && _react.default.createElement("div", {
     className: classes.detail
-  }, _react.default.createElement(_animated_underlined_button.AnimatedUnderlinedButton, null, _react.default.createElement("a", {
+  }, _react.default.createElement(_animated_underlined_button.AnimatedUnderlinedButton, {
+    color: color
+  }, _react.default.createElement("a", {
     className: classes.link,
     href: project.link
   }, _react.default.createElement(LinkIcon, {
@@ -139,8 +151,10 @@ var Details = function Details(_ref2) {
   }))))), _react.default.createElement("div", {
     className: classes.detail
   }, _react.default.createElement(_see_project_detail.SeeProjectDetail, {
+    color: color,
     project: project
   })), isEditing && _react.default.createElement(RemoveProjectDetail, {
+    color: color,
     index: index,
     onDelete: onDelete,
     classes: classes
@@ -148,7 +162,8 @@ var Details = function Details(_ref2) {
 };
 
 var RemoveProjectDetail = function RemoveProjectDetail(_ref3) {
-  var index = _ref3.index,
+  var color = _ref3.color,
+      index = _ref3.index,
       onDelete = _ref3.onDelete,
       classes = _ref3.classes;
 
@@ -169,6 +184,7 @@ var RemoveProjectDetail = function RemoveProjectDetail(_ref3) {
   }), _react.default.createElement("div", {
     className: classes.detail
   }, _react.default.createElement(_animated_underlined_button.AnimatedUnderlinedButton, {
+    color: color,
     onClick: setDialogOpened
   }, _react.default.createElement(RemoveIcon, {
     className: classes.detailDeleteIcon
