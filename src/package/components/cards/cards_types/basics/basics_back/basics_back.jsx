@@ -33,6 +33,13 @@ const BasicsBackComponent = ({ data }) => {
 
     const sections = useMemo(
         () => ({
+            personalDescription: {
+                title: (
+                    <FormattedMessage id="Basics.Back.PersonalDescription" defaultMessage="A bit more about me : " />
+                ),
+                hide: !personalDescription,
+                value: <span>{personalDescription}</span>
+            },
             visaSponsorship: {
                 hide: !existsAndNotEmpty(visaSponsorship),
                 value: (
@@ -82,13 +89,6 @@ const BasicsBackComponent = ({ data }) => {
                         values={{ codingYears }}
                     />
                 )
-            },
-            personalDescription: {
-                title: (
-                    <FormattedMessage id="Basics.Back.PersonalDescription" defaultMessage="A bit more about me : " />
-                ),
-                hide: !personalDescription,
-                value: <span>{personalDescription}</span>
             }
         }),
         [
