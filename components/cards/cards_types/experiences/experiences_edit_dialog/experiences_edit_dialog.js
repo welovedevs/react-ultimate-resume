@@ -326,6 +326,9 @@ var ContentFields = function ContentFields(_ref9) {
       onChange = _ref9.onChange,
       classes = _ref9.classes,
       index = _ref9.index;
+  console.log({
+    experience: experience
+  });
   var stillEmployed = !experience.endDate;
   var handleStillEmployedChange = (0, _react.useCallback)(function () {
     if (!stillEmployed) {
