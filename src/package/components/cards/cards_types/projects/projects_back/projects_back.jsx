@@ -12,14 +12,16 @@ import { DEFAULT_PROJECT_IMAGE } from '../utils/images';
 import { styles } from './projects_back_styles';
 import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
 import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
+import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
+import { NoProject } from './no_project/no_project';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectsBackComponent = ({ data }) => {
+const ProjectsBackComponent = ({ data, handleAddButtonClick }) => {
     const [variant] = useCardVariant();
     const { onEdit } = useContext(DeveloperProfileContext);
-
     const classes = useStyles({ variant });
+
     const imageSrc = useMemo(() => data.projects?.[0]?.images?.url ?? DEFAULT_PROJECT_IMAGE, [
         data.projects?.[0]?.images
     ]);
@@ -51,6 +53,9 @@ const ProjectsBackComponent = ({ data }) => {
                 {data.projects?.map(project => (
                     <ProjectSection project={project} key={`project_${project.id}`} onDelete={handleProjectDeletion} />
                 ))}
+                {!existsAndNotEmpty(data?.projects) && (
+                    <NoProject handleAddButtonClick={handleAddButtonClick} />
+                )}
             </ProfileCardContent>
         </>
     );

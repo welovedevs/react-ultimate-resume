@@ -59,6 +59,19 @@ export const styles = theme => {
             '-webkit-box-orient': 'vertical',
             maxHeight: 30 * 1.3 * 3
         },
+        noProject: {
+            display: 'flex',
+            flexDirection: 'column'
+        },
+        noProjectTypography: {
+            color: 'inherit',
+            fontWeight: 700,
+            lineHeight: 1.3
+        },
+        addButton: {
+            marginTop: spacing * 4,
+            marginLeft: -spacing
+        },
         [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
             content: () => ({
                 padding: [spacing * 4, spacing * 6, 0],

@@ -14,10 +14,12 @@ import { useCardVariant } from '../../../../commons/profile_card/profile_card_ho
 
 import { DEFAULT_PROJECT_IMAGE } from '../utils/images';
 import { styles } from './projects_front_styles';
+import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
+import { AddButton } from '../add_button/add_button';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectsFrontComponent = ({ data }) => {
+const ProjectsFrontComponent = ({ data, handleAddButtonClick }) => {
     const [side, setSide] = useCardSide();
 
     const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
@@ -39,35 +41,70 @@ const ProjectsFrontComponent = ({ data }) => {
     }, [data.projects?.[0]]);
 
     const classes = useStyles({ variant, hasImage: !!imageSrc });
+
+    const hasProject = useMemo(() => existsAndNotEmpty(data?.projects), [data]);
+
     return (
         <>
             <div className={classes.background}>
                 {imageSrc && <img className={classes.backgroundImage} src={imageSrc} alt={alt} />}
             </div>
             <div className={classes.content}>
-                <Typography variant="h2" component="h2" customClasses={{ container: classes.text }}>
-                    <FormattedMessage
-                        id="Projects.front.title"
-                        defaultMessage="My <emoji>♥️</emoji> project : "
-                        values={{
-                            emoji: value => <Twemoji svg text={value} />
-                        }}
-                    />
-                    {projectTitle}
-                </Typography>
+                <Content
+                    hasProject={hasProject}
+                    projectTitle={projectTitle}
+                    handleAddButtonClick={handleAddButtonClick}
+                    classes={classes}
+                />
             </div>
-            <ProfileCardActions>
-                <ProfileCardButton onClick={handleButtonClick}>
-                    <FormattedMessage
-                        id="Projects.front.action"
-                        defaultMessage="See {count} project{count, plural, one {} other {s}}"
-                        values={{
-                            count: data.projects?.length
-                        }}
-                    />
-                </ProfileCardButton>
-            </ProfileCardActions>
+            {hasProject && (
+                <ProfileCardActions>
+                    <ProfileCardButton onClick={handleButtonClick}>
+                        <FormattedMessage
+                            id="Projects.front.action"
+                            defaultMessage="See {count} project{count, plural, one {} other {s}}"
+                            values={{
+                                count: data.projects?.length
+                            }}
+                        />
+                    </ProfileCardButton>
+                </ProfileCardActions>
+            )}
         </>
+    );
+};
+
+const Content = ({ hasProject, projectTitle, handleAddButtonClick, classes }) => {
+    if (hasProject) {
+        return (
+            <Typography variant="h2" component="h2" customClasses={{ container: classes.text }}>
+                <FormattedMessage
+                    id="Projects.front.title"
+                    defaultMessage="My <emoji>♥️</emoji> project : "
+                    values={{
+                        emoji: value => <Twemoji svg text={value} />
+                    }}
+                />
+                {projectTitle}
+            </Typography>
+        );
+    }
+    return (
+        <div className={classes.noProject}>
+            <Typography variant="h3" component="h3" customClasses={{ container: classes.noProjectTypography }}>
+                <FormattedMessage
+                    id="Projects.front.noProject"
+                    defaultMessage="Vous n'avez pas encore ajouté de projet !"
+                />
+                {projectTitle}
+            </Typography>
+            <AddButton
+                classes={{
+                    container: classes.addButton
+                }}
+                handleAddButtonClick={handleAddButtonClick}
+            />
+        </div>
     );
 };
 
