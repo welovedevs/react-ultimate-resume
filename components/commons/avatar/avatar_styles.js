@@ -20,7 +20,8 @@ var center = _styles_utils.flex.center;
 var styles = function styles(_ref) {
   var palette = _ref.palette;
   return {
-    container: _objectSpread({
+    container: {},
+    imageContainer: _objectSpread({
       height: 110,
       width: 110,
       minHeight: 110,

@@ -115,7 +115,10 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
     };
   }, [currentCityName, experienceYears, contractTypes, studiesLevel, codingYears, codingReason, visaSponsorship, personalDescription, searchState]);
   return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
-    title: "Who ?"
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Basics.Back.Title",
+      defaultMessage: "Who?"
+    })
   }, Object.entries(sections).filter(function (_ref2) {
     var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
         hide = _ref3[1].hide;

@@ -15,7 +15,7 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/sli
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _copyToClipboard = _interopRequireDefault(require("copy-to-clipboard"));
+var _copyToClipboard = require("copy-to-clipboard");
 
 var _reactIntl = require("react-intl");
 
@@ -53,7 +53,7 @@ var CopyWrapperComponent = function CopyWrapperComponent(_ref) {
       setShowSnack = _useState2[1];
 
   var handleCopyToClipboardClick = (0, _react.useCallback)(function () {
-    (0, _copyToClipboard.default)(value);
+    (0, _copyToClipboard.copy)(value);
     setShowSnack(true);
   }, [value]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.Children.map(children, function (child) {

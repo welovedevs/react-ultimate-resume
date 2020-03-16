@@ -39,11 +39,13 @@ var AvatarComponent = function AvatarComponent(_ref) {
 
   return _react.default.createElement("div", {
     className: (0, _classnames.default)(classes.container, receivedGlobalClasses.container)
+  }, _react.default.createElement("div", {
+    className: (0, _classnames.default)(classes.imageContainer, classes.imageContainer)
   }, _react.default.createElement("img", {
     className: (0, _classnames.default)(classes.image, receivedGlobalClasses.image),
     src: src,
     alt: displayedName
-  }), nodes);
+  })), nodes);
 };
 
 var Avatar = AvatarComponent;
