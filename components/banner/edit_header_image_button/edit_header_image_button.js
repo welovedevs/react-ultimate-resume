@@ -37,15 +37,24 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-var EditIcon = function EditIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("path", {
-    d: "M25.112 6.643a.834.834 0 0 0-1.18-.002L5.728 24.852a.834.834 0 0 0 0 1.178l8.247 8.247a.834.834 0 0 0 1.179 0L33.349 16.08a.832.832 0 0 0 0-1.176l-8.237-8.26zM4.05 28.001a.833.833 0 0 0-1.4.395L.14 38.857a.836.836 0 0 0 .222.784.849.849 0 0 0 .783.22l10.454-2.5a.833.833 0 0 0 .395-1.4L4.05 28zM38.667 4.873l-3.538-3.54a4.167 4.167 0 0 0-5.887 0L26.88 3.695a.834.834 0 0 0 0 1.178l8.25 8.249a.834.834 0 0 0 1.178 0l2.36-2.365a4.166 4.166 0 0 0 0-5.884z"
+var PhotoCameraIcon = function PhotoCameraIcon(props) {
+  return _react.default.createElement("svg", props, _react.default.createElement("circle", {
+    cx: "12",
+    cy: "12",
+    r: "3.2"
+  }), _react.default.createElement("path", {
+    d: "M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+  }), _react.default.createElement("path", {
+    d: "M0 0h24v24H0z",
+    fill: "none"
   }));
 };
 
-EditIcon.defaultProps = {
-  viewBox: "0 0 40 40",
-  xmlns: "http://www.w3.org/2000/svg"
+PhotoCameraIcon.defaultProps = {
+  xmlns: "http://www.w3.org/2000/svg",
+  height: "24",
+  viewBox: "0 0 24 24",
+  width: "24"
 };
 var useStyles = (0, _reactJss.createUseStyles)(_edit_header_image_button_styles.styles);
 
@@ -82,7 +91,7 @@ var EditHeaderImageButton = function EditHeaderImageButton(_ref) {
       id: "Banner.image.editButton",
       defaultMessage: "Edit banner image"
     }),
-    icon: EditIcon,
+    icon: PhotoCameraIcon,
     onClick: onOpen,
     classes: {
       container: (0, _classnames.default)(classes.editButton, globalReceivedClasses)
