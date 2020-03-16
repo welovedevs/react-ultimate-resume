@@ -1,18 +1,22 @@
 import React from 'react';
 
+import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 
-import { styles } from './avatar_styles';
 import { useAdditionalNodes } from '../../hooks/use_additional_nodes';
+import { useReceivedGlobalClasses } from '../../hooks/use_received_global_classes';
+
+import { styles } from './avatar_styles';
 
 const useStyles = createUseStyles(styles);
 
 const AvatarComponent = ({ src = 'https://i.pravatar.cc/1000', displayedName }) => {
     const classes = useStyles();
+    const [receivedGlobalClasses] = useReceivedGlobalClasses('banner.avatar');
     const [nodes] = useAdditionalNodes('banner.avatar', null);
     return (
-        <div className={classes.container}>
-            <img className={classes.image} src={src} alt={displayedName} />
+        <div className={cn(classes.container, receivedGlobalClasses.container)}>
+            <img className={cn(classes.image, receivedGlobalClasses.image)} src={src} alt={displayedName} />
             {nodes}
         </div>
     );
