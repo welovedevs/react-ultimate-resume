@@ -1,5 +1,6 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 
+import uuid from 'uuid/v4';
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { LanguagesFront } from './languages_front/languages_front';
 import { LanguagesBack } from './languages_back/languages_back';
@@ -10,13 +11,28 @@ import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const LanguagesCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
-    const mappedData = useMemo(() => mapLanguagesFromJsonResume(data), [data]);
+    const defaultMappedData = useMemo(() => mapLanguagesFromJsonResume(data), [data]);
+    const [mappedData, setMappedData] = useState(defaultMappedData);
 
     const onDialogEdited = useCallback(editedData => {
         onEdit(mapLanguagesToJsonResume(editedData));
     }, []);
 
     const isComplete = useMemo(() => validateLanguagesComplete(mappedData), [mappedData]);
+
+    const handleAddButtonClick = useCallback(() => {
+        setMappedData({
+            projects: [
+                ...mappedData.projects,
+                {
+                    id: uuid(),
+                    name: 'Nouveau projet',
+                    description: 'Description du nouveau projet...'
+                }
+            ]
+        });
+        // setNewProjectDialogOpened();
+    }, [mappedData]);
 
     if (!isComplete && mode !== 'edit') {
         return null;
@@ -27,8 +43,8 @@ const LanguagesCardComponent = ({ variant, side }) => {
             isComplete={isComplete}
             data={mappedData}
             sides={{
-                front: LanguagesFront,
-                back: LanguagesBack
+                front: (props) => <LanguagesFront handleAddButtonClick={handleAddButtonClick} {...props} />,
+                back: (props) => <LanguagesBack handleAddButtonClick={handleAddButtonClick} {...props} />
             }}
             variant={variant}
             side={side}

@@ -5,19 +5,19 @@ import { FormattedMessage } from 'react-intl';
 
 import { Typography } from '@wld/ui';
 
-import { styles } from './no_project_styles';
+import { styles } from './no_language_styles';
 import { NoDataButton } from '../../../../../commons/no_data_button/no_data_button';
 
 const useStyles = createUseStyles(styles);
 
-const NoProjectComponent = ({ handleAddButtonClick }) => {
+const NoLanguageComponent = ({ handleAddButtonClick }) => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
             <Typography color="primary" variant="h4" component="h4">
                 <FormattedMessage
-                    id="Projects.noProject.title"
-                    defaultMessage="Décrivez ici un projet qui vous a plus en tant que développeur, ce projet peut avoir été réalisé pendant vos études, sur votre temps personnel ou au sein d'une entreprise."
+                    id="Languages.noLanguage.title"
+                    defaultMessage="Les langues que vous maîtrisez seront affichées avec votre niveau ."
                 />
             </Typography>
             <NoDataButton
@@ -26,10 +26,10 @@ const NoProjectComponent = ({ handleAddButtonClick }) => {
                     container: classes.button
                 }}
             >
-                <FormattedMessage id="Projects.noProject.buttonLabel" defaultMessage="Ajouter un projet" />
+                <FormattedMessage id="Languages.noLanguage.buttonLabel" defaultMessage="Ajouter une langue" />
             </NoDataButton>
         </div>
     );
 };
 
-export const NoProject = NoProjectComponent;
+export const NoLanguage = NoLanguageComponent;

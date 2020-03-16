@@ -15,7 +15,7 @@ import { useCardVariant } from '../../../../commons/profile_card/profile_card_ho
 import { DEFAULT_PROJECT_IMAGE } from '../utils/images';
 import { styles } from './projects_front_styles';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
-import { AddButton } from '../add_button/add_button';
+import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 
 const useStyles = createUseStyles(styles);
 
@@ -98,12 +98,14 @@ const Content = ({ hasProject, projectTitle, handleAddButtonClick, classes }) =>
                 />
                 {projectTitle}
             </Typography>
-            <AddButton
+            <NoDataButton
                 classes={{
                     container: classes.addButton
                 }}
                 handleAddButtonClick={handleAddButtonClick}
-            />
+            >
+                <FormattedMessage id="Projects.noProject.buttonLabel" defaultMessage="Ajouter un projet" />
+            </NoDataButton>
         </div>
     );
 };

@@ -13,10 +13,12 @@ import { useCardVariant } from '../../../../commons/profile_card/profile_card_ho
 import { LANGUAGES_COLUMN_TRANSITIONS_SPRING_PROPS } from './languages_back_spring_props';
 
 import { styles } from './languages_back_styles';
+import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
+import { NoLanguage } from './no_language/no_language';
 
 const useStyles = createUseStyles(styles);
 
-const LanguagesBackComponent = ({ data }) => {
+const LanguagesBackComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles({ itemSize: data.languages?.length ?? 0 });
     const theme = useTheme();
     const [variant] = useCardVariant();
@@ -39,9 +41,16 @@ const LanguagesBackComponent = ({ data }) => {
     const colorPalette = useMemo(
         () =>
             Array.from({ length: data.languages?.length ?? 0 }, (v, k) =>
-                chroma.mix(backColor, backBackgroundColor, (2 * k) / 15).hex()),
+                chroma.mix(backColor, backBackgroundColor, (2 * k) / 15).hex()
+            ),
         [backColor, backBackgroundColor]
     );
+
+    const hasLanguage = useMemo(() => existsAndNotEmpty(data?.languages), [data]);
+
+    if (!hasLanguage) {
+        return <NoLanguage handleAddButtonClick={handleAddButtonClick} />;
+    }
 
     return (
         <ProfileCardAnimatedBack
