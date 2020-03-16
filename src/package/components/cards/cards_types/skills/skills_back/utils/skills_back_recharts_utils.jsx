@@ -25,7 +25,7 @@ const CustomLabel = props => {
     const sy = cy + outerRadius * sin;
     const mx = cx + (outerRadius + 20) * cos;
     const my = cy + (outerRadius + 20) * sin;
-    const ex = mx + (cos >= 0 ? 1 : -1) * 20;
+    const ex = mx + (cos >= 0 ? 1 : -1) * 25;
     const ey = my;
     const textAnchor = cos >= 0 ? 'start' : 'end';
 
@@ -46,12 +46,11 @@ const CustomLabel = props => {
                     {name}
                 </text>
                 <image
-                    width="40"
-                    height="40"
-                    x={ex + (cos >= 0 ? 1 : -1) * 55}
-                    y={ey * 0.75}
+                    width="25"
+                    height="25"
+                    x={ex + (cos >= 0 ? 1.5 : -3) * 16}
+                    y={ey - 36}
                     xlinkHref={`https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle}`}
-                    clipPath="url(#circleView)"
                 />
             </g>
         </g>
