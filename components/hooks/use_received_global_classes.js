@@ -13,11 +13,12 @@ var _contexts = require("../../utils/context/contexts");
 
 var useReceivedGlobalClasses = function useReceivedGlobalClasses() {
   var path = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       receivedGlobalClasses = _useContext.receivedGlobalClasses;
 
-  return [(0, _lodash.get)(receivedGlobalClasses, path)];
+  return [(0, _lodash.get)(receivedGlobalClasses, path, defaultValue)];
 };
 
 exports.useReceivedGlobalClasses = useReceivedGlobalClasses;
