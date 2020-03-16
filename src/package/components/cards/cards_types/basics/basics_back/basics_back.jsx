@@ -34,9 +34,7 @@ const BasicsBackComponent = ({ data }) => {
     const sections = useMemo(
         () => ({
             personalDescription: {
-                title: (
-                    <FormattedMessage id="Basics.Back.PersonalDescription" defaultMessage="A bit more about me : " />
-                ),
+                title: null,
                 hide: !personalDescription,
                 value: <span>{personalDescription}</span>
             },
@@ -63,24 +61,11 @@ const BasicsBackComponent = ({ data }) => {
                         />
                         <br />
                         <ContractType contractTypes={contractTypes} />
-                        <br />
-                        <JobSearchState searchState={searchState} />
                     </>
                 )
             },
-            studies: {
-                title: <FormattedMessage id="Basics.Back.StudiesLevel.Title" defaultMessage="Training" />,
-                hide: !studiesLevel,
-                value: (
-                    <FormattedMessage
-                        id="Basics.Back.StudiesLevel"
-                        defaultMessage={'{studiesLevel} years of higher education'}
-                        values={{ studiesLevel }}
-                    />
-                )
-            },
             codingYears: {
-                title: <FormattedMessage id="Basics.Back.CodingYears.title" defaultMessage="Experience" />,
+                title: <FormattedMessage id="Basics.Back.CodingYears.title" defaultMessage="Experience"/>,
                 hide: !personalDescription,
                 value: (
                     <FormattedMessage
@@ -88,6 +73,22 @@ const BasicsBackComponent = ({ data }) => {
                         defaultMessage={'{codingYears} years coding'}
                         values={{ codingYears }}
                     />
+                )
+            },
+            studies: {
+                title: <FormattedMessage id="Basics.Back.StudiesLevel.Title" defaultMessage="Training"/>,
+                hide: !studiesLevel,
+                value: (
+                    <>
+                        <FormattedMessage
+                            id="Basics.Back.StudiesLevel"
+                            defaultMessage={'{studiesLevel} years of higher education'}
+                            values={{ studiesLevel }}
+                        />
+                        <br/>
+                        <br/>
+                        <JobSearchState searchState={searchState}/>
+                    </>
                 )
             }
         }),
