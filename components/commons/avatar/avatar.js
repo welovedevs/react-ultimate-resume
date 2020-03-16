@@ -11,11 +11,15 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/sli
 
 var _react = _interopRequireDefault(require("react"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _reactJss = require("react-jss");
 
-var _avatar_styles = require("./avatar_styles");
-
 var _use_additional_nodes = require("../../hooks/use_additional_nodes");
+
+var _use_received_global_classes = require("../../hooks/use_received_global_classes");
+
+var _avatar_styles = require("./avatar_styles");
 
 var useStyles = (0, _reactJss.createUseStyles)(_avatar_styles.styles);
 
@@ -25,14 +29,18 @@ var AvatarComponent = function AvatarComponent(_ref) {
       displayedName = _ref.displayedName;
   var classes = useStyles();
 
+  var _useReceivedGlobalCla = (0, _use_received_global_classes.useReceivedGlobalClasses)('banner.avatar'),
+      _useReceivedGlobalCla2 = (0, _slicedToArray2.default)(_useReceivedGlobalCla, 1),
+      receivedGlobalClasses = _useReceivedGlobalCla2[0];
+
   var _useAdditionalNodes = (0, _use_additional_nodes.useAdditionalNodes)('banner.avatar', null),
       _useAdditionalNodes2 = (0, _slicedToArray2.default)(_useAdditionalNodes, 1),
       nodes = _useAdditionalNodes2[0];
 
   return _react.default.createElement("div", {
-    className: classes.container
+    className: (0, _classnames.default)(classes.container, receivedGlobalClasses.container)
   }, _react.default.createElement("img", {
-    className: classes.image,
+    className: (0, _classnames.default)(classes.image, receivedGlobalClasses.image),
     src: src,
     alt: displayedName
   }), nodes);
