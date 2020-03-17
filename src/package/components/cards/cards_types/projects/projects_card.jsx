@@ -31,7 +31,7 @@ const ProjectsCardComponent = ({ variant, side }) => {
     const handleAddButtonClick = useCallback(() => {
         setMappedData({
             projects: [
-                ...mappedData.projects,
+                ...mappedData?.projects,
                 {
                     id: uuid(),
                     name: 'Nouveau projet',

@@ -43,13 +43,22 @@ const ProfileCardComponent = ({
     customTransitionsSpringProps,
     customEditAction,
     isComplete = true,
+    openEditDialog: receivedOpenEditDialog = false,
     side: sideProps
 }) => {
     const classes = useStyles({ variant });
     const theme = useTheme();
     const [containerElement, setContainerElement] = useState();
     const containerReference = useRef();
-    const [openEditDialog, setEditDialogOpened, setEditDialogClosed] = useCallbackOpen();
+    const [openEditDialog, setOpenEditDialog] = useState(receivedOpenEditDialog);
+
+    const setEditDialogOpened = useCallback(() => setOpenEditDialog(true), []);
+    const setEditDialogClosed = useCallback(() => setOpenEditDialog(false), []);
+
+    useEffect(() => {
+        setOpenEditDialog(receivedOpenEditDialog);
+    }, [receivedOpenEditDialog]);
+
     const [state, dispatch] = useReducer(
         profileCardReducer,
         getProfileCardInitialState({
