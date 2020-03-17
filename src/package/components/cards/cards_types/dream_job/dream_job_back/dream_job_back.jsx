@@ -28,12 +28,13 @@ const useStyles = createUseStyles(styles);
 const DreamJobBackComponent = ({ data }) => {
     const classes = useStyles();
     const { averageDailyRate, places, perks, salary, remoteFrequency, contractTypes, currentJobIssues } = data;
-    const isFreelance = hasOnlyFreelanceContract(contractTypes) ? averageDailyRate : salary;
+    const isFreelance = hasOnlyFreelanceContract(contractTypes) ? salary : averageDailyRate;
+
     return (
-        <ProfileCardAnimatedBack title={<FormattedMessage id="Dreamjob.Back.Title" defaultMessage="Dream job" />}>
+        <ProfileCardAnimatedBack title={<FormattedMessage id="Dreamjob.Back.Title" defaultMessage="Dream job"/>}>
             {existsAndNotEmpty(places) && (
                 <ProfileCardSection>
-                    <DreamJobLocations places={places} remoteFrequency={remoteFrequency} classes={classes} />
+                    <DreamJobLocations places={places} remoteFrequency={remoteFrequency} classes={classes}/>
                 </ProfileCardSection>
             )}
             {existsAndNotEmpty(isFreelance ? averageDailyRate : salary) && (isFreelance ? averageDailyRate !== '0' : salary !== '0') && (
