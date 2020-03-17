@@ -9,6 +9,7 @@ import { interestsValidator, validateInterestsComplete } from './data/validator'
 
 import { mapInterestsFromJsonResume, mapInterestsToJsonResume } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
+import { useCallbackOpen } from '../../../hooks/use_callback_open';
 
 const GifsCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
@@ -17,6 +18,8 @@ const GifsCardComponent = ({ variant, side }) => {
     const onDialogEdited = useCallback(editedData => {
         onEdit(mapInterestsToJsonResume(editedData));
     }, []);
+
+    const [openNewGifDialog, setNewGifDialogOpened] = useCallbackOpen();
 
     const isComplete = useMemo(() => validateInterestsComplete(mappedData), [mappedData]);
 
@@ -28,9 +31,10 @@ const GifsCardComponent = ({ variant, side }) => {
             isEditingProfile={isEditing}
             isComplete={isComplete}
             data={mappedData}
+            openEditDialog={openNewGifDialog}
             sides={{
-                front: GifsFront,
-                back: GifsBack
+                front: (props) => <GifsFront handleAddButtonClick={setNewGifDialogOpened} {...props} />,
+                back: (props) => <GifsBack handleAddButtonClick={setNewGifDialogOpened} {...props} />
             }}
             editDialog={{
                 component: GifsEditDialog,

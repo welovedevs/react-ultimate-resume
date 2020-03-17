@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { SkillsFront } from './skills_front/skills_front';
@@ -13,33 +13,13 @@ import { useCallbackOpen } from '../../../hooks/use_callback_open';
 const SkillsCardComponent = ({ variant, side }) => {
     const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
 
-    const defaultMappedData = useMemo(() => mapSkillsFromJsonResume(data), [data]);
-    const [mappedData, setMappedData] = useState(defaultMappedData);
+    const mappedData = useMemo(() => mapSkillsFromJsonResume(data), [data]);
 
-    const [openNewSkillDialog, setNewSkillDialogOpened, setNewSkillDialogClosed] = useCallbackOpen();
-
-    useEffect(() => {
-        setMappedData(defaultMappedData);
-    }, [defaultMappedData]);
+    const [openNewSkillDialog, setNewSkillDialogOpened] = useCallbackOpen();
 
     const onDialogEdited = useCallback(editedData => {
         onEdit(mapSkillsToJsonResume(editedData));
     }, []);
-
-    const handleAddButtonClick = useCallback(() => {
-        setMappedData({
-            skills: [
-                ...mappedData.skills,
-                {
-                    name: 'React',
-                    level: 'Master',
-                    value: 50,
-                    keywords: ['HTML', 'CSS', 'Javascript']
-                }
-            ]
-        });
-        setNewSkillDialogOpened();
-    }, [mappedData]);
 
     const isComplete = useMemo(() => validateSkillsComplete(mappedData), [mappedData]);
 
@@ -51,25 +31,19 @@ const SkillsCardComponent = ({ variant, side }) => {
             isEditingProfile={isEditing}
             isComplete={isComplete}
             sides={{
-                front: props => <SkillsFront handleAddButtonClick={handleAddButtonClick} {...props} />,
-                back: props => <SkillsBack handleAddButtonClick={handleAddButtonClick} {...props} />
+                front: props => <SkillsFront handleAddButtonClick={setNewSkillDialogOpened} {...props} />,
+                back: props => <SkillsBack handleAddButtonClick={setNewSkillDialogOpened} {...props} />
             }}
             editDialog={{
                 component: SkillsEditDialog,
                 validationSchema: SkillsValidationSchema,
                 onEdit: onDialogEdited
             }}
+            openEditDialog={openNewSkillDialog}
             data={mappedData}
             variant={variant}
             side={side}
-        >
-            <SkillsEditDialog
-                open={openNewSkillDialog}
-                onEdit={onDialogEdited}
-                validationSchema={SkillsValidationSchema}
-                onClose={setNewSkillDialogClosed}
-            />
-        </ProfileCard>
+        />
     );
 };
 

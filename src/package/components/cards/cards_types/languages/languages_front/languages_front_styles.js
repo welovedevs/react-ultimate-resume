@@ -12,7 +12,7 @@ export const styles = theme => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            padding: [spacing * 6, spacing * 8, 0]
+            padding: [spacing, spacing * 8, 0]
         },
         noLanguageTypography: {
             color: 'inherit',

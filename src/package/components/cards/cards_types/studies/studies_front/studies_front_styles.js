@@ -24,7 +24,8 @@ export const styles = theme => {
         noEducation: {
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'
+            alignItems: 'center',
+            padding: [spacing, spacing * 2, 0]
         },
         noEducationTypography: {
             color: 'inherit',

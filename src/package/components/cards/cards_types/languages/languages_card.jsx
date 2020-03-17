@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { LanguagesFront } from './languages_front/languages_front';
 import { LanguagesBack } from './languages_back/languages_back';
@@ -10,12 +10,7 @@ import { useCallbackOpen } from '../../../hooks/use_callback_open';
 
 const LanguagesCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
-    const defaultMappedData = useMemo(() => mapLanguagesFromJsonResume(data), [data]);
-    const [mappedData, setMappedData] = useState(defaultMappedData);
-
-    useEffect(() => {
-        setMappedData(defaultMappedData);
-    }, [defaultMappedData]);
+    const mappedData = useMemo(() => mapLanguagesFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(editedData => {
         onEdit(mapLanguagesToJsonResume(editedData));

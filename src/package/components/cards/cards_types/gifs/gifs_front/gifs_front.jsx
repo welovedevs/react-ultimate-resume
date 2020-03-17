@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import cn from 'classnames';
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
+import { Typography } from '@wld/ui';
 import { ProfileCardActions } from '../../../../commons/profile_card/profile_card_actions/profile_card_actions';
 import { ProfileCardButton } from '../../../../commons/profile_card/profile_card_button/profile_card_button';
 import { GifsSidesCommons } from '../gifs_sides_commons/gifs_sides_commons';
@@ -14,10 +15,12 @@ import { ProfileCardFrontTypography } from '../../../../commons/profile_card/pro
 
 import { styles } from './gifs_front_styles';
 import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
+import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
+import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 
 const useStyles = createUseStyles(styles);
 
-const GifsFrontComponent = ({ data }) => {
+const GifsFrontComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles();
     const [side, setSide] = useCardSide();
 
@@ -25,6 +28,32 @@ const GifsFrontComponent = ({ data }) => {
 
     const { gifUrl, name } = data.interests?.[0] ?? {};
 
+    const hasHobby = useMemo(() => existsAndNotEmpty(data?.interests), [data]);
+
+    return (
+        <GifsSidesCommons
+            classes={{
+                container: classes.container
+            }}
+            underLayer={gifUrl && <img className={classes.image} src={gifUrl} alt={name} />}
+        >
+            {!gifUrl && (
+                <ProfileCardPaddedFront customClasses={{ container: classes.paddedFront }}>
+                    <Content {...{ hasHobby, name, handleAddButtonClick, classes }} />
+                </ProfileCardPaddedFront>
+            )}
+            {hasHobby && (
+                <ProfileCardActions>
+                    <ProfileCardButton onClick={handleButtonClick} overrideColor="light">
+                        <FormattedMessage id="Gifs.front.action" defaultMessage="See all hobbies" />
+                    </ProfileCardButton>
+                </ProfileCardActions>
+            )}
+        </GifsSidesCommons>
+    );
+};
+
+const Content = ({ hasHobby, name, handleAddButtonClick, classes }) => {
     const [isTypographyTruncated, setIsTypographyTruncated] = useState(true);
     const typographyReference = useRef();
 
@@ -33,38 +62,42 @@ const GifsFrontComponent = ({ data }) => {
         if (!element) {
             return;
         }
-        if (element.offsetHeight > element.scrollHeight - 1) {
+        if (element?.offsetHeight > element?.scrollHeight - 1) {
             setIsTypographyTruncated(false);
         }
     }, []);
 
+    if (!hasHobby) {
+        return (
+            <div className={classes.noHobby}>
+                <Typography variant="h3" component="h3" customClasses={{ container: classes.noHobbyTypography }}>
+                    <FormattedMessage
+                        id="Gifs.front.noHobby"
+                        defaultMessage="Vous n'avez pas encore ajouté de hobbies !"
+                    />
+                </Typography>
+                <NoDataButton
+                    classes={{
+                        container: classes.addButton
+                    }}
+                    color="secondary"
+                    handleAddButtonClick={handleAddButtonClick}
+                >
+                    <FormattedMessage id="Gifs.noHobby.buttonLabel" defaultMessage="Ajouter un hobby" />
+                </NoDataButton>
+            </div>
+        );
+    }
+
     return (
-        <GifsSidesCommons
+        <ProfileCardFrontTypography
+            ref={typographyReference}
             classes={{
-                container: classes.container
+                container: cn(classes.withoutGifTypography, isTypographyTruncated && classes.truncatedTypography)
             }}
-            underLayer={gifUrl && (
-                <img className={classes.image} src={gifUrl} alt={name} />
-            )}
         >
-            {!gifUrl && (
-                <ProfileCardPaddedFront customClasses={{ container: classes.paddedFront }}>
-                    <ProfileCardFrontTypography
-                        ref={typographyReference}
-                        classes={{
-                            container: cn(classes.withoutGifTypography, isTypographyTruncated && classes.truncatedTypography)
-                        }}
-                    >
-                        {name}
-                    </ProfileCardFrontTypography>
-                </ProfileCardPaddedFront>
-            )}
-            <ProfileCardActions>
-                <ProfileCardButton onClick={handleButtonClick} overrideColor="light">
-                    <FormattedMessage id="Gifs.front.action" defaultMessage="See all hobbies" />
-                </ProfileCardButton>
-            </ProfileCardActions>
-        </GifsSidesCommons>
+            {name}
+        </ProfileCardFrontTypography>
     );
 };
 

@@ -21,7 +21,8 @@ export const styles = theme => {
         noSkill: {
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'
+            alignItems: 'center',
+            padding: [spacing, spacing * 2, 0]
         },
         noSkillTypography: {
             color: 'inherit',
