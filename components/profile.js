@@ -133,6 +133,9 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       receivedGlobalClasses: receivedGlobalClasses
     };
   }, [endpoints, apiKeys, data, onEdit, store, mode]);
+  var side = (0, _react.useMemo)(function () {
+    return isEditing && 'back' || (options === null || options === void 0 ? void 0 : options.side);
+  }, [options, isEditing]);
   return _react.default.createElement("div", {
     className: classes.container
   }, _react.default.createElement(_contexts.DeveloperProfileContext.Provider, {
@@ -142,7 +145,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
     onCustomizationChanged: onCustomizationChanged
   }), BeforeCards, _react.default.createElement(_cards.Cards, {
     cardsOrder: (_options$customizatio = options.customization) === null || _options$customizatio === void 0 ? void 0 : _options$customizatio.cardsOrder,
-    side: options === null || options === void 0 ? void 0 : options.side
+    side: side
   }), !options.dismissFooter && _react.default.createElement(_footer.Footer, null)));
 };
 
