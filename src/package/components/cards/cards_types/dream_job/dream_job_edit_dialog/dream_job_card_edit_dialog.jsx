@@ -62,11 +62,11 @@ const Content = ({ helpers: { handleValueChange } }) => {
     const perks = values.perks ?? DEFAULT_OBJECT;
     const currentJobIssues = values.currentJobIssues ?? DEFAULT_OBJECT;
 
-    const addPlace = useCallback(place => handleValueChange('places')(places.concat({ ...place, id: uuid() })), [
+    const addPlace = useCallback(place => console.log({ places }) || handleValueChange('places')(places.concat({ ...place, id: uuid() })), [
         places
     ]);
 
-    const removePlace = useCallback(id => () => handleValueChange('places')(places.filter(place => place.id !== id)), [
+    const removePlace = useCallback(id => () => console.log({ places }) || handleValueChange('places')(places.filter(place => place.id !== id)), [
         places
     ]);
 

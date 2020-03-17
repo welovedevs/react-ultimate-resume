@@ -22,7 +22,9 @@ const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace }) 
     const placesValues = useMemo(() => Object.values(places || {}), [places]);
     const transitions = useTransition(placesValues, ({ id }) => `place_${id}`, {
         ...LOCATION_PLACES_FIELD_TRANSITIONS_SPRING_PROPS,
-        trail: 200 / placesValues.length
+        ...placesValues?.length && {
+            trail: 500 / placesValues.length
+        }
     });
     return (
         <EditDialogField
@@ -43,8 +45,16 @@ const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace }) 
                 onLocationSelected={addPlace}
             />
             <div className={classes.places}>
-                {transitions.map(({ item, key, props }) => (
-                    <Tag key={key} className={classes.place} color="secondary" style={props}>
+                {transitions.map(({ item, key, props }) => item && (
+                    <Tag
+                        key={key}
+                        className={classes.place}
+                        color="secondary"
+                        style={{
+                            opacity: props.opacity,
+                            transform: props.scale.interpolate(value => `scale3d(${value}, ${value}, ${value})`)
+                        }}
+                    >
                         <Tooltip title="Delete this place">
                             <button type="button" onClick={removePlace(item.id)}>
                                 <TrashIcon className={classes.deleteIcon} />
