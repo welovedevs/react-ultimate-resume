@@ -55,10 +55,7 @@ var DreamJobFrontComponent = function DreamJobFrontComponent(_ref) {
     theme: theme
   });
   var remoteFrequency = data.remoteFrequency,
-      places = data.places;
-  console.log({
-    classes: classes
-  });
+      places = data.places; // console.log({ classes });
 
   var _useCardSide = (0, _use_card_side.useCardSide)(),
       _useCardSide2 = (0, _slicedToArray2.default)(_useCardSide, 2),

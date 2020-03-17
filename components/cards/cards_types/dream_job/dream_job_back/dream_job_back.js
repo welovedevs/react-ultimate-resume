@@ -65,7 +65,7 @@ var DreamJobBackComponent = function DreamJobBackComponent(_ref) {
       remoteFrequency = data.remoteFrequency,
       contractTypes = data.contractTypes,
       currentJobIssues = data.currentJobIssues;
-  var isFreelance = (0, _has_only_freelance_contract.hasOnlyFreelanceContract)(contractTypes) ? averageDailyRate : salary;
+  var isFreelance = (0, _has_only_freelance_contract.hasOnlyFreelanceContract)(contractTypes) ? salary : averageDailyRate;
   return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Dreamjob.Back.Title",

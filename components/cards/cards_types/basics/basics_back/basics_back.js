@@ -50,10 +50,7 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
   var sections = (0, _react.useMemo)(function () {
     return {
       personalDescription: {
-        title: _react.default.createElement(_reactIntl.FormattedMessage, {
-          id: "Basics.Back.PersonalDescription",
-          defaultMessage: "A bit more about me : "
-        }),
+        title: null,
         hide: !personalDescription,
         value: _react.default.createElement("span", null, personalDescription)
       },
@@ -80,23 +77,7 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
           }
         }), _react.default.createElement("br", null), _react.default.createElement(_contract_types.ContractType, {
           contractTypes: contractTypes
-        }), _react.default.createElement("br", null), _react.default.createElement(JobSearchState, {
-          searchState: searchState
         }))
-      },
-      studies: {
-        title: _react.default.createElement(_reactIntl.FormattedMessage, {
-          id: "Basics.Back.StudiesLevel.Title",
-          defaultMessage: "Training"
-        }),
-        hide: !studiesLevel,
-        value: _react.default.createElement(_reactIntl.FormattedMessage, {
-          id: "Basics.Back.StudiesLevel",
-          defaultMessage: '{studiesLevel} years of higher education',
-          values: {
-            studiesLevel: studiesLevel
-          }
-        })
       },
       codingYears: {
         title: _react.default.createElement(_reactIntl.FormattedMessage, {
@@ -111,6 +92,22 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
             codingYears: codingYears
           }
         })
+      },
+      studies: {
+        title: _react.default.createElement(_reactIntl.FormattedMessage, {
+          id: "Basics.Back.StudiesLevel.Title",
+          defaultMessage: "Training"
+        }),
+        hide: !studiesLevel,
+        value: _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+          id: "Basics.Back.StudiesLevel",
+          defaultMessage: '{studiesLevel} years of higher education',
+          values: {
+            studiesLevel: studiesLevel
+          }
+        }), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(JobSearchState, {
+          searchState: searchState
+        }))
       }
     };
   }, [currentCityName, experienceYears, contractTypes, studiesLevel, codingYears, codingReason, visaSponsorship, personalDescription, searchState]);

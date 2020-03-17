@@ -9,13 +9,19 @@ exports.ContractType = void 0;
 
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
 
+var _react = _interopRequireDefault(require("react"));
+
 var _reactIntl = require("react-intl");
 
-var _react = _interopRequireDefault(require("react"));
+var _contract_types_translations = _interopRequireDefault(require("./contract_types_translations"));
 
 var ContractType = function ContractType(_ref) {
   var _ref$contractTypes = _ref.contractTypes,
       contractTypes = _ref$contractTypes === void 0 ? [] : _ref$contractTypes;
+
+  var _useIntl = (0, _reactIntl.useIntl)(),
+      formatMessage = _useIntl.formatMessage;
+
   var contracts = (0, _toConsumableArray2.default)(contractTypes);
   var lastContract = contracts.pop();
 
@@ -28,7 +34,7 @@ var ContractType = function ContractType(_ref) {
       id: "Basics.Back.WorkContract.single",
       defaultMessage: 'Looking for a {contractType} contract',
       values: {
-        contractType: lastContract
+        contractType: formatMessage(_contract_types_translations.default[lastContract])
       }
     });
   }

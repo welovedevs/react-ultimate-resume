@@ -86,6 +86,24 @@ var Content = function Content(_ref2) {
       personalDescription = values.personalDescription,
       summary = values.summary;
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_edit_dialog_field.EditDialogField, {
+    error: errors.personalDescription,
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Basics.editDialog.personalDescription.title",
+      defaultMessage: "Do you want to tell a bit more about you?"
+    }),
+    subtitle: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Basics.editDialog.personalDescription.subtitle",
+      defaultMessage: "Use this space to describe yourself a bit more ! "
+    })
+  }, _react.default.createElement(_ui.TextField, {
+    multiline: true,
+    rows: 4,
+    onChange: handleChange,
+    name: "personalDescription",
+    value: personalDescription,
+    variant: "flat",
+    fullWidth: true
+  })), _react.default.createElement(_edit_dialog_field.EditDialogField, {
     classes: {
       container: classes.field
     },
@@ -241,24 +259,6 @@ var Content = function Content(_ref2) {
     onChange: handleChange,
     name: "codingReason",
     value: codingReason,
-    variant: "flat",
-    fullWidth: true
-  })), _react.default.createElement(_edit_dialog_field.EditDialogField, {
-    error: errors.personalDescription,
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Basics.editDialog.personalDescription.title",
-      defaultMessage: "Do you want to tell a bit more about you?"
-    }),
-    subtitle: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Basics.editDialog.personalDescription.subtitle",
-      defaultMessage: "Use this space to describe yourself a bit more ! "
-    })
-  }, _react.default.createElement(_ui.TextField, {
-    multiline: true,
-    rows: 4,
-    onChange: handleChange,
-    name: "personalDescription",
-    value: personalDescription,
     variant: "flat",
     fullWidth: true
   })));

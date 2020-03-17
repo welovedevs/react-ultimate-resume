@@ -60,8 +60,8 @@ var LocationPlacesFieldComponent = function LocationPlacesFieldComponent(_ref) {
   var transitions = (0, _reactSpring.useTransition)(placesValues, function (_ref2) {
     var id = _ref2.id;
     return "place_".concat(id);
-  }, _objectSpread({}, _location_places_field_transitions_spring_props.LOCATION_PLACES_FIELD_TRANSITIONS_SPRING_PROPS, {
-    trail: 200 / placesValues.length
+  }, _objectSpread({}, _location_places_field_transitions_spring_props.LOCATION_PLACES_FIELD_TRANSITIONS_SPRING_PROPS, {}, (placesValues === null || placesValues === void 0 ? void 0 : placesValues.length) && {
+    trail: 500 / placesValues.length
   }));
   return _react.default.createElement(_edit_dialog_field.EditDialogField, {
     error: error,
@@ -82,11 +82,16 @@ var LocationPlacesFieldComponent = function LocationPlacesFieldComponent(_ref) {
     var item = _ref3.item,
         key = _ref3.key,
         props = _ref3.props;
-    return _react.default.createElement(_ui.Tag, {
+    return item && _react.default.createElement(_ui.Tag, {
       key: key,
       className: classes.place,
       color: "secondary",
-      style: props
+      style: {
+        opacity: props.opacity,
+        transform: props.scale.interpolate(function (value) {
+          return "scale3d(".concat(value, ", ").concat(value, ", ").concat(value, ")");
+        })
+      }
     }, _react.default.createElement(_ui.Tooltip, {
       title: "Delete this place"
     }, _react.default.createElement("button", {

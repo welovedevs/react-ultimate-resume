@@ -24,8 +24,7 @@ var _contexts = require("../../../../utils/context/contexts");
 var _validator = require("./data/validator");
 
 var SkillsCardComponent = function SkillsCardComponent(_ref) {
-  var variant = _ref.variant,
-      side = _ref.side;
+  var variant = _ref.variant;
 
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data,
@@ -61,7 +60,7 @@ var SkillsCardComponent = function SkillsCardComponent(_ref) {
     },
     data: mappedData,
     variant: variant,
-    side: side
+    side: "back"
   });
 };
 

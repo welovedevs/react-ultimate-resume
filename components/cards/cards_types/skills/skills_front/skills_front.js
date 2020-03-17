@@ -103,20 +103,18 @@ var Picture = function Picture(_ref2) {
       variant = _useCardVariant2[0];
 
   var _getColorsFromCardVar = (0, _styles_utils.getColorsFromCardVariant)(theme, variant),
-      color = _getColorsFromCardVar.color;
+      backgroundColor = _getColorsFromCardVar.backgroundColor;
 
-  var src = null;
+  var src = (0, _react.useMemo)(function () {
+    var hex = (0, _styles_utils.getHexFromPaletteColor)(theme, backgroundColor);
+    var luminance = (0, _chromaJs.default)(hex).luminance();
 
-  if (color === 'light') {
-    src = "https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/".concat(techno === null || techno === void 0 ? void 0 : techno.handle);
-  } else {
-    var _chroma$hsl = (0, _chromaJs.default)((0, _styles_utils.getHexFromPaletteColor)(theme, color)).hsl(),
-        _chroma$hsl2 = (0, _slicedToArray2.default)(_chroma$hsl, 2),
-        hue = _chroma$hsl2[0],
-        saturation = _chroma$hsl2[1];
+    if (luminance < 0.98) {
+      return "https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/".concat(techno === null || techno === void 0 ? void 0 : techno.handle);
+    }
 
-    src = "https://process.filestackapi.com/output=format:png/negative/modulate=hue:".concat(Math.trunc(hue), ",brightness:200,saturation:").concat(Math.trunc(saturation * 100), "/").concat(techno === null || techno === void 0 ? void 0 : techno.handle);
-  }
+    return "https://process.filestackapi.com/output=format:png/".concat(techno === null || techno === void 0 ? void 0 : techno.handle);
+  }, [techno, theme, backgroundColor]);
 
   if (!src || !techno) {
     return null;
