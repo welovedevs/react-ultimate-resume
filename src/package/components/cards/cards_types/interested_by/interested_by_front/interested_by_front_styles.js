@@ -19,9 +19,9 @@ export const styles = (theme) => {
             wordWrap: 'break-word',
             overflow: 'hidden',
             display: '-webkit-box',
-            '-webkit-line-clamp': 6,
+            '-webkit-line-clamp': 4,
             '-webkit-box-orient': 'vertical',
-            maxHeight: 36 * 1.3 * 6,
+            maxHeight: 36 * 1.3 + spacing * 4 + 36 * 1.3 * 4,
             [QUERY_SMALL]: {
                 maxWidth: 'unset',
                 fontSize: 28
