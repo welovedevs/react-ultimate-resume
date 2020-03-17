@@ -23,21 +23,7 @@ const LanguagesCardComponent = ({ variant, side }) => {
 
     const isComplete = useMemo(() => validateLanguagesComplete(mappedData), [mappedData]);
 
-    const [openNewLanguageDialog, setNewLanguageDialogOpened, setNewLanguageDialogClosed] = useCallbackOpen();
-
-    const handleAddButtonClick = useCallback(() => {
-        setMappedData({
-            languages: [
-                ...mappedData.languages,
-                {
-                    language: 'Votre langue',
-                    value: 100,
-                    fluency: 'Votre niveau'
-                }
-            ]
-        });
-        setNewLanguageDialogOpened();
-    }, [mappedData]);
+    const [openNewLanguageDialog, setNewLanguageDialogOpened] = useCallbackOpen();
 
     if (!isComplete && mode !== 'edit') {
         return null;
@@ -48,25 +34,18 @@ const LanguagesCardComponent = ({ variant, side }) => {
             isComplete={isComplete}
             data={mappedData}
             sides={{
-                front: props => <LanguagesFront handleAddButtonClick={handleAddButtonClick} {...props} />,
-                back: props => <LanguagesBack handleAddButtonClick={handleAddButtonClick} {...props} />
+                front: props => <LanguagesFront handleAddButtonClick={setNewLanguageDialogOpened} {...props} />,
+                back: props => <LanguagesBack handleAddButtonClick={setNewLanguageDialogOpened} {...props} />
             }}
             variant={variant}
             side={side}
+            openEditDialog={openNewLanguageDialog}
             editDialog={{
                 component: LanguagesCardEditDialog,
                 validationSchema: LanguageValidator,
                 onEdit: onDialogEdited
             }}
-        >
-            <LanguagesCardEditDialog
-                open={openNewLanguageDialog}
-                onClose={setNewLanguageDialogClosed}
-                onEdit={onDialogEdited}
-                validationSchema={LanguageValidator}
-                data={mappedData?.languages?.[mappedData?.languages?.length - 1]}
-            />
-        </ProfileCard>
+        />
     );
 };
 
