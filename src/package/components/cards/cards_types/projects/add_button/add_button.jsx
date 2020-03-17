@@ -1,15 +1,23 @@
+import { FormattedMessage } from 'react-intl';
+
+import { Button } from '@wld/ui';
+
 import React from 'react';
 
-import { BouncingRoundButton } from '../../../../commons/bouncing_round_button/bouncing_round_button';
-
-import { ReactComponent as EditIcon } from '../../../../../assets/icons/add.svg';
-
-const AddButtonComponent = ({ title = 'Ajouter', onClick }) => (
-        <BouncingRoundButton
-            title={title}
-            icon={EditIcon}
-            onClick={onClick}
-        />
+const AddButtonComponent = ({ handleAddButtonClick, classes: receivedClasses = {} }) => (
+        <Button
+            customClasses={{
+                container: receivedClasses.container
+            }}
+            color="primary"
+            variant="outlined"
+            onClick={handleAddButtonClick}
+        >
+            <FormattedMessage
+                id="Projects.noProject.buttonLabel"
+                defaultMessage="Ajouter un projet"
+            />
+        </Button>
     );
 
 export const AddButton = AddButtonComponent;

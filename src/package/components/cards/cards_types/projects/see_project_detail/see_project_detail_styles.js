@@ -9,6 +9,9 @@ export const styles = (theme) => {
                 stroke: 'currentColor'
             }
         }),
+        detailTypography: {
+            color: ['inherit', '!important']
+        },
         typography: {
             fontWeight: 500
         }

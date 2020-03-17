@@ -25,9 +25,18 @@ export const styles = theme => {
             height: 20,
             width: 'auto',
             marginRight: spacing * 1.5,
-            '& > path': {
+            '&:not($detailDeleteIcon) > path': {
                 fill: 'currentColor'
             }
+        },
+        detailDeleteIcon: {
+            extend: 'detailIcon',
+            '& > g > path': {
+                stroke: 'currentColor'
+            }
+        },
+        detailTypography: {
+            color: ['inherit', '!important']
         }
     };
 };

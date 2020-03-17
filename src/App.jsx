@@ -3,6 +3,9 @@ import { FormattedMessage } from 'react-intl';
 import merge from 'lodash/merge';
 import { Button } from '@wld/ui';
 
+import isArray from 'lodash/isArray';
+import mergeWith from 'lodash/mergeWith';
+import cloneDeep from 'lodash/cloneDeep';
 import DeveloperProfile from './package';
 import JsonStub from './data/json_stub.json';
 
@@ -19,12 +22,19 @@ const DEFAULT_CARD_ORDER = [
     { type: 'interestedBy', variant: 2 }
 ];
 
+const mergeFunction = (objValue, srcValue) => {
+    if (isArray(objValue)) {
+        return srcValue;
+    }
+    return merge(objValue, srcValue);
+};
+
 function App() {
     const [data, setData] = useState(JsonStub);
 
     const onEdit = useCallback(
         newData => {
-            setData(merge({}, data, newData));
+            setData(mergeWith(cloneDeep(data), newData, mergeFunction));
         },
         [data]
     );

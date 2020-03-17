@@ -14,7 +14,13 @@ export const styles = (theme) => {
             height: '45%',
             minHeight: '45%',
             width: 'auto',
-            color: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).color)
+            color: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).color),
+            '& .to-fill': {
+                fill: 'currentColor'
+            },
+            '& .to-stroke': {
+                stroke: 'currentColor'
+            }
         }),
         [QUERY_SMALL]: {
             container: () => ({

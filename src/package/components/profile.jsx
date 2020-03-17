@@ -40,7 +40,7 @@ const DEFAULT_OPTIONS = Object.freeze({
     locale: 'en',
     customization: {
         imageHeader: {
-            url: 'https://cdn.filestackcontent.com/Muo4V7LCTOmU8RiZWw7B',
+            url: 'https://cdn.filestackcontent.com/aN4oagW5RwKpxIgzsTlq',
             alt: 'Default Banner'
         }
     },
@@ -125,7 +125,7 @@ const WithProvidersDeveloperProfile = ({
 
     return (
         <ThemeProvider theme={builtTheme}>
-            <IntlProvider locale={locale} messages={messages[locale] || messages.en} defaultLocale={locale}>
+            <IntlProvider locale={'fr'} messages={messages.fr} defaultLocale={locale}>
                 <DeveloperProfileComponent
                     isEditing={isEditing}
                     data={data}

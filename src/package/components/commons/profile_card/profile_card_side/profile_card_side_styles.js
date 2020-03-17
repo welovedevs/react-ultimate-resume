@@ -1,4 +1,4 @@
-export const styles = () => ({
+export const styles = ({
     container: {
         willChange: 'transform',
         height: '100%',

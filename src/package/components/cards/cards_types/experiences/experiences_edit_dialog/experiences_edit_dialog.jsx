@@ -213,6 +213,7 @@ const ExperienceItem = SortableElement(
 );
 
 const ContentFields = ({ fieldErrors, id, formatMessage, experience, onChange, classes, index }) => {
+    console.log({ experience });
     const stillEmployed = !experience.endDate;
 
     const handleStillEmployedChange = useCallback(() => {

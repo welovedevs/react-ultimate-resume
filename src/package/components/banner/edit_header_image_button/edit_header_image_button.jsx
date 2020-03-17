@@ -4,9 +4,10 @@ import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 
+import { ReactComponent as PhotoCameraIcon } from '../../../assets/icons/photo_camera.svg';
+
 import { DeveloperProfileContext } from '../../../utils/context/contexts';
 import { BouncingRoundButton } from '../../commons/bouncing_round_button/bouncing_round_button';
-import { ReactComponent as EditIcon } from '../../../assets/icons/edit.svg';
 import { EditBannerImageDialog } from '../edit_banner_image_dialog/edit_banner_image_dialog';
 
 import { useCallbackOpen } from '../../hooks/use_callback_open';
@@ -38,7 +39,7 @@ export const EditHeaderImageButton = ({ customizationOptions }) => {
             />
             <BouncingRoundButton
                 title={<FormattedMessage id="Banner.image.editButton" defaultMessage="Edit banner image" />}
-                icon={EditIcon}
+                icon={PhotoCameraIcon}
                 onClick={onOpen}
                 classes={{
                     container: cn(classes.editButton, globalReceivedClasses)

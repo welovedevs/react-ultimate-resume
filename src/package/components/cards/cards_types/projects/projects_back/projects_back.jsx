@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
@@ -11,17 +11,27 @@ import { ProjectSection } from './project_section/project_section';
 import { DEFAULT_PROJECT_IMAGE } from '../utils/images';
 import { styles } from './projects_back_styles';
 import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
+import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
+import { NoProject } from './no_project/no_project';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectsBackComponent = ({ data }) => {
+const ProjectsBackComponent = ({ data, handleAddButtonClick }) => {
     const [variant] = useCardVariant();
-
+    const { onEdit } = useContext(DeveloperProfileContext);
     const classes = useStyles({ variant });
+
     const imageSrc = useMemo(() => data.projects?.[0]?.images?.url ?? DEFAULT_PROJECT_IMAGE, [
         data.projects?.[0]?.images
     ]);
     const alt = data.projects?.[0]?.title;
+
+    const handleProjectDeletion = useCallback((index) => {
+        const newProjects = [...data.projects];
+        newProjects.splice(index, 1);
+        onEdit({ projects: newProjects });
+    }, [data, onEdit]);
 
     return (
         <>
@@ -41,8 +51,11 @@ const ProjectsBackComponent = ({ data }) => {
             </ProfileCardTitle>
             <ProfileCardContent>
                 {data.projects?.map(project => (
-                    <ProjectSection project={project} key={`project_${project.id}`} />
+                    <ProjectSection project={project} key={`project_${project.id}`} onDelete={handleProjectDeletion} />
                 ))}
+                {!existsAndNotEmpty(data?.projects) && (
+                    <NoProject handleAddButtonClick={handleAddButtonClick} />
+                )}
             </ProfileCardContent>
         </>
     );

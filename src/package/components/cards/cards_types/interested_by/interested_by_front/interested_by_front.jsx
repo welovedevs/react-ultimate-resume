@@ -19,6 +19,7 @@ const InterestedByFrontComponent = ({
     data: { interestedBy },
     profileCardFrontTypographyProps,
     dismissButton,
+    dismissTitle,
     customClasses = {}
 }) => {
     const classes = useStyles();
@@ -47,7 +48,15 @@ const InterestedByFrontComponent = ({
                         }}
                         {...profileCardFrontTypographyProps}
                     >
-                        {interestedBy}
+                        {!dismissTitle && (
+                            <FormattedMessage
+                                id="InterestedBy.front.content"
+                                defaultMessage="Interested by:"
+                            />
+                        )}
+                        <div className={classes.interestedByValue}>
+                            {interestedBy}
+                        </div>
                     </ProfileCardFrontTypography>
                 </CenterContentContainer>
             </ProfileCardPaddedFront>

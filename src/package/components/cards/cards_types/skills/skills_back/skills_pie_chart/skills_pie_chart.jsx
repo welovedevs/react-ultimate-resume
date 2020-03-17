@@ -49,7 +49,7 @@ const SkillsPieChart = ({ data, variant, springOnOpenOpacityProps, springOnScrol
                             />
                         )}
                         data={data}
-                        outerRadius={isMobile ? '50%' : undefined}
+                        outerRadius={isMobile ? '50%' : '70%'}
                     >
                         {data.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={colorPalette[index]} stroke={backgroundColor} />

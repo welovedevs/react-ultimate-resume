@@ -21,7 +21,8 @@ import { styles } from './basics_front_styles';
 const useStyles = createUseStyles(styles);
 
 const BasicsFrontComponent = ({ data }) => {
-    const variant = useCardVariant();
+    const [variant] = useCardVariant();
+    console.log({ variant });
     const classes = useStyles({ variant });
 
     const [side, setSide] = useCardSide();
@@ -36,7 +37,7 @@ const BasicsFrontComponent = ({ data }) => {
         if (element.offsetHeight > element.scrollHeight - 1) {
             setIsMainTypographyTruncated(false);
         }
-    }, [mainTypographyReference.current]);
+    }, []);
 
     const currentCityName = data?.currentCity?.name;
 

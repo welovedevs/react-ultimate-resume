@@ -1,6 +1,6 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.2.24-66",
+    "version": "1.2.24-99",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
@@ -21,7 +21,7 @@
     "license": "ISC",
     "peerDependencies": {
         "@material-ui/core": "^4.8.3",
-        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.6-0",
+        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.6-5",
         "formik": "^2.1.2",
         "react": "^16.12.0",
         "react-dom": "^16.12.0"
@@ -31,7 +31,7 @@
         "@formatjs/intl-pluralrules": "^1.5.2",
         "@formatjs/intl-relativetimeformat": "^4.5.9",
         "@material-ui/pickers": "^3.2.9",
-        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.6-0",
+        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.6-5",
         "babel-plugin-react-intl": "^5.1.18",
         "chroma-js": "^2.1.0",
         "classnames": "^2.2.6",
@@ -66,7 +66,6 @@
         "@babel/plugin-transform-runtime": "^7.8.3",
         "@babel/preset-env": "^7.7.7",
         "@babel/preset-react": "^7.7.4",
-        "babel-eslint": "^10.0.3",
         "babel-plugin-css-modules-transform": "^1.6.2",
         "babel-plugin-inline-react-svg": "^1.1.0",
         "babel-plugin-transform-import-styles": "^0.0.11",

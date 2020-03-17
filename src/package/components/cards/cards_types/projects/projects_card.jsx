@@ -5,7 +5,7 @@ import uuid from 'uuid/v4';
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { ProjectsFront } from './projects_front/projects_front';
 import { ProjectsBack } from './projects_back/projects_back';
-import { AddButton } from './add_button/add_button';
+import { AddButton } from './add_button_rounded/add_button_rounded';
 import { ProjectDialog } from './project_dialog/project_dialog';
 
 import { useCallbackOpen } from '../../../hooks/use_callback_open';
@@ -50,8 +50,8 @@ const ProjectsCardComponent = ({ variant, side }) => {
             isComplete={isComplete}
             isEditingProfile={isEditing}
             sides={{
-                front: ProjectsFront,
-                back: ProjectsBack
+                front: (props) => <ProjectsFront handleAddButtonClick={handleAddButtonClick} {...props} />,
+                back: (props) => <ProjectsBack handleAddButtonClick={handleAddButtonClick} {...props} />
             }}
             variant={variant}
             side={side}

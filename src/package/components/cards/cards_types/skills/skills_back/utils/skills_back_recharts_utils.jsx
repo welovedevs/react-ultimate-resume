@@ -33,7 +33,6 @@ const CustomLabel = props => {
         <g>
             <g>
                 <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={customColor} fill="none" />
-                <circle cx={ex} cy={ey} r={2} fill={customColor} stroke="none" />
                 <text
                     x={ex + (cos >= 0 ? 1 : -1) * 8}
                     y={ey}

@@ -13,7 +13,7 @@ import { ProfileCardEditButton } from './profile_card_edit_button/profile_card_e
 import { ProfileCardEditDialog } from './profile_card_edit_dialog/profile_card_edit_dialog';
 import { ProfileCardIncompletePopper } from './profile_card_incomplete_popper/profile_card_incomplete_popper';
 
-import { SET_SIDE } from '../../../store/profile_card/profile_card_actions_types';
+import { SET_SIDE, SET_VARIANT } from '../../../store/profile_card/profile_card_actions_types';
 import { getProfileCardInitialState, profileCardReducer } from '../../../store/profile_card/profile_card_reducer';
 import { useCallbackOpen } from '../../hooks/use_callback_open';
 
@@ -57,6 +57,14 @@ const ProfileCardComponent = ({
             side: sideProps
         })
     );
+
+    useEffect(() => {
+        dispatch({
+            type: SET_VARIANT,
+            variant
+        });
+    }, [variant]);
+
     const { side, hasDialogOpened } = state;
     const [debouncedSide] = useDebounce(side, 200);
 

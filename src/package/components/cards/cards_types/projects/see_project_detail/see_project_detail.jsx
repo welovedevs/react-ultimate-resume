@@ -16,13 +16,13 @@ import { styles } from './see_project_detail_styles';
 
 const useStyles = createUseStyles(styles);
 
-const SeeProjectDetailComponent = ({ project }) => {
+const SeeProjectDetailComponent = ({ color, project }) => {
     const classes = useStyles();
     const [openDialog, setDialogOpened, setDialogClosed] = useCallbackOpen();
     return (
         <>
             <ProjectDialog project={project} open={openDialog} onClose={setDialogClosed} handleProfileCardHasDialogOpened />
-            <AnimatedUnderlinedButton onClick={setDialogOpened}>
+            <AnimatedUnderlinedButton color={color} onClick={setDialogOpened}>
                 <EyeIcon className={classes.icon} />
                 <Typography customClasses={{ container: classes.detailTypography }} color="primary">
                     <FormattedMessage id="Projects.details.seemore" defaultMessage="See more" />

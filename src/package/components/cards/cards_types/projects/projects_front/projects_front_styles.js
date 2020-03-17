@@ -29,9 +29,8 @@ export const styles = theme => {
             transform: 'rotate(-10deg)'
         },
         content: () => ({
-            padding: [spacing * 3, spacing * 12, 0],
+            padding: [spacing * 6, spacing * 12, 0],
             display: 'flex',
-            alignItems: 'center',
             flex: 1
         }),
         overlay: {
@@ -52,7 +51,26 @@ export const styles = theme => {
             color: 'inherit',
             fontWeight: 700,
             fontSize: 30,
-            lineHeight: 1.4
+            lineHeight: 1.3,
+            wordWrap: 'break-word',
+            overflow: 'hidden',
+            display: '-webkit-box',
+            '-webkit-line-clamp': 3,
+            '-webkit-box-orient': 'vertical',
+            maxHeight: 30 * 1.3 * 3
+        },
+        noProject: {
+            display: 'flex',
+            flexDirection: 'column'
+        },
+        noProjectTypography: {
+            color: 'inherit',
+            fontWeight: 700,
+            lineHeight: 1.3
+        },
+        addButton: {
+            marginTop: spacing * 4,
+            marginLeft: -spacing
         },
         [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
             content: () => ({

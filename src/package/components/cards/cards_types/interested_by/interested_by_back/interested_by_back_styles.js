@@ -11,14 +11,16 @@ export const styles = (theme) => {
             backgroundColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).color)
         }),
         typography: ({ variant }) => ({
-            display: 'block',
+            display: 'flex',
             overflow: 'auto',
             textOverflow: 'unset',
             '-webkit-line-clamp': 'unset',
             '-webkit-box-orient': 'unset',
             margin: 0,
             paddingRight: spacing * 3,
+            lineHeight: 'initial',
             maxHeight: '100%',
+            wordBreak: 'break-all',
             ...withCustomVerticalScrollbar(getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backgroundColor))
         })
     });

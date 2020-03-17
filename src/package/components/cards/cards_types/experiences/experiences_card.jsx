@@ -11,6 +11,7 @@ import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 
 const ExperiencesCardComponent = ({ variant, side }) => {
     const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
+    // console.log({ data });
     const mappedData = useMemo(() => mapWorkFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(editedData => onEdit(mapWorkToJsonResume(editedData)), []);

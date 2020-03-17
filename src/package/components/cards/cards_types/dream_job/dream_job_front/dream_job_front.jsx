@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 
 import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
@@ -20,8 +20,10 @@ import { styles } from './dream_job_front_styles';
 const useStyles = createUseStyles(styles);
 
 const DreamJobFrontComponent = ({ data }) => {
-    const classes = useStyles();
+    const theme = useTheme();
+    const classes = useStyles({ theme });
     const { remoteFrequency, places } = data;
+    // console.log({ classes });
     const [side, setSide] = useCardSide();
 
     const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
@@ -75,5 +77,6 @@ const DreamJobFrontComponent = ({ data }) => {
         </>
     );
 };
+
 
 export const DreamJobFront = DreamJobFrontComponent;

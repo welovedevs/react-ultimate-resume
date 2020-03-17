@@ -23,6 +23,7 @@ const BasicsCardComponent = ({ variant, side }) => {
     if (!isComplete && mode !== 'edit') {
         return null;
     }
+
     return (
         <>
             <ProfileCard

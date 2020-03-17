@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { Typography } from '@wld/ui';
 
 import { ProfileCardSectionTitle } from '../../../../../commons/profile_card/profile_card_section_title/profile_card_section_title';
@@ -10,22 +10,29 @@ import { ProfileCardSectionText } from '../../../../../commons/profile_card/prof
 import { ProfileCardSection } from '../../../../../commons/profile_card/profile_card_section/profile_card_section';
 import { SeeProjectDetail } from '../../see_project_detail/see_project_detail';
 import { AnimatedUnderlinedButton } from '../../../../../commons/animated_underlined_button/animated_underlined_button';
+import { ConfirmDialog } from '../../../../../commons/confirm_dialog/confirm_dialog';
 
 import { ReactComponent as LinkIcon } from '../../../../../../assets/icons/link.svg';
+import { ReactComponent as RemoveIcon } from '../../../../../../assets/icons/remove_circle.svg';
+
+import { useIsEditing } from '../../../../../hooks/use_is_editing';
+import { useCallbackOpen } from '../../../../../hooks/use_callback_open';
 
 import { styles } from './project_section_styles';
+import { useCardVariant } from '../../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { getColorsFromCardVariant } from '../../../../../../utils/styles/styles_utils';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectSectionContainer = ({ project, cardVariant }) => {
+const ProjectSectionContainer = ({ project, cardVariant, onDelete, index }) => {
     const classes = useStyles();
 
     const descriptionChunks = useMemo(
         () =>
             project.description
                 ?.split('\n')
-                .map((descriptionChunk, index) => (
-                    <p key={`project_description_chunk_${project.id}_${index}`}>{descriptionChunk}</p>
+                .map((descriptionChunk, chunkIndex) => (
+                    <p key={`project_description_chunk_${project.id}_${chunkIndex}`}>{descriptionChunk}</p>
                 )),
         [project.description]
     );
@@ -38,30 +45,67 @@ const ProjectSectionContainer = ({ project, cardVariant }) => {
             <ProfileCardSectionText customClasses={{ container: classes.sectionText }}>
                 {descriptionChunks}
             </ProfileCardSectionText>
-            <Details classes={classes} project={project}/>
+            <Details classes={classes} project={project} onDelete={onDelete} index={index} />
         </ProfileCardSection>
     );
 };
 
-const Details = ({ project, classes }) => (
-    <div className={classes.details}>
-        {
-            project.link &&
+const Details = ({ project, index, onDelete, classes }) => {
+    const theme = useTheme();
+    const [isEditing] = useIsEditing();
+    const [variant] = useCardVariant();
+
+    const color = getColorsFromCardVariant(theme, variant).backColor;
+
+    return (
+        <div className={classes.details}>
+            {project.link && (
+                <div className={classes.detail}>
+                    <AnimatedUnderlinedButton color={color}>
+                        <a className={classes.link} href={project.link}>
+                            <LinkIcon className={classes.detailIcon}/>
+                            <Typography customClasses={{ container: classes.detailTypography }} color="primary">
+                                <FormattedMessage id="Project.section.link" defaultMessage="Link"/>
+                            </Typography>
+                        </a>
+                    </AnimatedUnderlinedButton>
+                </div>
+            )}
             <div className={classes.detail}>
-                <AnimatedUnderlinedButton>
-                    <a className={classes.link} href={project.link}>
-                        <LinkIcon className={classes.detailIcon}/>
-                        <Typography customClasses={{ container: classes.detailTypography }} color="primary">
-                            <FormattedMessage id="Project.section.link" defaultMessage="Link"/>
-                        </Typography>
-                    </a>
+                <SeeProjectDetail color={color} project={project} />
+            </div>
+            {isEditing && (
+                <RemoveProjectDetail color={color} index={index} onDelete={onDelete} classes={classes} />
+            )}
+        </div>
+    );
+};
+
+const RemoveProjectDetail = ({ color, index, onDelete, classes }) => {
+    const [openDialog, setDialogOpened, setDialogClosed] = useCallbackOpen();
+
+    const handleConfirm = useCallback(() => {
+        onDelete(index);
+        setDialogClosed();
+    }, [onDelete, index]);
+
+    return (
+        <>
+            <ConfirmDialog
+                open={openDialog}
+                onClose={setDialogClosed}
+                onConfirm={handleConfirm}
+            />
+            <div className={classes.detail}>
+                <AnimatedUnderlinedButton color={color} onClick={setDialogOpened}>
+                    <RemoveIcon className={classes.detailDeleteIcon}/>
+                    <Typography customClasses={{ container: classes.detailTypography }} color="primary">
+                        <FormattedMessage id="Main.lang.delete" defaultMessage="Delete"/>
+                    </Typography>
                 </AnimatedUnderlinedButton>
             </div>
-        }
-        <div className={classes.detail}>
-            <SeeProjectDetail project={project}/>
-        </div>
-    </div>
-);
+        </>
+    );
+};
 
 export const ProjectSection = ProjectSectionContainer;

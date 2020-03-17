@@ -5,7 +5,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { useFormikContext } from 'formik';
 import uuid from 'uuid/v4';
 
-import { ListItem, TextField } from '@wld/ui';
+import { ListItem } from '@wld/ui';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { EditDialogField } from '../../../../commons/edit_dialog_field/edit_dialog_field';
@@ -16,6 +16,7 @@ import { CONTRACT_TYPES } from '../../../../../utils/enums/contract_types/contra
 import { Select } from '../../../../commons/select/select';
 import { JobPerks } from '../../../../../utils/enums/job_perks/job_perks_utils';
 import { JobIssues } from '../../../../../utils/enums/job_issues/job_issues_utils';
+import { SalaryField } from './salary_field/salary_field';
 
 import { PerksField } from './perks_field/perks_field';
 import { CurrentJobIssuesField } from './current_job_issues_field/current_job_issues_field';
@@ -56,7 +57,7 @@ const Content = ({ helpers: { handleValueChange } }) => {
     const { formatMessage } = useIntl();
     const classes = useStyles();
     const { values, errors, handleChange } = useFormikContext();
-    const { places, salary, remoteFrequency, contractTypes } = values;
+    const { averageDailyRate, places, salary, remoteFrequency, contractTypes } = values;
 
     const perks = values.perks ?? DEFAULT_OBJECT;
     const currentJobIssues = values.currentJobIssues ?? DEFAULT_OBJECT;
@@ -148,17 +149,6 @@ const Content = ({ helpers: { handleValueChange } }) => {
                 perks={perks}
             />
             <EditDialogField
-                title={(
-                    <FormattedMessage
-                        id="DreamJob.editDialog.salary.title"
-                        defaultMessage="What's your desired salary?"
-                    />
-                  )}
-                error={errors.salary}
-            >
-                <TextField onChange={handleChange} name="salary" value={salary} variant="flat" fullWidth />
-            </EditDialogField>
-            <EditDialogField
                 error={errors.remoteFrequency}
                 title={(
                     <FormattedMessage
@@ -199,6 +189,13 @@ const Content = ({ helpers: { handleValueChange } }) => {
                     onChange={handleValueChange('contractTypes')}
                 />
             </EditDialogField>
+            <SalaryField
+                salary={salary}
+                contractTypes={contractTypes}
+                averageDailyRate={averageDailyRate}
+                errors={errors}
+                handleChange={handleChange}
+            />
             <CurrentJobIssuesField
                 error={errors?.currentJobIssues}
                 checkboxGroupCurrentJobIssues={checkboxGroupCurrentJobIssues}

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import cn from 'classnames';
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
@@ -9,10 +10,10 @@ import { styles } from './gifs_sides_commons_styles';
 
 const useStyles = createUseStyles(styles);
 
-const GifsSidesCommonsComponent = ({ underLayer, children }) => {
+const GifsSidesCommonsComponent = ({ underLayer, children, classes: receivedClasses = {} }) => {
     const classes = useStyles();
     return (
-        <div className={classes.container}>
+        <div className={cn(classes.container, receivedClasses.container)}>
             <div className={classes.underLayerContainer}>{underLayer}</div>
             <div className={classes.darkenLayer} />
             <ProfileCardTitle

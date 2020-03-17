@@ -1,7 +1,8 @@
 import React, { useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
+import chroma from 'chroma-js';
 
 import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
@@ -13,6 +14,8 @@ import { useTechnologies } from '../../../../hooks/technologies/use_technologies
 import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
 
 import { styles } from './skills_front_styles';
+import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
 
 const useStyles = createUseStyles(styles);
 
@@ -36,14 +39,7 @@ const SkillsFrontComponent = ({ data }) => {
         <>
             <ProfileCardPaddedFront>
                 <CenterContentContainer customClasses={{ container: classes.container }}>
-                    <img
-                        src={
-                            techno &&
-                            `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle}`
-                        }
-                        alt={techno?.name}
-                        className={classes.logo}
-                    />
+                    <Picture techno={techno} classes={classes} />
                     <ProfileCardFrontTypography classes={{ container: classes.typography }}>
                         <FormattedMessage
                             id="Skills.front.title"
@@ -60,6 +56,27 @@ const SkillsFrontComponent = ({ data }) => {
             </ProfileCardActions>
         </>
     );
+};
+
+const Picture = ({ techno, classes }) => {
+    const theme = useTheme();
+    const [variant] = useCardVariant();
+    const { backgroundColor } = getColorsFromCardVariant(theme, variant);
+
+    const src = useMemo(() => {
+        const hex = getHexFromPaletteColor(theme, backgroundColor);
+        const luminance = chroma(hex).luminance();
+        if (luminance < 0.98) {
+            return `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle}`;
+        }
+        return `https://process.filestackapi.com/output=format:png/${techno?.handle}`;
+    }, [techno, theme, backgroundColor]);
+
+    if (!src || !techno) {
+        return null;
+    }
+
+    return <img src={src} alt={techno?.name} className={classes.logo} />;
 };
 
 export const SkillsFront = SkillsFrontComponent;

@@ -8,5 +8,8 @@ export const styles = ({
         height: DIMENSION,
         width: DIMENSION,
         backgroundColor: 'currentColor'
+    },
+    tooltipPopper: {
+        zIndex: 99999999999
     }
 });

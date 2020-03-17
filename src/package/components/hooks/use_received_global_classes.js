@@ -3,7 +3,7 @@ import { get } from 'lodash';
 
 import { DeveloperProfileContext } from '../../utils/context/contexts';
 
-export const useReceivedGlobalClasses = (path = '') => {
+export const useReceivedGlobalClasses = (path = '', defaultValue = {}) => {
     const { receivedGlobalClasses } = useContext(DeveloperProfileContext);
-    return [get(receivedGlobalClasses, path)];
+    return [get(receivedGlobalClasses, path, defaultValue)];
 };

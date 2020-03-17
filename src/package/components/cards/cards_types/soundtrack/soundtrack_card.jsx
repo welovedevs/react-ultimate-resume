@@ -7,7 +7,7 @@ import { FlatObjectToJsonResume, JsonResumeToFlatObject } from '../../utils/data
 import { SoundtrackCardEditDialog } from './edit_dialog/soundtrack_card_edit_dialog';
 import { SoundtrackMapping } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
-import { validateSoundtrackComplete } from './data/validator';
+import { SoundtrackValidationSchema, validateSoundtrackComplete } from './data/validator';
 
 const SoundtrackCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
@@ -34,7 +34,8 @@ const SoundtrackCardComponent = ({ variant, side }) => {
             }}
             editDialog={{
                 component: SoundtrackCardEditDialog,
-                onEdit: onDialogEdited
+                onEdit: onDialogEdited,
+                validationSchema: SoundtrackValidationSchema
             }}
             variant={variant}
             side={side}

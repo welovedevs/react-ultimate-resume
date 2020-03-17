@@ -30,7 +30,7 @@ const ExperiencesFrontComponent = ({ data }) => {
         if (element.offsetHeight > element.scrollHeight - 1) {
             setIsTypographyTruncated(false);
         }
-    }, [typographyReference.current]);
+    }, []);
 
     const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
 
