@@ -8,6 +8,7 @@ export const styles = (theme) => {
         container: {
             height: '100%',
             flexDirection: 'column',
+            padding: [spacing, spacing * 8],
             ...center
         },
         button: {

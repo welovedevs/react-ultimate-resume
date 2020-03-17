@@ -15,11 +15,28 @@ import { LANGUAGES_COLUMN_TRANSITIONS_SPRING_PROPS } from './languages_back_spri
 import { styles } from './languages_back_styles';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoLanguage } from './no_language/no_language';
+import { ProfileCardContent } from '../../../../commons/profile_card/profile_card_content/profile_card_content';
 
 const useStyles = createUseStyles(styles);
 
 const LanguagesBackComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles({ itemSize: data.languages?.length ?? 0 });
+
+    return (
+        <ProfileCardAnimatedBack
+            title="Languages"
+            customClasses={{
+                content: classes.content,
+                contentAnimated: classes.contentAnimated,
+                title: classes.cardTitle
+            }}
+        >
+            <Content {...{ data, handleAddButtonClick, classes }} />
+        </ProfileCardAnimatedBack>
+    );
+};
+
+const Content = ({ data, handleAddButtonClick, classes }) => {
     const theme = useTheme();
     const [variant] = useCardVariant();
     const transitions = useTransition(data.languages ?? [], ({ id }) => `language_column_${id}`, {
@@ -45,43 +62,36 @@ const LanguagesBackComponent = ({ data, handleAddButtonClick }) => {
             ),
         [backColor, backBackgroundColor]
     );
-
     const hasLanguage = useMemo(() => existsAndNotEmpty(data?.languages), [data]);
 
     if (!hasLanguage) {
-        return <NoLanguage handleAddButtonClick={handleAddButtonClick} />;
+        return (
+            <ProfileCardContent>
+                <NoLanguage handleAddButtonClick={handleAddButtonClick} />
+            </ProfileCardContent>
+        );
     }
-
     return (
-        <ProfileCardAnimatedBack
-            title="Languages"
-            customClasses={{
-                content: classes.content,
-                contentAnimated: classes.contentAnimated,
-                title: classes.cardTitle
-            }}
-        >
-            <div className={classes.columnsContainer}>
-                {transitions.map(({ item, key, props }, index) => (
-                    <LanguageColumn
-                        itemsSize={data.languages?.length ?? 0}
-                        key={key}
-                        component={animated.div}
-                        item={item}
-                        style={{
-                            ...props,
-                            backgroundColor: colorPalette[index],
-                            color: backColor
-                        }}
-                        cardVariant={variant}
-                    >
-                        <button className={classes.languageLettersButton} type="button">
-                            {item.language?.substring(0, 2).toUpperCase()}
-                        </button>
-                    </LanguageColumn>
-                ))}
-            </div>
-        </ProfileCardAnimatedBack>
+        <div className={classes.columnsContainer}>
+            {transitions.map(({ item, key, props }, index) => (
+                <LanguageColumn
+                    itemsSize={data.languages?.length ?? 0}
+                    key={key}
+                    component={animated.div}
+                    item={item}
+                    style={{
+                        ...props,
+                        backgroundColor: colorPalette[index],
+                        color: backColor
+                    }}
+                    cardVariant={variant}
+                >
+                    <button className={classes.languageLettersButton} type="button">
+                        {item.language?.substring(0, 2).toUpperCase()}
+                    </button>
+                </LanguageColumn>
+            ))}
+        </div>
     );
 };
 

@@ -25,6 +25,7 @@ const ProjectsCardComponent = ({ variant, side }) => {
         setMappedData(defaultMappedData);
     }, [defaultMappedData]);
 
+
     const isComplete = useMemo(() => validateProjectsComplete(mappedData), [mappedData]);
 
     const handleAddButtonClick = useCallback(() => {
@@ -50,17 +51,12 @@ const ProjectsCardComponent = ({ variant, side }) => {
             isComplete={isComplete}
             isEditingProfile={isEditing}
             sides={{
-                front: (props) => <ProjectsFront handleAddButtonClick={handleAddButtonClick} {...props} />,
-                back: (props) => <ProjectsBack handleAddButtonClick={handleAddButtonClick} {...props} />
+                front: props => <ProjectsFront handleAddButtonClick={handleAddButtonClick} {...props} />,
+                back: props => <ProjectsBack handleAddButtonClick={handleAddButtonClick} {...props} />
             }}
             variant={variant}
             side={side}
-            customEditAction={(
-                <AddButton
-                    title="Ajouter un projet"
-                    onClick={handleAddButtonClick}
-                />
-            )}
+            customEditAction={<AddButton title="Ajouter un projet" onClick={handleAddButtonClick} />}
         >
             <ProjectDialog
                 open={openNewProjectDialog}

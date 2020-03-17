@@ -18,6 +18,20 @@ export const styles = theme => {
             fontSize: 36,
             lineHeight: 1.3
         },
+        noSkill: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+        },
+        noSkillTypography: {
+            color: 'inherit',
+            fontWeight: 700,
+            lineHeight: 1.3
+        },
+        addButton: {
+            marginTop: spacing * 4,
+            marginLeft: -spacing
+        },
         [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
             logo: {
                 height: '40%',

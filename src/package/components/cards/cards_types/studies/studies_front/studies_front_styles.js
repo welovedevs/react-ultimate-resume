@@ -21,6 +21,20 @@ export const styles = theme => {
             '-webkit-line-clamp': 3,
             '-webkit-box-orient': 'vertical'
         },
+        noEducation: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+        },
+        noEducationTypography: {
+            color: 'inherit',
+            fontWeight: 700,
+            lineHeight: 1.3
+        },
+        addButton: {
+            marginTop: spacing * 4,
+            marginLeft: -spacing
+        },
         [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
             typography: {
                 fontSize: 28,

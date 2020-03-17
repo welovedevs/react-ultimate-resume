@@ -8,13 +8,13 @@ export const styles = theme => {
         typography: {
             maxWidth: '65%'
         },
-        noProject: {
+        noLanguage: {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            padding: [spacing * 6, spacing * 12, 0]
+            padding: [spacing * 6, spacing * 8, 0]
         },
-        noProjectTypography: {
+        noLanguageTypography: {
             color: 'inherit',
             fontWeight: 700,
             lineHeight: 1.3
