@@ -39,10 +39,7 @@ const SkillsFrontComponent = ({ data }) => {
         <>
             <ProfileCardPaddedFront>
                 <CenterContentContainer customClasses={{ container: classes.container }}>
-                    <Picture
-                        techno={techno}
-                        classes={classes}
-                    />
+                    <Picture techno={techno} classes={classes} />
                     <ProfileCardFrontTypography classes={{ container: classes.typography }}>
                         <FormattedMessage
                             id="Skills.front.title"
@@ -64,28 +61,22 @@ const SkillsFrontComponent = ({ data }) => {
 const Picture = ({ techno, classes }) => {
     const theme = useTheme();
     const [variant] = useCardVariant();
-    const { color } = getColorsFromCardVariant(theme, variant);
+    const { backgroundColor } = getColorsFromCardVariant(theme, variant);
 
-    let src = null;
-
-    if (color === 'light') {
-        src = `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle}`;
-    } else {
-        const [hue, saturation] = chroma(getHexFromPaletteColor(theme, color)).hsl();
-        src = `https://process.filestackapi.com/output=format:png/negative/modulate=hue:${Math.trunc(hue)},brightness:200,saturation:${Math.trunc(saturation * 100)}/${techno?.handle}`;
-    }
+    const src = useMemo(() => {
+        const hex = getHexFromPaletteColor(theme, backgroundColor);
+        const luminance = chroma(hex).luminance();
+        if (luminance < 0.98) {
+            return `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle}`;
+        }
+        return `https://process.filestackapi.com/output=format:png/${techno?.handle}`;
+    }, [techno, theme, backgroundColor]);
 
     if (!src || !techno) {
         return null;
     }
 
-    return (
-        <img
-            src={src}
-            alt={techno?.name}
-            className={classes.logo}
-        />
-    );
+    return <img src={src} alt={techno?.name} className={classes.logo} />;
 };
 
 export const SkillsFront = SkillsFrontComponent;
