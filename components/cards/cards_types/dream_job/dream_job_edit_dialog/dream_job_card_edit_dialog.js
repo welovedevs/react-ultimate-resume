@@ -121,17 +121,13 @@ var Content = function Content(_ref2) {
   var perks = (_values$perks = values.perks) !== null && _values$perks !== void 0 ? _values$perks : DEFAULT_OBJECT;
   var currentJobIssues = (_values$currentJobIss = values.currentJobIssues) !== null && _values$currentJobIss !== void 0 ? _values$currentJobIss : DEFAULT_OBJECT;
   var addPlace = (0, _react.useCallback)(function (place) {
-    return console.log({
-      places: places
-    }) || handleValueChange('places')(places.concat(_objectSpread({}, place, {
+    return handleValueChange('places')(places.concat(_objectSpread({}, place, {
       id: (0, _v.default)()
     })));
   }, [places]);
   var removePlace = (0, _react.useCallback)(function (id) {
     return function () {
-      return console.log({
-        places: places
-      }) || handleValueChange('places')(places.filter(function (place) {
+      return handleValueChange('places')(places.filter(function (place) {
         return place.id !== id;
       }));
     };
