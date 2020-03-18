@@ -56,6 +56,7 @@ const LocationFieldComponent = ({
                 onLocationSelected({ name: description, placeId, locale });
             }
             setIsFocused(false);
+            setInput('');
         },
         [locale, onLocationSelected]
     );
