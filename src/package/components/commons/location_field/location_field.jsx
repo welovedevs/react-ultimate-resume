@@ -43,9 +43,6 @@ const LocationFieldComponent = ({
                 event.persist();
                 onChange(event);
             }
-            if (typeof onLocationSelected === 'function' && !event.target.value) {
-                onLocationSelected(null);
-            }
         },
         [onChange, onLocationSelected]
     );
