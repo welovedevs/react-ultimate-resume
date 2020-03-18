@@ -94,6 +94,7 @@ var LocationFieldComponent = function LocationFieldComponent(_ref) {
     }
 
     setIsFocused(false);
+    setInput('');
   }, [locale, onLocationSelected]);
   return _react.default.createElement("div", {
     className: (0, _classnames.default)(classes.container, receivedClasses.container)
