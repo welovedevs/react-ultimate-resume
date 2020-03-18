@@ -197,10 +197,10 @@ const LanguagesEditFormWrapper = ({ helpers: { handleValueChange } }) => {
     const addLanguage = useCallback(() => {
         const id = uuid();
         handleValueChange('languages')(
-            languages.concat({
-                index: languages.length,
+            [...(languages ?? []), {
+                index: languages?.length ?? 0,
                 id
-            })
+            }]
         );
     }, [JSON.stringify(languages)]);
 
