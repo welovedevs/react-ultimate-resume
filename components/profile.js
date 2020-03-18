@@ -9,6 +9,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.DeveloperProfile = void 0;
 
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
@@ -44,6 +46,10 @@ var _footer = require("./footer/footer");
 var _data_utils = require("../utils/data_utils");
 
 var _side = require("./commons/profile_card/profile_card_side/side");
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 if (!Intl.PluralRules) {
   // eslint-disable-next-line global-require
@@ -162,7 +168,8 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
       additionalNodes = _ref3.additionalNodes,
       BeforeCards = _ref3.BeforeCards,
       classes = _ref3.classes,
-      isEditing = _ref3.isEditing;
+      isEditing = _ref3.isEditing,
+      parentIntl = _ref3.intl;
   var mergedOptions = (0, _react.useMemo)(function () {
     return (0, _mergeWith.default)((0, _cloneDeep.default)(DEFAULT_OPTIONS), JSON.parse(JSON.stringify(options || {})), _data_utils.mergeOmitNull);
   }, [options]);
@@ -172,11 +179,14 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
     var theme = (0, _theme.buildTheme)(customization === null || customization === void 0 ? void 0 : customization.theme);
     return theme;
   }, [customization === null || customization === void 0 ? void 0 : customization.theme]);
+  var providerMessages = (0, _react.useMemo)(function () {
+    return _objectSpread({}, (parentIntl === null || parentIntl === void 0 ? void 0 : parentIntl.messages) || {}, {}, messages[locale] || messages.en);
+  }, [parentIntl, locale]);
   return _react.default.createElement(_reactJss.ThemeProvider, {
     theme: builtTheme
   }, _react.default.createElement(_reactIntl.IntlProvider, {
     locale: locale,
-    messages: messages[locale] || messages.en,
+    messages: providerMessages,
     defaultLocale: locale
   }, _react.default.createElement(DeveloperProfileComponent, {
     isEditing: isEditing,
@@ -191,5 +201,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
   })));
 };
 
-var DeveloperProfile = WithProvidersDeveloperProfile;
+var DeveloperProfile = (0, _reactIntl.injectIntl)(WithProvidersDeveloperProfile, {
+  enforceContext: false
+});
 exports.DeveloperProfile = DeveloperProfile;
