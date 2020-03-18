@@ -35,6 +35,8 @@ var _profile_card_actions = require("../../../../commons/profile_card/profile_ca
 
 var _profile_card_button = require("../../../../commons/profile_card/profile_card_button/profile_card_button");
 
+var _side = require("../../../../commons/profile_card/profile_card_side/side");
+
 var useStyles = (0, _reactJss.createUseStyles)(_interested_by_front_styles.styles);
 
 var InterestedByFrontComponent = function InterestedByFrontComponent(_ref) {
@@ -65,7 +67,7 @@ var InterestedByFrontComponent = function InterestedByFrontComponent(_ref) {
     }
   }, [typographyReference.current]);
   var handleButtonClick = (0, _react.useCallback)(function () {
-    return setSide(side === 'front' ? 'back' : 'front');
+    return setSide(side === _side.SIDES.FRONT ? _side.SIDES.BACK : _side.SIDES.FRONT);
   }, [side, setSide]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, {
     customClasses: {

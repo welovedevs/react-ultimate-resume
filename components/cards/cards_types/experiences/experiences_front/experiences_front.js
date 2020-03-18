@@ -33,6 +33,8 @@ var _use_card_variant = require("../../../../commons/profile_card/profile_card_h
 
 var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
 
+var _side = require("../../../../commons/profile_card/profile_card_side/side");
+
 var _experiences_front_styles = require("./experiences_front_styles");
 
 var useStyles = (0, _reactJss.createUseStyles)(_experiences_front_styles.styles);
@@ -67,7 +69,7 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
     }
   }, []);
   var handleButtonClick = (0, _react.useCallback)(function () {
-    return setSide(side === 'front' ? 'back' : 'front');
+    return setSide(side === _side.SIDES.FRONT ? _side.SIDES.BACK : _side.SIDES.FRONT);
   }, [side, setSide]);
   var title = (0, _react.useMemo)(function () {
     var _data$work, _data$work$, _data$work3, _data$work3$;

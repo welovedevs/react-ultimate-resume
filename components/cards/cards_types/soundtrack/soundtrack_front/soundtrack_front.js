@@ -29,6 +29,8 @@ var _profile_card_actions = require("../../../../commons/profile_card/profile_ca
 
 var _profile_card_button = require("../../../../commons/profile_card/profile_card_button/profile_card_button");
 
+var _side = require("../../../../commons/profile_card/profile_card_side/side");
+
 var _soundtrack_front_styles = require("./soundtrack_front_styles");
 
 var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
@@ -57,7 +59,7 @@ var SoundtrackFrontComponent = function SoundtrackFrontComponent() {
       setSide = _useCardSide2[1];
 
   var handleButtonClick = (0, _react.useCallback)(function () {
-    return setSide(side === 'front' ? 'back' : 'front');
+    return setSide(side === _side.SIDES.FRONT ? _side.SIDES.BACK : _side.SIDES.FRONT);
   }, [side, setSide]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, _react.default.createElement(_center_content_container.CenterContentContainer, {
     customClasses: {

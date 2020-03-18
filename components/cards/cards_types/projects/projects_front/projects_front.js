@@ -29,6 +29,8 @@ var _use_card_side = require("../../../../commons/profile_card/profile_card_hook
 
 var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
 
+var _side = require("../../../../commons/profile_card/profile_card_side/side");
+
 var _images = require("../utils/images");
 
 var _projects_front_styles = require("./projects_front_styles");
@@ -51,7 +53,7 @@ var ProjectsFrontComponent = function ProjectsFrontComponent(_ref) {
       setSide = _useCardSide2[1];
 
   var handleButtonClick = (0, _react.useCallback)(function () {
-    return setSide(side === 'front' ? 'back' : 'front');
+    return setSide(side === _side.SIDES.FRONT ? _side.SIDES.BACK : _side.SIDES.FRONT);
   }, [side, setSide]);
 
   var _useCardVariant = (0, _use_card_variant.useCardVariant)(),

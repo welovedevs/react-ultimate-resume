@@ -33,6 +33,8 @@ var _use_card_side = require("../../../../commons/profile_card/profile_card_hook
 
 var _remote_utils = require("../../../../../utils/enums/remote/remote_utils");
 
+var _side = require("../../../../commons/profile_card/profile_card_side/side");
+
 var _dream_job_front_styles = require("./dream_job_front_styles");
 
 var HomeLogo = function HomeLogo(props) {
@@ -63,7 +65,7 @@ var DreamJobFrontComponent = function DreamJobFrontComponent(_ref) {
       setSide = _useCardSide2[1];
 
   var handleButtonClick = (0, _react.useCallback)(function () {
-    return setSide(side === 'front' ? 'back' : 'front');
+    return setSide(side === _side.SIDES.FRONT ? _side.SIDES.BACK : _side.SIDES.FRONT);
   }, [side, setSide]);
   var andMore = (0, _react.useMemo)(function () {
     if (places.length < 2) {

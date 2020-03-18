@@ -43,6 +43,8 @@ var _footer = require("./footer/footer");
 
 var _data_utils = require("../utils/data_utils");
 
+var _side = require("./commons/profile_card/profile_card_side/side");
+
 if (!Intl.PluralRules) {
   // eslint-disable-next-line global-require
   require('@formatjs/intl-pluralrules/polyfill'); // eslint-disable-next-line global-require
@@ -134,7 +136,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
     };
   }, [endpoints, apiKeys, data, onEdit, store, mode]);
   var side = (0, _react.useMemo)(function () {
-    return isEditing && 'back' || (options === null || options === void 0 ? void 0 : options.side);
+    return isEditing && _side.SIDES.BACK || (options === null || options === void 0 ? void 0 : options.side);
   }, [options, isEditing]);
   return _react.default.createElement("div", {
     className: classes.container

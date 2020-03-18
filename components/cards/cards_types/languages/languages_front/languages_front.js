@@ -25,6 +25,8 @@ var _profile_card_actions = require("../../../../commons/profile_card/profile_ca
 
 var _profile_card_button = require("../../../../commons/profile_card/profile_card_button/profile_card_button");
 
+var _side = require("../../../../commons/profile_card/profile_card_side/side");
+
 var _languages_front_styles = require("./languages_front_styles");
 
 var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
@@ -43,7 +45,7 @@ var LanguagesFrontComponent = function LanguagesFrontComponent(_ref) {
       setSide = _useCardSide2[1];
 
   var handleButtonClick = (0, _react.useCallback)(function () {
-    return setSide(side === 'front' ? 'back' : 'front');
+    return setSide(side === _side.SIDES.FRONT ? _side.SIDES.BACK : _side.SIDES.FRONT);
   }, [side, setSide]);
 
   var languagesNode = _react.default.createElement(_react.default.Fragment, null, (_data$languages = data.languages) === null || _data$languages === void 0 ? void 0 : (_data$languages$ = _data$languages[0]) === null || _data$languages$ === void 0 ? void 0 : _data$languages$.language, _react.default.createElement("br", null), (_data$languages2 = data.languages) === null || _data$languages2 === void 0 ? void 0 : (_data$languages2$ = _data$languages2[1]) === null || _data$languages2$ === void 0 ? void 0 : _data$languages2$.language, _react.default.createElement("br", null), (_data$languages3 = data.languages) === null || _data$languages3 === void 0 ? void 0 : (_data$languages3$ = _data$languages3[2]) === null || _data$languages3$ === void 0 ? void 0 : _data$languages3$.language);

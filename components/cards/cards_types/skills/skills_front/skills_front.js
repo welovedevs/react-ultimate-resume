@@ -33,6 +33,8 @@ var _use_technologies = require("../../../../hooks/technologies/use_technologies
 
 var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
 
+var _side = require("../../../../commons/profile_card/profile_card_side/side");
+
 var _skills_front_styles = require("./skills_front_styles");
 
 var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
@@ -51,7 +53,7 @@ var SkillsFrontComponent = function SkillsFrontComponent(_ref) {
       setSide = _useCardSide2[1];
 
   var handleButtonClick = (0, _react.useCallback)(function () {
-    return setSide(side === 'front' ? 'back' : 'front');
+    return setSide(side === _side.SIDES.FRONT ? _side.SIDES.BACK : _side.SIDES.FRONT);
   }, [side, setSide]);
 
   var _useTechnologies = (0, _use_technologies.useTechnologies)(),

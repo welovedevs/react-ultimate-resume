@@ -45,6 +45,8 @@ var _profile_card_styles = require("./profile_card_styles");
 
 var _profile_card_spring_props = require("./profile_card_spring_props");
 
+var _side = require("./profile_card_side/side");
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -112,6 +114,12 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       variant: variant
     });
   }, [variant]);
+  (0, _react.useEffect)(function () {
+    dispatch({
+      type: _profile_card_actions_types.SET_SIDE,
+      side: sideProps || _side.SIDES.FRONT
+    });
+  }, [sideProps]);
   var side = state.side,
       hasDialogOpened = state.hasDialogOpened;
 
@@ -148,14 +156,14 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
     });
   }, []);
   var handleMouseEnter = (0, _react.useCallback)(function () {
-    return setSide('back');
+    return setSide(_side.SIDES.BACK);
   }, [dispatch]);
   var handleMouseLeave = (0, _react.useCallback)(function () {
     if (hasDialogOpened) {
       return;
     }
 
-    setSide('front');
+    setSide(_side.SIDES.FRONT);
   }, [hasDialogOpened, dispatch]);
   (0, _react.useEffect)(function () {
     if (hasSideChanged.current) {

@@ -29,9 +29,11 @@ var _use_card_side = require("../../../../commons/profile_card/profile_card_hook
 
 var _profile_card_front_typography = require("../../../../commons/profile_card/profile_card_front_typography/profile_card_front_typography");
 
-var _gifs_front_styles = require("./gifs_front_styles");
-
 var _profile_card_padding_front = require("../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front");
+
+var _side = require("../../../../commons/profile_card/profile_card_side/side");
+
+var _gifs_front_styles = require("./gifs_front_styles");
 
 var useStyles = (0, _reactJss.createUseStyles)(_gifs_front_styles.styles);
 
@@ -47,7 +49,7 @@ var GifsFrontComponent = function GifsFrontComponent(_ref) {
       setSide = _useCardSide2[1];
 
   var handleButtonClick = (0, _react.useCallback)(function () {
-    return setSide(side === 'front' ? 'back' : 'front');
+    return setSide(side === _side.SIDES.FRONT ? _side.SIDES.BACK : _side.SIDES.FRONT);
   }, [side, setSide]);
 
   var _ref2 = (_ref3 = (_data$interests = data.interests) === null || _data$interests === void 0 ? void 0 : _data$interests[0]) !== null && _ref3 !== void 0 ? _ref3 : {},

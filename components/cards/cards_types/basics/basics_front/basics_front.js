@@ -33,6 +33,8 @@ var _use_card_side = require("../../../../commons/profile_card/profile_card_hook
 
 var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
 
+var _side = require("../../../../commons/profile_card/profile_card_side/side");
+
 var _basics_front_styles = require("./basics_front_styles");
 
 var LocationIcon = function LocationIcon(props) {
@@ -69,7 +71,7 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
       setSide = _useCardSide2[1];
 
   var handleButtonClick = (0, _react.useCallback)(function () {
-    return setSide(side === 'front' ? 'back' : 'front');
+    return setSide(side === _side.SIDES.FRONT ? _side.SIDES.BACK : _side.SIDES.FRONT);
   }, [side, setSide]);
 
   var _useState = (0, _react.useState)(true),
