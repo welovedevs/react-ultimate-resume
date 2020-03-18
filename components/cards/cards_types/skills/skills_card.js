@@ -60,7 +60,7 @@ var SkillsCardComponent = function SkillsCardComponent(_ref) {
     },
     data: mappedData,
     variant: variant,
-    side: "back"
+    side: side
   });
 };
 
