@@ -68,7 +68,7 @@ var BannerComponent = function BannerComponent(_ref) {
       isEditing = _useIsEditing2[0];
 
   var transitions = (0, _reactSpring.useTransition)((customizationOptions === null || customizationOptions === void 0 ? void 0 : customizationOptions.imageHeader) || null, function (item) {
-    return item === null || item === void 0 ? void 0 : item.alt;
+    return "".concat(item === null || item === void 0 ? void 0 : item.alt, "_").concat(item.url);
   }, _objectSpread({}, _opacity_transitions.OPACITY_TRANSITIONS, {
     unique: true,
     config: _reactSpring.config.molasses
