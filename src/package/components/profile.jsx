@@ -119,7 +119,8 @@ const WithProvidersDeveloperProfile = ({
     BeforeCards,
     classes,
     isEditing,
-    setIsEditing
+    setIsEditing,
+    onFilesUpload,
     intl: parentIntl
 }) => {
     const mergedOptions = useMemo(
