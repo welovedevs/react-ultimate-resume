@@ -114,6 +114,7 @@ const WithProvidersDeveloperProfile = ({
     additionalNodes,
     BeforeCards,
     classes,
+    onFilesUpload,
     isEditing,
     intl: parentIntl
 }) => {
@@ -141,6 +142,7 @@ const WithProvidersDeveloperProfile = ({
                     options={mergedOptions}
                     additionalNodes={additionalNodes}
                     BeforeCards={BeforeCards}
+                    onFilesUpload={onFilesUpload}
                     classes={classes}
                 />
             </IntlProvider>
