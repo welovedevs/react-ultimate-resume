@@ -1,7 +1,8 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useMemo } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
+import { useIntl } from 'react-intl';
 import { animated, config, useSpring } from 'react-spring';
 
 import { Tooltip } from '@wld/ui';
@@ -9,16 +10,21 @@ import { SHARE_LINKS_DATA } from './share_links_data';
 import { BACKGROUND_LINE_SPRING_PROPS } from './share_links_spring_props';
 
 import { styles } from './share_links_styles';
+import { translations } from './share_links_translations';
 
 const useStyles = createUseStyles(styles);
 
 const ShareLinksComponent = ({ useSmallLayout }) => {
     const classes = useStyles();
+    const { formatMessage } = useIntl();
 
     const [backgroundLineSpringProps, setBackgroundLineSpringProps] = useSpring(() => ({
         ...BACKGROUND_LINE_SPRING_PROPS.default,
         config: config.slow
     }));
+
+    const link = useMemo(() => (typeof window === 'undefined' ? {} : window).location?.href, []);
+    const translatedMessage = useMemo(() => formatMessage(translations.linkMessage, { link }), [link]);
 
     useEffect(() => {
         if (!('IntersectionObserver' in (typeof window !== 'undefined' ? window : {}))) {
@@ -59,7 +65,10 @@ const ShareLinksComponent = ({ useSmallLayout }) => {
                             <a
                                 key={`share_link_link_${entryId}`}
                                 className={classes.link}
-                                href={getLink()}
+                                href={getLink({
+                                    link,
+                                    translatedMessage
+                                })}
                                 target="_blank"
                                 rel="noreferrer noopener"
                             >

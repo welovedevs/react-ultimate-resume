@@ -19,7 +19,7 @@ export const SHARE_LINKS_DATA = Object.freeze({
                 values={{ platform: 'Twitter' }}
             />
         ),
-        getLink: () => 'https://twitter.com'
+        getLink: ({ translatedMessage }) => `https://twitter.com/intent/tweet?text=${translatedMessage}`
     },
     facebook: {
         icon: FacebookIcon,
@@ -30,7 +30,7 @@ export const SHARE_LINKS_DATA = Object.freeze({
                 values={{ platform: 'Facebook' }}
             />
         ),
-        getLink: () => 'https://facebook.com'
+        getLink: ({ link }) => `https://www.facebook.com/sharer/sharer.php?u=${encodeURI(link)}`
     },
     linkedIn: {
         icon: LinkedInIcon,
@@ -41,7 +41,7 @@ export const SHARE_LINKS_DATA = Object.freeze({
                 values={{ platform: 'LinkedIn' }}
             />
         ),
-        getLink: () => 'https://linkedin.com'
+        getLink: ({ link }) => `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURI(link)}`
     },
     copyShareUrl: {
         icon: (props) => (
