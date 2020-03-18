@@ -22,7 +22,7 @@ const AddButtonComponent = ({ color = 'primary', variant = 'outlined', ...other 
             <AddIcon className={classes.icon} />
             <FormattedMessage
                 id="Main.Lang.Add"
-                defaultMessage="Ajouter"
+                defaultMessage="Add"
             />
         </Button>
     );

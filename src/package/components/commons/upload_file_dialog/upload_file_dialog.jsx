@@ -31,7 +31,7 @@ const UploadFileDialogComponent = ({ open, onClose, onFileUploaded }) => {
             </DialogContent>
             <DialogActions>
                 <Button size="small" onClick={onClose}>
-                    <FormattedMessage id="Main.lang.close" defaultMessage="Fermer" />
+                    <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
                 </Button>
             </DialogActions>
         </Dialog>

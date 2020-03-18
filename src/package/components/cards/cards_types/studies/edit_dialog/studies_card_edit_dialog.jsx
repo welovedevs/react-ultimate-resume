@@ -170,7 +170,7 @@ const FormationItem = SortableElement(
                     <div className={classes.header}>
                         <DragHandle classes={classes} />
                         <div className={classes.divider} />
-                        <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Supprimer" />}>
+                        <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Delete" />}>
                             <button className={classes.removeButton} type="button" onClick={onRemove(id)}>
                                 <DeleteIcon className={classes.removeIcon} />
                             </button>

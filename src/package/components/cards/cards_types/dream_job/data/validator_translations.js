@@ -1,12 +1,12 @@
 import { defineMessages } from 'react-intl';
 
-export const basicsValidationTranslations = defineMessages({
+export const dreamjobValidationTranslations = defineMessages({
     atLeastOneContractType: {
-        id: 'Basics.form.validation.selectOne',
-        defaultMessage: 'Veuillez sélectionner au moins un contrat !'
+        id: 'Dreamjob.form.validation.selectOne',
+        defaultMessage: 'Please select at least one contract !'
     },
     selectByGroup: {
-        id: 'Basics.form.validation.byGroup',
-        defaultMessage: 'Vous ne pouvez pas sélectionner Stage ou Alternance en meme temps que CDI/CDD/Freelance'
+        id: 'Dreamjob.form.validation.byGroup',
+        defaultMessage: "You can't pick internship or apprenticeship with Long/Short term contracts or freelance"
     }
 });

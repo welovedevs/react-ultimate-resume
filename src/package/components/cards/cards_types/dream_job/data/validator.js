@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import { validationTranslations } from '../../../../../utils/validation_translations';
-import { basicsValidationTranslations } from './validator_translations';
+import { dreamjobValidationTranslations } from './validator_translations';
 
 export const DreamJobValidationSchema = formatMessage =>
     Yup.object({
@@ -14,12 +14,12 @@ export const DreamJobValidationSchema = formatMessage =>
         contractTypes: Yup.array()
             .test(
                 'is-not-empty',
-                formatMessage(basicsValidationTranslations.atLeastOneContractType),
+                formatMessage(dreamjobValidationTranslations.atLeastOneContractType),
                 value => !!(value || []).length
             )
             .test(
                 'is-exclusif',
-                formatMessage(basicsValidationTranslations.selectByGroup),
+                formatMessage(dreamjobValidationTranslations.selectByGroup),
                 value =>
                     !(
                         ['permanent', 'fixedTerm', 'freelance'].filter(val => value.includes(val)).length &&

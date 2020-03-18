@@ -74,8 +74,10 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
                             defaultMessage={'{experienceYears} years of experience'}
                             values={{ experienceYears }}
                         />
-                        <br />
-                        <ContractType contractTypes={contractTypes} />
+                        <br/>
+                        <ContractType contractTypes={contractTypes}/>
+                        <br/>
+                        <JobSearchState searchState={searchState}/>
                     </>
                 )
             },
@@ -100,9 +102,9 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
                             defaultMessage={'{studiesLevel} years of higher education'}
                             values={{ studiesLevel }}
                         />
-                        <br />
-                        <br />
-                        <JobSearchState searchState={searchState} />
+                        <br/>
+                        <br/>
+                        {codingReason && <span>{codingReason}</span>}
                     </>
                 )
             }

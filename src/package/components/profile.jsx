@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useReducer } from 'react';
-import { IntlProvider } from 'react-intl';
+import { injectIntl, IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
 import mergeWith from 'lodash/mergeWith';
@@ -49,8 +49,7 @@ const DEFAULT_OPTIONS = Object.freeze({
 });
 
 const DEFAULT_OBJECT = {};
-const DEFAULT_FUNCTION = () => {
-};
+const DEFAULT_FUNCTION = () => {};
 
 const DeveloperProfileComponent = ({
                                        data = DEFAULT_OBJECT,
@@ -101,10 +100,10 @@ const DeveloperProfileComponent = ({
     return (
         <div className={classes.container}>
             <DeveloperProfileContext.Provider value={context}>
-                <Banner customizationOptions={options.customization} onCustomizationChanged={onCustomizationChanged}/>
+                <Banner customizationOptions={options.customization} onCustomizationChanged={onCustomizationChanged} />
                 {BeforeCards}
-                <Cards cardsOrder={options.customization?.cardsOrder} side={side}/>
-                {!options.dismissFooter && <Footer/>}
+                <Cards cardsOrder={options.customization?.cardsOrder} side={side} />
+                {!options.dismissFooter && <Footer />}
             </DeveloperProfileContext.Provider>
         </div>
     );
@@ -121,6 +120,7 @@ const WithProvidersDeveloperProfile = ({
     classes,
     isEditing,
     setIsEditing
+    intl: parentIntl
 }) => {
     const mergedOptions = useMemo(
         () => mergeWith(cloneDeep(DEFAULT_OPTIONS), JSON.parse(JSON.stringify(options || {})), mergeOmitNull),
@@ -128,14 +128,15 @@ const WithProvidersDeveloperProfile = ({
     );
 
     const { locale, customization } = mergedOptions;
-    const builtTheme = useMemo(() => {
-        const theme = buildTheme(customization?.theme);
-        return theme;
-    }, [customization?.theme]);
+    const builtTheme = useMemo(() => buildTheme(customization?.theme), [customization?.theme]);
 
+    const providerMessages = useMemo(
+        () => ({ ...(parentIntl?.messages || {}), ...(messages[locale] || messages.en) }),
+        [parentIntl, locale]
+    );
     return (
         <ThemeProvider theme={builtTheme}>
-            <IntlProvider locale={locale} messages={messages[locale] || messages.en} defaultLocale={locale}>
+            <IntlProvider locale={locale} messages={providerMessages} defaultLocale={locale}>
                 <DeveloperProfileComponent
                     isEditing={isEditing}
                     setIsEditing={setIsEditing}
@@ -146,6 +147,7 @@ const WithProvidersDeveloperProfile = ({
                     options={mergedOptions}
                     additionalNodes={additionalNodes}
                     BeforeCards={BeforeCards}
+                    onFilesUpload={onFilesUpload}
                     classes={classes}
                 />
             </IntlProvider>
@@ -153,4 +155,4 @@ const WithProvidersDeveloperProfile = ({
     );
 };
 
-export const DeveloperProfile = WithProvidersDeveloperProfile;
+export const DeveloperProfile = injectIntl(WithProvidersDeveloperProfile, { enforceContext: false });

@@ -55,7 +55,7 @@ const ProfileCardIncompletePopperComponent = ({ open, onClose, anchorElement }) 
             >
                 <FormattedMessage
                     id="ProfileCardIncompletePopper.label.value"
-                    defaultMessage="Cette carte n'est pas complète."
+                    defaultMessage="This card is missing data"
                 />
             </Typography>
         </PopperCard>

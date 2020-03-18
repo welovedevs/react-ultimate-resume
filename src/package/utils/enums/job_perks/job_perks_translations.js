@@ -3,34 +3,34 @@ import { defineMessages } from 'react-intl';
 export const jobPerksTranslations = defineMessages({
     mood: {
         id: 'Developer.JobPerks.mood',
-        defaultMessage: 'Une bonne ambiance'
+        defaultMessage: 'Great ambiance'
     },
     challenge: {
         id: 'Developer.JobPerks.challenge',
-        defaultMessage: 'Du challenge'
+        defaultMessage: 'Challenge'
     },
     salary: {
         id: 'Developer.JobPerks.salary',
-        defaultMessage: 'Le salaire'
+        defaultMessage: 'Salary'
     },
     work_hours: {
         id: 'Developer.JobPerks.work_hours',
-        defaultMessage: 'Des horaires flexibles'
+        defaultMessage: 'Flexible work hours'
     },
     training: {
         id: 'Developer.JobPerks.training',
-        defaultMessage: 'Des formations'
+        defaultMessage: 'Training'
     },
     responsabilities: {
         id: 'Developer.JobPerks.resopnsabilities',
-        defaultMessage: 'Des responsabilités'
+        defaultMessage: 'Responsibilities'
     },
     perks: {
         id: 'Developer.JobPerks.perks',
-        defaultMessage: 'Des avantages (tickets restaurants, CE, etc...)'
+        defaultMessage: 'Perks (meal, tickets,... )'
     },
     others: {
         id: 'Developer.JobPerks.other',
-        defaultMessage: 'Autre'
+        defaultMessage: 'Other'
     }
 });

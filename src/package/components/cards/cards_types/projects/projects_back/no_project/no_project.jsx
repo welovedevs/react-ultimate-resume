@@ -17,7 +17,7 @@ const NoProjectComponent = ({ handleAddButtonClick }) => {
             <Typography style={{ color: 'inherit' }} variant="h4" component="h4">
                 <FormattedMessage
                     id="Projects.noProject.title"
-                    defaultMessage="Décrivez ici un projet qui vous a plus en tant que développeur, ce projet peut avoir été réalisé pendant vos études, sur votre temps personnel ou au sein d'une entreprise."
+                    defaultMessage="Describe a project that you've enjoyed as a developer. This project may have been realized during your studies, your personal time or while working at a company."
                 />
             </Typography>
             <NoDataButton

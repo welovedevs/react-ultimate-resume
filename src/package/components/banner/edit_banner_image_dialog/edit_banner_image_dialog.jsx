@@ -35,8 +35,9 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
     );
 
     const onDrop = useCallback(
-        () =>
-            onFilesUpload().then(url => {
+        (files) =>
+            onFilesUpload(files).then(url => {
+                console.log({ url });
                 onImageSelected({ url });
                 return url;
             }),
@@ -61,7 +62,7 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
                 <DialogTitle>
                     <FormattedMessage
                         id="Banner.EditImageDialog.Title"
-                        defaultMessage="Sélectionner une image"
+                        defaultMessage="Pick an image"
                     />
                 </DialogTitle>
                 <DialogContent classes={{ root: classes.content }}>
@@ -76,7 +77,7 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
                         >
                             <FormattedMessage
                                 id="Banner.EditImageDialog.unsplashButton"
-                                defaultMessage="Chercher via unsplash"
+                                defaultMessage="Search on unsplash"
                             />
                         </Button>
                     </div>
@@ -88,7 +89,7 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
                         >
                             <FormattedMessage
                                 id="Main.Lang.Or"
-                                defaultMessage="ou"
+                                defaultMessage="or"
                             />
                         </Typography>
                     </div>
@@ -104,7 +105,7 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
                     >
                         <FormattedMessage
                             id="Main.lang.close"
-                            defaultMessage="Fermer"
+                            defaultMessage="Close"
                         />
                     </Button>
                 </DialogActions>

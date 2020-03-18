@@ -30,7 +30,7 @@ const CopyWrapperComponent = ({ value, children }) => {
                 <Snackbar
                     anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
                     open={showSnack}
-                    message={<FormattedMessage id="Main.lang.copied" defaultMessage="Copié dans le presse-papiers" />}
+                    message={<FormattedMessage id="Main.lang.copied" defaultMessage="Copied in your clipboard" />}
                     autoHideDuration={5000}
                     onClose={() => setShowSnack(false)}
                 />

@@ -41,7 +41,7 @@ const EditingContent = ({ classes }) => {
     return (
         <>
             <Typography variant="label" component="div">
-                <FormattedMessage id="Project.dialog.link.title" defaultMessage="Lien du projet" />
+                <FormattedMessage id="Project.dialog.link.title" defaultMessage="Project's list" />
             </Typography>
             <TextField
                 fullWidth
