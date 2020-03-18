@@ -16,7 +16,6 @@ import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile
 import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './gifs_front_styles';
-import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 
