@@ -128,7 +128,7 @@ const WithProvidersDeveloperProfile = ({
 
     return (
         <ThemeProvider theme={builtTheme}>
-            <IntlProvider locale={'fr'} messages={messages.fr} defaultLocale={locale}>
+            <IntlProvider locale={'en'} messages={messages.en} defaultLocale={locale}>
                 <DeveloperProfileComponent
                     isEditing={isEditing}
                     data={data}

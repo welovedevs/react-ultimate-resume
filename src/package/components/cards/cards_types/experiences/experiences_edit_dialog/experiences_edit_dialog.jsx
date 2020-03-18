@@ -303,22 +303,26 @@ const ContentFields = ({ fieldErrors, id, formatMessage, experience, onChange, c
                 </div>
                 <div className={cn(classes.fieldRow, classes.yearMonthRow)}>
                     <div className={classes.yearMonthWrapper}>
-                        <YearMonth
-                            textfieldProps={{ fullWidth: true }}
-                            variant="flat"
-                            value={experience.startDate}
-                            onChange={handleStartDate}
-                            title={translations.startDate}
-                            error={fieldErrors?.startDate}
-                        />
-                        {!stillEmployed && (
+                        <div className={classes.fieldContainer}>
                             <YearMonth
+                                textfieldProps={{ fullWidth: true }}
                                 variant="flat"
-                                value={experience.endDate}
-                                onChange={handleEndDate}
-                                title={translations.endDate}
-                                error={fieldErrors?.endDate}
+                                value={experience.startDate}
+                                onChange={handleStartDate}
+                                title={translations.startDate}
+                                error={fieldErrors?.startDate}
                             />
+                        </div>
+                        {!stillEmployed && (
+                            <div className={classes.fieldContainer}>
+                                <YearMonth
+                                    variant="flat"
+                                    value={experience.endDate}
+                                    onChange={handleEndDate}
+                                    title={translations.endDate}
+                                    error={fieldErrors?.endDate}
+                                />
+                            </div>
                         )}
                     </div>
                     {stillEmployed && stillEmployedComponent}
