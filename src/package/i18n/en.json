@@ -162,7 +162,7 @@
   "Main.lang.close": "Close",
   "Main.lang.confirm": "Confirm",
   "Main.lang.copied": "Copied in clipboard",
-  "Main.lang.delete": "Supprimer",
+  "Main.lang.delete": "Delete",
   "Main.lang.remove": "Remove",
   "Main.lang.save": "Save",
   "Main.lang.years": "{countNode} year{count, plural, one {} other {s}}",
