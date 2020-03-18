@@ -168,6 +168,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
       additionalNodes = _ref3.additionalNodes,
       BeforeCards = _ref3.BeforeCards,
       classes = _ref3.classes,
+      onFilesUpload = _ref3.onFilesUpload,
       isEditing = _ref3.isEditing,
       parentIntl = _ref3.intl;
   var mergedOptions = (0, _react.useMemo)(function () {
@@ -196,6 +197,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
     options: mergedOptions,
     additionalNodes: additionalNodes,
     BeforeCards: BeforeCards,
+    onFilesUpload: onFilesUpload,
     classes: classes
   })));
 };

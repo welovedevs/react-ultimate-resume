@@ -77,6 +77,8 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
           }
         }), _react.default.createElement("br", null), _react.default.createElement(_contract_types.ContractType, {
           contractTypes: contractTypes
+        }), _react.default.createElement("br", null), _react.default.createElement(JobSearchState, {
+          searchState: searchState
         }))
       },
       codingYears: {
@@ -105,9 +107,7 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
           values: {
             studiesLevel: studiesLevel
           }
-        }), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(JobSearchState, {
-          searchState: searchState
-        }))
+        }), _react.default.createElement("br", null), _react.default.createElement("br", null), codingReason && _react.default.createElement("span", null, codingReason))
       }
     };
   }, [currentCityName, experienceYears, contractTypes, studiesLevel, codingYears, codingReason, visaSponsorship, personalDescription, searchState]);
