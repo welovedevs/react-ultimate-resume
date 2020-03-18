@@ -7,6 +7,7 @@ import { CenterContentContainer } from '../../../../commons/center_content_conta
 import { ProfileCardFrontTypography } from '../../../../commons/profile_card/profile_card_front_typography/profile_card_front_typography';
 import { ProfileCardActions } from '../../../../commons/profile_card/profile_card_actions/profile_card_actions';
 import { ProfileCardButton } from '../../../../commons/profile_card/profile_card_button/profile_card_button';
+import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './languages_front_styles';
 import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
@@ -17,7 +18,7 @@ const LanguagesFrontComponent = ({ data }) => {
     const classes = useStyles();
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
 
     const languagesNode = (
         <>

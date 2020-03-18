@@ -11,9 +11,10 @@ import { GifsSidesCommons } from '../gifs_sides_commons/gifs_sides_commons';
 import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
 
 import { ProfileCardFrontTypography } from '../../../../commons/profile_card/profile_card_front_typography/profile_card_front_typography';
+import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
+import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './gifs_front_styles';
-import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
 
 const useStyles = createUseStyles(styles);
 
@@ -21,7 +22,7 @@ const GifsFrontComponent = ({ data }) => {
     const classes = useStyles();
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
 
     const { gifUrl, name } = data.interests?.[0] ?? {};
 

@@ -12,6 +12,7 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 
 import { useTechnologies } from '../../../../hooks/technologies/use_technologies';
 import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
+import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './skills_front_styles';
 import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
@@ -23,7 +24,7 @@ const SkillsFrontComponent = ({ data }) => {
     const classes = useStyles();
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
 
     const { technologies } = useTechnologies();
 

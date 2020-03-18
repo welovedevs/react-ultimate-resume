@@ -20,6 +20,7 @@ import { technologiesInitialState, technologiesReducer } from '../store/technolo
 import { DeveloperProfileContext } from '../utils/context/contexts';
 import { Footer } from './footer/footer';
 import { mergeOmitNull } from '../utils/data_utils';
+import { SIDES } from './commons/profile_card/profile_card_side/side';
 
 if (!Intl.PluralRules) {
     // eslint-disable-next-line global-require
@@ -90,7 +91,7 @@ const DeveloperProfileComponent = ({
         [endpoints, apiKeys, data, onEdit, store, mode]
     );
 
-    const side = useMemo(() => (isEditing && 'back') || options?.side, [options, isEditing]);
+    const side = useMemo(() => (isEditing && SIDES.BACK) || options?.side, [options, isEditing]);
 
     return (
         <div className={classes.container}>

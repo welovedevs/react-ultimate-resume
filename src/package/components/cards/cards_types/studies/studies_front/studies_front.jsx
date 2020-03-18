@@ -12,6 +12,7 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 
 import { ReactComponent as SchoolLogo } from '../../../../../assets/icons/school.svg';
 
+import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 import { styles } from './studies_front_styles';
 import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
 
@@ -21,7 +22,7 @@ const StudiesFrontComponent = ({ data: { education: data } }) => {
     const classes = useStyles();
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
 
     return (
         <>
