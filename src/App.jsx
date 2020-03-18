@@ -66,9 +66,6 @@ function App() {
                 banner: {
                     actionsButtons:
                         <>
-                            <Button style={{ color: '#fff' }} variant="outlined">
-                                <FormattedMessage id="App.main." defaultMessage="See more"/>
-                            </Button>
                             <Button
                                 style={{ color: '#fff' }}
                                 variant="outlined"
