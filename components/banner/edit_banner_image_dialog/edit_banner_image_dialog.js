@@ -57,6 +57,9 @@ var EditBannerImageDialogComponent = function EditBannerImageDialogComponent(_re
   }, [onChange, onClose]);
   var onDrop = (0, _react.useCallback)(function (files) {
     return onFilesUpload(files).then(function (url) {
+      console.log({
+        url: url
+      });
       onImageSelected({
         url: url
       });
