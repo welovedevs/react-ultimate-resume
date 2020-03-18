@@ -20,12 +20,12 @@ const useStyles = createUseStyles(styles);
 
 const InterestedByFrontComponent = ({
     data: { interestedBy },
-    profileCardFrontTypographyProps,
     dismissButton,
     handleAddButtonClick,
+    overrideColor,
     customClasses = {}
 }) => {
-    const classes = useStyles();
+    const classes = useStyles({ overrideColor });
     const [side, setSide] = useCardSide();
 
     const [isTypographyTruncated, setIsTypographyTruncated] = useState(true);
@@ -43,8 +43,8 @@ const InterestedByFrontComponent = ({
                         {...{
                             interestedBy,
                             setIsTypographyTruncated,
-                            profileCardFrontTypographyProps,
                             handleAddButtonClick,
+                            overrideColor,
                             classes,
                             customClasses
                         }}
@@ -65,8 +65,8 @@ const InterestedByFrontComponent = ({
 const Content = ({
     interestedBy,
     setIsTypographyTruncated,
-    profileCardFrontTypographyProps,
     handleAddButtonClick,
+    overrideColor,
     classes,
     customClasses
 }) => {
@@ -105,7 +105,7 @@ const Content = ({
             classes={{
                 container: cn(classes.typography, customClasses.typography)
             }}
-            {...profileCardFrontTypographyProps}
+            overrideColor={overrideColor}
         >
             <FormattedMessage id="InterestedBy.front.content" defaultMessage="Interested by:" />
             <div className={classes.interestedByValue}>{interestedBy}</div>
