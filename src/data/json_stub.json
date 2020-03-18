@@ -106,7 +106,7 @@
             "keywords": ["HTML", "CSS", "Javascript"]
         },
         {
-            "name": "Javascript",
+            "name": "Angular",
             "level": "Master",
             "value": 80,
             "keywords": ["HTML", "CSS", "Javascript"]
@@ -141,14 +141,6 @@
             "language": "English",
             "value": 100,
             "fluency": "Native speaker"
-        },
-        {
-            "language": "French",
-            "value": 70
-        },
-        {
-            "language": "Allemand",
-            "value": 60
         }
     ],
     "interests": [

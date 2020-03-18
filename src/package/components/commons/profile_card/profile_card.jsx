@@ -18,6 +18,7 @@ import { getProfileCardInitialState, profileCardReducer } from '../../../store/p
 
 import { styles } from './profile_card_styles';
 import { PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_SPRING_PROPS } from './profile_card_spring_props';
+import { SIDES } from './profile_card_side/side';
 
 const useStyles = createUseStyles(styles);
 
@@ -72,6 +73,12 @@ const ProfileCardComponent = ({
             variant
         });
     }, [variant]);
+    useEffect(() => {
+        dispatch({
+            type: SET_SIDE,
+            side: sideProps || SIDES.FRONT
+        });
+    }, [sideProps]);
 
     const { side, hasDialogOpened } = state;
     const [debouncedSide] = useDebounce(side, 200);
@@ -106,13 +113,13 @@ const ProfileCardComponent = ({
         });
     }, []);
 
-    const handleMouseEnter = useCallback(() => setSide('back'), [dispatch]);
+    const handleMouseEnter = useCallback(() => setSide(SIDES.BACK), [dispatch]);
 
     const handleMouseLeave = useCallback(() => {
         if (hasDialogOpened) {
             return;
         }
-        setSide('front');
+        setSide(SIDES.FRONT);
     }, [hasDialogOpened, dispatch]);
 
     useEffect(() => {
@@ -149,7 +156,7 @@ const ProfileCardComponent = ({
                     data={data}
                 />
             )}
-            <ProfileCardIncompletePopper open={isComplete !== true} anchorElement={containerElement} />
+            <ProfileCardIncompletePopper open={isComplete !== true} anchorElement={containerElement}/>
             <Card
                 containerRef={containerReference}
                 customClasses={{ container: classes.container }}
@@ -178,7 +185,7 @@ const ProfileCardComponent = ({
                         const SideComponent = sides[item] || (() => null);
                         return (
                             <ProfileCardSide key={key} style={props}>
-                                <SideComponent data={data} />
+                                <SideComponent data={data}/>
                             </ProfileCardSide>
                         );
                     })}
@@ -192,7 +199,7 @@ const EditAction = ({ customEditAction, setEditDialogOpened }) => {
     if (customEditAction) {
         return customEditAction;
     }
-    return <ProfileCardEditButton setEditDialogOpened={setEditDialogOpened} />;
+    return <ProfileCardEditButton setEditDialogOpened={setEditDialogOpened}/>;
 };
 
 export const ProfileCard = ProfileCardComponent;

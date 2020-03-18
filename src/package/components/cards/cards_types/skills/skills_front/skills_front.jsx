@@ -13,6 +13,7 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 
 import { useTechnologies } from '../../../../hooks/technologies/use_technologies';
 import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
+import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './skills_front_styles';
 import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
@@ -26,7 +27,7 @@ const SkillsFrontComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles();
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
 
     const { technologies } = useTechnologies();
 
@@ -94,9 +95,16 @@ const Content = ({ hasSkill, techno, handleAddButtonClick, classes }) => {
 const Picture = ({ techno, classes }) => {
     const theme = useTheme();
     const [variant] = useCardVariant();
-    const { color } = getColorsFromCardVariant(theme, variant);
+    const { backgroundColor } = getColorsFromCardVariant(theme, variant);
 
-    let src = null;
+    const src = useMemo(() => {
+        const hex = getHexFromPaletteColor(theme, backgroundColor);
+        const luminance = chroma(hex).luminance();
+        if (luminance < 0.98) {
+            return `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle}`;
+        }
+        return `https://process.filestackapi.com/output=format:png/${techno?.handle}`;
+    }, [techno, theme, backgroundColor]);
 
     if (color === 'light') {
         src = `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle}`;

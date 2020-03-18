@@ -1,6 +1,6 @@
 {
     "name": "@wld/developer-profile",
-    "version": "1.2.24-98",
+    "version": "1.2.24-107",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
@@ -21,7 +21,7 @@
     "license": "ISC",
     "peerDependencies": {
         "@material-ui/core": "^4.8.3",
-        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.6-5",
+        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.6-8",
         "formik": "^2.1.2",
         "react": "^16.12.0",
         "react-dom": "^16.12.0"
@@ -31,7 +31,7 @@
         "@formatjs/intl-pluralrules": "^1.5.2",
         "@formatjs/intl-relativetimeformat": "^4.5.9",
         "@material-ui/pickers": "^3.2.9",
-        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.6-5",
+        "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.6-8",
         "babel-plugin-react-intl": "^5.1.18",
         "chroma-js": "^2.1.0",
         "classnames": "^2.2.6",
@@ -49,7 +49,7 @@
         "react-scripts": "^3.4.0",
         "react-slick": "^0.25.2",
         "react-sortable-hoc": "^1.11.0",
-        "react-spring": "9.0.0-beta.33",
+        "react-spring": "9.0.0-beta.34",
         "react-use-dimensions": "^1.2.1",
         "recharts": "^2.0.0-beta.1",
         "respinner": "^3.0.2",

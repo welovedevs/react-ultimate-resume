@@ -31,6 +31,7 @@ const mergeFunction = (objValue, srcValue) => {
 
 function App() {
     const [data, setData] = useState(JsonStub);
+    const [isEditing, setIsEditing] = useState(false);
 
     const onEdit = useCallback(
         newData => {
@@ -47,7 +48,7 @@ function App() {
             mode="edit"
             data={data}
             onEdit={onEdit}
-            isEditing
+            isEditing={isEditing}
             onCustomizationChanged={onCustomizationChanged}
             options={{
                 // side: 'back',
@@ -61,11 +62,23 @@ function App() {
                 },
                 customization
             }}
-            ActionButtons={
-                <Button style={{ color: '#fff' }} variant="outlined">
-                    <FormattedMessage id="App.main." defaultMessage="See more" />
-                </Button>
-            }
+            additionalNodes={{
+                banner: {
+                    actionsButtons:
+                        <>
+                            <Button style={{ color: '#fff' }} variant="outlined">
+                                <FormattedMessage id="App.main." defaultMessage="See more"/>
+                            </Button>
+                            <Button
+                                style={{ color: '#fff' }}
+                                variant="outlined"
+                                onClick={() => setIsEditing(!isEditing)}
+                            >
+                                <FormattedMessage id="Edit" defaultMessage="Edit"/>
+                            </Button>
+                        </>
+                }
+            }}
         />
     );
 }

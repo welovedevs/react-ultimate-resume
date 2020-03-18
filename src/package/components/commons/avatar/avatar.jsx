@@ -16,7 +16,9 @@ const AvatarComponent = ({ src = 'https://i.pravatar.cc/1000', displayedName }) 
     const [nodes] = useAdditionalNodes('banner.avatar', null);
     return (
         <div className={cn(classes.container, receivedGlobalClasses.container)}>
-            <img className={cn(classes.image, receivedGlobalClasses.image)} src={src} alt={displayedName} />
+            <div className={cn(classes.imageContainer, classes.imageContainer)}>
+                <img className={cn(classes.image, receivedGlobalClasses.image)} src={src} alt={displayedName} />
+            </div>
             {nodes}
         </div>
     );

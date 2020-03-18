@@ -1,7 +1,11 @@
-import { FormattedMessage } from 'react-intl';
 import React from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
+
+import translations from './contract_types_translations';
 
 export const ContractType = ({ contractTypes = [] }) => {
+    const { formatMessage } = useIntl();
+
     const contracts = [...contractTypes];
     const lastContract = contracts.pop();
     if (!lastContract) {
@@ -12,7 +16,7 @@ export const ContractType = ({ contractTypes = [] }) => {
             <FormattedMessage
                 id="Basics.Back.WorkContract.single"
                 defaultMessage={'Looking for a {contractType} contract'}
-                values={{ contractType: lastContract }}
+                values={{ contractType: formatMessage(translations[lastContract]) }}
             />
         );
     }

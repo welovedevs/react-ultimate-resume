@@ -1,9 +1,11 @@
+
 import { flex } from '../../../utils/styles/styles_utils';
 
 const { center } = flex;
 
 export const styles = ({ palette }) => ({
-    container: {
+    container: {},
+    imageContainer: {
         height: 110,
         width: 110,
         minHeight: 110,

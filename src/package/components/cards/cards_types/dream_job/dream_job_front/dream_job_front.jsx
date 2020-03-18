@@ -14,6 +14,7 @@ import { ReactComponent as HomeLogo } from '../../../../../assets/icons/home.svg
 
 import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
 import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
+import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './dream_job_front_styles';
 
@@ -25,7 +26,7 @@ const DreamJobFrontComponent = ({ data }) => {
     const { remoteFrequency, places } = data;
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
 
     const andMore = useMemo(() => {
         if (places.length < 2) {

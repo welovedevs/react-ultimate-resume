@@ -20,6 +20,7 @@ import { technologiesInitialState, technologiesReducer } from '../store/technolo
 import { DeveloperProfileContext } from '../utils/context/contexts';
 import { Footer } from './footer/footer';
 import { mergeOmitNull } from '../utils/data_utils';
+import { SIDES } from './commons/profile_card/profile_card_side/side';
 
 if (!Intl.PluralRules) {
     // eslint-disable-next-line global-require
@@ -40,7 +41,7 @@ const DEFAULT_OPTIONS = Object.freeze({
     locale: 'en',
     customization: {
         imageHeader: {
-            url: 'https://cdn.filestackcontent.com/aN4oagW5RwKpxIgzsTlq',
+            url: 'https://cdn.filestackcontent.com/8I2wVnCRTFxypXRYLRsp',
             alt: 'Default Banner'
         }
     },
@@ -48,8 +49,7 @@ const DEFAULT_OPTIONS = Object.freeze({
 });
 
 const DEFAULT_OBJECT = {};
-const DEFAULT_FUNCTION = () => {
-};
+const DEFAULT_FUNCTION = () => {};
 
 const DeveloperProfileComponent = ({
                                        data = DEFAULT_OBJECT,
@@ -93,31 +93,35 @@ const DeveloperProfileComponent = ({
         [endpoints, apiKeys, data, onEdit, store, mode, dismissCustomizeButton]
     );
 
+    const side = useMemo(() => (isEditing && SIDES.BACK) || options?.side, [options, isEditing]);
+
     return (
         <div className={classes.container}>
             <DeveloperProfileContext.Provider value={context}>
-                <Banner customizationOptions={options.customization} onCustomizationChanged={onCustomizationChanged}/>
+                <Banner customizationOptions={options.customization} onCustomizationChanged={onCustomizationChanged} />
                 {BeforeCards}
-                <Cards cardsOrder={options.customization?.cardsOrder} side={options?.side}/>
-                {!options.dismissFooter && <Footer/>}
+                <Cards cardsOrder={options.customization?.cardsOrder} side={side} />
+                {!options.dismissFooter && <Footer />}
             </DeveloperProfileContext.Provider>
         </div>
     );
 };
 
-
 const WithProvidersDeveloperProfile = ({
-   data,
-   onEdit,
-   onCustomizationChanged,
-   options = {},
-   mode = 'readOnly',
-   additionalNodes,
-   BeforeCards,
-   classes,
-   isEditing
+    data,
+    onEdit,
+    onCustomizationChanged,
+    options = {},
+    mode = 'readOnly',
+    additionalNodes,
+    BeforeCards,
+    classes,
+    isEditing
 }) => {
-    const mergedOptions = useMemo(() => mergeWith(cloneDeep(DEFAULT_OPTIONS), JSON.parse(JSON.stringify(options || {})), mergeOmitNull), [options]);
+    const mergedOptions = useMemo(
+        () => mergeWith(cloneDeep(DEFAULT_OPTIONS), JSON.parse(JSON.stringify(options || {})), mergeOmitNull),
+        [options]
+    );
 
     const { locale, customization } = mergedOptions;
     const builtTheme = useMemo(() => {
@@ -127,7 +131,7 @@ const WithProvidersDeveloperProfile = ({
 
     return (
         <ThemeProvider theme={builtTheme}>
-            <IntlProvider locale={'fr'} messages={messages.fr} defaultLocale={locale}>
+            <IntlProvider locale={'en'} messages={messages.en} defaultLocale={locale}>
                 <DeveloperProfileComponent
                     isEditing={isEditing}
                     data={data}

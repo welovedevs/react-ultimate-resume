@@ -12,6 +12,7 @@ import { ProfileCardActions } from '../../../../commons/profile_card/profile_car
 import { ProfileCardButton } from '../../../../commons/profile_card/profile_card_button/profile_card_button';
 
 import { ReactComponent as SpotifyLogo } from '../../../../../assets/icons/brands/spotify.svg';
+import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './soundtrack_front_styles';
 import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
@@ -23,7 +24,7 @@ const SoundtrackFrontComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles();
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
 
     return (
         <>
