@@ -52,7 +52,7 @@ const CardsComponent = ({ cardsOrder = DEFAULT_CARD_ORDER, side }) => {
                     });
                 })
                 .filter(Boolean),
-        [cardsOrder]
+        [cardsOrder, side]
     );
     return (
         <div className={classes.container}>
