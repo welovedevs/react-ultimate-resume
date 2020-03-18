@@ -1,7 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
-import uuid from 'uuid/v4';
-
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
 import { ProjectsFront } from './projects_front/projects_front';
 import { ProjectsBack } from './projects_back/projects_back';
@@ -29,16 +27,6 @@ const ProjectsCardComponent = ({ variant, side }) => {
     const isComplete = useMemo(() => validateProjectsComplete(mappedData), [mappedData]);
 
     const handleAddButtonClick = useCallback(() => {
-        setMappedData({
-            projects: [
-                ...mappedData?.projects,
-                {
-                    id: uuid(),
-                    name: 'Nouveau projet',
-                    description: 'Description du nouveau projet...'
-                }
-            ]
-        });
         setNewProjectDialogOpened();
     }, [mappedData]);
 
