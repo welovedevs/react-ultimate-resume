@@ -85,7 +85,7 @@ var CardsComponent = function CardsComponent(_ref) {
         side: side
       });
     }).filter(Boolean);
-  }, [cardsOrder]);
+  }, [cardsOrder, side]);
   return _react.default.createElement("div", {
     className: classes.container
   }, beforeNode, cards, afterNode);

@@ -63,7 +63,7 @@ var DEFAULT_OPTIONS = Object.freeze({
   locale: 'en',
   customization: {
     imageHeader: {
-      url: 'https://cdn.filestackcontent.com/aN4oagW5RwKpxIgzsTlq',
+      url: 'https://cdn.filestackcontent.com/8I2wVnCRTFxypXRYLRsp',
       alt: 'Default Banner'
     }
   },
