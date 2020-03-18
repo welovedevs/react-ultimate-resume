@@ -59,8 +59,10 @@ const BasicsBackComponent = ({ data }) => {
                             defaultMessage={'{experienceYears} years of experience'}
                             values={{ experienceYears }}
                         />
-                        <br />
-                        <ContractType contractTypes={contractTypes} />
+                        <br/>
+                        <ContractType contractTypes={contractTypes}/>
+                        <br/>
+                        <JobSearchState searchState={searchState}/>
                     </>
                 )
             },
@@ -87,7 +89,7 @@ const BasicsBackComponent = ({ data }) => {
                         />
                         <br/>
                         <br/>
-                        <JobSearchState searchState={searchState}/>
+                        {codingReason && <span>{codingReason}</span>}
                     </>
                 )
             }
