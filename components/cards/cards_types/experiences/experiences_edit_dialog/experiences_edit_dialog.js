@@ -435,6 +435,8 @@ var ContentFields = function ContentFields(_ref9) {
     className: (0, _classnames.default)(classes.fieldRow, classes.yearMonthRow)
   }, _react.default.createElement("div", {
     className: classes.yearMonthWrapper
+  }, _react.default.createElement("div", {
+    className: classes.fieldContainer
   }, _react.default.createElement(_year_month.YearMonth, {
     textfieldProps: {
       fullWidth: true
@@ -444,13 +446,15 @@ var ContentFields = function ContentFields(_ref9) {
     onChange: handleStartDate,
     title: _experiences_edit_dialog_translations.translations.startDate,
     error: fieldErrors === null || fieldErrors === void 0 ? void 0 : fieldErrors.startDate
-  }), !stillEmployed && _react.default.createElement(_year_month.YearMonth, {
+  })), !stillEmployed && _react.default.createElement("div", {
+    className: classes.fieldContainer
+  }, _react.default.createElement(_year_month.YearMonth, {
     variant: "flat",
     value: experience.endDate,
     onChange: handleEndDate,
     title: _experiences_edit_dialog_translations.translations.endDate,
     error: fieldErrors === null || fieldErrors === void 0 ? void 0 : fieldErrors.endDate
-  })), stillEmployed && stillEmployedComponent), !stillEmployed && stillEmployedComponent, _react.default.createElement("div", {
+  }))), stillEmployed && stillEmployedComponent), !stillEmployed && stillEmployedComponent, _react.default.createElement("div", {
     className: classes.fieldRow
   }, _react.default.createElement("div", {
     className: (0, _classnames.default)(classes.fieldContainer, classes.fullWidthFieldContainer)
