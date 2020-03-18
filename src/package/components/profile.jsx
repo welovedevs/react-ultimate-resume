@@ -49,7 +49,8 @@ const DEFAULT_OPTIONS = Object.freeze({
 });
 
 const DEFAULT_OBJECT = {};
-const DEFAULT_FUNCTION = () => {};
+const DEFAULT_FUNCTION = () => {
+};
 
 const DeveloperProfileComponent = ({
                                        data = DEFAULT_OBJECT,
@@ -100,10 +101,10 @@ const DeveloperProfileComponent = ({
     return (
         <div className={classes.container}>
             <DeveloperProfileContext.Provider value={context}>
-                <Banner customizationOptions={options.customization} onCustomizationChanged={onCustomizationChanged} />
+                <Banner customizationOptions={options.customization} onCustomizationChanged={onCustomizationChanged}/>
                 {BeforeCards}
-                <Cards cardsOrder={options.customization?.cardsOrder} side={side} />
-                {!options.dismissFooter && <Footer />}
+                <Cards cardsOrder={options.customization?.cardsOrder} side={side}/>
+                {!options.dismissFooter && <Footer/>}
             </DeveloperProfileContext.Provider>
         </div>
     );
@@ -134,7 +135,7 @@ const WithProvidersDeveloperProfile = ({
 
     return (
         <ThemeProvider theme={builtTheme}>
-            <IntlProvider locale={'en'} messages={messages.en} defaultLocale={locale}>
+            <IntlProvider locale={locale} messages={messages[locale] || messages.en} defaultLocale={locale}>
                 <DeveloperProfileComponent
                     isEditing={isEditing}
                     setIsEditing={setIsEditing}
