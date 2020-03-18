@@ -8,6 +8,7 @@ import { SoundtrackCardEditDialog } from './edit_dialog/soundtrack_card_edit_dia
 import { SoundtrackMapping } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { SoundtrackValidationSchema, validateSoundtrackComplete } from './data/validator';
+import { useCallbackOpen } from '../../../hooks/use_callback_open';
 
 const SoundtrackCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
@@ -16,6 +17,8 @@ const SoundtrackCardComponent = ({ variant, side }) => {
     const onDialogEdited = useCallback(editedData => {
         onEdit(FlatObjectToJsonResume(editedData, SoundtrackMapping));
     }, []);
+
+    const [openNewSoundtrackDialog, setNewSoundTrackDialogOpened] = useCallbackOpen();
 
     const isComplete = useMemo(() => validateSoundtrackComplete(mappedData), [mappedData]);
 
@@ -29,14 +32,15 @@ const SoundtrackCardComponent = ({ variant, side }) => {
             isEditingProfile={isEditing}
             data={mappedData}
             sides={{
-                front: SoundtrackFront,
-                back: SoundtrackBack
+                front: (props) => <SoundtrackFront handleAddButtonClick={setNewSoundTrackDialogOpened} {...props} />,
+                back: (props) => <SoundtrackBack handleAddButtonClick={setNewSoundTrackDialogOpened} {...props} />
             }}
             editDialog={{
                 component: SoundtrackCardEditDialog,
                 onEdit: onDialogEdited,
                 validationSchema: SoundtrackValidationSchema
             }}
+            openEditDialog={openNewSoundtrackDialog}
             variant={variant}
             side={side}
             isTransitionUnique={false}

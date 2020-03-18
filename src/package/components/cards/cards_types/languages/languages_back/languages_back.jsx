@@ -15,7 +15,6 @@ import { LANGUAGES_COLUMN_TRANSITIONS_SPRING_PROPS } from './languages_back_spri
 import { styles } from './languages_back_styles';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoLanguage } from './no_language/no_language';
-import { ProfileCardContent } from '../../../../commons/profile_card/profile_card_content/profile_card_content';
 
 const useStyles = createUseStyles(styles);
 
@@ -58,17 +57,14 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
     const colorPalette = useMemo(
         () =>
             Array.from({ length: data.languages?.length ?? 0 }, (v, k) =>
-                chroma.mix(backColor, backBackgroundColor, (2 * k) / 15).hex()),
+                chroma.mix(backColor, backBackgroundColor, (2 * k) / 15).hex()
+            ),
         [backColor, backBackgroundColor]
     );
     const hasLanguage = useMemo(() => existsAndNotEmpty(data?.languages), [data]);
 
     if (!hasLanguage) {
-        return (
-            <ProfileCardContent>
-                <NoLanguage handleAddButtonClick={handleAddButtonClick} />
-            </ProfileCardContent>
-        );
+        return <NoLanguage handleAddButtonClick={handleAddButtonClick} />;
     }
     return (
         <div className={classes.columnsContainer}>

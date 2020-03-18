@@ -23,7 +23,6 @@ const DreamJobFrontComponent = ({ data }) => {
     const theme = useTheme();
     const classes = useStyles({ theme });
     const { remoteFrequency, places } = data;
-    console.log({ classes });
     const [side, setSide] = useCardSide();
 
     const handleButtonClick = useCallback(() => setSide(side === 'front' ? 'back' : 'front'), [side, setSide]);

@@ -13,6 +13,8 @@ const DreamJobCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapDreamJobFromJsonResume(data), [data]);
 
+    console.log(mappedData, 'lol');
+
     const onDialogEdited = useCallback(editedData => {
         onEdit(mapDreamJobToJsonResume(editedData));
     }, []);

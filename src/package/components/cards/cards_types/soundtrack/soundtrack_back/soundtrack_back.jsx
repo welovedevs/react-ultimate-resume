@@ -12,11 +12,21 @@ import { getColorsFromCardVariant } from '../../../../../utils/styles/styles_uti
 import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
 
 import { styles } from './soundtrack_back_styles';
+import { NoSoundTrack } from './no_soundtrack/no_soundtrack';
 
 const useStyles = createUseStyles(styles);
 
-const SoundtrackBackComponent = ({ data }) => {
+const SoundtrackBackComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles();
+
+    return (
+        <CenterContentContainer customClasses={{ container: classes.container }}>
+            <Content {...{ data, handleAddButtonClick }} />
+        </CenterContentContainer>
+    );
+};
+
+const Content = ({ data, handleAddButtonClick, classes }) => {
     const theme = useTheme();
     const [variant] = useCardVariant();
 
@@ -41,8 +51,12 @@ const SoundtrackBackComponent = ({ data }) => {
         { ...LOADING_SPINNER_TRANSITIONS, unique: true }
     );
 
+    if (!data?.embedUrl) {
+        return <NoSoundTrack {...{ handleAddButtonClick }} />;
+    }
+
     return (
-        <CenterContentContainer customClasses={{ container: classes.container }}>
+        <>
             <span className={classes.loadingSpinnerContainer}>
                 {loadingSpinnerTransitions.map(
                     ({ item, key, props }) =>
@@ -64,7 +78,7 @@ const SoundtrackBackComponent = ({ data }) => {
                 onLoad={handleLoad}
                 style={iframeSpringProps}
             />
-        </CenterContentContainer>
+        </>
     );
 };
 

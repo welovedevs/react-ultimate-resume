@@ -12,11 +12,7 @@ export const styles = (theme) => {
             ...center
         },
         button: {
-            zIndex: 10,
             marginTop: spacing * 4
-        },
-        noGifDescription: {
-            zIndex: 10
         }
     });
 };

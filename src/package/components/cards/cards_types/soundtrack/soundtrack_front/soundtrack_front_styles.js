@@ -18,6 +18,21 @@ export const styles = theme => {
             fontSize: 36,
             lineHeight: 1.3
         },
+        noSoundTrack: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            padding: [spacing, spacing * 2, 0]
+        },
+        noSoundTrackTypography: {
+            color: 'inherit',
+            fontWeight: 700,
+            lineHeight: 1.3
+        },
+        addButton: {
+            marginTop: spacing * 4,
+            marginLeft: -spacing
+        },
         [createScreenWidthMediaQuery('max-width', theme.screenSizes.small)]: {
             typography: {
                 maxWidth: 'unset',
