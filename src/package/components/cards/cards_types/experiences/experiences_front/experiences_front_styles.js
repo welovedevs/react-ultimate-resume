@@ -13,8 +13,7 @@ export const styles = theme => {
         noWork: {
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            padding: [spacing, spacing * 2, 0]
+            alignItems: 'center'
         },
         noWorkTypography: {
             color: 'inherit',

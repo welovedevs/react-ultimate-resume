@@ -66,7 +66,7 @@ const Content = ({ hasEducation, data, handleAddButtonClick, classes }) => {
         <div className={classes.noEducation}>
             <Typography variant="h3" component="h3" customClasses={{ container: classes.noEducationTypography }}>
                 <FormattedMessage
-                    id="Projects.front.noEducation"
+                    id="Studies.front.noEducation"
                     defaultMessage="Vous n'avez pas encore ajouté de formations !"
                 />
             </Typography>

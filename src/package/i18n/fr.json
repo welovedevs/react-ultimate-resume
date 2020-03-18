@@ -192,7 +192,7 @@
   "Projects.details.seemore": "Voir plus",
   "Projects.dialog.content.title": "Titre du projet",
   "Projects.front.action": "Voir {count} projet{count, plural, one {} other {s}}",
-  "Projects.front.noEducation": "Vous n'avez pas encore ajouté de formations !",
+  "Studies.front.noEducation": "Vous n'avez pas encore ajouté de formations !",
   "Projects.front.noProject": "Vous n'avez pas encore ajouté de projet !",
   "Projects.front.title": "Mon project coup de coeur<emoji>♥️</emoji> : ",
   "Projects.noProject.buttonLabel": "Ajouter un projet",
