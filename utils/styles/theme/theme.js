@@ -137,7 +137,7 @@ var DEFAULT_THEME = Object.freeze({
   components: {
     banner: {
       overlayColor: 'primary',
-      imageSource: 'https://source.unsplash.com/random/2000x6000'
+      imageSource: 'https://cdn.filestackcontent.com/8I2wVnCRTFxypXRYLRsp'
     },
     cards: {
       height: 470,

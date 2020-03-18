@@ -79,10 +79,6 @@ var LocationFieldComponent = function LocationFieldComponent(_ref) {
       event.persist();
       onChange(event);
     }
-
-    if (typeof onLocationSelected === 'function' && !event.target.value) {
-      onLocationSelected(null);
-    }
   }, [onChange, onLocationSelected]);
   var onPredictionSelected = (0, _react.useCallback)(function (placeId, description) {
     if (typeof onLocationSelected === 'function') {
