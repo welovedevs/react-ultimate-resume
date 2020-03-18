@@ -55,7 +55,7 @@ const LanguageItem = SortableElement(
                 <div className={classes.actions}>
                     <DragHandle {...{ classes }} />
                     <div className={classes.divider} />
-                    <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Supprimer" />}>
+                    <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Delete" />}>
                         <button type="button" className={classes.button} onClick={onRemove(id)}>
                             <TrashIcon className={classes.removeIcon} />
                         </button>

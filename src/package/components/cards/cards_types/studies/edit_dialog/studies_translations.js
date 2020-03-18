@@ -3,7 +3,7 @@ import { defineMessages } from 'react-intl';
 export const translations = defineMessages({
     schoolName: {
         id: 'Studies.editDialog.schoolName.title',
-        defaultMessage: 'Formation/Ecole supérieure'
+        defaultMessage: 'Studies/Higher education'
     },
     schoolNamePlaceholder: {
         id: 'Studies.editDialog.schoolName.placeholder',
@@ -11,19 +11,19 @@ export const translations = defineMessages({
     },
     diplomaTitle: {
         id: 'Studies.editDialog.diploma.title',
-        defaultMessage: 'Diplôme obtenu'
+        defaultMessage: 'Obtained diploma'
     },
     mainCourse: {
-        id: 'Studies.editDialog.diploma.title',
-        defaultMessage: 'Diplôme obtenu'
+        id: 'Studies.editDialog.mainCourse.title',
+        defaultMessage: 'Field'
     },
     diplomaDate: {
         id: 'Studies.editDialog.diploma.date',
-        defaultMessage: 'Année de diplômation.'
+        defaultMessage: 'Graduation year'
     },
     diplomaPlaceholder: {
         id: 'Studies.editDialog.diploma.placeholder',
-        defaultMessage: 'Diplôme : License, Doctorat...'
+        defaultMessage: 'Level : License, PhD...'
     },
     mainCoursePlaceholder: {
         id: 'Studies.editDialog.diploma.mainCourse',

@@ -3,19 +3,19 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
     permanent: {
         id: 'Developer.contractType.permanent',
-        defaultMessage: 'CDI'
+        defaultMessage: 'Permanent'
     },
     fixedterm: {
         id: 'Developer.contractType.fixedTerm',
-        defaultMessage: 'CDD'
+        defaultMessage: 'Fixed Term'
     },
     internship: {
         id: 'Developer.contractType.internship',
-        defaultMessage: 'Stage'
+        defaultMessage: 'Internship'
     },
     apprenticeship: {
         id: 'Developer.contractType.apprenticeship',
-        defaultMessage: 'Alternance'
+        defaultMessage: 'Apprenticeship'
     },
     freelance: {
         id: 'Developer.contractType.freelance',
@@ -23,6 +23,6 @@ export default defineMessages({
     },
     unknown: {
         id: 'Developer.contractType.unknown',
-        defaultMessage: 'inconnu'
+        defaultMessage: 'Unknown'
     }
 });

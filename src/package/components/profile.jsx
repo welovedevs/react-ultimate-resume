@@ -123,10 +123,7 @@ const WithProvidersDeveloperProfile = ({
     );
 
     const { locale, customization } = mergedOptions;
-    const builtTheme = useMemo(() => {
-        const theme = buildTheme(customization?.theme);
-        return theme;
-    }, [customization?.theme]);
+    const builtTheme = useMemo(() => buildTheme(customization?.theme), [customization?.theme]);
 
     const providerMessages = useMemo(
         () => ({ ...(parentIntl?.messages || {}), ...(messages[locale] || messages.en) }),

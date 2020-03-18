@@ -3,7 +3,7 @@ import { defineMessages } from 'react-intl';
 export const workTranslations = defineMessages({
     noFutureDate: {
         id: 'Work.form.validation.noFutureDate',
-        defaultMessage: 'Cette date ne peut pas être dans le futur.'
+        defaultMessage: 'This date cannot be in the future.'
     },
     atLeastOne: {
         id: 'Work.form.validation.atLeastOne',

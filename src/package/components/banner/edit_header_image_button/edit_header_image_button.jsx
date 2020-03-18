@@ -38,7 +38,7 @@ export const EditHeaderImageButton = ({ customizationOptions }) => {
                 onChange={onChange}
             />
             <BouncingRoundButton
-                title={<FormattedMessage id="Banner.image.editButton" defaultMessage="Edit banner image" />}
+                title={<FormattedMessage id="Banner.image.editButton" defaultMessage="Edit image banner" />}
                 icon={PhotoCameraIcon}
                 onClick={onOpen}
                 classes={{

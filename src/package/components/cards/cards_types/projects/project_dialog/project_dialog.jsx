@@ -47,7 +47,7 @@ const ProjectDialogComponent = ({ open, onClose, project = {} }) => {
             data={project}
             onEdit={onDialogEdited}
             validationSchema={validator}
-            title={<FormattedMessage id="Project.editDialog.title" defaultMessage="Le projet en détails" />}
+            title={<FormattedMessage id="Project.editDialog.title" defaultMessage="Project's details" />}
         >
             {helpers => <ProjectDialogContent helpers={helpers} />}
         </EditDialog>

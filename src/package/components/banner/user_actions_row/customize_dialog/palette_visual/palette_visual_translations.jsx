@@ -6,19 +6,19 @@ export const PALETTE_KEY_TRANSLATIONS = Object.freeze({
    primary: (
        <FormattedMessage
            id="PaletteVisual.Key.Primary"
-           defaultMessage="Primaire"
+           defaultMessage="Primary"
        />
    ),
     secondary: (
         <FormattedMessage
             id="PaletteVisual.Key.Secondary"
-            defaultMessage="Secondaire"
+            defaultMessage="Secondary"
         />
     ),
     tertiary: (
         <FormattedMessage
             id="PaletteVisual.Key.Tertiary"
-            defaultMessage="Tertiaire"
+            defaultMessage="Tertiary"
         />
     )
 });

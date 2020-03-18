@@ -15,7 +15,7 @@ const AddButtonComponent = ({ handleAddButtonClick, classes: receivedClasses = {
         >
             <FormattedMessage
                 id="Projects.noProject.buttonLabel"
-                defaultMessage="Ajouter un projet"
+                defaultMessage="Add a project"
             />
         </Button>
     );
