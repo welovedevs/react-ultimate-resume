@@ -55,8 +55,8 @@ var EditBannerImageDialogComponent = function EditBannerImageDialogComponent(_re
     onClose();
     setSearchUnsplashDialogClosed();
   }, [onChange, onClose]);
-  var onDrop = (0, _react.useCallback)(function () {
-    return onFilesUpload().then(function (url) {
+  var onDrop = (0, _react.useCallback)(function (files) {
+    return onFilesUpload(files).then(function (url) {
       onImageSelected({
         url: url
       });
