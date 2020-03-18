@@ -14,7 +14,7 @@ const NoStudiesComponent = ({ handleAddButtonClick }) => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
-            <Typography color="primary" variant="h4" component="h4">
+            <Typography style={{ color: 'inherit' }} variant="h4" component="h4">
                 <FormattedMessage
                     id="Studies.noEducation.title"
                     defaultMessage="Ajoutez ici les formations que vous avez effectué !"

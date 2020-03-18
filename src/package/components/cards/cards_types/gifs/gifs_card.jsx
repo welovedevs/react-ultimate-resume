@@ -12,14 +12,19 @@ import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { useCallbackOpen } from '../../../hooks/use_callback_open';
 
 const GifsCardComponent = ({ variant, side }) => {
-    const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
+    const { data, isEditing, onEdit, setIsEditing, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapInterestsFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(editedData => {
         onEdit(mapInterestsToJsonResume(editedData));
     }, []);
 
-    const [openNewGifDialog, setNewGifDialogOpened] = useCallbackOpen();
+    const [openNewGifDialog, setNewGifDialogOpened, setNewGifDialogClosed] = useCallbackOpen();
+
+    const handleAddButtonClick = useCallback(() => {
+        setIsEditing(true);
+        setNewGifDialogOpened();
+    }, [onEdit]);
 
     const isComplete = useMemo(() => validateInterestsComplete(mappedData), [mappedData]);
 
@@ -32,9 +37,10 @@ const GifsCardComponent = ({ variant, side }) => {
             isComplete={isComplete}
             data={mappedData}
             openEditDialog={openNewGifDialog}
+            callbackEditDialogClosed={setNewGifDialogClosed}
             sides={{
-                front: (props) => <GifsFront handleAddButtonClick={setNewGifDialogOpened} {...props} />,
-                back: (props) => <GifsBack handleAddButtonClick={setNewGifDialogOpened} {...props} />
+                front: (props) => <GifsFront handleAddButtonClick={handleAddButtonClick} {...props} />,
+                back: (props) => <GifsBack handleAddButtonClick={handleAddButtonClick} {...props} />
             }}
             editDialog={{
                 component: GifsEditDialog,

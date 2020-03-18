@@ -14,7 +14,7 @@ const NoSkillComponent = ({ handleAddButtonClick }) => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
-            <Typography color="primary" variant="h4" component="h4">
+            <Typography style={{ color: 'inherit' }} variant="h4" component="h4">
                 <FormattedMessage
                     id="Skills.noSkill.title"
                     defaultMessage="Ajoutez ici toutes les compétences que vous maitrisez !"

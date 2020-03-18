@@ -9,14 +9,19 @@ import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { useCallbackOpen } from '../../../hooks/use_callback_open';
 
 const StudiesCardComponent = ({ variant, side }) => {
-    const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
+    const { data, onEdit, isEditing, setIsEditing, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapStudiesFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(editedData => {
         onEdit(mapStudiesToJsonResume(editedData));
     }, []);
 
-    const [openNewEducationDialog, setNewEducationDialogOpened] = useCallbackOpen();
+    const [openNewEducationDialog, setNewEducationDialogOpened, setNewEducationDialogClosed] = useCallbackOpen();
+
+    const handleAddButtonClick = useCallback(() => {
+        setIsEditing(true);
+        setNewEducationDialogOpened();
+    }, [onEdit]);
 
     const isComplete = useMemo(() => validateStudiesComplete(mappedData), [mappedData]);
 
@@ -29,9 +34,10 @@ const StudiesCardComponent = ({ variant, side }) => {
             data={mappedData}
             isComplete={isComplete}
             isEditingProfile={isEditing}
+            callbackEditDialogClosed={setNewEducationDialogClosed}
             sides={{
-                front: props => <StudiesFront handleAddButtonClick={setNewEducationDialogOpened} {...props} />,
-                back: props => <StudiesBack handleAddButtonClick={setNewEducationDialogOpened} {...props} />
+                front: props => <StudiesFront handleAddButtonClick={handleAddButtonClick} {...props} />,
+                back: props => <StudiesBack handleAddButtonClick={handleAddButtonClick} {...props} />
             }}
             openEditDialog={openNewEducationDialog}
             editDialog={{

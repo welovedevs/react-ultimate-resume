@@ -14,7 +14,7 @@ const NoWorkComponent = ({ handleAddButtonClick }) => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
-            <Typography color="primary" variant="h4" component="h4">
+            <Typography style={{ color: 'inherit' }} variant="h4" component="h4">
                 <FormattedMessage
                     id="Experiences.noWork.title"
                     defaultMessage="Les expériences que vous avez mené dans votre carrière seront affichées ici ."

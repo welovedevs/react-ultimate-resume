@@ -67,7 +67,7 @@ const Content = ({ hasLanguage, languagesNode, handleAddButtonClick, classes }) 
         <div className={classes.noLanguage}>
             <Typography variant="h3" component="h3" customClasses={{ container: classes.noLanguageTypography }}>
                 <FormattedMessage
-                    id="Projects.front.noLanguage"
+                    id="Languages.front.noLanguage"
                     defaultMessage="Vous n'avez pas encore ajouté de langues !"
                 />
             </Typography>
@@ -78,7 +78,7 @@ const Content = ({ hasLanguage, languagesNode, handleAddButtonClick, classes }) 
                 handleAddButtonClick={handleAddButtonClick}
             >
                 <FormattedMessage
-                    id="Projects.noLanguage.buttonLabel"
+                    id="Languages.noLanguage.buttonLabel"
                     defaultMessage="Ajouter une langue"
                 />
             </NoDataButton>

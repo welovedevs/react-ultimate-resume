@@ -12,6 +12,7 @@ export const styles = (theme) => {
         }),
         typography: ({ variant }) => ({
             display: 'flex',
+            flexDirection: 'column',
             overflow: 'auto',
             textOverflow: 'unset',
             '-webkit-line-clamp': 'unset',

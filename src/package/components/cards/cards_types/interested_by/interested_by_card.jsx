@@ -12,10 +12,15 @@ import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { useCallbackOpen } from '../../../hooks/use_callback_open';
 
 const InterestedByCardComponent = ({ variant, side }) => {
-    const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
+    const { data, onEdit, isEditing, setIsEditing, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => JsonResumeToFlatObject(data, interestedByMapping), [data]);
 
-    const [openNewInterestedDialog, setNewInterestedDialogOpened] = useCallbackOpen();
+    const [openNewInterestedDialog, setNewInterestedDialogOpened, setNewInterestedDialogClosed] = useCallbackOpen();
+
+    const handleAddButtonClick = useCallback(() => {
+        setIsEditing(true);
+        setNewInterestedDialogOpened();
+    }, [onEdit]);
 
     const onDialogEdited = useCallback(editedData => {
         onEdit(FlatObjectToJsonResume(editedData, interestedByMapping));
@@ -33,11 +38,10 @@ const InterestedByCardComponent = ({ variant, side }) => {
                 isComplete={isComplete}
                 isEditingProfile={isEditing}
                 openEditDialog={openNewInterestedDialog}
+                callbackEditDialogClosed={setNewInterestedDialogClosed}
                 sides={{
-                    front: props => (
-                        <InterestedByFront handleAddButtonClick={setNewInterestedDialogOpened} {...props} />
-                    ),
-                    back: props => <InterestedByBack handleAddButtonClick={setNewInterestedDialogOpened} {...props} />
+                    front: props => <InterestedByFront handleAddButtonClick={handleAddButtonClick} {...props} />,
+                    back: props => <InterestedByBack handleAddButtonClick={handleAddButtonClick} {...props} />
                 }}
                 editDialog={{
                     component: InterestedByEditDialog,

@@ -12,14 +12,19 @@ import { BasicsFront } from './basics_front/basics_front';
 import { useCallbackOpen } from '../../../hooks/use_callback_open';
 
 const BasicsCardComponent = ({ variant, side }) => {
-    const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
+    const { data, isEditing, onEdit, setIsEditing, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapJsonResumeToBasicData(data), [data]);
 
     const onDialogEdited = useCallback(editedData => {
         onEdit(mapBasicsDataToJsonResume(editedData));
     }, []);
 
-    const [openNewDescriptionDialog, setNewDescriptionDialogOpened] = useCallbackOpen();
+    const [openNewDescriptionDialog, setNewDescriptionDialogOpened, setNewDescriptionDialogClosed] = useCallbackOpen();
+
+    const handleAddButtonClick = useCallback(() => {
+        setIsEditing(true);
+        setNewDescriptionDialogOpened();
+    }, [onEdit]);
 
     const isComplete = useMemo(() => validateBasicsComplete(mappedData), [mappedData]);
 
@@ -38,9 +43,10 @@ const BasicsCardComponent = ({ variant, side }) => {
                     onEdit: onDialogEdited
                 }}
                 openEditDialog={openNewDescriptionDialog}
+                callbackEditDialogClosed={setNewDescriptionDialogClosed}
                 sides={{
-                    front: (props) => <BasicsFront handleAddButtonClick={setNewDescriptionDialogOpened} {...props} />,
-                    back: (props) => <BasicsBack handleAddButtonClick={setNewDescriptionDialogOpened} {...props} />
+                    front: (props) => <BasicsFront handleAddButtonClick={handleAddButtonClick} {...props} />,
+                    back: (props) => <BasicsBack handleAddButtonClick={handleAddButtonClick} {...props} />
                 }}
                 variant={variant}
                 isComplete={isComplete}

@@ -11,15 +11,20 @@ import { SkillsValidationSchema, validateSkillsComplete } from './data/validator
 import { useCallbackOpen } from '../../../hooks/use_callback_open';
 
 const SkillsCardComponent = ({ variant, side }) => {
-    const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
+    const { data, onEdit, isEditing, setIsEditing, mode } = useContext(DeveloperProfileContext);
 
     const mappedData = useMemo(() => mapSkillsFromJsonResume(data), [data]);
 
-    const [openNewSkillDialog, setNewSkillDialogOpened] = useCallbackOpen();
+    const [openNewSkillDialog, setNewSkillDialogOpened, setNewSkillDialogClosed] = useCallbackOpen();
 
     const onDialogEdited = useCallback(editedData => {
         onEdit(mapSkillsToJsonResume(editedData));
     }, []);
+
+    const handleAddButtonClick = useCallback(() => {
+        setIsEditing(true);
+        setNewSkillDialogOpened();
+    }, [onEdit]);
 
     const isComplete = useMemo(() => validateSkillsComplete(mappedData), [mappedData]);
 
@@ -31,8 +36,8 @@ const SkillsCardComponent = ({ variant, side }) => {
             isEditingProfile={isEditing}
             isComplete={isComplete}
             sides={{
-                front: props => <SkillsFront handleAddButtonClick={setNewSkillDialogOpened} {...props} />,
-                back: props => <SkillsBack handleAddButtonClick={setNewSkillDialogOpened} {...props} />
+                front: props => <SkillsFront handleAddButtonClick={handleAddButtonClick} {...props} />,
+                back: props => <SkillsBack handleAddButtonClick={handleAddButtonClick} {...props} />
             }}
             editDialog={{
                 component: SkillsEditDialog,
@@ -40,6 +45,7 @@ const SkillsCardComponent = ({ variant, side }) => {
                 onEdit: onDialogEdited
             }}
             openEditDialog={openNewSkillDialog}
+            callbackEditDialogClosed={setNewSkillDialogClosed}
             data={mappedData}
             variant={variant}
             side={side}

@@ -11,13 +11,18 @@ import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { useCallbackOpen } from '../../../hooks/use_callback_open';
 
 const ExperiencesCardComponent = ({ variant, side }) => {
-    const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
+    const { data, onEdit, isEditing, setIsEditing, mode } = useContext(DeveloperProfileContext);
 
     const mappedData = useMemo(() => mapWorkFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(editedData => onEdit(mapWorkToJsonResume(editedData)), []);
 
-    const [openNewWorkDialog, setNewWorkDialogOpened] = useCallbackOpen();
+    const [openNewWorkDialog, setNewWorkDialogOpened, setNewWorkDialogClosed] = useCallbackOpen();
+
+    const handleAddButtonClick = useCallback(() => {
+        setIsEditing(true);
+        setNewWorkDialogOpened();
+    }, [onEdit]);
 
     const isComplete = useMemo(() => validateWorkComplete(mappedData), [mappedData]);
 
@@ -29,9 +34,10 @@ const ExperiencesCardComponent = ({ variant, side }) => {
             isEditingProfile={isEditing}
             isComplete={isComplete}
             data={mappedData}
+            callbackEditDialogClosed={setNewWorkDialogClosed}
             sides={{
-                front: (props) => <ExperiencesFront handleAddButtonClick={setNewWorkDialogOpened} {...props} />,
-                back: (props) => <ExperiencesBack handleAddButtonClick={setNewWorkDialogOpened} {...props} />
+                front: (props) => <ExperiencesFront handleAddButtonClick={handleAddButtonClick} {...props} />,
+                back: (props) => <ExperiencesBack handleAddButtonClick={handleAddButtonClick} {...props} />
             }}
             openEditDialog={openNewWorkDialog}
             editDialog={{

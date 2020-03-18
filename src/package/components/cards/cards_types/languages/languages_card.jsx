@@ -19,6 +19,7 @@ const LanguagesCardComponent = ({ variant, side }) => {
     const isComplete = useMemo(() => validateLanguagesComplete(mappedData), [mappedData]);
 
     const [openNewLanguageDialog, setNewLanguageDialogOpened, setNewLanguageDialogClosed] = useCallbackOpen();
+
     const handleAddButtonClick = useCallback(() => {
         setIsEditing(true);
         setNewLanguageDialogOpened();

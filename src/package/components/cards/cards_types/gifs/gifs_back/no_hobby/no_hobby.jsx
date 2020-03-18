@@ -14,7 +14,7 @@ const NoHobbyComponent = ({ handleAddButtonClick }) => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
-            <Typography color="white" variant="h4" component="h4" className={classes.noGifDescription}>
+            <Typography style={{ color: 'inherit' }} variant="h4" component="h4" className={classes.noGifDescription}>
                 <FormattedMessage
                     id="Gifs.noHobby.title"
                     defaultMessage="Vos hobbies seront affichés sous la forme d'un gif trop stylé !"

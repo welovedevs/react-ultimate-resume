@@ -22,7 +22,6 @@ const InterestedByFrontComponent = ({
     data: { interestedBy },
     profileCardFrontTypographyProps,
     dismissButton,
-    dismissTitle,
     handleAddButtonClick,
     customClasses = {}
 }) => {
@@ -31,7 +30,10 @@ const InterestedByFrontComponent = ({
 
     const [isTypographyTruncated, setIsTypographyTruncated] = useState(true);
 
-    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [
+        side,
+        setSide
+    ]);
 
     return (
         <>
@@ -40,7 +42,6 @@ const InterestedByFrontComponent = ({
                     <Content
                         {...{
                             interestedBy,
-                            dismissTitle,
                             setIsTypographyTruncated,
                             profileCardFrontTypographyProps,
                             handleAddButtonClick,
@@ -63,7 +64,6 @@ const InterestedByFrontComponent = ({
 
 const Content = ({
     interestedBy,
-    dismissTitle,
     setIsTypographyTruncated,
     profileCardFrontTypographyProps,
     handleAddButtonClick,
@@ -94,10 +94,7 @@ const Content = ({
                     }}
                     handleAddButtonClick={handleAddButtonClick}
                 >
-                    <FormattedMessage
-                        id="InterestedBy.noInterested.buttonLabel"
-                        defaultMessage="Ajouter"
-                    />
+                    <FormattedMessage id="InterestedBy.noInterested.buttonLabel" defaultMessage="Ajouter" />
                 </NoDataButton>
             </div>
         );
@@ -110,7 +107,7 @@ const Content = ({
             }}
             {...profileCardFrontTypographyProps}
         >
-            {!dismissTitle && <FormattedMessage id="InterestedBy.front.content" defaultMessage="Interested by:" />}
+            <FormattedMessage id="InterestedBy.front.content" defaultMessage="Interested by:" />
             <div className={classes.interestedByValue}>{interestedBy}</div>
         </ProfileCardFrontTypography>
     );
