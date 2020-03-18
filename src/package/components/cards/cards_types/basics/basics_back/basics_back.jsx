@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -14,10 +14,12 @@ import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { translations } from '../../../../../utils/enums/job_serachstate/job_search_state_translations';
 import { styles } from './basics_back_styles';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
+import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
 
 const useStyles = createUseStyles(styles);
 
 const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
+    const { mode } = useContext(DeveloperProfileContext);
     const classes = useStyles();
 
     const {
@@ -37,7 +39,7 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
             personalDescription: {
                 title: null,
                 hide: false,
-                value: personalDescription ? (
+                value: personalDescription && mode === 'edit' ? (
                     <span>{personalDescription}</span>
                 ) : (
                     <NoDataButton

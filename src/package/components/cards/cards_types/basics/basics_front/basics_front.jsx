@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 import cn from 'classnames';
 
@@ -19,12 +19,14 @@ import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './basics_front_styles';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
+import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
 
 const useStyles = createUseStyles(styles);
 
 const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
+    const { mode } = useContext(DeveloperProfileContext);
     const [variant] = useCardVariant();
-    console.log({ variant });
+
     const classes = useStyles({ variant });
 
     const [side, setSide] = useCardSide();
@@ -36,7 +38,7 @@ const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
 
     useEffect(() => {
         const element = mainTypographyReference.current;
-        if (element.offsetHeight > element.scrollHeight - 1) {
+        if (element?.offsetHeight > element?.scrollHeight - 1) {
             setIsMainTypographyTruncated(false);
         }
     }, []);
@@ -64,7 +66,7 @@ const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
                         </ProfileCardFrontTypography>
                     )}
                 </div>
-                {!data?.personalDescription && (
+                {!data?.personalDescription && mode === 'edit' && (
                     <NoDataButton
                         classes={{
                             container: classes.addButton
