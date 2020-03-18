@@ -37,7 +37,7 @@ const SkillsCardComponent = ({ variant }) => {
             }}
             data={mappedData}
             variant={variant}
-            side="back"
+            side={side}
         />
     );
 };
