@@ -21,7 +21,7 @@ const SoundtrackBackComponent = ({ data, handleAddButtonClick }) => {
 
     return (
         <CenterContentContainer customClasses={{ container: classes.container }}>
-            <Content {...{ data, handleAddButtonClick }} />
+            <Content {...{ data, handleAddButtonClick, classes }} />
         </CenterContentContainer>
     );
 };

@@ -18,10 +18,11 @@ import { useCardVariant } from '../../../../commons/profile_card/profile_card_ho
 import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './basics_front_styles';
+import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 
 const useStyles = createUseStyles(styles);
 
-const BasicsFrontComponent = ({ data }) => {
+const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
     const [variant] = useCardVariant();
     console.log({ variant });
     const classes = useStyles({ variant });
@@ -63,6 +64,17 @@ const BasicsFrontComponent = ({ data }) => {
                         </ProfileCardFrontTypography>
                     )}
                 </div>
+                {!data?.personalDescription && (
+                    <NoDataButton
+                        classes={{
+                            container: classes.addButton
+                        }}
+                        color="secondary"
+                        handleAddButtonClick={handleAddButtonClick}
+                    >
+                        <FormattedMessage id="Basics.noDescription.buttonLabel" defaultMessage="Ajouter une description" />
+                    </NoDataButton>
+                )}
             </CenterContentContainer>
             <ProfileCardActions>
                 <ProfileCardButton onClick={handleButtonClick}>

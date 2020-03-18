@@ -13,10 +13,11 @@ import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 
 import { translations } from '../../../../../utils/enums/job_serachstate/job_search_state_translations';
 import { styles } from './basics_back_styles';
+import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 
 const useStyles = createUseStyles(styles);
 
-const BasicsBackComponent = ({ data }) => {
+const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles();
 
     const {
@@ -35,8 +36,22 @@ const BasicsBackComponent = ({ data }) => {
         () => ({
             personalDescription: {
                 title: null,
-                hide: !personalDescription,
-                value: <span>{personalDescription}</span>
+                hide: false,
+                value: personalDescription ? (
+                    <span>{personalDescription}</span>
+                ) : (
+                    <NoDataButton
+                        handleAddButtonClick={handleAddButtonClick}
+                        classes={{
+                            container: classes.addButton
+                        }}
+                    >
+                        <FormattedMessage
+                            id="Basics.noDescription.buttonLabel"
+                            defaultMessage="Ajouter une description"
+                        />
+                    </NoDataButton>
+                )
             },
             visaSponsorship: {
                 hide: !existsAndNotEmpty(visaSponsorship),
@@ -51,7 +66,7 @@ const BasicsBackComponent = ({ data }) => {
             },
             work: {
                 title: <FormattedMessage id="Basics.Back.Work.Title" defaultMessage="Work" />,
-                hide: (!experienceYears && !existsAndNotEmpty(contractTypes) && !existsAndNotEmpty(searchState)),
+                hide: !experienceYears && !existsAndNotEmpty(contractTypes) && !existsAndNotEmpty(searchState),
                 value: (
                     <>
                         <FormattedMessage
@@ -65,7 +80,7 @@ const BasicsBackComponent = ({ data }) => {
                 )
             },
             codingYears: {
-                title: <FormattedMessage id="Basics.Back.CodingYears.title" defaultMessage="Experience"/>,
+                title: <FormattedMessage id="Basics.Back.CodingYears.title" defaultMessage="Experience" />,
                 hide: !personalDescription,
                 value: (
                     <FormattedMessage
@@ -76,7 +91,7 @@ const BasicsBackComponent = ({ data }) => {
                 )
             },
             studies: {
-                title: <FormattedMessage id="Basics.Back.StudiesLevel.Title" defaultMessage="Training"/>,
+                title: <FormattedMessage id="Basics.Back.StudiesLevel.Title" defaultMessage="Training" />,
                 hide: !studiesLevel,
                 value: (
                     <>
@@ -85,9 +100,9 @@ const BasicsBackComponent = ({ data }) => {
                             defaultMessage={'{studiesLevel} years of higher education'}
                             values={{ studiesLevel }}
                         />
-                        <br/>
-                        <br/>
-                        <JobSearchState searchState={searchState}/>
+                        <br />
+                        <br />
+                        <JobSearchState searchState={searchState} />
                     </>
                 )
             }
@@ -106,9 +121,7 @@ const BasicsBackComponent = ({ data }) => {
     );
 
     return (
-        <ProfileCardAnimatedBack
-            title={<FormattedMessage id="Basics.Back.Title" defaultMessage="Who?"/>}
-        >
+        <ProfileCardAnimatedBack title={<FormattedMessage id="Basics.Back.Title" defaultMessage="Who?" />}>
             {Object.entries(sections)
                 .filter(([, { hide }]) => !hide)
                 .map(([id, { title, value }]) => (
