@@ -10,19 +10,19 @@ var _reactIntl = require("react-intl");
 var _default = (0, _reactIntl.defineMessages)({
   permanent: {
     "id": "Developer.contractType.permanent",
-    "defaultMessage": "CDI"
+    "defaultMessage": "Permanent"
   },
   fixedterm: {
     "id": "Developer.contractType.fixedTerm",
-    "defaultMessage": "CDD"
+    "defaultMessage": "Fixed Term"
   },
   internship: {
     "id": "Developer.contractType.internship",
-    "defaultMessage": "Stage"
+    "defaultMessage": "Internship"
   },
   apprenticeship: {
     "id": "Developer.contractType.apprenticeship",
-    "defaultMessage": "Alternance"
+    "defaultMessage": "Apprenticeship"
   },
   freelance: {
     "id": "Developer.contractType.freelance",
@@ -30,7 +30,7 @@ var _default = (0, _reactIntl.defineMessages)({
   },
   unknown: {
     "id": "Developer.contractType.unknown",
-    "defaultMessage": "inconnu"
+    "defaultMessage": "Unknown"
   }
 });
 

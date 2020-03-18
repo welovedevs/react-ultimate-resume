@@ -75,7 +75,7 @@ var EditBannerImageDialogComponent = function EditBannerImageDialogComponent(_re
     onClose: onClose
   }, _react.default.createElement(_dialog_title.DialogTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Banner.EditImageDialog.Title",
-    defaultMessage: "S\xE9lectionner une image"
+    defaultMessage: "Pick an image"
   })), _react.default.createElement(_core.DialogContent, {
     classes: {
       root: classes.content
@@ -91,7 +91,7 @@ var EditBannerImageDialogComponent = function EditBannerImageDialogComponent(_re
     }
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Banner.EditImageDialog.unsplashButton",
-    defaultMessage: "Chercher via unsplash"
+    defaultMessage: "Search on unsplash"
   }))), _react.default.createElement("div", {
     className: classes.divider
   }, _react.default.createElement(_ui.Typography, {
@@ -100,7 +100,7 @@ var EditBannerImageDialogComponent = function EditBannerImageDialogComponent(_re
     component: "h4"
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Main.Lang.Or",
-    defaultMessage: "ou"
+    defaultMessage: "or"
   }))), _react.default.createElement(_file_drop_zone.FileDropZone, {
     onDrop: onDrop
   })), _react.default.createElement(_core.DialogActions, null, _react.default.createElement(_ui.Button, {
@@ -115,7 +115,7 @@ var EditBannerImageDialogComponent = function EditBannerImageDialogComponent(_re
     onClick: onClose
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Main.lang.close",
-    defaultMessage: "Fermer"
+    defaultMessage: "Close"
   })))));
 };
 

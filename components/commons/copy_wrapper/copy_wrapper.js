@@ -68,7 +68,7 @@ var CopyWrapperComponent = function CopyWrapperComponent(_ref) {
     open: showSnack,
     message: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Main.lang.copied",
-      defaultMessage: "Copi\xE9 dans le presse-papiers"
+      defaultMessage: "Copied in your clipboard"
     }),
     autoHideDuration: 5000,
     onClose: function onClose() {

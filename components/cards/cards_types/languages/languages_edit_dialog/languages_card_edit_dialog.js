@@ -135,7 +135,7 @@ var LanguageItem = (0, _reactSortableHoc.SortableElement)(function (_ref2) {
   }), _react.default.createElement(_ui.Tooltip, {
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Main.lang.delete",
-      defaultMessage: "Supprimer"
+      defaultMessage: "Delete"
     })
   }, _react.default.createElement("button", {
     type: "button",

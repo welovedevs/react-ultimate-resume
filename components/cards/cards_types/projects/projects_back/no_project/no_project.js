@@ -32,7 +32,7 @@ var NoProjectComponent = function NoProjectComponent(_ref) {
     component: "h4"
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Projects.noProject.title",
-    defaultMessage: "D\xE9crivez ici un projet qui vous a plus en tant que d\xE9veloppeur, ce projet peut avoir \xE9t\xE9 r\xE9alis\xE9 pendant vos \xE9tudes, sur votre temps personnel ou au sein d'une entreprise."
+    defaultMessage: "Describe a project that you've enjoyed as a developer. This project may have been realized during your studies, your personal time or while working at a company."
   })), _react.default.createElement(_add_button.AddButton, {
     handleAddButtonClick: handleAddButtonClick,
     classes: {

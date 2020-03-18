@@ -83,7 +83,7 @@ var ProjectDialogComponent = function ProjectDialogComponent(_ref) {
     validationSchema: validator,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Project.editDialog.title",
-      defaultMessage: "Le projet en d\xE9tails"
+      defaultMessage: "Project's details"
     })
   }, function (helpers) {
     return _react.default.createElement(ProjectDialogContent, {

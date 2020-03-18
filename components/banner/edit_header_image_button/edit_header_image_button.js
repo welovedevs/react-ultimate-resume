@@ -89,7 +89,7 @@ var EditHeaderImageButton = function EditHeaderImageButton(_ref) {
   }), _react.default.createElement(_bouncing_round_button.BouncingRoundButton, {
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Banner.image.editButton",
-      defaultMessage: "Edit banner image"
+      defaultMessage: "Edit image banner"
     }),
     icon: PhotoCameraIcon,
     onClick: onOpen,

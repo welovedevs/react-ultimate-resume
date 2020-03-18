@@ -103,7 +103,7 @@ var EditingContent = function EditingContent(_ref4) {
     onChange: handleStartDate,
     title: {
       id: 'Project.editDialog.date',
-      defaultMessage: 'Date Du projet'
+      defaultMessage: 'Project date'
     },
     error: errors === null || errors === void 0 ? void 0 : errors.date
   })), (errors === null || errors === void 0 ? void 0 : errors.name) && _react.default.createElement(_ui.Typography, {

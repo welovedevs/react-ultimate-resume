@@ -86,7 +86,7 @@ var ProfileCardIncompletePopperComponent = function ProfileCardIncompletePopperC
     color: "light"
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "ProfileCardIncompletePopper.label.value",
-    defaultMessage: "Cette carte n'est pas compl\xE8te."
+    defaultMessage: "This card is missing data"
   })));
 };
 

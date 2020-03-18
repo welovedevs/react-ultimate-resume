@@ -87,7 +87,7 @@ var EditingContent = function EditingContent(_ref4) {
     component: "div"
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Project.dialog.link.title",
-    defaultMessage: "Lien du projet"
+    defaultMessage: "Project's list"
   })), _react.default.createElement(_ui.TextField, {
     fullWidth: true,
     variant: "flat",

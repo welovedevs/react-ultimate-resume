@@ -10,7 +10,7 @@ var _reactIntl = require("react-intl");
 var translations = (0, _reactIntl.defineMessages)({
   title: {
     "id": "DeveloperProfile.locationField.label",
-    "defaultMessage": "Localisation"
+    "defaultMessage": "Location"
   },
   placeholder: {
     "id": "DeveloperProfile.locationField.placeholder",

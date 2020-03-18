@@ -176,8 +176,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
   var locale = mergedOptions.locale,
       customization = mergedOptions.customization;
   var builtTheme = (0, _react.useMemo)(function () {
-    var theme = (0, _theme.buildTheme)(customization === null || customization === void 0 ? void 0 : customization.theme);
-    return theme;
+    return (0, _theme.buildTheme)(customization === null || customization === void 0 ? void 0 : customization.theme);
   }, [customization === null || customization === void 0 ? void 0 : customization.theme]);
   var providerMessages = (0, _react.useMemo)(function () {
     return _objectSpread({}, (parentIntl === null || parentIntl === void 0 ? void 0 : parentIntl.messages) || {}, {}, messages[locale] || messages.en);

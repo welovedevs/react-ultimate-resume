@@ -26,7 +26,7 @@ var AddButtonComponent = function AddButtonComponent(_ref) {
     onClick: handleAddButtonClick
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Projects.noProject.buttonLabel",
-    defaultMessage: "Ajouter un projet"
+    defaultMessage: "Add a project"
   }));
 };
 

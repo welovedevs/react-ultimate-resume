@@ -10,7 +10,7 @@ var _reactIntl = require("react-intl");
 var workTranslations = (0, _reactIntl.defineMessages)({
   noFutureDate: {
     "id": "Work.form.validation.noFutureDate",
-    "defaultMessage": "Cette date ne peut pas \xEAtre dans le futur."
+    "defaultMessage": "This date cannot be in the future."
   },
   atLeastOne: {
     "id": "Work.form.validation.atLeastOne",

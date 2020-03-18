@@ -149,7 +149,7 @@ var Content = function Content(_ref4) {
     }
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Projects.front.noProject",
-    defaultMessage: "Vous n'avez pas encore ajout\xE9 de projet !"
+    defaultMessage: "You didn't add any projects."
   }), projectTitle), _react.default.createElement(_add_button.AddButton, {
     classes: {
       container: classes.addButton

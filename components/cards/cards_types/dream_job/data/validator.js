@@ -20,9 +20,9 @@ var DreamJobValidationSchema = function DreamJobValidationSchema(formatMessage) 
         min: 5
       })).required(formatMessage(_validation_translations.validationTranslations.required))
     })),
-    contractTypes: Yup.array().test('is-not-empty', formatMessage(_validator_translations.basicsValidationTranslations.atLeastOneContractType), function (value) {
+    contractTypes: Yup.array().test('is-not-empty', formatMessage(_validator_translations.dreamjobValidationTranslations.atLeastOneContractType), function (value) {
       return !!(value || []).length;
-    }).test('is-exclusif', formatMessage(_validator_translations.basicsValidationTranslations.selectByGroup), function (value) {
+    }).test('is-exclusif', formatMessage(_validator_translations.dreamjobValidationTranslations.selectByGroup), function (value) {
       return !(['permanent', 'fixedTerm', 'freelance'].filter(function (val) {
         return value.includes(val);
       }).length && ['apprenticeship', 'internship'].filter(function (val) {

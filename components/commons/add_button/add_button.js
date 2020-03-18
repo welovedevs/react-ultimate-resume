@@ -52,7 +52,7 @@ var AddButtonComponent = function AddButtonComponent(_ref) {
     className: classes.icon
   }), _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Main.Lang.Add",
-    defaultMessage: "Ajouter"
+    defaultMessage: "Add"
   }));
 };
 

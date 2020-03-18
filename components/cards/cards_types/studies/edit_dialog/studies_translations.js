@@ -10,7 +10,7 @@ var _reactIntl = require("react-intl");
 var translations = (0, _reactIntl.defineMessages)({
   schoolName: {
     "id": "Studies.editDialog.schoolName.title",
-    "defaultMessage": "Formation/Ecole sup\xE9rieure"
+    "defaultMessage": "Studies/Higher education"
   },
   schoolNamePlaceholder: {
     "id": "Studies.editDialog.schoolName.placeholder",
@@ -18,19 +18,19 @@ var translations = (0, _reactIntl.defineMessages)({
   },
   diplomaTitle: {
     "id": "Studies.editDialog.diploma.title",
-    "defaultMessage": "Dipl\xF4me obtenu"
+    "defaultMessage": "Obtained diploma"
   },
   mainCourse: {
-    "id": "Studies.editDialog.diploma.title",
-    "defaultMessage": "Dipl\xF4me obtenu"
+    "id": "Studies.editDialog.mainCourse.title",
+    "defaultMessage": "Field"
   },
   diplomaDate: {
     "id": "Studies.editDialog.diploma.date",
-    "defaultMessage": "Ann\xE9e de dipl\xF4mation."
+    "defaultMessage": "Graduation year"
   },
   diplomaPlaceholder: {
     "id": "Studies.editDialog.diploma.placeholder",
-    "defaultMessage": "Dipl\xF4me : License, Doctorat..."
+    "defaultMessage": "Level : License, PhD..."
   },
   mainCoursePlaceholder: {
     "id": "Studies.editDialog.diploma.mainCourse",

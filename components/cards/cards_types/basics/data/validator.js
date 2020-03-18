@@ -49,10 +49,7 @@ exports.BasicsValidationSchema = BasicsValidationSchema;
 var validateBasicsComplete = function validateBasicsComplete(data) {
   try {
     Yup.object({
-      summary: Yup.string().required(),
-      currentCity: Yup.object().nullable().required(),
       experienceYears: Yup.number().required(),
-      studiesLevel: Yup.number().required(),
       codingYears: Yup.number().required()
     }).validateSync(data);
   } catch (e) {

@@ -48,7 +48,7 @@ var UploadFileDialogComponent = function UploadFileDialogComponent(_ref) {
     onClick: onClose
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Main.lang.close",
-    defaultMessage: "Fermer"
+    defaultMessage: "Close"
   }))));
 };
 

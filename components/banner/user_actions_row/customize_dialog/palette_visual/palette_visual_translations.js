@@ -14,15 +14,15 @@ var _reactIntl = require("react-intl");
 var PALETTE_KEY_TRANSLATIONS = Object.freeze({
   primary: _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "PaletteVisual.Key.Primary",
-    defaultMessage: "Primaire"
+    defaultMessage: "Primary"
   }),
   secondary: _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "PaletteVisual.Key.Secondary",
-    defaultMessage: "Secondaire"
+    defaultMessage: "Secondary"
   }),
   tertiary: _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "PaletteVisual.Key.Tertiary",
-    defaultMessage: "Tertiaire"
+    defaultMessage: "Tertiary"
   })
 });
 exports.PALETTE_KEY_TRANSLATIONS = PALETTE_KEY_TRANSLATIONS;
