@@ -175,8 +175,8 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
   return _react.default.createElement(_reactJss.ThemeProvider, {
     theme: builtTheme
   }, _react.default.createElement(_reactIntl.IntlProvider, {
-    locale: 'en',
-    messages: messages.en,
+    locale: locale,
+    messages: messages[locale] || messages.en,
     defaultLocale: locale
   }, _react.default.createElement(DeveloperProfileComponent, {
     isEditing: isEditing,
