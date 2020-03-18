@@ -4,7 +4,6 @@ import React from 'react';
 
 const NoDataButtonComponent = ({
     handleAddButtonClick,
-    color = 'primary',
     children,
     classes: receivedClasses = {}
 }) => (
@@ -12,7 +11,9 @@ const NoDataButtonComponent = ({
         customClasses={{
             container: receivedClasses.container
         }}
-        color={color}
+        style={{
+            color: 'inherit'
+        }}
         variant="outlined"
         onClick={handleAddButtonClick}
     >

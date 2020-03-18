@@ -9,7 +9,7 @@ import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { useCallbackOpen } from '../../../hooks/use_callback_open';
 
 const LanguagesCardComponent = ({ variant, side }) => {
-    const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
+    const { data, isEditing, onEdit, setIsEditing, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapLanguagesFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(editedData => {
@@ -18,7 +18,11 @@ const LanguagesCardComponent = ({ variant, side }) => {
 
     const isComplete = useMemo(() => validateLanguagesComplete(mappedData), [mappedData]);
 
-    const [openNewLanguageDialog, setNewLanguageDialogOpened] = useCallbackOpen();
+    const [openNewLanguageDialog, setNewLanguageDialogOpened, setNewLanguageDialogClosed] = useCallbackOpen();
+    const handleAddButtonClick = useCallback(() => {
+        setIsEditing(true);
+        setNewLanguageDialogOpened();
+    }, [onEdit]);
 
     if (!isComplete && mode !== 'edit') {
         return null;
@@ -29,12 +33,13 @@ const LanguagesCardComponent = ({ variant, side }) => {
             isComplete={isComplete}
             data={mappedData}
             sides={{
-                front: props => <LanguagesFront handleAddButtonClick={setNewLanguageDialogOpened} {...props} />,
-                back: props => <LanguagesBack handleAddButtonClick={setNewLanguageDialogOpened} {...props} />
+                front: props => <LanguagesFront handleAddButtonClick={handleAddButtonClick} {...props} />,
+                back: props => <LanguagesBack handleAddButtonClick={handleAddButtonClick} {...props} />
             }}
             variant={variant}
             side={side}
             openEditDialog={openNewLanguageDialog}
+            callbackEditDialogClosed={setNewLanguageDialogClosed}
             editDialog={{
                 component: LanguagesCardEditDialog,
                 validationSchema: LanguageValidator,

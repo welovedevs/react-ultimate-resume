@@ -62,6 +62,7 @@ const DeveloperProfileComponent = ({
                                        BeforeCards,
                                        additionalNodes,
                                        dismissCustomizeButton,
+                                       setIsEditing,
                                        classes: receivedGlobalClasses = {}
                                    }) => {
     const { apiKeys, endpoints } = options;
@@ -88,7 +89,8 @@ const DeveloperProfileComponent = ({
             additionalNodes,
             endpoints,
             receivedGlobalClasses,
-            dismissCustomizeButton
+            dismissCustomizeButton,
+            setIsEditing
         }),
         [endpoints, apiKeys, data, onEdit, store, mode, dismissCustomizeButton]
     );
@@ -116,7 +118,8 @@ const WithProvidersDeveloperProfile = ({
     additionalNodes,
     BeforeCards,
     classes,
-    isEditing
+    isEditing,
+    setIsEditing
 }) => {
     const mergedOptions = useMemo(
         () => mergeWith(cloneDeep(DEFAULT_OPTIONS), JSON.parse(JSON.stringify(options || {})), mergeOmitNull),
@@ -134,6 +137,7 @@ const WithProvidersDeveloperProfile = ({
             <IntlProvider locale={'en'} messages={messages.en} defaultLocale={locale}>
                 <DeveloperProfileComponent
                     isEditing={isEditing}
+                    setIsEditing={setIsEditing}
                     data={data}
                     mode={mode}
                     onEdit={onEdit}

@@ -44,6 +44,7 @@ const ProfileCardComponent = ({
     customEditAction,
     isComplete = true,
     openEditDialog: receivedOpenEditDialog = false,
+    callbackEditDialogClosed,
     side: sideProps
 }) => {
     const classes = useStyles({ variant });
@@ -53,7 +54,12 @@ const ProfileCardComponent = ({
     const [openEditDialog, setOpenEditDialog] = useState(receivedOpenEditDialog);
 
     const setEditDialogOpened = useCallback(() => setOpenEditDialog(true), []);
-    const setEditDialogClosed = useCallback(() => setOpenEditDialog(false), []);
+    const setEditDialogClosed = useCallback(() => {
+        setOpenEditDialog(false);
+        if (typeof callbackEditDialogClosed === 'function') {
+            callbackEditDialogClosed();
+        }
+    }, []);
 
     useEffect(() => {
         setOpenEditDialog(receivedOpenEditDialog);

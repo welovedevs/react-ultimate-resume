@@ -14,7 +14,7 @@ const NoLanguageComponent = ({ handleAddButtonClick }) => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
-            <Typography color="primary" variant="h4" component="h4">
+            <Typography style={{ color: 'inherit' }} variant="h4" component="h4">
                 <FormattedMessage
                     id="Languages.noLanguage.title"
                     defaultMessage="Les langues que vous maîtrisez seront affichées avec votre niveau ."

@@ -123,7 +123,7 @@ const LanguageItem = SortableElement(
 
 const SortableLanguagesItems = SortableContainer(({ items, onChange, onDelete, errors, name, schools, classes }) => (
     <List>
-        {items.map((language, index) => (
+        {items?.map((language, index) => (
             <LanguageItem
                 key={`${name}_${language.id}_${index}`}
                 onChange={onChange}

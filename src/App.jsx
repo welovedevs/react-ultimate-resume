@@ -49,6 +49,7 @@ function App() {
             data={data}
             onEdit={onEdit}
             isEditing={isEditing}
+            setIsEditing={setIsEditing}
             onCustomizationChanged={onCustomizationChanged}
             options={{
                 // side: 'back',
