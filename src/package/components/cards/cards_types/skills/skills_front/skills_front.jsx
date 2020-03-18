@@ -96,7 +96,6 @@ const Picture = ({ techno, classes }) => {
     const theme = useTheme();
     const [variant] = useCardVariant();
     const { backgroundColor } = getColorsFromCardVariant(theme, variant);
-
     const src = useMemo(() => {
         const hex = getHexFromPaletteColor(theme, backgroundColor);
         const luminance = chroma(hex).luminance();
@@ -105,21 +104,10 @@ const Picture = ({ techno, classes }) => {
         }
         return `https://process.filestackapi.com/output=format:png/${techno?.handle}`;
     }, [techno, theme, backgroundColor]);
-
-    if (color === 'light') {
-        src = `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle}`;
-    } else {
-        const [hue, saturation] = chroma(getHexFromPaletteColor(theme, color)).hsl();
-        src = `https://process.filestackapi.com/output=format:png/negative/modulate=hue:${Math.trunc(
-            hue
-        )},brightness:200,saturation:${Math.trunc(saturation * 100)}/${techno?.handle}`;
-    }
-
     if (!src || !techno) {
         return null;
     }
-
-    return <img src={src} alt={techno?.name} className={classes.logo}/>;
+    return <img src={src} alt={techno?.name} className={classes.logo} />;
 };
 
 export const SkillsFront = SkillsFrontComponent;
