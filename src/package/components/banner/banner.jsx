@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
@@ -11,6 +11,7 @@ import { UserInformations } from './user_actions_row/user_informations/user_info
 import { SocialActions } from './user_actions_row/social_actions/social_actions';
 import { CustomizeButton } from './user_actions_row/customize_button/customize_button';
 import { EditHeaderImageButton } from './edit_header_image_button/edit_header_image_button';
+import { DeveloperProfileContext } from '../../utils/context/contexts';
 
 import { OPACITY_TRANSITIONS } from '../../utils/springs/common_transitions/opacity_transitions';
 
@@ -27,6 +28,7 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
     const [actionsButtons] = useAdditionalNodes('banner.actionsButtons', null);
     const [globalReceivedBannerClasses = {}] = useReceivedGlobalClasses('banner');
     const [isEditing] = useIsEditing();
+    const { dismissCustomizeButton } = useContext(DeveloperProfileContext);
 
     const transitions = useTransition(customizationOptions?.imageHeader || null, item => item?.alt, {
         ...OPACITY_TRANSITIONS,
@@ -57,7 +59,7 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
                 <UserInformations/>
                 <SocialActions>
                     {actionsButtons}
-                    {onCustomizationChanged && <CustomizeButton customizationOptions={customizationOptions}/>}
+                    {onCustomizationChanged && !dismissCustomizeButton && <CustomizeButton customizationOptions={customizationOptions}/>}
                 </SocialActions>
             </div>
             {bannerImageCredits?.name && (

@@ -61,6 +61,7 @@ const DeveloperProfileComponent = ({
                                        onFilesUpload = async () => 'https://source.unsplash.com/random/4000x2000',
                                        BeforeCards,
                                        additionalNodes,
+                                       dismissCustomizeButton,
                                        classes: receivedGlobalClasses = {}
                                    }) => {
     const { apiKeys, endpoints } = options;
@@ -86,9 +87,10 @@ const DeveloperProfileComponent = ({
             mode,
             additionalNodes,
             endpoints,
-            receivedGlobalClasses
+            receivedGlobalClasses,
+            dismissCustomizeButton
         }),
-        [endpoints, apiKeys, data, onEdit, store, mode]
+        [endpoints, apiKeys, data, onEdit, store, mode, dismissCustomizeButton]
     );
 
     return (
