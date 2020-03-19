@@ -77,6 +77,7 @@
         "eslint-plugin-react": "^7.17.0",
         "eslint-plugin-react-hooks": "^2.3.0",
         "husky": "^3.1.0",
+        "lint-staged": "^10.0.8",
         "ora": "^4.0.3",
         "react-intl-translations-manager": "^5.0.3",
         "readline-sync": "^1.4.10",
@@ -100,7 +101,17 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run test-build --scripts-prepend-node-path &&  prettier --write \"+(src|firebase*)/**/**.+(js|jsx|json|ts|tsx|css|scss)\""
+            "pre-commit": "npm run test-build --scripts-prepend-node-path && lint-staged"
         }
+    },
+    "lint-staged": {
+        "*.+(js|jsx|scss)": [
+            "prettier --loglevel=debug --write",
+            "git add"
+        ],
+        "*.+(ts|tsx)": [
+            "prettier --loglevel=debug --write",
+            "git add"
+        ]
     }
 }
