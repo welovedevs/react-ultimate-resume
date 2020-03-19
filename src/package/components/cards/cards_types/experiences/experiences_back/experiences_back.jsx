@@ -34,6 +34,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
     }, [experience]);
 
     const title = useMemo(() => {
+        console.log({ name, place, dateString });
         if (typeof buildTitle === 'function') {
             return buildTitle({ name, place, dateString });
         }
