@@ -12,7 +12,7 @@ import { useCallbackOpen } from '../../../hooks/use_callback_open';
 import { SIDES } from '../../../commons/profile_card/profile_card_side/side';
 
 const ExperiencesCardComponent = ({ variant, side }) => {
-    const { data, onEdit, isEditing, setIsEditing, mode } = useContext(DeveloperProfileContext);
+    const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
 
     const mappedData = useMemo(() => mapWorkFromJsonResume(data), [data]);
 
@@ -21,7 +21,6 @@ const ExperiencesCardComponent = ({ variant, side }) => {
     const [openNewWorkDialog, setNewWorkDialogOpened, setNewWorkDialogClosed] = useCallbackOpen();
 
     const handleAddButtonClick = useCallback(() => {
-        setIsEditing(true);
         setNewWorkDialogOpened();
     }, [onEdit]);
 
@@ -39,7 +38,7 @@ const ExperiencesCardComponent = ({ variant, side }) => {
     }
     return (
         <ProfileCard
-            isEditingProfile={isEditing}
+            isEditingProfile={isEditing || openNewWorkDialog}
             isComplete={isComplete}
             data={mappedData}
             callbackEditDialogClosed={setNewWorkDialogClosed}
