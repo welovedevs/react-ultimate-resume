@@ -9,16 +9,27 @@ import { interestsValidator, validateInterestsComplete } from './data/validator'
 
 import { mapInterestsFromJsonResume, mapInterestsToJsonResume } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
+import { SIDES } from '../../../commons/profile_card/profile_card_side/side';
 
 const GifsCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapInterestsFromJsonResume(data), [data]);
 
-    const onDialogEdited = useCallback(editedData => {
-        onEdit(mapInterestsToJsonResume(editedData));
-    }, []);
+    const onDialogEdited = useCallback(
+        editedData => {
+            onEdit(mapInterestsToJsonResume(editedData));
+        },
+        [onEdit]
+    );
 
     const isComplete = useMemo(() => validateInterestsComplete(mappedData), [mappedData]);
+
+    const currentSide = useMemo(() => {
+        if (!isComplete && !isEditing) {
+            return SIDES.FRONT;
+        }
+        return side;
+    }, [side, isComplete, isEditing]);
 
     if (!isComplete && mode !== 'edit') {
         return null;
@@ -29,8 +40,8 @@ const GifsCardComponent = ({ variant, side }) => {
             isComplete={isComplete}
             data={mappedData}
             sides={{
-                front: GifsFront,
-                back: GifsBack
+                front: props => <GifsFront {...props} />,
+                back: props => <GifsBack {...props} />
             }}
             editDialog={{
                 component: GifsEditDialog,
@@ -38,7 +49,7 @@ const GifsCardComponent = ({ variant, side }) => {
                 onEdit: onDialogEdited
             }}
             variant={variant}
-            side={side}
+            side={currentSide}
         />
     );
 };

@@ -23,7 +23,7 @@ import { styles } from './languages_edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
-const LanguagesCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
+const LanguagesCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
     const { formatMessage } = useIntl();
     const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
 
@@ -32,6 +32,7 @@ const LanguagesCardEditDialogComponent = ({ open, onClose, data, onEdit, validat
             open={open}
             onClose={onClose}
             data={data}
+            isEditing={isEditing}
             onEdit={onEdit}
             validationSchema={validationSchemaToPass}
             title={<FormattedMessage id="Languages.editDialog.title" defaultMessage="Your languages" />}
@@ -123,7 +124,7 @@ const LanguageItem = SortableElement(
 
 const SortableLanguagesItems = SortableContainer(({ items, onChange, onDelete, errors, name, schools, classes }) => (
     <List>
-        {items.map((language, index) => (
+        {items?.map((language, index) => (
             <LanguageItem
                 key={`${name}_${language.id}_${index}`}
                 onChange={onChange}
@@ -196,12 +197,13 @@ const LanguagesEditFormWrapper = ({ helpers: { handleValueChange } }) => {
 
     const addLanguage = useCallback(() => {
         const id = uuid();
-        handleValueChange('languages')(
-            languages.concat({
-                index: languages.length,
+        handleValueChange('languages')([
+            ...(languages ?? []),
+            {
+                index: languages?.length ?? 0,
                 id
-            })
-        );
+            }
+        ]);
     }, [JSON.stringify(languages)]);
 
     const move = useCallback(

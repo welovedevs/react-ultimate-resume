@@ -1,8 +1,8 @@
-export const styles = (theme) => {
+export const styles = theme => {
     const {
         miscellaneous: { spacing }
     } = theme;
-    return ({
+    return {
         container: {
             color: 'inherit',
             margin: 0,
@@ -10,5 +10,5 @@ export const styles = (theme) => {
             whiteSpace: 'pre-line',
             marginTop: spacing
         }
-    });
+    };
 };

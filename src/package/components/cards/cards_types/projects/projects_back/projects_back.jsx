@@ -27,11 +27,14 @@ const ProjectsBackComponent = ({ data, handleAddButtonClick }) => {
     ]);
     const alt = data.projects?.[0]?.title;
 
-    const handleProjectDeletion = useCallback((index) => {
-        const newProjects = [...data.projects];
-        newProjects.splice(index, 1);
-        onEdit({ projects: newProjects });
-    }, [data, onEdit]);
+    const handleProjectDeletion = useCallback(
+        index => {
+            const newProjects = [...data.projects];
+            newProjects.splice(index, 1);
+            onEdit({ projects: newProjects });
+        },
+        [data, onEdit]
+    );
 
     return (
         <>
@@ -53,9 +56,7 @@ const ProjectsBackComponent = ({ data, handleAddButtonClick }) => {
                 {data.projects?.map(project => (
                     <ProjectSection project={project} key={`project_${project.id}`} onDelete={handleProjectDeletion} />
                 ))}
-                {!existsAndNotEmpty(data?.projects) && (
-                    <NoProject handleAddButtonClick={handleAddButtonClick} />
-                )}
+                {!existsAndNotEmpty(data?.projects) && <NoProject handleAddButtonClick={handleAddButtonClick} />}
             </ProfileCardContent>
         </>
     );

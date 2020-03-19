@@ -1,5 +1,5 @@
-export const styles = ({
+export const styles = {
     list: {
         paddingLeft: 20
     }
-});
+};

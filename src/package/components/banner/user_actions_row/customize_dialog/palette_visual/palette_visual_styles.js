@@ -1,6 +1,6 @@
 const DIMENSION = 75;
 
-export const styles = ({
+export const styles = {
     container: {
         display: 'flex'
     },
@@ -12,4 +12,4 @@ export const styles = ({
     tooltipPopper: {
         zIndex: 99999999999
     }
-});
+};

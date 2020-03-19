@@ -2,9 +2,12 @@ import { flex } from '../../../../../../../utils/styles/styles_utils';
 
 const { center } = flex;
 
-export const styles = (theme) => {
-    const { palette, miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        palette,
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: {
             width: 300,
             margin: spacing * 2,
@@ -47,5 +50,5 @@ export const styles = (theme) => {
             padding: spacing * 2
         },
         textField: {}
-    });
+    };
 };

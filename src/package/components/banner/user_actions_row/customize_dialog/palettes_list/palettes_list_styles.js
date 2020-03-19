@@ -1,12 +1,12 @@
 import { createScreenWidthMediaQuery, withCustomVerticalScrollbar } from '../../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
+export const styles = theme => {
     const {
         palette,
         miscellaneous: { spacing },
         screenSizes
     } = theme;
-    return ({
+    return {
         container: {
             maxHeight: '100%',
             overflowY: 'auto',
@@ -45,5 +45,5 @@ export const styles = (theme) => {
                 width: 50
             }
         }
-    });
+    };
 };

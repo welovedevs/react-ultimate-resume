@@ -24,10 +24,12 @@ const DreamJobFrontComponent = ({ data }) => {
     const theme = useTheme();
     const classes = useStyles({ theme });
     const { remoteFrequency, places } = data;
-    // console.log({ classes });
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [
+        side,
+        setSide
+    ]);
 
     const andMore = useMemo(() => {
         if (places.length < 2) {
@@ -78,6 +80,5 @@ const DreamJobFrontComponent = ({ data }) => {
         </>
     );
 };
-
 
 export const DreamJobFront = DreamJobFrontComponent;

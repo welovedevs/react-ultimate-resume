@@ -1,12 +1,15 @@
 import { createScreenWidthMediaQuery } from '../../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
-    const { screenSizes } = theme;
+export const styles = theme => {
+    const {
+        screenSizes,
+        miscellaneous: { spacing }
+    } = theme;
     const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
-    return ({
+    return {
         container: {
-          display: 'flex',
-          flexDirection: 'column'
+            display: 'flex',
+            flexDirection: 'column'
         },
         image: {
             height: '100%',
@@ -16,6 +19,21 @@ export const styles = (theme) => {
         paddedFront: {
             height: 1,
             flex: 1
+        },
+        noHobby: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            padding: [spacing * 2, spacing, 0]
+        },
+        noHobbyTypography: {
+            color: 'inherit',
+            fontWeight: 700,
+            lineHeight: 1.3
+        },
+        addButton: {
+            marginTop: spacing * 4,
+            marginLeft: -spacing
         },
         withoutGifTypography: {
             fontSize: 44,
@@ -34,5 +52,5 @@ export const styles = (theme) => {
                 maxHeight: 24 * 1.3 * 3
             }
         }
-    });
+    };
 };

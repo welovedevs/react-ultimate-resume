@@ -1,9 +1,12 @@
 import { createScreenWidthMediaQuery } from '../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
-    const { screenSizes, miscellaneous: { spacing } } = theme;
+export const styles = theme => {
+    const {
+        screenSizes,
+        miscellaneous: { spacing }
+    } = theme;
     const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
-    return ({
+    return {
         container: {
             height: 'fit-content',
             display: 'flex',
@@ -22,5 +25,5 @@ export const styles = (theme) => {
                 }
             }
         }
-    });
+    };
 };

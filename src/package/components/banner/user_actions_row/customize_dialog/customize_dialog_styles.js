@@ -1,6 +1,9 @@
-export const styles = (theme) => {
-    const { palette, miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        palette,
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         root: {
             zIndex: [9999999999, '!important']
         },
@@ -17,9 +20,9 @@ export const styles = (theme) => {
             right: 0
         },
         palettesList: ({ onlyShowPalettesList }) => ({
-            ...onlyShowPalettesList && {
+            ...(onlyShowPalettesList && {
                 flex: 1
-            }
+            })
         }),
         dividerContainer: {
             height: '100%',
@@ -35,5 +38,5 @@ export const styles = (theme) => {
         cardsOrderer: {
             flex: 1
         }
-    });
+    };
 };

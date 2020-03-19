@@ -26,6 +26,7 @@ const EditDialogComponent = ({
     children,
     title = '✏️',
     validationSchema,
+    isEditing,
     classes: receivedClasses = {}
 }) => {
     const classes = useStyles();
@@ -54,6 +55,7 @@ const EditDialogComponent = ({
                     onClose={onClose}
                     classes={classes}
                     receivedClasses={receivedClasses}
+                    isEditing={isEditing}
                 >
                     {children}
                 </TitleContent>
@@ -62,29 +64,20 @@ const EditDialogComponent = ({
     );
 };
 
-const TitleContent = ({
-    title,
-    fullScreen,
-    isMobile,
-    onClose,
-    children,
-    classes,
-    receivedClasses
-}) => {
+const TitleContent = ({ title, fullScreen, isMobile, onClose, children, classes, receivedClasses, isEditing }) => {
     const { handleSubmit, setFieldValue, values } = useFormikContext();
     return (
         <>
             <div className={classes.titleContainer}>
-                <DialogTitle>
-                    {title}
-                </DialogTitle>
-                {(fullScreen && !isMobile) && (
+                <DialogTitle>{title}</DialogTitle>
+                {fullScreen && !isMobile && (
                     <Actions
                         fullScreen
                         onClose={onClose}
                         handleSubmit={handleSubmit}
                         classes={classes}
                         receivedClasses={receivedClasses}
+                        isEditing={isEditing}
                     />
                 )}
             </div>
@@ -97,6 +90,7 @@ const TitleContent = ({
                 isMobile={isMobile}
                 classes={classes}
                 receivedClasses={receivedClasses}
+                isEditing={isEditing}
             >
                 {children}
             </Content>
@@ -104,7 +98,18 @@ const TitleContent = ({
     );
 };
 
-const Content = ({ children, onClose, handleSubmit, setFieldValue, values, fullScreen, isMobile, classes, receivedClasses }) => {
+const Content = ({
+    children,
+    onClose,
+    handleSubmit,
+    setFieldValue,
+    values,
+    fullScreen,
+    isMobile,
+    classes,
+    receivedClasses,
+    isEditing
+}) => {
     const handleValueChange = useCallback(
         name => value => {
             console.debug(`Setting field ${name} to value ${value}`);
@@ -129,39 +134,38 @@ const Content = ({ children, onClose, handleSubmit, setFieldValue, values, fullS
                     handleSubmit={handleSubmit}
                     classes={classes}
                     receivedClasses={receivedClasses}
+                    isEditing={isEditing}
                 />
             )}
         </>
     );
 };
 
-const Actions = ({ onClose, handleSubmit, fullScreen, classes, receivedClasses }) => {
-    const { mode } = useContext(DeveloperProfileContext);
-    return (
-        <DialogActions
-            classes={{
-                root: cn(classes.actions, receivedClasses.actions)
-            }}
+const Actions = ({ onClose, handleSubmit, fullScreen, classes, receivedClasses, isEditing }) => (
+    <DialogActions
+        classes={{
+            root: cn(classes.actions, receivedClasses.actions)
+        }}
+    >
+        <Tooltip
+            title={<FormattedMessage id="EditDialog.close.tooltip" defaultMessage="Any modification won't be saved!" />}
         >
-            <Tooltip
-                title={(
-                    <FormattedMessage
-                        id="EditDialog.close.tooltip"
-                        defaultMessage="Any modification won't be saved!"
-                    />
-                )}
+            <Button size="small" onClick={onClose}>
+                <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
+            </Button>
+        </Tooltip>
+        {isEditing && (
+            <Button
+                variant={fullScreen ? 'contained' : 'text'}
+                type="submit"
+                size="small"
+                color="primary"
+                onClick={handleSubmit}
             >
-                <Button size="small" onClick={onClose}>
-                    <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
-                </Button>
-            </Tooltip>
-            {mode === 'edit' && (
-                <Button variant={fullScreen ? 'contained' : 'text'} type="submit" size="small" color="primary" onClick={handleSubmit}>
-                    <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
-                </Button>
-            )}
-        </DialogActions>
-    );
-};
+                <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
+            </Button>
+        )}
+    </DialogActions>
+);
 
 export const EditDialog = EditDialogComponent;

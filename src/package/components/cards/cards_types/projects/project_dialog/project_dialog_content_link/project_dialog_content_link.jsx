@@ -6,14 +6,11 @@ import { createUseStyles } from 'react-jss';
 import { TextField, Typography } from '@wld/ui';
 import { useFormikContext } from 'formik';
 
-import { useIsEditing } from '../../../../../hooks/use_is_editing';
-
 import { styles } from './project_dialog_content_link_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectDialogContentLinkComponent = ({ link }) => {
-    const [isEditing] = useIsEditing();
+const ProjectDialogContentLinkComponent = ({ link, isEditing }) => {
     const classes = useStyles({ isEditing });
     return (
         <div className={classes.container}>
@@ -53,9 +50,9 @@ const EditingContent = ({ classes }) => {
                     container: classes.textField
                 }}
             />
-            {errors?.name && (
+            {errors?.link && (
                 <Typography color="danger" variant="helper" component="p">
-                    {errors.name}
+                    {errors.link}
                 </Typography>
             )}
         </>

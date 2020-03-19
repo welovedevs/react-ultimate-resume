@@ -1,6 +1,6 @@
 import { createScreenWidthMediaQuery } from '../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
+export const styles = theme => {
     const {
         miscellaneous: { spacing },
         screenSizes
@@ -8,7 +8,7 @@ export const styles = (theme) => {
 
     const QUERY_EXTRA_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.xs);
 
-    return ({
+    return {
         title: {
             [QUERY_EXTRA_SMALL]: {
                 fontSize: 28
@@ -22,5 +22,5 @@ export const styles = (theme) => {
                 paddingBottom: `${spacing}px !important`
             }
         }
-    });
+    };
 };

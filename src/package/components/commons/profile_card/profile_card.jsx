@@ -15,7 +15,6 @@ import { ProfileCardIncompletePopper } from './profile_card_incomplete_popper/pr
 
 import { SET_SIDE, SET_VARIANT } from '../../../store/profile_card/profile_card_actions_types';
 import { getProfileCardInitialState, profileCardReducer } from '../../../store/profile_card/profile_card_reducer';
-import { useCallbackOpen } from '../../hooks/use_callback_open';
 
 import { styles } from './profile_card_styles';
 import { PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_SPRING_PROPS } from './profile_card_spring_props';
@@ -33,24 +32,32 @@ const DEFAULT_TRANSITIONS_SPRING_PROPS = {
 };
 
 const ProfileCardComponent = ({
-                                  id,
-                                  children,
-                                  data,
-                                  sides,
-                                  variant,
-                                  isTransitionUnique = true,
-                                  isEditingProfile,
-                                  editDialog,
-                                  customTransitionsSpringProps,
-                                  customEditAction,
-                                  isComplete = true,
-                                  side: sideProps
-                              }) => {
+    id,
+    children,
+    data,
+    sides,
+    variant,
+    isTransitionUnique = true,
+    isEditingProfile,
+    editDialog,
+    customTransitionsSpringProps,
+    customEditAction,
+    isComplete = true,
+    side: sideProps
+}) => {
     const classes = useStyles({ variant });
     const theme = useTheme();
     const [containerElement, setContainerElement] = useState();
     const containerReference = useRef();
-    const [openEditDialog, setEditDialogOpened, setEditDialogClosed] = useCallbackOpen();
+    const [openEditDialog, setOpenEditDialog] = useState(false);
+    const [forceOpenEditDialog, setForceOpenEditDialog] = useState(false);
+
+    const setEditDialogOpened = useCallback(() => setOpenEditDialog(true), []);
+    const setEditDialogClosed = useCallback(() => {
+        setOpenEditDialog(false);
+        setForceOpenEditDialog(false);
+    }, []);
+
     const [state, dispatch] = useReducer(
         profileCardReducer,
         getProfileCardInitialState({
@@ -95,24 +102,27 @@ const ProfileCardComponent = ({
 
     const hasSideChanged = useRef(false);
 
-    const setSide = useCallback(newSide => {
-        if (sideProps) {
-            return;
-        }
-        dispatch({
-            type: SET_SIDE,
-            side: newSide
-        });
-    }, []);
+    const setSide = useCallback(
+        newSide => {
+            if (sideProps) {
+                return;
+            }
+            dispatch({
+                type: SET_SIDE,
+                side: newSide
+            });
+        },
+        [sideProps]
+    );
 
-    const handleMouseEnter = useCallback(() => setSide(SIDES.BACK), [dispatch]);
+    const handleMouseEnter = useCallback(() => setSide(SIDES.BACK), [setSide]);
 
     const handleMouseLeave = useCallback(() => {
         if (hasDialogOpened) {
             return;
         }
         setSide(SIDES.FRONT);
-    }, [hasDialogOpened, dispatch]);
+    }, [hasDialogOpened, setSide]);
 
     useEffect(() => {
         if (hasSideChanged.current) {
@@ -126,6 +136,10 @@ const ProfileCardComponent = ({
         unique: isTransitionUnique,
         immediate: !hasSideChanged.current
     });
+    const handleAddButtonClick = useCallback(() => {
+        setOpenEditDialog(true);
+        setForceOpenEditDialog(true);
+    }, []);
 
     const editButtonTransitions = useTransition(
         isEditingProfile,
@@ -140,15 +154,18 @@ const ProfileCardComponent = ({
 
     return (
         <>
-            {isEditingProfile && !customEditAction && (
-                <ProfileCardEditDialog
-                    editDialog={editDialog}
-                    open={openEditDialog}
-                    onClose={setEditDialogClosed}
-                    data={data}
-                />
+            {(isEditingProfile || forceOpenEditDialog) && (
+                <ProfileCardContext.Provider value={contextData}>
+                    <ProfileCardEditDialog
+                        editDialog={editDialog}
+                        open={openEditDialog}
+                        onClose={setEditDialogClosed}
+                        data={data}
+                        isEditing={isEditingProfile || forceOpenEditDialog}
+                    />
+                </ProfileCardContext.Provider>
             )}
-            <ProfileCardIncompletePopper open={isComplete !== true} anchorElement={containerElement}/>
+            <ProfileCardIncompletePopper open={isComplete !== true} anchorElement={containerElement} />
             <Card
                 containerRef={containerReference}
                 customClasses={{ container: classes.container }}
@@ -177,7 +194,7 @@ const ProfileCardComponent = ({
                         const SideComponent = sides[item] || (() => null);
                         return (
                             <ProfileCardSide key={key} style={props}>
-                                <SideComponent data={data}/>
+                                <SideComponent data={data} handleAddButtonClick={handleAddButtonClick} />
                             </ProfileCardSide>
                         );
                     })}
@@ -188,10 +205,12 @@ const ProfileCardComponent = ({
 };
 
 const EditAction = ({ customEditAction, setEditDialogOpened }) => {
+    const onCustomClick = useCallback(() => setEditDialogOpened(), []);
     if (customEditAction) {
-        return customEditAction;
+        const Component = customEditAction;
+        return <Component onClick={onCustomClick} />;
     }
-    return <ProfileCardEditButton setEditDialogOpened={setEditDialogOpened}/>;
+    return <ProfileCardEditButton setEditDialogOpened={setEditDialogOpened} />;
 };
 
 export const ProfileCard = ProfileCardComponent;

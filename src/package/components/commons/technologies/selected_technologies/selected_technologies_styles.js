@@ -1,8 +1,11 @@
 import { withCustomVerticalScrollbar } from '../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
-    const { palette, miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        palette,
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: {
             paddingRight: spacing * 6,
             height: '100%',
@@ -82,5 +85,5 @@ export const styles = (theme) => {
         sortableHelper: {
             zIndex: [1301, '!important']
         }
-    });
+    };
 };

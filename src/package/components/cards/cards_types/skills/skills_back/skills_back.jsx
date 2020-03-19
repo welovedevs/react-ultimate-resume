@@ -11,16 +11,28 @@ import OtherSkills from './other_skills/other_skills';
 
 import { styles } from './skills_back_styles';
 import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
+import { NoSkill } from './no_skill/no_skill';
 
 const useStyles = createUseStyles(styles);
 
-const SkillsBackComponent = ({ data }) => {
+const SkillsBackComponent = ({ data, handleAddButtonClick }) => (
+    <>
+        <ProfileCardTitle>
+            <FormattedMessage id="Skills.back.title" defaultMessage="Skills" />
+        </ProfileCardTitle>
+        <Content {...{ data, handleAddButtonClick }} />
+    </>
+);
+
+const Content = ({ data, handleAddButtonClick }) => {
     const [variant] = useCardVariant();
 
     const classes = useStyles({ variant });
-
     const springSkillOpacityPropsRef = useRef();
     const springGraphOpacityPropsRef = useRef();
+
+    const hasSkill = useMemo(() => existsAndNotEmpty(data?.skills), [data]);
 
     const springSkillOpacityProps = useSpring({
         from: { opacity: 0 },
@@ -67,26 +79,26 @@ const SkillsBackComponent = ({ data }) => {
         },
         [othersSkills]
     );
+
+    if (!hasSkill) {
+        return <NoSkill {...{ handleAddButtonClick }} />;
+    }
+
     return (
-        <>
-            <ProfileCardTitle>
-                <FormattedMessage id="Skills.back.title" defaultMessage="Skills" />
-            </ProfileCardTitle>
-            <div className={classes.container} onScroll={onScroll} style={springGraphOpacityProps}>
-                <SkillsPieChart
-                    variant={variant}
-                    data={top3Skills}
-                    springOnScrollOpacityProps={springOnScrollOpacityProps}
+        <div className={classes.container} onScroll={onScroll} style={springGraphOpacityProps}>
+            <SkillsPieChart
+                variant={variant}
+                data={top3Skills}
+                springOnScrollOpacityProps={springOnScrollOpacityProps}
+            />
+            {othersSkills.length > 1 && (
+                <OtherSkills
+                    style={springSkillOpacityProps}
+                    othersSkills={othersSkills}
+                    springTranslationProps={springTranslationProps}
                 />
-                {othersSkills.length > 1 && (
-                    <OtherSkills
-                        style={springSkillOpacityProps}
-                        othersSkills={othersSkills}
-                        springTranslationProps={springTranslationProps}
-                    />
-                )}
-            </div>
-        </>
+            )}
+        </div>
     );
 };
 export const SkillsBack = memo(SkillsBackComponent);

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 import cn from 'classnames';
 
@@ -18,24 +18,30 @@ import { useCardVariant } from '../../../../commons/profile_card/profile_card_ho
 import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './basics_front_styles';
+import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
+import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
 
 const useStyles = createUseStyles(styles);
 
-const BasicsFrontComponent = ({ data }) => {
+const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
+    const { mode } = useContext(DeveloperProfileContext);
     const [variant] = useCardVariant();
-    console.log({ variant });
+
     const classes = useStyles({ variant });
 
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [
+        side,
+        setSide
+    ]);
 
     const [isMainTypographyTruncated, setIsMainTypographyTruncated] = useState(true);
     const mainTypographyReference = useRef();
 
     useEffect(() => {
         const element = mainTypographyReference.current;
-        if (element.offsetHeight > element.scrollHeight - 1) {
+        if (element?.offsetHeight > element?.scrollHeight - 1) {
             setIsMainTypographyTruncated(false);
         }
     }, []);
@@ -50,19 +56,39 @@ const BasicsFrontComponent = ({ data }) => {
                         component="div"
                         ref={mainTypographyReference}
                         classes={{
-                            container: cn(classes.mainTypography,
-                                isMainTypographyTruncated && classes.truncatedMainTypography)
+                            container: cn(
+                                classes.mainTypography,
+                                isMainTypographyTruncated && classes.truncatedMainTypography
+                            )
                         }}
                     >
                         {data.summary}
                     </ProfileCardFrontTypography>
                     {currentCityName && (
-                        <ProfileCardFrontTypography variant="h4" component="h3" classes={{ container: classes.location }}>
+                        <ProfileCardFrontTypography
+                            variant="h4"
+                            component="h3"
+                            classes={{ container: classes.location }}
+                        >
                             <LocationIcon className={classes.locationIcon} />
                             {data?.currentCity?.name}
                         </ProfileCardFrontTypography>
                     )}
                 </div>
+                {!data?.personalDescription && mode === 'edit' && (
+                    <NoDataButton
+                        handleAddButtonClick={handleAddButtonClick}
+                        classes={{
+                            container: classes.addButton
+                        }}
+                        color="secondary"
+                    >
+                        <FormattedMessage
+                            id="Basics.noDescription.buttonLabel"
+                            defaultMessage="Ajouter une description"
+                        />
+                    </NoDataButton>
+                )}
             </CenterContentContainer>
             <ProfileCardActions>
                 <ProfileCardButton onClick={handleButtonClick}>

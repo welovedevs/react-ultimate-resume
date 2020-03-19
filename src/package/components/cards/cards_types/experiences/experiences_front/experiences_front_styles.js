@@ -1,13 +1,29 @@
-import {
-    createScreenWidthMediaQuery
-} from '../../../../../utils/styles/styles_utils';
+import { createScreenWidthMediaQuery } from '../../../../../utils/styles/styles_utils';
 
 export const styles = theme => {
-    const { screenSizes } = theme;
+    const {
+        screenSizes,
+        miscellaneous: { spacing }
+    } = theme;
     const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
     return {
         container: {
             flexDirection: 'column'
+        },
+        noWork: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            padding: [spacing, spacing, 0]
+        },
+        noWorkTypography: {
+            color: 'inherit',
+            fontWeight: 700,
+            lineHeight: 1.3
+        },
+        addButton: {
+            marginTop: spacing * 4,
+            marginLeft: -spacing
         },
         typography: {
             fontSize: 44,

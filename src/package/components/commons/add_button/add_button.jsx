@@ -14,16 +14,9 @@ const useStyles = createUseStyles(styles);
 const AddButtonComponent = ({ color = 'primary', variant = 'outlined', ...other }) => {
     const classes = useStyles({ color });
     return (
-        <Button
-            color={color}
-            variant={variant}
-            {...other}
-        >
+        <Button color={color} variant={variant} {...other}>
             <AddIcon className={classes.icon} />
-            <FormattedMessage
-                id="Main.Lang.Add"
-                defaultMessage="Add"
-            />
+            <FormattedMessage id="Main.Lang.Add" defaultMessage="Add" />
         </Button>
     );
 };

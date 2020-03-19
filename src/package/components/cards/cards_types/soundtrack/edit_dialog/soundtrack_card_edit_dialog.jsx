@@ -20,18 +20,19 @@ const useStyles = createUseStyles(styles);
 const URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/g;
 const SPOTIFY_DOMAIN = 'https://open.spotify.com';
 
-export const SoundtrackCardEditDialog = ({ open, onClose, data, onEdit }) => (
+export const SoundtrackCardEditDialog = ({ open, onClose, data, onEdit, isEditing }) => (
     <EditDialog
         data={data}
         onEdit={onEdit}
         onClose={onClose}
+        isEditing={isEditing}
         open={open}
-        title={(
+        title={
             <FormattedMessage
                 id="Sountrack.editDialog.title"
                 defaultMessage="Embed your musical tastes in your profile."
             />
-          )}
+        }
     >
         {helpers => <Content helpers={helpers} />}
     </EditDialog>
@@ -47,27 +48,31 @@ const Content = ({ helpers: { fullScreen, isMobile } }) => {
     const [hasLoaded, setHasLoaded] = useState(false);
     const handleLoad = useCallback(() => setHasLoaded(true), []);
 
-    const handleFieldChange = useCallback((event) => {
-        const { target: { value } } = event;
-        if (!URL_REGEX.test(value) || !value.startsWith(SPOTIFY_DOMAIN)) {
-            return;
-        }
-        let finalValue = value;
-        if (!value.includes('/embed')) {
-            finalValue = `${value.substring(0, SPOTIFY_DOMAIN.length)}/embed/${value.substring(SPOTIFY_DOMAIN.length + 1, value.length)}`;
-        }
-        setFieldValue('embedUrl', finalValue);
-    }, [setFieldValue, embedUrl]);
+    const handleFieldChange = useCallback(
+        event => {
+            const {
+                target: { value }
+            } = event;
+            if (!URL_REGEX.test(value) || !value.startsWith(SPOTIFY_DOMAIN)) {
+                return;
+            }
+            let finalValue = value;
+            if (!value.includes('/embed')) {
+                finalValue = `${value.substring(0, SPOTIFY_DOMAIN.length)}/embed/${value.substring(
+                    SPOTIFY_DOMAIN.length + 1,
+                    value.length
+                )}`;
+            }
+            setFieldValue('embedUrl', finalValue);
+        },
+        [setFieldValue, embedUrl]
+    );
 
     const clearField = useCallback(() => {
         setFieldValue('embedUrl', '');
     }, [setFieldValue]);
 
-    const isValidUrl = useMemo(
-        () =>
-            URL_REGEX.test(iframeUrl) && iframeUrl?.includes('/embed'),
-        [iframeUrl]
-    );
+    const isValidUrl = useMemo(() => URL_REGEX.test(iframeUrl) && iframeUrl?.includes('/embed'), [iframeUrl]);
 
     useEffect(() => {
         if (isValidUrl) {
@@ -86,12 +91,12 @@ const Content = ({ helpers: { fullScreen, isMobile } }) => {
                         defaultMessage="Enter a Spotify embed URL."
                     />
                 }
-                subtitle={(
+                subtitle={
                     <FormattedMessage
                         id="Soundtrack.editDialog.embedUrl.subtitle"
                         defaultMessage="Ex: https://open.spotify.com/embed/album/79dL7FLiJFOO0EoehUHQBv"
                     />
-                )}
+                }
             >
                 <TextField
                     onChange={handleFieldChange}

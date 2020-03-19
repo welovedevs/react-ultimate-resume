@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
@@ -11,6 +11,7 @@ import { UserInformations } from './user_actions_row/user_informations/user_info
 import { SocialActions } from './user_actions_row/social_actions/social_actions';
 import { CustomizeButton } from './user_actions_row/customize_button/customize_button';
 import { EditHeaderImageButton } from './edit_header_image_button/edit_header_image_button';
+import { DeveloperProfileContext } from '../../utils/context/contexts';
 
 import { OPACITY_TRANSITIONS } from '../../utils/springs/common_transitions/opacity_transitions';
 
@@ -27,6 +28,7 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
     const [actionsButtons] = useAdditionalNodes('banner.actionsButtons', null);
     const [globalReceivedBannerClasses = {}] = useReceivedGlobalClasses('banner');
     const [isEditing] = useIsEditing();
+    const { dismissCustomizeButton } = useContext(DeveloperProfileContext);
 
     const transitions = useTransition(customizationOptions?.imageHeader || null, item => `${item?.alt}_${item.url}`, {
         ...OPACITY_TRANSITIONS,
@@ -38,9 +40,9 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
     return (
         <div className={cn(classes.container, globalReceivedBannerClasses.container)}>
             {isEditing && onCustomizationChanged && (
-                <EditHeaderImageButton customizationOptions={customizationOptions}/>
+                <EditHeaderImageButton customizationOptions={customizationOptions} />
             )}
-            <div className={cn(classes.overlay, globalReceivedBannerClasses.overlay)}/>
+            <div className={cn(classes.overlay, globalReceivedBannerClasses.overlay)} />
             {transitions?.map(
                 ({ item, key, props }) =>
                     item && (
@@ -54,10 +56,12 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
                     )
             )}
             <div className={cn(classes.content, globalReceivedBannerClasses.content)}>
-                <UserInformations/>
+                <UserInformations />
                 <SocialActions>
                     {actionsButtons}
-                    {onCustomizationChanged && <CustomizeButton customizationOptions={customizationOptions}/>}
+                    {onCustomizationChanged && !dismissCustomizeButton && (
+                        <CustomizeButton customizationOptions={customizationOptions} />
+                    )}
                 </SocialActions>
             </div>
             {bannerImageCredits?.name && (
@@ -88,7 +92,7 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <FormattedMessage id="Unsplash.brandName" defaultMessage="Unsplash"/>
+                                    <FormattedMessage id="Unsplash.brandName" defaultMessage="Unsplash" />
                                 </a>
                             )
                         }}

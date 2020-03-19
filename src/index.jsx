@@ -7,4 +7,9 @@ import { StylesProvider } from '@material-ui/core/styles';
 import './styles/global.css';
 import './styles/animations.css';
 
-ReactDOM.render(<StylesProvider injectFirst><App/></StylesProvider>, document.getElementById('root'));
+ReactDOM.render(
+    <StylesProvider injectFirst>
+        <App />
+    </StylesProvider>,
+    document.getElementById('root')
+);

@@ -23,6 +23,10 @@ export const styles = theme => {
         text: {
             margin: [0, '!important']
         },
+        addButton: {
+            marginTop: spacing * 4,
+            marginLeft: -spacing
+        },
         mainTypography: {
             extend: 'text',
             textOverflow: 'ellipsis',

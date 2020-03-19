@@ -47,12 +47,8 @@ const ProfileCardIncompletePopperComponent = ({ open, onClose, anchorElement }) 
                 }
             }}
         >
-            <WarnIcon
-                className={classes.icon}
-            />
-            <Typography
-                color="light"
-            >
+            <WarnIcon className={classes.icon} />
+            <Typography color="light">
                 <FormattedMessage
                     id="ProfileCardIncompletePopper.label.value"
                     defaultMessage="This card is missing data"

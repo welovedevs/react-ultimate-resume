@@ -61,16 +61,21 @@ const DeveloperProfileComponent = ({
     onFilesUpload = async () => 'https://source.unsplash.com/random/4000x2000',
     BeforeCards,
     additionalNodes,
+    dismissCustomizeButton,
+    setIsEditing,
     classes: receivedGlobalClasses = {}
 }) => {
     const { apiKeys, endpoints } = options;
     const classes = useStyles(styles);
 
-    const onEdit = useCallback(newData => {
-        if (typeof onEditProps === 'function') {
-            onEditProps(newData);
-        }
-    }, []);
+    const onEdit = useCallback(
+        newData => {
+            if (typeof onEditProps === 'function') {
+                onEditProps(newData);
+            }
+        },
+        [onEditProps]
+    );
     const store = {
         technologies: useReducer(technologiesReducer, technologiesInitialState)
     };
@@ -86,9 +91,11 @@ const DeveloperProfileComponent = ({
             mode,
             additionalNodes,
             endpoints,
-            receivedGlobalClasses
+            receivedGlobalClasses,
+            dismissCustomizeButton,
+            setIsEditing
         }),
-        [endpoints, apiKeys, data, onEdit, store, mode]
+        [endpoints, apiKeys, data, onEdit, store, mode, dismissCustomizeButton]
     );
 
     const side = useMemo(() => (isEditing && SIDES.BACK) || options?.side, [options, isEditing]);
@@ -114,8 +121,9 @@ const WithProvidersDeveloperProfile = ({
     additionalNodes,
     BeforeCards,
     classes,
-    onFilesUpload,
     isEditing,
+    setIsEditing,
+    onFilesUpload,
     intl: parentIntl
 }) => {
     const mergedOptions = useMemo(
@@ -135,6 +143,7 @@ const WithProvidersDeveloperProfile = ({
             <IntlProvider locale={locale} messages={providerMessages} defaultLocale={locale}>
                 <DeveloperProfileComponent
                     isEditing={isEditing}
+                    setIsEditing={setIsEditing}
                     data={data}
                     mode={mode}
                     onEdit={onEdit}

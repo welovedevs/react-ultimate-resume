@@ -66,7 +66,7 @@ export const SliderWithPopper = ({
             onMouseDown={handleFocus}
             onMouseUp={handleBlur}
             thumbReference={thumbReference}
-            thumbChildren={(
+            thumbChildren={
                 <PopperCard
                     open={isFocused}
                     anchorElement={thumbReference.current}
@@ -85,7 +85,7 @@ export const SliderWithPopper = ({
                 >
                     {localValue}
                 </PopperCard>
-            )}
+            }
         />
     );
 };

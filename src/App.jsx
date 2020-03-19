@@ -23,7 +23,8 @@ const DEFAULT_CARD_ORDER = [
 ];
 
 const mergeFunction = (objValue, srcValue) => {
-    if (isArray(objValue)) {
+    console.log({ objValue, srcValue });
+    if (!objValue || isArray(objValue)) {
         return srcValue;
     }
     return merge(objValue, srcValue);
@@ -35,20 +36,23 @@ function App() {
 
     const onEdit = useCallback(
         newData => {
-            setData(mergeWith(cloneDeep(data), newData, mergeFunction));
+            console.log({ newData, data });
+            const mergeWith1 = mergeWith(cloneDeep(data), newData, mergeFunction);
+            console.log({ mergeWith1 });
+            setData(mergeWith1);
         },
-        [data]
+        [JSON.stringify(data)]
     );
     const [customization, setCustomization] = useState({ cardsOrder: DEFAULT_CARD_ORDER });
 
-    const onCustomizationChanged = useCallback(setCustomization,
-        [data]);
+    const onCustomizationChanged = useCallback(setCustomization, [data]);
     return (
         <DeveloperProfile
             mode="edit"
             data={data}
             onEdit={onEdit}
             isEditing={isEditing}
+            setIsEditing={setIsEditing}
             onCustomizationChanged={onCustomizationChanged}
             options={{
                 // side: 'back',
@@ -64,16 +68,17 @@ function App() {
             }}
             additionalNodes={{
                 banner: {
-                    actionsButtons:
+                    actionsButtons: (
                         <>
                             <Button
                                 style={{ color: '#fff' }}
                                 variant="outlined"
                                 onClick={() => setIsEditing(!isEditing)}
                             >
-                                <FormattedMessage id="Edit" defaultMessage="Edit"/>
+                                <FormattedMessage id="Edit" defaultMessage="Edit" />
                             </Button>
                         </>
+                    )
                 }
             }}
         />

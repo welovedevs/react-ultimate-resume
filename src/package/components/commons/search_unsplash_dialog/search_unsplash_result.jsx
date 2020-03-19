@@ -33,7 +33,7 @@ const SearchUnsplashDialogComponent = ({ open, onClose, onSelect }) => {
             onClose={onClose}
         >
             <DialogTitle classes={{ root: classes.title }}>
-                <FormattedMessage id="Unsplash.SearchDialog.Title" defaultMessage="Search pictures from unsplash"/>
+                <FormattedMessage id="Unsplash.SearchDialog.Title" defaultMessage="Search pictures from unsplash" />
             </DialogTitle>
             <DialogContent
                 classes={{
@@ -48,11 +48,11 @@ const SearchUnsplashDialogComponent = ({ open, onClose, onSelect }) => {
                     variant="flat"
                     placeholder="Burrito, development, etc..."
                 />
-                <Results query={query} debouncedQuery={debouncedQuery} onSelect={onSelect} classes={classes}/>
+                <Results query={query} debouncedQuery={debouncedQuery} onSelect={onSelect} classes={classes} />
             </DialogContent>
             <DialogActions>
                 <Button size="small" onClick={onClose}>
-                    <FormattedMessage id="Main.lang.close" defaultMessage="Close"/>
+                    <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
                 </Button>
             </DialogActions>
         </Dialog>
@@ -98,22 +98,20 @@ const Results = ({ query, debouncedQuery, onSelect, classes }) => {
 
     return (
         <div className={classes.results}>
-            {showLoadingSpinner && <LoadingSpinner/>}
-            {!showLoadingSpinner && results?.map(({ id, urls, description, user, links }) => (
-                <Tooltip
-                    key={`unsplash_picture_${id}`}
-                    title="Select this picture"
-                >
-                    <button
-                        key={`result_${id}`}
-                        type="button"
-                        className={classes.imageContainer}
-                        onClick={onImageSelected({ description, urls, id, user, links })}
-                    >
-                        <img className={classes.image} src={urls.regular} alt={description}/>
-                    </button>
-                </Tooltip>
-            ))}
+            {showLoadingSpinner && <LoadingSpinner />}
+            {!showLoadingSpinner &&
+                results?.map(({ id, urls, description, user, links }) => (
+                    <Tooltip key={`unsplash_picture_${id}`} title="Select this picture">
+                        <button
+                            key={`result_${id}`}
+                            type="button"
+                            className={classes.imageContainer}
+                            onClick={onImageSelected({ description, urls, id, user, links })}
+                        >
+                            <img className={classes.image} src={urls.regular} alt={description} />
+                        </button>
+                    </Tooltip>
+                ))}
         </div>
     );
 };

@@ -39,12 +39,7 @@ const CARD_TYPE_MAPPING = Object.freeze({
     interestedBy: InterestedBySvg
 });
 
-
-const CardStubComponent = ({
-    data: { type, variant },
-    cardIndex,
-    onItemChanged
-}) => {
+const CardStubComponent = ({ data: { type, variant }, cardIndex, onItemChanged }) => {
     const classes = useStyles({ variant });
     const [openPopperCard, handlers] = useOpenerState();
     const [debouncedOpenPopperCard] = useDebounce(openPopperCard, openPopperCard ? 300 : 0);
@@ -77,7 +72,7 @@ const CardStubComponent = ({
 
 const CardVariants = ({ variant, onVariantChanged, classes }) => {
     const theme = useTheme();
-    const handleMouseDown = useCallback((event) => {
+    const handleMouseDown = useCallback(event => {
         event.preventDefault();
         event.stopPropagation();
     }, []);
@@ -85,10 +80,7 @@ const CardVariants = ({ variant, onVariantChanged, classes }) => {
         <div className={classes.popperCardContent}>
             <li className={classes.cardVariantsList}>
                 {theme.components?.cards?.variants?.map((colorScheme, variantIndex) => (
-                    <ul
-                        className={classes.cardVariantsListItem}
-                        key={`card_variant_${variantIndex}`}
-                    >
+                    <ul className={classes.cardVariantsListItem} key={`card_variant_${variantIndex}`}>
                         <Checkbox
                             className={classes.cardVariantsCheckbox}
                             color="primary"
@@ -103,10 +95,13 @@ const CardVariants = ({ variant, onVariantChanged, classes }) => {
                                 tooltipPopper: classes.cardVariantsTooltipPopper
                             }}
                             translations={CARD_STUB_TRANSLATIONS}
-                            palette={Object.entries(colorScheme || {}).reduce((acc, [key, colorName]) => ({
-                                ...acc,
-                                [key]: { 500: getHexFromPaletteColor(theme, colorName) }
-                            }), {})}
+                            palette={Object.entries(colorScheme || {}).reduce(
+                                (acc, [key, colorName]) => ({
+                                    ...acc,
+                                    [key]: { 500: getHexFromPaletteColor(theme, colorName) }
+                                }),
+                                {}
+                            )}
                         />
                     </ul>
                 ))}

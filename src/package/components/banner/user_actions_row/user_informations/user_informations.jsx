@@ -29,7 +29,7 @@ const UserInformationsComponent = () => {
                     variant="h3"
                     component="h3"
                 >
-                   {data.basics?.name}
+                    {data.basics?.name}
                 </Typography>
                 <Typography
                     customClasses={{

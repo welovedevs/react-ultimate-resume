@@ -17,7 +17,7 @@ import { styles } from './basic_edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
-const BasicsCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
+const BasicsCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
     const { formatMessage } = useIntl();
     const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
 
@@ -27,13 +27,9 @@ const BasicsCardEditDialogComponent = ({ open, onClose, data, onEdit, validation
             onClose={onClose}
             data={data}
             onEdit={onEdit}
+            isEditing={isEditing}
             validationSchema={validationSchemaToPass}
-            title={(
-                <FormattedMessage
-                    id="Basics.editDialog.title"
-                    defaultMessage="Your basic informations"
-                />
-            )}
+            title={<FormattedMessage id="Basics.editDialog.title" defaultMessage="Your basic informations" />}
         >
             {helpers => <Content helpers={helpers} />}
         </EditDialog>
@@ -58,18 +54,18 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
         <>
             <EditDialogField
                 error={errors.personalDescription}
-                title={(
+                title={
                     <FormattedMessage
                         id="Basics.editDialog.personalDescription.title"
                         defaultMessage="Do you want to tell a bit more about you?"
                     />
-                )}
-                subtitle={(
+                }
+                subtitle={
                     <FormattedMessage
                         id="Basics.editDialog.personalDescription.subtitle"
                         defaultMessage="Use this space to describe yourself a bit more ! "
                     />
-                )}
+                }
             >
                 <TextField
                     multiline
@@ -86,29 +82,23 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                     container: classes.field
                 }}
                 error={errors?.summary}
-                title={(
+                title={
                     <FormattedMessage
                         id="Basics.editDialog.summary.title"
                         defaultMessage="Describe yourself in a few words."
                     />
-                )}
+                }
             >
-                <TextField
-                    fullWidth
-                    variant="flat"
-                    onChange={handleChange}
-                    value={summary}
-                    name="summary"
-                />
+                <TextField fullWidth variant="flat" onChange={handleChange} value={summary} name="summary" />
             </EditDialogField>
             <EditDialogField
                 error={errors?.currentCity?.name || errors?.currentCity}
-                title={(
+                title={
                     <FormattedMessage
                         id="Basics.editDialog.location.title"
                         defaultMessage="What's your current location?"
                     />
-                )}
+                }
             >
                 <LocationField
                     fullWidth
@@ -116,39 +106,33 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                     value={currentCity?.name}
                     onLocationSelected={handleValueChange('currentCity')}
                 />
-                <VisaField
-                    value={visaSponsorship}
-                    toggleValue={toggleValue}
-                />
+                <VisaField value={visaSponsorship} toggleValue={toggleValue} />
             </EditDialogField>
             <EditDialogField
                 error={errors.searchState}
-                title={(
+                title={
                     <FormattedMessage
                         id="Basics.editDialog.searchState.title"
                         defaultMessage="What's your current job search state?"
                     />
-                )}
+                }
             >
-                <JobSearchStateField
-                    value={searchState}
-                    handleChange={handleChange}
-                />
+                <JobSearchStateField value={searchState} handleChange={handleChange} />
             </EditDialogField>
             <EditDialogField
                 error={errors.codingYears}
-                title={(
+                title={
                     <FormattedMessage
                         id="Basics.editDialog.codingYears.title"
                         defaultMessage="How long have you been coding?"
                     />
-                )}
-                subtitle={(
+                }
+                subtitle={
                     <FormattedMessage
                         id="Basics.editDialog.codingYears.subtitle"
                         defaultMessage="(every experiences, studies, personal projects, work...)"
                     />
-                )}
+                }
             >
                 <div className={classes.valueSliderContainer}>
                     <Typography className={classes.sliderValue}>
@@ -179,18 +163,18 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
             </EditDialogField>
             <EditDialogField
                 error={errors.studiesLevel}
-                title={(
+                title={
                     <FormattedMessage
                         id="Basics.editDialog.studiesLevel.title"
                         defaultMessage="What is your highest level of formal education?"
                     />
-                )}
-                subtitle={(
+                }
+                subtitle={
                     <FormattedMessage
                         id="Basics.editDialog.studiesLevel.subtitle"
                         defaultMessage="Bachelor = 3 years post graduate. Master = 5 years post graduate."
                     />
-                )}
+                }
             >
                 <div className={classes.valueSliderContainer}>
                     <Typography className={classes.sliderValue}>
@@ -221,18 +205,18 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
             </EditDialogField>
             <EditDialogField
                 error={errors.experienceYears}
-                title={(
+                title={
                     <FormattedMessage
                         id="Basics.editDialog.experienceYears.title"
                         defaultMessage="How many years of professional experience do you have?"
                     />
-                )}
-                subtitle={(
+                }
+                subtitle={
                     <FormattedMessage
                         id="Basics.editDialog.experienceYears.subtitle"
                         defaultMessage="Tech and non-tech experiences"
                     />
-                )}
+                }
             >
                 <div className={classes.valueSliderContainer}>
                     <Typography className={classes.sliderValue}>
@@ -263,18 +247,17 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
             </EditDialogField>
             <EditDialogField
                 error={errors.codingReason}
-                title={(
+                title={
                     <FormattedMessage
                         id="Basics.editDialog.codingReason.title"
                         defaultMessage="What motivates you to write code?"
                     />
-                )}
+                }
             >
                 <TextField onChange={handleChange} name="codingReason" value={codingReason} variant="flat" fullWidth />
             </EditDialogField>
         </>
     );
 };
-
 
 export const BasicsCardEditDialog = BasicsCardEditDialogComponent;

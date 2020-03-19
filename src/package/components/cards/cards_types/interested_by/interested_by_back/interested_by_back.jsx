@@ -22,11 +22,8 @@ const InterestedByBackComponent = props => {
                 container: classes.container,
                 typography: classes.typography
             }}
-            profileCardFrontTypographyProps={{
-                overrideColor
-            }}
+            overrideColor={overrideColor}
             dismissButton
-            dismissTitle
             {...props}
         />
     );

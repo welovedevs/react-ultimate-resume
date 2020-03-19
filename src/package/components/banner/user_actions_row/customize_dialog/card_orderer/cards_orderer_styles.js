@@ -3,8 +3,10 @@ import { withCustomVerticalScrollbar } from '../../../../../utils/styles/styles_
 const CARD_DIMENSION = 200;
 
 export const styles = theme => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: {
             flex: 1,
             overflow: 'auto',
@@ -23,5 +25,5 @@ export const styles = theme => {
             width: CARD_DIMENSION,
             height: CARD_DIMENSION
         }
-    });
+    };
 };

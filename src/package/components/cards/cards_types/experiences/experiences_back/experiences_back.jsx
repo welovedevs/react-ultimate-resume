@@ -12,6 +12,8 @@ import { ProfileCardSectionSubtitle } from '../../../../commons/profile_card/pro
 import { styles } from './experiences_back_styles';
 import { translations } from './experiences_translations';
 import { useAdditionalNodes } from '../../../../hooks/use_additional_nodes';
+import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
+import { NoWork } from './no_work/no_work';
 
 const useStyles = createUseStyles(styles);
 
@@ -49,7 +51,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
             builder.push(place.name);
         }
         if (builder.length) {
-            builder.push(<br/>);
+            builder.push(<br />);
         }
         builder.push(dateString);
         return builder;
@@ -65,14 +67,23 @@ const ExperienceContent = ({ experience, variant, classes }) => {
     );
 };
 
-const ExperiencesBackComponent = ({ data }) => {
-    const classes = useStyles();
+const Content = ({ data, handleAddButtonClick, classes }) => {
+    const hasWork = useMemo(() => existsAndNotEmpty(data?.work), [data]);
     const experiences = data.work?.filter(({ position, summary }) => Boolean(position && summary));
+
+    if (!hasWork) {
+        return <NoWork {...{ handleAddButtonClick }} />;
+    }
+    return experiences.map(experience => (
+        <ExperienceContent key={`work_experience_${experience.id}`} experience={experience} classes={classes} />
+    ));
+};
+
+const ExperiencesBackComponent = ({ data, handleAddButtonClick }) => {
+    const classes = useStyles();
     return (
         <ProfileCardAnimatedBack title="Experiences">
-            {experiences.map(experience => (
-                <ExperienceContent key={`work_experience_${experience.id}`} experience={experience} classes={classes}/>
-            ))}
+            <Content {...{ data, handleAddButtonClick, classes }} />
         </ProfileCardAnimatedBack>
     );
 };

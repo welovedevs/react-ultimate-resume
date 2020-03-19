@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
@@ -16,6 +16,8 @@ import { useCardVariant } from '../../../../commons/profile_card/profile_card_ho
 import { GIFS_BACK_TRANSITIONS_SPRING_PROPS } from './gifs_back_spring_props';
 
 import { styles } from './gifs_back_styles';
+import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
+import { NoHobby } from './no_hobby/no_hobby';
 
 const useStyles = createUseStyles(styles);
 
@@ -30,7 +32,7 @@ const SETTINGS = {
     slidesToScroll: 1
 };
 
-const GifsBackComponent = ({ data }) => {
+const GifsBackComponent = ({ data, handleAddButtonClick }) => {
     const [variant] = useCardVariant();
     const classes = useStyles({ variant });
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -51,11 +53,6 @@ const GifsBackComponent = ({ data }) => {
 
     const resumeSlider = useCallback(() => sliderReference.current?.slickPlay(), []);
 
-    const transitions = useTransition((data.interests?.[currentIndex] ?? {}), item => `gif_name_${item.name}`, {
-        ...GIFS_BACK_TRANSITIONS_SPRING_PROPS,
-        immediate: !hasChanged.current
-    });
-
     return (
         <GifsSidesCommons
             underLayer={
@@ -64,29 +61,45 @@ const GifsBackComponent = ({ data }) => {
                         {...SETTINGS}
                         ref={sliderReference}
                         beforeChange={handleBeforeChange}
-                        prevArrow={(
+                        prevArrow={
                             <Arrow
                                 classes={classes}
                                 arrowRole="prev"
                                 buttonProps={{ className: classes.previousButton }}
                             />
-                          )}
+                        }
                         nextArrow={
                             <Arrow classes={classes} arrowRole="next" buttonProps={{ className: classes.nextButton }} />
                         }
                     >
                         {(data.interests ?? []).map(({ gifUrl, name }) => (
-                            <SlideItem
-                                gifUrl={gifUrl}
-                                name={name}
-                                classes={classes}
-                            />
+                            <SlideItem gifUrl={gifUrl} name={name} classes={classes} />
                         ))}
                     </Slider>
                 </div>
             }
         >
-            {transitions.map(({ item, key, props }) => item?.name && (
+            <Content
+                {...{ data, hasChanged, currentIndex, pauseSlider, resumeSlider, handleAddButtonClick, classes }}
+            />
+        </GifsSidesCommons>
+    );
+};
+
+const Content = ({ data, pauseSlider, hasChanged, currentIndex, resumeSlider, handleAddButtonClick, classes }) => {
+    const hasHobby = useMemo(() => existsAndNotEmpty(data?.interests), [data]);
+
+    const transitions = useTransition(data.interests?.[currentIndex] ?? {}, item => `gif_name_${item.name}`, {
+        ...GIFS_BACK_TRANSITIONS_SPRING_PROPS,
+        immediate: !hasChanged.current
+    });
+
+    if (!hasHobby) {
+        return <NoHobby {...{ handleAddButtonClick }} />;
+    }
+    return transitions.map(
+        ({ item, key, props }) =>
+            item?.name && (
                 <TransitioningItem
                     item={item}
                     key={key}
@@ -95,8 +108,7 @@ const GifsBackComponent = ({ data }) => {
                     pauseSlider={pauseSlider}
                     resumeSlider={resumeSlider}
                 />
-            ))}
-        </GifsSidesCommons>
+            )
     );
 };
 
@@ -139,14 +151,7 @@ const SlideItem = ({ gifUrl, name, classes }) => {
     if (!gifUrl) {
         return <div className={classes.solidBackground} />;
     }
-    return (
-        <img
-            key={`gifs_back_carousel_image_${gifUrl}_${name}`}
-            className={classes.image}
-            src={gifUrl}
-            alt={name}
-        />
-    );
+    return <img key={`gifs_back_carousel_image_${gifUrl}_${name}`} className={classes.image} src={gifUrl} alt={name} />;
 };
 
 const TransitioningItem = ({ item, key, props, pauseSlider, resumeSlider, classes }) => {

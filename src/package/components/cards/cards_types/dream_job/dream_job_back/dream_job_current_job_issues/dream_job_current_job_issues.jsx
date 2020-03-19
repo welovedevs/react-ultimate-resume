@@ -20,10 +20,7 @@ const DreamJobCurrentJobIssuesComponent = ({ currentJobIssues = {} }) => {
                         return null;
                     }
                     return (
-                        <li
-                            className={classes.listItem}
-                            key={`dream_job_current_job_issue_${issueId}`}
-                        >
+                        <li className={classes.listItem} key={`dream_job_current_job_issue_${issueId}`}>
                             {formatMessage(translations[issueId])}
                         </li>
                     );

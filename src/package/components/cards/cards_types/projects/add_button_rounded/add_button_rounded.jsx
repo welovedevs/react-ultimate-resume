@@ -5,11 +5,7 @@ import { BouncingRoundButton } from '../../../../commons/bouncing_round_button/b
 import { ReactComponent as EditIcon } from '../../../../../assets/icons/add.svg';
 
 const AddButtonComponent = ({ title = 'Ajouter', onClick }) => (
-        <BouncingRoundButton
-            title={title}
-            icon={EditIcon}
-            onClick={onClick}
-        />
-    );
+    <BouncingRoundButton title={title} icon={EditIcon} onClick={onClick} />
+);
 
 export const AddButton = AddButtonComponent;

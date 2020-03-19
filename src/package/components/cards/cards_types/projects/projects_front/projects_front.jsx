@@ -16,14 +16,17 @@ import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 import { DEFAULT_PROJECT_IMAGE } from '../utils/images';
 import { styles } from './projects_front_styles';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
-import { AddButton } from '../add_button/add_button';
+import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 
 const useStyles = createUseStyles(styles);
 
 const ProjectsFrontComponent = ({ data, handleAddButtonClick }) => {
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [
+        side,
+        setSide
+    ]);
 
     const [variant] = useCardVariant();
     const imageSrc = useMemo(() => data.projects?.[0]?.images?.url ?? DEFAULT_PROJECT_IMAGE, [
@@ -93,18 +96,17 @@ const Content = ({ hasProject, projectTitle, handleAddButtonClick, classes }) =>
     return (
         <div className={classes.noProject}>
             <Typography variant="h3" component="h3" customClasses={{ container: classes.noProjectTypography }}>
-                <FormattedMessage
-                    id="Projects.front.noProject"
-                    defaultMessage="You didn't add any projects."
-                />
+                <FormattedMessage id="Projects.front.noProject" defaultMessage="You didn't add any projects." />
                 {projectTitle}
             </Typography>
-            <AddButton
+            <NoDataButton
                 classes={{
                     container: classes.addButton
                 }}
                 handleAddButtonClick={handleAddButtonClick}
-            />
+            >
+                <FormattedMessage id="Projects.noProject.buttonLabel" defaultMessage="Ajouter un projet" />
+            </NoDataButton>
         </div>
     );
 };

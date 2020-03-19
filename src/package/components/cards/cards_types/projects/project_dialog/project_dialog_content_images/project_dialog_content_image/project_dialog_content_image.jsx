@@ -57,7 +57,7 @@ const EditLayer = ({ style, classes, url }) => {
             'images',
             values.images.filter(({ url: urlToKeep }) => url !== urlToKeep)
         );
-    }, [values.images]);
+    }, [setFieldValue, values.images]);
 
     return (
         <animated.div className={classes.editLayer} style={style}>

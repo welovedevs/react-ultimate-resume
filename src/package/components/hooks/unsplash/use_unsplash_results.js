@@ -6,9 +6,7 @@ const UNSPLASH_API = 'https://api.unsplash.com/search/photos?';
 
 export const useUnsplashResults = (input, page = 0, limit = 12, timeout = 800) => {
     const debounceSearch = useRef();
-    const {
-        endpoints
-    } = useContext(DeveloperProfileContext);
+    const { endpoints } = useContext(DeveloperProfileContext);
     const [lastLoaded, setLastLoaded] = useState(false);
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -35,17 +33,14 @@ export const useUnsplashResults = (input, page = 0, limit = 12, timeout = 800) =
             };
             const url = encodeURI(
                 UNSPLASH_API +
-                Object.entries(params)
-                    .map(([key, value]) => `${key}=${value}`)
-                    .join('&')
-);
+                    Object.entries(params)
+                        .map(([key, value]) => `${key}=${value}`)
+                        .join('&')
+            );
             // eslint-disable-next-line no-undef
-            fetch(
-                `${endpoints.unsplashProxy}?url=${url}`,
-                {
-                    method: 'GET'
-                }
-            )
+            fetch(`${endpoints.unsplashProxy}?url=${url}`, {
+                method: 'GET'
+            })
                 .then(async res => {
                     if (`${res.status}`.startsWith('2')) {
                         const functionResult = await res.json();

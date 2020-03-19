@@ -8,16 +8,27 @@ import { SoundtrackCardEditDialog } from './edit_dialog/soundtrack_card_edit_dia
 import { SoundtrackMapping } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { SoundtrackValidationSchema, validateSoundtrackComplete } from './data/validator';
+import { SIDES } from '../../../commons/profile_card/profile_card_side/side';
 
 const SoundtrackCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => JsonResumeToFlatObject(data, SoundtrackMapping), [data]);
 
-    const onDialogEdited = useCallback(editedData => {
-        onEdit(FlatObjectToJsonResume(editedData, SoundtrackMapping));
-    }, []);
+    const onDialogEdited = useCallback(
+        editedData => {
+            onEdit(FlatObjectToJsonResume(editedData, SoundtrackMapping));
+        },
+        [onEdit]
+    );
 
     const isComplete = useMemo(() => validateSoundtrackComplete(mappedData), [mappedData]);
+
+    const currentSide = useMemo(() => {
+        if (!isComplete && !isEditing) {
+            return SIDES.FRONT;
+        }
+        return side;
+    }, [side, isComplete, isEditing]);
 
     if (!isComplete && mode !== 'edit') {
         return null;
@@ -29,8 +40,8 @@ const SoundtrackCardComponent = ({ variant, side }) => {
             isEditingProfile={isEditing}
             data={mappedData}
             sides={{
-                front: SoundtrackFront,
-                back: SoundtrackBack
+                front: props => <SoundtrackFront {...props} />,
+                back: props => <SoundtrackBack {...props} />
             }}
             editDialog={{
                 component: SoundtrackCardEditDialog,
@@ -38,7 +49,7 @@ const SoundtrackCardComponent = ({ variant, side }) => {
                 validationSchema: SoundtrackValidationSchema
             }}
             variant={variant}
-            side={side}
+            side={currentSide}
             isTransitionUnique={false}
         />
     );

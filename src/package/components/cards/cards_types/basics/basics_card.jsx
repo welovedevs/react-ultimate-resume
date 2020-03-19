@@ -14,9 +14,12 @@ const BasicsCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapJsonResumeToBasicData(data), [data]);
 
-    const onDialogEdited = useCallback(editedData => {
-        onEdit(mapBasicsDataToJsonResume(editedData));
-    }, []);
+    const onDialogEdited = useCallback(
+        editedData => {
+            onEdit(mapBasicsDataToJsonResume(editedData));
+        },
+        [onEdit]
+    );
 
     const isComplete = useMemo(() => validateBasicsComplete(mappedData), [mappedData]);
 
@@ -35,8 +38,8 @@ const BasicsCardComponent = ({ variant, side }) => {
                     onEdit: onDialogEdited
                 }}
                 sides={{
-                    front: BasicsFront,
-                    back: BasicsBack
+                    front: props => <BasicsFront {...props} />,
+                    back: props => <BasicsBack {...props} />
                 }}
                 variant={variant}
                 isComplete={isComplete}

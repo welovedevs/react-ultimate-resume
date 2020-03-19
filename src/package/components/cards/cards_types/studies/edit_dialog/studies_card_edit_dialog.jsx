@@ -38,7 +38,7 @@ const DragHandle = SortableHandle(({ classes }) => (
 ));
 const useStyles = createUseStyles(styles);
 
-const StudiesCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
+const StudiesCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
     const classes = useStyles();
     const { formatMessage } = useIntl();
     const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
@@ -51,6 +51,7 @@ const StudiesCardEditDialogComponent = ({ open, onClose, data, onEdit, validatio
             open={open}
             onClose={onClose}
             data={data}
+            isEditing={isEditing}
             onEdit={onEdit}
             validationSchema={validationSchemaToPass}
             title={<FormattedMessage id="Studies.editDialog.title" defaultMessage="Your studies" />}

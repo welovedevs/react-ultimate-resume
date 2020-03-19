@@ -35,18 +35,14 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
     );
 
     const onDrop = useCallback(
-        (files) =>
+        files =>
             onFilesUpload(files).then(url => {
-                console.log({ url });
                 onImageSelected({ url });
                 return url;
             }),
         [onImageSelected]
     );
-    const onClear = useCallback(
-        () => onImageSelected(null),
-        [onImageSelected]
-    );
+    const onClear = useCallback(() => onImageSelected(null), [onImageSelected]);
 
     return (
         <>
@@ -55,15 +51,9 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
                 onClose={setSearchUnsplashDialogClosed}
                 onSelect={onImageSelected}
             />
-            <Dialog
-                open={open}
-                onClose={onClose}
-            >
+            <Dialog open={open} onClose={onClose}>
                 <DialogTitle>
-                    <FormattedMessage
-                        id="Banner.EditImageDialog.Title"
-                        defaultMessage="Pick an image"
-                    />
+                    <FormattedMessage id="Banner.EditImageDialog.Title" defaultMessage="Pick an image" />
                 </DialogTitle>
                 <DialogContent classes={{ root: classes.content }}>
                     <div className={classes.buttonContainer}>
@@ -82,31 +72,18 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
                         </Button>
                     </div>
                     <div className={classes.divider}>
-                        <Typography
-                            className={classes.dividerOr}
-                            variant="h4"
-                            component="h4"
-                        >
-                            <FormattedMessage
-                                id="Main.Lang.Or"
-                                defaultMessage="or"
-                            />
+                        <Typography className={classes.dividerOr} variant="h4" component="h4">
+                            <FormattedMessage id="Main.Lang.Or" defaultMessage="or" />
                         </Typography>
                     </div>
-                    <FileDropZone onDrop={onDrop}/>
+                    <FileDropZone onDrop={onDrop} />
                 </DialogContent>
                 <DialogActions>
                     <Button size="small" color="danger" onClick={onClear}>
-                        <FormattedMessage id="Main.lang.clear" defaultMessage="Clear"/>
+                        <FormattedMessage id="Main.lang.clear" defaultMessage="Clear" />
                     </Button>
-                    <Button
-                        size="small"
-                        onClick={onClose}
-                    >
-                        <FormattedMessage
-                            id="Main.lang.close"
-                            defaultMessage="Close"
-                        />
+                    <Button size="small" onClick={onClose}>
+                        <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
                     </Button>
                 </DialogActions>
             </Dialog>

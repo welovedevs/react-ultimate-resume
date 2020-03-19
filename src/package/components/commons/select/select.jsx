@@ -60,7 +60,8 @@ const SelectComponent = ({
                                 onFocus(child.props.value);
                             }
                         }
-                    }))}
+                    })
+                )}
             </Menu>
             <ClickableTextField
                 customClasses={{

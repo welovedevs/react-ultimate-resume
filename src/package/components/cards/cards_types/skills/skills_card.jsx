@@ -8,16 +8,28 @@ import { SkillsEditDialog } from './skills_edit_dialog/skills_edit_dialog';
 import { mapSkillsFromJsonResume, mapSkillsToJsonResume } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { SkillsValidationSchema, validateSkillsComplete } from './data/validator';
+import { SIDES } from '../../../commons/profile_card/profile_card_side/side';
 
 const SkillsCardComponent = ({ variant, side }) => {
     const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
 
     const mappedData = useMemo(() => mapSkillsFromJsonResume(data), [data]);
-    const onDialogEdited = useCallback(editedData => {
-        onEdit(mapSkillsToJsonResume(editedData));
-    }, []);
+
+    const onDialogEdited = useCallback(
+        editedData => {
+            onEdit(mapSkillsToJsonResume(editedData));
+        },
+        [onEdit]
+    );
 
     const isComplete = useMemo(() => validateSkillsComplete(mappedData), [mappedData]);
+
+    const currentSide = useMemo(() => {
+        if (!isComplete && !isEditing) {
+            return SIDES.FRONT;
+        }
+        return side;
+    }, [side, isComplete, isEditing]);
 
     if (!isComplete && mode !== 'edit') {
         return null;
@@ -27,8 +39,8 @@ const SkillsCardComponent = ({ variant, side }) => {
             isEditingProfile={isEditing}
             isComplete={isComplete}
             sides={{
-                front: SkillsFront,
-                back: SkillsBack
+                front: props => <SkillsFront {...props} />,
+                back: props => <SkillsBack {...props} />
             }}
             editDialog={{
                 component: SkillsEditDialog,
@@ -37,7 +49,7 @@ const SkillsCardComponent = ({ variant, side }) => {
             }}
             data={mappedData}
             variant={variant}
-            side={side}
+            side={currentSide}
         />
     );
 };

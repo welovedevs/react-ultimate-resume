@@ -1,16 +1,35 @@
-import { createScreenWidthMediaQuery } from '../../../../../utils/styles/styles_utils';
+import { createScreenWidthMediaQuery, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
+export const styles = theme => {
     const {
         miscellaneous: { spacing },
         screenSizes
     } = theme;
     const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
     const QUERY_EXTRA_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.xs);
-    return ({
-        container: {},
+    return {
+        container: ({ overrideColor }) => ({
+            ...(overrideColor && {
+                color: getHexFromPaletteColor(theme, overrideColor)
+            })
+        }),
         interestedByValue: {
             marginTop: spacing * 4
+        },
+        noInterested: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            padding: [spacing, spacing * 2, 0]
+        },
+        noInterestedTypography: {
+            color: 'inherit',
+            fontWeight: 700,
+            lineHeight: 1.3
+        },
+        addButton: {
+            marginTop: spacing * 4,
+            marginLeft: -spacing
         },
         typography: {
             fontSize: 36,
@@ -32,5 +51,5 @@ export const styles = (theme) => {
                 }
             }
         }
-    });
+    };
 };

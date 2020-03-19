@@ -4,10 +4,7 @@ import { FormattedMessage } from 'react-intl';
 
 export const CARD_STUB_TRANSLATIONS = Object.freeze({
     backgroundColor: (
-        <FormattedMessage
-            id="CardStub.CardVariantTooltip.FrontBackground"
-            defaultMessage="Card's front background"
-        />
+        <FormattedMessage id="CardStub.CardVariantTooltip.FrontBackground" defaultMessage="Card's front background" />
     ),
     color: (
         <FormattedMessage
@@ -22,9 +19,6 @@ export const CARD_STUB_TRANSLATIONS = Object.freeze({
         />
     ),
     backColor: (
-        <FormattedMessage
-            id="CardStub.CardVariantTooltip.BackColor"
-            defaultMessage="Card's back texts & icons color"
-        />
+        <FormattedMessage id="CardStub.CardVariantTooltip.BackColor" defaultMessage="Card's back texts & icons color" />
     )
 });

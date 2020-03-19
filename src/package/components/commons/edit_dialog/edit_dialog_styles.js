@@ -1,8 +1,10 @@
 import { withCustomVerticalScrollbar } from '../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         paper: {
             width: '90%',
             maxWidth: [650, '!important']
@@ -30,5 +32,5 @@ export const styles = (theme) => {
                 marginLeft: spacing * 2
             }
         }
-    });
+    };
 };

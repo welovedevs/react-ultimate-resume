@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -13,10 +13,13 @@ import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 
 import { translations } from '../../../../../utils/enums/job_serachstate/job_search_state_translations';
 import { styles } from './basics_back_styles';
+import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
+import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
 
 const useStyles = createUseStyles(styles);
 
-const BasicsBackComponent = ({ data }) => {
+const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
+    const { mode } = useContext(DeveloperProfileContext);
     const classes = useStyles();
 
     const {
@@ -31,12 +34,28 @@ const BasicsBackComponent = ({ data }) => {
         personalDescription
     } = data;
 
+    const descriptionContent = useMemo(() => {
+        if (personalDescription && mode === 'edit') {
+            return <span>{personalDescription}</span>;
+        }
+        return (
+            <NoDataButton
+                handleAddButtonClick={handleAddButtonClick}
+                classes={{
+                    container: classes.addButton
+                }}
+            >
+                <FormattedMessage id="Basics.noDescription.buttonLabel" defaultMessage="Ajouter une description" />
+            </NoDataButton>
+        );
+    }, [personalDescription, mode, handleAddButtonClick, classes]);
+
     const sections = useMemo(
         () => ({
             personalDescription: {
                 title: null,
-                hide: !personalDescription,
-                value: <span>{personalDescription}</span>
+                hide: false,
+                value: descriptionContent
             },
             visaSponsorship: {
                 hide: !existsAndNotEmpty(visaSponsorship),
@@ -51,7 +70,7 @@ const BasicsBackComponent = ({ data }) => {
             },
             work: {
                 title: <FormattedMessage id="Basics.Back.Work.Title" defaultMessage="Work" />,
-                hide: (!experienceYears && !existsAndNotEmpty(contractTypes) && !existsAndNotEmpty(searchState)),
+                hide: !experienceYears && !existsAndNotEmpty(contractTypes) && !existsAndNotEmpty(searchState),
                 value: (
                     <>
                         <FormattedMessage
@@ -59,15 +78,15 @@ const BasicsBackComponent = ({ data }) => {
                             defaultMessage={'{experienceYears} years of experience'}
                             values={{ experienceYears }}
                         />
-                        <br/>
-                        <ContractType contractTypes={contractTypes}/>
-                        <br/>
-                        <JobSearchState searchState={searchState}/>
+                        <br />
+                        <ContractType contractTypes={contractTypes} />
+                        <br />
+                        <JobSearchState searchState={searchState} />
                     </>
                 )
             },
             codingYears: {
-                title: <FormattedMessage id="Basics.Back.CodingYears.title" defaultMessage="Experience"/>,
+                title: <FormattedMessage id="Basics.Back.CodingYears.title" defaultMessage="Experience" />,
                 hide: !personalDescription,
                 value: (
                     <FormattedMessage
@@ -78,7 +97,7 @@ const BasicsBackComponent = ({ data }) => {
                 )
             },
             studies: {
-                title: <FormattedMessage id="Basics.Back.StudiesLevel.Title" defaultMessage="Training"/>,
+                title: <FormattedMessage id="Basics.Back.StudiesLevel.Title" defaultMessage="Training" />,
                 hide: !studiesLevel,
                 value: (
                     <>
@@ -87,8 +106,8 @@ const BasicsBackComponent = ({ data }) => {
                             defaultMessage={'{studiesLevel} years of higher education'}
                             values={{ studiesLevel }}
                         />
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
                         {codingReason && <span>{codingReason}</span>}
                     </>
                 )
@@ -103,14 +122,13 @@ const BasicsBackComponent = ({ data }) => {
             codingReason,
             visaSponsorship,
             personalDescription,
+            descriptionContent,
             searchState
         ]
     );
 
     return (
-        <ProfileCardAnimatedBack
-            title={<FormattedMessage id="Basics.Back.Title" defaultMessage="Who?"/>}
-        >
+        <ProfileCardAnimatedBack title={<FormattedMessage id="Basics.Back.Title" defaultMessage="Who?" />}>
             {Object.entries(sections)
                 .filter(([, { hide }]) => !hide)
                 .map(([id, { title, value }]) => (

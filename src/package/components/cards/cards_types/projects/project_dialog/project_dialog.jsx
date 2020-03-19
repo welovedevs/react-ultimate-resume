@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 import { createUseStyles } from 'react-jss';
@@ -10,8 +10,6 @@ import { ProjectDialogContentImages } from './project_dialog_content_images/proj
 import { ProjectDialogContentDescription } from './project_dialog_content_description/project_dialog_content_description';
 import { ProjectDialogContentDate } from './project_dialog_content_date/project_dialog_content_date';
 
-import { useHasDialogOpened } from '../../../../commons/profile_card/profile_card_hooks/use_card_has_dialog_opened';
-
 import { styles } from './project_dialog_styles';
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { ProjectValidator } from '../data/validator';
@@ -21,52 +19,52 @@ import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectDialogComponent = ({ open, onClose, project = {} }) => {
+const ProjectDialogComponent = ({ open, onClose, data: project, isEditing }) => {
     const classes = useStyles();
 
-    const [, setHasDialogOpened] = useHasDialogOpened();
     const { formatMessage } = useIntl();
     const { onEdit, data } = useContext(DeveloperProfileContext);
 
     const onDialogEdited = useCallback(
         editedData => {
-            onEdit(updateProjectsArray(mapProjectToJsonResume(editedData), data));
+            const updateProjectsArray1 = updateProjectsArray(mapProjectToJsonResume(editedData), data);
+            onEdit(updateProjectsArray1);
             onClose();
         },
-        [data]
+        [onEdit, data]
     );
 
     const validator = useMemo(() => ProjectValidator(formatMessage), []);
-    useEffect(() => setHasDialogOpened(open), [open]);
 
     return (
         <EditDialog
             classes={{ content: classes.container, paper: classes.paper }}
             open={open}
             onClose={onClose}
-            data={project}
+            data={project || {}}
             onEdit={onDialogEdited}
             validationSchema={validator}
+            isEditing={isEditing}
             title={<FormattedMessage id="Project.editDialog.title" defaultMessage="Project's details" />}
         >
-            {helpers => <ProjectDialogContent helpers={helpers} />}
+            {() => <ProjectDialogContent isEditing={isEditing} />}
         </EditDialog>
     );
 };
 
-const ProjectDialogContent = () => {
+const ProjectDialogContent = ({ isEditing }) => {
     const classes = useStyles();
 
     const { values: project } = useFormikContext();
     return (
         <>
             <div className={classes.headrow}>
-                <ProjectDialogContentTitle title={project.title} />
-                <ProjectDialogContentDate date={project.data} />
+                <ProjectDialogContentTitle isEditing={isEditing} title={project.title} />
+                <ProjectDialogContentDate isEditing={isEditing} date={project.data} />
             </div>
-            <ProjectDialogContentDescription description={project.description} />
-            <ProjectDialogContentLink link={project.link} />
-            <ProjectDialogContentImages images={project.images} />
+            <ProjectDialogContentDescription isEditing={isEditing} description={project.description} />
+            <ProjectDialogContentLink isEditing={isEditing} link={project.link} />
+            <ProjectDialogContentImages isEditing={isEditing} images={project.images} />
         </>
     );
 };

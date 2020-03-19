@@ -8,7 +8,6 @@ import { ReactComponent as FacebookIcon } from '../../../assets/icons/brands/fac
 import { ReactComponent as LinkedInIcon } from '../../../assets/icons/brands/linkedin.svg';
 import { ReactComponent as ShareIcon } from '../../../assets/icons/share.svg';
 
-
 export const SHARE_LINKS_DATA = Object.freeze({
     twitter: {
         icon: TwitterIcon,
@@ -19,7 +18,7 @@ export const SHARE_LINKS_DATA = Object.freeze({
                 values={{ platform: 'Twitter' }}
             />
         ),
-        getLink: () => 'https://twitter.com'
+        getLink: ({ translatedMessage }) => `https://twitter.com/intent/tweet?text=${translatedMessage}`
     },
     facebook: {
         icon: FacebookIcon,
@@ -30,7 +29,7 @@ export const SHARE_LINKS_DATA = Object.freeze({
                 values={{ platform: 'Facebook' }}
             />
         ),
-        getLink: () => 'https://facebook.com'
+        getLink: ({ link }) => `https://www.facebook.com/sharer/sharer.php?u=${encodeURI(link)}`
     },
     linkedIn: {
         icon: LinkedInIcon,
@@ -41,19 +40,14 @@ export const SHARE_LINKS_DATA = Object.freeze({
                 values={{ platform: 'LinkedIn' }}
             />
         ),
-        getLink: () => 'https://linkedin.com'
+        getLink: ({ link }) => `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURI(link)}`
     },
     copyShareUrl: {
-        icon: (props) => (
+        icon: props => (
             <CopyWrapper value={(typeof window === 'undefined' ? {} : window).location?.href}>
                 <ShareIcon {...props} />
             </CopyWrapper>
         ),
-        tooltipTranslation: (
-            <FormattedMessage
-                id="Footer.shareLinks.copyUrl"
-                defaultMessage="Copy profile's URL"
-            />
-        )
+        tooltipTranslation: <FormattedMessage id="Footer.shareLinks.copyUrl" defaultMessage="Copy profile's URL" />
     }
 });

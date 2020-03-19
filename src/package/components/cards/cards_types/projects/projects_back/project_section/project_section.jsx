@@ -63,9 +63,9 @@ const Details = ({ project, index, onDelete, classes }) => {
                 <div className={classes.detail}>
                     <AnimatedUnderlinedButton color={color}>
                         <a className={classes.link} href={project.link}>
-                            <LinkIcon className={classes.detailIcon}/>
+                            <LinkIcon className={classes.detailIcon} />
                             <Typography customClasses={{ container: classes.detailTypography }} color="primary">
-                                <FormattedMessage id="Project.section.link" defaultMessage="Link"/>
+                                <FormattedMessage id="Project.section.link" defaultMessage="Link" />
                             </Typography>
                         </a>
                     </AnimatedUnderlinedButton>
@@ -74,9 +74,7 @@ const Details = ({ project, index, onDelete, classes }) => {
             <div className={classes.detail}>
                 <SeeProjectDetail color={color} project={project} />
             </div>
-            {isEditing && (
-                <RemoveProjectDetail color={color} index={index} onDelete={onDelete} classes={classes} />
-            )}
+            {isEditing && <RemoveProjectDetail color={color} index={index} onDelete={onDelete} classes={classes} />}
         </div>
     );
 };
@@ -91,16 +89,12 @@ const RemoveProjectDetail = ({ color, index, onDelete, classes }) => {
 
     return (
         <>
-            <ConfirmDialog
-                open={openDialog}
-                onClose={setDialogClosed}
-                onConfirm={handleConfirm}
-            />
+            <ConfirmDialog open={openDialog} onClose={setDialogClosed} onConfirm={handleConfirm} />
             <div className={classes.detail}>
                 <AnimatedUnderlinedButton color={color} onClick={setDialogOpened}>
-                    <RemoveIcon className={classes.detailDeleteIcon}/>
+                    <RemoveIcon className={classes.detailDeleteIcon} />
                     <Typography customClasses={{ container: classes.detailTypography }} color="primary">
-                        <FormattedMessage id="Main.lang.delete" defaultMessage="Delete"/>
+                        <FormattedMessage id="Main.lang.delete" defaultMessage="Delete" />
                     </Typography>
                 </AnimatedUnderlinedButton>
             </div>

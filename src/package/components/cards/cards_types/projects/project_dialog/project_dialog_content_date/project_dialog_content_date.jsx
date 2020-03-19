@@ -7,16 +7,13 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import { Typography } from '@wld/ui';
 import { useFormikContext } from 'formik';
-
-import { useIsEditing } from '../../../../../hooks/use_is_editing';
 import { styles } from './project_dialog_content_date_styles';
 
 import { YearMonth } from '../../../../../commons/year_month/year_month';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectDialogContentDateComponent = ({ date }) => {
-    const [isEditing] = useIsEditing();
+const ProjectDialogContentDateComponent = ({ date, isEditing }) => {
     const classes = useStyles({ isEditing });
     return (
         <div className={classes.container}>
@@ -40,9 +37,12 @@ const DefaultContent = ({ date, classes }) => (
 
 const EditingContent = ({ classes }) => {
     const { setFieldValue, values, errors } = useFormikContext();
-    const handleStartDate = useCallback(value => {
-        setFieldValue('date', value);
-    }, []);
+    const handleStartDate = useCallback(
+        value => {
+            setFieldValue('date', value);
+        },
+        [JSON.stringify(values)]
+    );
     return (
         <>
             <MuiPickersUtilsProvider utils={MomentUtils}>
@@ -58,9 +58,9 @@ const EditingContent = ({ classes }) => {
                     error={errors?.date}
                 />
             </MuiPickersUtilsProvider>
-            {errors?.name && (
+            {errors?.date && (
                 <Typography color="danger" variant="helper" component="p">
-                    {errors.name}
+                    {errors.date}
                 </Typography>
             )}
         </>
