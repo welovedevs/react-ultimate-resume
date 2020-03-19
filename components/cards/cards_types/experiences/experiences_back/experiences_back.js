@@ -2,10 +2,14 @@
 
 var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.ExperiencesBack = void 0;
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -40,8 +44,12 @@ var ExperienceContent = function ExperienceContent(_ref) {
       formatMessage = _useIntl.formatMessage;
 
   var _useAdditionalNodes = (0, _use_additional_nodes.useAdditionalNodes)('cards.experiences.back.experience.content.buildTitle', null),
-      buildTitle = _useAdditionalNodes.buildTitle;
+      _useAdditionalNodes2 = (0, _slicedToArray2.default)(_useAdditionalNodes, 1),
+      buildTitle = _useAdditionalNodes2[0];
 
+  console.log({
+    buildTitle: buildTitle
+  });
   var id = experience.id,
       name = experience.name,
       summary = experience.summary,
