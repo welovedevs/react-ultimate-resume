@@ -62,6 +62,7 @@ export const styles = (theme) => {
         content: {
             width: '100%',
             display: 'flex',
+            alignItems: 'center',
             justifyContent: 'space-between',
             marginBottom: spacing * 12,
             [QUERY_BETWEEN_MEDIUM_SMALL]: {

@@ -30,7 +30,7 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
     const [isEditing] = useIsEditing();
     const { dismissCustomizeButton } = useContext(DeveloperProfileContext);
 
-    const transitions = useTransition(customizationOptions?.imageHeader || null, item => item?.alt, {
+    const transitions = useTransition(customizationOptions?.imageHeader || null, item => `${item?.alt}_${item.url}`, {
         ...OPACITY_TRANSITIONS,
         unique: true,
         config: config.molasses

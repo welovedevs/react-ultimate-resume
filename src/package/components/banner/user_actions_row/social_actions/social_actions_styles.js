@@ -5,6 +5,7 @@ export const styles = (theme) => {
     const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
     return ({
         container: {
+            height: 'fit-content',
             display: 'flex',
             alignItems: 'center',
             flexWrap: 'wrap',
