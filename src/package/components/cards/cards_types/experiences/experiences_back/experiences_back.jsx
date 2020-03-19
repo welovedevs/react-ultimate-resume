@@ -53,7 +53,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
         }
         builder.push(dateString);
         return builder;
-    }, [buildTitle, experience]);
+    }, [buildTitle, name, place, dateString]);
     return (
         <ProfileCardSection key={id} cardVariant={variant}>
             <ProfileCardSectionTitle>{position}</ProfileCardSectionTitle>
