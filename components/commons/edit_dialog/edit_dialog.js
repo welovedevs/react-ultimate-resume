@@ -27,6 +27,8 @@ var _core = require("@material-ui/core");
 
 var _dialog_title = require("../dialog/dialog_title/dialog_title");
 
+var _contexts = require("../../../utils/context/contexts");
+
 var _edit_dialog_styles = require("./edit_dialog_styles");
 
 var useStyles = (0, _reactJss.createUseStyles)(_edit_dialog_styles.styles);
@@ -148,6 +150,10 @@ var Actions = function Actions(_ref4) {
       fullScreen = _ref4.fullScreen,
       classes = _ref4.classes,
       receivedClasses = _ref4.receivedClasses;
+
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
+      mode = _useContext.mode;
+
   return _react.default.createElement(_core.DialogActions, {
     classes: {
       root: (0, _classnames.default)(classes.actions, receivedClasses.actions)
@@ -163,7 +169,7 @@ var Actions = function Actions(_ref4) {
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Main.lang.close",
     defaultMessage: "Close"
-  }))), _react.default.createElement(_ui.Button, {
+  }))), mode === 'edit' && _react.default.createElement(_ui.Button, {
     variant: fullScreen ? 'contained' : 'text',
     type: "submit",
     size: "small",
