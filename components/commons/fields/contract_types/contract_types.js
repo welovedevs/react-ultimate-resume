@@ -45,8 +45,8 @@ var ContractType = function ContractType(_ref) {
     values: {
       lastContract: formatMessage(_contract_types_translations.default[lastContract]),
       contracts: contracts.map(function (key) {
-        return formatMessage(_contract_types_translations.default[key]).join(', ');
-      })
+        return formatMessage(_contract_types_translations.default[key]);
+      }).join(', ')
     }
   });
 };
