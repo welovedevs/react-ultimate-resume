@@ -106,12 +106,10 @@
     },
     "lint-staged": {
         "*.+(js|jsx|scss)": [
-            "prettier --loglevel=debug --write",
-            "git add"
+            "prettier --loglevel=debug --write"
         ],
         "*.+(ts|tsx)": [
-            "prettier --loglevel=debug --write",
-            "git add"
+            "prettier --loglevel=debug --write"
         ]
     }
 }
