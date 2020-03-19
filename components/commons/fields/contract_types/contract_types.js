@@ -33,7 +33,7 @@ var ContractType = function ContractType(_ref) {
     contracts: contracts
   });
 
-  if (!contracts.length) {
+  if (contracts.length <= 1) {
     return _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Basics.Back.WorkContract.single",
       defaultMessage: 'Looking for a {contractType} contract',
