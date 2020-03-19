@@ -9,7 +9,7 @@ import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { EditDialogField } from '../../../../commons/edit_dialog_field/edit_dialog_field';
 import translations from './intested_by_translations';
 
-const InterestedByEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
+const InterestedByEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
     const { formatMessage } = useIntl();
     const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
 
@@ -18,14 +18,15 @@ const InterestedByEditDialogComponent = ({ open, onClose, data, onEdit, validati
             open={open}
             onClose={onClose}
             data={data}
+            isEditing={isEditing}
             onEdit={onEdit}
             validationSchema={validationSchemaToPass}
-            title={(
+            title={
                 <FormattedMessage
                     id="InterestedBy.editDialog.title"
                     defaultMessage="What technologies are you interested in?"
                 />
-            )}
+            }
         >
             {helpers => <Content helpers={helpers} />}
         </EditDialog>

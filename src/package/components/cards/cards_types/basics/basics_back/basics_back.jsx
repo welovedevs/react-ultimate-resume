@@ -45,10 +45,7 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
                     container: classes.addButton
                 }}
             >
-                <FormattedMessage
-                    id="Basics.noDescription.buttonLabel"
-                    defaultMessage="Ajouter une description"
-                />
+                <FormattedMessage id="Basics.noDescription.buttonLabel" defaultMessage="Ajouter une description" />
             </NoDataButton>
         );
     }, [personalDescription, mode, handleAddButtonClick, classes]);

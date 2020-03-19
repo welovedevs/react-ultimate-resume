@@ -24,7 +24,10 @@ const SoundtrackFrontComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles();
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [
+        side,
+        setSide
+    ]);
 
     return (
         <>
@@ -55,10 +58,10 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
                     />
                 </Typography>
                 <NoDataButton
+                    handleAddButtonClick={handleAddButtonClick}
                     classes={{
                         container: classes.addButton
                     }}
-                    handleAddButtonClick={handleAddButtonClick}
                 >
                     <FormattedMessage id="SoundTrack.noSoundTrack.buttonLabel" defaultMessage="Ajouter une playlist" />
                 </NoDataButton>

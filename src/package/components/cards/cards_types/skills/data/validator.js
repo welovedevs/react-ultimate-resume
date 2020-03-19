@@ -1,7 +1,8 @@
 import * as Yup from 'yup';
 import { skillTranslations } from './validator_translations';
 
-export const SkillsValidationSchema = (formatMessage = () => {}) => Yup.object({
+export const SkillsValidationSchema = (formatMessage = () => {}) =>
+    Yup.object({
         skills: Yup.array()
             .required(formatMessage(skillTranslations.atLeastOne))
             .min(1)

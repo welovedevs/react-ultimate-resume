@@ -72,7 +72,7 @@ const DeveloperProfileComponent = ({
         if (typeof onEditProps === 'function') {
             onEditProps(newData);
         }
-    }, []);
+    }, [onEditProps]);
     const store = {
         technologies: useReducer(technologiesReducer, technologiesInitialState)
     };

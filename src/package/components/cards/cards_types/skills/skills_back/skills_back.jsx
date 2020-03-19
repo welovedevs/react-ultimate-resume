@@ -17,13 +17,13 @@ import { NoSkill } from './no_skill/no_skill';
 const useStyles = createUseStyles(styles);
 
 const SkillsBackComponent = ({ data, handleAddButtonClick }) => (
-        <>
-            <ProfileCardTitle>
-                <FormattedMessage id="Skills.back.title" defaultMessage="Skills" />
-            </ProfileCardTitle>
-            <Content {...{ data, handleAddButtonClick }} />
-        </>
-    );
+    <>
+        <ProfileCardTitle>
+            <FormattedMessage id="Skills.back.title" defaultMessage="Skills" />
+        </ProfileCardTitle>
+        <Content {...{ data, handleAddButtonClick }} />
+    </>
+);
 
 const Content = ({ data, handleAddButtonClick }) => {
     const [variant] = useCardVariant();

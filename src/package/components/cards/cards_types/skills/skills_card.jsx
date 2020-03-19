@@ -8,23 +8,15 @@ import { SkillsEditDialog } from './skills_edit_dialog/skills_edit_dialog';
 import { mapSkillsFromJsonResume, mapSkillsToJsonResume } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { SkillsValidationSchema, validateSkillsComplete } from './data/validator';
-import { useCallbackOpen } from '../../../hooks/use_callback_open';
 import { SIDES } from '../../../commons/profile_card/profile_card_side/side';
 
 const SkillsCardComponent = ({ variant, side }) => {
-    const { data, onEdit, isEditing, setIsEditing, mode } = useContext(DeveloperProfileContext);
+    const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
 
     const mappedData = useMemo(() => mapSkillsFromJsonResume(data), [data]);
 
-    const [openNewSkillDialog, setNewSkillDialogOpened, setNewSkillDialogClosed] = useCallbackOpen();
-
     const onDialogEdited = useCallback(editedData => {
         onEdit(mapSkillsToJsonResume(editedData));
-    }, []);
-
-    const handleAddButtonClick = useCallback(() => {
-        setIsEditing(true);
-        setNewSkillDialogOpened();
     }, [onEdit]);
 
     const isComplete = useMemo(() => validateSkillsComplete(mappedData), [mappedData]);
@@ -44,16 +36,14 @@ const SkillsCardComponent = ({ variant, side }) => {
             isEditingProfile={isEditing}
             isComplete={isComplete}
             sides={{
-                front: props => <SkillsFront handleAddButtonClick={handleAddButtonClick} {...props} />,
-                back: props => <SkillsBack handleAddButtonClick={handleAddButtonClick} {...props} />
+                front: props => <SkillsFront {...props} />,
+                back: props => <SkillsBack {...props} />
             }}
             editDialog={{
                 component: SkillsEditDialog,
                 validationSchema: SkillsValidationSchema,
                 onEdit: onDialogEdited
             }}
-            openEditDialog={openNewSkillDialog}
-            callbackEditDialogClosed={setNewSkillDialogClosed}
             data={mappedData}
             variant={variant}
             side={currentSide}

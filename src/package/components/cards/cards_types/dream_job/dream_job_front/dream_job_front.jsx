@@ -26,7 +26,10 @@ const DreamJobFrontComponent = ({ data }) => {
     const { remoteFrequency, places } = data;
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [
+        side,
+        setSide
+    ]);
 
     const andMore = useMemo(() => {
         if (places.length < 2) {
@@ -77,6 +80,5 @@ const DreamJobFrontComponent = ({ data }) => {
         </>
     );
 };
-
 
 export const DreamJobFront = DreamJobFrontComponent;

@@ -35,7 +35,7 @@ const checkboxGroupCurrentJobIssues = Object.values(JobIssues).filter(key => key
 
 const DEFAULT_OBJECT = {};
 
-const DreamJobCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
+const DreamJobCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
     const { formatMessage } = useIntl();
     const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
 
@@ -45,6 +45,7 @@ const DreamJobCardEditDialogComponent = ({ open, onClose, data, onEdit, validati
             onClose={onClose}
             data={data}
             onEdit={onEdit}
+            isEditing={isEditing}
             validationSchema={validationSchemaToPass}
             title={<FormattedMessage id="DreamJob.editDialog.title" defaultMessage="Your dream job information" />}
         >
@@ -132,12 +133,7 @@ const Content = ({ helpers: { handleValueChange } }) => {
     const otherCurrentJobIssue = useMemo(() => currentJobIssues[JobIssues.OTHER] ?? null, [currentJobIssues]);
     return (
         <>
-            <LocationPlacesField
-                error={errors?.places}
-                places={places}
-                addPlace={addPlace}
-                removePlace={removePlace}
-            />
+            <LocationPlacesField error={errors?.places} places={places} addPlace={addPlace} removePlace={removePlace} />
             <PerksField
                 error={errors?.perks}
                 checkboxGroupPerks={checkboxGroupPerks}
@@ -150,12 +146,12 @@ const Content = ({ helpers: { handleValueChange } }) => {
             />
             <EditDialogField
                 error={errors.remoteFrequency}
-                title={(
+                title={
                     <FormattedMessage
                         id="DreamJob.editDialog.remoteFrequency.title"
                         defaultMessage="Do you want to work remotely?"
                     />
-                )}
+                }
             >
                 <Select
                     fullWidth
@@ -173,12 +169,12 @@ const Content = ({ helpers: { handleValueChange } }) => {
             </EditDialogField>
             <EditDialogField
                 error={errors.contractTypes}
-                title={(
+                title={
                     <FormattedMessage
                         id="DreamJob.editDialog.contractTypes.title"
                         defaultMessage="What contract types are you currently looking for?"
                     />
-                  )}
+                }
             >
                 <CheckboxGroup
                     values={CONTRACT_TYPES}

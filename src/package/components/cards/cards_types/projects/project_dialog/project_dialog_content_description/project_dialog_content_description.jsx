@@ -6,14 +6,11 @@ import { createUseStyles } from 'react-jss';
 import { TextField, Typography } from '@wld/ui';
 import { useFormikContext } from 'formik';
 
-import { useIsEditing } from '../../../../../hooks/use_is_editing';
-
 import { styles } from './project_dialog_content_description_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectDialogContentDescriptionComponent = ({ description }) => {
-    const [isEditing] = useIsEditing();
+const ProjectDialogContentDescriptionComponent = ({ description, isEditing }) => {
     const classes = useStyles({ isEditing });
     return (
         <div className={classes.container}>

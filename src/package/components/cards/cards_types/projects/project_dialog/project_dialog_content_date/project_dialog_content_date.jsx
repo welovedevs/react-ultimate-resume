@@ -7,16 +7,13 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import { Typography } from '@wld/ui';
 import { useFormikContext } from 'formik';
-
-import { useIsEditing } from '../../../../../hooks/use_is_editing';
 import { styles } from './project_dialog_content_date_styles';
 
 import { YearMonth } from '../../../../../commons/year_month/year_month';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectDialogContentDateComponent = ({ date }) => {
-    const [isEditing] = useIsEditing();
+const ProjectDialogContentDateComponent = ({ date, isEditing }) => {
     const classes = useStyles({ isEditing });
     return (
         <div className={classes.container}>

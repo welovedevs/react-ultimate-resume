@@ -7,8 +7,6 @@ import Carousel, { Modal, ModalGateway } from 'react-images';
 import { ProjectDialogContentImage } from './project_dialog_content_image/project_dialog_content_image';
 import { ProjectDialogContentAddImage } from './project_dialog_content_add_image/project_dialog_content_add_image';
 
-import { useIsEditing } from '../../../../../hooks/use_is_editing';
-
 import { PROJECT_DIALOG_CONTENT_IMAGES_TRANSITIONS_SPRING_PROPS } from './project_dialog_content_images_transitions_spring_props';
 
 import { styles } from './project_dialog_content_images_styles';
@@ -18,11 +16,10 @@ import { hashCode } from '../../../../../../utils/string_utils';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectDialogContentImagesComponent = ({ images = [] }) => {
+const ProjectDialogContentImagesComponent = ({ images = [], isEditing }) => {
     const classes = useStyles();
     const theme = useTheme();
     const [variant] = useCardVariant();
-    const [isEditing] = useIsEditing();
     const [modalCarouselIndex, setModelCarouselIndex] = useState(null);
 
     const views = useMemo(() => images.map(({ name, url }) => ({ caption: name, src: url })), [images]);

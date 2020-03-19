@@ -10,7 +10,7 @@ import { styles } from './gifs_edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
-const GifsEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
+const GifsEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
     const classes = useStyles();
     const { formatMessage } = useIntl();
 
@@ -27,14 +27,15 @@ const GifsEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema
                 open={open}
                 onClose={onClose}
                 validationSchema={validationSchemaToPass}
+                isEditing={isEditing}
                 data={data}
                 onEdit={onEdit}
-                title={(
+                title={
                     <FormattedMessage
                         id="Interests.editDialog.title"
                         defaultMessage="Show your loved hobbies with fancy gifs!"
                     />
-                )}
+                }
             >
                 {helpers => <GifsEditForm helpers={helpers} />}
             </EditDialog>

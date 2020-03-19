@@ -1,14 +1,14 @@
-export const EXPERIENCE_CONTENT_TRANSITION_SPRING_PROPS = ({
-    from: ({
+export const EXPERIENCE_CONTENT_TRANSITION_SPRING_PROPS = {
+    from: {
         opacity: 0,
         transform: 'translate3d(-20px, 0, 0)'
-    }),
-    enter: ({
+    },
+    enter: {
         opacity: 1,
         transform: 'translate3d(0, 0, 0)'
-    }),
-    leave: ({
+    },
+    leave: {
         opacity: 0,
         transform: 'translate3d(-20px, 0, 0)'
-    })
-});
+    }
+};

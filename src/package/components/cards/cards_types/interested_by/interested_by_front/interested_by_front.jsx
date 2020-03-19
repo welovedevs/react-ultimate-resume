@@ -89,10 +89,10 @@ const Content = ({
                     />
                 </Typography>
                 <NoDataButton
+                    handleAddButtonClick={handleAddButtonClick}
                     classes={{
                         container: classes.addButton
                     }}
-                    handleAddButtonClick={handleAddButtonClick}
                 >
                     <FormattedMessage id="InterestedBy.noInterested.buttonLabel" defaultMessage="Ajouter" />
                 </NoDataButton>

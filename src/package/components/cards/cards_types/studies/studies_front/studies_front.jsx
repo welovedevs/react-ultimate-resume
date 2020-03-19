@@ -25,7 +25,10 @@ const StudiesFrontComponent = ({ data: { education: data }, handleAddButtonClick
     const classes = useStyles();
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [
+        side,
+        setSide
+    ]);
 
     const hasEducation = useMemo(() => existsAndNotEmpty(data), [data]);
 
@@ -71,10 +74,10 @@ const Content = ({ hasEducation, data, handleAddButtonClick, classes }) => {
                 />
             </Typography>
             <NoDataButton
+                handleAddButtonClick={handleAddButtonClick}
                 classes={{
                     container: classes.addButton
                 }}
-                handleAddButtonClick={handleAddButtonClick}
             >
                 <FormattedMessage id="Studies.noEducation.buttonLabel" defaultMessage="Ajouter une formation" />
             </NoDataButton>

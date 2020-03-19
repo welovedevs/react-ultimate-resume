@@ -28,7 +28,10 @@ const ExperiencesFrontComponent = ({ data, handleAddButtonClick }) => {
 
     const hasWork = useMemo(() => existsAndNotEmpty(data?.work), [data]);
 
-    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [
+        side,
+        setSide
+    ]);
 
     const title = useMemo(() => {
         const builder = [];
@@ -93,10 +96,10 @@ const Content = ({ hasWork, title, handleAddButtonClick, classes }) => {
                 />
             </Typography>
             <NoDataButton
+                handleAddButtonClick={handleAddButtonClick}
                 classes={{
                     container: classes.addButton
                 }}
-                handleAddButtonClick={handleAddButtonClick}
             >
                 <FormattedMessage id="Experiences.noWork.buttonLabel" defaultMessage="Ajouter une expérience" />
             </NoDataButton>

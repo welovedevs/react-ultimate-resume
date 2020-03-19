@@ -10,7 +10,7 @@ import { styles } from './skills_edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
-const SkillsEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
+const SkillsEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
     const classes = useStyles();
     const { formatMessage } = useIntl();
     const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
@@ -23,6 +23,7 @@ const SkillsEditDialogComponent = ({ open, onClose, data, onEdit, validationSche
                 content: classes.content
             }}
             open={open}
+            isEditing={isEditing}
             onClose={onClose}
             data={data}
             onEdit={onEdit}

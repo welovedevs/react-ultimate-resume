@@ -27,9 +27,10 @@ export const styles = theme => {
             overflow: 'hidden',
             position: 'relative',
             ...center,
-            ...!fullScreen && !isMobile && {
-                minHeight: 375
-            }
+            ...(!fullScreen &&
+                !isMobile && {
+                    minHeight: 375
+                })
         }),
         iframe: {
             position: 'absolute',

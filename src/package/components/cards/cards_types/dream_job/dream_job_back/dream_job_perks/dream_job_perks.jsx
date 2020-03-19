@@ -21,10 +21,7 @@ const DreamJobPerksComponent = ({ perks = {} }) => {
                         return value;
                     }
                     return (
-                        <li
-                            className={classes.listItem}
-                            key={`dream_job_perk_${perkId}`}
-                        >
+                        <li className={classes.listItem} key={`dream_job_perk_${perkId}`}>
                             {formatMessage(jobPerksTranslations[perkId.toLowerCase()] || jobPerksTranslations.others)}
                         </li>
                     );

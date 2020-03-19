@@ -27,7 +27,10 @@ const SkillsFrontComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles();
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [
+        side,
+        setSide
+    ]);
 
     const { technologies } = useTechnologies();
 
@@ -37,7 +40,7 @@ const SkillsFrontComponent = ({ data, handleAddButtonClick }) => {
         if (!technologies || !firstTechno) {
             return null;
         }
-        return technologies[(firstTechno?.name)];
+        return technologies[firstTechno?.name];
     }, [technologies, data]);
 
     const hasSkill = useMemo(() => existsAndNotEmpty(data?.skills), [data]);
@@ -52,7 +55,7 @@ const SkillsFrontComponent = ({ data, handleAddButtonClick }) => {
             {hasSkill && (
                 <ProfileCardActions>
                     <ProfileCardButton onClick={handleButtonClick}>
-                        <FormattedMessage id="Skills.front.action" defaultMessage="More skills"/>
+                        <FormattedMessage id="Skills.front.action" defaultMessage="More skills" />
                     </ProfileCardButton>
                 </ProfileCardActions>
             )}
@@ -64,7 +67,7 @@ const Content = ({ hasSkill, techno, handleAddButtonClick, classes }) => {
     if (hasSkill) {
         return (
             <>
-                <Picture techno={techno} classes={classes}/>
+                <Picture techno={techno} classes={classes} />
                 <ProfileCardFrontTypography classes={{ container: classes.typography }}>
                     <FormattedMessage
                         id="Skills.front.title"
@@ -78,15 +81,18 @@ const Content = ({ hasSkill, techno, handleAddButtonClick, classes }) => {
     return (
         <div className={classes.noSkill}>
             <Typography variant="h3" component="h3" customClasses={{ container: classes.noSkillTypography }}>
-                <FormattedMessage id="Skills.front.noSkill" defaultMessage="Vous n'avez pas encore ajouté de compétences !"/>
+                <FormattedMessage
+                    id="Skills.front.noSkill"
+                    defaultMessage="Vous n'avez pas encore ajouté de compétences !"
+                />
             </Typography>
             <NoDataButton
+                handleAddButtonClick={handleAddButtonClick}
                 classes={{
                     container: classes.addButton
-            }}
-                handleAddButtonClick={handleAddButtonClick}
+                }}
             >
-                <FormattedMessage id="Skills.noSkill.buttonLabel" defaultMessage="Ajouter une compétence"/>
+                <FormattedMessage id="Skills.noSkill.buttonLabel" defaultMessage="Ajouter une compétence" />
             </NoDataButton>
         </div>
     );

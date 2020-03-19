@@ -19,22 +19,26 @@ import { styles } from './current_job_issues_field_styles';
 const useStyles = createUseStyles(styles);
 
 const CurrentJobIssuesFieldComponent = ({
-                                 error,
-                                 checkboxGroupCurrentJobIssues,
-                                 checkedCurrentJobIssues,
-                                 onChange,
-                                 toggleOtherCurrentJobIssue,
-                                 otherCurrentJobIssue,
-                                 handleChange,
-                                 currentJobIssues
-                             }) => {
+    error,
+    checkboxGroupCurrentJobIssues,
+    checkedCurrentJobIssues,
+    onChange,
+    toggleOtherCurrentJobIssue,
+    otherCurrentJobIssue,
+    handleChange,
+    currentJobIssues
+}) => {
     const classes = useStyles();
     const { formatMessage } = useIntl();
 
-    const transitions = useTransition(otherCurrentJobIssue !== null, item => `other_field_${item ? 'visible' : 'invisible'}`, {
-        ...CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS,
-        unique: true
-    });
+    const transitions = useTransition(
+        otherCurrentJobIssue !== null,
+        item => `other_field_${item ? 'visible' : 'invisible'}`,
+        {
+            ...CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS,
+            unique: true
+        }
+    );
 
     return (
         <EditDialogField

@@ -32,12 +32,7 @@ const Title = ({ isFreelance }) => {
             />
         );
     }
-    return (
-        <FormattedMessage
-            id="DreamJob.editDialog.salary.title"
-            defaultMessage="What's your desired salary?"
-        />
-    );
+    return <FormattedMessage id="DreamJob.editDialog.salary.title" defaultMessage="What's your desired salary?" />;
 };
 
 export const SalaryField = SalaryFieldComponent;

@@ -1,6 +1,8 @@
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: {
             margin: [spacing * 5, 0],
             '&:first-child': {
@@ -23,5 +25,5 @@ export const styles = (theme) => {
             display: 'flex',
             flexDirection: 'column'
         }
-    });
+    };
 };

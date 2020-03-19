@@ -31,7 +31,7 @@ const OtherSkills = ({ style, othersSkills, springTranslationProps: { yt } }) =>
             }}
         >
             <Typography variant="h3" component="h3" customClasses={{ container: classes.otherSkillsTitle }}>
-                <FormattedMessage id="Skills.otherskills.title" defaultMessage="I also master"/>
+                <FormattedMessage id="Skills.otherskills.title" defaultMessage="I also master" />
             </Typography>
             {othersSkills.map(skill => (
                 <OtherSkillProgress

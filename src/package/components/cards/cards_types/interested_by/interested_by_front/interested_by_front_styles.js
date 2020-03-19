@@ -1,17 +1,17 @@
 import { createScreenWidthMediaQuery, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
+export const styles = theme => {
     const {
         miscellaneous: { spacing },
         screenSizes
     } = theme;
     const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
     const QUERY_EXTRA_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.xs);
-    return ({
+    return {
         container: ({ overrideColor }) => ({
-            ...overrideColor && {
+            ...(overrideColor && {
                 color: getHexFromPaletteColor(theme, overrideColor)
-            }
+            })
         }),
         interestedByValue: {
             marginTop: spacing * 4
@@ -51,5 +51,5 @@ export const styles = (theme) => {
                 }
             }
         }
-    });
+    };
 };

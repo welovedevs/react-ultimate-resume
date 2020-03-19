@@ -36,7 +36,7 @@ const DragHandle = SortableHandle(({ classes }) => (
     </button>
 ));
 
-const ExperiencesEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema }) => {
+const ExperiencesEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
     const { formatMessage } = useIntl();
     const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
 
@@ -45,6 +45,7 @@ const ExperiencesEditDialogComponent = ({ open, onClose, data, onEdit, validatio
             open={open}
             onClose={onClose}
             data={data}
+            isEditing={isEditing}
             onEdit={onEdit}
             validationSchema={validationSchemaToPass}
             title={

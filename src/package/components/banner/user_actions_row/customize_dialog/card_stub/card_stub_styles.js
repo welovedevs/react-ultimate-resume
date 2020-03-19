@@ -3,7 +3,10 @@ import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../..
 const CARD_DIMENSION = 200;
 
 export const styles = theme => {
-    const { palette, miscellaneous: { spacing } } = theme;
+    const {
+        palette,
+        miscellaneous: { spacing }
+    } = theme;
     return {
         container: {
             position: 'relative',

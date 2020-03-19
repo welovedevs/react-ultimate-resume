@@ -8,7 +8,7 @@ export const ProjectValidator = formatMessage =>
             .min(5, formatMessage(validationTranslations.min, { min: 5 })),
         description: Yup.string()
             .required(formatMessage(validationTranslations.required))
-            .min(100, formatMessage(validationTranslations.min, { min: 0 })),
+            .min(100, formatMessage(validationTranslations.min, { min: 100 })),
         date: Yup.object()
             .nullable()
             .required(formatMessage(validationTranslations.required)),

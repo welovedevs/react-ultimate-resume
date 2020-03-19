@@ -1,9 +1,9 @@
 import { createScreenWidthMediaQuery } from '../../../../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
+export const styles = theme => {
     const { screenSizes } = theme;
     const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
-    return ({
+    return {
         list: {
             margin: 0,
             padding: 0,
@@ -17,5 +17,5 @@ export const styles = (theme) => {
             listStyle: 'none',
             zIndex: 2120
         }
-    });
+    };
 };

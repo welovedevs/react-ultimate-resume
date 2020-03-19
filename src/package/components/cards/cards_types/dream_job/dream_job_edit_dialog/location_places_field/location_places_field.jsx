@@ -22,19 +22,19 @@ const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace }) 
     const placesValues = useMemo(() => Object.values(places || {}), [places]);
     const transitions = useTransition(placesValues, ({ id }) => `place_${id}`, {
         ...LOCATION_PLACES_FIELD_TRANSITIONS_SPRING_PROPS,
-        ...placesValues?.length && {
+        ...(placesValues?.length && {
             trail: 500 / placesValues.length
-        }
+        })
     });
     return (
         <EditDialogField
             error={error}
-            title={(
+            title={
                 <FormattedMessage
                     id="DreamJob.editDialog.location.title"
                     defaultMessage="What's your dream job location?"
                 />
-            )}
+            }
         >
             <LocationField
                 fullWidth
@@ -45,26 +45,29 @@ const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace }) 
                 onLocationSelected={addPlace}
             />
             <div className={classes.places}>
-                {transitions.map(({ item, key, props }) => item && (
-                    <Tag
-                        key={key}
-                        className={classes.place}
-                        color="secondary"
-                        style={{
-                            opacity: props.opacity,
-                            transform: props.scale.interpolate(value => `scale3d(${value}, ${value}, ${value})`)
-                        }}
-                    >
-                        <Tooltip title="Delete this place">
-                            <button type="button" onClick={removePlace(item.id)}>
-                                <TrashIcon className={classes.deleteIcon} />
-                            </button>
-                        </Tooltip>
-                        <Typography variant="body2" color="light">
-                            {item.name}
-                        </Typography>
-                    </Tag>
-                ))}
+                {transitions.map(
+                    ({ item, key, props }) =>
+                        item && (
+                            <Tag
+                                key={key}
+                                className={classes.place}
+                                color="secondary"
+                                style={{
+                                    opacity: props.opacity,
+                                    transform: props.scale.interpolate(value => `scale3d(${value}, ${value}, ${value})`)
+                                }}
+                            >
+                                <Tooltip title="Delete this place">
+                                    <button type="button" onClick={removePlace(item.id)}>
+                                        <TrashIcon className={classes.deleteIcon} />
+                                    </button>
+                                </Tooltip>
+                                <Typography variant="body2" color="light">
+                                    {item.name}
+                                </Typography>
+                            </Tag>
+                        )
+                )}
             </div>
         </EditDialogField>
     );

@@ -1,6 +1,6 @@
 import { createElement } from 'react';
 
-const ProfileCardEditDialogComponent = ({ open, onClose, editDialog, data }) => {
+const ProfileCardEditDialogComponent = ({ open, onClose, editDialog, data, isEditing }) => {
     if (!editDialog) {
         return null;
     }
@@ -10,9 +10,10 @@ const ProfileCardEditDialogComponent = ({ open, onClose, editDialog, data }) => 
             editDialog.onEdit(...parameters);
         },
         validationSchema: editDialog.validationSchema,
-        data,
+        data: editDialog.data || data,
         open,
-        onClose
+        onClose,
+        isEditing
     });
 };
 

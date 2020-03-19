@@ -3,9 +3,11 @@ import {
     getHexFromPaletteColor
 } from '../../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
-    const { miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         valueSliderContainer: {
             display: 'flex',
             alignItems: 'center',
@@ -28,5 +30,5 @@ export const styles = (theme) => {
                 }
             }
         }
-    });
+    };
 };

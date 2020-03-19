@@ -31,7 +31,10 @@ const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
 
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [
+        side,
+        setSide
+    ]);
 
     const [isMainTypographyTruncated, setIsMainTypographyTruncated] = useState(true);
     const mainTypographyReference = useRef();
@@ -53,14 +56,20 @@ const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
                         component="div"
                         ref={mainTypographyReference}
                         classes={{
-                            container: cn(classes.mainTypography,
-                                isMainTypographyTruncated && classes.truncatedMainTypography)
+                            container: cn(
+                                classes.mainTypography,
+                                isMainTypographyTruncated && classes.truncatedMainTypography
+                            )
                         }}
                     >
                         {data.summary}
                     </ProfileCardFrontTypography>
                     {currentCityName && (
-                        <ProfileCardFrontTypography variant="h4" component="h3" classes={{ container: classes.location }}>
+                        <ProfileCardFrontTypography
+                            variant="h4"
+                            component="h3"
+                            classes={{ container: classes.location }}
+                        >
                             <LocationIcon className={classes.locationIcon} />
                             {data?.currentCity?.name}
                         </ProfileCardFrontTypography>
@@ -68,13 +77,16 @@ const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
                 </div>
                 {!data?.personalDescription && mode === 'edit' && (
                     <NoDataButton
+                        handleAddButtonClick={handleAddButtonClick}
                         classes={{
                             container: classes.addButton
                         }}
                         color="secondary"
-                        handleAddButtonClick={handleAddButtonClick}
                     >
-                        <FormattedMessage id="Basics.noDescription.buttonLabel" defaultMessage="Ajouter une description" />
+                        <FormattedMessage
+                            id="Basics.noDescription.buttonLabel"
+                            defaultMessage="Ajouter une description"
+                        />
                     </NoDataButton>
                 )}
             </CenterContentContainer>

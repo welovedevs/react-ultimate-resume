@@ -25,7 +25,10 @@ const GifsFrontComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles();
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [
+        side,
+        setSide
+    ]);
 
     const { gifUrl, name } = data.interests?.[0] ?? {};
 
@@ -78,11 +81,11 @@ const Content = ({ hasHobby, name, handleAddButtonClick, classes }) => {
                     />
                 </Typography>
                 <NoDataButton
+                    handleAddButtonClick={handleAddButtonClick}
                     classes={{
                         container: classes.addButton
                     }}
                     color="secondary"
-                    handleAddButtonClick={handleAddButtonClick}
                 >
                     <FormattedMessage id="Gifs.noHobby.buttonLabel" defaultMessage="Ajouter un hobby" />
                 </NoDataButton>

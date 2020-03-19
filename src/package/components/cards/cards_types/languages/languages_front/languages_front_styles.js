@@ -4,7 +4,7 @@ export const styles = theme => {
     const {
         miscellaneous: { spacing }
     } = theme;
-    return ({
+    return {
         typography: {
             maxWidth: '65%'
         },
@@ -29,5 +29,5 @@ export const styles = theme => {
                 fontSize: 40
             }
         }
-    });
+    };
 };

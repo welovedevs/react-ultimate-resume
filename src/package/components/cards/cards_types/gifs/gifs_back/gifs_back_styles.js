@@ -2,7 +2,8 @@ import {
     createScreenWidthMediaQuery,
     flex,
     getColorsFromCardVariant,
-    getHexFromPaletteColor, withCustomVerticalScrollbar
+    getHexFromPaletteColor,
+    withCustomVerticalScrollbar
 } from '../../../../../utils/styles/styles_utils';
 
 const { center } = flex;

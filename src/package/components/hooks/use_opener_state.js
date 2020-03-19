@@ -16,9 +16,10 @@ export const useOpenerState = ({ mobileWidth = 560, useClickOnMobile, defaultHan
     const isMobile = useMediaQuery(`(max-width: ${mobileWidth}px)`, { defaultMatches: true });
     const eventsHandlerElementProps = useMemo(
         () => ({
-            ...(isMobile && useClickOnMobile && {
-                onClick: handleClick
-            }),
+            ...(isMobile &&
+                useClickOnMobile && {
+                    onClick: handleClick
+                }),
             ...((!isMobile || !useClickOnMobile) && {
                 onMouseEnter: setOpened,
                 onMouseLeave: setClosed,

@@ -8,7 +8,6 @@ import { validateWorkComplete, WorkValidator } from './data/validator';
 
 import { mapWorkFromJsonResume, mapWorkToJsonResume } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
-import { useCallbackOpen } from '../../../hooks/use_callback_open';
 import { SIDES } from '../../../commons/profile_card/profile_card_side/side';
 
 const ExperiencesCardComponent = ({ variant, side }) => {
@@ -16,13 +15,7 @@ const ExperiencesCardComponent = ({ variant, side }) => {
 
     const mappedData = useMemo(() => mapWorkFromJsonResume(data), [data]);
 
-    const onDialogEdited = useCallback(editedData => onEdit(mapWorkToJsonResume(editedData)), []);
-
-    const [openNewWorkDialog, setNewWorkDialogOpened, setNewWorkDialogClosed] = useCallbackOpen();
-
-    const handleAddButtonClick = useCallback(() => {
-        setNewWorkDialogOpened();
-    }, [onEdit]);
+    const onDialogEdited = useCallback(editedData => onEdit(mapWorkToJsonResume(editedData)), [onEdit]);
 
     const isComplete = useMemo(() => validateWorkComplete(mappedData), [mappedData]);
 
@@ -38,15 +31,13 @@ const ExperiencesCardComponent = ({ variant, side }) => {
     }
     return (
         <ProfileCard
-            isEditingProfile={isEditing || openNewWorkDialog}
+            isEditingProfile={isEditing}
             isComplete={isComplete}
             data={mappedData}
-            callbackEditDialogClosed={setNewWorkDialogClosed}
             sides={{
-                front: (props) => <ExperiencesFront handleAddButtonClick={handleAddButtonClick} {...props} />,
-                back: (props) => <ExperiencesBack handleAddButtonClick={handleAddButtonClick} {...props} />
+                front: props => <ExperiencesFront {...props} />,
+                back: props => <ExperiencesBack {...props} />
             }}
-            openEditDialog={openNewWorkDialog}
             editDialog={{
                 component: ExperiencesEditDialog,
                 validationSchema: WorkValidator,

@@ -21,7 +21,10 @@ const LanguagesFrontComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles();
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [side, setSide]);
+    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [
+        side,
+        setSide
+    ]);
 
     const languagesNode = (
         <>
@@ -72,15 +75,12 @@ const Content = ({ hasLanguage, languagesNode, handleAddButtonClick, classes }) 
                 />
             </Typography>
             <NoDataButton
+                handleAddButtonClick={handleAddButtonClick}
                 classes={{
                     container: classes.addButton
                 }}
-                handleAddButtonClick={handleAddButtonClick}
             >
-                <FormattedMessage
-                    id="Languages.noLanguage.buttonLabel"
-                    defaultMessage="Ajouter une langue"
-                />
+                <FormattedMessage id="Languages.noLanguage.buttonLabel" defaultMessage="Ajouter une langue" />
             </NoDataButton>
         </div>
     );

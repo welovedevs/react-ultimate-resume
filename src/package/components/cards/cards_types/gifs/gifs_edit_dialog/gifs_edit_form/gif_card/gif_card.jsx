@@ -11,21 +11,23 @@ import { styles } from './gif_card_styles';
 const useStyles = createUseStyles(styles);
 
 const GifCardComponent = ({
-                              name,
-                              gifUrl,
-                              imageEditable,
-                              additionalActions,
-                              onImageEditClick,
-                              onChange,
-                              onRemove,
-                              error
-                          }) => {
+    name,
+    gifUrl,
+    imageEditable,
+    additionalActions,
+    onImageEditClick,
+    onChange,
+    onRemove,
+    error
+}) => {
     const classes = useStyles();
 
     const [input, setInput] = useState(name);
 
-    const handleTextFieldChange = useCallback((event) => {
-        const { target: { value } } = event;
+    const handleTextFieldChange = useCallback(event => {
+        const {
+            target: { value }
+        } = event;
         setInput(value);
         onChange('name')(value);
     }, []);
@@ -37,14 +39,14 @@ const GifCardComponent = ({
             <Card className={classes.container}>
                 {(imageEditable || additionalActions) && (
                     <div className={classes.actions}>
-                        {(imageEditable && gifUrl) && (
+                        {imageEditable && gifUrl && (
                             <BouncingRoundButton
-                                title={(
-                                <FormattedMessage
-                                    id="GifsEditDialog.gifCard.changeGif"
-                                    defaultMessage="Changer this gif"
-                                />
-                            )}
+                                title={
+                                    <FormattedMessage
+                                        id="GifsEditDialog.gifCard.changeGif"
+                                        defaultMessage="Changer this gif"
+                                    />
+                                }
                                 onClick={onImageEditClick}
                             />
                         )}
@@ -75,7 +77,7 @@ const GifCardComponent = ({
                 </div>
                 <PopperCardActions>
                     <Button color="danger" size="small" onClick={onRemove}>
-                        <FormattedMessage id="Main.lang.remove" defaultMessage="Remove"/>
+                        <FormattedMessage id="Main.lang.remove" defaultMessage="Remove" />
                     </Button>
                 </PopperCardActions>
             </Card>
@@ -83,13 +85,7 @@ const GifCardComponent = ({
     );
 };
 
-const CardTopHalf = ({
-    error,
-    gifUrl,
-    classes,
-    name,
-    onImageEditClick
-}) => {
+const CardTopHalf = ({ error, gifUrl, classes, name, onImageEditClick }) => {
     if (!gifUrl) {
         return (
             <div className={classes.addGifButtonContainer}>
@@ -101,10 +97,7 @@ const CardTopHalf = ({
                     variant="outlined"
                     onClick={onImageEditClick}
                 >
-                    <FormattedMessage
-                        id="GifsEditDialog.gifCard.addGif"
-                        defaultMessage="Add a gif"
-                    />
+                    <FormattedMessage id="GifsEditDialog.gifCard.addGif" defaultMessage="Add a gif" />
                 </Button>
             </div>
         );
@@ -116,7 +109,7 @@ const CardTopHalf = ({
                     {error?.gifUrl}
                 </Typography>
             )}
-            <img className={classes.image} src={gifUrl} alt={name}/>
+            <img className={classes.image} src={gifUrl} alt={name} />
         </div>
     );
 };

@@ -64,7 +64,8 @@ export const WorkValidator = formatMessage =>
                                             return true;
                                         }
                                         return moment(value).isAfter(start);
-                                    }))
+                                    })
+                            )
                         })
                     })
             )

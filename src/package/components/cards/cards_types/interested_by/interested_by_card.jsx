@@ -9,22 +9,14 @@ import { InterestedByEditDialog } from './interested_by_edit_dialog/interested_b
 import { interestedByMapping } from './data/mapping';
 import { interestedByValidationSchema, validateInterestedByComplete } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
-import { useCallbackOpen } from '../../../hooks/use_callback_open';
 
 const InterestedByCardComponent = ({ variant, side }) => {
-    const { data, onEdit, isEditing, setIsEditing, mode } = useContext(DeveloperProfileContext);
+    const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => JsonResumeToFlatObject(data, interestedByMapping), [data]);
-
-    const [openNewInterestedDialog, setNewInterestedDialogOpened, setNewInterestedDialogClosed] = useCallbackOpen();
-
-    const handleAddButtonClick = useCallback(() => {
-        setIsEditing(true);
-        setNewInterestedDialogOpened();
-    }, [onEdit]);
 
     const onDialogEdited = useCallback(editedData => {
         onEdit(FlatObjectToJsonResume(editedData, interestedByMapping));
-    }, []);
+    }, [onEdit]);
 
     const isComplete = useMemo(() => validateInterestedByComplete(mappedData), [mappedData]);
 
@@ -37,11 +29,9 @@ const InterestedByCardComponent = ({ variant, side }) => {
                 data={mappedData}
                 isComplete={isComplete}
                 isEditingProfile={isEditing}
-                openEditDialog={openNewInterestedDialog}
-                callbackEditDialogClosed={setNewInterestedDialogClosed}
                 sides={{
-                    front: props => <InterestedByFront handleAddButtonClick={handleAddButtonClick} {...props} />,
-                    back: props => <InterestedByBack handleAddButtonClick={handleAddButtonClick} {...props} />
+                    front: props => <InterestedByFront {...props} />,
+                    back: props => <InterestedByBack {...props} />
                 }}
                 editDialog={{
                     component: InterestedByEditDialog,
