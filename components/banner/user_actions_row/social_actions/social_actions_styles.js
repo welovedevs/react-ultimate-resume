@@ -17,6 +17,7 @@ var styles = function styles(theme) {
   var QUERY_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small);
   return {
     container: (0, _defineProperty2.default)({
+      height: 'fit-content',
       display: 'flex',
       alignItems: 'center',
       flexWrap: 'wrap',
