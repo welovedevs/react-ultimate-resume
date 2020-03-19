@@ -71,6 +71,12 @@ var ExperienceContent = function ExperienceContent(_ref) {
     return "".concat(startDate, " - ").concat(endDate);
   }, [experience]);
   var title = (0, _react.useMemo)(function () {
+    console.log({
+      name: name,
+      place: place,
+      dateString: dateString
+    });
+
     if (typeof buildTitle === 'function') {
       return buildTitle({
         name: name,
