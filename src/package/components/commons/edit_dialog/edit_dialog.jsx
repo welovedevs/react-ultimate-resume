@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 
 import cn from 'classnames';
 import { FormattedMessage } from 'react-intl';
@@ -11,6 +11,7 @@ import { Button, Tooltip } from '@wld/ui';
 import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
 
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';
+import { DeveloperProfileContext } from '../../../utils/context/contexts';
 
 import { styles } from './edit_dialog_styles';
 
@@ -134,28 +135,33 @@ const Content = ({ children, onClose, handleSubmit, setFieldValue, values, fullS
     );
 };
 
-const Actions = ({ onClose, handleSubmit, fullScreen, classes, receivedClasses }) => (
-    <DialogActions
-        classes={{
-            root: cn(classes.actions, receivedClasses.actions)
-        }}
-    >
-        <Tooltip
-            title={(
-                <FormattedMessage
-                    id="EditDialog.close.tooltip"
-                    defaultMessage="Any modification won't be saved!"
-                />
-            )}
+const Actions = ({ onClose, handleSubmit, fullScreen, classes, receivedClasses }) => {
+    const { mode } = useContext(DeveloperProfileContext);
+    return (
+        <DialogActions
+            classes={{
+                root: cn(classes.actions, receivedClasses.actions)
+            }}
         >
-            <Button size="small" onClick={onClose}>
-                <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
-            </Button>
-        </Tooltip>
-        <Button variant={fullScreen ? 'contained' : 'text'} type="submit" size="small" color="primary" onClick={handleSubmit}>
-            <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
-        </Button>
-    </DialogActions>
-);
+            <Tooltip
+                title={(
+                    <FormattedMessage
+                        id="EditDialog.close.tooltip"
+                        defaultMessage="Any modification won't be saved!"
+                    />
+                )}
+            >
+                <Button size="small" onClick={onClose}>
+                    <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
+                </Button>
+            </Tooltip>
+            {mode === 'edit' && (
+                <Button variant={fullScreen ? 'contained' : 'text'} type="submit" size="small" color="primary" onClick={handleSubmit}>
+                    <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
+                </Button>
+            )}
+        </DialogActions>
+    );
+};
 
 export const EditDialog = EditDialogComponent;
