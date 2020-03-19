@@ -27,6 +27,8 @@ var _experiences_back_styles = require("./experiences_back_styles");
 
 var _experiences_translations = require("./experiences_translations");
 
+var _use_additional_nodes = require("../../../../hooks/use_additional_nodes");
+
 var useStyles = (0, _reactJss.createUseStyles)(_experiences_back_styles.styles);
 
 var ExperienceContent = function ExperienceContent(_ref) {
@@ -36,6 +38,9 @@ var ExperienceContent = function ExperienceContent(_ref) {
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
+
+  var _useAdditionalNodes = (0, _use_additional_nodes.useAdditionalNodes)('cards.experiences.back.experience.content.buildTitle', null),
+      buildTitle = _useAdditionalNodes.buildTitle;
 
   var id = experience.id,
       name = experience.name,
@@ -58,6 +63,14 @@ var ExperienceContent = function ExperienceContent(_ref) {
     return "".concat(startDate, " - ").concat(endDate);
   }, [experience]);
   var title = (0, _react.useMemo)(function () {
+    if (typeof buildTitle === 'function') {
+      return buildTitle({
+        name: name,
+        place: place,
+        dateString: dateString
+      });
+    }
+
     var builder = [];
 
     if (name) {
@@ -78,7 +91,7 @@ var ExperienceContent = function ExperienceContent(_ref) {
 
     builder.push(dateString);
     return builder;
-  }, [experience]);
+  }, [buildTitle, experience]);
   return _react.default.createElement(_profile_card_section.ProfileCardSection, {
     key: id,
     cardVariant: variant
