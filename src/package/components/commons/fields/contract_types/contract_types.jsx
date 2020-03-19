@@ -13,7 +13,7 @@ export const ContractType = ({ contractTypes = [] }) => {
     }
 
     console.log({ contracts });
-    if (!contracts.length) {
+    if (contracts.length <= 1) {
         return (
             <FormattedMessage
                 id="Basics.Back.WorkContract.single"
