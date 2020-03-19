@@ -11,6 +11,8 @@ export const ContractType = ({ contractTypes = [] }) => {
     if (!lastContract) {
         return null;
     }
+
+    console.log({ contracts });
     if (!contracts.length) {
         return (
             <FormattedMessage
