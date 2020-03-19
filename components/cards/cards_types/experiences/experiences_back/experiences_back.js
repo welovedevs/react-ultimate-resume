@@ -75,15 +75,9 @@ var ExperienceContent = function ExperienceContent(_ref) {
       name: name,
       place: place,
       dateString: dateString
-    });
-
-    if (typeof buildTitle === 'function') {
-      return buildTitle({
-        name: name,
-        place: place,
-        dateString: dateString
-      });
-    }
+    }); // if (typeof buildTitle === 'function') {
+    //     return buildTitle({ name, place, dateString });
+    // }
 
     var builder = [];
 
