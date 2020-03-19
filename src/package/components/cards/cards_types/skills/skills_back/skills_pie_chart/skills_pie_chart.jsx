@@ -29,8 +29,6 @@ const SkillsPieChart = ({ data, variant, springOnOpenOpacityProps, springOnScrol
         [contentColor, backgroundColor]
     );
 
-    console.log(data, 'lol');
-
     return (
         <animated.div
             // ref={wrapperRef}

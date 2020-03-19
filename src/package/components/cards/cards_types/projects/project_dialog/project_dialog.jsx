@@ -27,9 +27,7 @@ const ProjectDialogComponent = ({ open, onClose, data: project = {}, isEditing }
 
     const onDialogEdited = useCallback(
         editedData => {
-            console.log({ editedData });
             const updateProjectsArray1 = updateProjectsArray(mapProjectToJsonResume(editedData), data);
-            console.log({ updateProjectsArray1 });
             onEdit(updateProjectsArray1);
             onClose();
         },

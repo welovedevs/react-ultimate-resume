@@ -12,10 +12,7 @@ import { SIDES } from '../../../commons/profile_card/profile_card_side/side';
 
 const ProjectsCardComponent = ({ variant, side }) => {
     const { data, isEditing, mode } = useContext(DeveloperProfileContext);
-    const mappedData = useMemo(() => {
-        console.log({ data });
-        return mapProjectsFromJsonResume(data);
-    }, [data]);
+    const mappedData = useMemo(() => mapProjectsFromJsonResume(data), [data]);
 
     const isComplete = useMemo(() => validateProjectsComplete(mappedData), [mappedData]);
 

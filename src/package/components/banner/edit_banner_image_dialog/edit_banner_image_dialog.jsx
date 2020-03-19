@@ -37,7 +37,6 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
     const onDrop = useCallback(
         files =>
             onFilesUpload(files).then(url => {
-                console.log({ url });
                 onImageSelected({ url });
                 return url;
             }),
