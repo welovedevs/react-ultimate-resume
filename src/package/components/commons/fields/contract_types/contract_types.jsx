@@ -12,7 +12,6 @@ export const ContractType = ({ contractTypes = [] }) => {
         return null;
     }
 
-    console.log({ contracts });
     if (contracts.length <= 1) {
         return (
             <FormattedMessage
