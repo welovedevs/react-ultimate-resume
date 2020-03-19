@@ -34,26 +34,31 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
         personalDescription
     } = data;
 
+    const descriptionContent = useMemo(() => {
+        if (personalDescription && mode === 'edit') {
+            return <span>{personalDescription}</span>;
+        }
+        return (
+            <NoDataButton
+                handleAddButtonClick={handleAddButtonClick}
+                classes={{
+                    container: classes.addButton
+                }}
+            >
+                <FormattedMessage
+                    id="Basics.noDescription.buttonLabel"
+                    defaultMessage="Ajouter une description"
+                />
+            </NoDataButton>
+        );
+    }, [personalDescription, mode, handleAddButtonClick, classes]);
+
     const sections = useMemo(
         () => ({
             personalDescription: {
                 title: null,
                 hide: false,
-                value: personalDescription && mode === 'edit' ? (
-                    <span>{personalDescription}</span>
-                ) : (
-                    <NoDataButton
-                        handleAddButtonClick={handleAddButtonClick}
-                        classes={{
-                            container: classes.addButton
-                        }}
-                    >
-                        <FormattedMessage
-                            id="Basics.noDescription.buttonLabel"
-                            defaultMessage="Ajouter une description"
-                        />
-                    </NoDataButton>
-                )
+                value: descriptionContent
             },
             visaSponsorship: {
                 hide: !existsAndNotEmpty(visaSponsorship),
@@ -76,10 +81,10 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
                             defaultMessage={'{experienceYears} years of experience'}
                             values={{ experienceYears }}
                         />
-                        <br/>
-                        <ContractType contractTypes={contractTypes}/>
-                        <br/>
-                        <JobSearchState searchState={searchState}/>
+                        <br />
+                        <ContractType contractTypes={contractTypes} />
+                        <br />
+                        <JobSearchState searchState={searchState} />
                     </>
                 )
             },
@@ -104,8 +109,8 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
                             defaultMessage={'{studiesLevel} years of higher education'}
                             values={{ studiesLevel }}
                         />
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
                         {codingReason && <span>{codingReason}</span>}
                     </>
                 )
@@ -120,6 +125,7 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
             codingReason,
             visaSponsorship,
             personalDescription,
+            descriptionContent,
             searchState
         ]
     );

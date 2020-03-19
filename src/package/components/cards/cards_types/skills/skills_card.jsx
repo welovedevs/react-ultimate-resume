@@ -9,6 +9,7 @@ import { mapSkillsFromJsonResume, mapSkillsToJsonResume } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { SkillsValidationSchema, validateSkillsComplete } from './data/validator';
 import { useCallbackOpen } from '../../../hooks/use_callback_open';
+import { SIDES } from '../../../commons/profile_card/profile_card_side/side';
 
 const SkillsCardComponent = ({ variant, side }) => {
     const { data, onEdit, isEditing, setIsEditing, mode } = useContext(DeveloperProfileContext);
@@ -27,6 +28,13 @@ const SkillsCardComponent = ({ variant, side }) => {
     }, [onEdit]);
 
     const isComplete = useMemo(() => validateSkillsComplete(mappedData), [mappedData]);
+
+    const currentSide = useMemo(() => {
+        if (!isComplete && !isEditing) {
+            return SIDES.FRONT;
+        }
+        return side;
+    }, [side, isComplete, isEditing]);
 
     if (!isComplete && mode !== 'edit') {
         return null;
@@ -48,7 +56,7 @@ const SkillsCardComponent = ({ variant, side }) => {
             callbackEditDialogClosed={setNewSkillDialogClosed}
             data={mappedData}
             variant={variant}
-            side={side}
+            side={currentSide}
         />
     );
 };

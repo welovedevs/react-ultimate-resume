@@ -9,6 +9,7 @@ import { validateWorkComplete, WorkValidator } from './data/validator';
 import { mapWorkFromJsonResume, mapWorkToJsonResume } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { useCallbackOpen } from '../../../hooks/use_callback_open';
+import { SIDES } from '../../../commons/profile_card/profile_card_side/side';
 
 const ExperiencesCardComponent = ({ variant, side }) => {
     const { data, onEdit, isEditing, setIsEditing, mode } = useContext(DeveloperProfileContext);
@@ -25,6 +26,13 @@ const ExperiencesCardComponent = ({ variant, side }) => {
     }, [onEdit]);
 
     const isComplete = useMemo(() => validateWorkComplete(mappedData), [mappedData]);
+
+    const currentSide = useMemo(() => {
+        if (!isComplete && !isEditing) {
+            return SIDES.FRONT;
+        }
+        return side;
+    }, [side, isComplete, isEditing]);
 
     if (!isComplete && mode !== 'edit') {
         return null;
@@ -46,7 +54,7 @@ const ExperiencesCardComponent = ({ variant, side }) => {
                 onEdit: onDialogEdited
             }}
             variant={variant}
-            side={side}
+            side={currentSide}
         />
     );
 };

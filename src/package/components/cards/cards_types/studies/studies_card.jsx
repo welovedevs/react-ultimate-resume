@@ -7,6 +7,7 @@ import { StudiesCardEditDialog } from './edit_dialog/studies_card_edit_dialog';
 import { StudiesValidator, validateStudiesComplete } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { useCallbackOpen } from '../../../hooks/use_callback_open';
+import { SIDES } from '../../../commons/profile_card/profile_card_side/side';
 
 const StudiesCardComponent = ({ variant, side }) => {
     const { data, onEdit, isEditing, setIsEditing, mode } = useContext(DeveloperProfileContext);
@@ -24,6 +25,13 @@ const StudiesCardComponent = ({ variant, side }) => {
     }, [onEdit]);
 
     const isComplete = useMemo(() => validateStudiesComplete(mappedData), [mappedData]);
+
+    const currentSide = useMemo(() => {
+        if (!isComplete && !isEditing) {
+            return SIDES.FRONT;
+        }
+        return side;
+    }, [side, isComplete, isEditing]);
 
     if (!isComplete && mode !== 'edit') {
         return null;
@@ -46,7 +54,7 @@ const StudiesCardComponent = ({ variant, side }) => {
                 onEdit: onDialogEdited
             }}
             variant={variant}
-            side={side}
+            side={currentSide}
         />
     );
 };

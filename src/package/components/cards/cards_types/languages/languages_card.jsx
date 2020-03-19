@@ -7,6 +7,7 @@ import { LanguagesCardEditDialog } from './languages_edit_dialog/languages_card_
 import { LanguageValidator, validateLanguagesComplete } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { useCallbackOpen } from '../../../hooks/use_callback_open';
+import { SIDES } from '../../../commons/profile_card/profile_card_side/side';
 
 const LanguagesCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit, setIsEditing, mode } = useContext(DeveloperProfileContext);
@@ -25,6 +26,13 @@ const LanguagesCardComponent = ({ variant, side }) => {
         setNewLanguageDialogOpened();
     }, [onEdit]);
 
+    const currentSide = useMemo(() => {
+        if (!isComplete && !isEditing) {
+            return SIDES.FRONT;
+        }
+        return side;
+    }, [side, isComplete, isEditing]);
+
     if (!isComplete && mode !== 'edit') {
         return null;
     }
@@ -38,7 +46,7 @@ const LanguagesCardComponent = ({ variant, side }) => {
                 back: props => <LanguagesBack handleAddButtonClick={handleAddButtonClick} {...props} />
             }}
             variant={variant}
-            side={side}
+            side={currentSide}
             openEditDialog={openNewLanguageDialog}
             callbackEditDialogClosed={setNewLanguageDialogClosed}
             editDialog={{

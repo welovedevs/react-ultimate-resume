@@ -117,16 +117,16 @@ const ProfileCardComponent = ({
             type: SET_SIDE,
             side: newSide
         });
-    }, []);
+    }, [sideProps]);
 
-    const handleMouseEnter = useCallback(() => setSide(SIDES.BACK), [dispatch]);
+    const handleMouseEnter = useCallback(() => setSide(SIDES.BACK), [setSide]);
 
     const handleMouseLeave = useCallback(() => {
         if (hasDialogOpened) {
             return;
         }
         setSide(SIDES.FRONT);
-    }, [hasDialogOpened, dispatch]);
+    }, [hasDialogOpened, setSide]);
 
     useEffect(() => {
         if (hasSideChanged.current) {
