@@ -11,11 +11,13 @@ import { ProfileCardSectionSubtitle } from '../../../../commons/profile_card/pro
 
 import { styles } from './experiences_back_styles';
 import { translations } from './experiences_translations';
+import { useAdditionalNodes } from '../../../../hooks/use_additional_nodes';
 
 const useStyles = createUseStyles(styles);
 
 const ExperienceContent = ({ experience, variant, classes }) => {
     const { formatMessage } = useIntl();
+    const { buildTitle } = useAdditionalNodes('cards.experiences.back.experience.content.buildTitle', null);
     const { id, name, summary, place, position } = experience;
     const dateString = useMemo(() => {
         if (!experience.endDate) {
@@ -30,6 +32,9 @@ const ExperienceContent = ({ experience, variant, classes }) => {
     }, [experience]);
 
     const title = useMemo(() => {
+        if (typeof buildTitle === 'function') {
+            return buildTitle({ name, place, dateString });
+        }
         const builder = [];
         if (name) {
             builder.push(name);
@@ -45,7 +50,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
         }
         builder.push(dateString);
         return builder;
-    }, [experience]);
+    }, [buildTitle, experience]);
     return (
         <ProfileCardSection key={id} cardVariant={variant}>
             <ProfileCardSectionTitle>{position}</ProfileCardSectionTitle>
