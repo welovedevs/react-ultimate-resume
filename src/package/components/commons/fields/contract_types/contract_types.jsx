@@ -24,7 +24,10 @@ export const ContractType = ({ contractTypes = [] }) => {
         <FormattedMessage
             id="Basics.Back.WorkContract.multi"
             defaultMessage={'Looking for a {contracts} or {lastContract} contract'}
-            values={{ lastContract, contracts: contracts.join(', ') }}
+            values={{
+                lastContract: formatMessage(translations[lastContract]),
+                contracts: contracts.map((key) => formatMessage(translations[key]).join(', '))
+            }}
         />
     );
 };
