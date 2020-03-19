@@ -43,8 +43,10 @@ var ContractType = function ContractType(_ref) {
     id: "Basics.Back.WorkContract.multi",
     defaultMessage: 'Looking for a {contracts} or {lastContract} contract',
     values: {
-      lastContract: lastContract,
-      contracts: contracts.join(', ')
+      lastContract: formatMessage(_contract_types_translations.default[lastContract]),
+      contracts: contracts.map(function (key) {
+        return formatMessage(_contract_types_translations.default[key]).join(', ');
+      })
     }
   });
 };
