@@ -105,7 +105,7 @@ var ExperienceContent = function ExperienceContent(_ref) {
 
     builder.push(dateString);
     return builder;
-  }, [buildTitle, experience]);
+  }, [buildTitle, name, place, dateString]);
   return _react.default.createElement(_profile_card_section.ProfileCardSection, {
     key: id,
     cardVariant: variant
