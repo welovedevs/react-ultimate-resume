@@ -18,9 +18,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 var mapDreamJobFromJsonResume = function mapDreamJobFromJsonResume(jsonResume) {
   var _ref, _jsonResume$specific, _jsonResume$specific$, _jsonResume$specific2, _jsonResume$specific3, _jsonResume$specific4, _jsonResume$specific5, _jsonResume$specific6, _jsonResume$specific7, _jsonResume$specific8, _jsonResume$specific9, _jsonResume$specific10, _jsonResume$specific11, _jsonResume$specific12, _jsonResume$specific13;
 
-  return console.log({
-    jsonResume: jsonResume
-  }) || {
+  return {
     places: ((_ref = (_jsonResume$specific = jsonResume.specific) === null || _jsonResume$specific === void 0 ? void 0 : (_jsonResume$specific$ = _jsonResume$specific.dreamJob) === null || _jsonResume$specific$ === void 0 ? void 0 : _jsonResume$specific$.locations) !== null && _ref !== void 0 ? _ref : []).map(function (location) {
       return _objectSpread({}, location, {
         id: location.id || (0, _v.default)()

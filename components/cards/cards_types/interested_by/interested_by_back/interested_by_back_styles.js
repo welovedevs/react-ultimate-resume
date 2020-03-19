@@ -28,6 +28,7 @@ var styles = function styles(theme) {
       var variant = _ref2.variant;
       return _objectSpread({
         display: 'flex',
+        flexDirection: 'column',
         overflow: 'auto',
         textOverflow: 'unset',
         '-webkit-line-clamp': 'unset',

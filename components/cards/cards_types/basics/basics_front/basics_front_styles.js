@@ -26,6 +26,10 @@ var styles = function styles(theme) {
     text: {
       margin: [0, '!important']
     },
+    addButton: {
+      marginTop: spacing * 4,
+      marginLeft: -spacing
+    },
     mainTypography: (_mainTypography = {
       extend: 'text',
       textOverflow: 'ellipsis',

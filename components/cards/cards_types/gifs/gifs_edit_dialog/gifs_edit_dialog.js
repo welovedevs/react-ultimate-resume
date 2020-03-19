@@ -26,7 +26,8 @@ var GifsEditDialogComponent = function GifsEditDialogComponent(_ref) {
       onClose = _ref.onClose,
       data = _ref.data,
       onEdit = _ref.onEdit,
-      validationSchema = _ref.validationSchema;
+      validationSchema = _ref.validationSchema,
+      isEditing = _ref.isEditing;
   var classes = useStyles();
 
   var _useIntl = (0, _reactIntl.useIntl)(),
@@ -44,6 +45,7 @@ var GifsEditDialogComponent = function GifsEditDialogComponent(_ref) {
     open: open,
     onClose: onClose,
     validationSchema: validationSchemaToPass,
+    isEditing: isEditing,
     data: data,
     onEdit: onEdit,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {

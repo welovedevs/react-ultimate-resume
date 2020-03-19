@@ -31,6 +31,8 @@ var _use_card_variant = require("../../../../commons/profile_card/profile_card_h
 
 var _soundtrack_back_styles = require("./soundtrack_back_styles");
 
+var _no_soundtrack = require("./no_soundtrack/no_soundtrack");
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -38,8 +40,24 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 var useStyles = (0, _reactJss.createUseStyles)(_soundtrack_back_styles.styles);
 
 var SoundtrackBackComponent = function SoundtrackBackComponent(_ref) {
-  var data = _ref.data;
+  var data = _ref.data,
+      handleAddButtonClick = _ref.handleAddButtonClick;
   var classes = useStyles();
+  return _react.default.createElement(_center_content_container.CenterContentContainer, {
+    customClasses: {
+      container: classes.container
+    }
+  }, _react.default.createElement(Content, {
+    data: data,
+    handleAddButtonClick: handleAddButtonClick,
+    classes: classes
+  }));
+};
+
+var Content = function Content(_ref2) {
+  var data = _ref2.data,
+      handleAddButtonClick = _ref2.handleAddButtonClick,
+      classes = _ref2.classes;
   var theme = (0, _reactJss.useTheme)();
 
   var _useCardVariant = (0, _use_card_variant.useCardVariant)(),
@@ -69,16 +87,19 @@ var SoundtrackBackComponent = function SoundtrackBackComponent(_ref) {
   }, _objectSpread({}, _soundtrack_back_loading_spinner_transitions.LOADING_SPINNER_TRANSITIONS, {
     unique: true
   }));
-  return _react.default.createElement(_center_content_container.CenterContentContainer, {
-    customClasses: {
-      container: classes.container
-    }
-  }, _react.default.createElement("span", {
+
+  if (!(data === null || data === void 0 ? void 0 : data.embedUrl)) {
+    return _react.default.createElement(_no_soundtrack.NoSoundTrack, {
+      handleAddButtonClick: handleAddButtonClick
+    });
+  }
+
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("span", {
     className: classes.loadingSpinnerContainer
-  }, loadingSpinnerTransitions.map(function (_ref2) {
-    var item = _ref2.item,
-        key = _ref2.key,
-        props = _ref2.props;
+  }, loadingSpinnerTransitions.map(function (_ref3) {
+    var item = _ref3.item,
+        key = _ref3.key,
+        props = _ref3.props;
     return !item && _react.default.createElement(_reactSpring.animated.span, {
       key: key,
       className: classes.loadingSpinnerChild,

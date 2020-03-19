@@ -37,7 +37,7 @@ var _projects_front_styles = require("./projects_front_styles");
 
 var _exists_and_not_empty = require("../../../utils/exists_and_not_empty");
 
-var _add_button = require("../add_button/add_button");
+var _no_data_button = require("../../../../commons/no_data_button/no_data_button");
 
 var useStyles = (0, _reactJss.createUseStyles)(_projects_front_styles.styles);
 
@@ -150,12 +150,15 @@ var Content = function Content(_ref4) {
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Projects.front.noProject",
     defaultMessage: "You didn't add any projects."
-  }), projectTitle), _react.default.createElement(_add_button.AddButton, {
+  }), projectTitle), _react.default.createElement(_no_data_button.NoDataButton, {
     classes: {
       container: classes.addButton
     },
     handleAddButtonClick: handleAddButtonClick
-  }));
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Projects.noProject.buttonLabel",
+    defaultMessage: "Ajouter un projet"
+  })));
 };
 
 var ProjectsFront = ProjectsFrontComponent;

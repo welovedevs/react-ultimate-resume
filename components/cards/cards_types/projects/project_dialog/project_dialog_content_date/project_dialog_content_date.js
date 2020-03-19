@@ -1,15 +1,13 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.ProjectDialogContentDate = void 0;
-
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -23,8 +21,6 @@ var _ui = require("@wld/ui");
 
 var _formik = require("formik");
 
-var _use_is_editing = require("../../../../../hooks/use_is_editing");
-
 var _project_dialog_content_date_styles = require("./project_dialog_content_date_styles");
 
 var _year_month = require("../../../../../commons/year_month/year_month");
@@ -32,12 +28,8 @@ var _year_month = require("../../../../../commons/year_month/year_month");
 var useStyles = (0, _reactJss.createUseStyles)(_project_dialog_content_date_styles.styles);
 
 var ProjectDialogContentDateComponent = function ProjectDialogContentDateComponent(_ref) {
-  var date = _ref.date;
-
-  var _useIsEditing = (0, _use_is_editing.useIsEditing)(),
-      _useIsEditing2 = (0, _slicedToArray2.default)(_useIsEditing, 1),
-      isEditing = _useIsEditing2[0];
-
+  var date = _ref.date,
+      isEditing = _ref.isEditing;
   var classes = useStyles({
     isEditing: isEditing
   });
@@ -90,7 +82,7 @@ var EditingContent = function EditingContent(_ref4) {
 
   var handleStartDate = (0, _react.useCallback)(function (value) {
     setFieldValue('date', value);
-  }, []);
+  }, [JSON.stringify(values)]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_pickers.MuiPickersUtilsProvider, {
     utils: _moment.default
   }, _react.default.createElement(_year_month.YearMonth, {
@@ -106,11 +98,11 @@ var EditingContent = function EditingContent(_ref4) {
       defaultMessage: 'Project date'
     },
     error: errors === null || errors === void 0 ? void 0 : errors.date
-  })), (errors === null || errors === void 0 ? void 0 : errors.name) && _react.default.createElement(_ui.Typography, {
+  })), (errors === null || errors === void 0 ? void 0 : errors.date) && _react.default.createElement(_ui.Typography, {
     color: "danger",
     variant: "helper",
     component: "p"
-  }, errors.name));
+  }, errors.date));
 };
 
 var ProjectDialogContentDate = ProjectDialogContentDateComponent;

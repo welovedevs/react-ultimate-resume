@@ -23,6 +23,8 @@ var _mapping = require("./data/mapping");
 
 var _contexts = require("../../../../utils/context/contexts");
 
+var _side = require("../../../commons/profile_card/profile_card_side/side");
+
 var ExperiencesCardComponent = function ExperiencesCardComponent(_ref) {
   var variant = _ref.variant,
       side = _ref.side;
@@ -31,18 +33,24 @@ var ExperiencesCardComponent = function ExperiencesCardComponent(_ref) {
       data = _useContext.data,
       onEdit = _useContext.onEdit,
       isEditing = _useContext.isEditing,
-      mode = _useContext.mode; // console.log({ data });
-
+      mode = _useContext.mode;
 
   var mappedData = (0, _react.useMemo)(function () {
     return (0, _mapping.mapWorkFromJsonResume)(data);
   }, [data]);
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     return onEdit((0, _mapping.mapWorkToJsonResume)(editedData));
-  }, []);
+  }, [onEdit]);
   var isComplete = (0, _react.useMemo)(function () {
     return (0, _validator.validateWorkComplete)(mappedData);
   }, [mappedData]);
+  var currentSide = (0, _react.useMemo)(function () {
+    if (!isComplete && !isEditing) {
+      return _side.SIDES.FRONT;
+    }
+
+    return side;
+  }, [side, isComplete, isEditing]);
 
   if (!isComplete && mode !== 'edit') {
     return null;
@@ -53,8 +61,12 @@ var ExperiencesCardComponent = function ExperiencesCardComponent(_ref) {
     isComplete: isComplete,
     data: mappedData,
     sides: {
-      front: _experiences_front.ExperiencesFront,
-      back: _experiences_back.ExperiencesBack
+      front: function front(props) {
+        return _react.default.createElement(_experiences_front.ExperiencesFront, props);
+      },
+      back: function back(props) {
+        return _react.default.createElement(_experiences_back.ExperiencesBack, props);
+      }
     },
     editDialog: {
       component: _experiences_edit_dialog.ExperiencesEditDialog,
@@ -62,7 +74,7 @@ var ExperiencesCardComponent = function ExperiencesCardComponent(_ref) {
       onEdit: onDialogEdited
     },
     variant: variant,
-    side: side
+    side: currentSide
   });
 };
 

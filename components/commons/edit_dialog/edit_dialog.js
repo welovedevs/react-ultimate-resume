@@ -43,6 +43,7 @@ var EditDialogComponent = function EditDialogComponent(_ref) {
       _ref$title = _ref.title,
       title = _ref$title === void 0 ? '✏️' : _ref$title,
       validationSchema = _ref.validationSchema,
+      isEditing = _ref.isEditing,
       _ref$classes = _ref.classes,
       receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var classes = useStyles();
@@ -68,7 +69,8 @@ var EditDialogComponent = function EditDialogComponent(_ref) {
     isMobile: isMobile,
     onClose: onClose,
     classes: classes,
-    receivedClasses: receivedClasses
+    receivedClasses: receivedClasses,
+    isEditing: isEditing
   }, children)));
 };
 
@@ -79,7 +81,8 @@ var TitleContent = function TitleContent(_ref2) {
       onClose = _ref2.onClose,
       children = _ref2.children,
       classes = _ref2.classes,
-      receivedClasses = _ref2.receivedClasses;
+      receivedClasses = _ref2.receivedClasses,
+      isEditing = _ref2.isEditing;
 
   var _useFormikContext = (0, _formik.useFormikContext)(),
       handleSubmit = _useFormikContext.handleSubmit,
@@ -93,7 +96,8 @@ var TitleContent = function TitleContent(_ref2) {
     onClose: onClose,
     handleSubmit: handleSubmit,
     classes: classes,
-    receivedClasses: receivedClasses
+    receivedClasses: receivedClasses,
+    isEditing: isEditing
   })), _react.default.createElement(Content, {
     onClose: onClose,
     handleSubmit: handleSubmit,
@@ -102,7 +106,8 @@ var TitleContent = function TitleContent(_ref2) {
     fullScreen: fullScreen,
     isMobile: isMobile,
     classes: classes,
-    receivedClasses: receivedClasses
+    receivedClasses: receivedClasses,
+    isEditing: isEditing
   }, children));
 };
 
@@ -115,7 +120,8 @@ var Content = function Content(_ref3) {
       fullScreen = _ref3.fullScreen,
       isMobile = _ref3.isMobile,
       classes = _ref3.classes,
-      receivedClasses = _ref3.receivedClasses;
+      receivedClasses = _ref3.receivedClasses,
+      isEditing = _ref3.isEditing;
   var handleValueChange = (0, _react.useCallback)(function (name) {
     return function (value) {
       console.debug("Setting field ".concat(name, " to value ").concat(value));
@@ -140,7 +146,8 @@ var Content = function Content(_ref3) {
     onClose: onClose,
     handleSubmit: handleSubmit,
     classes: classes,
-    receivedClasses: receivedClasses
+    receivedClasses: receivedClasses,
+    isEditing: isEditing
   }));
 };
 
@@ -149,11 +156,8 @@ var Actions = function Actions(_ref4) {
       handleSubmit = _ref4.handleSubmit,
       fullScreen = _ref4.fullScreen,
       classes = _ref4.classes,
-      receivedClasses = _ref4.receivedClasses;
-
-  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
-      mode = _useContext.mode;
-
+      receivedClasses = _ref4.receivedClasses,
+      isEditing = _ref4.isEditing;
   return _react.default.createElement(_core.DialogActions, {
     classes: {
       root: (0, _classnames.default)(classes.actions, receivedClasses.actions)
@@ -169,7 +173,7 @@ var Actions = function Actions(_ref4) {
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Main.lang.close",
     defaultMessage: "Close"
-  }))), mode === 'edit' && _react.default.createElement(_ui.Button, {
+  }))), isEditing && _react.default.createElement(_ui.Button, {
     variant: fullScreen ? 'contained' : 'text',
     type: "submit",
     size: "small",

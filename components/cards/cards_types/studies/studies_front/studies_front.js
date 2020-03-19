@@ -17,6 +17,8 @@ var _reactJss = require("react-jss");
 
 var _reactIntl = require("react-intl");
 
+var _ui = require("@wld/ui");
+
 var _profile_card_padding_front = require("../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front");
 
 var _center_content_container = require("../../../../commons/center_content_container/center_content_container");
@@ -34,6 +36,10 @@ var _side = require("../../../../commons/profile_card/profile_card_side/side");
 var _studies_front_styles = require("./studies_front_styles");
 
 var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
+
+var _exists_and_not_empty = require("../../../utils/exists_and_not_empty");
+
+var _no_data_button = require("../../../../commons/no_data_button/no_data_button");
 
 var SchoolLogo = function SchoolLogo(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("path", {
@@ -71,9 +77,8 @@ SchoolLogo.defaultProps = {
 var useStyles = (0, _reactJss.createUseStyles)(_studies_front_styles.styles);
 
 var StudiesFrontComponent = function StudiesFrontComponent(_ref) {
-  var _data$;
-
-  var data = _ref.data.education;
+  var data = _ref.data.education,
+      handleAddButtonClick = _ref.handleAddButtonClick;
   var classes = useStyles();
 
   var _useCardSide = (0, _use_card_side.useCardSide)(),
@@ -84,31 +89,73 @@ var StudiesFrontComponent = function StudiesFrontComponent(_ref) {
   var handleButtonClick = (0, _react.useCallback)(function () {
     return setSide(side === _side.SIDES.FRONT ? _side.SIDES.BACK : _side.SIDES.FRONT);
   }, [side, setSide]);
+  var hasEducation = (0, _react.useMemo)(function () {
+    return (0, _exists_and_not_empty.existsAndNotEmpty)(data);
+  }, [data]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, _react.default.createElement(_center_content_container.CenterContentContainer, {
     customClasses: {
       container: classes.container
     }
-  }, _react.default.createElement(_profile_card_front_vector.ProfileCardFrontVector, {
-    customClasses: {
-      container: classes.logo
-    },
-    vector: SchoolLogo
-  }), _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
-    classes: {
-      container: classes.typography
-    }
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Studies.title",
-    defaultMessage: "I graduated from {schoolName}",
-    values: {
-      schoolName: data === null || data === void 0 ? void 0 : (_data$ = data[0]) === null || _data$ === void 0 ? void 0 : _data$.institution
-    }
-  })))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+  }, _react.default.createElement(Content, {
+    hasEducation: hasEducation,
+    data: data,
+    handleAddButtonClick: handleAddButtonClick,
+    classes: classes
+  }))), hasEducation && _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Studies.front.action",
     defaultMessage: "All my studies"
   }))));
+};
+
+var Content = function Content(_ref2) {
+  var hasEducation = _ref2.hasEducation,
+      data = _ref2.data,
+      handleAddButtonClick = _ref2.handleAddButtonClick,
+      classes = _ref2.classes;
+
+  if (hasEducation) {
+    var _data$;
+
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_front_vector.ProfileCardFrontVector, {
+      customClasses: {
+        container: classes.logo
+      },
+      vector: SchoolLogo
+    }), _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
+      classes: {
+        container: classes.typography
+      }
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Studies.title",
+      defaultMessage: "I graduated from {schoolName}",
+      values: {
+        schoolName: data === null || data === void 0 ? void 0 : (_data$ = data[0]) === null || _data$ === void 0 ? void 0 : _data$.institution
+      }
+    })));
+  }
+
+  return _react.default.createElement("div", {
+    className: classes.noEducation
+  }, _react.default.createElement(_ui.Typography, {
+    variant: "h3",
+    component: "h3",
+    customClasses: {
+      container: classes.noEducationTypography
+    }
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Studies.front.noEducation",
+    defaultMessage: "Vous n'avez pas encore ajout\xE9 de formations !"
+  })), _react.default.createElement(_no_data_button.NoDataButton, {
+    handleAddButtonClick: handleAddButtonClick,
+    classes: {
+      container: classes.addButton
+    }
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Studies.noEducation.buttonLabel",
+    defaultMessage: "Ajouter une formation"
+  })));
 };
 
 var StudiesFront = StudiesFrontComponent;

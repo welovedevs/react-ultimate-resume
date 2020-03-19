@@ -44,11 +44,8 @@ var InterestedByBackComponent = function InterestedByBackComponent(props) {
       container: classes.container,
       typography: classes.typography
     },
-    profileCardFrontTypographyProps: {
-      overrideColor: overrideColor
-    },
-    dismissButton: true,
-    dismissTitle: true
+    overrideColor: overrideColor,
+    dismissButton: true
   }, props));
 };
 

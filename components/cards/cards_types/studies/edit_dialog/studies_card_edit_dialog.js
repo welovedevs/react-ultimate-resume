@@ -122,7 +122,8 @@ var StudiesCardEditDialogComponent = function StudiesCardEditDialogComponent(_re
       onClose = _ref2.onClose,
       data = _ref2.data,
       onEdit = _ref2.onEdit,
-      validationSchema = _ref2.validationSchema;
+      validationSchema = _ref2.validationSchema,
+      isEditing = _ref2.isEditing;
   var classes = useStyles();
 
   var _useIntl = (0, _reactIntl.useIntl)(),
@@ -138,6 +139,7 @@ var StudiesCardEditDialogComponent = function StudiesCardEditDialogComponent(_re
     open: open,
     onClose: onClose,
     data: data,
+    isEditing: isEditing,
     onEdit: onEdit,
     validationSchema: validationSchemaToPass,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {

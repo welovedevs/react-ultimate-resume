@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
@@ -11,7 +13,7 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
 
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
@@ -30,6 +32,8 @@ var _social_actions = require("./user_actions_row/social_actions/social_actions"
 var _customize_button = require("./user_actions_row/customize_button/customize_button");
 
 var _edit_header_image_button = require("./edit_header_image_button/edit_header_image_button");
+
+var _contexts = require("../../utils/context/contexts");
 
 var _opacity_transitions = require("../../utils/springs/common_transitions/opacity_transitions");
 
@@ -67,6 +71,9 @@ var BannerComponent = function BannerComponent(_ref) {
       _useIsEditing2 = (0, _slicedToArray2.default)(_useIsEditing, 1),
       isEditing = _useIsEditing2[0];
 
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
+      dismissCustomizeButton = _useContext.dismissCustomizeButton;
+
   var transitions = (0, _reactSpring.useTransition)((customizationOptions === null || customizationOptions === void 0 ? void 0 : customizationOptions.imageHeader) || null, function (item) {
     return "".concat(item === null || item === void 0 ? void 0 : item.alt, "_").concat(item.url);
   }, _objectSpread({}, _opacity_transitions.OPACITY_TRANSITIONS, {
@@ -93,7 +100,7 @@ var BannerComponent = function BannerComponent(_ref) {
     });
   }), _react.default.createElement("div", {
     className: (0, _classnames.default)(classes.content, globalReceivedBannerClasses.content)
-  }, _react.default.createElement(_user_informations.UserInformations, null), _react.default.createElement(_social_actions.SocialActions, null, actionsButtons, onCustomizationChanged && _react.default.createElement(_customize_button.CustomizeButton, {
+  }, _react.default.createElement(_user_informations.UserInformations, null), _react.default.createElement(_social_actions.SocialActions, null, actionsButtons, onCustomizationChanged && !dismissCustomizeButton && _react.default.createElement(_customize_button.CustomizeButton, {
     customizationOptions: customizationOptions
   }))), (bannerImageCredits === null || bannerImageCredits === void 0 ? void 0 : bannerImageCredits.name) && _react.default.createElement(_ui.Typography, {
     customClasses: {

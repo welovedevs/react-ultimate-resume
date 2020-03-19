@@ -19,6 +19,10 @@ var _profile_card_section_subtitle = require("../../../../commons/profile_card/p
 
 var _profile_card_section_text = require("../../../../commons/profile_card/profile_card_section_text/profile_card_section_text");
 
+var _exists_and_not_empty = require("../../../utils/exists_and_not_empty");
+
+var _no_studies = require("./no_studies/no_studies");
+
 var Study = function Study(_ref) {
   var study = _ref.study;
   var endDate = study.endDate,
@@ -55,15 +59,35 @@ var Study = function Study(_ref) {
   return _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, title), _react.default.createElement(_profile_card_section_subtitle.ProfileCardSectionSubtitle, null, body), date && _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, date));
 };
 
-var StudiesBackComponent = function StudiesBackComponent(_ref2) {
-  var data = _ref2.data.education;
-  return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
-    title: "Studies"
-  }, data === null || data === void 0 ? void 0 : data.map(function (study, index) {
+var Content = function Content(_ref2) {
+  var data = _ref2.data,
+      handleAddButtonClick = _ref2.handleAddButtonClick;
+  var hasEducation = (0, _react.useMemo)(function () {
+    return (0, _exists_and_not_empty.existsAndNotEmpty)(data);
+  }, [data]);
+
+  if (!hasEducation) {
+    return _react.default.createElement(_no_studies.NoStudies, {
+      handleAddButtonClick: handleAddButtonClick
+    });
+  }
+
+  return data === null || data === void 0 ? void 0 : data.map(function (study, index) {
     return _react.default.createElement(Study, {
       key: "study_".concat(index, "_").concat(study.id),
       study: study
     });
+  });
+};
+
+var StudiesBackComponent = function StudiesBackComponent(_ref3) {
+  var data = _ref3.data.education,
+      handleAddButtonClick = _ref3.handleAddButtonClick;
+  return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
+    title: "Studies"
+  }, _react.default.createElement(Content, {
+    data: data,
+    handleAddButtonClick: handleAddButtonClick
   }));
 };
 

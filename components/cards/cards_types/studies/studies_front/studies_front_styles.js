@@ -31,6 +31,21 @@ var styles = function styles(theme) {
       display: '-webkit-box',
       '-webkit-line-clamp': 3,
       '-webkit-box-orient': 'vertical'
+    },
+    noEducation: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      padding: [spacing, spacing * 2, 0]
+    },
+    noEducationTypography: {
+      color: 'inherit',
+      fontWeight: 700,
+      lineHeight: 1.3
+    },
+    addButton: {
+      marginTop: spacing * 4,
+      marginLeft: -spacing
     }
   }, (0, _defineProperty2.default)(_ref, (0, _styles_utils.createScreenWidthMediaQuery)('max-width', theme.screenSizes.small), {
     typography: {

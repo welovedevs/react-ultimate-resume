@@ -11,7 +11,8 @@ var ProfileCardEditDialogComponent = function ProfileCardEditDialogComponent(_re
   var open = _ref.open,
       onClose = _ref.onClose,
       editDialog = _ref.editDialog,
-      data = _ref.data;
+      data = _ref.data,
+      isEditing = _ref.isEditing;
 
   if (!editDialog) {
     return null;
@@ -23,9 +24,10 @@ var ProfileCardEditDialogComponent = function ProfileCardEditDialogComponent(_re
       editDialog.onEdit.apply(editDialog, arguments);
     },
     validationSchema: editDialog.validationSchema,
-    data: data,
+    data: editDialog.data || data,
     open: open,
-    onClose: onClose
+    onClose: onClose,
+    isEditing: isEditing
   });
 };
 

@@ -28,7 +28,8 @@ var InterestedByEditDialogComponent = function InterestedByEditDialogComponent(_
       onClose = _ref.onClose,
       data = _ref.data,
       onEdit = _ref.onEdit,
-      validationSchema = _ref.validationSchema;
+      validationSchema = _ref.validationSchema,
+      isEditing = _ref.isEditing;
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
@@ -40,6 +41,7 @@ var InterestedByEditDialogComponent = function InterestedByEditDialogComponent(_
     open: open,
     onClose: onClose,
     data: data,
+    isEditing: isEditing,
     onEdit: onEdit,
     validationSchema: validationSchemaToPass,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {

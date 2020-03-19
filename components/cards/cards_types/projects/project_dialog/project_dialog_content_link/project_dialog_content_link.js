@@ -7,8 +7,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ProjectDialogContentLink = void 0;
 
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-
 var _react = _interopRequireDefault(require("react"));
 
 var _reactIntl = require("react-intl");
@@ -19,19 +17,13 @@ var _ui = require("@wld/ui");
 
 var _formik = require("formik");
 
-var _use_is_editing = require("../../../../../hooks/use_is_editing");
-
 var _project_dialog_content_link_styles = require("./project_dialog_content_link_styles");
 
 var useStyles = (0, _reactJss.createUseStyles)(_project_dialog_content_link_styles.styles);
 
 var ProjectDialogContentLinkComponent = function ProjectDialogContentLinkComponent(_ref) {
-  var link = _ref.link;
-
-  var _useIsEditing = (0, _use_is_editing.useIsEditing)(),
-      _useIsEditing2 = (0, _slicedToArray2.default)(_useIsEditing, 1),
-      isEditing = _useIsEditing2[0];
-
+  var link = _ref.link,
+      isEditing = _ref.isEditing;
   var classes = useStyles({
     isEditing: isEditing
   });
@@ -97,11 +89,11 @@ var EditingContent = function EditingContent(_ref4) {
     customClasses: {
       container: classes.textField
     }
-  }), (errors === null || errors === void 0 ? void 0 : errors.name) && _react.default.createElement(_ui.Typography, {
+  }), (errors === null || errors === void 0 ? void 0 : errors.link) && _react.default.createElement(_ui.Typography, {
     color: "danger",
     variant: "helper",
     component: "p"
-  }, errors.name));
+  }, errors.link));
 };
 
 var ProjectDialogContentLink = ProjectDialogContentLinkComponent;

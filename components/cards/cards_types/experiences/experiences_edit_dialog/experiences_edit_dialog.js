@@ -120,7 +120,8 @@ var ExperiencesEditDialogComponent = function ExperiencesEditDialogComponent(_re
       onClose = _ref2.onClose,
       data = _ref2.data,
       onEdit = _ref2.onEdit,
-      validationSchema = _ref2.validationSchema;
+      validationSchema = _ref2.validationSchema,
+      isEditing = _ref2.isEditing;
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
@@ -132,6 +133,7 @@ var ExperiencesEditDialogComponent = function ExperiencesEditDialogComponent(_re
     open: open,
     onClose: onClose,
     data: data,
+    isEditing: isEditing,
     onEdit: onEdit,
     validationSchema: validationSchemaToPass,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
@@ -326,9 +328,6 @@ var ContentFields = function ContentFields(_ref9) {
       onChange = _ref9.onChange,
       classes = _ref9.classes,
       index = _ref9.index;
-  console.log({
-    experience: experience
-  });
   var stillEmployed = !experience.endDate;
   var handleStillEmployedChange = (0, _react.useCallback)(function () {
     if (!stillEmployed) {

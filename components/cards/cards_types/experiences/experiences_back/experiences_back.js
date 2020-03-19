@@ -33,6 +33,10 @@ var _experiences_translations = require("./experiences_translations");
 
 var _use_additional_nodes = require("../../../../hooks/use_additional_nodes");
 
+var _exists_and_not_empty = require("../../../utils/exists_and_not_empty");
+
+var _no_work = require("./no_work/no_work");
+
 var useStyles = (0, _reactJss.createUseStyles)(_experiences_back_styles.styles);
 
 var ExperienceContent = function ExperienceContent(_ref) {
@@ -110,24 +114,46 @@ var ExperienceContent = function ExperienceContent(_ref) {
   }, title), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, summary));
 };
 
-var ExperiencesBackComponent = function ExperiencesBackComponent(_ref2) {
+var Content = function Content(_ref2) {
   var _data$work;
 
-  var data = _ref2.data;
-  var classes = useStyles();
+  var data = _ref2.data,
+      handleAddButtonClick = _ref2.handleAddButtonClick,
+      classes = _ref2.classes;
+  var hasWork = (0, _react.useMemo)(function () {
+    return (0, _exists_and_not_empty.existsAndNotEmpty)(data === null || data === void 0 ? void 0 : data.work);
+  }, [data]);
   var experiences = (_data$work = data.work) === null || _data$work === void 0 ? void 0 : _data$work.filter(function (_ref3) {
     var position = _ref3.position,
         summary = _ref3.summary;
     return Boolean(position && summary);
   });
-  return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
-    title: "Experiences"
-  }, experiences.map(function (experience) {
+
+  if (!hasWork) {
+    return _react.default.createElement(_no_work.NoWork, {
+      handleAddButtonClick: handleAddButtonClick
+    });
+  }
+
+  return experiences.map(function (experience) {
     return _react.default.createElement(ExperienceContent, {
       key: "work_experience_".concat(experience.id),
       experience: experience,
       classes: classes
     });
+  });
+};
+
+var ExperiencesBackComponent = function ExperiencesBackComponent(_ref4) {
+  var data = _ref4.data,
+      handleAddButtonClick = _ref4.handleAddButtonClick;
+  var classes = useStyles();
+  return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
+    title: "Experiences"
+  }, _react.default.createElement(Content, {
+    data: data,
+    handleAddButtonClick: handleAddButtonClick,
+    classes: classes
   }));
 };
 

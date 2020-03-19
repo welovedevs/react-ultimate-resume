@@ -2,14 +2,10 @@
 
 var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.ProjectDialog = void 0;
-
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -26,8 +22,6 @@ var _project_dialog_content_images = require("./project_dialog_content_images/pr
 var _project_dialog_content_description = require("./project_dialog_content_description/project_dialog_content_description");
 
 var _project_dialog_content_date = require("./project_dialog_content_date/project_dialog_content_date");
-
-var _use_card_has_dialog_opened = require("../../../../commons/profile_card/profile_card_hooks/use_card_has_dialog_opened");
 
 var _project_dialog_styles = require("./project_dialog_styles");
 
@@ -46,13 +40,9 @@ var useStyles = (0, _reactJss.createUseStyles)(_project_dialog_styles.styles);
 var ProjectDialogComponent = function ProjectDialogComponent(_ref) {
   var open = _ref.open,
       onClose = _ref.onClose,
-      _ref$project = _ref.project,
-      project = _ref$project === void 0 ? {} : _ref$project;
+      project = _ref.data,
+      isEditing = _ref.isEditing;
   var classes = useStyles();
-
-  var _useHasDialogOpened = (0, _use_card_has_dialog_opened.useHasDialogOpened)(),
-      _useHasDialogOpened2 = (0, _slicedToArray2.default)(_useHasDialogOpened, 2),
-      setHasDialogOpened = _useHasDialogOpened2[1];
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
@@ -62,15 +52,13 @@ var ProjectDialogComponent = function ProjectDialogComponent(_ref) {
       data = _useContext.data;
 
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
-    onEdit((0, _mapping.updateProjectsArray)((0, _mapping.mapProjectToJsonResume)(editedData), data));
+    var updateProjectsArray1 = (0, _mapping.updateProjectsArray)((0, _mapping.mapProjectToJsonResume)(editedData), data);
+    onEdit(updateProjectsArray1);
     onClose();
-  }, [data]);
+  }, [onEdit, data]);
   var validator = (0, _react.useMemo)(function () {
     return (0, _validator.ProjectValidator)(formatMessage);
   }, []);
-  (0, _react.useEffect)(function () {
-    return setHasDialogOpened(open);
-  }, [open]);
   return _react.default.createElement(_edit_dialog.EditDialog, {
     classes: {
       content: classes.container,
@@ -78,21 +66,23 @@ var ProjectDialogComponent = function ProjectDialogComponent(_ref) {
     },
     open: open,
     onClose: onClose,
-    data: project,
+    data: project || {},
     onEdit: onDialogEdited,
     validationSchema: validator,
+    isEditing: isEditing,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Project.editDialog.title",
       defaultMessage: "Project's details"
     })
-  }, function (helpers) {
+  }, function () {
     return _react.default.createElement(ProjectDialogContent, {
-      helpers: helpers
+      isEditing: isEditing
     });
   });
 };
 
-var ProjectDialogContent = function ProjectDialogContent() {
+var ProjectDialogContent = function ProjectDialogContent(_ref2) {
+  var isEditing = _ref2.isEditing;
   var classes = useStyles();
 
   var _useFormikContext = (0, _formik.useFormikContext)(),
@@ -101,14 +91,19 @@ var ProjectDialogContent = function ProjectDialogContent() {
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: classes.headrow
   }, _react.default.createElement(_project_dialog_content_title.ProjectDialogContentTitle, {
+    isEditing: isEditing,
     title: project.title
   }), _react.default.createElement(_project_dialog_content_date.ProjectDialogContentDate, {
+    isEditing: isEditing,
     date: project.data
   })), _react.default.createElement(_project_dialog_content_description.ProjectDialogContentDescription, {
+    isEditing: isEditing,
     description: project.description
   }), _react.default.createElement(_project_dialog_content_link.ProjectDialogContentLink, {
+    isEditing: isEditing,
     link: project.link
   }), _react.default.createElement(_project_dialog_content_images.ProjectDialogContentImages, {
+    isEditing: isEditing,
     images: project.images
   }));
 };

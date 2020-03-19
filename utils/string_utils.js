@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.hashCode = void 0;
 
-// eslint-disable-next-line no-bitwise
+/* eslint-disable no-bitwise */
 var hashCode = function hashCode() {
   var str = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   return Array.from(str !== null && str !== void 0 ? str : '').reduce(function (s, c) {

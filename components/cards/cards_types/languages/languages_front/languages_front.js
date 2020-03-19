@@ -17,6 +17,8 @@ var _reactJss = require("react-jss");
 
 var _reactIntl = require("react-intl");
 
+var _ui = require("@wld/ui");
+
 var _center_content_container = require("../../../../commons/center_content_container/center_content_container");
 
 var _profile_card_front_typography = require("../../../../commons/profile_card/profile_card_front_typography/profile_card_front_typography");
@@ -31,12 +33,17 @@ var _languages_front_styles = require("./languages_front_styles");
 
 var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
 
+var _exists_and_not_empty = require("../../../utils/exists_and_not_empty");
+
+var _no_data_button = require("../../../../commons/no_data_button/no_data_button");
+
 var useStyles = (0, _reactJss.createUseStyles)(_languages_front_styles.styles);
 
 var LanguagesFrontComponent = function LanguagesFrontComponent(_ref) {
   var _data$languages, _data$languages$, _data$languages2, _data$languages2$, _data$languages3, _data$languages3$;
 
-  var data = _ref.data;
+  var data = _ref.data,
+      handleAddButtonClick = _ref.handleAddButtonClick;
   var classes = useStyles();
 
   var _useCardSide = (0, _use_card_side.useCardSide)(),
@@ -50,22 +57,62 @@ var LanguagesFrontComponent = function LanguagesFrontComponent(_ref) {
 
   var languagesNode = _react.default.createElement(_react.default.Fragment, null, (_data$languages = data.languages) === null || _data$languages === void 0 ? void 0 : (_data$languages$ = _data$languages[0]) === null || _data$languages$ === void 0 ? void 0 : _data$languages$.language, _react.default.createElement("br", null), (_data$languages2 = data.languages) === null || _data$languages2 === void 0 ? void 0 : (_data$languages2$ = _data$languages2[1]) === null || _data$languages2$ === void 0 ? void 0 : _data$languages2$.language, _react.default.createElement("br", null), (_data$languages3 = data.languages) === null || _data$languages3 === void 0 ? void 0 : (_data$languages3$ = _data$languages3[2]) === null || _data$languages3$ === void 0 ? void 0 : _data$languages3$.language);
 
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_center_content_container.CenterContentContainer, null, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
-    classes: {
-      container: classes.typography
-    }
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Languages.front.content",
-    defaultMessage: "I speak {languagesNode}",
-    values: {
-      languagesNode: languagesNode
-    }
-  }))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+  var hasLanguage = (0, _react.useMemo)(function () {
+    return (0, _exists_and_not_empty.existsAndNotEmpty)(data === null || data === void 0 ? void 0 : data.languages);
+  }, [data]);
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_center_content_container.CenterContentContainer, null, _react.default.createElement(Content, {
+    hasLanguage: hasLanguage,
+    languagesNode: languagesNode,
+    handleAddButtonClick: handleAddButtonClick,
+    classes: classes
+  })), hasLanguage && _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Languages.front.action",
     defaultMessage: "Languages level"
   }))));
+};
+
+var Content = function Content(_ref2) {
+  var hasLanguage = _ref2.hasLanguage,
+      languagesNode = _ref2.languagesNode,
+      handleAddButtonClick = _ref2.handleAddButtonClick,
+      classes = _ref2.classes;
+
+  if (hasLanguage) {
+    return _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
+      classes: {
+        container: classes.typography
+      }
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Languages.front.content",
+      defaultMessage: "I speak {languagesNode}",
+      values: {
+        languagesNode: languagesNode
+      }
+    }));
+  }
+
+  return _react.default.createElement("div", {
+    className: classes.noLanguage
+  }, _react.default.createElement(_ui.Typography, {
+    variant: "h3",
+    component: "h3",
+    customClasses: {
+      container: classes.noLanguageTypography
+    }
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Languages.front.noLanguage",
+    defaultMessage: "Vous n'avez pas encore ajout\xE9 de langues !"
+  })), _react.default.createElement(_no_data_button.NoDataButton, {
+    handleAddButtonClick: handleAddButtonClick,
+    classes: {
+      container: classes.addButton
+    }
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Languages.noLanguage.buttonLabel",
+    defaultMessage: "Ajouter une langue"
+  })));
 };
 
 var LanguagesFront = LanguagesFrontComponent;

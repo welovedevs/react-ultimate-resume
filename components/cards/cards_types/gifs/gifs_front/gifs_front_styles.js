@@ -12,7 +12,8 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
 var _styles_utils = require("../../../../../utils/styles/styles_utils");
 
 var styles = function styles(theme) {
-  var screenSizes = theme.screenSizes;
+  var screenSizes = theme.screenSizes,
+      spacing = theme.miscellaneous.spacing;
   var QUERY_SMALL = (0, _styles_utils.createScreenWidthMediaQuery)('max-width', screenSizes.small);
   return {
     container: {
@@ -27,6 +28,21 @@ var styles = function styles(theme) {
     paddedFront: {
       height: 1,
       flex: 1
+    },
+    noHobby: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      padding: [spacing * 2, spacing, 0]
+    },
+    noHobbyTypography: {
+      color: 'inherit',
+      fontWeight: 700,
+      lineHeight: 1.3
+    },
+    addButton: {
+      marginTop: spacing * 4,
+      marginLeft: -spacing
     },
     withoutGifTypography: (0, _defineProperty2.default)({
       fontSize: 44,

@@ -23,6 +23,8 @@ var _contexts = require("../../../../utils/context/contexts");
 
 var _validator = require("./data/validator");
 
+var _side = require("../../../commons/profile_card/profile_card_side/side");
+
 var SkillsCardComponent = function SkillsCardComponent(_ref) {
   var variant = _ref.variant,
       side = _ref.side;
@@ -38,10 +40,17 @@ var SkillsCardComponent = function SkillsCardComponent(_ref) {
   }, [data]);
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     onEdit((0, _mapping.mapSkillsToJsonResume)(editedData));
-  }, []);
+  }, [onEdit]);
   var isComplete = (0, _react.useMemo)(function () {
     return (0, _validator.validateSkillsComplete)(mappedData);
   }, [mappedData]);
+  var currentSide = (0, _react.useMemo)(function () {
+    if (!isComplete && !isEditing) {
+      return _side.SIDES.FRONT;
+    }
+
+    return side;
+  }, [side, isComplete, isEditing]);
 
   if (!isComplete && mode !== 'edit') {
     return null;
@@ -51,8 +60,12 @@ var SkillsCardComponent = function SkillsCardComponent(_ref) {
     isEditingProfile: isEditing,
     isComplete: isComplete,
     sides: {
-      front: _skills_front.SkillsFront,
-      back: _skills_back.SkillsBack
+      front: function front(props) {
+        return _react.default.createElement(_skills_front.SkillsFront, props);
+      },
+      back: function back(props) {
+        return _react.default.createElement(_skills_back.SkillsBack, props);
+      }
     },
     editDialog: {
       component: _skills_edit_dialog.SkillsEditDialog,
@@ -61,7 +74,7 @@ var SkillsCardComponent = function SkillsCardComponent(_ref) {
     },
     data: mappedData,
     variant: variant,
-    side: side
+    side: currentSide
   });
 };
 

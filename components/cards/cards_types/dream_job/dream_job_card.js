@@ -38,7 +38,7 @@ var DreamJobCardComponent = function DreamJobCardComponent(_ref) {
   }, [data]);
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     onEdit((0, _mapping.mapDreamJobToJsonResume)(editedData));
-  }, []);
+  }, [onEdit]);
   var isComplete = (0, _react.useMemo)(function () {
     return (0, _validator.validateDreamjobComplete)(mappedData);
   }, [mappedData]);

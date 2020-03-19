@@ -9,9 +9,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.GifsBack = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
@@ -34,6 +34,10 @@ var _use_card_variant = require("../../../../commons/profile_card/profile_card_h
 var _gifs_back_spring_props = require("./gifs_back_spring_props");
 
 var _gifs_back_styles = require("./gifs_back_styles");
+
+var _exists_and_not_empty = require("../../../utils/exists_and_not_empty");
+
+var _no_hobby = require("./no_hobby/no_hobby");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -69,9 +73,10 @@ var SETTINGS = {
 };
 
 var GifsBackComponent = function GifsBackComponent(_ref) {
-  var _ref2, _data$interests, _data$interests2;
+  var _data$interests;
 
-  var data = _ref.data;
+  var data = _ref.data,
+      handleAddButtonClick = _ref.handleAddButtonClick;
 
   var _useCardVariant = (0, _use_card_variant.useCardVariant)(),
       _useCardVariant2 = (0, _slicedToArray2.default)(_useCardVariant, 1),
@@ -105,11 +110,6 @@ var GifsBackComponent = function GifsBackComponent(_ref) {
 
     return (_sliderReference$curr2 = sliderReference.current) === null || _sliderReference$curr2 === void 0 ? void 0 : _sliderReference$curr2.slickPlay();
   }, []);
-  var transitions = (0, _reactSpring.useTransition)((_ref2 = (_data$interests = data.interests) === null || _data$interests === void 0 ? void 0 : _data$interests[currentIndex]) !== null && _ref2 !== void 0 ? _ref2 : {}, function (item) {
-    return "gif_name_".concat(item.name);
-  }, _objectSpread({}, _gifs_back_spring_props.GIFS_BACK_TRANSITIONS_SPRING_PROPS, {
-    immediate: !hasChanged.current
-  }));
   return _react.default.createElement(_gifs_sides_commons.GifsSidesCommons, {
     underLayer: _react.default.createElement("div", {
       className: classes.slidesContainer
@@ -130,19 +130,55 @@ var GifsBackComponent = function GifsBackComponent(_ref) {
           className: classes.nextButton
         }
       })
-    }), ((_data$interests2 = data.interests) !== null && _data$interests2 !== void 0 ? _data$interests2 : []).map(function (_ref3) {
-      var gifUrl = _ref3.gifUrl,
-          name = _ref3.name;
+    }), ((_data$interests = data.interests) !== null && _data$interests !== void 0 ? _data$interests : []).map(function (_ref2) {
+      var gifUrl = _ref2.gifUrl,
+          name = _ref2.name;
       return _react.default.createElement(SlideItem, {
         gifUrl: gifUrl,
         name: name,
         classes: classes
       });
     })))
-  }, transitions.map(function (_ref4) {
-    var item = _ref4.item,
-        key = _ref4.key,
-        props = _ref4.props;
+  }, _react.default.createElement(Content, {
+    data: data,
+    hasChanged: hasChanged,
+    currentIndex: currentIndex,
+    pauseSlider: pauseSlider,
+    resumeSlider: resumeSlider,
+    handleAddButtonClick: handleAddButtonClick,
+    classes: classes
+  }));
+};
+
+var Content = function Content(_ref3) {
+  var _ref4, _data$interests2;
+
+  var data = _ref3.data,
+      pauseSlider = _ref3.pauseSlider,
+      hasChanged = _ref3.hasChanged,
+      currentIndex = _ref3.currentIndex,
+      resumeSlider = _ref3.resumeSlider,
+      handleAddButtonClick = _ref3.handleAddButtonClick,
+      classes = _ref3.classes;
+  var hasHobby = (0, _react.useMemo)(function () {
+    return (0, _exists_and_not_empty.existsAndNotEmpty)(data === null || data === void 0 ? void 0 : data.interests);
+  }, [data]);
+  var transitions = (0, _reactSpring.useTransition)((_ref4 = (_data$interests2 = data.interests) === null || _data$interests2 === void 0 ? void 0 : _data$interests2[currentIndex]) !== null && _ref4 !== void 0 ? _ref4 : {}, function (item) {
+    return "gif_name_".concat(item.name);
+  }, _objectSpread({}, _gifs_back_spring_props.GIFS_BACK_TRANSITIONS_SPRING_PROPS, {
+    immediate: !hasChanged.current
+  }));
+
+  if (!hasHobby) {
+    return _react.default.createElement(_no_hobby.NoHobby, {
+      handleAddButtonClick: handleAddButtonClick
+    });
+  }
+
+  return transitions.map(function (_ref5) {
+    var item = _ref5.item,
+        key = _ref5.key,
+        props = _ref5.props;
     return (item === null || item === void 0 ? void 0 : item.name) && _react.default.createElement(TransitioningItem, {
       item: item,
       key: key,
@@ -151,7 +187,7 @@ var GifsBackComponent = function GifsBackComponent(_ref) {
       pauseSlider: pauseSlider,
       resumeSlider: resumeSlider
     });
-  }));
+  });
 };
 
 var DEFAULT_ARROW_SPRING_PROPS = Object.freeze({
@@ -161,10 +197,10 @@ var PRESSED_ARROW_SPRING_PROPS = Object.freeze({
   scale: 0.9
 });
 
-var Arrow = function Arrow(_ref5) {
-  var classes = _ref5.classes,
-      onClick = _ref5.onClick,
-      arrowRole = _ref5.arrowRole;
+var Arrow = function Arrow(_ref6) {
+  var classes = _ref6.classes,
+      onClick = _ref6.onClick,
+      arrowRole = _ref6.arrowRole;
 
   var _useSpring = (0, _reactSpring.useSpring)(function () {
     return DEFAULT_ARROW_SPRING_PROPS;
@@ -195,10 +231,10 @@ var Arrow = function Arrow(_ref5) {
   }, _react.default.createElement(ArrowIcon, null));
 };
 
-var SlideItem = function SlideItem(_ref6) {
-  var gifUrl = _ref6.gifUrl,
-      name = _ref6.name,
-      classes = _ref6.classes;
+var SlideItem = function SlideItem(_ref7) {
+  var gifUrl = _ref7.gifUrl,
+      name = _ref7.name,
+      classes = _ref7.classes;
 
   if (!gifUrl) {
     return _react.default.createElement("div", {
@@ -214,13 +250,13 @@ var SlideItem = function SlideItem(_ref6) {
   });
 };
 
-var TransitioningItem = function TransitioningItem(_ref7) {
-  var item = _ref7.item,
-      key = _ref7.key,
-      props = _ref7.props,
-      pauseSlider = _ref7.pauseSlider,
-      resumeSlider = _ref7.resumeSlider,
-      classes = _ref7.classes;
+var TransitioningItem = function TransitioningItem(_ref8) {
+  var item = _ref8.item,
+      key = _ref8.key,
+      props = _ref8.props,
+      pauseSlider = _ref8.pauseSlider,
+      resumeSlider = _ref8.resumeSlider,
+      classes = _ref8.classes;
 
   if (!(item === null || item === void 0 ? void 0 : item.gifUrl)) {
     return _react.default.createElement(_reactSpring.animated.div, {

@@ -17,7 +17,7 @@ var ProjectValidator = function ProjectValidator(formatMessage) {
       min: 5
     })),
     description: Yup.string().required(formatMessage(_validation_translations.validationTranslations.required)).min(100, formatMessage(_validation_translations.validationTranslations.min, {
-      min: 0
+      min: 100
     })),
     date: Yup.object().nullable().required(formatMessage(_validation_translations.validationTranslations.required)),
     images: Yup.array().of(Yup.object().shape({

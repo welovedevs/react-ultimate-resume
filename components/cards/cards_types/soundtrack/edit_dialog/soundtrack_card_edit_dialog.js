@@ -41,11 +41,13 @@ var SoundtrackCardEditDialog = function SoundtrackCardEditDialog(_ref) {
   var open = _ref.open,
       onClose = _ref.onClose,
       data = _ref.data,
-      onEdit = _ref.onEdit;
+      onEdit = _ref.onEdit,
+      isEditing = _ref.isEditing;
   return _react.default.createElement(_edit_dialog.EditDialog, {
     data: data,
     onEdit: onEdit,
     onClose: onClose,
+    isEditing: isEditing,
     open: open,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Sountrack.editDialog.title",

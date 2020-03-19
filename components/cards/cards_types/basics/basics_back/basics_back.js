@@ -33,10 +33,19 @@ var _job_search_state_translations = require("../../../../../utils/enums/job_ser
 
 var _basics_back_styles = require("./basics_back_styles");
 
+var _no_data_button = require("../../../../commons/no_data_button/no_data_button");
+
+var _contexts = require("../../../../../utils/context/contexts");
+
 var useStyles = (0, _reactJss.createUseStyles)(_basics_back_styles.styles);
 
 var BasicsBackComponent = function BasicsBackComponent(_ref) {
-  var data = _ref.data;
+  var data = _ref.data,
+      handleAddButtonClick = _ref.handleAddButtonClick;
+
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
+      mode = _useContext.mode;
+
   var classes = useStyles();
   var currentCityName = data.currentCity.name,
       experienceYears = data.experienceYears,
@@ -47,12 +56,27 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
       searchState = data.searchState,
       visaSponsorship = data.visaSponsorship,
       personalDescription = data.personalDescription;
+  var descriptionContent = (0, _react.useMemo)(function () {
+    if (personalDescription && mode === 'edit') {
+      return _react.default.createElement("span", null, personalDescription);
+    }
+
+    return _react.default.createElement(_no_data_button.NoDataButton, {
+      handleAddButtonClick: handleAddButtonClick,
+      classes: {
+        container: classes.addButton
+      }
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Basics.noDescription.buttonLabel",
+      defaultMessage: "Ajouter une description"
+    }));
+  }, [personalDescription, mode, handleAddButtonClick, classes]);
   var sections = (0, _react.useMemo)(function () {
     return {
       personalDescription: {
         title: null,
-        hide: !personalDescription,
-        value: _react.default.createElement("span", null, personalDescription)
+        hide: false,
+        value: descriptionContent
       },
       visaSponsorship: {
         hide: !(0, _exists_and_not_empty.existsAndNotEmpty)(visaSponsorship),
@@ -110,7 +134,7 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
         }), _react.default.createElement("br", null), _react.default.createElement("br", null), codingReason && _react.default.createElement("span", null, codingReason))
       }
     };
-  }, [currentCityName, experienceYears, contractTypes, studiesLevel, codingYears, codingReason, visaSponsorship, personalDescription, searchState]);
+  }, [currentCityName, experienceYears, contractTypes, studiesLevel, codingYears, codingReason, visaSponsorship, personalDescription, descriptionContent, searchState]);
   return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Basics.Back.Title",

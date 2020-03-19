@@ -38,7 +38,8 @@ var BasicsCardEditDialogComponent = function BasicsCardEditDialogComponent(_ref)
       onClose = _ref.onClose,
       data = _ref.data,
       onEdit = _ref.onEdit,
-      validationSchema = _ref.validationSchema;
+      validationSchema = _ref.validationSchema,
+      isEditing = _ref.isEditing;
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
@@ -51,6 +52,7 @@ var BasicsCardEditDialogComponent = function BasicsCardEditDialogComponent(_ref)
     onClose: onClose,
     data: data,
     onEdit: onEdit,
+    isEditing: isEditing,
     validationSchema: validationSchemaToPass,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Basics.editDialog.title",

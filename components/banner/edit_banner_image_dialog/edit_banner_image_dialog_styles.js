@@ -43,7 +43,7 @@ var styles = function styles(theme) {
         top: 'calc(50% - (1px / 2))',
         left: 0,
         backgroundColor: palette.dark[50],
-        content: '\'\''
+        content: "''"
       }
     }),
     dividerOr: {

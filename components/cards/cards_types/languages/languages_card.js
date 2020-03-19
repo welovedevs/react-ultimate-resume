@@ -23,6 +23,8 @@ var _validator = require("./data/validator");
 
 var _contexts = require("../../../../utils/context/contexts");
 
+var _side = require("../../../commons/profile_card/profile_card_side/side");
+
 var LanguagesCardComponent = function LanguagesCardComponent(_ref) {
   var variant = _ref.variant,
       side = _ref.side;
@@ -38,10 +40,17 @@ var LanguagesCardComponent = function LanguagesCardComponent(_ref) {
   }, [data]);
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     onEdit((0, _mapping.mapLanguagesToJsonResume)(editedData));
-  }, []);
+  }, [onEdit]);
   var isComplete = (0, _react.useMemo)(function () {
     return (0, _validator.validateLanguagesComplete)(mappedData);
   }, [mappedData]);
+  var currentSide = (0, _react.useMemo)(function () {
+    if (!isComplete && !isEditing) {
+      return _side.SIDES.FRONT;
+    }
+
+    return side;
+  }, [side, isComplete, isEditing]);
 
   if (!isComplete && mode !== 'edit') {
     return null;
@@ -52,11 +61,15 @@ var LanguagesCardComponent = function LanguagesCardComponent(_ref) {
     isComplete: isComplete,
     data: mappedData,
     sides: {
-      front: _languages_front.LanguagesFront,
-      back: _languages_back.LanguagesBack
+      front: function front(props) {
+        return _react.default.createElement(_languages_front.LanguagesFront, props);
+      },
+      back: function back(props) {
+        return _react.default.createElement(_languages_back.LanguagesBack, props);
+      }
     },
     variant: variant,
-    side: side,
+    side: currentSide,
     editDialog: {
       component: _languages_card_edit_dialog.LanguagesCardEditDialog,
       validationSchema: _validator.LanguageValidator,

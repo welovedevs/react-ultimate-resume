@@ -110,6 +110,8 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
   })) : _ref$onFilesUpload,
       BeforeCards = _ref.BeforeCards,
       additionalNodes = _ref.additionalNodes,
+      dismissCustomizeButton = _ref.dismissCustomizeButton,
+      setIsEditing = _ref.setIsEditing,
       _ref$classes = _ref.classes,
       receivedGlobalClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var apiKeys = options.apiKeys,
@@ -119,7 +121,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
     if (typeof onEditProps === 'function') {
       onEditProps(newData);
     }
-  }, []);
+  }, [onEditProps]);
   var store = {
     technologies: (0, _react.useReducer)(_technologies_reducer.technologiesReducer, _technologies_reducer.technologiesInitialState)
   };
@@ -138,9 +140,11 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       mode: mode,
       additionalNodes: additionalNodes,
       endpoints: endpoints,
-      receivedGlobalClasses: receivedGlobalClasses
+      receivedGlobalClasses: receivedGlobalClasses,
+      dismissCustomizeButton: dismissCustomizeButton,
+      setIsEditing: setIsEditing
     };
-  }, [endpoints, apiKeys, data, onEdit, store, mode]);
+  }, [endpoints, apiKeys, data, onEdit, store, mode, dismissCustomizeButton]);
   var side = (0, _react.useMemo)(function () {
     return isEditing && _side.SIDES.BACK || (options === null || options === void 0 ? void 0 : options.side);
   }, [options, isEditing]);
@@ -168,8 +172,9 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
       additionalNodes = _ref3.additionalNodes,
       BeforeCards = _ref3.BeforeCards,
       classes = _ref3.classes,
-      onFilesUpload = _ref3.onFilesUpload,
       isEditing = _ref3.isEditing,
+      setIsEditing = _ref3.setIsEditing,
+      onFilesUpload = _ref3.onFilesUpload,
       parentIntl = _ref3.intl;
   var mergedOptions = (0, _react.useMemo)(function () {
     return (0, _mergeWith.default)((0, _cloneDeep.default)(DEFAULT_OPTIONS), JSON.parse(JSON.stringify(options || {})), _data_utils.mergeOmitNull);
@@ -190,6 +195,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
     defaultLocale: locale
   }, _react.default.createElement(DeveloperProfileComponent, {
     isEditing: isEditing,
+    setIsEditing: setIsEditing,
     data: data,
     mode: mode,
     onEdit: onEdit,

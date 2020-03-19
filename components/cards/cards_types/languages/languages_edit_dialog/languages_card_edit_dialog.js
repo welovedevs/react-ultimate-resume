@@ -11,6 +11,8 @@ exports.LanguagesCardEditDialog = exports.LanguagesEditForm = void 0;
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
+
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _react = _interopRequireWildcard(require("react"));
@@ -79,7 +81,8 @@ var LanguagesCardEditDialogComponent = function LanguagesCardEditDialogComponent
       onClose = _ref.onClose,
       data = _ref.data,
       onEdit = _ref.onEdit,
-      validationSchema = _ref.validationSchema;
+      validationSchema = _ref.validationSchema,
+      isEditing = _ref.isEditing;
 
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
@@ -91,6 +94,7 @@ var LanguagesCardEditDialogComponent = function LanguagesCardEditDialogComponent
     open: open,
     onClose: onClose,
     data: data,
+    isEditing: isEditing,
     onEdit: onEdit,
     validationSchema: validationSchemaToPass,
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
@@ -204,7 +208,7 @@ var SortableLanguagesItems = (0, _reactSortableHoc.SortableContainer)(function (
       name = _ref3.name,
       schools = _ref3.schools,
       classes = _ref3.classes;
-  return _react.default.createElement(_ui.List, null, items.map(function (language, index) {
+  return _react.default.createElement(_ui.List, null, items === null || items === void 0 ? void 0 : items.map(function (language, index) {
     return _react.default.createElement(LanguageItem, (0, _extends2.default)({
       key: "".concat(name, "_").concat(language.id, "_").concat(index),
       onChange: onChange,
@@ -281,15 +285,17 @@ var LanguagesEditFormWrapper = function LanguagesEditFormWrapper(_ref6) {
     };
   }, [languages]);
   var addLanguage = (0, _react.useCallback)(function () {
+    var _ref8;
+
     var id = (0, _v.default)();
-    handleValueChange('languages')(languages.concat({
-      index: languages.length,
+    handleValueChange('languages')([].concat((0, _toConsumableArray2.default)(languages !== null && languages !== void 0 ? languages : []), [{
+      index: (_ref8 = languages === null || languages === void 0 ? void 0 : languages.length) !== null && _ref8 !== void 0 ? _ref8 : 0,
       id: id
-    }));
+    }]));
   }, [JSON.stringify(languages)]);
-  var move = (0, _react.useCallback)(function (_ref8) {
-    var oldIndex = _ref8.oldIndex,
-        newIndex = _ref8.newIndex;
+  var move = (0, _react.useCallback)(function (_ref9) {
+    var oldIndex = _ref9.oldIndex,
+        newIndex = _ref9.newIndex;
     handleValueChange('languages')((0, _reactSortableHoc.arrayMove)(languages, oldIndex, newIndex).map(function (data, index) {
       return _objectSpread({}, data, {
         index: index

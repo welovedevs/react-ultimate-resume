@@ -37,6 +37,10 @@ var _side = require("../../../../commons/profile_card/profile_card_side/side");
 
 var _basics_front_styles = require("./basics_front_styles");
 
+var _no_data_button = require("../../../../commons/no_data_button/no_data_button");
+
+var _contexts = require("../../../../../utils/context/contexts");
+
 var LocationIcon = function LocationIcon(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("path", {
     d: "M24 0C15.168.01 8.01 7.168 8 16c0 7.02 10 24.05 14.296 31.048A2 2 0 0 0 24 48a1.98 1.98 0 0 0 1.704-.954C30 40.052 40 23.028 40 16 39.99 7.168 32.832.01 24 0zm0 23a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"
@@ -52,15 +56,16 @@ var useStyles = (0, _reactJss.createUseStyles)(_basics_front_styles.styles);
 var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
   var _data$currentCity, _data$currentCity2;
 
-  var data = _ref.data;
+  var data = _ref.data,
+      handleAddButtonClick = _ref.handleAddButtonClick;
+
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
+      mode = _useContext.mode;
 
   var _useCardVariant = (0, _use_card_variant.useCardVariant)(),
       _useCardVariant2 = (0, _slicedToArray2.default)(_useCardVariant, 1),
       variant = _useCardVariant2[0];
 
-  console.log({
-    variant: variant
-  });
   var classes = useStyles({
     variant: variant
   });
@@ -83,7 +88,7 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
   (0, _react.useEffect)(function () {
     var element = mainTypographyReference.current;
 
-    if (element.offsetHeight > element.scrollHeight - 1) {
+    if ((element === null || element === void 0 ? void 0 : element.offsetHeight) > (element === null || element === void 0 ? void 0 : element.scrollHeight) - 1) {
       setIsMainTypographyTruncated(false);
     }
   }, []);
@@ -108,7 +113,16 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
     }
   }, _react.default.createElement(LocationIcon, {
     className: classes.locationIcon
-  }), data === null || data === void 0 ? void 0 : (_data$currentCity2 = data.currentCity) === null || _data$currentCity2 === void 0 ? void 0 : _data$currentCity2.name))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+  }), data === null || data === void 0 ? void 0 : (_data$currentCity2 = data.currentCity) === null || _data$currentCity2 === void 0 ? void 0 : _data$currentCity2.name)), !(data === null || data === void 0 ? void 0 : data.personalDescription) && mode === 'edit' && _react.default.createElement(_no_data_button.NoDataButton, {
+    handleAddButtonClick: handleAddButtonClick,
+    classes: {
+      container: classes.addButton
+    },
+    color: "secondary"
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Basics.noDescription.buttonLabel",
+    defaultMessage: "Ajouter une description"
+  }))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
     onClick: handleButtonClick
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Basics.front.action",

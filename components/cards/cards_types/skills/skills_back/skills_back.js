@@ -31,10 +31,27 @@ var _skills_back_styles = require("./skills_back_styles");
 
 var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
 
+var _exists_and_not_empty = require("../../../utils/exists_and_not_empty");
+
+var _no_skill = require("./no_skill/no_skill");
+
 var useStyles = (0, _reactJss.createUseStyles)(_skills_back_styles.styles);
 
 var SkillsBackComponent = function SkillsBackComponent(_ref) {
-  var data = _ref.data;
+  var data = _ref.data,
+      handleAddButtonClick = _ref.handleAddButtonClick;
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_title.ProfileCardTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Skills.back.title",
+    defaultMessage: "Skills"
+  })), _react.default.createElement(Content, {
+    data: data,
+    handleAddButtonClick: handleAddButtonClick
+  }));
+};
+
+var Content = function Content(_ref2) {
+  var data = _ref2.data,
+      handleAddButtonClick = _ref2.handleAddButtonClick;
 
   var _useCardVariant = (0, _use_card_variant.useCardVariant)(),
       _useCardVariant2 = (0, _slicedToArray2.default)(_useCardVariant, 1),
@@ -45,6 +62,9 @@ var SkillsBackComponent = function SkillsBackComponent(_ref) {
   });
   var springSkillOpacityPropsRef = (0, _react.useRef)();
   var springGraphOpacityPropsRef = (0, _react.useRef)();
+  var hasSkill = (0, _react.useMemo)(function () {
+    return (0, _exists_and_not_empty.existsAndNotEmpty)(data === null || data === void 0 ? void 0 : data.skills);
+  }, [data]);
   var springSkillOpacityProps = (0, _reactSpring.useSpring)({
     from: {
       opacity: 0
@@ -120,10 +140,14 @@ var SkillsBackComponent = function SkillsBackComponent(_ref) {
       opacity: newOpacity
     });
   }, [othersSkills]);
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_title.ProfileCardTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Skills.back.title",
-    defaultMessage: "Skills"
-  })), _react.default.createElement("div", {
+
+  if (!hasSkill) {
+    return _react.default.createElement(_no_skill.NoSkill, {
+      handleAddButtonClick: handleAddButtonClick
+    });
+  }
+
+  return _react.default.createElement("div", {
     className: classes.container,
     onScroll: onScroll,
     style: springGraphOpacityProps
@@ -135,7 +159,7 @@ var SkillsBackComponent = function SkillsBackComponent(_ref) {
     style: springSkillOpacityProps,
     othersSkills: othersSkills,
     springTranslationProps: springTranslationProps
-  })));
+  }));
 };
 
 var SkillsBack = (0, _react.memo)(SkillsBackComponent);

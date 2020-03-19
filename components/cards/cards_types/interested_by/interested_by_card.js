@@ -40,7 +40,7 @@ var InterestedByCardComponent = function InterestedByCardComponent(_ref) {
   }, [data]);
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     onEdit((0, _data_mapping.FlatObjectToJsonResume)(editedData, _mapping.interestedByMapping));
-  }, []);
+  }, [onEdit]);
   var isComplete = (0, _react.useMemo)(function () {
     return (0, _validator.validateInterestedByComplete)(mappedData);
   }, [mappedData]);
@@ -54,8 +54,12 @@ var InterestedByCardComponent = function InterestedByCardComponent(_ref) {
     isComplete: isComplete,
     isEditingProfile: isEditing,
     sides: {
-      front: _interested_by_front.InterestedByFront,
-      back: _interested_by_back.InterestedByBack
+      front: function front(props) {
+        return _react.default.createElement(_interested_by_front.InterestedByFront, props);
+      },
+      back: function back(props) {
+        return _react.default.createElement(_interested_by_back.InterestedByBack, props);
+      }
     },
     editDialog: {
       component: _interested_by_edit_dialog.InterestedByEditDialog,

@@ -17,6 +17,8 @@ var _reactIntl = require("react-intl");
 
 var _reactJss = require("react-jss");
 
+var _ui = require("@wld/ui");
+
 var _profile_card_padding_front = require("../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front");
 
 var _center_content_container = require("../../../../commons/center_content_container/center_content_container");
@@ -35,6 +37,8 @@ var _soundtrack_front_styles = require("./soundtrack_front_styles");
 
 var _use_card_side = require("../../../../commons/profile_card/profile_card_hooks/use_card_side");
 
+var _no_data_button = require("../../../../commons/no_data_button/no_data_button");
+
 var SpotifyLogo = function SpotifyLogo(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("path", {
     fill: "#fff",
@@ -50,7 +54,9 @@ SpotifyLogo.defaultProps = {
 };
 var useStyles = (0, _reactJss.createUseStyles)(_soundtrack_front_styles.styles);
 
-var SoundtrackFrontComponent = function SoundtrackFrontComponent() {
+var SoundtrackFrontComponent = function SoundtrackFrontComponent(_ref) {
+  var data = _ref.data,
+      handleAddButtonClick = _ref.handleAddButtonClick;
   var classes = useStyles();
 
   var _useCardSide = (0, _use_card_side.useCardSide)(),
@@ -65,7 +71,47 @@ var SoundtrackFrontComponent = function SoundtrackFrontComponent() {
     customClasses: {
       container: classes.container
     }
-  }, _react.default.createElement(_profile_card_front_vector.ProfileCardFrontVector, {
+  }, _react.default.createElement(Content, {
+    data: data,
+    handleAddButtonClick: handleAddButtonClick,
+    classes: classes
+  }))), (data === null || data === void 0 ? void 0 : data.embedUrl) && _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+    onClick: handleButtonClick
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Soundtrack.front.button",
+    defaultMessage: "My playlist"
+  }))));
+};
+
+var Content = function Content(_ref2) {
+  var data = _ref2.data,
+      handleAddButtonClick = _ref2.handleAddButtonClick,
+      classes = _ref2.classes;
+
+  if (!(data === null || data === void 0 ? void 0 : data.embedUrl)) {
+    return _react.default.createElement("div", {
+      className: classes.noSoundTrack
+    }, _react.default.createElement(_ui.Typography, {
+      variant: "h3",
+      component: "h3",
+      customClasses: {
+        container: classes.noSoundTrackTypography
+      }
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "SoundTrack.front.noSoundTrack",
+      defaultMessage: "Vous n'avez pas encore ajout\xE9 de playlist !"
+    })), _react.default.createElement(_no_data_button.NoDataButton, {
+      handleAddButtonClick: handleAddButtonClick,
+      classes: {
+        container: classes.addButton
+      }
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "SoundTrack.noSoundTrack.buttonLabel",
+      defaultMessage: "Ajouter une playlist"
+    })));
+  }
+
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_front_vector.ProfileCardFrontVector, {
     customClasses: {
       container: classes.logo
     },
@@ -77,12 +123,7 @@ var SoundtrackFrontComponent = function SoundtrackFrontComponent() {
   }, _react.default.createElement(_reactIntl.FormattedMessage, {
     id: "Soundtrack.front.title",
     defaultMessage: "Discover my favourite tracks"
-  })))), _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
-    onClick: handleButtonClick
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Soundtrack.front.button",
-    defaultMessage: "My playlist"
-  }))));
+  })));
 };
 
 var SoundtrackFront = SoundtrackFrontComponent;

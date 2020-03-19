@@ -19,6 +19,8 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _reactJss = require("react-jss");
 
+var _reactIntl = require("react-intl");
+
 var _reactSpring = require("react-spring");
 
 var _ui = require("@wld/ui");
@@ -28,6 +30,8 @@ var _share_links_data = require("./share_links_data");
 var _share_links_spring_props = require("./share_links_spring_props");
 
 var _share_links_styles = require("./share_links_styles");
+
+var _share_links_translations = require("./share_links_translations");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -39,6 +43,9 @@ var ShareLinksComponent = function ShareLinksComponent(_ref) {
   var useSmallLayout = _ref.useSmallLayout;
   var classes = useStyles();
 
+  var _useIntl = (0, _reactIntl.useIntl)(),
+      formatMessage = _useIntl.formatMessage;
+
   var _useSpring = (0, _reactSpring.useSpring)(function () {
     return _objectSpread({}, _share_links_spring_props.BACKGROUND_LINE_SPRING_PROPS.default, {
       config: _reactSpring.config.slow
@@ -48,6 +55,16 @@ var ShareLinksComponent = function ShareLinksComponent(_ref) {
       backgroundLineSpringProps = _useSpring2[0],
       setBackgroundLineSpringProps = _useSpring2[1];
 
+  var link = (0, _react.useMemo)(function () {
+    var _location;
+
+    return (_location = (typeof window === 'undefined' ? {} : window).location) === null || _location === void 0 ? void 0 : _location.href;
+  }, []);
+  var translatedMessage = (0, _react.useMemo)(function () {
+    return formatMessage(_share_links_translations.translations.linkMessage, {
+      link: link
+    });
+  }, [link]);
   (0, _react.useEffect)(function () {
     if (!('IntersectionObserver' in (typeof window !== 'undefined' ? window : {}))) {
       return;
@@ -90,7 +107,10 @@ var ShareLinksComponent = function ShareLinksComponent(_ref) {
       content = _react.default.createElement("a", {
         key: "share_link_link_".concat(entryId),
         className: classes.link,
-        href: getLink(),
+        href: getLink({
+          link: link,
+          translatedMessage: translatedMessage
+        }),
         target: "_blank",
         rel: "noreferrer noopener"
       }, content);

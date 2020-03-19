@@ -7,8 +7,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ProjectDialogContentTitle = void 0;
 
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-
 var _react = _interopRequireDefault(require("react"));
 
 var _reactIntl = require("react-intl");
@@ -19,19 +17,13 @@ var _ui = require("@wld/ui");
 
 var _formik = require("formik");
 
-var _use_is_editing = require("../../../../../hooks/use_is_editing");
-
 var _project_dialog_content_title_styles = require("./project_dialog_content_title_styles");
 
 var useStyles = (0, _reactJss.createUseStyles)(_project_dialog_content_title_styles.styles);
 
 var ProjectDialogContentTitleComponent = function ProjectDialogContentTitleComponent(_ref) {
-  var title = _ref.title;
-
-  var _useIsEditing = (0, _use_is_editing.useIsEditing)(),
-      _useIsEditing2 = (0, _slicedToArray2.default)(_useIsEditing, 1),
-      isEditing = _useIsEditing2[0];
-
+  var title = _ref.title,
+      isEditing = _ref.isEditing;
   var classes = useStyles({
     isEditing: isEditing
   });

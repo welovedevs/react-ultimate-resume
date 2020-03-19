@@ -74,8 +74,9 @@ var SHARE_LINKS_DATA = Object.freeze({
         platform: 'Twitter'
       }
     }),
-    getLink: function getLink() {
-      return 'https://twitter.com';
+    getLink: function getLink(_ref) {
+      var translatedMessage = _ref.translatedMessage;
+      return "https://twitter.com/intent/tweet?text=".concat(translatedMessage);
     }
   },
   facebook: {
@@ -87,8 +88,9 @@ var SHARE_LINKS_DATA = Object.freeze({
         platform: 'Facebook'
       }
     }),
-    getLink: function getLink() {
-      return 'https://facebook.com';
+    getLink: function getLink(_ref2) {
+      var link = _ref2.link;
+      return "https://www.facebook.com/sharer/sharer.php?u=".concat(encodeURI(link));
     }
   },
   linkedIn: {
@@ -100,8 +102,9 @@ var SHARE_LINKS_DATA = Object.freeze({
         platform: 'LinkedIn'
       }
     }),
-    getLink: function getLink() {
-      return 'https://linkedin.com';
+    getLink: function getLink(_ref3) {
+      var link = _ref3.link;
+      return "https://www.linkedin.com/sharing/share-offsite/?url=".concat(encodeURI(link));
     }
   },
   copyShareUrl: {

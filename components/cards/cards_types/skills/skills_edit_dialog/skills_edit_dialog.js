@@ -26,7 +26,8 @@ var SkillsEditDialogComponent = function SkillsEditDialogComponent(_ref) {
       onClose = _ref.onClose,
       data = _ref.data,
       onEdit = _ref.onEdit,
-      validationSchema = _ref.validationSchema;
+      validationSchema = _ref.validationSchema,
+      isEditing = _ref.isEditing;
   var classes = useStyles();
 
   var _useIntl = (0, _reactIntl.useIntl)(),
@@ -42,6 +43,7 @@ var SkillsEditDialogComponent = function SkillsEditDialogComponent(_ref) {
       content: classes.content
     },
     open: open,
+    isEditing: isEditing,
     onClose: onClose,
     data: data,
     onEdit: onEdit,

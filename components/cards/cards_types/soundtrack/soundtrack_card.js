@@ -25,6 +25,8 @@ var _contexts = require("../../../../utils/context/contexts");
 
 var _validator = require("./data/validator");
 
+var _side = require("../../../commons/profile_card/profile_card_side/side");
+
 var SoundtrackCardComponent = function SoundtrackCardComponent(_ref) {
   var variant = _ref.variant,
       side = _ref.side;
@@ -40,10 +42,17 @@ var SoundtrackCardComponent = function SoundtrackCardComponent(_ref) {
   }, [data]);
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     onEdit((0, _data_mapping.FlatObjectToJsonResume)(editedData, _mapping.SoundtrackMapping));
-  }, []);
+  }, [onEdit]);
   var isComplete = (0, _react.useMemo)(function () {
     return (0, _validator.validateSoundtrackComplete)(mappedData);
   }, [mappedData]);
+  var currentSide = (0, _react.useMemo)(function () {
+    if (!isComplete && !isEditing) {
+      return _side.SIDES.FRONT;
+    }
+
+    return side;
+  }, [side, isComplete, isEditing]);
 
   if (!isComplete && mode !== 'edit') {
     return null;
@@ -54,8 +63,12 @@ var SoundtrackCardComponent = function SoundtrackCardComponent(_ref) {
     isEditingProfile: isEditing,
     data: mappedData,
     sides: {
-      front: _soundtrack_front.SoundtrackFront,
-      back: _soundtrack_back.SoundtrackBack
+      front: function front(props) {
+        return _react.default.createElement(_soundtrack_front.SoundtrackFront, props);
+      },
+      back: function back(props) {
+        return _react.default.createElement(_soundtrack_back.SoundtrackBack, props);
+      }
     },
     editDialog: {
       component: _soundtrack_card_edit_dialog.SoundtrackCardEditDialog,
@@ -63,7 +76,7 @@ var SoundtrackCardComponent = function SoundtrackCardComponent(_ref) {
       validationSchema: _validator.SoundtrackValidationSchema
     },
     variant: variant,
-    side: side,
+    side: currentSide,
     isTransitionUnique: false
   });
 };

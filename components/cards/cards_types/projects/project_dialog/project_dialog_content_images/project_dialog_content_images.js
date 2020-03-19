@@ -25,8 +25,6 @@ var _project_dialog_content_image = require("./project_dialog_content_image/proj
 
 var _project_dialog_content_add_image = require("./project_dialog_content_add_image/project_dialog_content_add_image");
 
-var _use_is_editing = require("../../../../../hooks/use_is_editing");
-
 var _project_dialog_content_images_transitions_spring_props = require("./project_dialog_content_images_transitions_spring_props");
 
 var _project_dialog_content_images_styles = require("./project_dialog_content_images_styles");
@@ -45,17 +43,14 @@ var useStyles = (0, _reactJss.createUseStyles)(_project_dialog_content_images_st
 
 var ProjectDialogContentImagesComponent = function ProjectDialogContentImagesComponent(_ref) {
   var _ref$images = _ref.images,
-      images = _ref$images === void 0 ? [] : _ref$images;
+      images = _ref$images === void 0 ? [] : _ref$images,
+      isEditing = _ref.isEditing;
   var classes = useStyles();
   var theme = (0, _reactJss.useTheme)();
 
   var _useCardVariant = (0, _use_card_variant.useCardVariant)(),
       _useCardVariant2 = (0, _slicedToArray2.default)(_useCardVariant, 1),
       variant = _useCardVariant2[0];
-
-  var _useIsEditing = (0, _use_is_editing.useIsEditing)(),
-      _useIsEditing2 = (0, _slicedToArray2.default)(_useIsEditing, 1),
-      isEditing = _useIsEditing2[0];
 
   var _useState = (0, _react.useState)(null),
       _useState2 = (0, _slicedToArray2.default)(_useState, 2),

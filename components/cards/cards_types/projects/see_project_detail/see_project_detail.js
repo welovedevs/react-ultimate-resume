@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
@@ -9,7 +11,7 @@ exports.SeeProjectDetail = void 0;
 
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _reactIntl = require("react-intl");
 
@@ -24,6 +26,8 @@ var _animated_underlined_button = require("../../../../commons/animated_underlin
 var _use_callback_open = require("../../../../hooks/use_callback_open");
 
 var _see_project_detail_styles = require("./see_project_detail_styles");
+
+var _contexts = require("../../../../../utils/context/contexts");
 
 var EyeIcon = function EyeIcon(props) {
   return _react.default.createElement("svg", props, _react.default.createElement("g", {
@@ -52,6 +56,9 @@ var SeeProjectDetailComponent = function SeeProjectDetailComponent(_ref) {
       project = _ref.project;
   var classes = useStyles();
 
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
+      isEditing = _useContext.isEditing;
+
   var _useCallbackOpen = (0, _use_callback_open.useCallbackOpen)(),
       _useCallbackOpen2 = (0, _slicedToArray2.default)(_useCallbackOpen, 3),
       openDialog = _useCallbackOpen2[0],
@@ -59,7 +66,8 @@ var SeeProjectDetailComponent = function SeeProjectDetailComponent(_ref) {
       setDialogClosed = _useCallbackOpen2[2];
 
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_project_dialog.ProjectDialog, {
-    project: project,
+    isEditing: isEditing,
+    data: project,
     open: openDialog,
     onClose: setDialogClosed,
     handleProfileCardHasDialogOpened: true

@@ -7,8 +7,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ProjectDialogContentDescription = void 0;
 
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-
 var _react = _interopRequireDefault(require("react"));
 
 var _reactIntl = require("react-intl");
@@ -19,19 +17,13 @@ var _ui = require("@wld/ui");
 
 var _formik = require("formik");
 
-var _use_is_editing = require("../../../../../hooks/use_is_editing");
-
 var _project_dialog_content_description_styles = require("./project_dialog_content_description_styles");
 
 var useStyles = (0, _reactJss.createUseStyles)(_project_dialog_content_description_styles.styles);
 
 var ProjectDialogContentDescriptionComponent = function ProjectDialogContentDescriptionComponent(_ref) {
-  var description = _ref.description;
-
-  var _useIsEditing = (0, _use_is_editing.useIsEditing)(),
-      _useIsEditing2 = (0, _slicedToArray2.default)(_useIsEditing, 1),
-      isEditing = _useIsEditing2[0];
-
+  var description = _ref.description,
+      isEditing = _ref.isEditing;
   var classes = useStyles({
     isEditing: isEditing
   });

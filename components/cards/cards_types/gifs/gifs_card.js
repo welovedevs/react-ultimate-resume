@@ -23,6 +23,8 @@ var _mapping = require("./data/mapping");
 
 var _contexts = require("../../../../utils/context/contexts");
 
+var _side = require("../../../commons/profile_card/profile_card_side/side");
+
 var GifsCardComponent = function GifsCardComponent(_ref) {
   var variant = _ref.variant,
       side = _ref.side;
@@ -38,10 +40,17 @@ var GifsCardComponent = function GifsCardComponent(_ref) {
   }, [data]);
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     onEdit((0, _mapping.mapInterestsToJsonResume)(editedData));
-  }, []);
+  }, [onEdit]);
   var isComplete = (0, _react.useMemo)(function () {
     return (0, _validator.validateInterestsComplete)(mappedData);
   }, [mappedData]);
+  var currentSide = (0, _react.useMemo)(function () {
+    if (!isComplete && !isEditing) {
+      return _side.SIDES.FRONT;
+    }
+
+    return side;
+  }, [side, isComplete, isEditing]);
 
   if (!isComplete && mode !== 'edit') {
     return null;
@@ -52,8 +61,12 @@ var GifsCardComponent = function GifsCardComponent(_ref) {
     isComplete: isComplete,
     data: mappedData,
     sides: {
-      front: _gifs_front.GifsFront,
-      back: _gifs_back.GifsBack
+      front: function front(props) {
+        return _react.default.createElement(_gifs_front.GifsFront, props);
+      },
+      back: function back(props) {
+        return _react.default.createElement(_gifs_back.GifsBack, props);
+      }
     },
     editDialog: {
       component: _gifs_edit_dialog.GifsEditDialog,
@@ -61,7 +74,7 @@ var GifsCardComponent = function GifsCardComponent(_ref) {
       onEdit: onDialogEdited
     },
     variant: variant,
-    side: side
+    side: currentSide
   });
 };
 

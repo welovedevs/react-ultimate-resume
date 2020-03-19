@@ -23,6 +23,8 @@ var _validator = require("./data/validator");
 
 var _contexts = require("../../../../utils/context/contexts");
 
+var _side = require("../../../commons/profile_card/profile_card_side/side");
+
 var StudiesCardComponent = function StudiesCardComponent(_ref) {
   var variant = _ref.variant,
       side = _ref.side;
@@ -38,10 +40,17 @@ var StudiesCardComponent = function StudiesCardComponent(_ref) {
   }, [data]);
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
     onEdit((0, _mapping.mapStudiesToJsonResume)(editedData));
-  }, []);
+  }, [onEdit]);
   var isComplete = (0, _react.useMemo)(function () {
     return (0, _validator.validateStudiesComplete)(mappedData);
   }, [mappedData]);
+  var currentSide = (0, _react.useMemo)(function () {
+    if (!isComplete && !isEditing) {
+      return _side.SIDES.FRONT;
+    }
+
+    return side;
+  }, [side, isComplete, isEditing]);
 
   if (!isComplete && mode !== 'edit') {
     return null;
@@ -52,8 +61,12 @@ var StudiesCardComponent = function StudiesCardComponent(_ref) {
     isComplete: isComplete,
     isEditingProfile: isEditing,
     sides: {
-      front: _studies_front.StudiesFront,
-      back: _studies_back.StudiesBack
+      front: function front(props) {
+        return _react.default.createElement(_studies_front.StudiesFront, props);
+      },
+      back: function back(props) {
+        return _react.default.createElement(_studies_back.StudiesBack, props);
+      }
     },
     editDialog: {
       component: _studies_card_edit_dialog.StudiesCardEditDialog,
@@ -61,7 +74,7 @@ var StudiesCardComponent = function StudiesCardComponent(_ref) {
       onEdit: onDialogEdited
     },
     variant: variant,
-    side: side
+    side: currentSide
   });
 };
 

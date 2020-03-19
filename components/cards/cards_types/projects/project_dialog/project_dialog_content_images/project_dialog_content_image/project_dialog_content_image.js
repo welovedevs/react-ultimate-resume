@@ -129,7 +129,7 @@ var EditLayer = function EditLayer(_ref4) {
       var urlToKeep = _ref5.url;
       return url !== urlToKeep;
     }));
-  }, [values.images]);
+  }, [setFieldValue, values.images]);
   return _react.default.createElement(_reactSpring.animated.div, {
     className: classes.editLayer,
     style: style
