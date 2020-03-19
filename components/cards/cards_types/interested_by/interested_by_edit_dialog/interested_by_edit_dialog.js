@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
 Object.defineProperty(exports, "__esModule", {
@@ -18,6 +20,8 @@ var _ui = require("@wld/ui");
 var _edit_dialog = require("../../../../commons/edit_dialog/edit_dialog");
 
 var _edit_dialog_field = require("../../../../commons/edit_dialog_field/edit_dialog_field");
+
+var _intested_by_translations = _interopRequireDefault(require("./intested_by_translations"));
 
 var InterestedByEditDialogComponent = function InterestedByEditDialogComponent(_ref) {
   var open = _ref.open,
@@ -56,6 +60,10 @@ var Content = function Content() {
       handleChange = _useFormikContext.handleChange;
 
   var interestedBy = values.interestedBy;
+
+  var _useIntl2 = (0, _reactIntl.useIntl)(),
+      formatMessage = _useIntl2.formatMessage;
+
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_edit_dialog_field.EditDialogField, {
     error: errors === null || errors === void 0 ? void 0 : errors.interestedBy
   }, _react.default.createElement(_ui.TextField, {
@@ -63,10 +71,7 @@ var Content = function Content() {
     variant: "flat",
     fullWidth: true,
     rows: 4,
-    placeholder: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "InterestedBy.editDialog.interestedBy.placeholder",
-      defaultMessage: "Vue.js, Blockchain, Datadog..."
-    }),
+    placeholder: formatMessage(_intested_by_translations.default.interestedByPlaceholder),
     value: interestedBy,
     onChange: handleChange,
     name: "interestedBy"

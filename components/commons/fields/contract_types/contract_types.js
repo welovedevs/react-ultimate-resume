@@ -29,6 +29,10 @@ var ContractType = function ContractType(_ref) {
     return null;
   }
 
+  console.log({
+    contracts: contracts
+  });
+
   if (!contracts.length) {
     return _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Basics.Back.WorkContract.single",
