@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg color="#fff" width="470px" height="470px" viewBox="0 0 470 470" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-503.000000, -292.000000)">
+            <g id="Group" transform="translate(503.000000, 292.000000)">
+                <rect class="to-fill" id="Rectangle" fill="#220BAB" x="0" y="0" width="470" height="470" rx="20"></rect>
+                <text class="to-color" id="Développeur-Web-/-Re" font-family="AvenirNext-Bold, Avenir Next" font-size="50" font-weight="bold" line-spacing="70" fill="#FFFFFF">
+                    <tspan x="57" y="180">Développeur</tspan>
+                    <tspan x="57" y="250">Web / React</tspan>
+                    <tspan x="57" y="320">- Node</tspan>
+                </text>
+                <text class="to-color" id="see-all-experiences" font-family="AvenirNext-Medium, Avenir Next" font-size="18" font-weight="400" fill="#FFFFFF">
+                    <tspan x="250" y="441">see all experiences</tspan>
+                </text>
+                <g id="arrow-right" transform="translate(423.000000, 428.000000)" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M0,8 L16,8" id="Path"></path>
+                    <polyline id="Path" points="8 0 16 8 8 16"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

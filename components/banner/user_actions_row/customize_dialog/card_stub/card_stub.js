@@ -579,6 +579,58 @@ SoundtrackSvg.defaultProps = {
   viewBox: "0 0 470 470",
   xmlns: "http://www.w3.org/2000/svg"
 };
+
+var ExperiencesSvg = function ExperiencesSvg(props) {
+  return _react.default.createElement("svg", props, _react.default.createElement("title", null, "Group"), _react.default.createElement("g", {
+    fill: "none",
+    fillRule: "evenodd"
+  }, _react.default.createElement("rect", {
+    className: "to-fill",
+    fill: "#220BAB",
+    width: "470",
+    height: "470",
+    rx: "20"
+  }), _react.default.createElement("text", {
+    className: "to-color",
+    fontFamily: "AvenirNext-Bold, Avenir Next",
+    fontSize: "50",
+    fontWeight: "bold",
+    fill: "#FFF"
+  }, _react.default.createElement("tspan", {
+    x: "57",
+    y: "180"
+  }, "D\xE9veloppeur"), " ", _react.default.createElement("tspan", {
+    x: "57",
+    y: "250"
+  }, "Web / React"), " ", _react.default.createElement("tspan", {
+    x: "57",
+    y: "320"
+  }, "- Node")), _react.default.createElement("text", {
+    className: "to-color",
+    fontFamily: "AvenirNext-Medium, Avenir Next",
+    fontSize: "18",
+    fontWeight: "400",
+    fill: "#FFF"
+  }, _react.default.createElement("tspan", {
+    x: "250",
+    y: "441"
+  }, "see all experiences")), _react.default.createElement("g", {
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "2"
+  }, _react.default.createElement("path", {
+    d: "M423 436h16M431 428l8 8-8 8"
+  }))));
+};
+
+ExperiencesSvg.defaultProps = {
+  color: "#fff",
+  width: "470",
+  height: "470",
+  viewBox: "0 0 470 470",
+  xmlns: "http://www.w3.org/2000/svg"
+};
 var useStyles = (0, _reactJss.createUseStyles)(_card_stub_styles.styles);
 var CARD_TYPE_MAPPING = Object.freeze({
   basics: BasicsSvg,
@@ -586,7 +638,7 @@ var CARD_TYPE_MAPPING = Object.freeze({
   language: LanguagesSvg,
   dreamjob: LocationSvg,
   gifs: HobbiesSvg,
-  experiences: BasicsSvg,
+  experiences: ExperiencesSvg,
   studies: SchoolSvg,
   skills: SkillsSvg,
   soundtrack: SoundtrackSvg,
