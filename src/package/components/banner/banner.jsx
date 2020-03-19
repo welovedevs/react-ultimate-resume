@@ -40,9 +40,9 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
     return (
         <div className={cn(classes.container, globalReceivedBannerClasses.container)}>
             {isEditing && onCustomizationChanged && (
-                <EditHeaderImageButton customizationOptions={customizationOptions}/>
+                <EditHeaderImageButton customizationOptions={customizationOptions} />
             )}
-            <div className={cn(classes.overlay, globalReceivedBannerClasses.overlay)}/>
+            <div className={cn(classes.overlay, globalReceivedBannerClasses.overlay)} />
             {transitions?.map(
                 ({ item, key, props }) =>
                     item && (
@@ -56,10 +56,12 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
                     )
             )}
             <div className={cn(classes.content, globalReceivedBannerClasses.content)}>
-                <UserInformations/>
+                <UserInformations />
                 <SocialActions>
                     {actionsButtons}
-                    {onCustomizationChanged && !dismissCustomizeButton && <CustomizeButton customizationOptions={customizationOptions}/>}
+                    {onCustomizationChanged && !dismissCustomizeButton && (
+                        <CustomizeButton customizationOptions={customizationOptions} />
+                    )}
                 </SocialActions>
             </div>
             {bannerImageCredits?.name && (
@@ -90,7 +92,7 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <FormattedMessage id="Unsplash.brandName" defaultMessage="Unsplash"/>
+                                    <FormattedMessage id="Unsplash.brandName" defaultMessage="Unsplash" />
                                 </a>
                             )
                         }}

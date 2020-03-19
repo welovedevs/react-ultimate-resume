@@ -35,9 +35,9 @@ const LanguagesCardEditDialogComponent = ({ open, onClose, data, onEdit, validat
             isEditing={isEditing}
             onEdit={onEdit}
             validationSchema={validationSchemaToPass}
-            title={<FormattedMessage id="Languages.editDialog.title" defaultMessage="Your languages"/>}
+            title={<FormattedMessage id="Languages.editDialog.title" defaultMessage="Your languages" />}
         >
-            {helpers => <LanguagesEditFormWrapper helpers={helpers}/>}
+            {helpers => <LanguagesEditFormWrapper helpers={helpers} />}
         </EditDialog>
     );
 };
@@ -55,13 +55,13 @@ const LanguageItem = SortableElement(
             <div className={classes.itemContainer}>
                 <div className={classes.actions}>
                     <DragHandle {...{ classes }} />
-                    <div className={classes.divider}/>
-                    <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Delete"/>}>
+                    <div className={classes.divider} />
+                    <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Delete" />}>
                         <button type="button" className={classes.button} onClick={onRemove(id)}>
-                            <TrashIcon className={classes.removeIcon}/>
+                            <TrashIcon className={classes.removeIcon} />
                         </button>
                     </Tooltip>
-                    {!isMobile && <div className={classes.divider}/>}
+                    {!isMobile && <div className={classes.divider} />}
                 </div>
                 <div className={classes.listItem}>
                     <div className={classes.fieldGroup}>
@@ -145,7 +145,7 @@ const SortableLanguagesItems = SortableContainer(({ items, onChange, onDelete, e
 
 const DragHandle = SortableHandle(({ classes }) => (
     <button type="button">
-        <MoveIcon className={classes.dragHandle}/>
+        <MoveIcon className={classes.dragHandle} />
     </button>
 ));
 
@@ -169,7 +169,7 @@ export const LanguagesEditForm = ({ data, onMove, onValueChange, onDelete, onAdd
                 errors={validationErrors}
                 {...{ classes }}
             />
-            <AddButton onClick={onAdd}/>
+            <AddButton onClick={onAdd} />
             {globalError && (
                 <Typography color="danger" component="p">
                     {validationErrors}

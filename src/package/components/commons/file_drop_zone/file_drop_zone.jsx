@@ -15,7 +15,9 @@ import { styles } from './file_drop_zone_styles';
 
 const useStyles = createUseStyles(styles);
 
-const DEFAULT_ON_DROP = () => { throw new Error('Did not provide a valid onDrop function.'); };
+const DEFAULT_ON_DROP = () => {
+    throw new Error('Did not provide a valid onDrop function.');
+};
 
 const FileDropZoneComponent = ({ onDrop = DEFAULT_ON_DROP }) => {
     const classes = useStyles();
@@ -23,38 +25,36 @@ const FileDropZoneComponent = ({ onDrop = DEFAULT_ON_DROP }) => {
     const [fileUrl, setFileUrl] = useState(false);
     const [error, setError] = useState(null);
 
-    const { waiting, loading, success } = useMemo(() => ({
-        waiting: fileUrl === false,
-        loading: fileUrl === null,
-        success: Boolean(fileUrl)
-    }), [fileUrl]);
+    const { waiting, loading, success } = useMemo(
+        () => ({
+            waiting: fileUrl === false,
+            loading: fileUrl === null,
+            success: Boolean(fileUrl)
+        }),
+        [fileUrl]
+    );
 
-    const handleDrop = useCallback(async (parameters) => {
-        if (typeof onDrop !== 'function') {
-            return;
-        }
-        setFileUrl(null);
-        try {
-            const url = await onDrop(parameters);
-            setFileUrl(url);
-        } catch (e) {
-            setFileUrl(false);
-            setError(e);
-        }
-    }, [onDrop]);
+    const handleDrop = useCallback(
+        async parameters => {
+            if (typeof onDrop !== 'function') {
+                return;
+            }
+            setFileUrl(null);
+            try {
+                const url = await onDrop(parameters);
+                setFileUrl(url);
+            } catch (e) {
+                setFileUrl(false);
+                setError(e);
+            }
+        },
+        [onDrop]
+    );
 
-    const {
-        getRootProps,
-        getInputProps,
-        isDragActive
-    } = useDropzone({ onDrop: handleDrop });
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop: handleDrop });
 
     return (
-        <button
-            className={classes.container}
-            type="button"
-            {...getRootProps()}
-        >
+        <button className={classes.container} type="button" {...getRootProps()}>
             <Content
                 waiting={waiting}
                 loading={loading}
@@ -103,18 +103,13 @@ const Label = ({ waiting, error, success, isDragActive, classes }) => {
     } else if (success) {
         text = 'File successfully uploaded!';
     } else if (waiting) {
-         text = "Drag'n drop files or click here.";
+        text = "Drag'n drop files or click here.";
     }
     return (
-        <Typography
-            customClasses={{ container: classes.typography }}
-            variant="h4"
-            component="h4"
-        >
+        <Typography customClasses={{ container: classes.typography }} variant="h4" component="h4">
             {text}
         </Typography>
     );
 };
-
 
 export const FileDropZone = FileDropZoneComponent;

@@ -2,8 +2,11 @@ import { flex } from '../../../utils/styles/styles_utils';
 
 const { center } = flex;
 
-export const styles = (theme) => {
-    const { palette, miscellaneous: { spacing } } = theme;
+export const styles = theme => {
+    const {
+        palette,
+        miscellaneous: { spacing }
+    } = theme;
     return {
         container: {
             height: 200,

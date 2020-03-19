@@ -2,12 +2,12 @@ import { flex } from '../../../utils/styles/styles_utils';
 
 const { center } = flex;
 
-export const styles = (theme) => {
+export const styles = theme => {
     const {
         palette,
         miscellaneous: { spacing }
     } = theme;
-    return ({
+    return {
         content: {
             display: 'flex',
             flexDirection: 'column'
@@ -30,7 +30,7 @@ export const styles = (theme) => {
                 top: 'calc(50% - (1px / 2))',
                 left: 0,
                 backgroundColor: palette.dark[50],
-                content: '\'\''
+                content: "''"
             }
         },
         dividerOr: {
@@ -38,5 +38,5 @@ export const styles = (theme) => {
             padding: [0, spacing * 2],
             backgroundColor: '#fff'
         }
-    });
+    };
 };

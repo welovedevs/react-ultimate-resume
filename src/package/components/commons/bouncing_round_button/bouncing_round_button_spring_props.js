@@ -1,8 +1,8 @@
 export const SPRING_PROPS = Object.freeze({
-    default: ({
+    default: {
         scale: 1
-    }),
-    active: ({
+    },
+    active: {
         scale: 0.9
-    })
+    }
 });

@@ -1,4 +1,4 @@
-export const styles = ({
+export const styles = {
     container: {
         position: 'relative'
     },
@@ -11,4 +11,4 @@ export const styles = ({
         opacity: 0,
         cursor: 'pointer'
     }
-});
+};

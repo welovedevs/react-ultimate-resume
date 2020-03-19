@@ -20,22 +20,30 @@ const FooterComponent = () => {
     const classes = useStyles();
     const { screenSizes } = useTheme();
 
-    const useSmallLayout = useMediaQuery(`(max-width: ${screenSizes.medium - ((screenSizes.medium - screenSizes.small) / 2)}px)`, { defaultMatches: true });
+    const useSmallLayout = useMediaQuery(
+        `(max-width: ${screenSizes.medium - (screenSizes.medium - screenSizes.small) / 2}px)`,
+        { defaultMatches: true }
+    );
 
     if (useSmallLayout) {
         return (
             <div className={cn(classes.container, useSmallLayout && classes.smallLayoutContainer)}>
                 <div className={classes.wldLogoGithubLogoContainer}>
-                    <a className={classes.logoLink} href="https://welovedevs.com" target="_blank" rel="noreferrer noopener">
+                    <a
+                        className={classes.logoLink}
+                        href="https://welovedevs.com"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
                         <Logo className={classes.logo} />
                     </a>
                     <Tooltip
-                        title={(
+                        title={
                             <FormattedMessage
                                 id="Footer.github.tooltip"
                                 defaultMessage="Create your own developer profile!"
                             />
-                        )}
+                        }
                     >
                         <a
                             className={classes.githubLink}
@@ -59,12 +67,9 @@ const FooterComponent = () => {
             </a>
             <ShareLinks />
             <Tooltip
-                title={(
-                    <FormattedMessage
-                        id="Footer.github.tooltip"
-                        defaultMessage="Create your own developer profile!"
-                    />
-                )}
+                title={
+                    <FormattedMessage id="Footer.github.tooltip" defaultMessage="Create your own developer profile!" />
+                }
             >
                 <a
                     className={classes.githubLink}

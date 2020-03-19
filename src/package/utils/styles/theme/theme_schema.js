@@ -14,7 +14,7 @@ const isExistingColorInPalette = yup.string().test(
     'is-existing-color-in-palette',
     args => `Color \`${args.value}\` must be present in palette.`,
     // eslint-disable-next-line func-names
-    function (value) {
+    function(value) {
         return Boolean(this?.options?.context?.palette?.[value]);
     }
 );
@@ -39,7 +39,8 @@ export const THEME_SCHEMA = yup.object({
                 }),
                 {}
             )
-        )),
+        )
+    ),
     miscellaneous: yup.object({
         backgroundColor: isHex.required(),
         color: isHex.required(),

@@ -96,10 +96,7 @@ const Content = ({ hasProject, projectTitle, handleAddButtonClick, classes }) =>
     return (
         <div className={classes.noProject}>
             <Typography variant="h3" component="h3" customClasses={{ container: classes.noProjectTypography }}>
-                <FormattedMessage
-                    id="Projects.front.noProject"
-                    defaultMessage="You didn't add any projects."
-                />
+                <FormattedMessage id="Projects.front.noProject" defaultMessage="You didn't add any projects." />
                 {projectTitle}
             </Typography>
             <NoDataButton

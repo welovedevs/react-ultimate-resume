@@ -2,11 +2,7 @@ import { Button } from '@wld/ui';
 
 import React from 'react';
 
-const NoDataButtonComponent = ({
-    handleAddButtonClick,
-    children,
-    classes: receivedClasses = {}
-}) => (
+const NoDataButtonComponent = ({ handleAddButtonClick, children, classes: receivedClasses = {} }) => (
     <Button
         customClasses={{
             container: receivedClasses.container

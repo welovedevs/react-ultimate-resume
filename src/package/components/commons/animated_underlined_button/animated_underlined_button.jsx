@@ -17,24 +17,20 @@ const AnimatedUnderlinedButtonComponent = ({ color = 'primary', onClick, childre
         defaultHandlers: { onClick }
     });
 
-    const underlineTransitions = useTransition(isUnderlineDisplayed, item => `${item ? 'visible' : 'hidden'}_underline`, ANIMATED_UNDERLINED_BUTTON_TRANSITIONS_SPRING_PROPS);
+    const underlineTransitions = useTransition(
+        isUnderlineDisplayed,
+        item => `${item ? 'visible' : 'hidden'}_underline`,
+        ANIMATED_UNDERLINED_BUTTON_TRANSITIONS_SPRING_PROPS
+    );
 
     return (
-        <button
-            type="button"
-            className={classes.container}
-            onClick={onClick}
-            {...handlers}
-        >
+        <button type="button" className={classes.container} onClick={onClick} {...handlers}>
             {children}
             <div className={classes.underlineContainer}>
-                {underlineTransitions.map(({ item, key, props }) => item && (
-                    <animated.div
-                        key={key}
-                        className={classes.underline}
-                        style={props}
-                    />
-                ))}
+                {underlineTransitions.map(
+                    ({ item, key, props }) =>
+                        item && <animated.div key={key} className={classes.underline} style={props} />
+                )}
             </div>
         </button>
     );

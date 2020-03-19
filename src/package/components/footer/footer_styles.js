@@ -1,17 +1,18 @@
 import { createScreenWidthMediaQuery, getHexFromPaletteColor } from '../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
+export const styles = theme => {
     const {
-        miscellaneous: {
-            spacing
-        },
+        miscellaneous: { spacing },
         palette,
         screenSizes
     } = theme;
 
-    const QUERY_BETWEEN_SMALL_EXTRA_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small - (screenSizes.small - screenSizes.xs) / 2);
+    const QUERY_BETWEEN_SMALL_EXTRA_SMALL = createScreenWidthMediaQuery(
+        'max-width',
+        screenSizes.small - (screenSizes.small - screenSizes.xs) / 2
+    );
 
-    return ({
+    return {
         container: {
             width: '100%',
             backgroundColor: getHexFromPaletteColor(theme, 'primary'),
@@ -56,5 +57,5 @@ export const styles = (theme) => {
                 marginBottom: spacing * 4
             }
         }
-    });
+    };
 };

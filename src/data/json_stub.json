@@ -22,8 +22,7 @@
             }
         ]
     },
-    "work": [
-    ],
+    "work": [],
     "volunteer": [
         {
             "organization": "Organization",
@@ -34,8 +33,7 @@
             "highlights": ["Awarded 'Volunteer of the Month'"]
         }
     ],
-    "education": [
-    ],
+    "education": [],
     "awards": [
         {
             "title": "Award",
@@ -53,11 +51,9 @@
             "summary": "Description..."
         }
     ],
-    "skills": [
-    ],
+    "skills": [],
     "languages": [],
-    "interests": [
-    ],
+    "interests": [],
     "references": [
         {
             "name": "Jane Doe",

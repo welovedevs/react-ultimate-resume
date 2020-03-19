@@ -52,27 +52,30 @@ const DEFAULT_OBJECT = {};
 const DEFAULT_FUNCTION = () => {};
 
 const DeveloperProfileComponent = ({
-                                       data = DEFAULT_OBJECT,
-                                       options,
-                                       mode,
-                                       onEdit: onEditProps = DEFAULT_FUNCTION,
-                                       onCustomizationChanged,
-                                       isEditing = false,
-                                       onFilesUpload = async () => 'https://source.unsplash.com/random/4000x2000',
-                                       BeforeCards,
-                                       additionalNodes,
-                                       dismissCustomizeButton,
-                                       setIsEditing,
-                                       classes: receivedGlobalClasses = {}
-                                   }) => {
+    data = DEFAULT_OBJECT,
+    options,
+    mode,
+    onEdit: onEditProps = DEFAULT_FUNCTION,
+    onCustomizationChanged,
+    isEditing = false,
+    onFilesUpload = async () => 'https://source.unsplash.com/random/4000x2000',
+    BeforeCards,
+    additionalNodes,
+    dismissCustomizeButton,
+    setIsEditing,
+    classes: receivedGlobalClasses = {}
+}) => {
     const { apiKeys, endpoints } = options;
     const classes = useStyles(styles);
 
-    const onEdit = useCallback(newData => {
-        if (typeof onEditProps === 'function') {
-            onEditProps(newData);
-        }
-    }, [onEditProps]);
+    const onEdit = useCallback(
+        newData => {
+            if (typeof onEditProps === 'function') {
+                onEditProps(newData);
+            }
+        },
+        [onEditProps]
+    );
     const store = {
         technologies: useReducer(technologiesReducer, technologiesInitialState)
     };

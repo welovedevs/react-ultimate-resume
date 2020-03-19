@@ -14,9 +14,12 @@ const SoundtrackCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => JsonResumeToFlatObject(data, SoundtrackMapping), [data]);
 
-    const onDialogEdited = useCallback(editedData => {
-        onEdit(FlatObjectToJsonResume(editedData, SoundtrackMapping));
-    }, [onEdit]);
+    const onDialogEdited = useCallback(
+        editedData => {
+            onEdit(FlatObjectToJsonResume(editedData, SoundtrackMapping));
+        },
+        [onEdit]
+    );
 
     const isComplete = useMemo(() => validateSoundtrackComplete(mappedData), [mappedData]);
 

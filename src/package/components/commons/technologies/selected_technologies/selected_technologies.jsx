@@ -52,10 +52,7 @@ const TechnologyRow = SortableElement(({ item, onRemove, onChange, classes, item
                 <img className={classes.logoImage} alt={item.name} src={imgUrl} />
             </Card>
             <div className={classes.textWrapper}>
-                <Typography
-                    color="dark"
-                    variant="label"
-                >
+                <Typography color="dark" variant="label">
                     {item.name}
                 </Typography>
                 <div className={classes.sliderValueContainer}>

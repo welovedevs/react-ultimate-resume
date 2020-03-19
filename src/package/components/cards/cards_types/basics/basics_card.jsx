@@ -14,9 +14,12 @@ const BasicsCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapJsonResumeToBasicData(data), [data]);
 
-    const onDialogEdited = useCallback(editedData => {
-        onEdit(mapBasicsDataToJsonResume(editedData));
-    }, [onEdit]);
+    const onDialogEdited = useCallback(
+        editedData => {
+            onEdit(mapBasicsDataToJsonResume(editedData));
+        },
+        [onEdit]
+    );
 
     const isComplete = useMemo(() => validateBasicsComplete(mappedData), [mappedData]);
 

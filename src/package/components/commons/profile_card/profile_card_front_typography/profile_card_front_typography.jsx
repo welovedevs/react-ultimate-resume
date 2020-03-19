@@ -11,26 +11,22 @@ import { styles } from './profile_card_front_typography_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardFrontTypographyComponent = forwardRef(({
-    component = 'h2',
-    variant = 'h1',
-    overrideColor,
-    children,
-    classes: receivedClasses = {}
-}, ref) => {
-    const [cardVariant] = useCardVariant();
-    const classes = useStyles({ variant: cardVariant, overrideColor });
+const ProfileCardFrontTypographyComponent = forwardRef(
+    ({ component = 'h2', variant = 'h1', overrideColor, children, classes: receivedClasses = {} }, ref) => {
+        const [cardVariant] = useCardVariant();
+        const classes = useStyles({ variant: cardVariant, overrideColor });
 
-    return (
-        <Typography
-            containerRef={ref}
-            variant={variant}
-            component={component}
-            customClasses={{ container: cn(classes.container, receivedClasses.container) }}
-        >
-            {children}
-        </Typography>
-    );
-});
+        return (
+            <Typography
+                containerRef={ref}
+                variant={variant}
+                component={component}
+                customClasses={{ container: cn(classes.container, receivedClasses.container) }}
+            >
+                {children}
+            </Typography>
+        );
+    }
+);
 
 export const ProfileCardFrontTypography = ProfileCardFrontTypographyComponent;

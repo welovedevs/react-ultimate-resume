@@ -15,9 +15,12 @@ const SkillsCardComponent = ({ variant, side }) => {
 
     const mappedData = useMemo(() => mapSkillsFromJsonResume(data), [data]);
 
-    const onDialogEdited = useCallback(editedData => {
-        onEdit(mapSkillsToJsonResume(editedData));
-    }, [onEdit]);
+    const onDialogEdited = useCallback(
+        editedData => {
+            onEdit(mapSkillsToJsonResume(editedData));
+        },
+        [onEdit]
+    );
 
     const isComplete = useMemo(() => validateSkillsComplete(mappedData), [mappedData]);
 

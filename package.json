@@ -100,7 +100,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run test-build --scripts-prepend-node-path"
+            "pre-commit": "npm run test-build --scripts-prepend-node-path &&  prettier --write \"+(src|firebase*)/**/**.+(js|jsx|json|ts|tsx|css|scss)\""
         }
     }
 }

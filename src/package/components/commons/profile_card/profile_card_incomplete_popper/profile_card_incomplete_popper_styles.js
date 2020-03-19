@@ -1,8 +1,11 @@
 import { getHexFromPaletteColor } from '../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
-    const { palette, miscellaneous: { spacing } } = theme;
-    return ({
+export const styles = theme => {
+    const {
+        palette,
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: {
             minWidth: 200,
             margin: [0, 0, -10, spacing * 3],
@@ -23,5 +26,5 @@ export const styles = (theme) => {
             fill: palette.light[900],
             marginRight: spacing * 2
         }
-    });
+    };
 };

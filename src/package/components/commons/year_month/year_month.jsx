@@ -76,4 +76,5 @@ const YearMonthComponent = ({ className, value, onChange, title, error, variant,
 };
 
 export const YearMonth = memo(YearMonthComponent, (nextProps, oldProps) =>
-    isEqual(pick(nextProps, ['value', 'error', 'onChange']), pick(oldProps, ['value', 'error', 'onChange'])));
+    isEqual(pick(nextProps, ['value', 'error', 'onChange']), pick(oldProps, ['value', 'error', 'onChange']))
+);

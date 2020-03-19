@@ -5,8 +5,11 @@ import {
 } from '../../../../utils/styles/styles_utils';
 
 export const styles = theme => {
-    const { screenSizes, miscellaneous: { spacing } } = theme;
-    return ({
+    const {
+        screenSizes,
+        miscellaneous: { spacing }
+    } = theme;
+    return {
         container: ({ variant, overrideColor }) => ({
             color: getHexFromPaletteColor(theme, overrideColor || getColorsFromCardVariant(theme, variant).color),
             fontWeight: 700,
@@ -17,5 +20,5 @@ export const styles = theme => {
                 margin: spacing * 2
             }
         })
-    });
+    };
 };

@@ -31,35 +31,25 @@ const ShareLinksComponent = ({ useSmallLayout }) => {
             return;
         }
         // eslint-disable-next-line no-undef
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting === true) {
-                setBackgroundLineSpringProps(BACKGROUND_LINE_SPRING_PROPS.active);
-            } else {
-                setBackgroundLineSpringProps(BACKGROUND_LINE_SPRING_PROPS.default);
-            }
-        }, { threshold: [0] });
+        const observer = new IntersectionObserver(
+            entries => {
+                if (entries[0].isIntersecting === true) {
+                    setBackgroundLineSpringProps(BACKGROUND_LINE_SPRING_PROPS.active);
+                } else {
+                    setBackgroundLineSpringProps(BACKGROUND_LINE_SPRING_PROPS.default);
+                }
+            },
+            { threshold: [0] }
+        );
         observer.observe(document.querySelector('#footer-share-links'));
     }, []);
 
     return (
-        <div
-            id="footer-share-links"
-            className={cn(classes.container, useSmallLayout && classes.smallLayoutContainer)}
-        >
-            {!useSmallLayout && (
-                <animated.div
-                    className={classes.backgroundLine}
-                    style={backgroundLineSpringProps}
-                />
-            )}
+        <div id="footer-share-links" className={cn(classes.container, useSmallLayout && classes.smallLayoutContainer)}>
+            {!useSmallLayout && <animated.div className={classes.backgroundLine} style={backgroundLineSpringProps} />}
             <div className={classes.icons}>
                 {Object.entries(SHARE_LINKS_DATA).map(([entryId, { getLink, icon: Icon, tooltipTranslation }]) => {
-                    let content = (
-                        <Icon
-                            key={`share_link_icon_${entryId}`}
-                            className={classes.icon}
-                        />
-                    );
+                    let content = <Icon key={`share_link_icon_${entryId}`} className={classes.icon} />;
                     if (typeof getLink === 'function') {
                         content = (
                             <a
@@ -78,10 +68,7 @@ const ShareLinksComponent = ({ useSmallLayout }) => {
                     }
                     if (tooltipTranslation) {
                         content = (
-                            <Tooltip
-                                key={`share_link_tooltip_${entryId}`}
-                                title={tooltipTranslation}
-                            >
+                            <Tooltip key={`share_link_tooltip_${entryId}`} title={tooltipTranslation}>
                                 <button className={classes.button} type="button">
                                     {content}
                                 </button>

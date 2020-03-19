@@ -25,7 +25,8 @@ const CopyWrapperComponent = ({ value, children }) => {
                 React.cloneElement(child, {
                     ...child.props,
                     onClick: mergeOnClicks(handleCopyToClipboardClick, child.props.onClick)
-                }))}
+                })
+            )}
             <Portal>
                 <Snackbar
                     anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}

@@ -57,7 +57,8 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
     const colorPalette = useMemo(
         () =>
             Array.from({ length: data.languages?.length ?? 0 }, (v, k) =>
-                chroma.mix(backColor, backBackgroundColor, (2 * k) / 15).hex()),
+                chroma.mix(backColor, backBackgroundColor, (2 * k) / 15).hex()
+            ),
         [backColor, backBackgroundColor]
     );
     const hasLanguage = useMemo(() => existsAndNotEmpty(data?.languages), [data]);

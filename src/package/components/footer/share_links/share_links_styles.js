@@ -1,13 +1,11 @@
 import { getHexFromPaletteColor } from '../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
+export const styles = theme => {
     const {
-        miscellaneous: {
-            spacing
-        },
+        miscellaneous: { spacing },
         palette
     } = theme;
-    return ({
+    return {
         container: {
             padding: [0, spacing * 10],
             position: 'relative'
@@ -46,5 +44,5 @@ export const styles = (theme) => {
         button: {
             display: 'flex'
         }
-    });
+    };
 };

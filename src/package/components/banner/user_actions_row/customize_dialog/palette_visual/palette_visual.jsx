@@ -11,7 +11,11 @@ import { styles } from './palette_visual_styles';
 
 const useStyles = createUseStyles(styles);
 
-const PaletteVisualComponent = ({ palette, classes: receivedClasses = {}, translations = PALETTE_KEY_TRANSLATIONS }) => {
+const PaletteVisualComponent = ({
+    palette,
+    classes: receivedClasses = {},
+    translations = PALETTE_KEY_TRANSLATIONS
+}) => {
     const classes = useStyles();
 
     const paletteEntries = useMemo(() => Object.entries(palette ?? {}), [palette]);
@@ -30,10 +34,7 @@ const PaletteVisualComponent = ({ palette, classes: receivedClasses = {}, transl
                         popper: receivedClasses.tooltipPopper
                     }}
                 >
-                    <div
-                        className={cn(classes.color, receivedClasses.color)}
-                        style={{ color: hex }}
-                    />
+                    <div className={cn(classes.color, receivedClasses.color)} style={{ color: hex }} />
                 </Tooltip>
             ))}
         </div>

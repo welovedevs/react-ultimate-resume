@@ -1,4 +1,3 @@
-
 import { flex } from '../../../utils/styles/styles_utils';
 
 const { center } = flex;

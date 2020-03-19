@@ -1,12 +1,10 @@
 import { createScreenWidthMediaQuery } from '../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
-    const {
-        screenSizes
-    } = theme;
+export const styles = theme => {
+    const { screenSizes } = theme;
 
     const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
-    return ({
+    return {
         container: {
             color: 'inherit',
             fontWeight: 700,
@@ -19,5 +17,5 @@ export const styles = (theme) => {
                 lineHeight: 1.2
             }
         }
-    });
+    };
 };

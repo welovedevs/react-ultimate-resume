@@ -4,12 +4,12 @@ import {
     getHexFromPaletteColor
 } from '../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
+export const styles = theme => {
     const { screenSizes } = theme;
 
     const QUERY_SMALL = createScreenWidthMediaQuery('max-width', screenSizes.small);
 
-    return ({
+    return {
         container: ({ variant }) => ({
             height: '45%',
             minHeight: '45%',
@@ -29,5 +29,5 @@ export const styles = (theme) => {
                 marginBottom: [0, '!important']
             })
         }
-    });
+    };
 };

@@ -12,9 +12,12 @@ const LanguagesCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapLanguagesFromJsonResume(data), [data]);
 
-    const onDialogEdited = useCallback(editedData => {
-        onEdit(mapLanguagesToJsonResume(editedData));
-    }, [onEdit]);
+    const onDialogEdited = useCallback(
+        editedData => {
+            onEdit(mapLanguagesToJsonResume(editedData));
+        },
+        [onEdit]
+    );
 
     const isComplete = useMemo(() => validateLanguagesComplete(mappedData), [mappedData]);
 

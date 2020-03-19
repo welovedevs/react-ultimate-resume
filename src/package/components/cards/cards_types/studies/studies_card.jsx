@@ -12,9 +12,12 @@ const StudiesCardComponent = ({ variant, side }) => {
     const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapStudiesFromJsonResume(data), [data]);
 
-    const onDialogEdited = useCallback(editedData => {
-        onEdit(mapStudiesToJsonResume(editedData));
-    }, [onEdit]);
+    const onDialogEdited = useCallback(
+        editedData => {
+            onEdit(mapStudiesToJsonResume(editedData));
+        },
+        [onEdit]
+    );
 
     const isComplete = useMemo(() => validateStudiesComplete(mappedData), [mappedData]);
 

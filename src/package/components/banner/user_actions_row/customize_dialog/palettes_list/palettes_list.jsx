@@ -20,31 +20,34 @@ import { styles } from './palettes_list_styles';
 
 const useStyles = createUseStyles(styles);
 
-const PalettesListComponent = ({
-    value: currentPalette,
-    onChange,
-    classes: receivedClasses = {}
-}) => {
+const PalettesListComponent = ({ value: currentPalette, onChange, classes: receivedClasses = {} }) => {
     const classes = useStyles();
     const containerReference = useRef();
     const [itemsToShow, setItemsToShow] = useState(10);
 
     const displayedPalettes = useMemo(() => palettes.slice(0, itemsToShow), [itemsToShow]);
 
-    const onSelectChanged = useCallback(value => () => {
-        const [primary, secondary, tertiary] = value;
-        return onChange({
-            primary: buildShadedPalette(primary),
-            secondary: buildShadedPalette(secondary),
-            tertiary: buildShadedPalette(tertiary)
-        });
-    }, []);
+    const onSelectChanged = useCallback(
+        value => () => {
+            const [primary, secondary, tertiary] = value;
+            return onChange({
+                primary: buildShadedPalette(primary),
+                secondary: buildShadedPalette(secondary),
+                tertiary: buildShadedPalette(tertiary)
+            });
+        },
+        []
+    );
 
     const setNextDisplayedPalettes = useCallback(() => {
         setItemsToShow(itemsToShow + 10);
     }, [itemsToShow, setItemsToShow]);
 
-    const transitions = useTransition(displayedPalettes, (item) => `palette_${item.join('_')}`, PALETTES_LIST_TRANSITIONS_SPRING_PROPS);
+    const transitions = useTransition(
+        displayedPalettes,
+        item => `palette_${item.join('_')}`,
+        PALETTES_LIST_TRANSITIONS_SPRING_PROPS
+    );
 
     return (
         <div
@@ -88,10 +91,13 @@ const PalettesListComponent = ({
                                 tooltipPopper: classes.tooltipPopper,
                                 color: classes.paletteVisualColor
                             }}
-                            palette={['primary', 'secondary', 'tertiary'].reduce((acc, keyName, index) => ({
-                                ...acc,
-                                [keyName]: { 500: item[index] }
-                            }), {})}
+                            palette={['primary', 'secondary', 'tertiary'].reduce(
+                                (acc, keyName, index) => ({
+                                    ...acc,
+                                    [keyName]: { 500: item[index] }
+                                }),
+                                {}
+                            )}
                         />
                     </animated.button>
                 ))}

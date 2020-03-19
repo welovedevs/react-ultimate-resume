@@ -15,9 +15,12 @@ const GifsCardComponent = ({ variant, side }) => {
     const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapInterestsFromJsonResume(data), [data]);
 
-    const onDialogEdited = useCallback(editedData => {
-        onEdit(mapInterestsToJsonResume(editedData));
-    }, [onEdit]);
+    const onDialogEdited = useCallback(
+        editedData => {
+            onEdit(mapInterestsToJsonResume(editedData));
+        },
+        [onEdit]
+    );
 
     const isComplete = useMemo(() => validateInterestsComplete(mappedData), [mappedData]);
 
