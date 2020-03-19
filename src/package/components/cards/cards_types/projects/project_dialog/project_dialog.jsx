@@ -19,7 +19,7 @@ import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectDialogComponent = ({ open, onClose, data: project = {}, isEditing }) => {
+const ProjectDialogComponent = ({ open, onClose, data: project, isEditing }) => {
     const classes = useStyles();
 
     const { formatMessage } = useIntl();
@@ -41,7 +41,7 @@ const ProjectDialogComponent = ({ open, onClose, data: project = {}, isEditing }
             classes={{ content: classes.container, paper: classes.paper }}
             open={open}
             onClose={onClose}
-            data={project}
+            data={project || {}}
             onEdit={onDialogEdited}
             validationSchema={validator}
             isEditing={isEditing}

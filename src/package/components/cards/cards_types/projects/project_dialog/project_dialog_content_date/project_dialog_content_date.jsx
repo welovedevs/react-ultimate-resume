@@ -37,9 +37,12 @@ const DefaultContent = ({ date, classes }) => (
 
 const EditingContent = ({ classes }) => {
     const { setFieldValue, values, errors } = useFormikContext();
-    const handleStartDate = useCallback(value => {
-        setFieldValue('date', value);
-    }, []);
+    const handleStartDate = useCallback(
+        value => {
+            setFieldValue('date', value);
+        },
+        [JSON.stringify(values)]
+    );
     return (
         <>
             <MuiPickersUtilsProvider utils={MomentUtils}>
@@ -55,9 +58,9 @@ const EditingContent = ({ classes }) => {
                     error={errors?.date}
                 />
             </MuiPickersUtilsProvider>
-            {errors?.name && (
+            {errors?.date && (
                 <Typography color="danger" variant="helper" component="p">
-                    {errors.name}
+                    {errors.date}
                 </Typography>
             )}
         </>

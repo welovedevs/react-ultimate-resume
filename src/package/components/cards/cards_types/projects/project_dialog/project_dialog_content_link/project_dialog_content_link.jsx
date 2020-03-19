@@ -50,9 +50,9 @@ const EditingContent = ({ classes }) => {
                     container: classes.textField
                 }}
             />
-            {errors?.name && (
+            {errors?.link && (
                 <Typography color="danger" variant="helper" component="p">
-                    {errors.name}
+                    {errors.link}
                 </Typography>
             )}
         </>
