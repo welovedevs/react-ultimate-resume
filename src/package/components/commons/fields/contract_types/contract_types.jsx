@@ -26,7 +26,7 @@ export const ContractType = ({ contractTypes = [] }) => {
             defaultMessage={'Looking for a {contracts} or {lastContract} contract'}
             values={{
                 lastContract: formatMessage(translations[lastContract]),
-                contracts: contracts.map((key) => formatMessage(translations[key]).join(', '))
+                contracts: contracts.map((key) => formatMessage(translations[key])).join(', ')
             }}
         />
     );
