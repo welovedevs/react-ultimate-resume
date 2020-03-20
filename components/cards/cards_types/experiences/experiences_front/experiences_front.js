@@ -19,6 +19,8 @@ var _reactJss = require("react-jss");
 
 var _reactIntl = require("react-intl");
 
+var _moment = _interopRequireDefault(require("moment"));
+
 var _ui = require("@wld/ui");
 
 var _profile_card_padding_front = require("../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front");
@@ -68,27 +70,57 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
     return setSide(side === _side.SIDES.FRONT ? _side.SIDES.BACK : _side.SIDES.FRONT);
   }, [side, setSide]);
   var title = (0, _react.useMemo)(function () {
-    var _data$work, _data$work$, _data$work3, _data$work3$, _data$work4;
+    var _data$work;
 
     var builder = [];
+    var firstExperience = (_data$work = data.work) === null || _data$work === void 0 ? void 0 : _data$work[0];
 
-    if ((_data$work = data.work) === null || _data$work === void 0 ? void 0 : (_data$work$ = _data$work[0]) === null || _data$work$ === void 0 ? void 0 : _data$work$.position) {
-      var _data$work2;
-
-      builder.push((_data$work2 = data.work) === null || _data$work2 === void 0 ? void 0 : _data$work2[0].position);
+    if (firstExperience === null || firstExperience === void 0 ? void 0 : firstExperience.position) {
+      builder.push(firstExperience.position);
     }
 
-    console.log({
-      data: data
-    });
-
-    if ((_data$work3 = data.work) === null || _data$work3 === void 0 ? void 0 : (_data$work3$ = _data$work3[0]) === null || _data$work3$ === void 0 ? void 0 : _data$work3$.name) {
-      builder.push("@".concat(data.work[0].name));
-    } else if (data === null || data === void 0 ? void 0 : (_data$work4 = data.work) === null || _data$work4 === void 0 ? void 0 : _data$work4[0]) {
-      builder.push('coucou');
+    if (builder.length) {
+      builder.push(_react.default.createElement("br", null));
     }
 
-    return builder.join(' ');
+    if (firstExperience === null || firstExperience === void 0 ? void 0 : firstExperience.name) {
+      builder.push("@".concat(firstExperience.name));
+    } else if (firstExperience === null || firstExperience === void 0 ? void 0 : firstExperience.location) {
+      builder.push("@".concat(firstExperience.location));
+    } else if (firstExperience === null || firstExperience === void 0 ? void 0 : firstExperience.stillEmployed) {
+      if (_moment.default.isMoment(firstExperience === null || firstExperience === void 0 ? void 0 : firstExperience.startDate)) {
+        builder.push(_react.default.createElement(_reactIntl.FormattedMessage, {
+          id: "Experience.front.title.since",
+          defaultMessage: "Since {year}",
+          values: {
+            year: firstExperience.startDate.year()
+          }
+        }));
+      } else {
+        builder.push(_react.default.createElement(_reactIntl.FormattedMessage, {
+          id: "Experience.front.title.stillEmployed",
+          defaultMessage: "Still employed"
+        }));
+      }
+    } else if (!['endDate', 'startDate'].some(function (key) {
+      return !_moment.default.isMoment(firstExperience === null || firstExperience === void 0 ? void 0 : firstExperience[key]);
+    })) {
+      var startDate = firstExperience.startDate;
+      var endDate = firstExperience.endDate;
+      var startYear = startDate.year();
+      var endYear = endDate.year();
+      var isSameYear = startYear === endYear;
+      builder.push(_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Experience.front.title.fromTo",
+        defaultMessage: "From {start} to {end}",
+        values: {
+          start: isSameYear ? startDate.format('MMMM') : startYear,
+          end: isSameYear ? "".concat(endDate.format('MMMM'), " ").concat(endYear) : endYear
+        }
+      }));
+    }
+
+    return builder;
   }, [data.work]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, _react.default.createElement(_center_content_container.CenterContentContainer, {
     customClasses: {
