@@ -50,6 +50,7 @@ const DEFAULT_OPTIONS = Object.freeze({
 
 const DEFAULT_OBJECT = {};
 const DEFAULT_FUNCTION = () => {};
+const DEFAULT_UPLOAD_FUNCTION = async () => 'https://source.unsplash.com/random/4000x2000';
 
 const DeveloperProfileComponent = ({
     data = DEFAULT_OBJECT,
@@ -58,7 +59,7 @@ const DeveloperProfileComponent = ({
     onEdit: onEditProps = DEFAULT_FUNCTION,
     onCustomizationChanged,
     isEditing = false,
-    onFilesUpload = async () => 'https://source.unsplash.com/random/4000x2000',
+    onFilesUpload = DEFAULT_UPLOAD_FUNCTION,
     BeforeCards,
     additionalNodes,
     classes: receivedGlobalClasses = {}

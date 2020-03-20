@@ -160,7 +160,7 @@ const ProfileCardComponent = ({
         }
     );
 
-    const contextData = useMemo(() => ({ state, dispatch }), [state]);
+    const contextData = useMemo(() => ({ state, dispatch }), [JSON.stringify(state)]);
 
     return (
         <>
