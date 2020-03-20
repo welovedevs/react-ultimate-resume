@@ -27,6 +27,11 @@ var technologiesReducer = function technologiesReducer(state, action) {
         technologies: action.technologies
       });
 
+    case _technologies_actions_types.TECHNOLOGIES_STARTED:
+      return _objectSpread({}, state, {
+        technologies: undefined
+      });
+
     default:
       return state;
   }

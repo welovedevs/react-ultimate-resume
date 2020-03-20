@@ -149,5 +149,5 @@ var Content = function Content(_ref4) {
   }, name);
 };
 
-var GifsFront = GifsFrontComponent;
+var GifsFront = (0, _react.memo)(GifsFrontComponent);
 exports.GifsFront = GifsFront;

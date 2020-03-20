@@ -108,7 +108,7 @@ var Results = function Results(_ref2) {
       showLoadingSpinner = _useState4[0],
       setShowLoadingSpinner = _useState4[1];
 
-  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.StaticDataContext),
       endpoints = _useContext.endpoints;
 
   (0, _react.useEffect)(function () {

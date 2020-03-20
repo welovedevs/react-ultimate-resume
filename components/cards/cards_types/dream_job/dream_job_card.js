@@ -48,6 +48,7 @@ var DreamJobCardComponent = function DreamJobCardComponent(_ref) {
   }
 
   return _react.default.createElement(_profile_card.ProfileCard, {
+    kind: "dreamjob",
     isEditingProfile: isEditing,
     isComplete: isComplete,
     data: mappedData,

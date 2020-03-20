@@ -287,5 +287,5 @@ var TransitioningItem = function TransitioningItem(_ref8) {
   }, item.name);
 };
 
-var GifsBack = GifsBackComponent;
+var GifsBack = (0, _react.memo)(GifsBackComponent);
 exports.GifsBack = GifsBack;

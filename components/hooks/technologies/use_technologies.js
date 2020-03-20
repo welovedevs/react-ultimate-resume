@@ -23,7 +23,7 @@ var useTechnologies = function useTechnologies() {
       technologies = _useContext$technolog[0].technologies,
       dispatch = _useContext$technolog[1];
 
-  var _useContext2 = (0, _react.useContext)(_contexts.DeveloperProfileContext),
+  var _useContext2 = (0, _react.useContext)(_contexts.StaticDataContext),
       endpoints = _useContext2.endpoints;
 
   (0, _react.useEffect)(function () {
@@ -36,7 +36,10 @@ var useTechnologies = function useTechnologies() {
     }
 
     if (technologies === null && endpoints.devicons) {
-      // eslint-disable-next-line no-undef
+      dispatch({
+        type: _technologies_actions_types.TECHNOLOGIES_STARTED
+      }); // eslint-disable-next-line no-undef
+
       fetch(endpoints.devicons).then(function (res) {
         if (res.status.toString().startsWith('2')) {
           return res.json();

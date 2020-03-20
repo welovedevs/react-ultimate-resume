@@ -126,5 +126,5 @@ var Content = function Content(_ref2) {
   })));
 };
 
-var SoundtrackFront = SoundtrackFrontComponent;
+var SoundtrackFront = (0, _react.memo)(SoundtrackFrontComponent);
 exports.SoundtrackFront = SoundtrackFront;

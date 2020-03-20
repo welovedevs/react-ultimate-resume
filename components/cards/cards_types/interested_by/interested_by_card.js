@@ -50,6 +50,7 @@ var InterestedByCardComponent = function InterestedByCardComponent(_ref) {
   }
 
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card.ProfileCard, {
+    kind: "interested_by",
     data: mappedData,
     isComplete: isComplete,
     isEditingProfile: isEditing,

@@ -110,13 +110,11 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
   })) : _ref$onFilesUpload,
       BeforeCards = _ref.BeforeCards,
       additionalNodes = _ref.additionalNodes,
-      dismissCustomizeButton = _ref.dismissCustomizeButton,
-      setIsEditing = _ref.setIsEditing,
       _ref$classes = _ref.classes,
       receivedGlobalClasses = _ref$classes === void 0 ? {} : _ref$classes;
+  var classes = useStyles(_profile_styles.styles);
   var apiKeys = options.apiKeys,
       endpoints = options.endpoints;
-  var classes = useStyles(_profile_styles.styles);
   var onEdit = (0, _react.useCallback)(function (newData) {
     if (typeof onEditProps === 'function') {
       onEditProps(newData);
@@ -125,6 +123,17 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
   var store = {
     technologies: (0, _react.useReducer)(_technologies_reducer.technologiesReducer, _technologies_reducer.technologiesInitialState)
   };
+  var staticContext = (0, _react.useMemo)(function () {
+    return {
+      apiKeys: {
+        giphy: apiKeys === null || apiKeys === void 0 ? void 0 : apiKeys.giphy,
+        unsplash: apiKeys === null || apiKeys === void 0 ? void 0 : apiKeys.unsplash
+      },
+      endpoints: endpoints,
+      additionalNodes: additionalNodes,
+      receivedGlobalClasses: receivedGlobalClasses
+    };
+  }, [apiKeys, endpoints, additionalNodes, receivedGlobalClasses]);
   var context = (0, _react.useMemo)(function () {
     return {
       data: data,
@@ -132,23 +141,16 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       onEdit: onEdit,
       onCustomizationChanged: onCustomizationChanged,
       onFilesUpload: onFilesUpload,
-      apiKeys: {
-        giphy: apiKeys === null || apiKeys === void 0 ? void 0 : apiKeys.giphy,
-        unsplash: apiKeys === null || apiKeys === void 0 ? void 0 : apiKeys.unsplash
-      },
-      mode: mode,
-      additionalNodes: additionalNodes,
-      endpoints: endpoints,
-      receivedGlobalClasses: receivedGlobalClasses,
-      dismissCustomizeButton: dismissCustomizeButton,
-      setIsEditing: setIsEditing
+      mode: mode
     };
-  }, [endpoints, apiKeys, data, onEdit, mode, dismissCustomizeButton]);
+  }, [data, isEditing, onEdit, mode, onCustomizationChanged, onFilesUpload]);
   var side = (0, _react.useMemo)(function () {
     return isEditing && _side.SIDES.BACK || (options === null || options === void 0 ? void 0 : options.side);
   }, [options, isEditing]);
   return _react.default.createElement("div", {
     className: classes.container
+  }, _react.default.createElement(_contexts.StaticDataContext.Provider, {
+    value: staticContext
   }, _react.default.createElement(_contexts.StoreContext.Provider, {
     value: store
   }, _react.default.createElement(_contexts.DeveloperProfileContext.Provider, {
@@ -159,7 +161,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
   }), BeforeCards, _react.default.createElement(_cards.Cards, {
     cardsOrder: (_options$customizatio = options.customization) === null || _options$customizatio === void 0 ? void 0 : _options$customizatio.cardsOrder,
     side: side
-  }), !options.dismissFooter && _react.default.createElement(_footer.Footer, null))));
+  }), !options.dismissFooter && _react.default.createElement(_footer.Footer, null)))));
 };
 
 var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3) {
@@ -174,12 +176,11 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
       BeforeCards = _ref3.BeforeCards,
       classes = _ref3.classes,
       isEditing = _ref3.isEditing,
-      setIsEditing = _ref3.setIsEditing,
       onFilesUpload = _ref3.onFilesUpload,
       parentIntl = _ref3.intl;
   var mergedOptions = (0, _react.useMemo)(function () {
     return (0, _mergeWith.default)((0, _cloneDeep.default)(DEFAULT_OPTIONS), JSON.parse(JSON.stringify(options || {})), _data_utils.mergeOmitNull);
-  }, [options]);
+  }, [JSON.stringify(options)]);
   var locale = mergedOptions.locale,
       customization = mergedOptions.customization;
   var builtTheme = (0, _react.useMemo)(function () {
@@ -196,7 +197,6 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
     defaultLocale: locale
   }, _react.default.createElement(DeveloperProfileComponent, {
     isEditing: isEditing,
-    setIsEditing: setIsEditing,
     data: data,
     mode: mode,
     onEdit: onEdit,

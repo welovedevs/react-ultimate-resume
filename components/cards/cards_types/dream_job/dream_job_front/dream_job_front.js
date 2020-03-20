@@ -123,5 +123,5 @@ var DreamJobFrontComponent = function DreamJobFrontComponent(_ref) {
   }))));
 };
 
-var DreamJobFront = DreamJobFrontComponent;
+var DreamJobFront = (0, _react.memo)(DreamJobFrontComponent);
 exports.DreamJobFront = DreamJobFront;

@@ -21,8 +21,6 @@ var _reactJss = require("react-jss");
 
 var _reactSpring = require("react-spring");
 
-var _useDebounce3 = require("use-debounce");
-
 var _ui = require("@wld/ui");
 
 var _core = require("@material-ui/core");
@@ -72,6 +70,7 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       children = _ref.children,
       data = _ref.data,
       sides = _ref.sides,
+      kind = _ref.kind,
       variant = _ref.variant,
       _ref$isTransitionUniq = _ref.isTransitionUnique,
       isTransitionUnique = _ref$isTransitionUniq === void 0 ? true : _ref$isTransitionUniq,
@@ -82,6 +81,7 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       _ref$isComplete = _ref.isComplete,
       isComplete = _ref$isComplete === void 0 ? true : _ref$isComplete,
       sideProps = _ref.side;
+  var changeSideTimeout = (0, _react.useRef)();
 
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       mode = _useContext.mode;
@@ -138,11 +138,6 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
   }, [sideProps]);
   var side = state.side,
       hasDialogOpened = state.hasDialogOpened;
-
-  var _useDebounce = (0, _useDebounce3.useDebounce)(side, 200),
-      _useDebounce2 = (0, _slicedToArray2.default)(_useDebounce, 1),
-      debouncedSide = _useDebounce2[0];
-
   (0, _react.useEffect)(function () {
     setContainerElement(containerReference.current);
   }, []);
@@ -166,10 +161,16 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       return;
     }
 
-    dispatch({
-      type: _profile_card_actions_types.SET_SIDE,
-      side: newSide
-    });
+    if (changeSideTimeout.current) {
+      clearTimeout(changeSideTimeout.current);
+    }
+
+    changeSideTimeout.current = setTimeout(function () {
+      return dispatch({
+        type: _profile_card_actions_types.SET_SIDE,
+        side: newSide
+      });
+    }, 200);
   }, [sideProps]);
   var handleMouseEnter = (0, _react.useCallback)(function () {
     return setSide(_side.SIDES.BACK);
@@ -188,8 +189,8 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
 
     hasSideChanged.current = true;
   }, [side]);
-  var transitions = (0, _reactSpring.useTransition)(debouncedSide, function (item) {
-    return "card_side_".concat(item);
+  var transitions = (0, _reactSpring.useTransition)(side, function (item) {
+    return "card_side_".concat(item, "_").concat(kind);
   }, _objectSpread({}, transitionsSpringProps, {
     unique: isTransitionUnique,
     immediate: !hasSideChanged.current

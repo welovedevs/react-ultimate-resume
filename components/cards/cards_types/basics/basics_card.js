@@ -48,6 +48,7 @@ var BasicsCardComponent = function BasicsCardComponent(_ref) {
   }
 
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card.ProfileCard, {
+    kind: "basics",
     data: mappedData,
     isEditingProfile: isEditing,
     editDialog: {

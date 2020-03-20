@@ -182,5 +182,5 @@ var Picture = function Picture(_ref3) {
   });
 };
 
-var SkillsFront = SkillsFrontComponent;
+var SkillsFront = (0, _react.memo)(SkillsFrontComponent);
 exports.SkillsFront = SkillsFront;

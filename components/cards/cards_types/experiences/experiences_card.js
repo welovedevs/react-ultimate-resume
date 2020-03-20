@@ -57,6 +57,7 @@ var ExperiencesCardComponent = function ExperiencesCardComponent(_ref) {
   }
 
   return _react.default.createElement(_profile_card.ProfileCard, {
+    kind: "experience",
     isEditingProfile: isEditing,
     isComplete: isComplete,
     data: mappedData,

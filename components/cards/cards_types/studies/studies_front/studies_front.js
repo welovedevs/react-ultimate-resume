@@ -158,5 +158,5 @@ var Content = function Content(_ref2) {
   })));
 };
 
-var StudiesFront = StudiesFrontComponent;
+var StudiesFront = (0, _react.memo)(StudiesFrontComponent);
 exports.StudiesFront = StudiesFront;

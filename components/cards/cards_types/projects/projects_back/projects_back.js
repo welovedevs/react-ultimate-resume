@@ -96,5 +96,5 @@ var ProjectsBackComponent = function ProjectsBackComponent(_ref) {
   })));
 };
 
-var ProjectsBack = ProjectsBackComponent;
+var ProjectsBack = (0, _react.memo)(ProjectsBackComponent);
 exports.ProjectsBack = ProjectsBack;

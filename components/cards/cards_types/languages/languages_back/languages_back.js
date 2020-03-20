@@ -137,5 +137,5 @@ var Content = function Content(_ref3) {
   }));
 };
 
-var LanguagesBack = LanguagesBackComponent;
+var LanguagesBack = (0, _react.memo)(LanguagesBackComponent);
 exports.LanguagesBack = LanguagesBack;

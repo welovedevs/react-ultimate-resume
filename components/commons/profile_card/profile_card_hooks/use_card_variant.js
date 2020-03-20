@@ -16,7 +16,9 @@ var useCardVariant = function useCardVariant() {
       state = _useContext.state,
       dispatch = _useContext.dispatch;
 
-  var variant = state.variant;
+  var variant = (0, _react.useMemo)(function () {
+    return state.variant;
+  }, [state.variant.toString()]);
   var setCardVariant = (0, _react.useCallback)(function (newVariant) {
     return dispatch({
       type: _profile_card_actions_types.SET_VARIANT,

@@ -49,5 +49,5 @@ var InterestedByBackComponent = function InterestedByBackComponent(props) {
   }, props));
 };
 
-var InterestedByBack = InterestedByBackComponent;
+var InterestedByBack = (0, _react.memo)(InterestedByBackComponent);
 exports.InterestedByBack = InterestedByBack;

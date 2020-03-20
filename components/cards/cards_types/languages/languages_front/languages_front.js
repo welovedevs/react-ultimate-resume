@@ -115,5 +115,5 @@ var Content = function Content(_ref2) {
   })));
 };
 
-var LanguagesFront = LanguagesFrontComponent;
+var LanguagesFront = (0, _react.memo)(LanguagesFrontComponent);
 exports.LanguagesFront = LanguagesFront;

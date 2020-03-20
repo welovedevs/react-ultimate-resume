@@ -57,6 +57,7 @@ var StudiesCardComponent = function StudiesCardComponent(_ref) {
   }
 
   return _react.default.createElement(_profile_card.ProfileCard, {
+    kind: "studies",
     data: mappedData,
     isComplete: isComplete,
     isEditingProfile: isEditing,

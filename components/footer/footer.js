@@ -2,12 +2,14 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Footer = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
@@ -123,5 +125,5 @@ var FooterComponent = function FooterComponent() {
   }))));
 };
 
-var Footer = FooterComponent;
+var Footer = (0, _react.memo)(FooterComponent);
 exports.Footer = Footer;

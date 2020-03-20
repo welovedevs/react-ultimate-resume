@@ -91,5 +91,5 @@ var StudiesBackComponent = function StudiesBackComponent(_ref3) {
   }));
 };
 
-var StudiesBack = StudiesBackComponent;
+var StudiesBack = (0, _react.memo)(StudiesBackComponent);
 exports.StudiesBack = StudiesBack;

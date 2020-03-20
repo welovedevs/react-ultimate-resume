@@ -188,5 +188,5 @@ var DreamJobPlaces = function DreamJobPlaces(_ref3) {
   }))));
 };
 
-var DreamJobBack = DreamJobBackComponent;
+var DreamJobBack = (0, _react.memo)(DreamJobBackComponent);
 exports.DreamJobBack = DreamJobBack;

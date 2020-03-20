@@ -57,6 +57,7 @@ var GifsCardComponent = function GifsCardComponent(_ref) {
   }
 
   return _react.default.createElement(_profile_card.ProfileCard, {
+    kind: "gifs",
     isEditingProfile: isEditing,
     isComplete: isComplete,
     data: mappedData,

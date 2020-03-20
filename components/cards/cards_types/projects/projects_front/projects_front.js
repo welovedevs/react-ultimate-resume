@@ -161,5 +161,5 @@ var Content = function Content(_ref4) {
   })));
 };
 
-var ProjectsFront = ProjectsFrontComponent;
+var ProjectsFront = (0, _react.memo)(ProjectsFrontComponent);
 exports.ProjectsFront = ProjectsFront;

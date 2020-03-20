@@ -120,5 +120,5 @@ var Content = function Content(_ref2) {
   }));
 };
 
-var SoundtrackBack = SoundtrackBackComponent;
+var SoundtrackBack = (0, _react.memo)(SoundtrackBackComponent);
 exports.SoundtrackBack = SoundtrackBack;

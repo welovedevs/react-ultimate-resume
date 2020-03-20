@@ -193,5 +193,5 @@ var Content = function Content(_ref2) {
   })));
 };
 
-var ExperiencesFront = ExperiencesFrontComponent;
+var ExperiencesFront = (0, _react.memo)(ExperiencesFrontComponent);
 exports.ExperiencesFront = ExperiencesFront;

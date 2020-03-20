@@ -59,6 +59,7 @@ var ProjectsCardComponent = function ProjectsCardComponent(_ref) {
   }
 
   return _react.default.createElement(_profile_card.ProfileCard, {
+    kind: "projects",
     data: mappedData,
     isComplete: isComplete,
     isEditingProfile: isEditing,

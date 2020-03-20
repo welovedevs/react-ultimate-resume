@@ -130,5 +130,5 @@ var BasicsFrontComponent = function BasicsFrontComponent(_ref) {
   }))));
 };
 
-var BasicsFront = BasicsFrontComponent;
+var BasicsFront = (0, _react.memo)(BasicsFrontComponent);
 exports.BasicsFront = BasicsFront;

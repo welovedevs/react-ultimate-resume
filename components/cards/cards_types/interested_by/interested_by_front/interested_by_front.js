@@ -137,5 +137,5 @@ var Content = function Content(_ref2) {
   }, interestedBy));
 };
 
-var InterestedByFront = InterestedByFrontComponent;
+var InterestedByFront = (0, _react.memo)(InterestedByFrontComponent);
 exports.InterestedByFront = InterestedByFront;

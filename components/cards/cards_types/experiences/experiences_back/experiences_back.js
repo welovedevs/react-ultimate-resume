@@ -152,5 +152,5 @@ var ExperiencesBackComponent = function ExperiencesBackComponent(_ref4) {
   }));
 };
 
-var ExperiencesBack = ExperiencesBackComponent;
+var ExperiencesBack = (0, _react.memo)(ExperiencesBackComponent);
 exports.ExperiencesBack = ExperiencesBack;

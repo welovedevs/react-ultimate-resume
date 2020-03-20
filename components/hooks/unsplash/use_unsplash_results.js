@@ -25,7 +25,7 @@ var useUnsplashResults = function useUnsplashResults(input) {
   var timeout = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 800;
   var debounceSearch = (0, _react.useRef)();
 
-  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.StaticDataContext),
       endpoints = _useContext.endpoints;
 
   var _useState = (0, _react.useState)(false),

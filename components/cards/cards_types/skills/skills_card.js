@@ -57,6 +57,7 @@ var SkillsCardComponent = function SkillsCardComponent(_ref) {
   }
 
   return _react.default.createElement(_profile_card.ProfileCard, {
+    kind: "skills",
     isEditingProfile: isEditing,
     isComplete: isComplete,
     sides: {
