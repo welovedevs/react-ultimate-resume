@@ -28,6 +28,7 @@ const ProjectsCardComponent = ({ variant, side }) => {
     }
     return (
         <ProfileCard
+            kind="projects"
             data={mappedData}
             isComplete={isComplete}
             isEditingProfile={isEditing}

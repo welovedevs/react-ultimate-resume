@@ -31,6 +31,7 @@ const ExperiencesCardComponent = ({ variant, side }) => {
     }
     return (
         <ProfileCard
+            kind="experience"
             isEditingProfile={isEditing}
             isComplete={isComplete}
             data={mappedData}

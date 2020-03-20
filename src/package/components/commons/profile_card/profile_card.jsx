@@ -37,6 +37,7 @@ const ProfileCardComponent = ({
     children,
     data,
     sides,
+    kind,
     variant,
     isTransitionUnique = true,
     isEditingProfile,
@@ -134,7 +135,7 @@ const ProfileCardComponent = ({
         hasSideChanged.current = true;
     }, [side]);
 
-    const transitions = useTransition(debouncedSide, item => `card_side_${item}`, {
+    const transitions = useTransition(debouncedSide, item => `card_side_${item}_${kind}`, {
         ...transitionsSpringProps,
         unique: isTransitionUnique,
         immediate: !hasSideChanged.current

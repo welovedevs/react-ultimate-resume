@@ -29,6 +29,7 @@ const InterestedByCardComponent = ({ variant, side }) => {
     return (
         <>
             <ProfileCard
+                kind="interested_by"
                 data={mappedData}
                 isComplete={isComplete}
                 isEditingProfile={isEditing}

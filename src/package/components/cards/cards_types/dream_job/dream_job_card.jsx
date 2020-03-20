@@ -28,6 +28,7 @@ const DreamJobCardComponent = ({ variant, side }) => {
 
     return (
         <ProfileCard
+            kind="dreamjob"
             isEditingProfile={isEditing}
             isComplete={isComplete}
             data={mappedData}
