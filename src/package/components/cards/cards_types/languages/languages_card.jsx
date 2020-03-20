@@ -33,6 +33,7 @@ const LanguagesCardComponent = ({ variant, side }) => {
     }
     return (
         <ProfileCard
+            kind="languages"
             isEditingProfile={isEditing}
             isComplete={isComplete}
             data={mappedData}

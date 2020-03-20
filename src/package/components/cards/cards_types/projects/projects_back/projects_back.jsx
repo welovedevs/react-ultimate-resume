@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { memo, useCallback, useContext, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
@@ -62,4 +62,4 @@ const ProjectsBackComponent = ({ data, handleAddButtonClick }) => {
     );
 };
 
-export const ProjectsBack = ProjectsBackComponent;
+export const ProjectsBack = memo(ProjectsBackComponent);

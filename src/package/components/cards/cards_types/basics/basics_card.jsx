@@ -30,6 +30,7 @@ const BasicsCardComponent = ({ variant, side }) => {
     return (
         <>
             <ProfileCard
+                kind="basics"
                 data={mappedData}
                 isEditingProfile={isEditing}
                 editDialog={{

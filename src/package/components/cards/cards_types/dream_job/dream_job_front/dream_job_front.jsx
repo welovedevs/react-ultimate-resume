@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -81,4 +81,4 @@ const DreamJobFrontComponent = ({ data }) => {
     );
 };
 
-export const DreamJobFront = DreamJobFrontComponent;
+export const DreamJobFront = memo(DreamJobFrontComponent);

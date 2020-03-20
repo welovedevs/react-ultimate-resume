@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react';
+import React, { memo, useMemo, useRef } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -167,4 +167,4 @@ const DreamJobPlaces = ({ places = [], classes }) => {
     );
 };
 
-export const DreamJobBack = DreamJobBackComponent;
+export const DreamJobBack = memo(DreamJobBackComponent);

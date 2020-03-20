@@ -36,6 +36,7 @@ const SoundtrackCardComponent = ({ variant, side }) => {
 
     return (
         <ProfileCard
+            kind="soundtrack"
             isComplete={isComplete}
             isEditingProfile={isEditing}
             data={mappedData}

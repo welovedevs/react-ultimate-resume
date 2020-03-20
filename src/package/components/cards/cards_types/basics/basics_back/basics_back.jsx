@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { memo, useContext, useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -138,4 +138,4 @@ const JobSearchState = ({ searchState }) => {
     return <span>{formatMessage(translations[searchState] || translations.unknown)}</span>;
 };
 
-export const BasicsBack = BasicsBackComponent;
+export const BasicsBack = memo(BasicsBackComponent);

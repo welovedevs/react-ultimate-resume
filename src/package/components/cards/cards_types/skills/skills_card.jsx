@@ -36,6 +36,7 @@ const SkillsCardComponent = ({ variant, side }) => {
     }
     return (
         <ProfileCard
+            kind="skills"
             isEditingProfile={isEditing}
             isComplete={isComplete}
             sides={{

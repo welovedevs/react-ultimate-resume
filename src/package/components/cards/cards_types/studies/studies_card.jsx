@@ -34,6 +34,7 @@ const StudiesCardComponent = ({ variant, side }) => {
 
     return (
         <ProfileCard
+            kind="studies"
             data={mappedData}
             isComplete={isComplete}
             isEditingProfile={isEditing}

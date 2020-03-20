@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import { ProfileCardSection } from '../../../../commons/profile_card/profile_card_section/profile_card_section';
 import { ProfileCardSectionTitle } from '../../../../commons/profile_card/profile_card_section_title/profile_card_section_title';
 import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back';
@@ -56,4 +56,4 @@ const StudiesBackComponent = ({ data: { education: data }, handleAddButtonClick 
     </ProfileCardAnimatedBack>
 );
 
-export const StudiesBack = StudiesBackComponent;
+export const StudiesBack = memo(StudiesBackComponent);

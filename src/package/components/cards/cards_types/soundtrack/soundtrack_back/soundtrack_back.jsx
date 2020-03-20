@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { memo, useCallback, useMemo, useState } from 'react';
 
 import { createUseStyles, useTheme } from 'react-jss';
 import { animated, useSpring, useTransition } from 'react-spring';
@@ -82,4 +82,4 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
     );
 };
 
-export const SoundtrackBack = SoundtrackBackComponent;
+export const SoundtrackBack = memo(SoundtrackBackComponent);

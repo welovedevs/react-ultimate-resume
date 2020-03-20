@@ -2,7 +2,6 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useR
 
 import { createUseStyles, useTheme } from 'react-jss';
 import { animated, config, useTransition } from 'react-spring';
-import { useDebounce } from 'use-debounce';
 
 import { Card } from '@wld/ui';
 
@@ -37,6 +36,7 @@ const ProfileCardComponent = ({
     children,
     data,
     sides,
+    kind,
     variant,
     isTransitionUnique = true,
     isEditingProfile,
@@ -46,6 +46,7 @@ const ProfileCardComponent = ({
     isComplete = true,
     side: sideProps
 }) => {
+    const changeSideTimeout = useRef();
     const { mode } = useContext(DeveloperProfileContext);
 
     const classes = useStyles({ variant });
@@ -83,7 +84,6 @@ const ProfileCardComponent = ({
     }, [sideProps]);
 
     const { side, hasDialogOpened } = state;
-    const [debouncedSide] = useDebounce(side, 200);
 
     useEffect(() => {
         setContainerElement(containerReference.current);
@@ -110,10 +110,17 @@ const ProfileCardComponent = ({
             if (sideProps) {
                 return;
             }
-            dispatch({
-                type: SET_SIDE,
-                side: newSide
-            });
+            if (changeSideTimeout.current) {
+                clearTimeout(changeSideTimeout.current);
+            }
+            changeSideTimeout.current = setTimeout(
+                () =>
+                    dispatch({
+                        type: SET_SIDE,
+                        side: newSide
+                    }),
+                200
+            );
         },
         [sideProps]
     );
@@ -134,7 +141,7 @@ const ProfileCardComponent = ({
         hasSideChanged.current = true;
     }, [side]);
 
-    const transitions = useTransition(debouncedSide, item => `card_side_${item}`, {
+    const transitions = useTransition(side, item => `card_side_${item}_${kind}`, {
         ...transitionsSpringProps,
         unique: isTransitionUnique,
         immediate: !hasSideChanged.current

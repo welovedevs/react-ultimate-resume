@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import React, { memo, useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 import cn from 'classnames';
 
@@ -99,4 +99,4 @@ const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
     );
 };
 
-export const BasicsFront = BasicsFrontComponent;
+export const BasicsFront = memo(BasicsFrontComponent);

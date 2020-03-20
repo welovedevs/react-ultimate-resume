@@ -36,6 +36,7 @@ const GifsCardComponent = ({ variant, side }) => {
     }
     return (
         <ProfileCard
+            kind="gifs"
             isEditingProfile={isEditing}
             isComplete={isComplete}
             data={mappedData}

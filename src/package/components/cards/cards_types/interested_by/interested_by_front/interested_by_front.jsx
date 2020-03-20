@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
@@ -113,4 +113,4 @@ const Content = ({
     );
 };
 
-export const InterestedByFront = InterestedByFrontComponent;
+export const InterestedByFront = memo(InterestedByFrontComponent);

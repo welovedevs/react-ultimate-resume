@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -118,4 +118,4 @@ const Picture = ({ techno, classes }) => {
     return <img src={src} alt={techno?.name} className={classes.logo} />;
 };
 
-export const SkillsFront = SkillsFrontComponent;
+export const SkillsFront = memo(SkillsFrontComponent);
