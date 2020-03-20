@@ -15,6 +15,9 @@ import { translations } from '../../../../../utils/enums/job_serachstate/job_sea
 import { styles } from './basics_back_styles';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
+import { ExperienceYears } from './fields/professional_experience';
+import { CodingYears } from './fields/coding_years';
+import { StudiesLevel } from './fields/studies_level';
 
 const useStyles = createUseStyles(styles);
 
@@ -73,11 +76,7 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
                 hide: !experienceYears && !existsAndNotEmpty(contractTypes) && !existsAndNotEmpty(searchState),
                 value: (
                     <>
-                        <FormattedMessage
-                            id="Basics.Back.Work"
-                            defaultMessage={'{experienceYears} years of experience'}
-                            values={{ experienceYears }}
-                        />
+                        <ExperienceYears experienceYears={experienceYears} />
                         <br />
                         <ContractType contractTypes={contractTypes} />
                         <br />
@@ -88,24 +87,14 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
             codingYears: {
                 title: <FormattedMessage id="Basics.Back.CodingYears.title" defaultMessage="Experience" />,
                 hide: !personalDescription,
-                value: (
-                    <FormattedMessage
-                        id="Basics.Back.CodingYears.value"
-                        defaultMessage={'{codingYears} years coding'}
-                        values={{ codingYears }}
-                    />
-                )
+                value: <CodingYears codingYears={codingYears} />
             },
             studies: {
                 title: <FormattedMessage id="Basics.Back.StudiesLevel.Title" defaultMessage="Training" />,
                 hide: !studiesLevel,
                 value: (
                     <>
-                        <FormattedMessage
-                            id="Basics.Back.StudiesLevel"
-                            defaultMessage={'{studiesLevel} years of higher education'}
-                            values={{ studiesLevel }}
-                        />
+                        <StudiesLevel studiesLevel={studiesLevel} />
                         <br />
                         <br />
                         {codingReason && <span>{codingReason}</span>}
