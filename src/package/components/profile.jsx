@@ -65,8 +65,8 @@ const DeveloperProfileComponent = ({
     setIsEditing,
     classes: receivedGlobalClasses = {}
 }) => {
-    const { apiKeys, endpoints } = options;
     const classes = useStyles(styles);
+    const { apiKeys, endpoints } = options;
 
     const onEdit = useCallback(
         newData => {
