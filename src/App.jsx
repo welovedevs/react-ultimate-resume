@@ -48,7 +48,7 @@ function App() {
             setIsEditing={setIsEditing}
             onCustomizationChanged={onCustomizationChanged}
             options={{
-                // side: 'back',
+                side: 'back',
                 apiKeys: {
                     giphy: process.env.REACT_APP_GIPHY_API_KEY
                 },

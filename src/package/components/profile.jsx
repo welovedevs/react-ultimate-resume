@@ -17,7 +17,7 @@ import fr from '../i18n/fr.json';
 import '../styles/lib/slick-carousel/slick-theme.css';
 import '../styles/lib/slick-carousel/slick.css';
 import { technologiesInitialState, technologiesReducer } from '../store/technologies/technologies_reducer';
-import { DeveloperProfileContext } from '../utils/context/contexts';
+import { DeveloperProfileContext, StoreContext } from '../utils/context/contexts';
 import { Footer } from './footer/footer';
 import { mergeOmitNull } from '../utils/data_utils';
 import { SIDES } from './commons/profile_card/profile_card_side/side';
@@ -87,7 +87,6 @@ const DeveloperProfileComponent = ({
             onCustomizationChanged,
             onFilesUpload,
             apiKeys: { giphy: apiKeys?.giphy, unsplash: apiKeys?.unsplash },
-            store,
             mode,
             additionalNodes,
             endpoints,
@@ -95,19 +94,24 @@ const DeveloperProfileComponent = ({
             dismissCustomizeButton,
             setIsEditing
         }),
-        [endpoints, apiKeys, data, onEdit, store, mode, dismissCustomizeButton]
+        [endpoints, apiKeys, data, onEdit, mode, dismissCustomizeButton]
     );
 
     const side = useMemo(() => (isEditing && SIDES.BACK) || options?.side, [options, isEditing]);
 
     return (
         <div className={classes.container}>
-            <DeveloperProfileContext.Provider value={context}>
-                <Banner customizationOptions={options.customization} onCustomizationChanged={onCustomizationChanged} />
-                {BeforeCards}
-                <Cards cardsOrder={options.customization?.cardsOrder} side={side} />
-                {!options.dismissFooter && <Footer />}
-            </DeveloperProfileContext.Provider>
+            <StoreContext.Provider value={store}>
+                <DeveloperProfileContext.Provider value={context}>
+                    <Banner
+                        customizationOptions={options.customization}
+                        onCustomizationChanged={onCustomizationChanged}
+                    />
+                    {BeforeCards}
+                    <Cards cardsOrder={options.customization?.cardsOrder} side={side} />
+                    {!options.dismissFooter && <Footer />}
+                </DeveloperProfileContext.Provider>
+            </StoreContext.Provider>
         </div>
     );
 };

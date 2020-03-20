@@ -1,15 +1,13 @@
 import { useContext, useEffect } from 'react';
 import { TECHNOLOGIES_RECEIVED } from '../../../store/technologies/technologies_actions_types';
-import { DeveloperProfileContext } from '../../../utils/context/contexts';
+import { DeveloperProfileContext, StoreContext } from '../../../utils/context/contexts';
 
 const DEFAULT_OBJECT = {};
 export const useTechnologies = () => {
     const {
-        endpoints,
-        store: {
-            technologies: [{ technologies }, dispatch]
-        }
-    } = useContext(DeveloperProfileContext);
+        technologies: [{ technologies }, dispatch]
+    } = useContext(StoreContext);
+    const { endpoints } = useContext(DeveloperProfileContext);
 
     useEffect(() => {
         if (!endpoints.devicons) {
