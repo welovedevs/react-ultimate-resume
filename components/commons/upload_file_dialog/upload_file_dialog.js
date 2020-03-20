@@ -34,7 +34,7 @@ var UploadFileDialogComponent = function UploadFileDialogComponent(_ref) {
       onFileUploaded(url);
       return url;
     });
-  }, [onFileUploaded]);
+  }, [onFileUploaded, onFilesUpload]);
   return _react.default.createElement(_core.Dialog, {
     open: open,
     onClose: onClose

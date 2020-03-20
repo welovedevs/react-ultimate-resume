@@ -8,6 +8,13 @@ exports.styles = void 0;
 var styles = function styles(theme) {
   var spacing = theme.miscellaneous.spacing;
   return {
+    fillIcon: {
+      extend: 'icon',
+      '& > g': {
+        fill: 'currentColor',
+        transform: 'scale(1.33334)'
+      }
+    },
     icon: {
       height: 20,
       width: 'auto',
