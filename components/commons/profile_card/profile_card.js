@@ -209,7 +209,7 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       state: state,
       dispatch: dispatch
     };
-  }, [state]);
+  }, [JSON.stringify(state)]);
   return _react.default.createElement(_react.default.Fragment, null, mode === 'edit' && (isEditingProfile || forceOpenEditDialog) && _react.default.createElement(ProfileCardContext.Provider, {
     value: contextData
   }, _react.default.createElement(_profile_card_edit_dialog.ProfileCardEditDialog, {

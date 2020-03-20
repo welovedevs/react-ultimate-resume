@@ -81,20 +81,8 @@ var DEFAULT_OBJECT = {};
 
 var DEFAULT_FUNCTION = function DEFAULT_FUNCTION() {};
 
-var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
-  var _options$customizatio;
-
-  var _ref$data = _ref.data,
-      data = _ref$data === void 0 ? DEFAULT_OBJECT : _ref$data,
-      options = _ref.options,
-      mode = _ref.mode,
-      _ref$onEdit = _ref.onEdit,
-      onEditProps = _ref$onEdit === void 0 ? DEFAULT_FUNCTION : _ref$onEdit,
-      onCustomizationChanged = _ref.onCustomizationChanged,
-      _ref$isEditing = _ref.isEditing,
-      isEditing = _ref$isEditing === void 0 ? false : _ref$isEditing,
-      _ref$onFilesUpload = _ref.onFilesUpload,
-      onFilesUpload = _ref$onFilesUpload === void 0 ? /*#__PURE__*/(0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+var DEFAULT_UPLOAD_FUNCTION = /*#__PURE__*/function () {
+  var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
     return _regenerator.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -107,11 +95,31 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
         }
       }
     }, _callee);
-  })) : _ref$onFilesUpload,
-      BeforeCards = _ref.BeforeCards,
-      additionalNodes = _ref.additionalNodes,
-      _ref$classes = _ref.classes,
-      receivedGlobalClasses = _ref$classes === void 0 ? {} : _ref$classes;
+  }));
+
+  return function DEFAULT_UPLOAD_FUNCTION() {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+var DeveloperProfileComponent = function DeveloperProfileComponent(_ref2) {
+  var _options$customizatio;
+
+  var _ref2$data = _ref2.data,
+      data = _ref2$data === void 0 ? DEFAULT_OBJECT : _ref2$data,
+      options = _ref2.options,
+      mode = _ref2.mode,
+      _ref2$onEdit = _ref2.onEdit,
+      onEditProps = _ref2$onEdit === void 0 ? DEFAULT_FUNCTION : _ref2$onEdit,
+      onCustomizationChanged = _ref2.onCustomizationChanged,
+      _ref2$isEditing = _ref2.isEditing,
+      isEditing = _ref2$isEditing === void 0 ? false : _ref2$isEditing,
+      _ref2$onFilesUpload = _ref2.onFilesUpload,
+      onFilesUpload = _ref2$onFilesUpload === void 0 ? DEFAULT_UPLOAD_FUNCTION : _ref2$onFilesUpload,
+      BeforeCards = _ref2.BeforeCards,
+      additionalNodes = _ref2.additionalNodes,
+      _ref2$classes = _ref2.classes,
+      receivedGlobalClasses = _ref2$classes === void 0 ? {} : _ref2$classes;
   var classes = useStyles(_profile_styles.styles);
   var apiKeys = options.apiKeys,
       endpoints = options.endpoints;
