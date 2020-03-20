@@ -68,7 +68,7 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
     return setSide(side === _side.SIDES.FRONT ? _side.SIDES.BACK : _side.SIDES.FRONT);
   }, [side, setSide]);
   var title = (0, _react.useMemo)(function () {
-    var _data$work, _data$work$, _data$work3, _data$work3$;
+    var _data$work, _data$work$, _data$work3, _data$work3$, _data$work4;
 
     var builder = [];
 
@@ -78,8 +78,14 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
       builder.push((_data$work2 = data.work) === null || _data$work2 === void 0 ? void 0 : _data$work2[0].position);
     }
 
+    console.log({
+      data: data
+    });
+
     if ((_data$work3 = data.work) === null || _data$work3 === void 0 ? void 0 : (_data$work3$ = _data$work3[0]) === null || _data$work3$ === void 0 ? void 0 : _data$work3$.name) {
       builder.push("@".concat(data.work[0].name));
+    } else if (data === null || data === void 0 ? void 0 : (_data$work4 = data.work) === null || _data$work4 === void 0 ? void 0 : _data$work4[0]) {
+      builder.push('coucou');
     }
 
     return builder.join(' ');

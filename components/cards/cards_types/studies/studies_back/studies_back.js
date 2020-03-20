@@ -48,7 +48,7 @@ var Study = function Study(_ref) {
     return bodyParts;
   }, [study]);
   var date = (0, _react.useMemo)(function () {
-    var year = endDate.year();
+    var year = typeof (endDate === null || endDate === void 0 ? void 0 : endDate.year) === 'function' ? endDate.year() : null;
 
     if (!Number.isNaN(Number(year))) {
       return year;

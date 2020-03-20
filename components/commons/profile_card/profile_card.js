@@ -45,6 +45,8 @@ var _profile_card_spring_props = require("./profile_card_spring_props");
 
 var _side = require("./profile_card_side/side");
 
+var _contexts = require("../../../utils/context/contexts");
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -80,6 +82,10 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       _ref$isComplete = _ref.isComplete,
       isComplete = _ref$isComplete === void 0 ? true : _ref$isComplete,
       sideProps = _ref.side;
+
+  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
+      mode = _useContext.mode;
+
   var classes = useStyles({
     variant: variant
   });
@@ -203,7 +209,7 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       dispatch: dispatch
     };
   }, [state]);
-  return _react.default.createElement(_react.default.Fragment, null, (isEditingProfile || forceOpenEditDialog) && _react.default.createElement(ProfileCardContext.Provider, {
+  return _react.default.createElement(_react.default.Fragment, null, mode === 'edit' && (isEditingProfile || forceOpenEditDialog) && _react.default.createElement(ProfileCardContext.Provider, {
     value: contextData
   }, _react.default.createElement(_profile_card_edit_dialog.ProfileCardEditDialog, {
     editDialog: editDialog,
@@ -224,7 +230,7 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
   }, !isSmall && !sideProps && {
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave
-  }), editButtonTransitions.map(function (_ref2) {
+  }), mode === 'edit' && editButtonTransitions.map(function (_ref2) {
     var item = _ref2.item,
         key = _ref2.key,
         props = _ref2.props;

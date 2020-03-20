@@ -68,7 +68,8 @@ var EditHeaderImageButton = function EditHeaderImageButton(_ref) {
       globalReceivedClasses = _useReceivedGlobalCla3 === void 0 ? {} : _useReceivedGlobalCla3;
 
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
-      onCustomizationChanged = _useContext.onCustomizationChanged;
+      onCustomizationChanged = _useContext.onCustomizationChanged,
+      mode = _useContext.mode;
 
   var _useCallbackOpen = (0, _use_callback_open.useCallbackOpen)(),
       _useCallbackOpen2 = (0, _slicedToArray2.default)(_useCallbackOpen, 3),
@@ -86,7 +87,7 @@ var EditHeaderImageButton = function EditHeaderImageButton(_ref) {
     onClose: onClose,
     value: customizationOptions.imageHeader,
     onChange: onChange
-  }), _react.default.createElement(_bouncing_round_button.BouncingRoundButton, {
+  }), mode === 'edit' && _react.default.createElement(_bouncing_round_button.BouncingRoundButton, {
     title: _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Banner.image.editButton",
       defaultMessage: "Edit image banner"

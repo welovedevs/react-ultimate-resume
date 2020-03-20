@@ -22,11 +22,13 @@ var mapStudiesFromJsonResume = function mapStudiesFromJsonResume(jsonResume) {
 
   return {
     education: jsonResume === null || jsonResume === void 0 ? void 0 : (_jsonResume$education = jsonResume.education) === null || _jsonResume$education === void 0 ? void 0 : _jsonResume$education.map(function (study) {
+      var _study$endDate;
+
       return _objectSpread({}, study, {
         // generating uuid for manipulating data if not present
         id: study.id || (0, _v.default)(),
         startDate: study.startDate && (0, _moment.default)(study.startDate, 'YYYY-MM-DD'),
-        endDate: study.endDate && (0, _moment.default)(study.endDate, 'YYYY-MM-DD')
+        endDate: (_study$endDate = study.endDate) !== null && _study$endDate !== void 0 ? _study$endDate : (0, _moment.default)(study.endDate, 'YYYY-MM-DD')
       });
     })
   };
@@ -39,11 +41,11 @@ var mapStudiesToJsonResume = function mapStudiesToJsonResume(data) {
 
   return {
     education: (_data$education = data.education) === null || _data$education === void 0 ? void 0 : _data$education.map(function (study) {
-      var _study$startDate, _study$endDate;
+      var _study$startDate, _study$endDate2;
 
       return _objectSpread({}, study, {
         startDate: (_study$startDate = study.startDate) === null || _study$startDate === void 0 ? void 0 : _study$startDate.format('YYYY-MM-DD'),
-        endDate: (_study$endDate = study.endDate) === null || _study$endDate === void 0 ? void 0 : _study$endDate.format('YYYY-MM-DD')
+        endDate: (_study$endDate2 = study.endDate) === null || _study$endDate2 === void 0 ? void 0 : _study$endDate2.format('YYYY-MM-DD')
       });
     })
   };

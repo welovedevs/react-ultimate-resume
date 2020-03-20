@@ -37,6 +37,12 @@ var _no_data_button = require("../../../../commons/no_data_button/no_data_button
 
 var _contexts = require("../../../../../utils/context/contexts");
 
+var _professional_experience = require("./fields/professional_experience");
+
+var _coding_years = require("./fields/coding_years");
+
+var _studies_level = require("./fields/studies_level");
+
 var useStyles = (0, _reactJss.createUseStyles)(_basics_back_styles.styles);
 
 var BasicsBackComponent = function BasicsBackComponent(_ref) {
@@ -93,12 +99,8 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
           defaultMessage: "Work"
         }),
         hide: !experienceYears && !(0, _exists_and_not_empty.existsAndNotEmpty)(contractTypes) && !(0, _exists_and_not_empty.existsAndNotEmpty)(searchState),
-        value: _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
-          id: "Basics.Back.Work",
-          defaultMessage: '{experienceYears} years of experience',
-          values: {
-            experienceYears: experienceYears
-          }
+        value: _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_professional_experience.ExperienceYears, {
+          experienceYears: experienceYears
         }), _react.default.createElement("br", null), _react.default.createElement(_contract_types.ContractType, {
           contractTypes: contractTypes
         }), _react.default.createElement("br", null), _react.default.createElement(JobSearchState, {
@@ -111,12 +113,8 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
           defaultMessage: "Experience"
         }),
         hide: !personalDescription,
-        value: _react.default.createElement(_reactIntl.FormattedMessage, {
-          id: "Basics.Back.CodingYears.value",
-          defaultMessage: '{codingYears} years coding',
-          values: {
-            codingYears: codingYears
-          }
+        value: _react.default.createElement(_coding_years.CodingYears, {
+          codingYears: codingYears
         })
       },
       studies: {
@@ -125,12 +123,8 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
           defaultMessage: "Training"
         }),
         hide: !studiesLevel,
-        value: _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
-          id: "Basics.Back.StudiesLevel",
-          defaultMessage: '{studiesLevel} years of higher education',
-          values: {
-            studiesLevel: studiesLevel
-          }
+        value: _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_studies_level.StudiesLevel, {
+          studiesLevel: studiesLevel
         }), _react.default.createElement("br", null), _react.default.createElement("br", null), codingReason && _react.default.createElement("span", null, codingReason))
       }
     };
