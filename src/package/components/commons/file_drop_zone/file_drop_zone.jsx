@@ -44,6 +44,7 @@ const FileDropZoneComponent = ({ onDrop = DEFAULT_ON_DROP }) => {
                 const url = await onDrop(parameters);
                 setFileUrl(url);
             } catch (e) {
+                console.warn('Failed to drop file', e);
                 setFileUrl(false);
                 setError(e);
             }

@@ -18,8 +18,6 @@ export const mapProjectToJsonResume = project => ({
 });
 
 export const updateProjectsArray = (newProject, jsonResume) => {
-    // eslint-disable-next-line no-debugger
-    debugger;
     if (!jsonResume.projects?.length) {
         return { projects: [newProject] };
     }
