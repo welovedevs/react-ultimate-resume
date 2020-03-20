@@ -18,12 +18,13 @@ export const mapProjectToJsonResume = project => ({
 
 export const updateProjectsArray = (newProject, jsonResume) => {
     // eslint-disable-next-line no-debugger
+    debugger;
     if (!jsonResume.projects?.length) {
         return { projects: [newProject] };
     }
     const newProjects = [...jsonResume.projects];
 
-    if (!Number.isNaN(newProject.index)) {
+    if (!Number.isNaN(Number(newProject.index))) {
         newProjects[newProject.index] = newProject;
         return { projects: newProjects };
     }

@@ -19,19 +19,20 @@ import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
 
 const useStyles = createUseStyles(styles);
 
+const DEFAULT_OBJECT = {};
 const ProjectDialogComponent = ({ open, onClose, data: project, isEditing }) => {
     const classes = useStyles();
 
     const { formatMessage } = useIntl();
-    const { onEdit, data } = useContext(DeveloperProfileContext);
+    const { onEdit, data: resume } = useContext(DeveloperProfileContext);
 
     const onDialogEdited = useCallback(
         editedData => {
-            const updateProjectsArray1 = updateProjectsArray(mapProjectToJsonResume(editedData), data);
+            const updateProjectsArray1 = updateProjectsArray(mapProjectToJsonResume(editedData), resume);
             onEdit(updateProjectsArray1);
             onClose();
         },
-        [onEdit, data]
+        [onEdit, resume]
     );
 
     const validator = useMemo(() => ProjectValidator(formatMessage), []);
@@ -41,7 +42,7 @@ const ProjectDialogComponent = ({ open, onClose, data: project, isEditing }) => 
             classes={{ content: classes.container, paper: classes.paper }}
             open={open}
             onClose={onClose}
-            data={project || {}}
+            data={project || DEFAULT_OBJECT}
             onEdit={onDialogEdited}
             validationSchema={validator}
             isEditing={isEditing}

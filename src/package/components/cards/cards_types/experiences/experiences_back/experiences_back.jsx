@@ -21,7 +21,6 @@ const ExperienceContent = ({ experience, variant, classes }) => {
     const { formatMessage } = useIntl();
     const [buildTitle] = useAdditionalNodes('cards.experiences.back.experience.content.buildTitle', null);
 
-    console.log({ buildTitle });
     const { id, name, summary, place, position } = experience;
     const dateString = useMemo(() => {
         if (!experience.endDate) {

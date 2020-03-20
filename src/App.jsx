@@ -23,7 +23,6 @@ const DEFAULT_CARD_ORDER = [
 ];
 
 const mergeFunction = (objValue, srcValue) => {
-    console.log({ objValue, srcValue });
     if (!objValue || isArray(objValue)) {
         return srcValue;
     }
@@ -34,15 +33,9 @@ function App() {
     const [data, setData] = useState(JsonStub);
     const [isEditing, setIsEditing] = useState(false);
 
-    const onEdit = useCallback(
-        newData => {
-            console.log({ newData, data });
-            const mergeWith1 = mergeWith(cloneDeep(data), newData, mergeFunction);
-            console.log({ mergeWith1 });
-            setData(mergeWith1);
-        },
-        [JSON.stringify(data)]
-    );
+    const onEdit = useCallback(newData => setData(mergeWith(cloneDeep(data), newData, mergeFunction)), [
+        JSON.stringify(data)
+    ]);
     const [customization, setCustomization] = useState({ cardsOrder: DEFAULT_CARD_ORDER });
 
     const onCustomizationChanged = useCallback(setCustomization, [data]);

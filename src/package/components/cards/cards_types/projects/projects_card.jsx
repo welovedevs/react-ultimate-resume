@@ -40,7 +40,7 @@ const ProjectsCardComponent = ({ variant, side }) => {
             customEditAction={props => <AddButton title="Ajouter un projet" {...props} />}
             editDialog={{
                 component: ProjectDialog,
-                data: mappedData?.projects
+                data: {}
             }}
         />
     );

@@ -35,19 +35,19 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
     } = data;
 
     const descriptionContent = useMemo(() => {
-        if (personalDescription && mode === 'edit') {
-            return <span>{personalDescription}</span>;
+        if (!personalDescription && mode === 'edit') {
+            return (
+                <NoDataButton
+                    handleAddButtonClick={handleAddButtonClick}
+                    classes={{
+                        container: classes.addButton
+                    }}
+                >
+                    <FormattedMessage id="Basics.noDescription.buttonLabel" defaultMessage="Ajouter une description" />
+                </NoDataButton>
+            );
         }
-        return (
-            <NoDataButton
-                handleAddButtonClick={handleAddButtonClick}
-                classes={{
-                    container: classes.addButton
-                }}
-            >
-                <FormattedMessage id="Basics.noDescription.buttonLabel" defaultMessage="Ajouter une description" />
-            </NoDataButton>
-        );
+        return <span>{personalDescription}</span>;
     }, [personalDescription, mode, handleAddButtonClick, classes]);
 
     const sections = useMemo(
