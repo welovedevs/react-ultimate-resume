@@ -136,7 +136,6 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
         giphy: apiKeys === null || apiKeys === void 0 ? void 0 : apiKeys.giphy,
         unsplash: apiKeys === null || apiKeys === void 0 ? void 0 : apiKeys.unsplash
       },
-      store: store,
       mode: mode,
       additionalNodes: additionalNodes,
       endpoints: endpoints,
@@ -144,12 +143,14 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
       dismissCustomizeButton: dismissCustomizeButton,
       setIsEditing: setIsEditing
     };
-  }, [endpoints, apiKeys, data, onEdit, store, mode, dismissCustomizeButton]);
+  }, [endpoints, apiKeys, data, onEdit, mode, dismissCustomizeButton]);
   var side = (0, _react.useMemo)(function () {
     return isEditing && _side.SIDES.BACK || (options === null || options === void 0 ? void 0 : options.side);
   }, [options, isEditing]);
   return _react.default.createElement("div", {
     className: classes.container
+  }, _react.default.createElement(_contexts.StoreContext.Provider, {
+    value: store
   }, _react.default.createElement(_contexts.DeveloperProfileContext.Provider, {
     value: context
   }, _react.default.createElement(_banner.Banner, {
@@ -158,7 +159,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref) {
   }), BeforeCards, _react.default.createElement(_cards.Cards, {
     cardsOrder: (_options$customizatio = options.customization) === null || _options$customizatio === void 0 ? void 0 : _options$customizatio.cardsOrder,
     side: side
-  }), !options.dismissFooter && _react.default.createElement(_footer.Footer, null)));
+  }), !options.dismissFooter && _react.default.createElement(_footer.Footer, null))));
 };
 
 var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3) {

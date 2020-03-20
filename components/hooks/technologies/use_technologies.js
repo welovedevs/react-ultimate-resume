@@ -18,11 +18,13 @@ var _contexts = require("../../../utils/context/contexts");
 var DEFAULT_OBJECT = {};
 
 var useTechnologies = function useTechnologies() {
-  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
-      endpoints = _useContext.endpoints,
-      _useContext$store$tec = (0, _slicedToArray2.default)(_useContext.store.technologies, 2),
-      technologies = _useContext$store$tec[0].technologies,
-      dispatch = _useContext$store$tec[1];
+  var _useContext = (0, _react.useContext)(_contexts.StoreContext),
+      _useContext$technolog = (0, _slicedToArray2.default)(_useContext.technologies, 2),
+      technologies = _useContext$technolog[0].technologies,
+      dispatch = _useContext$technolog[1];
+
+  var _useContext2 = (0, _react.useContext)(_contexts.DeveloperProfileContext),
+      endpoints = _useContext2.endpoints;
 
   (0, _react.useEffect)(function () {
     if (!endpoints.devicons) {
