@@ -38,6 +38,7 @@ exports.mapProjectsFromJsonResume = mapProjectsFromJsonResume;
 
 var mapProjectToJsonResume = function mapProjectToJsonResume(project) {
   return _objectSpread({}, project, {
+    id: project.id || (0, _v.default)(),
     endDate: project.date && project.date.format('YYYY-MM-DD')
   });
 };
