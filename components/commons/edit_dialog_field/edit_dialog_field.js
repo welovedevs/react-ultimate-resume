@@ -13,6 +13,8 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _reactJss = require("react-jss");
 
+var _reactIntl = require("react-intl");
+
 var _ui = require("@wld/ui");
 
 var _edit_dialog_field_styles = require("./edit_dialog_field_styles");
@@ -51,7 +53,10 @@ var EditDialogFieldComponent = function EditDialogFieldComponent(_ref) {
     color: "danger",
     variant: "helper",
     component: "p"
-  }, error)));
+  }, typeof error === 'string' ? error : _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.error",
+    defaultMessage: "Error"
+  }))));
 };
 
 var EditDialogField = EditDialogFieldComponent;

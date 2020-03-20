@@ -183,6 +183,7 @@
   "Main.lang.copied": "Copied in clipboard",
   "Main.lang.delete": "Delete",
   "Main.lang.edit": "Edit",
+  "Main.lang.error": "Error",
   "Main.lang.remove": "Remove",
   "Main.lang.save": "Save",
   "Main.lang.years": "{countNode} year{count, plural, one {} other {s}}",

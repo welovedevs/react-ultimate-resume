@@ -185,6 +185,7 @@
   "Main.lang.edit": "Modifier",
   "Main.lang.remove": "Remove",
   "Main.lang.save": "Sauvegarder",
+  "Main.lang.error": "Erreur",
   "Main.lang.years": "{countNode} année{count, plural, one {} other {s}}",
   "PaletteVisual.Key.Primary": "Primaire",
   "PaletteVisual.Key.Secondary": "Secondaire",

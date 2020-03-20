@@ -26,7 +26,7 @@ var useGiphyResults = function useGiphyResults(input) {
   var _useIntl = (0, _reactIntl.useIntl)(),
       locale = _useIntl.locale;
 
-  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
+  var _useContext = (0, _react.useContext)(_contexts.StaticDataContext),
       apiKeys = _useContext.apiKeys;
 
   var _useState = (0, _react.useState)(false),
