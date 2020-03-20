@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 
 import { createUseStyles, useTheme } from 'react-jss';
 import { animated, useTransition } from 'react-spring';
@@ -90,4 +90,4 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
     );
 };
 
-export const LanguagesBack = LanguagesBackComponent;
+export const LanguagesBack = memo(LanguagesBackComponent);

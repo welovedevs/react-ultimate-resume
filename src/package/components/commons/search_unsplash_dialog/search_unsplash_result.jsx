@@ -9,7 +9,7 @@ import { Button, TextField, Tooltip } from '@wld/ui';
 
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';
 import { LoadingSpinner } from '../loading_spinner/loading_spinner';
-import { DeveloperProfileContext } from '../../../utils/context/contexts';
+import { StaticDataContext } from '../../../utils/context/contexts';
 
 import { useUnsplashResults } from '../../hooks/unsplash/use_unsplash_results';
 
@@ -62,7 +62,7 @@ const SearchUnsplashDialogComponent = ({ open, onClose, onSelect }) => {
 const Results = ({ query, debouncedQuery, onSelect, classes }) => {
     const { results, loading: loadingResults } = useUnsplashResults(debouncedQuery, 0, 3 * 3);
     const [showLoadingSpinner, setShowLoadingSpinner] = useState(false);
-    const { endpoints } = useContext(DeveloperProfileContext);
+    const { endpoints } = useContext(StaticDataContext);
 
     useEffect(() => {
         if (loadingResults) {

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 
 import { Twemoji } from 'react-emoji-render';
 import { FormattedMessage } from 'react-intl';
@@ -111,4 +111,4 @@ const Content = ({ hasProject, projectTitle, handleAddButtonClick, classes }) =>
     );
 };
 
-export const ProjectsFront = ProjectsFrontComponent;
+export const ProjectsFront = memo(ProjectsFrontComponent);

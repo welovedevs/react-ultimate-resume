@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import cn from 'classnames';
 import { FormattedMessage } from 'react-intl';
@@ -105,4 +105,4 @@ const Content = ({ hasHobby, name, handleAddButtonClick, classes }) => {
     );
 };
 
-export const GifsFront = GifsFrontComponent;
+export const GifsFront = memo(GifsFrontComponent);

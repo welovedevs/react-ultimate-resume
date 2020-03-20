@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { get } from 'lodash';
 
-import { DeveloperProfileContext } from '../../utils/context/contexts';
+import { StaticDataContext } from '../../utils/context/contexts';
 
 export const useReceivedGlobalClasses = (path = '', defaultValue = {}) => {
-    const { receivedGlobalClasses } = useContext(DeveloperProfileContext);
+    const { receivedGlobalClasses } = useContext(StaticDataContext);
     return [get(receivedGlobalClasses, path, defaultValue)];
 };

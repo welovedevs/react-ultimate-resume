@@ -35,7 +35,6 @@ const CARD_TYPE_MAPPING = {
 };
 
 const CardsComponent = ({ cardsOrder = DEFAULT_CARD_ORDER, side }) => {
-    console.log('RENDER');
     const classes = useStyles();
     const theme = useTheme();
     const [{ before: beforeNode, after: afterNode }] = useAdditionalNodes('cards');

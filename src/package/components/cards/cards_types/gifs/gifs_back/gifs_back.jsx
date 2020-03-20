@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
@@ -191,4 +191,4 @@ const TransitioningItem = ({ item, key, props, pauseSlider, resumeSlider, classe
     );
 };
 
-export const GifsBack = GifsBackComponent;
+export const GifsBack = memo(GifsBackComponent);

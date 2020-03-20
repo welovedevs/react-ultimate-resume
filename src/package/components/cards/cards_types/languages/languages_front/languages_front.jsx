@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 
@@ -86,4 +86,4 @@ const Content = ({ hasLanguage, languagesNode, handleAddButtonClick, classes }) 
     );
 };
 
-export const LanguagesFront = LanguagesFrontComponent;
+export const LanguagesFront = memo(LanguagesFrontComponent);

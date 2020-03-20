@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 
 import { createUseStyles, useTheme } from 'react-jss';
 
@@ -29,4 +29,4 @@ const InterestedByBackComponent = props => {
     );
 };
 
-export const InterestedByBack = InterestedByBackComponent;
+export const InterestedByBack = memo(InterestedByBackComponent);

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
@@ -78,4 +78,4 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
     );
 };
 
-export const SoundtrackFront = SoundtrackFrontComponent;
+export const SoundtrackFront = memo(SoundtrackFrontComponent);

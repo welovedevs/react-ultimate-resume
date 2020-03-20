@@ -1,12 +1,12 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 
-import { DeveloperProfileContext } from '../../../utils/context/contexts';
+import { StaticDataContext } from '../../../utils/context/contexts';
 
 const UNSPLASH_API = 'https://api.unsplash.com/search/photos?';
 
 export const useUnsplashResults = (input, page = 0, limit = 12, timeout = 800) => {
     const debounceSearch = useRef();
-    const { endpoints } = useContext(DeveloperProfileContext);
+    const { endpoints } = useContext(StaticDataContext);
     const [lastLoaded, setLastLoaded] = useState(false);
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);

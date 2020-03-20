@@ -17,7 +17,7 @@ import fr from '../i18n/fr.json';
 import '../styles/lib/slick-carousel/slick-theme.css';
 import '../styles/lib/slick-carousel/slick.css';
 import { technologiesInitialState, technologiesReducer } from '../store/technologies/technologies_reducer';
-import { DeveloperProfileContext, StoreContext } from '../utils/context/contexts';
+import { DeveloperProfileContext, StaticDataContext, StoreContext } from '../utils/context/contexts';
 import { Footer } from './footer/footer';
 import { mergeOmitNull } from '../utils/data_utils';
 import { SIDES } from './commons/profile_card/profile_card_side/side';
@@ -61,8 +61,6 @@ const DeveloperProfileComponent = ({
     onFilesUpload = async () => 'https://source.unsplash.com/random/4000x2000',
     BeforeCards,
     additionalNodes,
-    dismissCustomizeButton,
-    setIsEditing,
     classes: receivedGlobalClasses = {}
 }) => {
     const classes = useStyles(styles);
@@ -79,6 +77,15 @@ const DeveloperProfileComponent = ({
     const store = {
         technologies: useReducer(technologiesReducer, technologiesInitialState)
     };
+    const staticContext = useMemo(
+        () => ({
+            apiKeys: { giphy: apiKeys?.giphy, unsplash: apiKeys?.unsplash },
+            endpoints,
+            additionalNodes,
+            receivedGlobalClasses
+        }),
+        [apiKeys, endpoints, additionalNodes, receivedGlobalClasses]
+    );
     const context = useMemo(
         () => ({
             data,
@@ -86,32 +93,28 @@ const DeveloperProfileComponent = ({
             onEdit,
             onCustomizationChanged,
             onFilesUpload,
-            apiKeys: { giphy: apiKeys?.giphy, unsplash: apiKeys?.unsplash },
-            mode,
-            additionalNodes,
-            endpoints,
-            receivedGlobalClasses,
-            dismissCustomizeButton,
-            setIsEditing
+            mode
         }),
-        [endpoints, apiKeys, data, onEdit, mode, dismissCustomizeButton]
+        [data, isEditing, onEdit, mode, onCustomizationChanged, onFilesUpload]
     );
 
     const side = useMemo(() => (isEditing && SIDES.BACK) || options?.side, [options, isEditing]);
 
     return (
         <div className={classes.container}>
-            <StoreContext.Provider value={store}>
-                <DeveloperProfileContext.Provider value={context}>
-                    <Banner
-                        customizationOptions={options.customization}
-                        onCustomizationChanged={onCustomizationChanged}
-                    />
-                    {BeforeCards}
-                    <Cards cardsOrder={options.customization?.cardsOrder} side={side} />
-                    {!options.dismissFooter && <Footer />}
-                </DeveloperProfileContext.Provider>
-            </StoreContext.Provider>
+            <StaticDataContext.Provider value={staticContext}>
+                <StoreContext.Provider value={store}>
+                    <DeveloperProfileContext.Provider value={context}>
+                        <Banner
+                            customizationOptions={options.customization}
+                            onCustomizationChanged={onCustomizationChanged}
+                        />
+                        {BeforeCards}
+                        <Cards cardsOrder={options.customization?.cardsOrder} side={side} />
+                        {!options.dismissFooter && <Footer />}
+                    </DeveloperProfileContext.Provider>
+                </StoreContext.Provider>
+            </StaticDataContext.Provider>
         </div>
     );
 };
@@ -126,13 +129,12 @@ const WithProvidersDeveloperProfile = ({
     BeforeCards,
     classes,
     isEditing,
-    setIsEditing,
     onFilesUpload,
     intl: parentIntl
 }) => {
     const mergedOptions = useMemo(
         () => mergeWith(cloneDeep(DEFAULT_OPTIONS), JSON.parse(JSON.stringify(options || {})), mergeOmitNull),
-        [options]
+        [JSON.stringify(options)]
     );
 
     const { locale, customization } = mergedOptions;
@@ -142,12 +144,12 @@ const WithProvidersDeveloperProfile = ({
         () => ({ ...(parentIntl?.messages || {}), ...(messages[locale] || messages.en) }),
         [parentIntl, locale]
     );
+
     return (
         <ThemeProvider theme={builtTheme}>
             <IntlProvider locale={locale} messages={providerMessages} defaultLocale={locale}>
                 <DeveloperProfileComponent
                     isEditing={isEditing}
-                    setIsEditing={setIsEditing}
                     data={data}
                     mode={mode}
                     onEdit={onEdit}

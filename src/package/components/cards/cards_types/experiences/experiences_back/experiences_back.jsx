@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 
 import { useIntl } from 'react-intl';
 import { createUseStyles } from 'react-jss';
@@ -86,4 +86,4 @@ const ExperiencesBackComponent = ({ data, handleAddButtonClick }) => {
     );
 };
 
-export const ExperiencesBack = ExperiencesBackComponent;
+export const ExperiencesBack = memo(ExperiencesBackComponent);

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
@@ -85,4 +85,4 @@ const Content = ({ hasEducation, data, handleAddButtonClick, classes }) => {
     );
 };
 
-export const StudiesFront = StudiesFrontComponent;
+export const StudiesFront = memo(StudiesFrontComponent);

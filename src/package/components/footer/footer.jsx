@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -84,4 +84,4 @@ const FooterComponent = () => {
     );
 };
 
-export const Footer = FooterComponent;
+export const Footer = memo(FooterComponent);

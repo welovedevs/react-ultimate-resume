@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
@@ -60,10 +60,7 @@ const ExperiencesFrontComponent = ({ data, handleAddButtonClick }) => {
                 );
             } else {
                 builder.push(
-                    <FormattedMessage
-                        id="Experience.front.title.stillEmployed"
-                        defaultMessage="Still employed"
-                    />
+                    <FormattedMessage id="Experience.front.title.stillEmployed" defaultMessage="Still employed" />
                 );
             }
         } else if (!['endDate', 'startDate'].some(key => !moment.isMoment(firstExperience?.[key]))) {
@@ -149,4 +146,4 @@ const Content = ({ hasWork, title, handleAddButtonClick, classes }) => {
     );
 };
 
-export const ExperiencesFront = ExperiencesFrontComponent;
+export const ExperiencesFront = memo(ExperiencesFrontComponent);
