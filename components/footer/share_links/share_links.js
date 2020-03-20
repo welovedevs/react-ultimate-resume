@@ -46,6 +46,11 @@ var ShareLinksComponent = function ShareLinksComponent(_ref) {
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
 
+  var _useState = (0, _react.useState)(),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      link = _useState2[0],
+      setLink = _useState2[1];
+
   var _useSpring = (0, _reactSpring.useSpring)(function () {
     return _objectSpread({}, _share_links_spring_props.BACKGROUND_LINE_SPRING_PROPS.default, {
       config: _reactSpring.config.slow
@@ -55,10 +60,10 @@ var ShareLinksComponent = function ShareLinksComponent(_ref) {
       backgroundLineSpringProps = _useSpring2[0],
       setBackgroundLineSpringProps = _useSpring2[1];
 
-  var link = (0, _react.useMemo)(function () {
+  (0, _react.useEffect)(function () {
     var _location;
 
-    return (_location = (typeof window === 'undefined' ? {} : window).location) === null || _location === void 0 ? void 0 : _location.href;
+    setLink((_location = (typeof window === 'undefined' ? {} : window).location) === null || _location === void 0 ? void 0 : _location.href);
   }, []);
   var translatedMessage = (0, _react.useMemo)(function () {
     return formatMessage(_share_links_translations.translations.linkMessage, {
