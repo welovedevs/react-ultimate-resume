@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback } from 'react';
 
 import cn from 'classnames';
 import { FormattedMessage } from 'react-intl';
@@ -11,7 +11,6 @@ import { Button, Tooltip } from '@wld/ui';
 import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
 
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';
-import { DeveloperProfileContext } from '../../../utils/context/contexts';
 
 import { styles } from './edit_dialog_styles';
 

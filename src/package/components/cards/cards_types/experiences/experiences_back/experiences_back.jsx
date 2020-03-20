@@ -36,10 +36,9 @@ const ExperienceContent = ({ experience, variant, classes }) => {
     }, [experience]);
 
     const title = useMemo(() => {
-        console.log({ name, place, dateString });
-        // if (typeof buildTitle === 'function') {
-        //     return buildTitle({ name, place, dateString });
-        // }
+        if (typeof buildTitle === 'function') {
+            return buildTitle({ experience });
+        }
         const builder = [];
         if (name) {
             builder.push(name);
@@ -55,7 +54,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
         }
         builder.push(dateString);
         return builder;
-    }, [buildTitle, name, place, dateString]);
+    }, [buildTitle, experience]);
     return (
         <ProfileCardSection key={id} cardVariant={variant}>
             <ProfileCardSectionTitle>{position}</ProfileCardSectionTitle>
