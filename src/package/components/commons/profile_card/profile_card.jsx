@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 
 import { createUseStyles, useTheme } from 'react-jss';
 import { animated, config, useTransition } from 'react-spring';
@@ -19,6 +19,7 @@ import { getProfileCardInitialState, profileCardReducer } from '../../../store/p
 import { styles } from './profile_card_styles';
 import { PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_SPRING_PROPS } from './profile_card_spring_props';
 import { SIDES } from './profile_card_side/side';
+import { DeveloperProfileContext } from '../../../utils/context/contexts';
 
 const useStyles = createUseStyles(styles);
 
@@ -45,6 +46,8 @@ const ProfileCardComponent = ({
     isComplete = true,
     side: sideProps
 }) => {
+    const { mode } = useContext(DeveloperProfileContext);
+
     const classes = useStyles({ variant });
     const theme = useTheme();
     const [containerElement, setContainerElement] = useState();
@@ -154,7 +157,7 @@ const ProfileCardComponent = ({
 
     return (
         <>
-            {(isEditingProfile || forceOpenEditDialog) && (
+            {mode === 'edit' && (isEditingProfile || forceOpenEditDialog) && (
                 <ProfileCardContext.Provider value={contextData}>
                     <ProfileCardEditDialog
                         editDialog={editDialog}
@@ -177,17 +180,18 @@ const ProfileCardComponent = ({
                         onMouseLeave: handleMouseLeave
                     })}
             >
-                {editButtonTransitions.map(
-                    ({ item, key, props }) =>
-                        item && (
-                            <animated.div className={classes.editButtonContainer} key={key} style={props}>
-                                <EditAction
-                                    customEditAction={customEditAction}
-                                    setEditDialogOpened={setEditDialogOpened}
-                                />
-                            </animated.div>
-                        )
-                )}
+                {mode === 'edit' &&
+                    editButtonTransitions.map(
+                        ({ item, key, props }) =>
+                            item && (
+                                <animated.div className={classes.editButtonContainer} key={key} style={props}>
+                                    <EditAction
+                                        customEditAction={customEditAction}
+                                        setEditDialogOpened={setEditDialogOpened}
+                                    />
+                                </animated.div>
+                            )
+                    )}
                 <ProfileCardContext.Provider value={contextData}>
                     {children}
                     {transitions.map(({ item, key, props }) => {

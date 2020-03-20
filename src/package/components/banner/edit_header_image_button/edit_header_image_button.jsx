@@ -20,7 +20,7 @@ const useStyles = createUseStyles(styles);
 export const EditHeaderImageButton = ({ customizationOptions }) => {
     const classes = useStyles();
     const [globalReceivedClasses = {}] = useReceivedGlobalClasses('banner.editHeaderImageButton');
-    const { onCustomizationChanged } = useContext(DeveloperProfileContext);
+    const { onCustomizationChanged, mode } = useContext(DeveloperProfileContext);
     const [open, onOpen, onClose] = useCallbackOpen();
 
     const onChange = useCallback(
@@ -37,14 +37,16 @@ export const EditHeaderImageButton = ({ customizationOptions }) => {
                 value={customizationOptions.imageHeader}
                 onChange={onChange}
             />
-            <BouncingRoundButton
-                title={<FormattedMessage id="Banner.image.editButton" defaultMessage="Edit image banner" />}
-                icon={PhotoCameraIcon}
-                onClick={onOpen}
-                classes={{
-                    container: cn(classes.editButton, globalReceivedClasses)
-                }}
-            />
+            {mode === 'edit' && (
+                <BouncingRoundButton
+                    title={<FormattedMessage id="Banner.image.editButton" defaultMessage="Edit image banner" />}
+                    icon={PhotoCameraIcon}
+                    onClick={onOpen}
+                    classes={{
+                        container: cn(classes.editButton, globalReceivedClasses)
+                    }}
+                />
+            )}
         </>
     );
 };
