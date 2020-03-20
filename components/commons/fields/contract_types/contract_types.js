@@ -34,7 +34,7 @@ var ContractType = function ContractType(_ref) {
       id: "Basics.Back.WorkContract.single",
       defaultMessage: 'Looking for a {contractType} contract',
       values: {
-        contractType: formatMessage(_contract_types_translations.default[lastContract])
+        contractType: formatMessage(_contract_types_translations.default[lastContract] || _contract_types_translations.default.unknown)
       }
     });
   }
@@ -45,7 +45,7 @@ var ContractType = function ContractType(_ref) {
     values: {
       lastContract: formatMessage(_contract_types_translations.default[lastContract]),
       contracts: contracts.map(function (key) {
-        return formatMessage(_contract_types_translations.default[key]);
+        return formatMessage(_contract_types_translations.default[key] || _contract_types_translations.default.unknown);
       }).join(', ')
     }
   });

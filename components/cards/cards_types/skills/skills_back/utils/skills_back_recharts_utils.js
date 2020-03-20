@@ -25,6 +25,8 @@ var _styles_utils = require("../../../../../../utils/styles/styles_utils");
 
 var _use_card_variant = require("../../../../../commons/profile_card/profile_card_hooks/use_card_variant");
 
+var _icons = require("../../../../../../utils/icons");
+
 var useStyles = (0, _reactJss.createUseStyles)(_skills_back_recharts_styles.styles);
 
 var CustomLabel = function CustomLabel(props) {
@@ -59,10 +61,10 @@ var CustomLabel = function CustomLabel(props) {
     var luminance = (0, _chromaJs.default)(hex).luminance();
 
     if (luminance < 0.98) {
-      return "https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/".concat(techno === null || techno === void 0 ? void 0 : techno.handle);
+      return "https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/".concat((techno === null || techno === void 0 ? void 0 : techno.handle) || _icons.DEFAULT_TECHNO_HANDLE);
     }
 
-    return "https://process.filestackapi.com/output=format:png/".concat(techno === null || techno === void 0 ? void 0 : techno.handle);
+    return "https://process.filestackapi.com/output=format:png/".concat((techno === null || techno === void 0 ? void 0 : techno.handle) || _icons.DEFAULT_TECHNO_HANDLE);
   }, [techno, theme, backgroundColor]);
 
   var _useMemo = (0, _react.useMemo)(function () {

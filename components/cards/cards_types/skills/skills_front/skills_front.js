@@ -47,6 +47,8 @@ var _exists_and_not_empty = require("../../../utils/exists_and_not_empty");
 
 var _no_data_button = require("../../../../commons/no_data_button/no_data_button");
 
+var _icons = require("../../../../../utils/icons");
+
 var useStyles = (0, _reactJss.createUseStyles)(_skills_front_styles.styles);
 
 var SkillsFrontComponent = function SkillsFrontComponent(_ref) {
@@ -72,10 +74,14 @@ var SkillsFrontComponent = function SkillsFrontComponent(_ref) {
     var firstTechno = data === null || data === void 0 ? void 0 : (_data$skills = data.skills) === null || _data$skills === void 0 ? void 0 : _data$skills[0];
 
     if (!technologies || !firstTechno) {
-      return null;
+      return {
+        name: firstTechno === null || firstTechno === void 0 ? void 0 : firstTechno.name
+      };
     }
 
-    return technologies[firstTechno === null || firstTechno === void 0 ? void 0 : firstTechno.name];
+    return technologies[firstTechno === null || firstTechno === void 0 ? void 0 : firstTechno.name] || {
+      name: firstTechno === null || firstTechno === void 0 ? void 0 : firstTechno.name
+    };
   }, [technologies, data]);
   var hasSkill = (0, _react.useMemo)(function () {
     return (0, _exists_and_not_empty.existsAndNotEmpty)(data === null || data === void 0 ? void 0 : data.skills);
@@ -159,10 +165,10 @@ var Picture = function Picture(_ref3) {
     var luminance = (0, _chromaJs.default)(hex).luminance();
 
     if (luminance < 0.98) {
-      return "https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/".concat(techno === null || techno === void 0 ? void 0 : techno.handle);
+      return "https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/".concat((techno === null || techno === void 0 ? void 0 : techno.handle) || _icons.DEFAULT_TECHNO_HANDLE);
     }
 
-    return "https://process.filestackapi.com/output=format:png/".concat(techno === null || techno === void 0 ? void 0 : techno.handle);
+    return "https://process.filestackapi.com/output=format:png/".concat((techno === null || techno === void 0 ? void 0 : techno.handle) || _icons.DEFAULT_TECHNO_HANDLE);
   }, [techno, theme, backgroundColor]);
 
   if (!src || !techno) {

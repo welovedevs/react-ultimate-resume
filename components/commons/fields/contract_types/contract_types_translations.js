@@ -12,7 +12,7 @@ var _default = (0, _reactIntl.defineMessages)({
     "id": "Developer.contractType.permanent",
     "defaultMessage": "Permanent"
   },
-  fixedterm: {
+  fixedTerm: {
     "id": "Developer.contractType.fixedTerm",
     "defaultMessage": "Fixed Term"
   },
