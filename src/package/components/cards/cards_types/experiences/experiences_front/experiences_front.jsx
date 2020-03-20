@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
+import moment from 'moment';
 
 import { Typography } from '@wld/ui';
 import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
@@ -35,16 +36,54 @@ const ExperiencesFrontComponent = ({ data, handleAddButtonClick }) => {
 
     const title = useMemo(() => {
         const builder = [];
-        if (data.work?.[0]?.position) {
-            builder.push(data.work?.[0].position);
+        const firstExperience = data.work?.[0];
+        if (firstExperience?.position) {
+            builder.push(firstExperience.position);
         }
-        console.log({ data });
-        if (data.work?.[0]?.name) {
-            builder.push(`@${data.work[0].name}`);
-        } else if (data?.work?.[0]) {
-            builder.push('coucou');
+        if (builder.length) {
+            builder.push(<br />);
         }
-        return builder.join(' ');
+        if (firstExperience?.name) {
+            builder.push(`@${firstExperience.name}`);
+        } else if (firstExperience?.location) {
+            builder.push(`@${firstExperience.location}`);
+        } else if (firstExperience?.stillEmployed) {
+            if (moment.isMoment(firstExperience?.startDate)) {
+                builder.push(
+                    <FormattedMessage
+                        id="Experience.front.title.since"
+                        defaultMessage="Since {year}"
+                        values={{
+                            year: firstExperience.startDate.year()
+                        }}
+                    />
+                );
+            } else {
+                builder.push(
+                    <FormattedMessage
+                        id="Experience.front.title.stillEmployed"
+                        defaultMessage="Still employed"
+                    />
+                );
+            }
+        } else if (!['endDate', 'startDate'].some(key => !moment.isMoment(firstExperience?.[key]))) {
+            const { startDate } = firstExperience;
+            const { endDate } = firstExperience;
+            const startYear = startDate.year();
+            const endYear = endDate.year();
+            const isSameYear = startYear === endYear;
+            builder.push(
+                <FormattedMessage
+                    id="Experience.front.title.fromTo"
+                    defaultMessage="From {start} to {end}"
+                    values={{
+                        start: isSameYear ? startDate.format('MMMM') : startYear,
+                        end: isSameYear ? `${endDate.format('MMMM')} ${endYear}` : endYear
+                    }}
+                />
+            );
+        }
+        return builder;
     }, [data.work]);
 
     return (
