@@ -41,7 +41,7 @@ function App() {
     const onCustomizationChanged = useCallback(setCustomization, [data]);
     return (
         <DeveloperProfile
-            mode="readOnly"
+            mode="edit"
             data={data}
             onEdit={onEdit}
             isEditing={isEditing}
