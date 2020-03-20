@@ -38,8 +38,11 @@ const ExperiencesFrontComponent = ({ data, handleAddButtonClick }) => {
         if (data.work?.[0]?.position) {
             builder.push(data.work?.[0].position);
         }
+        console.log({ data });
         if (data.work?.[0]?.name) {
             builder.push(`@${data.work[0].name}`);
+        } else if (data?.work?.[0]) {
+            builder.push('coucou');
         }
         return builder.join(' ');
     }, [data.work]);
