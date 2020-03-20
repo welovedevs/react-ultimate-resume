@@ -44,44 +44,46 @@ function App() {
 
     return (
         <>
-        <Button onClick={() => setReturnNull(!returnNull)}>
-           {'Click'}
-        </Button>
-        <DeveloperProfile
-            mode="edit"
-            data={data}
-            onEdit={onEdit}
-            isEditing={isEditing}
-            setIsEditing={setIsEditing}
-            onCustomizationChanged={onCustomizationChanged}
-            options={{
-                // side: 'back',
-                apiKeys: {
-                    giphy: process.env.REACT_APP_GIPHY_API_KEY
-                },
-                endpoints: {
-                    devicons:
-                        'https://firebasestorage.googleapis.com/v0/b/jechercheundev.appspot.com/o/technologies%2Ftechnologies_list.json?alt=media&token=459028ba-d9bc-4480-a3c4-88633afab7e2',
-                    unsplashProxy: 'https://us-central1-test-project-412e3.cloudfunctions.net/unsplash-unsplashProxy'
-                },
-                customization
-            }}
-            additionalNodes={{
-                banner: {
-                    actionsButtons: (
-                        <>
-                            <Button
-                                style={{ color: '#fff' }}
-                                variant="outlined"
-                                onClick={() => setIsEditing(!isEditing)}
-                            >
-                                <FormattedMessage id="Edit" defaultMessage="Edit" />
-                            </Button>
-                        </>
-                    )
-                }
-            }}
-        />
+            <Button onClick={() => setReturnNull(!returnNull)}>
+               {'Click'}
+            </Button>
+            {!returnNull && (
+                <DeveloperProfile
+                    mode="edit"
+                    data={data}
+                    onEdit={onEdit}
+                    isEditing={isEditing}
+                    setIsEditing={setIsEditing}
+                    onCustomizationChanged={onCustomizationChanged}
+                    options={{
+                        side: 'back',
+                        apiKeys: {
+                            giphy: process.env.REACT_APP_GIPHY_API_KEY
+                        },
+                        endpoints: {
+                            devicons:
+                                'https://firebasestorage.googleapis.com/v0/b/jechercheundev.appspot.com/o/technologies%2Ftechnologies_list.json?alt=media&token=459028ba-d9bc-4480-a3c4-88633afab7e2',
+                            unsplashProxy: 'https://us-central1-test-project-412e3.cloudfunctions.net/unsplash-unsplashProxy'
+                        },
+                        customization
+                    }}
+                    additionalNodes={{
+                        banner: {
+                            actionsButtons: (
+                                <>
+                                    <Button
+                                        style={{ color: '#fff' }}
+                                        variant="outlined"
+                                        onClick={() => setIsEditing(!isEditing)}
+                                    >
+                                        <FormattedMessage id="Edit" defaultMessage="Edit" />
+                                    </Button>
+                                </>
+                            )
+                        }
+                    }}
+                />
+            )}
         </>
     );
 }
