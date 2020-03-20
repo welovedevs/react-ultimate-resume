@@ -12,7 +12,7 @@
   "Basics.Back.ExperienceYear.value": "{experienceYears, plural, one {# année} other {# années}} d'expérience",
   "Basics.Back.StudiesLevel.Title": "Années d'Études",
   "Basics.Back.StudiesLevel.noHigherEducation": "Je n'ai fait d'études supérieures",
-  "Basics.Back.StudiesLevel.value": "{studiesLevel, plural, one {# year} other {# years}} of higher education",
+  "Basics.Back.StudiesLevel.value": "{studiesLevel, plural, one {# année} other {# années}} d'études supérieures",
   "Basics.Back.Title": "Qui suis-je ?",
   "Basics.Back.VisaSponsorship": "J'ai besoin d'un visa de travail",
   "Basics.Back.Work.Title": "Expérience Pro",
