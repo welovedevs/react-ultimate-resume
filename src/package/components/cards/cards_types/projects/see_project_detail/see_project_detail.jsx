@@ -9,6 +9,7 @@ import { ProjectDialog } from '../project_dialog/project_dialog';
 import { AnimatedUnderlinedButton } from '../../../../commons/animated_underlined_button/animated_underlined_button';
 
 import { ReactComponent as EyeIcon } from '../../../../../assets/icons/eye.svg';
+import { ReactComponent as EditIcon } from '../../../../../assets/icons/edit.svg';
 
 import { useCallbackOpen } from '../../../../hooks/use_callback_open';
 
@@ -32,9 +33,11 @@ const SeeProjectDetailComponent = ({ color, project }) => {
                 handleProfileCardHasDialogOpened
             />
             <AnimatedUnderlinedButton color={color} onClick={setDialogOpened}>
-                <EyeIcon className={classes.icon} />
+                {!isEditing && <EyeIcon className={classes.icon} />}
+                {isEditing && <EditIcon className={classes.fillIcon} />}
                 <Typography customClasses={{ container: classes.detailTypography }} color="primary">
-                    <FormattedMessage id="Projects.details.seemore" defaultMessage="See more" />
+                    {!isEditing && <FormattedMessage id="Projects.details.seemore" defaultMessage="See more" />}
+                    {isEditing && <FormattedMessage id="Main.lang.edit" defaultMessage="Edit" />}
                 </Typography>
             </AnimatedUnderlinedButton>
         </>

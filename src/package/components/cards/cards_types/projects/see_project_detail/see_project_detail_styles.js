@@ -3,6 +3,13 @@ export const styles = theme => {
         miscellaneous: { spacing }
     } = theme;
     return {
+        fillIcon: {
+            extend: 'icon',
+            '& > g': {
+                fill: 'currentColor',
+                transform: 'scale(1.33334)'
+            }
+        },
         icon: {
             height: 20,
             width: 'auto',

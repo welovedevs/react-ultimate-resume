@@ -19,7 +19,7 @@ const UploadFileDialogComponent = ({ open, onClose, onFileUploaded }) => {
                 onFileUploaded(url);
                 return url;
             }),
-        [onFileUploaded]
+        [onFileUploaded, onFilesUpload]
     );
     return (
         <Dialog open={open} onClose={onClose}>
