@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { TECHNOLOGIES_RECEIVED } from '../../../store/technologies/technologies_actions_types';
+import { TECHNOLOGIES_RECEIVED, TECHNOLOGIES_STARTED } from '../../../store/technologies/technologies_actions_types';
 import { DeveloperProfileContext } from '../../../utils/context/contexts';
 
 const DEFAULT_OBJECT = {};
@@ -17,6 +17,7 @@ export const useTechnologies = () => {
             return;
         }
         if (technologies === null && endpoints.devicons) {
+            dispatch({ type: TECHNOLOGIES_STARTED });
             // eslint-disable-next-line no-undef
             fetch(endpoints.devicons)
                 .then(res => {

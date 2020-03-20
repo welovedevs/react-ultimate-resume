@@ -1,4 +1,4 @@
-import { TECHNOLOGIES_RECEIVED } from './technologies_actions_types';
+import { TECHNOLOGIES_RECEIVED, TECHNOLOGIES_STARTED } from './technologies_actions_types';
 
 export const technologiesInitialState = Object.freeze({
     technologies: null
@@ -10,6 +10,11 @@ export const technologiesReducer = (state, action) => {
             return {
                 ...state,
                 technologies: action.technologies
+            };
+        case TECHNOLOGIES_STARTED:
+            return {
+                ...state,
+                technologies: undefined
             };
 
         default:
