@@ -75,13 +75,11 @@ var ExperienceContent = function ExperienceContent(_ref) {
     return "".concat(startDate, " - ").concat(endDate);
   }, [experience]);
   var title = (0, _react.useMemo)(function () {
-    console.log({
-      name: name,
-      place: place,
-      dateString: dateString
-    }); // if (typeof buildTitle === 'function') {
-    //     return buildTitle({ name, place, dateString });
-    // }
+    if (typeof buildTitle === 'function') {
+      return buildTitle({
+        experience: experience
+      });
+    }
 
     var builder = [];
 
@@ -103,7 +101,7 @@ var ExperienceContent = function ExperienceContent(_ref) {
 
     builder.push(dateString);
     return builder;
-  }, [buildTitle, name, place, dateString]);
+  }, [buildTitle, experience]);
   return _react.default.createElement(_profile_card_section.ProfileCardSection, {
     key: id,
     cardVariant: variant
