@@ -57,19 +57,19 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
       visaSponsorship = data.visaSponsorship,
       personalDescription = data.personalDescription;
   var descriptionContent = (0, _react.useMemo)(function () {
-    if (personalDescription && mode === 'edit') {
-      return _react.default.createElement("span", null, personalDescription);
+    if (!personalDescription && mode === 'edit') {
+      return _react.default.createElement(_no_data_button.NoDataButton, {
+        handleAddButtonClick: handleAddButtonClick,
+        classes: {
+          container: classes.addButton
+        }
+      }, _react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Basics.noDescription.buttonLabel",
+        defaultMessage: "Ajouter une description"
+      }));
     }
 
-    return _react.default.createElement(_no_data_button.NoDataButton, {
-      handleAddButtonClick: handleAddButtonClick,
-      classes: {
-        container: classes.addButton
-      }
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Basics.noDescription.buttonLabel",
-      defaultMessage: "Ajouter une description"
-    }));
+    return _react.default.createElement("span", null, personalDescription);
   }, [personalDescription, mode, handleAddButtonClick, classes]);
   var sections = (0, _react.useMemo)(function () {
     return {

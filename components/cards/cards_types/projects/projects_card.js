@@ -79,7 +79,7 @@ var ProjectsCardComponent = function ProjectsCardComponent(_ref) {
     },
     editDialog: {
       component: _project_dialog.ProjectDialog,
-      data: mappedData === null || mappedData === void 0 ? void 0 : mappedData.projects
+      data: {}
     }
   });
 };

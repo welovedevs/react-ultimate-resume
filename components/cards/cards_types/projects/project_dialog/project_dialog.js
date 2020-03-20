@@ -36,6 +36,7 @@ var _project_dialog_content_link = require("./project_dialog_content_link/projec
 var _contexts = require("../../../../../utils/context/contexts");
 
 var useStyles = (0, _reactJss.createUseStyles)(_project_dialog_styles.styles);
+var DEFAULT_OBJECT = {};
 
 var ProjectDialogComponent = function ProjectDialogComponent(_ref) {
   var open = _ref.open,
@@ -49,13 +50,13 @@ var ProjectDialogComponent = function ProjectDialogComponent(_ref) {
 
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       onEdit = _useContext.onEdit,
-      data = _useContext.data;
+      resume = _useContext.data;
 
   var onDialogEdited = (0, _react.useCallback)(function (editedData) {
-    var updateProjectsArray1 = (0, _mapping.updateProjectsArray)((0, _mapping.mapProjectToJsonResume)(editedData), data);
+    var updateProjectsArray1 = (0, _mapping.updateProjectsArray)((0, _mapping.mapProjectToJsonResume)(editedData), resume);
     onEdit(updateProjectsArray1);
     onClose();
-  }, [onEdit, data]);
+  }, [onEdit, resume]);
   var validator = (0, _react.useMemo)(function () {
     return (0, _validator.ProjectValidator)(formatMessage);
   }, []);
@@ -66,7 +67,7 @@ var ProjectDialogComponent = function ProjectDialogComponent(_ref) {
     },
     open: open,
     onClose: onClose,
-    data: project || {},
+    data: project || DEFAULT_OBJECT,
     onEdit: onDialogEdited,
     validationSchema: validator,
     isEditing: isEditing,

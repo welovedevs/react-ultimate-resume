@@ -51,9 +51,6 @@ var ExperienceContent = function ExperienceContent(_ref) {
       _useAdditionalNodes2 = (0, _slicedToArray2.default)(_useAdditionalNodes, 1),
       buildTitle = _useAdditionalNodes2[0];
 
-  console.log({
-    buildTitle: buildTitle
-  });
   var id = experience.id,
       name = experience.name,
       summary = experience.summary,
