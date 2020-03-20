@@ -48,9 +48,6 @@ exports.mapProjectToJsonResume = mapProjectToJsonResume;
 var updateProjectsArray = function updateProjectsArray(newProject, jsonResume) {
   var _jsonResume$projects2;
 
-  // eslint-disable-next-line no-debugger
-  debugger;
-
   if (!((_jsonResume$projects2 = jsonResume.projects) === null || _jsonResume$projects2 === void 0 ? void 0 : _jsonResume$projects2.length)) {
     return {
       projects: [newProject]

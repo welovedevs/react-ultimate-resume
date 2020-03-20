@@ -140,16 +140,17 @@ var FileDropZoneComponent = function FileDropZoneComponent(_ref) {
             case 6:
               url = _context.sent;
               setFileUrl(url);
-              _context.next = 14;
+              _context.next = 15;
               break;
 
             case 10:
               _context.prev = 10;
               _context.t0 = _context["catch"](3);
+              console.warn('Failed to drop file', _context.t0);
               setFileUrl(false);
               setError(_context.t0);
 
-            case 14:
+            case 15:
             case "end":
               return _context.stop();
           }
