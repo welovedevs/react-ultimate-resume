@@ -13,6 +13,7 @@ export const mapProjectsFromJsonResume = jsonResume => ({
 
 export const mapProjectToJsonResume = project => ({
     ...project,
+    id: project.id || uuid(),
     endDate: project.date && project.date.format('YYYY-MM-DD')
 });
 

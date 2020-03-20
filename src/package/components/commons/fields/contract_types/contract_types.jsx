@@ -17,7 +17,7 @@ export const ContractType = ({ contractTypes = [] }) => {
             <FormattedMessage
                 id="Basics.Back.WorkContract.single"
                 defaultMessage={'Looking for a {contractType} contract'}
-                values={{ contractType: formatMessage(translations[lastContract]) }}
+                values={{ contractType: formatMessage(translations[lastContract] || translations.unknown) }}
             />
         );
     }
@@ -27,7 +27,7 @@ export const ContractType = ({ contractTypes = [] }) => {
             defaultMessage={'Looking for a {contracts} or {lastContract} contract'}
             values={{
                 lastContract: formatMessage(translations[lastContract]),
-                contracts: contracts.map(key => formatMessage(translations[key])).join(', ')
+                contracts: contracts.map(key => formatMessage(translations[key] || translations.unknown)).join(', ')
             }}
         />
     );

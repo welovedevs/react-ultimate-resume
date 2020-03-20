@@ -5,7 +5,7 @@ export default defineMessages({
         id: 'Developer.contractType.permanent',
         defaultMessage: 'Permanent'
     },
-    fixedterm: {
+    fixedTerm: {
         id: 'Developer.contractType.fixedTerm',
         defaultMessage: 'Fixed Term'
     },
