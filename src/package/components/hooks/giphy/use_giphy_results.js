@@ -1,14 +1,14 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
 
-import { DeveloperProfileContext } from '../../../utils/context/contexts';
+import { StaticDataContext } from '../../../utils/context/contexts';
 
 const GIPHY_API_ENDPOINT = 'https://api.giphy.com/v1/gifs/search?';
 
 export const useGiphyResults = (input, page = 0, limit = 20, timeout = 800) => {
     const debounceSearch = useRef();
     const { locale } = useIntl();
-    const { apiKeys } = useContext(DeveloperProfileContext);
+    const { apiKeys } = useContext(StaticDataContext);
     const [lastLoaded, setLastLoaded] = useState(false);
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
