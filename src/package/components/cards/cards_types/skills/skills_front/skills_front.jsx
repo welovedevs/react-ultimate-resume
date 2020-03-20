@@ -20,6 +20,7 @@ import { useCardVariant } from '../../../../commons/profile_card/profile_card_ho
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
+import { DEFAULT_TECHNO_HANDLE } from '../../../../../utils/icons';
 
 const useStyles = createUseStyles(styles);
 
@@ -38,9 +39,9 @@ const SkillsFrontComponent = ({ data, handleAddButtonClick }) => {
         const firstTechno = data?.skills?.[0];
 
         if (!technologies || !firstTechno) {
-            return null;
+            return { name: firstTechno?.name };
         }
-        return technologies[firstTechno?.name];
+        return technologies[firstTechno?.name] || { name: firstTechno?.name };
     }, [technologies, data]);
 
     const hasSkill = useMemo(() => existsAndNotEmpty(data?.skills), [data]);
@@ -106,9 +107,10 @@ const Picture = ({ techno, classes }) => {
         const hex = getHexFromPaletteColor(theme, backgroundColor);
         const luminance = chroma(hex).luminance();
         if (luminance < 0.98) {
-            return `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle}`;
+            return `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle ||
+                DEFAULT_TECHNO_HANDLE}`;
         }
-        return `https://process.filestackapi.com/output=format:png/${techno?.handle}`;
+        return `https://process.filestackapi.com/output=format:png/${techno?.handle || DEFAULT_TECHNO_HANDLE}`;
     }, [techno, theme, backgroundColor]);
     if (!src || !techno) {
         return null;

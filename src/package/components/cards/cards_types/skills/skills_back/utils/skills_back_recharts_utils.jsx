@@ -6,6 +6,7 @@ import { styles } from './skills_back_recharts_styles';
 import { useTechnologies } from '../../../../../hooks/technologies/use_technologies';
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../../utils/styles/styles_utils';
 import { useCardVariant } from '../../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { DEFAULT_TECHNO_HANDLE } from '../../../../../../utils/icons';
 
 const useStyles = createUseStyles(styles);
 
@@ -28,9 +29,10 @@ const CustomLabel = props => {
         const hex = getHexFromPaletteColor(theme, backgroundColor);
         const luminance = chroma(hex).luminance();
         if (luminance < 0.98) {
-            return `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle}`;
+            return `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle ||
+                DEFAULT_TECHNO_HANDLE}`;
         }
-        return `https://process.filestackapi.com/output=format:png/${techno?.handle}`;
+        return `https://process.filestackapi.com/output=format:png/${techno?.handle || DEFAULT_TECHNO_HANDLE}`;
     }, [techno, theme, backgroundColor]);
 
     const { cos, startX, startY, inflexionX, inflexionY, endX, endY, textAnchor, logoXOffset } = useMemo(() => {
