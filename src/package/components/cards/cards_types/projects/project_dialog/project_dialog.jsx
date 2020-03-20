@@ -20,7 +20,6 @@ import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
 const useStyles = createUseStyles(styles);
 
 const DEFAULT_OBJECT = {};
-// eslint-disable-next-line no-unused-vars
 const ProjectDialogComponent = ({ open, onClose, data: project, isEditing }) => {
     const classes = useStyles();
 
@@ -71,4 +70,4 @@ const ProjectDialogContent = ({ isEditing }) => {
     );
 };
 
-export const ProjectDialog = () => null;
+export const ProjectDialog = ProjectDialogComponent;
