@@ -29,8 +29,8 @@ var UploadFileDialogComponent = function UploadFileDialogComponent(_ref) {
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       onFilesUpload = _useContext.onFilesUpload;
 
-  var onDrop = (0, _react.useCallback)(function () {
-    return onFilesUpload().then(function (url) {
+  var onDrop = (0, _react.useCallback)(function (files) {
+    return onFilesUpload(files).then(function (url) {
       onFileUploaded(url);
       return url;
     });
