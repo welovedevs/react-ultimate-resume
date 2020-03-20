@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useMemo } from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
@@ -17,13 +17,17 @@ const useStyles = createUseStyles(styles);
 const ShareLinksComponent = ({ useSmallLayout }) => {
     const classes = useStyles();
     const { formatMessage } = useIntl();
+    const [link, setLink] = useState();
 
     const [backgroundLineSpringProps, setBackgroundLineSpringProps] = useSpring(() => ({
         ...BACKGROUND_LINE_SPRING_PROPS.default,
         config: config.slow
     }));
 
-    const link = useMemo(() => (typeof window === 'undefined' ? {} : window).location?.href, []);
+    useEffect(() => {
+        setLink((typeof window === 'undefined' ? {} : window).location?.href);
+    }, []);
+
     const translatedMessage = useMemo(() => formatMessage(translations.linkMessage, { link }), [link]);
 
     useEffect(() => {
