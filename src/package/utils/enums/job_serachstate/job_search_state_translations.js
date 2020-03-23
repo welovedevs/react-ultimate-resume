@@ -7,11 +7,15 @@ export const translations = defineMessages({
     },
     openOpportunities: {
         id: 'Developer.developerJobSearchState.openOpportunities',
-        defaultMessage: "I'm open to job opportunitues"
+        defaultMessage: "I'm open to job opportunities"
     },
     dreamjobOnly: {
         id: 'Developer.developerJobSearchState.dreamjobOnly',
         defaultMessage: "I'm only searching for my dream job"
+    },
+    notSearching: {
+        id: 'Developer.developerJobSearchState.notSearching',
+        defaultMessage: "I'm not open to opportunities "
     },
     unknown: {
         id: 'Developer.developerJobSearchState.unknown',

@@ -60,7 +60,6 @@ const DeveloperProfileComponent = ({
     onCustomizationChanged,
     isEditing = false,
     onFilesUpload = DEFAULT_UPLOAD_FUNCTION,
-    BeforeCards,
     additionalNodes,
     classes: receivedGlobalClasses = {}
 }) => {
@@ -110,7 +109,7 @@ const DeveloperProfileComponent = ({
                             customizationOptions={options.customization}
                             onCustomizationChanged={onCustomizationChanged}
                         />
-                        {BeforeCards}
+                        {additionalNodes.beforeCards}
                         <Cards cardsOrder={options.customization?.cardsOrder} side={side} />
                         {!options.dismissFooter && <Footer />}
                     </DeveloperProfileContext.Provider>
@@ -127,7 +126,6 @@ const WithProvidersDeveloperProfile = ({
     options = {},
     mode = 'readOnly',
     additionalNodes,
-    BeforeCards,
     classes,
     isEditing,
     onFilesUpload,
@@ -157,7 +155,6 @@ const WithProvidersDeveloperProfile = ({
                     onCustomizationChanged={onCustomizationChanged}
                     options={mergedOptions}
                     additionalNodes={additionalNodes}
-                    BeforeCards={BeforeCards}
                     onFilesUpload={onFilesUpload}
                     classes={classes}
                 />
