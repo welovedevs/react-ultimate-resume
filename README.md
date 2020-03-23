@@ -19,6 +19,19 @@ This app is built using the popular [create-react-app](https://github.com/facebo
 
 [![Resume Preview](https://cdn.filestackcontent.com/compress/resize=width:500/rfXY8TNARdao9DdQSaJe)](https://vincent-cotro.welovedevs.com)
 
+### Features
+
+- 📝 Edit dialogs to edit your JSON Resume directly in the app
+- 💼 Explain easily to recruiters what is your dream job
+- ✨ Highlight your best projects
+- 📊 Nice Graphs to show your skills
+- 🎨 Fully customizable with an included set of nice color palettes 
+- 📺 Show your hobbies with GIF !
+- 🎶 Add your favorite Spotify Playlist
+
+And more to discover !
+
+
 ### Getting started
 
 Clone the repository
@@ -44,7 +57,12 @@ Replace the default JSON Resume with yours
 /src/data/json_stub.json
 ```
 
-### Features
+### Activate Edit Mode
+
+
+
+### Customize your Profile
+
 
 
 ### JSON-Resume Extra Fields
@@ -63,9 +81,6 @@ Replace the default JSON Resume with yours
 | work         | experienceYears     | Number                                  | How many years of professional experience do you have?                                                                   |
 | sound        | embedUrl            | String                                  | Your favorite Spotify playlist. Example: https://open.spotify.com/embed/playlist/37i9dQZF1DWWl7MndYYxge                  |
 | interestedBy |                     | String                                  | What languages do you want to learn? Example: Angular and Vue.js                                                         |
-
-
-### Edit your JSON Resume directly in the app
 
 
 
