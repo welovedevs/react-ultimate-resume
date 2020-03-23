@@ -59,10 +59,14 @@ Replace the default JSON Resume with yours
 
 ### Activate Edit Mode
 
+To activate your profile ...
+
+#### Edit Dialog
 
 
-### Customize your Profile
+#### Customize your Profile
 
+![Customize your profile](https://cdn.filestackcontent.com/compress/resize=width:500/g9u9D3QbTaqJsnJcyLYk)
 
 
 ### JSON-Resume Extra Fields
