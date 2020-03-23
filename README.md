@@ -43,7 +43,11 @@ Replace the default JSON Resume with yours
 ```
 
 ### JSON-Resume Extra Fields
-
+| Category | Field name          | Type    | Usage                                                                            |
+|----------|---------------------|---------|----------------------------------------------------------------------------------|
+| basics   | visaSponsorship     | Boolean | True if you need a visa sponsorship to work in your dream country.               |
+| basics   | personalDescription | String  | A short description that will be displayed below your name in the resume header. |
+|          |                     |         |                                                                                  |
 
 
 ### Self-hosting
@@ -54,7 +58,7 @@ Instructions...
 
  Instructions
 
-###i18n 
+### i18n 
 
 The resume is currently available in English and in French. Feel free to contribute with your language translation file !   
 
