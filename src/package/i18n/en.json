@@ -234,7 +234,7 @@
   "Studies.front.noEducation": "You do not have any study yet !",
   "Studies.noEducation.buttonLabel": "Add a study",
   "Studies.noEducation.title": "Add here studies you have done !",
-  "Studies.title": "Je suis diplômé de {schoolName}",
+  "Studies.title": "I graduated from {schoolName}",
   "Unsplash.SearchDialog.Title": "Search pictures from unsplash",
   "Unsplash.brandName": "Unsplash",
   "Unsplash.credit": "Photo by {name} on {unsplashLink}",
