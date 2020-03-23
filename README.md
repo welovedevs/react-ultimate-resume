@@ -9,13 +9,42 @@
 
 Discover a modern approach of the traditionnal CV that includes animations and latest front-end technologies. Impress recruiters or customers with your projects, hobbies and experiences as never before. 
 
-We used JSON Resume 
+We used [JSON Resume](https://github.com/jsonresume), a community driven open source initiative to create a JSON based standard for resumes. 
+Discover the official schema [here](https://jsonresume.org/schema/).  
+We added a few extra-fields to JSON Resume standard to fit developers needs. Learn more about them [here](#json-resume-extra-fields).
 
 ### Preview 
 
-[![Resume Preview](https://cdn.filestackcontent.com/compress/resize=width:600/rfXY8TNARdao9DdQSaJe)](https://vincent-cotro.welovedevs.com)
+[![Resume Preview](https://cdn.filestackcontent.com/compress/resize=width:500/rfXY8TNARdao9DdQSaJe)](https://vincent-cotro.welovedevs.com)
 
-### JSON-Resume specific
+### Getting started
+
+Clone the repository
+
+```
+git clone https://github.com/welovedevs/developer-profile.git
+```
+
+Install 
+
+```
+yarn install
+```
+
+Run 
+
+```
+yarn start
+```
+
+Replace the default JSON Resume with yours
+```
+/src/data/json_stub.json
+```
+
+###JSON-Resume Extra Fields
+
+
 
 ### Self-hosting
 
@@ -25,6 +54,9 @@ Instructions...
 
  Instructions
 
+###i18n 
+
+The resume is currently available in English and in French. Feel free to contribute with your language translation file !   
 
 ### Contributors
 This project exists thanks to all the people who contribute.
@@ -36,14 +68,15 @@ This project exists thanks to all the people who contribute.
 <td align="center"><a href="https://github.com/catrx"><img src="https://avatars.githubusercontent.com/u/6273310?v=3" width="100px;" alt=""/><br /><sub><b>Antonin Catrix</b></sub></a><br /></td>
   </tr>
  </table>
+ 
+ ### License
+ 
+Developer Profile is relased under [GNU AGPL v3 license](https://github.com/welovedevs/developer-profile/blob/master/LICENSE.md)
+ 
 
-### About WeLoveDevs.com
-WeLoveDevs.com is a website crafted by developers, for developers, looking for new career opportunities.
+
+## About WeLoveDevs.com
+WeLoveDevs.com is a website crafted for developers (by Developers) looking for new career opportunities.
 More than 1700 companies use WeLoveDevs.com to find their talents. 
 Discover your next company [here](https://welovedevs.com/app/companies)
-
-
-### License
-
-Developer Profile is relased under [GNU AGPL v3 license](https://github.com/welovedevs/developer-profile/blob/master/LICENSE.md)
 
