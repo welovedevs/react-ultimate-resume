@@ -13,7 +13,7 @@ export const StudiesLevel = ({ studiesLevel }) => {
         return (
             <FormattedMessage
                 id="Basics.Back.StudiesLevel.noHigherEducation"
-                defaultMessage="I have not taken higher education courses"
+                defaultMessage="Did not pursue higher education"
                 values={{ studiesLevel: studiesLevelValue }}
             />
         );
@@ -21,7 +21,7 @@ export const StudiesLevel = ({ studiesLevel }) => {
     return (
         <FormattedMessage
             id="Basics.Back.StudiesLevel.value"
-            defaultMessage={'{studiesLevel, plural, one {# year} other {# years}} of higher education'}
+            defaultMessage={'{studiesLevel, plural, one {# year} other {# years}} higher education'}
             values={{ studiesLevel: studiesLevelValue }}
         />
     );
