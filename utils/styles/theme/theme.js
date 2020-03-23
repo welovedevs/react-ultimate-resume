@@ -29,7 +29,7 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-var DEFAULT_PALETTE = Object.freeze(_palettes.default);
+var DEFAULT_PALETTE = Object.freeze((0, _cloneDeep.default)(_palettes.default));
 var DEFAULT_THEME = Object.freeze({
   palette: DEFAULT_PALETTE,
   miscellaneous: {
