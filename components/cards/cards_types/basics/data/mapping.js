@@ -20,7 +20,7 @@ var mapJsonResumeToBasicData = function mapJsonResumeToBasicData(jsonResume) {
   var countryCode = (_jsonResume$basics2 = jsonResume.basics) === null || _jsonResume$basics2 === void 0 ? void 0 : (_jsonResume$basics2$l = _jsonResume$basics2.location) === null || _jsonResume$basics2$l === void 0 ? void 0 : _jsonResume$basics2$l.countryCode;
   return {
     currentCity: (_ref = (city || countryCode) && {
-      name: "".concat(city, " ").concat(countryCode && ",".concat(countryCode))
+      name: "".concat(city).concat(countryCode && ", ".concat(countryCode))
     }) !== null && _ref !== void 0 ? _ref : {},
     summary: jsonResume === null || jsonResume === void 0 ? void 0 : (_jsonResume$basics3 = jsonResume.basics) === null || _jsonResume$basics3 === void 0 ? void 0 : _jsonResume$basics3.summary,
     experienceYears: jsonResume === null || jsonResume === void 0 ? void 0 : (_jsonResume$specific = jsonResume.specific) === null || _jsonResume$specific === void 0 ? void 0 : (_jsonResume$specific$ = _jsonResume$specific.work) === null || _jsonResume$specific$ === void 0 ? void 0 : _jsonResume$specific$.experienceYears,

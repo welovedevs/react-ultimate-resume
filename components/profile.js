@@ -116,7 +116,6 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref2) {
       isEditing = _ref2$isEditing === void 0 ? false : _ref2$isEditing,
       _ref2$onFilesUpload = _ref2.onFilesUpload,
       onFilesUpload = _ref2$onFilesUpload === void 0 ? DEFAULT_UPLOAD_FUNCTION : _ref2$onFilesUpload,
-      BeforeCards = _ref2.BeforeCards,
       additionalNodes = _ref2.additionalNodes,
       _ref2$classes = _ref2.classes,
       receivedGlobalClasses = _ref2$classes === void 0 ? {} : _ref2$classes;
@@ -166,7 +165,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref2) {
   }, _react.default.createElement(_banner.Banner, {
     customizationOptions: options.customization,
     onCustomizationChanged: onCustomizationChanged
-  }), BeforeCards, _react.default.createElement(_cards.Cards, {
+  }), additionalNodes.beforeCards, _react.default.createElement(_cards.Cards, {
     cardsOrder: (_options$customizatio = options.customization) === null || _options$customizatio === void 0 ? void 0 : _options$customizatio.cardsOrder,
     side: side
   }), !options.dismissFooter && _react.default.createElement(_footer.Footer, null)))));
@@ -181,7 +180,6 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
       _ref3$mode = _ref3.mode,
       mode = _ref3$mode === void 0 ? 'readOnly' : _ref3$mode,
       additionalNodes = _ref3.additionalNodes,
-      BeforeCards = _ref3.BeforeCards,
       classes = _ref3.classes,
       isEditing = _ref3.isEditing,
       onFilesUpload = _ref3.onFilesUpload,
@@ -211,7 +209,6 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
     onCustomizationChanged: onCustomizationChanged,
     options: mergedOptions,
     additionalNodes: additionalNodes,
-    BeforeCards: BeforeCards,
     onFilesUpload: onFilesUpload,
     classes: classes
   })));
