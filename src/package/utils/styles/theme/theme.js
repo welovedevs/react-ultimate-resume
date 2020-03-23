@@ -7,7 +7,7 @@ import DESIGN_SYSTEM_DEFAULT_PALETTE from '@wld/ui/styles/palettes';
 import { THEME_SCHEMA } from './theme_schema';
 import { transformTheme } from './theme_transforms';
 
-const DEFAULT_PALETTE = Object.freeze(DESIGN_SYSTEM_DEFAULT_PALETTE);
+const DEFAULT_PALETTE = Object.freeze(cloneDeep(DESIGN_SYSTEM_DEFAULT_PALETTE));
 
 export const DEFAULT_THEME = Object.freeze({
     palette: DEFAULT_PALETTE,
