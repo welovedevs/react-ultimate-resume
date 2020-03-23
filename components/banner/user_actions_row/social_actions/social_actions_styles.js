@@ -28,10 +28,7 @@ var styles = function styles(theme) {
       marginTop: spacing * 2,
       flexWrap: 'unset',
       justifyContent: 'center',
-      marginLeft: 'unset',
-      '& > *': {
-        width: '100%'
-      }
+      marginLeft: 'unset'
     })
   };
 };
