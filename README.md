@@ -42,7 +42,7 @@ Replace the default JSON Resume with yours
 /src/data/json_stub.json
 ```
 
-###JSON-Resume Extra Fields
+### JSON-Resume Extra Fields
 
 
 
