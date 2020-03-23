@@ -5,13 +5,17 @@
 <br />
 
 # Developer-Profile by WeLoveDevs.com
-**Developer-Profile** is an open source customizable software developer resume to highlight your skills and experiences.
+**Developer-Profile** is an open-source customizable software developer resume to highlight your skills and experiences.
 
 Discover a modern approach of the traditionnal CV that includes animations and latest front-end technologies. Impress recruiters or customers with your projects, hobbies and experiences as never before. 
+
+We used JSON Resume 
 
 ### Preview 
 
 [![Resume Preview](https://cdn.filestackcontent.com/compress/resize=width:600/rfXY8TNARdao9DdQSaJe)](https://vincent-cotro.welovedevs.com)
+
+### JSON-Resume specific
 
 ### Self-hosting
 
@@ -20,6 +24,7 @@ Instructions...
 ### Hosted for free on WeLoveDevs.com
 
  Instructions
+
 
 ### Contributors
 This project exists thanks to all the people who contribute.
@@ -33,3 +38,12 @@ This project exists thanks to all the people who contribute.
  </table>
 
 ### About WeLoveDevs.com
+WeLoveDevs.com is a website crafted by developers, for developers, looking for new career opportunities.
+More than 1700 companies use WeLoveDevs.com to find their talents. 
+Discover your next company [here](https://welovedevs.com/app/companies)
+
+
+### License
+
+Developer Profile is relased under [GNU AGPL v3 license](https://github.com/welovedevs/developer-profile/blob/master/LICENSE.md)
+
