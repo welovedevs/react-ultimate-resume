@@ -26,7 +26,7 @@ var styles = function styles(theme) {
     }, QUERY_SMALL, {
       width: '100%',
       marginTop: spacing * 2,
-      flexDirection: 'column',
+      flexWrap: 'unset',
       justifyContent: 'center',
       marginLeft: 'unset',
       '& > *': {

@@ -15,8 +15,8 @@ var BasicsValidationSchema = function BasicsValidationSchema(formatMessage) {
   return Yup.object({
     summary: Yup.string().required(formatMessage(_validation_translations.validationTranslations.required)).min(5, formatMessage(_validation_translations.validationTranslations.min, {
       min: 5
-    })).max(50, formatMessage(_validation_translations.validationTranslations.max, {
-      max: 50
+    })).max(100, formatMessage(_validation_translations.validationTranslations.max, {
+      max: 110
     })),
     currentCity: Yup.object().nullable().required(formatMessage(_validation_translations.validationTranslations.required)).shape({
       name: Yup.string().min(5, formatMessage(_validation_translations.validationTranslations.min, {
