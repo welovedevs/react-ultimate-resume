@@ -58,9 +58,14 @@ Replace the default JSON Resume with yours
 /src/data/json_stub.json
 ```
 
-### Activate Edit Mode
+### Parameters
 
-To activate your profile ...
+**Parameter**|**Type**|**Description**
+:-----:|:-----:|:-----:
+mode|"edit" \| "readOnly"|Use this to activate or disable the Edit mode. In "edit" mode you will be able to update and customize your resume. Use "readOnly" in production. 
+data|JSONResume|This is your stringified JSONResume
+options|Object|See options for more informations
+additionalNodes|Object|Additional nodes is used to add react components directly inside the resume. This is an advanced feature that will be documented later. 
 
 #### Edit Dialog
 
