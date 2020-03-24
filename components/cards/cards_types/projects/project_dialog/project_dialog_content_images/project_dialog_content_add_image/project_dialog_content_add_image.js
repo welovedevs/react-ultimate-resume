@@ -36,8 +36,7 @@ var ProjectDialogContentAddImageComponent = function ProjectDialogContentAddImag
 
   var onFileAdded = (0, _react.useCallback)(function (url) {
     return setFieldValue('images', [].concat((0, _toConsumableArray2.default)(values.images || []), [{
-      url: url,
-      name: ''
+      url: url
     }]));
   }, [JSON.stringify(values.images)]);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_url_upload_file_dialog.UrlUploadFileDialog, {

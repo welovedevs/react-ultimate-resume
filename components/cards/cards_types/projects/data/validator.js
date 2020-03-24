@@ -21,9 +21,6 @@ var ProjectValidator = function ProjectValidator(formatMessage) {
     })),
     date: Yup.object().nullable().required(formatMessage(_validation_translations.validationTranslations.required)),
     images: Yup.array().of(Yup.object().shape({
-      name: Yup.string().required(formatMessage(_validation_translations.validationTranslations.required)).min(5, formatMessage(_validation_translations.validationTranslations.min, {
-        min: 5
-      })),
       url: Yup.string().required(formatMessage(_validation_translations.validationTranslations.required)).url()
     }))
   });
