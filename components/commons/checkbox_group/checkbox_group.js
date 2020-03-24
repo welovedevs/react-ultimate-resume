@@ -64,22 +64,24 @@ var CheckboxGroupComponent = function CheckboxGroupComponent(_ref) {
       }));
     };
   }, [value, onChange]);
-  return _react.default.createElement("div", {
-    className: (0, _classnames.default)(classes.container, receivedClasses.container)
-  }, values.map(function (enumValue, index) {
-    return _react.default.createElement(_checkbox_group.CheckboxField, {
-      classes: {
-        container: (0, _classnames.default)(classes.checkboxField, receivedClasses.checkboxField)
-      },
-      title: _react.default.createElement(_ui.Typography, null, formatMessage(translations[enumValue])),
-      onClick: onFieldClicked(enumValue),
-      checked: value.includes(enumValue),
-      value: enumValue,
-      variant: variant,
-      color: color,
-      key: "".concat(name, "_").concat(index, "_").concat(enumValue)
-    });
-  }));
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: (0, _classnames.default)(classes.container, receivedClasses.container)
+    }, values.map(function (enumValue, index) {
+      return (/*#__PURE__*/_react.default.createElement(_checkbox_group.CheckboxField, {
+          classes: {
+            container: (0, _classnames.default)(classes.checkboxField, receivedClasses.checkboxField)
+          },
+          title: /*#__PURE__*/_react.default.createElement(_ui.Typography, null, formatMessage(translations[enumValue])),
+          onClick: onFieldClicked(enumValue),
+          checked: value.includes(enumValue),
+          value: enumValue,
+          variant: variant,
+          color: color,
+          key: "".concat(name, "_").concat(index, "_").concat(enumValue)
+        })
+      );
+    }))
+  );
 };
 
 var CheckboxGroup = CheckboxGroupComponent;

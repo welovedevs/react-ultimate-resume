@@ -57,23 +57,24 @@ var CardsOrdererComponent = function CardsOrdererComponent(_ref) {
   var handleSortStart = (0, _react.useCallback)(function () {
     return setIsSorting(true);
   }, []);
-  return _react.default.createElement("div", {
-    className: classes.container
-  }, _react.default.createElement(Context.Provider, {
-    value: {
-      isSorting: isSorting
-    }
-  }, _react.default.createElement(SortableCards, {
-    lockToContainerEdges: true,
-    axis: "xy",
-    helperClass: classes.sortableHelper,
-    items: cardsOrder,
-    onItemChanged: onItemChanged,
-    distance: 15,
-    onSortStart: handleSortStart,
-    onSortEnd: onMove,
-    classes: classes
-  })));
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: classes.container
+    }, /*#__PURE__*/_react.default.createElement(Context.Provider, {
+      value: {
+        isSorting: isSorting
+      }
+    }, /*#__PURE__*/_react.default.createElement(SortableCards, {
+      lockToContainerEdges: true,
+      axis: "xy",
+      helperClass: classes.sortableHelper,
+      items: cardsOrder,
+      onItemChanged: onItemChanged,
+      distance: 15,
+      onSortStart: handleSortStart,
+      onSortEnd: onMove,
+      classes: classes
+    })))
+  );
 };
 
 var SortableCards = (0, _reactSortableHoc.SortableContainer)(function (_ref3) {
@@ -81,18 +82,20 @@ var SortableCards = (0, _reactSortableHoc.SortableContainer)(function (_ref3) {
       items = _ref3$items === void 0 ? [] : _ref3$items,
       onItemChanged = _ref3.onItemChanged;
   var classes = useStyles();
-  return _react.default.createElement(_ui.List, {
-    className: classes.cardsContainer
-  }, items.map(function (item, index) {
-    return _react.default.createElement(SortableCard, {
-      onItemChanged: onItemChanged,
-      index: index,
-      cardIndex: index,
-      className: classes.sortableCard,
-      key: "card_orderer_".concat(index, "_").concat(item.type),
-      data: item
-    });
-  }));
+  return (/*#__PURE__*/_react.default.createElement(_ui.List, {
+      className: classes.cardsContainer
+    }, items.map(function (item, index) {
+      return (/*#__PURE__*/_react.default.createElement(SortableCard, {
+          onItemChanged: onItemChanged,
+          index: index,
+          cardIndex: index,
+          className: classes.sortableCard,
+          key: "card_orderer_".concat(index, "_").concat(item.type),
+          data: item
+        })
+      );
+    }))
+  );
 });
 var CardsOrderer = CardsOrdererComponent;
 exports.CardsOrderer = CardsOrderer;

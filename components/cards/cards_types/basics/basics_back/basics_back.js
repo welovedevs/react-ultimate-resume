@@ -35,13 +35,13 @@ var _basics_back_styles = require("./basics_back_styles");
 
 var _no_data_button = require("../../../../commons/no_data_button/no_data_button");
 
-var _contexts = require("../../../../../utils/context/contexts");
-
 var _professional_experience = require("./fields/professional_experience");
 
 var _coding_years = require("./fields/coding_years");
 
 var _studies_level = require("./fields/studies_level");
+
+var _use_mode = require("../../../../hooks/use_mode");
 
 var useStyles = (0, _reactJss.createUseStyles)(_basics_back_styles.styles);
 
@@ -49,8 +49,9 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
   var data = _ref.data,
       handleAddButtonClick = _ref.handleAddButtonClick;
 
-  var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
-      mode = _useContext.mode;
+  var _useMode = (0, _use_mode.useMode)(),
+      _useMode2 = (0, _slicedToArray2.default)(_useMode, 1),
+      mode = _useMode2[0];
 
   var classes = useStyles();
   var currentCityName = data.currentCity.name,
@@ -64,18 +65,20 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
       personalDescription = data.personalDescription;
   var descriptionContent = (0, _react.useMemo)(function () {
     if (!personalDescription && mode === 'edit') {
-      return _react.default.createElement(_no_data_button.NoDataButton, {
-        handleAddButtonClick: handleAddButtonClick,
-        classes: {
-          container: classes.addButton
-        }
-      }, _react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "Basics.noDescription.buttonLabel",
-        defaultMessage: "Ajouter une description"
-      }));
+      return (/*#__PURE__*/_react.default.createElement(_no_data_button.NoDataButton, {
+          handleAddButtonClick: handleAddButtonClick,
+          classes: {
+            container: classes.addButton
+          }
+        }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+          id: "Basics.noDescription.buttonLabel",
+          defaultMessage: "Ajouter une description"
+        }))
+      );
     }
 
-    return _react.default.createElement("span", null, personalDescription);
+    return (/*#__PURE__*/_react.default.createElement("span", null, personalDescription)
+    );
   }, [personalDescription, mode, handleAddButtonClick, classes]);
   var sections = (0, _react.useMemo)(function () {
     return {
@@ -86,70 +89,72 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
       },
       visaSponsorship: {
         hide: !(0, _exists_and_not_empty.existsAndNotEmpty)(visaSponsorship),
-        value: _react.default.createElement("span", {
+        value: /*#__PURE__*/_react.default.createElement("span", {
           className: classes.bold
-        }, _react.default.createElement(_reactIntl.FormattedMessage, {
+        }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
           id: "Basics.Back.VisaSponsorship",
           defaultMessage: "I require a visa sponsorship"
         }))
       },
       work: {
-        title: _react.default.createElement(_reactIntl.FormattedMessage, {
+        title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
           id: "Basics.Back.Work.Title",
           defaultMessage: "Work"
         }),
         hide: !experienceYears && !(0, _exists_and_not_empty.existsAndNotEmpty)(contractTypes) && !(0, _exists_and_not_empty.existsAndNotEmpty)(searchState),
-        value: _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_professional_experience.ExperienceYears, {
+        value: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_professional_experience.ExperienceYears, {
           experienceYears: experienceYears
-        }), _react.default.createElement("br", null), _react.default.createElement(_contract_types.ContractType, {
+        }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_contract_types.ContractType, {
           contractTypes: contractTypes
-        }), _react.default.createElement("br", null), _react.default.createElement(JobSearchState, {
+        }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(JobSearchState, {
           searchState: searchState
         }))
       },
       codingYears: {
-        title: _react.default.createElement(_reactIntl.FormattedMessage, {
+        title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
           id: "Basics.Back.CodingYears.title",
           defaultMessage: "Experience"
         }),
         hide: !personalDescription,
-        value: _react.default.createElement(_coding_years.CodingYears, {
+        value: /*#__PURE__*/_react.default.createElement(_coding_years.CodingYears, {
           codingYears: codingYears
         })
       },
       studies: {
-        title: _react.default.createElement(_reactIntl.FormattedMessage, {
+        title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
           id: "Basics.Back.StudiesLevel.Title",
           defaultMessage: "Training"
         }),
         hide: !studiesLevel,
-        value: _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_studies_level.StudiesLevel, {
+        value: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_studies_level.StudiesLevel, {
           studiesLevel: studiesLevel
-        }), _react.default.createElement("br", null), _react.default.createElement("br", null), codingReason && _react.default.createElement("span", null, codingReason))
+        }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("br", null), codingReason && /*#__PURE__*/_react.default.createElement("span", null, codingReason))
       }
     };
   }, [currentCityName, experienceYears, contractTypes, studiesLevel, codingYears, codingReason, visaSponsorship, personalDescription, descriptionContent, searchState]);
-  return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Basics.Back.Title",
-      defaultMessage: "Who?"
-    })
-  }, Object.entries(sections).filter(function (_ref2) {
-    var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
-        hide = _ref3[1].hide;
+  return (/*#__PURE__*/_react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
+      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Basics.Back.Title",
+        defaultMessage: "Who?"
+      })
+    }, Object.entries(sections).filter(function (_ref2) {
+      var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
+          hide = _ref3[1].hide;
 
-    return !hide;
-  }).map(function (_ref4) {
-    var _ref5 = (0, _slicedToArray2.default)(_ref4, 2),
-        id = _ref5[0],
-        _ref5$ = _ref5[1],
-        title = _ref5$.title,
-        value = _ref5$.value;
+      return !hide;
+    }).map(function (_ref4) {
+      var _ref5 = (0, _slicedToArray2.default)(_ref4, 2),
+          id = _ref5[0],
+          _ref5$ = _ref5[1],
+          title = _ref5$.title,
+          value = _ref5$.value;
 
-    return _react.default.createElement(_profile_card_section.ProfileCardSection, {
-      key: id
-    }, title && _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, title), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, value));
-  }));
+      return (/*#__PURE__*/_react.default.createElement(_profile_card_section.ProfileCardSection, {
+          key: id
+        }, title && /*#__PURE__*/_react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, title), /*#__PURE__*/_react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, value))
+      );
+    }))
+  );
 };
 
 var JobSearchState = function JobSearchState(_ref6) {
@@ -162,7 +167,8 @@ var JobSearchState = function JobSearchState(_ref6) {
     return null;
   }
 
-  return _react.default.createElement("span", null, formatMessage(_job_search_state_translations.translations[searchState] || _job_search_state_translations.translations.unknown));
+  return (/*#__PURE__*/_react.default.createElement("span", null, formatMessage(_job_search_state_translations.translations[searchState] || _job_search_state_translations.translations.unknown))
+  );
 };
 
 var BasicsBack = (0, _react.memo)(BasicsBackComponent);

@@ -7,9 +7,9 @@ exports.useCardSide = void 0;
 
 var _react = require("react");
 
-var _profile_card = require("../profile_card");
+var _profile_card = require("../../commons/profile_card/profile_card");
 
-var _profile_card_actions_types = require("../../../../store/profile_card/profile_card_actions_types");
+var _profile_card_actions_types = require("../../../store/profile_card/profile_card_actions_types");
 
 var useCardSide = function useCardSide() {
   var _useContext = (0, _react.useContext)(_profile_card.ProfileCardContext),

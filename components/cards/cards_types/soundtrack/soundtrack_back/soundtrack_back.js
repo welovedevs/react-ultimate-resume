@@ -27,7 +27,7 @@ var _soundtrack_back_loading_spinner_transitions = require("./soundtrack_back_lo
 
 var _styles_utils = require("../../../../../utils/styles/styles_utils");
 
-var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
+var _use_card_variant = require("../../../../hooks/profile_card_hooks/use_card_variant");
 
 var _soundtrack_back_styles = require("./soundtrack_back_styles");
 
@@ -43,15 +43,16 @@ var SoundtrackBackComponent = function SoundtrackBackComponent(_ref) {
   var data = _ref.data,
       handleAddButtonClick = _ref.handleAddButtonClick;
   var classes = useStyles();
-  return _react.default.createElement(_center_content_container.CenterContentContainer, {
-    customClasses: {
-      container: classes.container
-    }
-  }, _react.default.createElement(Content, {
-    data: data,
-    handleAddButtonClick: handleAddButtonClick,
-    classes: classes
-  }));
+  return (/*#__PURE__*/_react.default.createElement(_center_content_container.CenterContentContainer, {
+      customClasses: {
+        container: classes.container
+      }
+    }, /*#__PURE__*/_react.default.createElement(Content, {
+      data: data,
+      handleAddButtonClick: handleAddButtonClick,
+      classes: classes
+    }))
+  );
 };
 
 var Content = function Content(_ref2) {
@@ -89,35 +90,37 @@ var Content = function Content(_ref2) {
   }));
 
   if (!(data === null || data === void 0 ? void 0 : data.embedUrl)) {
-    return _react.default.createElement(_no_soundtrack.NoSoundTrack, {
-      handleAddButtonClick: handleAddButtonClick
-    });
+    return (/*#__PURE__*/_react.default.createElement(_no_soundtrack.NoSoundTrack, {
+        handleAddButtonClick: handleAddButtonClick
+      })
+    );
   }
 
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("span", {
-    className: classes.loadingSpinnerContainer
-  }, loadingSpinnerTransitions.map(function (_ref3) {
-    var item = _ref3.item,
-        key = _ref3.key,
-        props = _ref3.props;
-    return !item && _react.default.createElement(_reactSpring.animated.span, {
-      key: key,
-      className: classes.loadingSpinnerChild,
-      style: props
-    }, _react.default.createElement(_loading_spinner.LoadingSpinner, {
-      color: color
-    }));
-  })), _react.default.createElement(_reactSpring.animated.iframe, {
-    className: classes.iframe,
-    title: "Soundtrack",
-    src: data.embedUrl,
-    height: height,
-    width: width,
-    frameBorder: "0",
-    allow: "encrypted-media",
-    onLoad: handleLoad,
-    style: iframeSpringProps
-  }));
+  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("span", {
+      className: classes.loadingSpinnerContainer
+    }, loadingSpinnerTransitions.map(function (_ref3) {
+      var item = _ref3.item,
+          key = _ref3.key,
+          props = _ref3.props;
+      return !item && /*#__PURE__*/_react.default.createElement(_reactSpring.animated.span, {
+        key: key,
+        className: classes.loadingSpinnerChild,
+        style: props
+      }, /*#__PURE__*/_react.default.createElement(_loading_spinner.LoadingSpinner, {
+        color: color
+      }));
+    })), /*#__PURE__*/_react.default.createElement(_reactSpring.animated.iframe, {
+      className: classes.iframe,
+      title: "Soundtrack",
+      src: data.embedUrl,
+      height: height,
+      width: width,
+      frameBorder: "0",
+      allow: "encrypted-media",
+      onLoad: handleLoad,
+      style: iframeSpringProps
+    }))
+  );
 };
 
 var SoundtrackBack = (0, _react.memo)(SoundtrackBackComponent);

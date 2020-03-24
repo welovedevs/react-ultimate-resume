@@ -44,35 +44,36 @@ var UrlInputDialogComponent = function UrlInputDialogComponent(_ref) {
   var onClick = (0, _react.useCallback)(function () {
     return onConfirm(url);
   }, [url]);
-  return _react.default.createElement(_core.Dialog, {
-    open: open,
-    onClose: onClose,
-    classes: {
-      paper: classes.paper
-    }
-  }, _react.default.createElement(_dialog_title.DialogTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Form.Url.input.title",
-    defaultMessage: "Enter an url"
-  })), _react.default.createElement(_core.DialogContent, null, _react.default.createElement(_ui.TextField, {
-    fullWidth: true,
-    placeholder: "https://pictures.com/0.jpg",
-    variant: "flat",
-    onChange: handleTextFieldChange,
-    value: url
-  })), _react.default.createElement(_core.DialogActions, null, _react.default.createElement(_ui.Button, {
-    onClick: onClose,
-    size: "small"
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Main.lang.close",
-    defaultMessage: "Close"
-  })), _react.default.createElement(_ui.Button, {
-    color: "primary",
-    size: "small",
-    onClick: onClick
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Main.lang.save",
-    defaultMessage: "Save"
-  }))));
+  return (/*#__PURE__*/_react.default.createElement(_core.Dialog, {
+      open: open,
+      onClose: onClose,
+      classes: {
+        paper: classes.paper
+      }
+    }, /*#__PURE__*/_react.default.createElement(_dialog_title.DialogTitle, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Form.Url.input.title",
+      defaultMessage: "Enter an url"
+    })), /*#__PURE__*/_react.default.createElement(_core.DialogContent, null, /*#__PURE__*/_react.default.createElement(_ui.TextField, {
+      fullWidth: true,
+      placeholder: "https://pictures.com/0.jpg",
+      variant: "flat",
+      onChange: handleTextFieldChange,
+      value: url
+    })), /*#__PURE__*/_react.default.createElement(_core.DialogActions, null, /*#__PURE__*/_react.default.createElement(_ui.Button, {
+      onClick: onClose,
+      size: "small"
+    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Main.lang.close",
+      defaultMessage: "Close"
+    })), /*#__PURE__*/_react.default.createElement(_ui.Button, {
+      color: "primary",
+      size: "small",
+      onClick: onClick
+    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Main.lang.save",
+      defaultMessage: "Save"
+    }))))
+  );
 };
 
 var UrlInputDialog = UrlInputDialogComponent;

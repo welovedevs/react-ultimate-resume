@@ -32,9 +32,10 @@ var _project_dialog_content_image_edit_layer_spring_props = require("./project_d
 var _project_dialog_content_image_styles = require("./project_dialog_content_image_styles");
 
 var DeleteIcon = function DeleteIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("path", {
-    d: "M8.277 25.334C8.277 26.8 9.498 28 10.99 28h10.857c1.493 0 2.714-1.2 2.714-2.666v-16H8.277v16zm17.642-20h-4.75L19.813 4h-6.785L11.67 5.333H6.92V8h19V5.333z"
-  }));
+  return (/*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("path", {
+      d: "M8.277 25.334C8.277 26.8 9.498 28 10.99 28h10.857c1.493 0 2.714-1.2 2.714-2.666v-16H8.277v16zm17.642-20h-4.75L19.813 4h-6.785L11.67 5.333H6.92V8h19V5.333z"
+    }))
+  );
 };
 
 DeleteIcon.defaultProps = {
@@ -67,26 +68,27 @@ var ProjectDialogContentImageComponent = function ProjectDialogContentImageCompo
   var editLayerTransitions = (0, _reactSpring.useTransition)(showEditLayer, function (item) {
     return "".concat(item ? 'visible' : 'invisible', "_edit_layer");
   }, _project_dialog_content_image_edit_layer_spring_props.PROJECT_DIALOG_CONTENT_IMAGE_EDIT_LAYER_SPRING_PROPS);
-  return _react.default.createElement(Component, (0, _extends2.default)({
-    className: classes.container,
-    style: style
-  }, isEditing && eventsHandlerElementProps), _react.default.createElement(Image, {
-    url: url,
-    name: name,
-    handleImageClick: handleImageClick,
-    isEditing: isEditing,
-    classes: classes
-  }), editLayerTransitions.map(function (_ref2) {
-    var item = _ref2.item,
-        key = _ref2.key,
-        props = _ref2.props;
-    return item && _react.default.createElement(EditLayer, {
-      key: key,
-      style: props,
-      classes: classes,
-      url: url
-    });
-  }));
+  return (/*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
+      className: classes.container,
+      style: style
+    }, isEditing && eventsHandlerElementProps), /*#__PURE__*/_react.default.createElement(Image, {
+      url: url,
+      name: name,
+      handleImageClick: handleImageClick,
+      isEditing: isEditing,
+      classes: classes
+    }), editLayerTransitions.map(function (_ref2) {
+      var item = _ref2.item,
+          key = _ref2.key,
+          props = _ref2.props;
+      return item && /*#__PURE__*/_react.default.createElement(EditLayer, {
+        key: key,
+        style: props,
+        classes: classes,
+        url: url
+      });
+    }))
+  );
 };
 
 var Image = function Image(_ref3) {
@@ -97,22 +99,24 @@ var Image = function Image(_ref3) {
       classes = _ref3.classes;
 
   if (!isEditing) {
-    return _react.default.createElement("button", {
-      className: classes.button,
-      type: "button",
-      onClick: handleImageClick
-    }, _react.default.createElement("img", {
+    return (/*#__PURE__*/_react.default.createElement("button", {
+        className: classes.button,
+        type: "button",
+        onClick: handleImageClick
+      }, /*#__PURE__*/_react.default.createElement("img", {
+        className: classes.image,
+        src: url,
+        alt: "Project ".concat(name)
+      }))
+    );
+  }
+
+  return (/*#__PURE__*/_react.default.createElement("img", {
       className: classes.image,
       src: url,
       alt: "Project ".concat(name)
-    }));
-  }
-
-  return _react.default.createElement("img", {
-    className: classes.image,
-    src: url,
-    alt: "Project ".concat(name)
-  });
+    })
+  );
 };
 
 var EditLayer = function EditLayer(_ref4) {
@@ -130,18 +134,19 @@ var EditLayer = function EditLayer(_ref4) {
       return url !== urlToKeep;
     }));
   }, [setFieldValue, values.images]);
-  return _react.default.createElement(_reactSpring.animated.div, {
-    className: classes.editLayer,
-    style: style
-  }, _react.default.createElement(_ui.Tooltip, {
-    title: "Supprimer cette image"
-  }, _react.default.createElement("button", {
-    className: classes.deleteButton,
-    type: "button",
-    onClick: deleteImage
-  }, _react.default.createElement(DeleteIcon, {
-    className: classes.deleteIcon
-  }))));
+  return (/*#__PURE__*/_react.default.createElement(_reactSpring.animated.div, {
+      className: classes.editLayer,
+      style: style
+    }, /*#__PURE__*/_react.default.createElement(_ui.Tooltip, {
+      title: "Supprimer cette image"
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      className: classes.deleteButton,
+      type: "button",
+      onClick: deleteImage
+    }, /*#__PURE__*/_react.default.createElement(DeleteIcon, {
+      className: classes.deleteIcon
+    }))))
+  );
 };
 
 var ProjectDialogContentImage = ProjectDialogContentImageComponent;

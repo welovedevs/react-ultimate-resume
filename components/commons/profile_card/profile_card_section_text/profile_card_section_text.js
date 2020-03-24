@@ -24,12 +24,13 @@ var ProfileCardSectionTextComponent = function ProfileCardSectionTextComponent(_
       _ref$customClasses = _ref.customClasses,
       customClasses = _ref$customClasses === void 0 ? {} : _ref$customClasses;
   var classes = useStyles();
-  return _react.default.createElement(_ui.Typography, {
-    component: "p",
-    customClasses: {
-      container: (0, _classnames.default)(classes.container, customClasses.container)
-    }
-  }, children);
+  return (/*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      component: "p",
+      customClasses: {
+        container: (0, _classnames.default)(classes.container, customClasses.container)
+      }
+    }, children)
+  );
 };
 
 var ProfileCardSectionText = ProfileCardSectionTextComponent;

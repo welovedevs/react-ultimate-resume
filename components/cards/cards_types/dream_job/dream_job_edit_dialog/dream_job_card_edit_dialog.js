@@ -82,22 +82,24 @@ var DreamJobCardEditDialogComponent = function DreamJobCardEditDialogComponent(_
   var validationSchemaToPass = (0, _react.useMemo)(function () {
     return validationSchema(formatMessage);
   }, [validationSchema]);
-  return _react.default.createElement(_edit_dialog.EditDialog, {
-    open: open,
-    onClose: onClose,
-    data: data,
-    onEdit: onEdit,
-    isEditing: isEditing,
-    validationSchema: validationSchemaToPass,
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "DreamJob.editDialog.title",
-      defaultMessage: "Your dream job information"
+  return (/*#__PURE__*/_react.default.createElement(_edit_dialog.EditDialog, {
+      open: open,
+      onClose: onClose,
+      data: data,
+      onEdit: onEdit,
+      isEditing: isEditing,
+      validationSchema: validationSchemaToPass,
+      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "DreamJob.editDialog.title",
+        defaultMessage: "Your dream job information"
+      })
+    }, function (helpers) {
+      return (/*#__PURE__*/_react.default.createElement(Content, {
+          helpers: helpers
+        })
+      );
     })
-  }, function (helpers) {
-    return _react.default.createElement(Content, {
-      helpers: helpers
-    });
-  });
+  );
 };
 
 var Content = function Content(_ref2) {
@@ -188,70 +190,72 @@ var Content = function Content(_ref2) {
 
     return (_currentJobIssues$Job = currentJobIssues[_job_issues_utils.JobIssues.OTHER]) !== null && _currentJobIssues$Job !== void 0 ? _currentJobIssues$Job : null;
   }, [currentJobIssues]);
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_location_places_field.LocationPlacesField, {
-    error: errors === null || errors === void 0 ? void 0 : errors.places,
-    places: places,
-    addPlace: addPlace,
-    removePlace: removePlace
-  }), _react.default.createElement(_perks_field.PerksField, {
-    error: errors === null || errors === void 0 ? void 0 : errors.perks,
-    checkboxGroupPerks: checkboxGroupPerks,
-    checkedPerks: checkedPerks,
-    onChange: onChangePerks,
-    toggleOtherPerk: toggleOtherPerk,
-    otherPerk: otherPerk,
-    handleChange: handleChange,
-    perks: perks
-  }), _react.default.createElement(_edit_dialog_field.EditDialogField, {
-    error: errors.remoteFrequency,
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "DreamJob.editDialog.remoteFrequency.title",
-      defaultMessage: "Do you want to work remotely?"
-    })
-  }, _react.default.createElement(_select.Select, {
-    fullWidth: true,
-    value: remoteFrequency,
-    onChange: handleChange('remoteFrequency'),
-    textFieldProps: {
-      variant: 'flat'
-    },
-    textFieldIconProps: {
-      className: classes.selectIcon
-    }
-  }, Object.values(_remote_utils.REMOTE_FREQUENCY).map(function (elemValue, index) {
-    return _react.default.createElement(_ui.ListItem, {
-      key: "remote_frequency_".concat(elemValue, "_").concat(index),
-      value: elemValue
-    }, formatMessage(_remote_filter_translations.remoteSelectTranslations[elemValue]));
-  }))), _react.default.createElement(_edit_dialog_field.EditDialogField, {
-    error: errors.contractTypes,
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "DreamJob.editDialog.contractTypes.title",
-      defaultMessage: "What contract types are you currently looking for?"
-    })
-  }, _react.default.createElement(_checkbox_group.CheckboxGroup, {
-    values: _contract_types.CONTRACT_TYPES,
-    translations: _contract_types_translations.contractTypesTranslations,
-    value: contractTypes,
-    name: "contractTypes",
-    variant: "outlined",
-    onChange: handleValueChange('contractTypes')
-  })), _react.default.createElement(_salary_field.SalaryField, {
-    salary: salary,
-    contractTypes: contractTypes,
-    averageDailyRate: averageDailyRate,
-    errors: errors,
-    handleChange: handleChange
-  }), _react.default.createElement(_current_job_issues_field.CurrentJobIssuesField, {
-    error: errors === null || errors === void 0 ? void 0 : errors.currentJobIssues,
-    checkboxGroupCurrentJobIssues: checkboxGroupCurrentJobIssues,
-    checkedCurrentJobIssues: checkedCurrentJobIssues,
-    onChange: onChangeCurrentJobIssues,
-    toggleOtherCurrentJobIssue: toggleOtherCurrentJobIssue,
-    otherCurrentJobIssue: otherCurrentJobIssue,
-    handleChange: handleChange,
-    currentJobIssues: currentJobIssues
-  }));
+  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_location_places_field.LocationPlacesField, {
+      error: errors === null || errors === void 0 ? void 0 : errors.places,
+      places: places,
+      addPlace: addPlace,
+      removePlace: removePlace
+    }), /*#__PURE__*/_react.default.createElement(_perks_field.PerksField, {
+      error: errors === null || errors === void 0 ? void 0 : errors.perks,
+      checkboxGroupPerks: checkboxGroupPerks,
+      checkedPerks: checkedPerks,
+      onChange: onChangePerks,
+      toggleOtherPerk: toggleOtherPerk,
+      otherPerk: otherPerk,
+      handleChange: handleChange,
+      perks: perks
+    }), /*#__PURE__*/_react.default.createElement(_edit_dialog_field.EditDialogField, {
+      error: errors.remoteFrequency,
+      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "DreamJob.editDialog.remoteFrequency.title",
+        defaultMessage: "Do you want to work remotely?"
+      })
+    }, /*#__PURE__*/_react.default.createElement(_select.Select, {
+      fullWidth: true,
+      value: remoteFrequency,
+      onChange: handleChange('remoteFrequency'),
+      textFieldProps: {
+        variant: 'flat'
+      },
+      textFieldIconProps: {
+        className: classes.selectIcon
+      }
+    }, Object.values(_remote_utils.REMOTE_FREQUENCY).map(function (elemValue, index) {
+      return (/*#__PURE__*/_react.default.createElement(_ui.ListItem, {
+          key: "remote_frequency_".concat(elemValue, "_").concat(index),
+          value: elemValue
+        }, formatMessage(_remote_filter_translations.remoteSelectTranslations[elemValue]))
+      );
+    }))), /*#__PURE__*/_react.default.createElement(_edit_dialog_field.EditDialogField, {
+      error: errors.contractTypes,
+      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "DreamJob.editDialog.contractTypes.title",
+        defaultMessage: "What contract types are you currently looking for?"
+      })
+    }, /*#__PURE__*/_react.default.createElement(_checkbox_group.CheckboxGroup, {
+      values: _contract_types.CONTRACT_TYPES,
+      translations: _contract_types_translations.contractTypesTranslations,
+      value: contractTypes,
+      name: "contractTypes",
+      variant: "outlined",
+      onChange: handleValueChange('contractTypes')
+    })), /*#__PURE__*/_react.default.createElement(_salary_field.SalaryField, {
+      salary: salary,
+      contractTypes: contractTypes,
+      averageDailyRate: averageDailyRate,
+      errors: errors,
+      handleChange: handleChange
+    }), /*#__PURE__*/_react.default.createElement(_current_job_issues_field.CurrentJobIssuesField, {
+      error: errors === null || errors === void 0 ? void 0 : errors.currentJobIssues,
+      checkboxGroupCurrentJobIssues: checkboxGroupCurrentJobIssues,
+      checkedCurrentJobIssues: checkedCurrentJobIssues,
+      onChange: onChangeCurrentJobIssues,
+      toggleOtherCurrentJobIssue: toggleOtherCurrentJobIssue,
+      otherCurrentJobIssue: otherCurrentJobIssue,
+      handleChange: handleChange,
+      currentJobIssues: currentJobIssues
+    }))
+  );
 };
 
 var DreamJobCardEditDialog = DreamJobCardEditDialogComponent;

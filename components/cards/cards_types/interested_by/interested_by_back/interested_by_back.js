@@ -21,7 +21,7 @@ var _interested_by_front = require("../interested_by_front/interested_by_front")
 
 var _interested_by_back_styles = require("./interested_by_back_styles");
 
-var _use_card_variant = require("../../../../commons/profile_card/profile_card_hooks/use_card_variant");
+var _use_card_variant = require("../../../../hooks/profile_card_hooks/use_card_variant");
 
 var _styles_utils = require("../../../../../utils/styles/styles_utils");
 
@@ -39,14 +39,15 @@ var InterestedByBackComponent = function InterestedByBackComponent(props) {
   var overrideColor = (0, _react.useMemo)(function () {
     return (0, _styles_utils.getColorsFromCardVariant)(theme, variant).backgroundColor;
   }, [theme, variant]);
-  return _react.default.createElement(_interested_by_front.InterestedByFront, (0, _extends2.default)({
-    customClasses: {
-      container: classes.container,
-      typography: classes.typography
-    },
-    overrideColor: overrideColor,
-    dismissButton: true
-  }, props));
+  return (/*#__PURE__*/_react.default.createElement(_interested_by_front.InterestedByFront, (0, _extends2.default)({
+      customClasses: {
+        container: classes.container,
+        typography: classes.typography
+      },
+      overrideColor: overrideColor,
+      dismissButton: true
+    }, props))
+  );
 };
 
 var InterestedByBack = (0, _react.memo)(InterestedByBackComponent);

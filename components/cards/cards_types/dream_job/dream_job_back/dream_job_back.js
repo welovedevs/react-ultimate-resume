@@ -66,37 +66,38 @@ var DreamJobBackComponent = function DreamJobBackComponent(_ref) {
       contractTypes = data.contractTypes,
       currentJobIssues = data.currentJobIssues;
   var isFreelance = (0, _has_only_freelance_contract.hasOnlyFreelanceContract)(contractTypes) ? salary : averageDailyRate;
-  return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Dreamjob.Back.Title",
-      defaultMessage: "Dream job"
-    })
-  }, (0, _exists_and_not_empty.existsAndNotEmpty)(places) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(DreamJobLocations, {
-    places: places,
-    remoteFrequency: remoteFrequency,
-    classes: classes
-  })), (0, _exists_and_not_empty.existsAndNotEmpty)(isFreelance ? averageDailyRate : salary) && (isFreelance ? averageDailyRate !== '0' : salary !== '0') && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_dream_job_salary_section_content.DreamJobSalarySectionContent, {
-    contractTypes: contractTypes,
-    averageDailyRate: averageDailyRate,
-    salary: salary
-  })), (0, _exists_and_not_empty.existsAndNotEmpty)(contractTypes) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Dreamjob.Back.ContractTypes.Title",
-    defaultMessage: "Contract types"
-  })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, _react.default.createElement(_contract_types.ContractType, {
-    contractTypes: contractTypes
-  }))), (0, _exists_and_not_empty.existsAndNotEmpty)(perks) && (0, _typeof2.default)(perks) === 'object' && Object.values(perks).some(function (value) {
-    return (0, _exists_and_not_empty.existsAndNotEmpty)(value);
-  }) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Dreamjob.Back.Location.Perks.Title",
-    defaultMessage: "Important perks in my job"
-  })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, _react.default.createElement(_dream_job_perks.DreamJobPerks, {
-    perks: perks
-  }))), (0, _exists_and_not_empty.existsAndNotEmpty)(currentJobIssues) && _react.default.createElement(_profile_card_section.ProfileCardSection, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Dreamjob.Back.Location.CurrentJobIssues.Title",
-    defaultMessage: "Current job's issues"
-  })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, _react.default.createElement(_dream_job_current_job_issues.DreamJobCurrentJobIssues, {
-    currentJobIssues: currentJobIssues
-  }))));
+  return (/*#__PURE__*/_react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
+      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Dreamjob.Back.Title",
+        defaultMessage: "Dream job"
+      })
+    }, (0, _exists_and_not_empty.existsAndNotEmpty)(places) && /*#__PURE__*/_react.default.createElement(_profile_card_section.ProfileCardSection, null, /*#__PURE__*/_react.default.createElement(DreamJobLocations, {
+      places: places,
+      remoteFrequency: remoteFrequency,
+      classes: classes
+    })), (0, _exists_and_not_empty.existsAndNotEmpty)(isFreelance ? averageDailyRate : salary) && (isFreelance ? averageDailyRate !== '0' : salary !== '0') && /*#__PURE__*/_react.default.createElement(_profile_card_section.ProfileCardSection, null, /*#__PURE__*/_react.default.createElement(_dream_job_salary_section_content.DreamJobSalarySectionContent, {
+      contractTypes: contractTypes,
+      averageDailyRate: averageDailyRate,
+      salary: salary
+    })), (0, _exists_and_not_empty.existsAndNotEmpty)(contractTypes) && /*#__PURE__*/_react.default.createElement(_profile_card_section.ProfileCardSection, null, /*#__PURE__*/_react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Dreamjob.Back.ContractTypes.Title",
+      defaultMessage: "Contract types"
+    })), /*#__PURE__*/_react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, /*#__PURE__*/_react.default.createElement(_contract_types.ContractType, {
+      contractTypes: contractTypes
+    }))), (0, _exists_and_not_empty.existsAndNotEmpty)(perks) && (0, _typeof2.default)(perks) === 'object' && Object.values(perks).some(function (value) {
+      return (0, _exists_and_not_empty.existsAndNotEmpty)(value);
+    }) && /*#__PURE__*/_react.default.createElement(_profile_card_section.ProfileCardSection, null, /*#__PURE__*/_react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Dreamjob.Back.Location.Perks.Title",
+      defaultMessage: "Important perks in my job"
+    })), /*#__PURE__*/_react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, /*#__PURE__*/_react.default.createElement(_dream_job_perks.DreamJobPerks, {
+      perks: perks
+    }))), (0, _exists_and_not_empty.existsAndNotEmpty)(currentJobIssues) && /*#__PURE__*/_react.default.createElement(_profile_card_section.ProfileCardSection, null, /*#__PURE__*/_react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Dreamjob.Back.Location.CurrentJobIssues.Title",
+      defaultMessage: "Current job's issues"
+    })), /*#__PURE__*/_react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, /*#__PURE__*/_react.default.createElement(_dream_job_current_job_issues.DreamJobCurrentJobIssues, {
+      currentJobIssues: currentJobIssues
+    }))))
+  );
 };
 
 var DreamJobLocations = function DreamJobLocations(_ref2) {
@@ -108,19 +109,21 @@ var DreamJobLocations = function DreamJobLocations(_ref2) {
       formatMessage = _useIntl.formatMessage;
 
   if (remoteFrequency === _remote_utils.REMOTE_FREQUENCY.FULL_TIME) {
-    return _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Dreamjob.Back.Location.RemoteOnly",
-      defaultMessage: "I only want to work remotely"
-    });
+    return (/*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Dreamjob.Back.Location.RemoteOnly",
+        defaultMessage: "I only want to work remotely"
+      })
+    );
   }
 
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Dreamjob.Back.Location.Title",
-    defaultMessage: "My dreamjob location"
-  })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, _react.default.createElement(DreamJobPlaces, {
-    places: places,
-    classes: classes
-  }), _react.default.createElement("br", null), remoteFrequency && formatMessage(_remote_filter_translations.remoteDisplayTranslations[remoteFrequency] || _remote_filter_translations.remoteDisplayTranslations.others)));
+  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Dreamjob.Back.Location.Title",
+      defaultMessage: "My dreamjob location"
+    })), /*#__PURE__*/_react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, /*#__PURE__*/_react.default.createElement(DreamJobPlaces, {
+      places: places,
+      classes: classes
+    }), /*#__PURE__*/_react.default.createElement("br", null), remoteFrequency && formatMessage(_remote_filter_translations.remoteDisplayTranslations[remoteFrequency] || _remote_filter_translations.remoteDisplayTranslations.others)))
+  );
 };
 
 var DreamJobPlaces = function DreamJobPlaces(_ref3) {
@@ -148,44 +151,47 @@ var DreamJobPlaces = function DreamJobPlaces(_ref3) {
   if (!remainingPlaces.length) {
     var _ref4;
 
-    return _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Dreamjob.Back.Location.OnePlace",
-      defaultMessage: "I want to work in {place}",
-      values: {
-        place: (_ref4 = firstPlace === null || firstPlace === void 0 ? void 0 : firstPlace.name) !== null && _ref4 !== void 0 ? _ref4 : ''
-      }
-    }));
+    return (/*#__PURE__*/_react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Dreamjob.Back.Location.OnePlace",
+        defaultMessage: "I want to work in {place}",
+        values: {
+          place: (_ref4 = firstPlace === null || firstPlace === void 0 ? void 0 : firstPlace.name) !== null && _ref4 !== void 0 ? _ref4 : ''
+        }
+      }))
+    );
   }
 
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("button", (0, _extends2.default)({
-    className: classes.button,
-    type: "button",
-    ref: textAnchor
-  }, handlers), _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Dreamjob.Back.Location.ManyPlaces",
-    defaultMessage: "I want to work in {place} and {length, plural, one {one other place} other {# other places}}",
-    values: {
-      place: firstPlace.name,
-      length: remainingPlaces.length
-    }
-  })), _react.default.createElement(_ui.PopperCard, {
-    open: open,
-    anchorElement: textAnchor.current,
-    popperProps: {
-      modifiers: {
-        preventOverflow: {
-          boundariesElement: 'viewport'
+  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", (0, _extends2.default)({
+      className: classes.button,
+      type: "button",
+      ref: textAnchor
+    }, handlers), /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Dreamjob.Back.Location.ManyPlaces",
+      defaultMessage: "I want to work in {place} and {length, plural, one {one other place} other {# other places}}",
+      values: {
+        place: firstPlace.name,
+        length: remainingPlaces.length
+      }
+    })), /*#__PURE__*/_react.default.createElement(_ui.PopperCard, {
+      open: open,
+      anchorElement: textAnchor.current,
+      popperProps: {
+        modifiers: {
+          preventOverflow: {
+            boundariesElement: 'viewport'
+          }
         }
       }
-    }
-  }, _react.default.createElement(_ui.List, null, remainingPlaces.filter(function (item) {
-    return item;
-  }).map(function (_ref5, index) {
-    var name = _ref5.name;
-    return _react.default.createElement(_ui.ListItem, {
-      key: "place_popper_".concat(index)
-    }, _react.default.createElement(_ui.Typography, null, name));
-  }))));
+    }, /*#__PURE__*/_react.default.createElement(_ui.List, null, remainingPlaces.filter(function (item) {
+      return item;
+    }).map(function (_ref5, index) {
+      var name = _ref5.name;
+      return (/*#__PURE__*/_react.default.createElement(_ui.ListItem, {
+          key: "place_popper_".concat(index)
+        }, /*#__PURE__*/_react.default.createElement(_ui.Typography, null, name))
+      );
+    }))))
+  );
 };
 
 var DreamJobBack = (0, _react.memo)(DreamJobBackComponent);

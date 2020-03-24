@@ -90,11 +90,14 @@ var useGiphyResults = function useGiphyResults(input) {
       }).then(function (_ref3) {
         var data = _ref3.data;
         setResults(data.map(function (_ref4) {
+          var _images$downsized;
+
           var id = _ref4.id,
-              title = _ref4.title;
+              title = _ref4.title,
+              images = _ref4.images;
           return {
             id: id,
-            url: "https://media.giphy.com/media/".concat(id, "/giphy.gif"),
+            url: images === null || images === void 0 ? void 0 : (_images$downsized = images.downsized) === null || _images$downsized === void 0 ? void 0 : _images$downsized.url,
             title: title
           };
         }));

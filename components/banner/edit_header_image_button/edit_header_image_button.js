@@ -33,21 +33,24 @@ var _edit_header_image_button_styles = require("./edit_header_image_button_style
 
 var _use_received_global_classes = require("../../hooks/use_received_global_classes");
 
+var _use_mode = require("../../hooks/use_mode");
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var PhotoCameraIcon = function PhotoCameraIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("circle", {
-    cx: "12",
-    cy: "12",
-    r: "3.2"
-  }), _react.default.createElement("path", {
-    d: "M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
-  }), _react.default.createElement("path", {
-    d: "M0 0h24v24H0z",
-    fill: "none"
-  }));
+  return (/*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("circle", {
+      cx: "12",
+      cy: "12",
+      r: "3.2"
+    }), /*#__PURE__*/_react.default.createElement("path", {
+      d: "M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+    }), /*#__PURE__*/_react.default.createElement("path", {
+      d: "M0 0h24v24H0z",
+      fill: "none"
+    }))
+  );
 };
 
 PhotoCameraIcon.defaultProps = {
@@ -67,9 +70,12 @@ var EditHeaderImageButton = function EditHeaderImageButton(_ref) {
       _useReceivedGlobalCla3 = _useReceivedGlobalCla2[0],
       globalReceivedClasses = _useReceivedGlobalCla3 === void 0 ? {} : _useReceivedGlobalCla3;
 
+  var _useMode = (0, _use_mode.useMode)(),
+      _useMode2 = (0, _slicedToArray2.default)(_useMode, 1),
+      mode = _useMode2[0];
+
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
-      onCustomizationChanged = _useContext.onCustomizationChanged,
-      mode = _useContext.mode;
+      onCustomizationChanged = _useContext.onCustomizationChanged;
 
   var _useCallbackOpen = (0, _use_callback_open.useCallbackOpen)(),
       _useCallbackOpen2 = (0, _slicedToArray2.default)(_useCallbackOpen, 3),
@@ -78,26 +84,29 @@ var EditHeaderImageButton = function EditHeaderImageButton(_ref) {
       onClose = _useCallbackOpen2[2];
 
   var onChange = (0, _react.useCallback)(function (value) {
-    onCustomizationChanged(_objectSpread({}, customizationOptions, {
-      imageHeader: value
-    }));
-  }, [customizationOptions]);
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_edit_banner_image_dialog.EditBannerImageDialog, {
-    open: open,
-    onClose: onClose,
-    value: customizationOptions.imageHeader,
-    onChange: onChange
-  }), mode === 'edit' && _react.default.createElement(_bouncing_round_button.BouncingRoundButton, {
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Banner.image.editButton",
-      defaultMessage: "Edit image banner"
-    }),
-    icon: PhotoCameraIcon,
-    onClick: onOpen,
-    classes: {
-      container: (0, _classnames.default)(classes.editButton, globalReceivedClasses)
+    if (typeof onCustomizationChanged === 'function') {
+      onCustomizationChanged(_objectSpread({}, customizationOptions, {
+        imageHeader: value
+      }));
     }
-  }));
+  }, [customizationOptions]);
+  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_edit_banner_image_dialog.EditBannerImageDialog, {
+      open: open,
+      onClose: onClose,
+      value: customizationOptions.imageHeader,
+      onChange: onChange
+    }), mode === 'edit' && /*#__PURE__*/_react.default.createElement(_bouncing_round_button.BouncingRoundButton, {
+      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Banner.image.editButton",
+        defaultMessage: "Edit image banner"
+      }),
+      icon: PhotoCameraIcon,
+      onClick: onOpen,
+      classes: {
+        container: (0, _classnames.default)(classes.editButton, globalReceivedClasses)
+      }
+    }))
+  );
 };
 
 exports.EditHeaderImageButton = EditHeaderImageButton;

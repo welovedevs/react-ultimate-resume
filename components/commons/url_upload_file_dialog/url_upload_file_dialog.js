@@ -29,14 +29,16 @@ var UrlUploadFileDialogComponent = function UrlUploadFileDialogComponent(_ref) {
       onFilesUpload = _useContext.onFilesUpload;
 
   if (typeof onFilesUpload === 'function') {
-    return _react.default.createElement(_upload_file_dialog.UploadFileDialog, (0, _extends2.default)({}, props, {
-      onFileUploaded: onAdd
-    }));
+    return (/*#__PURE__*/_react.default.createElement(_upload_file_dialog.UploadFileDialog, (0, _extends2.default)({}, props, {
+        onFileUploaded: onAdd
+      }))
+    );
   }
 
-  return _react.default.createElement(_url_input_dialog.UrlInputDialog, (0, _extends2.default)({}, props, {
-    onConfirm: onAdd
-  }));
+  return (/*#__PURE__*/_react.default.createElement(_url_input_dialog.UrlInputDialog, (0, _extends2.default)({}, props, {
+      onConfirm: onAdd
+    }))
+  );
 };
 
 var UrlUploadFileDialog = UrlUploadFileDialogComponent;

@@ -19,13 +19,14 @@ var TextSection = function TextSection(_ref) {
   var icon = _ref.icon,
       children = _ref.children;
   var classes = useStyles();
-  return _react.default.createElement("div", {
-    className: classes.section
-  }, icon && _react.default.createElement("div", {
-    className: classes.icon
-  }, icon), _react.default.createElement("div", {
-    className: classes.sectionContent
-  }, children));
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: classes.section
+    }, icon && /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.icon
+    }, icon), /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.sectionContent
+    }, children))
+  );
 };
 
 exports.TextSection = TextSection;

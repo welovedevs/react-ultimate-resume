@@ -2,10 +2,14 @@
 
 var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.GifsCard = void 0;
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -25,15 +29,20 @@ var _contexts = require("../../../../utils/context/contexts");
 
 var _side = require("../../../commons/profile_card/profile_card_side/side");
 
+var _use_mode = require("../../../hooks/use_mode");
+
 var GifsCardComponent = function GifsCardComponent(_ref) {
   var variant = _ref.variant,
       side = _ref.side;
 
+  var _useMode = (0, _use_mode.useMode)(),
+      _useMode2 = (0, _slicedToArray2.default)(_useMode, 1),
+      mode = _useMode2[0];
+
   var _useContext = (0, _react.useContext)(_contexts.DeveloperProfileContext),
       data = _useContext.data,
       isEditing = _useContext.isEditing,
-      onEdit = _useContext.onEdit,
-      mode = _useContext.mode;
+      onEdit = _useContext.onEdit;
 
   var mappedData = (0, _react.useMemo)(function () {
     return (0, _mapping.mapInterestsFromJsonResume)(data);
@@ -56,27 +65,30 @@ var GifsCardComponent = function GifsCardComponent(_ref) {
     return null;
   }
 
-  return _react.default.createElement(_profile_card.ProfileCard, {
-    kind: "gifs",
-    isEditingProfile: isEditing,
-    isComplete: isComplete,
-    data: mappedData,
-    sides: {
-      front: function front(props) {
-        return _react.default.createElement(_gifs_front.GifsFront, props);
+  return (/*#__PURE__*/_react.default.createElement(_profile_card.ProfileCard, {
+      kind: "gifs",
+      isEditingProfile: isEditing,
+      isComplete: isComplete,
+      data: mappedData,
+      sides: {
+        front: function front(props) {
+          return (/*#__PURE__*/_react.default.createElement(_gifs_front.GifsFront, props)
+          );
+        },
+        back: function back(props) {
+          return (/*#__PURE__*/_react.default.createElement(_gifs_back.GifsBack, props)
+          );
+        }
       },
-      back: function back(props) {
-        return _react.default.createElement(_gifs_back.GifsBack, props);
-      }
-    },
-    editDialog: {
-      component: _gifs_edit_dialog.GifsEditDialog,
-      validationSchema: _validator.interestsValidator,
-      onEdit: onDialogEdited
-    },
-    variant: variant,
-    side: currentSide
-  });
+      editDialog: {
+        component: _gifs_edit_dialog.GifsEditDialog,
+        validationSchema: _validator.interestsValidator,
+        onEdit: onDialogEdited
+      },
+      variant: variant,
+      side: currentSide
+    })
+  );
 };
 
 var GifsCard = GifsCardComponent;

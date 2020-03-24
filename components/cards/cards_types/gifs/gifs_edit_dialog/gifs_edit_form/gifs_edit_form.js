@@ -106,32 +106,33 @@ var GifsEditFormComponent = function GifsEditFormComponent(_ref) {
     interestChanged(selectedIndex, 'gifUrl', url);
     removeSelectedIndex();
   }, [interestChanged, selectedIndex]);
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_search_gifs_dialog.SearchGifsDialog, {
-    open: Boolean(selectedIndex !== null),
-    onClose: removeSelectedIndex,
-    onSelect: handleGifSelection
-  }), globalError && _react.default.createElement(_ui.Typography, {
-    color: "danger",
-    variant: "h4",
-    component: "h4"
-  }, globalError), isMobile && _react.default.createElement(_add_button_dashed.AddButtonDashed, {
-    classes: {
-      container: classes.addButtonDashed
-    },
-    onClick: addInterest
-  }), _react.default.createElement(_gifs_sortable_cards.GifsSortableCards, {
-    items: interests,
-    interestDeleted: interestDeleted,
-    interestChanged: interestChanged,
-    errors: errors,
-    onSortEnd: move,
-    setSelectedIndex: setSelectedIndex
-  }), !isMobile && _react.default.createElement(_add_button_dashed.AddButtonDashed, {
-    classes: {
-      container: classes.addButtonDashed
-    },
-    onClick: addInterest
-  }));
+  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_search_gifs_dialog.SearchGifsDialog, {
+      open: Boolean(selectedIndex !== null),
+      onClose: removeSelectedIndex,
+      onSelect: handleGifSelection
+    }), globalError && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      color: "danger",
+      variant: "h4",
+      component: "h4"
+    }, globalError), isMobile && /*#__PURE__*/_react.default.createElement(_add_button_dashed.AddButtonDashed, {
+      classes: {
+        container: classes.addButtonDashed
+      },
+      onClick: addInterest
+    }), /*#__PURE__*/_react.default.createElement(_gifs_sortable_cards.GifsSortableCards, {
+      items: interests,
+      interestDeleted: interestDeleted,
+      interestChanged: interestChanged,
+      errors: errors,
+      onSortEnd: move,
+      setSelectedIndex: setSelectedIndex
+    }), !isMobile && /*#__PURE__*/_react.default.createElement(_add_button_dashed.AddButtonDashed, {
+      classes: {
+        container: classes.addButtonDashed
+      },
+      onClick: addInterest
+    }))
+  );
 };
 
 var GifsEditForm = GifsEditFormComponent;

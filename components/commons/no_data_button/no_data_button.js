@@ -16,16 +16,17 @@ var NoDataButtonComponent = function NoDataButtonComponent(_ref) {
       children = _ref.children,
       _ref$classes = _ref.classes,
       receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
-  return _react.default.createElement(_ui.Button, {
-    customClasses: {
-      container: receivedClasses.container
-    },
-    style: {
-      color: 'inherit'
-    },
-    variant: "outlined",
-    onClick: handleAddButtonClick
-  }, children);
+  return (/*#__PURE__*/_react.default.createElement(_ui.Button, {
+      customClasses: {
+        container: receivedClasses.container
+      },
+      style: {
+        color: 'inherit'
+      },
+      variant: "outlined",
+      onClick: handleAddButtonClick
+    }, children)
+  );
 };
 
 var NoDataButton = NoDataButtonComponent;

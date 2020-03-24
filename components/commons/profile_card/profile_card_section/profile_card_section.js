@@ -15,7 +15,7 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _reactJss = require("react-jss");
 
-var _use_card_variant = require("../profile_card_hooks/use_card_variant");
+var _use_card_variant = require("../../../hooks/profile_card_hooks/use_card_variant");
 
 var _profile_card_section_styles = require("./profile_card_section_styles");
 
@@ -33,9 +33,10 @@ var ProfileCardSectionComponent = function ProfileCardSectionComponent(_ref) {
   var classes = useStyles({
     variant: variant
   });
-  return _react.default.createElement("div", {
-    className: (0, _classnames.default)(classes.container, customClasses.container)
-  }, children);
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: (0, _classnames.default)(classes.container, customClasses.container)
+    }, children)
+  );
 };
 
 var ProfileCardSection = ProfileCardSectionComponent;

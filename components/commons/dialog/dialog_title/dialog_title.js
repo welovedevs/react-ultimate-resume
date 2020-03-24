@@ -24,13 +24,14 @@ var DialogTitleComponent = function DialogTitleComponent(_ref) {
       _ref$classes = _ref.classes,
       receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var classes = useStyles();
-  return _react.default.createElement(_ui.Typography, {
-    variant: "h3",
-    component: "h3",
-    customClasses: {
-      container: (0, _classnames.default)(classes.container, receivedClasses.root)
-    }
-  }, children);
+  return (/*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      variant: "h3",
+      component: "h3",
+      customClasses: {
+        container: (0, _classnames.default)(classes.container, receivedClasses.root)
+      }
+    }, children)
+  );
 };
 
 var DialogTitle = DialogTitleComponent;

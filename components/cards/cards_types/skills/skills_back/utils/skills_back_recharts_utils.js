@@ -23,7 +23,7 @@ var _use_technologies = require("../../../../../hooks/technologies/use_technolog
 
 var _styles_utils = require("../../../../../../utils/styles/styles_utils");
 
-var _use_card_variant = require("../../../../../commons/profile_card/profile_card_hooks/use_card_variant");
+var _use_card_variant = require("../../../../../hooks/profile_card_hooks/use_card_variant");
 
 var _icons = require("../../../../../../utils/icons");
 
@@ -99,26 +99,27 @@ var CustomLabel = function CustomLabel(props) {
       textAnchor = _useMemo.textAnchor,
       logoXOffset = _useMemo.logoXOffset;
 
-  return _react.default.createElement("g", null, _react.default.createElement("g", null, _react.default.createElement("path", {
-    d: "M".concat(startX, ",").concat(startY, "L").concat(inflexionX, ",").concat(inflexionY, "L").concat(endX, ",").concat(endY),
-    stroke: customColor,
-    fill: "none"
-  }), _react.default.createElement("g", {
-    transform: "translate(".concat(endX + (cos >= 0 ? 1 : -1) * 8, ",").concat(endY - 10, ")"),
-    width: "100"
-  }, _react.default.createElement("image", {
-    width: "25",
-    height: "25",
-    xlinkHref: src,
-    y: "-10",
-    transform: "translate(".concat(logoXOffset, ",-6)")
-  }), _react.default.createElement("text", {
-    textAnchor: textAnchor,
-    fill: customColor,
-    fontWeight: "500",
-    className: classes.text,
-    transform: "translate(0, 29)"
-  }, name))));
+  return (/*#__PURE__*/_react.default.createElement("g", null, /*#__PURE__*/_react.default.createElement("g", null, /*#__PURE__*/_react.default.createElement("path", {
+      d: "M".concat(startX, ",").concat(startY, "L").concat(inflexionX, ",").concat(inflexionY, "L").concat(endX, ",").concat(endY),
+      stroke: customColor,
+      fill: "none"
+    }), /*#__PURE__*/_react.default.createElement("g", {
+      transform: "translate(".concat(endX + (cos >= 0 ? 1 : -1) * 8, ",").concat(endY - 10, ")"),
+      width: "100"
+    }, /*#__PURE__*/_react.default.createElement("image", {
+      width: "25",
+      height: "25",
+      xlinkHref: src,
+      y: "-10",
+      transform: "translate(".concat(logoXOffset, ",-6)")
+    }), /*#__PURE__*/_react.default.createElement("text", {
+      textAnchor: textAnchor,
+      fill: customColor,
+      fontWeight: "500",
+      className: classes.text,
+      transform: "translate(0, 29)"
+    }, name))))
+  );
 };
 
 exports.CustomLabel = CustomLabel;

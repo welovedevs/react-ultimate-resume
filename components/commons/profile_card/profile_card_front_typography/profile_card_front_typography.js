@@ -19,7 +19,7 @@ var _reactJss = require("react-jss");
 
 var _ui = require("@wld/ui");
 
-var _use_card_variant = require("../profile_card_hooks/use_card_variant");
+var _use_card_variant = require("../../../hooks/profile_card_hooks/use_card_variant");
 
 var _profile_card_front_typography_styles = require("./profile_card_front_typography_styles");
 
@@ -42,14 +42,15 @@ var ProfileCardFrontTypographyComponent = (0, _react.forwardRef)(function (_ref,
     variant: cardVariant,
     overrideColor: overrideColor
   });
-  return _react.default.createElement(_ui.Typography, {
-    containerRef: ref,
-    variant: variant,
-    component: component,
-    customClasses: {
-      container: (0, _classnames.default)(classes.container, receivedClasses.container)
-    }
-  }, children);
+  return (/*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      containerRef: ref,
+      variant: variant,
+      component: component,
+      customClasses: {
+        container: (0, _classnames.default)(classes.container, receivedClasses.container)
+      }
+    }, children)
+  );
 });
 var ProfileCardFrontTypography = ProfileCardFrontTypographyComponent;
 exports.ProfileCardFrontTypography = ProfileCardFrontTypography;

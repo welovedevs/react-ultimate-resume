@@ -57,34 +57,37 @@ var SkillsPieChart = function SkillsPieChart(_ref) {
       return _chromaJs.default.mix(contentColor, backgroundColor, 2 * k / 10).hex();
     });
   }, [contentColor, backgroundColor]);
-  return _react.default.createElement(_reactSpring.animated.div, {
-    // ref={wrapperRef}
-    className: classes.wrapper,
-    style: {
-      opacity: springOnScrollOpacityProps && springOnScrollOpacityProps.opacity
-    }
-  }, _react.default.createElement(_recharts.ResponsiveContainer, {
-    height: "100%",
-    width: "100%"
-  }, _react.default.createElement(_recharts.PieChart, null, _react.default.createElement(_recharts.Pie, {
-    isAnimationActive: false,
-    dataKey: "value",
-    labelLine: false,
-    label: function label(shapeProps) {
-      return _react.default.createElement(_skills_back_recharts_utils.CustomLabel, (0, _extends2.default)({
-        customColor: contentColor,
-        springProps: springOnOpenOpacityProps
-      }, shapeProps));
-    },
-    data: data,
-    outerRadius: isMobile ? '50%' : '70%'
-  }, data.map(function (entry, index) {
-    return _react.default.createElement(_recharts.Cell, {
-      key: "cell-".concat(index),
-      fill: colorPalette[index],
-      stroke: backgroundColor
-    });
-  })))));
+  return (/*#__PURE__*/_react.default.createElement(_reactSpring.animated.div, {
+      // ref={wrapperRef}
+      className: classes.wrapper,
+      style: {
+        opacity: springOnScrollOpacityProps && springOnScrollOpacityProps.opacity
+      }
+    }, /*#__PURE__*/_react.default.createElement(_recharts.ResponsiveContainer, {
+      height: "100%",
+      width: "100%"
+    }, /*#__PURE__*/_react.default.createElement(_recharts.PieChart, null, /*#__PURE__*/_react.default.createElement(_recharts.Pie, {
+      isAnimationActive: false,
+      dataKey: "value",
+      labelLine: false,
+      label: function label(shapeProps) {
+        return (/*#__PURE__*/_react.default.createElement(_skills_back_recharts_utils.CustomLabel, (0, _extends2.default)({
+            customColor: contentColor,
+            springProps: springOnOpenOpacityProps
+          }, shapeProps))
+        );
+      },
+      data: data,
+      outerRadius: isMobile ? '50%' : '70%'
+    }, data.map(function (entry, index) {
+      return (/*#__PURE__*/_react.default.createElement(_recharts.Cell, {
+          key: "cell-".concat(index),
+          fill: colorPalette[index],
+          stroke: backgroundColor
+        })
+      );
+    })))))
+  );
 };
 
 var _default = SkillsPieChart;

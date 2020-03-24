@@ -11,6 +11,8 @@ exports.DeveloperProfile = void 0;
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
@@ -112,8 +114,6 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref2) {
       _ref2$onEdit = _ref2.onEdit,
       onEditProps = _ref2$onEdit === void 0 ? DEFAULT_FUNCTION : _ref2$onEdit,
       onCustomizationChanged = _ref2.onCustomizationChanged,
-      _ref2$isEditing = _ref2.isEditing,
-      isEditing = _ref2$isEditing === void 0 ? false : _ref2$isEditing,
       _ref2$onFilesUpload = _ref2.onFilesUpload,
       onFilesUpload = _ref2$onFilesUpload === void 0 ? DEFAULT_UPLOAD_FUNCTION : _ref2$onFilesUpload,
       additionalNodes = _ref2.additionalNodes,
@@ -122,6 +122,12 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref2) {
   var classes = useStyles(_profile_styles.styles);
   var apiKeys = options.apiKeys,
       endpoints = options.endpoints;
+
+  var _useState = (0, _react.useState)(false),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      isEditing = _useState2[0],
+      setIsEditing = _useState2[1];
+
   var onEdit = (0, _react.useCallback)(function (newData) {
     if (typeof onEditProps === 'function') {
       onEditProps(newData);
@@ -145,6 +151,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref2) {
     return {
       data: data,
       isEditing: isEditing,
+      setIsEditing: setIsEditing,
       onEdit: onEdit,
       onCustomizationChanged: onCustomizationChanged,
       onFilesUpload: onFilesUpload,
@@ -154,21 +161,22 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref2) {
   var side = (0, _react.useMemo)(function () {
     return isEditing && _side.SIDES.BACK || (options === null || options === void 0 ? void 0 : options.side);
   }, [options, isEditing]);
-  return _react.default.createElement("div", {
-    className: classes.container
-  }, _react.default.createElement(_contexts.StaticDataContext.Provider, {
-    value: staticContext
-  }, _react.default.createElement(_contexts.StoreContext.Provider, {
-    value: store
-  }, _react.default.createElement(_contexts.DeveloperProfileContext.Provider, {
-    value: context
-  }, _react.default.createElement(_banner.Banner, {
-    customizationOptions: options.customization,
-    onCustomizationChanged: onCustomizationChanged
-  }), additionalNodes.beforeCards, _react.default.createElement(_cards.Cards, {
-    cardsOrder: (_options$customizatio = options.customization) === null || _options$customizatio === void 0 ? void 0 : _options$customizatio.cardsOrder,
-    side: side
-  }), !options.dismissFooter && _react.default.createElement(_footer.Footer, null)))));
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: classes.container
+    }, /*#__PURE__*/_react.default.createElement(_contexts.StaticDataContext.Provider, {
+      value: staticContext
+    }, /*#__PURE__*/_react.default.createElement(_contexts.StoreContext.Provider, {
+      value: store
+    }, /*#__PURE__*/_react.default.createElement(_contexts.DeveloperProfileContext.Provider, {
+      value: context
+    }, /*#__PURE__*/_react.default.createElement(_banner.Banner, {
+      customizationOptions: options.customization,
+      onCustomizationChanged: onCustomizationChanged
+    }), additionalNodes === null || additionalNodes === void 0 ? void 0 : additionalNodes.beforeCards, /*#__PURE__*/_react.default.createElement(_cards.Cards, {
+      cardsOrder: (_options$customizatio = options.customization) === null || _options$customizatio === void 0 ? void 0 : _options$customizatio.cardsOrder,
+      side: side
+    }), !options.dismissFooter && /*#__PURE__*/_react.default.createElement(_footer.Footer, null)))))
+  );
 };
 
 var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3) {
@@ -181,7 +189,6 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
       mode = _ref3$mode === void 0 ? 'readOnly' : _ref3$mode,
       additionalNodes = _ref3.additionalNodes,
       classes = _ref3.classes,
-      isEditing = _ref3.isEditing,
       onFilesUpload = _ref3.onFilesUpload,
       parentIntl = _ref3.intl;
   var mergedOptions = (0, _react.useMemo)(function () {
@@ -195,23 +202,23 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
   var providerMessages = (0, _react.useMemo)(function () {
     return _objectSpread({}, (parentIntl === null || parentIntl === void 0 ? void 0 : parentIntl.messages) || {}, {}, messages[locale] || messages.en);
   }, [parentIntl, locale]);
-  return _react.default.createElement(_reactJss.ThemeProvider, {
-    theme: builtTheme
-  }, _react.default.createElement(_reactIntl.IntlProvider, {
-    locale: locale,
-    messages: providerMessages,
-    defaultLocale: locale
-  }, _react.default.createElement(DeveloperProfileComponent, {
-    isEditing: isEditing,
-    data: data,
-    mode: mode,
-    onEdit: onEdit,
-    onCustomizationChanged: onCustomizationChanged,
-    options: mergedOptions,
-    additionalNodes: additionalNodes,
-    onFilesUpload: onFilesUpload,
-    classes: classes
-  })));
+  return (/*#__PURE__*/_react.default.createElement(_reactJss.ThemeProvider, {
+      theme: builtTheme
+    }, /*#__PURE__*/_react.default.createElement(_reactIntl.IntlProvider, {
+      locale: locale,
+      messages: providerMessages,
+      defaultLocale: locale
+    }, /*#__PURE__*/_react.default.createElement(DeveloperProfileComponent, {
+      data: data,
+      mode: mode,
+      onEdit: onEdit,
+      onCustomizationChanged: onCustomizationChanged,
+      options: mergedOptions,
+      additionalNodes: additionalNodes,
+      onFilesUpload: onFilesUpload,
+      classes: classes
+    })))
+  );
 };
 
 var DeveloperProfile = (0, _reactIntl.injectIntl)(WithProvidersDeveloperProfile, {
