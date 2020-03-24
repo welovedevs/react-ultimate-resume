@@ -15,6 +15,7 @@ We added a few extra-fields to JSON Resume standard to fit developers needs. Lea
 
 This app is built using the popular [create-react-app](https://github.com/facebook/create-react-app). You will find a lot of resources to understand how to edit and publish your resume directly on https://create-react-app.dev/
 
+
 ### Preview 
 
 [![Resume Preview](https://cdn.filestackcontent.com/compress/resize=width:500/rfXY8TNARdao9DdQSaJe)](https://vincent-cotro.welovedevs.com)
@@ -78,13 +79,16 @@ To activate your profile ...
 | dreamJob     | locations           | Array<{ name : string, title: string }> | Your dream job cities. Example: "San Francisco, US".                                                                     |
 | work         | remote              | String                                  | Give here more information about the frequency if your dream job is a remote job. Example: "regularly"                   |
 | education    | studiesLevel        | Number                                  | What is your highest level of formal education? (Bachelor = 3 years post graduate. Master = 5 years post graduate)       |
-| work         | contractTypes       | Array<String>                           | Your dream job contract types. Example: ['fixedTerm', 'permanent', 'internship', 'apprenticeship', 'freelance'];         |
+| work         | contractTypes       | Array<"fixedTerm" \| "permanent" \| "internship" \| "apprenticeship" \| "freelance">        | Your dream job contract types. Example: ['fixedTerm'];         |
 | work         | codingYears         | Number                                  | How long have you been coding (in years)? Example: 5                                                                     |
 | work         | codingReason        | String                                  | What motivates you to wake up every day to code?                                                                         |
-| work         | searchState         | String                                  | Are you open to new job opportunities? Can be 'activelySearching', 'openOpportunities', 'dreamjobOnly' or 'notSearching' |
+| work         | searchState         | "activelySearching" \| "openOpportunities" \| "dreamjobOnly" \| "notSearching"                                  | Are you open to new job opportunities? Example: "activelySearching"  |
 | work         | experienceYears     | Number                                  | How many years of professional experience do you have?                                                                   |
 | sound        | embedUrl            | String                                  | Your favorite Spotify playlist. Example: https://open.spotify.com/embed/playlist/37i9dQZF1DWWl7MndYYxge                  |
 | interestedBy |                     | String                                  | What languages do you want to learn? Example: Angular and Vue.js                                                         |
+
+
+### Main options
 
 
 
