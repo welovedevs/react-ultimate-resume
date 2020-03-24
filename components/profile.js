@@ -113,6 +113,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref2) {
       mode = _ref2.mode,
       _ref2$onEdit = _ref2.onEdit,
       onEditProps = _ref2$onEdit === void 0 ? DEFAULT_FUNCTION : _ref2$onEdit,
+      onIsEditingChanged = _ref2.onIsEditingChanged,
       onCustomizationChanged = _ref2.onCustomizationChanged,
       _ref2$onFilesUpload = _ref2.onFilesUpload,
       onFilesUpload = _ref2$onFilesUpload === void 0 ? DEFAULT_UPLOAD_FUNCTION : _ref2$onFilesUpload,
@@ -133,6 +134,10 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref2) {
       onEditProps(newData);
     }
   }, [onEditProps]);
+  var setIsEditingWithCallback = (0, _react.useCallback)(function (newValue) {
+    setIsEditing(newValue);
+    onIsEditingChanged(newValue);
+  }, [onIsEditingChanged, setIsEditing]);
   var store = {
     technologies: (0, _react.useReducer)(_technologies_reducer.technologiesReducer, _technologies_reducer.technologiesInitialState)
   };
@@ -151,7 +156,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref2) {
     return {
       data: data,
       isEditing: isEditing,
-      setIsEditing: setIsEditing,
+      setIsEditing: setIsEditingWithCallback,
       onEdit: onEdit,
       onCustomizationChanged: onCustomizationChanged,
       onFilesUpload: onFilesUpload,
@@ -183,6 +188,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
   var data = _ref3.data,
       onEdit = _ref3.onEdit,
       onCustomizationChanged = _ref3.onCustomizationChanged,
+      onIsEditingChanged = _ref3.onIsEditingChanged,
       _ref3$options = _ref3.options,
       options = _ref3$options === void 0 ? {} : _ref3$options,
       _ref3$mode = _ref3.mode,
@@ -213,6 +219,7 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
       mode: mode,
       onEdit: onEdit,
       onCustomizationChanged: onCustomizationChanged,
+      onIsEditingChanged: onIsEditingChanged,
       options: mergedOptions,
       additionalNodes: additionalNodes,
       onFilesUpload: onFilesUpload,
