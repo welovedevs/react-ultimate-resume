@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.filestackcontent.com/XlAH8XNyThOt0usnHTn3" width="400" />
+  <img src="https://cdn.filestackcontent.com/compress/fyFHRMfCRL2xhwCVtx0F" width="400" />
 </p>
 
 <br />
