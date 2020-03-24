@@ -34,10 +34,8 @@ The resume is designed with 10 Cards (we plan to add more !)
 - 🔭 Interested by: Tell more about technologies you would love to learn
 - 🌎 Languages: What language do you master?
 
-For each card : 
-- 📝 Edit dialogs to edit your JSON Resume directly in the app
+Each cards comes with an edit dialog to edit your JSON Resume directly inside the app.
 
-Feel free to suggest other cards !
 
 ### Customize your Profile
 
