@@ -10,7 +10,7 @@
 Discover a modern approach of the traditionnal CV that includes animations and latest front-end technologies. Impress recruiters or customers with your projects, hobbies and experiences as never before. 
 
 We used [JSON Resume](https://github.com/jsonresume), a community driven open source initiative to create a JSON based standard for resumes. 
-Discover the official schema [here](https://jsonresume.org/schema/).  
+Discover the official schema [here](https://jsonresume.org/schema/). 
 We added a few extra-fields to JSON Resume standard to fit developers needs. Learn more about them [here](#json-resume-extra-fields).
 
 This app is built using the popular [create-react-app](https://github.com/facebook/create-react-app). You will find a lot of resources to understand how to edit and publish your resume directly on https://create-react-app.dev/
@@ -64,16 +64,26 @@ Replace the default JSON Resume with yours
 :-----:|:-----:|:-----:
 mode|"edit" \| "readOnly"|Use this to activate or disable the Edit mode. In "edit" mode you will be able to update and customize your resume. Use "readOnly" in production. 
 data|JSONResume|This is your stringified JSONResume
-options|Object|See options for more informations
+options|Object|See options for more informations [here](#options)
+onCustomizationChanged|Callback|Get the current customization if the customization is updated. 
 additionalNodes|Object|Additional nodes is used to add react components directly inside the resume. This is an advanced feature that will be documented later. 
 
-#### Edit Dialog
 
 
-#### Customize your Profile
+#### Options
 
-![Customize your profile](https://cdn.filestackcontent.com/compress/resize=width:500/g9u9D3QbTaqJsnJcyLYk)
+**Parameter**|**Type**|**Description**
+:-----:|:-----:|:-----:
+locale|"fr" \| "en"|Resume locale (Default to "en")
+side|"front" \| "back"|Cards default side (Default to "front") 
+apiKeys|{ giphy : string }|Api keys for 3thd party librairies. For instance Giphy in edit mode. 
+endpoint|{ devicons : string, unsplashProxy: string }|Endpoints for 3thd party services. Used to get the technology list and use unsplash.
+customization|Object|Current resume customization. 
 
+
+### Customize your Profile
+
+![Customize your profile](https://cdn.filestackcontent.com/compress/uQLHC4eTRKuJ24NoJNkS)
 
 ### JSON-Resume Extra Fields
 
@@ -92,17 +102,16 @@ work|experienceYears|Number|How many years of professional experience do you hav
 sound|embedUrl|String|Your favorite Spotify playlist.
 interestedBy| |String|What languages do you want to learn? Example: Angular and Vue.js
 
-### Main options
-
-
-
-### Self-hosting
-
-Instructions...
 
 ### Hosted for free on WeLoveDevs.com
 
- Instructions
+Don't want to host your profile ?  
+Create your JSONResume and get your free subdomain in less than 10 minutes by registering on [welovedevs.com](https://welovedevs.com/app/register_developer).
+
+We added a few extra features like that you will love : 
+- ⚡ Server side rendering for ultra fast loading 
+- 🔒 Secured form using reCAPTCHA v3
+
 
 ### i18n 
 
