@@ -34,7 +34,7 @@ The resume is designed with 10 Cards (we plan to add more !)
 - 🔭 Interested by: Tell more about technologies you would love to learn
 - 🌎 Languages: What language do you master?
 
-Each cards comes with an edit dialog to edit your JSON Resume directly inside the app.
+Each cards comes with an edit dialog to edit your JSON Resume directly inside the app
 
 
 ### Customize your Profile
@@ -137,7 +137,7 @@ This project exists thanks to all the people who contribute.
  
  ### License
  
-Developer Profile is relased under [GNU AGPL v3 license](https://github.com/welovedevs/developer-profile/blob/master/LICENSE.md)
+react-ultimate-resume is relased under [GNU AGPL v3 license](https://github.com/welovedevs/developer-profile/blob/master/LICENSE.md)
  
 
 
