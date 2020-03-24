@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
+import capitalize from 'lodash';
 
 import translations from './contract_types_translations';
 
@@ -17,7 +18,7 @@ export const ContractType = ({ contractTypes = [] }) => {
             <FormattedMessage
                 id="Basics.Back.WorkContract.single"
                 defaultMessage={'Looking for a {contractType} contract'}
-                values={{ contractType: formatMessage(translations[lastContract] || translations.unknown) }}
+                values={{ contractType: capitalize(formatMessage(translations[lastContract] || translations.unknown)) }}
             />
         );
     }
@@ -27,7 +28,9 @@ export const ContractType = ({ contractTypes = [] }) => {
             defaultMessage={'Looking for a {contracts} or {lastContract} contract'}
             values={{
                 lastContract: formatMessage(translations[lastContract]),
-                contracts: contracts.map(key => formatMessage(translations[key] || translations.unknown)).join(', ')
+                contracts: contracts
+                    .map(key => capitalize(formatMessage(translations[key] || translations.unknown)))
+                    .join(', ')
             }}
         />
     );

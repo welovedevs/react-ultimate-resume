@@ -19,7 +19,7 @@ import { useIsEditing } from '../../../../../hooks/use_is_editing';
 import { useCallbackOpen } from '../../../../../hooks/use_callback_open';
 
 import { styles } from './project_section_styles';
-import { useCardVariant } from '../../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { useCardVariant } from '../../../../../hooks/profile_card_hooks/use_card_variant';
 import { getColorsFromCardVariant } from '../../../../../../utils/styles/styles_utils';
 
 const useStyles = createUseStyles(styles);

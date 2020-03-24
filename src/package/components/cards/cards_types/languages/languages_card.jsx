@@ -7,9 +7,11 @@ import { LanguagesCardEditDialog } from './languages_edit_dialog/languages_card_
 import { LanguageValidator, validateLanguagesComplete } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { SIDES } from '../../../commons/profile_card/profile_card_side/side';
+import { useMode } from '../../../hooks/use_mode';
 
 const LanguagesCardComponent = ({ variant, side }) => {
-    const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
+    const [mode] = useMode();
+    const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapLanguagesFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(

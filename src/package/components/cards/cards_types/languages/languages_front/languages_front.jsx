@@ -11,7 +11,7 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './languages_front_styles';
-import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
+import { useCardSide } from '../../../../hooks/profile_card_hooks/use_card_side';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 

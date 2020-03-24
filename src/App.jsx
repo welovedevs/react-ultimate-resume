@@ -1,7 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
 import merge from 'lodash/merge';
-import { Button } from '@wld/ui';
 
 import isArray from 'lodash/isArray';
 import mergeWith from 'lodash/mergeWith';
@@ -18,7 +16,6 @@ const mergeFunction = (objValue, srcValue) => {
 
 function App() {
     const [data, setData] = useState(JsonStub);
-    const [isEditing, setIsEditing] = useState(false);
 
     const onEdit = useCallback(newData => setData(mergeWith(cloneDeep(data), newData, mergeFunction)), [
         JSON.stringify(data)
@@ -29,10 +26,9 @@ function App() {
 
     return (
         <DeveloperProfile
-            mode="edit"
+            mode="readOnly"
             data={data}
             onEdit={onEdit}
-            isEditing={isEditing}
             onCustomizationChanged={onCustomizationChanged}
             options={{
                 // side: 'back',
@@ -45,21 +41,6 @@ function App() {
                     unsplashProxy: 'https://us-central1-test-project-412e3.cloudfunctions.net/unsplash-unsplashProxy'
                 },
                 customization
-            }}
-            additionalNodes={{
-                banner: {
-                    actionsButtons: (
-                        <>
-                            <Button
-                                style={{ color: '#fff' }}
-                                variant="outlined"
-                                onClick={() => setIsEditing(!isEditing)}
-                            >
-                                <FormattedMessage id="Edit" defaultMessage="Edit" />
-                            </Button>
-                        </>
-                    )
-                }
             }}
         />
     );

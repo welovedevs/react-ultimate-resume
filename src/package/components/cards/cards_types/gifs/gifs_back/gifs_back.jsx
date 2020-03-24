@@ -11,7 +11,7 @@ import { ReactComponent as ArrowIcon } from '../../../../../assets/icons/arrow-r
 
 import { GifsSidesCommons } from '../gifs_sides_commons/gifs_sides_commons';
 
-import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 
 import { GIFS_BACK_TRANSITIONS_SPRING_PROPS } from './gifs_back_spring_props';
 

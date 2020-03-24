@@ -14,18 +14,22 @@ import { useCallbackOpen } from '../../hooks/use_callback_open';
 
 import { styles } from './edit_header_image_button_styles';
 import { useReceivedGlobalClasses } from '../../hooks/use_received_global_classes';
+import { useMode } from '../../hooks/use_mode';
 
 const useStyles = createUseStyles(styles);
 
 export const EditHeaderImageButton = ({ customizationOptions }) => {
     const classes = useStyles();
     const [globalReceivedClasses = {}] = useReceivedGlobalClasses('banner.editHeaderImageButton');
-    const { onCustomizationChanged, mode } = useContext(DeveloperProfileContext);
+    const [mode] = useMode();
+    const { onCustomizationChanged } = useContext(DeveloperProfileContext);
     const [open, onOpen, onClose] = useCallbackOpen();
 
     const onChange = useCallback(
         value => {
-            onCustomizationChanged({ ...customizationOptions, imageHeader: value });
+            if (typeof onCustomizationChanged === 'function') {
+                onCustomizationChanged({ ...customizationOptions, imageHeader: value });
+            }
         },
         [customizationOptions]
     );

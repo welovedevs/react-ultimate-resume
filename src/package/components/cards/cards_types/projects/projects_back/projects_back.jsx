@@ -10,7 +10,7 @@ import { ProjectSection } from './project_section/project_section';
 
 import { DEFAULT_PROJECT_IMAGE } from '../utils/images';
 import { styles } from './projects_back_styles';
-import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoProject } from './no_project/no_project';

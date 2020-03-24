@@ -12,7 +12,7 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 
 import { ReactComponent as HomeLogo } from '../../../../../assets/icons/home.svg';
 
-import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
+import { useCardSide } from '../../../../hooks/profile_card_hooks/use_card_side';
 import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
 import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 

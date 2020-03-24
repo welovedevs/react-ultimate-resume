@@ -10,7 +10,7 @@ import { ProjectDialogContentAddImage } from './project_dialog_content_add_image
 import { PROJECT_DIALOG_CONTENT_IMAGES_TRANSITIONS_SPRING_PROPS } from './project_dialog_content_images_transitions_spring_props';
 
 import { styles } from './project_dialog_content_images_styles';
-import { useCardVariant } from '../../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { useCardVariant } from '../../../../../hooks/profile_card_hooks/use_card_variant';
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../../utils/styles/styles_utils';
 import { hashCode } from '../../../../../../utils/string_utils';
 

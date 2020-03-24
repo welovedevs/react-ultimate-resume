@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss';
 
 import { Typography } from '@wld/ui';
 
-import { useCardVariant } from '../profile_card_hooks/use_card_variant';
+import { useCardVariant } from '../../../hooks/profile_card_hooks/use_card_variant';
 
 import { styles } from './profile_card_title_styles';
 

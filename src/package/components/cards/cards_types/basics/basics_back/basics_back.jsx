@@ -1,4 +1,4 @@
-import React, { memo, useContext, useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -14,15 +14,15 @@ import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { translations } from '../../../../../utils/enums/job_serachstate/job_search_state_translations';
 import { styles } from './basics_back_styles';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
-import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
 import { ExperienceYears } from './fields/professional_experience';
 import { CodingYears } from './fields/coding_years';
 import { StudiesLevel } from './fields/studies_level';
+import { useMode } from '../../../../hooks/use_mode';
 
 const useStyles = createUseStyles(styles);
 
 const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
-    const { mode } = useContext(DeveloperProfileContext);
+    const [mode] = useMode();
     const classes = useStyles();
 
     const {

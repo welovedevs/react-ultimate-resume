@@ -9,7 +9,7 @@ import { Typography } from '@wld/ui/typography/typography';
 import OtherSkillProgress from '../other_skill_progress/other_skill_progress';
 import { getColorsFromCardVariant } from '../../../../../../utils/styles/styles_utils';
 
-import { useCardVariant } from '../../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { useCardVariant } from '../../../../../hooks/profile_card_hooks/use_card_variant';
 
 import { styles } from './other_skills_styles';
 

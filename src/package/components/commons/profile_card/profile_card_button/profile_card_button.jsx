@@ -8,7 +8,7 @@ import { Button } from '@wld/ui';
 import { ReactComponent as ArrowRight } from '../../../../assets/icons/arrow-right.svg';
 
 import { styles } from './profile_card_button_styles';
-import { useCardVariant } from '../profile_card_hooks/use_card_variant';
+import { useCardVariant } from '../../../hooks/profile_card_hooks/use_card_variant';
 
 const DEFAULT_SPRING_PROPS = { translation: 0 };
 const ACTIVE_SPRING_PROPS = { translation: 6 };

@@ -9,9 +9,12 @@ import { InterestedByEditDialog } from './interested_by_edit_dialog/interested_b
 import { interestedByMapping } from './data/mapping';
 import { interestedByValidationSchema, validateInterestedByComplete } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
+import { useMode } from '../../../hooks/use_mode';
 
 const InterestedByCardComponent = ({ variant, side }) => {
-    const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
+    const [mode] = useMode();
+
+    const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => JsonResumeToFlatObject(data, interestedByMapping), [data]);
 
     const onDialogEdited = useCallback(

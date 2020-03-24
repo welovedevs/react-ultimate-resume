@@ -12,11 +12,11 @@ import { ProfileCardActions } from '../../../../commons/profile_card/profile_car
 import { ProfileCardButton } from '../../../../commons/profile_card/profile_card_button/profile_card_button';
 
 import { useTechnologies } from '../../../../hooks/technologies/use_technologies';
-import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
+import { useCardSide } from '../../../../hooks/profile_card_hooks/use_card_side';
 import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './skills_front_styles';
-import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';

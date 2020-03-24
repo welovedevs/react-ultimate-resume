@@ -8,9 +8,11 @@ import { DreamJobValidationSchema, validateDreamjobComplete } from './data/valid
 
 import { mapDreamJobFromJsonResume, mapDreamJobToJsonResume } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
+import { useMode } from '../../../hooks/use_mode';
 
 const DreamJobCardComponent = ({ variant, side }) => {
-    const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
+    const [mode] = useMode();
+    const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapDreamJobFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(

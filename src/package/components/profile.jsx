@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useReducer } from 'react';
+import React, { useCallback, useMemo, useReducer, useState } from 'react';
 import { injectIntl, IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
@@ -58,14 +58,13 @@ const DeveloperProfileComponent = ({
     mode,
     onEdit: onEditProps = DEFAULT_FUNCTION,
     onCustomizationChanged,
-    isEditing = false,
     onFilesUpload = DEFAULT_UPLOAD_FUNCTION,
     additionalNodes,
     classes: receivedGlobalClasses = {}
 }) => {
     const classes = useStyles(styles);
     const { apiKeys, endpoints } = options;
-
+    const [isEditing, setIsEditing] = useState(false);
     const onEdit = useCallback(
         newData => {
             if (typeof onEditProps === 'function') {
@@ -90,6 +89,7 @@ const DeveloperProfileComponent = ({
         () => ({
             data,
             isEditing,
+            setIsEditing,
             onEdit,
             onCustomizationChanged,
             onFilesUpload,
@@ -109,7 +109,7 @@ const DeveloperProfileComponent = ({
                             customizationOptions={options.customization}
                             onCustomizationChanged={onCustomizationChanged}
                         />
-                        {additionalNodes.beforeCards}
+                        {additionalNodes?.beforeCards}
                         <Cards cardsOrder={options.customization?.cardsOrder} side={side} />
                         {!options.dismissFooter && <Footer />}
                     </DeveloperProfileContext.Provider>
@@ -127,7 +127,6 @@ const WithProvidersDeveloperProfile = ({
     mode = 'readOnly',
     additionalNodes,
     classes,
-    isEditing,
     onFilesUpload,
     intl: parentIntl
 }) => {
@@ -148,7 +147,6 @@ const WithProvidersDeveloperProfile = ({
         <ThemeProvider theme={builtTheme}>
             <IntlProvider locale={locale} messages={providerMessages} defaultLocale={locale}>
                 <DeveloperProfileComponent
-                    isEditing={isEditing}
                     data={data}
                     mode={mode}
                     onEdit={onEdit}

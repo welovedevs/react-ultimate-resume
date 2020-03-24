@@ -9,7 +9,7 @@ import { LanguageColumn } from './language_column/language_column';
 
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
 
-import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 import { LANGUAGES_COLUMN_TRANSITIONS_SPRING_PROPS } from './languages_back_spring_props';
 
 import { styles } from './languages_back_styles';

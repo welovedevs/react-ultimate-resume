@@ -9,8 +9,8 @@ import { Typography } from '@wld/ui';
 import { ProfileCardActions } from '../../../../commons/profile_card/profile_card_actions/profile_card_actions';
 import { ProfileCardButton } from '../../../../commons/profile_card/profile_card_button/profile_card_button';
 
-import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
-import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { useCardSide } from '../../../../hooks/profile_card_hooks/use_card_side';
+import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 
 import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 import { DEFAULT_PROJECT_IMAGE } from '../utils/images';

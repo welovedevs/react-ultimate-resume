@@ -7,9 +7,11 @@ import { StudiesCardEditDialog } from './edit_dialog/studies_card_edit_dialog';
 import { StudiesValidator, validateStudiesComplete } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { SIDES } from '../../../commons/profile_card/profile_card_side/side';
+import { useMode } from '../../../hooks/use_mode';
 
 const StudiesCardComponent = ({ variant, side }) => {
-    const { data, onEdit, isEditing, mode } = useContext(DeveloperProfileContext);
+    const [mode] = useMode();
+    const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapStudiesFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(

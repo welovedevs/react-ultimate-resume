@@ -10,7 +10,7 @@ import SkillsPieChart from './skills_pie_chart/skills_pie_chart';
 import OtherSkills from './other_skills/other_skills';
 
 import { styles } from './skills_back_styles';
-import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoSkill } from './no_skill/no_skill';
 

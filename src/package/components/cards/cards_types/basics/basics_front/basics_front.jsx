@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 
 import cn from 'classnames';
 
@@ -13,18 +13,18 @@ import { ProfileCardFrontTypography } from '../../../../commons/profile_card/pro
 
 import { ReactComponent as LocationIcon } from '../../../../../assets/icons/location.svg';
 
-import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
-import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { useCardSide } from '../../../../hooks/profile_card_hooks/use_card_side';
+import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './basics_front_styles';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
-import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
+import { useMode } from '../../../../hooks/use_mode';
 
 const useStyles = createUseStyles(styles);
 
 const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
-    const { mode } = useContext(DeveloperProfileContext);
+    const [mode] = useMode();
     const [variant] = useCardVariant();
 
     const classes = useStyles({ variant });

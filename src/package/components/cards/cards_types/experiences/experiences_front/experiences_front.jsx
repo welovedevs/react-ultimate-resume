@@ -12,8 +12,8 @@ import { ProfileCardActions } from '../../../../commons/profile_card/profile_car
 import { ProfileCardButton } from '../../../../commons/profile_card/profile_card_button/profile_card_button';
 import { ProfileCardFrontTypography } from '../../../../commons/profile_card/profile_card_front_typography/profile_card_front_typography';
 
-import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
-import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
+import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
+import { useCardSide } from '../../../../hooks/profile_card_hooks/use_card_side';
 import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './experiences_front_styles';

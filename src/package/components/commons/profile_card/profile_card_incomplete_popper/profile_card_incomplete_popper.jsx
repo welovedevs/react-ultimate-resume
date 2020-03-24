@@ -1,4 +1,4 @@
-import React, { memo, useContext, useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
@@ -8,14 +8,14 @@ import { PopperCard, Typography } from '@wld/ui';
 import { ReactComponent as WarnIcon } from '../../../../assets/icons/warn.svg';
 
 import { styles } from './profile_card_incomplete_popper_styles';
-import { DeveloperProfileContext } from '../../../../utils/context/contexts';
+import { useMode } from '../../../hooks/use_mode';
 
 const useStyles = createUseStyles(styles);
 
 const ProfileCardIncompletePopperComponent = ({ open, onClose, anchorElement }) => {
     const classes = useStyles();
     const [hasBeenMounted, setHasBeenMouneted] = useState(false);
-    const { mode } = useContext(DeveloperProfileContext);
+    const [mode] = useMode();
 
     useEffect(() => setHasBeenMouneted(true), []);
 

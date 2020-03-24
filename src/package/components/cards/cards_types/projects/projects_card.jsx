@@ -9,9 +9,11 @@ import { mapProjectsFromJsonResume } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { validateProjectsComplete } from './data/validator';
 import { SIDES } from '../../../commons/profile_card/profile_card_side/side';
+import { useMode } from '../../../hooks/use_mode';
 
 const ProjectsCardComponent = ({ variant, side }) => {
-    const { data, isEditing, mode } = useContext(DeveloperProfileContext);
+    const [mode] = useMode();
+    const { data, isEditing } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapProjectsFromJsonResume(data), [data]);
 
     const isComplete = useMemo(() => validateProjectsComplete(mappedData), [mappedData]);

@@ -9,9 +9,11 @@ import { SoundtrackMapping } from './data/mapping';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { SoundtrackValidationSchema, validateSoundtrackComplete } from './data/validator';
 import { SIDES } from '../../../commons/profile_card/profile_card_side/side';
+import { useMode } from '../../../hooks/use_mode';
 
 const SoundtrackCardComponent = ({ variant, side }) => {
-    const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
+    const [mode] = useMode();
+    const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => JsonResumeToFlatObject(data, SoundtrackMapping), [data]);
 
     const onDialogEdited = useCallback(

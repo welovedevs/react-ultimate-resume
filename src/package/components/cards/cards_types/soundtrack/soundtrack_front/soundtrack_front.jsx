@@ -15,7 +15,7 @@ import { ReactComponent as SpotifyLogo } from '../../../../../assets/icons/brand
 import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './soundtrack_front_styles';
-import { useCardSide } from '../../../../commons/profile_card/profile_card_hooks/use_card_side';
+import { useCardSide } from '../../../../hooks/profile_card_hooks/use_card_side';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 
 const useStyles = createUseStyles(styles);

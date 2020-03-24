@@ -9,9 +9,11 @@ import { BasicsCardEditDialog } from './basics_edit_dialog/basic_edit_dialog';
 import { BasicsValidationSchema, validateBasicsComplete } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { BasicsFront } from './basics_front/basics_front';
+import { useMode } from '../../../hooks/use_mode';
 
 const BasicsCardComponent = ({ variant, side }) => {
-    const { data, isEditing, onEdit, mode } = useContext(DeveloperProfileContext);
+    const [mode] = useMode();
+    const { data, isEditing, onEdit } = useContext(DeveloperProfileContext);
     const mappedData = useMemo(() => mapJsonResumeToBasicData(data), [data]);
 
     const onDialogEdited = useCallback(

@@ -19,11 +19,14 @@ import { useAdditionalNodes } from '../hooks/use_additional_nodes';
 import { useReceivedGlobalClasses } from '../hooks/use_received_global_classes';
 
 import { styles } from './banner_styles';
+import { useMode } from '../hooks/use_mode';
+import { EditButton } from './user_actions_row/edit_button/edit_button';
 
 const useStyles = createUseStyles(styles);
 
 const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
     const classes = useStyles();
+    const [mode] = useMode();
     const [actionsButtons] = useAdditionalNodes('banner.actionsButtons', null);
     const [globalReceivedBannerClasses = {}] = useReceivedGlobalClasses('banner');
     const [isEditing] = useIsEditing();
@@ -57,7 +60,8 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
                 <UserInformations />
                 <SocialActions>
                     {actionsButtons}
-                    {onCustomizationChanged && <CustomizeButton customizationOptions={customizationOptions} />}
+                    {mode === 'edit' && <EditButton />}
+                    {mode === 'edit' && <CustomizeButton customizationOptions={customizationOptions} />}
                 </SocialActions>
             </div>
             {bannerImageCredits?.name && (

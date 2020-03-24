@@ -1,8 +1,9 @@
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 
 import { DeveloperProfileContext } from '../../utils/context/contexts';
 
 export const useIsEditing = () => {
     const { isEditing } = useContext(DeveloperProfileContext);
-    return [isEditing];
+    const memoizedValue = useMemo(() => isEditing, [isEditing]);
+    return [memoizedValue];
 };

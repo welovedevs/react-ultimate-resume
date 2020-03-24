@@ -9,7 +9,7 @@ import { LoadingSpinner } from '../../../../commons/loading_spinner/loading_spin
 import { LOADING_SPINNER_TRANSITIONS } from './soundtrack_back_loading_spinner_transitions';
 
 import { getColorsFromCardVariant } from '../../../../../utils/styles/styles_utils';
-import { useCardVariant } from '../../../../commons/profile_card/profile_card_hooks/use_card_variant';
+import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 
 import { styles } from './soundtrack_back_styles';
 import { NoSoundTrack } from './no_soundtrack/no_soundtrack';
