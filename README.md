@@ -135,6 +135,9 @@ This project exists thanks to all the people who contribute.
   </tr>
  </table>
  
+Chat with us on [Discord](https://discord.gg/udbbbAq) ! 
+ 
+ 
  ### License
  
 react-ultimate-resume is relased under [GNU AGPL v3 license](https://github.com/welovedevs/developer-profile/blob/master/LICENSE.md)
