@@ -53,15 +53,16 @@ const DEFAULT_FUNCTION = () => {};
 const DEFAULT_UPLOAD_FUNCTION = async () => 'https://source.unsplash.com/random/4000x2000';
 
 const DeveloperProfileComponent = ({
-    data = DEFAULT_OBJECT,
-    options,
-    mode,
-    onEdit: onEditProps = DEFAULT_FUNCTION,
-    onCustomizationChanged,
-    onFilesUpload = DEFAULT_UPLOAD_FUNCTION,
-    additionalNodes,
-    classes: receivedGlobalClasses = {}
-}) => {
+                                       data = DEFAULT_OBJECT,
+                                       options,
+                                       mode,
+                                       onEdit: onEditProps = DEFAULT_FUNCTION,
+                                       onIsEditingChanged,
+                                       onCustomizationChanged,
+                                       onFilesUpload = DEFAULT_UPLOAD_FUNCTION,
+                                       additionalNodes,
+                                       classes: receivedGlobalClasses = {}
+                                   }) => {
     const classes = useStyles(styles);
     const { apiKeys, endpoints } = options;
     const [isEditing, setIsEditing] = useState(false);
@@ -73,6 +74,10 @@ const DeveloperProfileComponent = ({
         },
         [onEditProps]
     );
+    const setIsEditingWithCallback = useCallback((newValue) => {
+        setIsEditing(newValue);
+        onIsEditingChanged(newValue);
+    }, [onIsEditingChanged, setIsEditing]);
     const store = {
         technologies: useReducer(technologiesReducer, technologiesInitialState)
     };
@@ -89,7 +94,7 @@ const DeveloperProfileComponent = ({
         () => ({
             data,
             isEditing,
-            setIsEditing,
+            setIsEditing: setIsEditingWithCallback,
             onEdit,
             onCustomizationChanged,
             onFilesUpload,
@@ -123,6 +128,7 @@ const WithProvidersDeveloperProfile = ({
     data,
     onEdit,
     onCustomizationChanged,
+    onIsEditingChanged,
     options = {},
     mode = 'readOnly',
     additionalNodes,
@@ -151,6 +157,7 @@ const WithProvidersDeveloperProfile = ({
                     mode={mode}
                     onEdit={onEdit}
                     onCustomizationChanged={onCustomizationChanged}
+                    onIsEditingChanged={onIsEditingChanged}
                     options={mergedOptions}
                     additionalNodes={additionalNodes}
                     onFilesUpload={onFilesUpload}
