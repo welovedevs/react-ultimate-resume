@@ -117,7 +117,7 @@ Create your JSONResume and get your free subdomain in less than 10 minutes by re
 
 We added a few extra features like that you will love : 
 - ⚡ Server side rendering for ultra fast loading 
-- 🔒 Secured form using reCAPTCHA v3
+- 🔒 Secured using reCAPTCHA v3, HTTPS and Cloudflare
 
 
 ### i18n 
