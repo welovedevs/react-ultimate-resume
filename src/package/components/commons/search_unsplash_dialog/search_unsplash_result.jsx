@@ -82,7 +82,7 @@ const Results = ({ query, debouncedQuery, onSelect, classes }) => {
         ({ description, urls, id, user, links }) => () => {
             onSelect({
                 id,
-                url: urls.full,
+                url: urls.regular,
                 alt: description,
                 credits: {
                     url: encodeURI(`${user.links.html}?utm_source=W3D Developer Profile&utm_medium=referral`),
