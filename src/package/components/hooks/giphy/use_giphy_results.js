@@ -35,13 +35,14 @@ export const useGiphyResults = (input, page = 0, limit = 20, timeout = 800) => {
                 offset: page * limit,
                 limit
             };
+
             // eslint-disable-next-line no-undef
             fetch(
                 encodeURI(
                     GIPHY_API_ENDPOINT +
-                        Object.entries(params)
-                            .map(([key, value]) => `${key}=${value}`)
-                            .join('&')
+                    Object.entries(params)
+                        .map(([key, value]) => `${key}=${value}`)
+                        .join('&')
                 )
             )
                 .then(res => {
@@ -52,9 +53,9 @@ export const useGiphyResults = (input, page = 0, limit = 20, timeout = 800) => {
                 })
                 .then(({ data }) => {
                     setResults(
-                        data.map(({ id, title }) => ({
+                        data.map(({ id, title, images }) => ({
                             id,
-                            url: `https://media.giphy.com/media/${id}/giphy.gif`,
+                            url: images?.downsized?.url,
                             title
                         }))
                     );

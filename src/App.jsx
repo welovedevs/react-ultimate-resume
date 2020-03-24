@@ -33,7 +33,7 @@ function App() {
             options={{
                 // side: 'back',
                 apiKeys: {
-                    giphy: process.env.REACT_APP_GIPHY_API_KEY
+                    giphy: 'LlyqILDRkoJ0vTRQknbiM5QhmHCK4GmM'
                 },
                 endpoints: {
                     devicons:
