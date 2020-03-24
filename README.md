@@ -4,8 +4,8 @@
 
 <br />
 
-# Developer-Profile by WeLoveDevs.com
-**Developer-Profile** is an open-source customizable software developer resume to highlight your skills and experiences.
+# react-ultimate-resume by WeLoveDevs.com
+**react-ultimate-resume** is an open-source customizable software developer resume to highlight your skills and experiences.
 
 Discover a modern approach of the traditionnal CV that includes animations and latest front-end technologies. Impress recruiters or customers with your projects, hobbies and experiences as never before. 
 
@@ -22,15 +22,28 @@ This app is built using the popular [create-react-app](https://github.com/facebo
 
 ### Features
 
-- 📝 Edit dialogs to edit your JSON Resume directly in the app
-- 💼 Explain easily to recruiters what is your dream job
-- ✨ Highlight your best projects
-- 📊 Nice Graphs to show your skills
-- 🎨 Fully customizable with an included set of nice color palettes 
-- 📺 Show your hobbies with GIF !
-- 🎶 Add your favorite Spotify Playlist
+The resume is designed with 10 Cards (we plan to add more !) 
+- 🙂 Basics: Your basics : Where are you ? When did you start coding ...
+- 📊 Skills: Beautiful Graphs to show your skills
+- 💼 Dream job: Explain easily to recruiters what is your dream job
+- 💾 Experiences: Describe your professional experiences
+- 🎓 Studies: How did you learn to code ?
+- ✨ Projects: Highlight your best projects
+- 📺 Hobbies: Show your hobbies with GIF !
+- 🎶 Music: Add your favorite Spotify Playlist
+- 🔭 Interested by: Tell more about technologies you would love to learn
+- 🌎 Languages: What language do you master?
 
-And more to discover !
+For each card : 
+- 📝 Edit dialogs to edit your JSON Resume directly in the app
+
+Feel free to suggest other cards !
+
+### Customize your Profile
+
+🎨 This resume is fully customizable with an included set of nice color palettes :
+
+![Customize your profile](https://cdn.filestackcontent.com/compress/uQLHC4eTRKuJ24NoJNkS)
 
 
 ### Getting started
@@ -80,10 +93,6 @@ apiKeys|{ giphy : string }|Api keys for 3thd party librairies. For instance Giph
 endpoint|{ devicons : string, unsplashProxy: string }|Endpoints for 3thd party services. Used to get the technology list and use unsplash.
 customization|Object|Current resume customization. 
 
-
-### Customize your Profile
-
-![Customize your profile](https://cdn.filestackcontent.com/compress/uQLHC4eTRKuJ24NoJNkS)
 
 ### JSON-Resume Extra Fields
 
