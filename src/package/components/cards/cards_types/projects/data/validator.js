@@ -14,9 +14,6 @@ export const ProjectValidator = formatMessage =>
             .required(formatMessage(validationTranslations.required)),
         images: Yup.array().of(
             Yup.object().shape({
-                name: Yup.string()
-                    .required(formatMessage(validationTranslations.required))
-                    .min(5, formatMessage(validationTranslations.min, { min: 5 })),
                 url: Yup.string()
                     .required(formatMessage(validationTranslations.required))
                     .url()

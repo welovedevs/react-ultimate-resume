@@ -10,7 +10,7 @@ const ProjectDialogContentAddImageComponent = () => {
     const [openDialog, setDialogOpened, setDialogClosed] = useCallbackOpen();
     const { values, setFieldValue } = useFormikContext();
 
-    const onFileAdded = useCallback(url => setFieldValue('images', [...(values.images || []), { url, name: '' }]), [
+    const onFileAdded = useCallback(url => setFieldValue('images', [...(values.images || []), { url }]), [
         JSON.stringify(values.images)
     ]);
 
