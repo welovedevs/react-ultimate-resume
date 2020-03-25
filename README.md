@@ -115,7 +115,7 @@ interestedBy| |String|What languages do you want to learn? Example: Angular and 
 Don't want to host your profile ?  
 Create your JSONResume and get your free subdomain in less than 10 minutes by registering on [welovedevs.com](https://welovedevs.com/app/register_developer).
 
-We added a few extra features like that you will love : 
+We added a few extra features that you will love : 
 - ⚡ Server side rendering for ultra fast loading 
 - 🔒 Secured using reCAPTCHA v3, HTTPS and Cloudflare
 
