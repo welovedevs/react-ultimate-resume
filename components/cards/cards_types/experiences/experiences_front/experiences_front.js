@@ -120,7 +120,12 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
       }));
     }
 
-    return builder;
+    return builder.map(function (value, index) {
+      return (/*#__PURE__*/_react.default.createElement(_react.Fragment, {
+          key: "builder_part_".concat(index)
+        }, value)
+      );
+    });
   }, [data.work]);
   return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, /*#__PURE__*/_react.default.createElement(_center_content_container.CenterContentContainer, {
       customClasses: {

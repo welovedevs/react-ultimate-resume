@@ -97,7 +97,12 @@ var ExperienceContent = function ExperienceContent(_ref) {
     }
 
     builder.push(dateString);
-    return builder;
+    return builder.map(function (value, index) {
+      return (/*#__PURE__*/_react.default.createElement(_react.Fragment, {
+          key: "builder_part_".concat(index)
+        }, value)
+      );
+    });
   }, [buildTitle, experience]);
   return (/*#__PURE__*/_react.default.createElement(_profile_card_section.ProfileCardSection, {
       key: id,

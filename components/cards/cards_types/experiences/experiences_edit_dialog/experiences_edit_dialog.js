@@ -290,7 +290,7 @@ var ExperienceItem = (0, _reactSortableHoc.SortableElement)(function (_ref7) {
     }, /*#__PURE__*/_react.default.createElement(_reactSpring.animated.div, {
       className: classes.arrowContainer,
       style: {
-        transform: rotate.interpolate(function (value) {
+        transform: rotate.to(function (value) {
           return "rotate(".concat(value, "deg)");
         })
       }

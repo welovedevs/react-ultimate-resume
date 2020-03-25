@@ -90,7 +90,7 @@ var ProfileCardButtonComponent = (0, _reactJss.default)(_profile_card_button_sty
     }, other), children), /*#__PURE__*/_react.default.createElement(_reactSpring.animated.span, {
       className: classes.arrowContainer,
       style: {
-        transform: springProps.translation.interpolate(function (value) {
+        transform: springProps.translation.to(function (value) {
           return "translate3d(".concat(value, "px, 0, 0)");
         })
       }

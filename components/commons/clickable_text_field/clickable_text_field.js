@@ -64,7 +64,7 @@ var ClickableTextFieldComponent = function ClickableTextFieldComponent(_ref) {
       className: (0, _classnames.default)(classes.container, customClasses.container)
     }, other), /*#__PURE__*/_react.default.createElement(_reactSpring.animated.span, {
       style: {
-        transform: rotationSpring.interpolate(function (value) {
+        transform: rotationSpring.to(function (value) {
           return "rotate(".concat(value, "deg)");
         })
       }

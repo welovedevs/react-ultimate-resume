@@ -135,6 +135,7 @@ var GifsBackComponent = function GifsBackComponent(_ref) {
         var gifUrl = _ref2.gifUrl,
             name = _ref2.name;
         return (/*#__PURE__*/_react.default.createElement(SlideItem, {
+            key: "gif_".concat(gifUrl, "_").concat(name),
             gifUrl: gifUrl,
             name: name,
             classes: classes
@@ -228,7 +229,7 @@ var Arrow = function Arrow(_ref6) {
       onFocus: handleMouseDown,
       onBlur: handleMouseUp,
       style: {
-        transform: springProps.scale.interpolate(function (value) {
+        transform: springProps.scale.to(function (value) {
           return "scale3d(".concat(value, ", ").concat(value, ", ").concat(value, ")");
         })
       }
@@ -259,7 +260,6 @@ var SlideItem = function SlideItem(_ref7) {
 
 var TransitioningItem = function TransitioningItem(_ref8) {
   var item = _ref8.item,
-      key = _ref8.key,
       props = _ref8.props,
       pauseSlider = _ref8.pauseSlider,
       resumeSlider = _ref8.resumeSlider,
@@ -267,7 +267,6 @@ var TransitioningItem = function TransitioningItem(_ref8) {
 
   if (!(item === null || item === void 0 ? void 0 : item.gifUrl)) {
     return (/*#__PURE__*/_react.default.createElement(_reactSpring.animated.div, {
-        key: key,
         className: classes.transitioningItemWithoutGif,
         style: props,
         onMouseEnter: pauseSlider,
@@ -284,7 +283,6 @@ var TransitioningItem = function TransitioningItem(_ref8) {
   }
 
   return (/*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      key: key,
       customClasses: {
         container: classes.slideName
       },

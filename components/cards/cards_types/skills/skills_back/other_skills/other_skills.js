@@ -51,7 +51,7 @@ var OtherSkills = function OtherSkills(_ref) {
       className: classes.otherSkillsContainer,
       style: {
         opacity: style.opacity,
-        transform: yt.interpolate(function (value) {
+        transform: yt.to(function (value) {
           return "translate3d(0, ".concat(value, "px,0)");
         })
       }

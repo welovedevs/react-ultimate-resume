@@ -89,7 +89,7 @@ var LocationPlacesFieldComponent = function LocationPlacesFieldComponent(_ref) {
         color: "secondary",
         style: {
           opacity: props.opacity,
-          transform: props.scale.interpolate(function (value) {
+          transform: props.scale.to(function (value) {
             return "scale3d(".concat(value, ", ").concat(value, ", ").concat(value, ")");
           })
         }

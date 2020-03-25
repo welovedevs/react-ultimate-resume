@@ -124,7 +124,9 @@ var Content = function Content(_ref3) {
       isEditing = _ref3.isEditing;
   var handleValueChange = (0, _react.useCallback)(function (name) {
     return function (value) {
-      console.debug("Setting field ".concat(name, " to value ").concat(value));
+      console.log("[Edit Dialog] Setting field ".concat(name, " to value."), {
+        value: value
+      });
       return setFieldValue(name, value);
     };
   }, [setFieldValue]);

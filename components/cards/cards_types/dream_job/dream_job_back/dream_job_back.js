@@ -94,7 +94,9 @@ var DreamJobBackComponent = function DreamJobBackComponent(_ref) {
     }))), (0, _exists_and_not_empty.existsAndNotEmpty)(currentJobIssues) && /*#__PURE__*/_react.default.createElement(_profile_card_section.ProfileCardSection, null, /*#__PURE__*/_react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
       id: "Dreamjob.Back.Location.CurrentJobIssues.Title",
       defaultMessage: "Current job's issues"
-    })), /*#__PURE__*/_react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, /*#__PURE__*/_react.default.createElement(_dream_job_current_job_issues.DreamJobCurrentJobIssues, {
+    })), /*#__PURE__*/_react.default.createElement(_profile_card_section_text.ProfileCardSectionText, {
+      component: "div"
+    }, /*#__PURE__*/_react.default.createElement(_dream_job_current_job_issues.DreamJobCurrentJobIssues, {
       currentJobIssues: currentJobIssues
     }))))
   );

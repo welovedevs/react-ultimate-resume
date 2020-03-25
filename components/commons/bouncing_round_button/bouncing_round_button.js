@@ -74,7 +74,7 @@ var BouncingRoundButtonComponent = function BouncingRoundButtonComponent(_ref) {
       onMouseUp: handleMouseUp,
       onMouseLeave: handleMouseUp,
       style: {
-        transform: springProps.scale.interpolate(function (value) {
+        transform: springProps.scale.to(function (value) {
           return "scale3d(".concat(value, ", ").concat(value, ", ").concat(value, ")");
         })
       }

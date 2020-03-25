@@ -21,11 +21,12 @@ var useStyles = (0, _reactJss.createUseStyles)(_profile_card_section_text_styles
 
 var ProfileCardSectionTextComponent = function ProfileCardSectionTextComponent(_ref) {
   var children = _ref.children,
+      component = _ref.component,
       _ref$customClasses = _ref.customClasses,
       customClasses = _ref$customClasses === void 0 ? {} : _ref$customClasses;
   var classes = useStyles();
   return (/*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      component: "p",
+      component: component,
       customClasses: {
         container: (0, _classnames.default)(classes.container, customClasses.container)
       }

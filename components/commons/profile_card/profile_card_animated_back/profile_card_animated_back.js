@@ -61,7 +61,7 @@ var ProfileCardAnimatedBackComponent = function ProfileCardAnimatedBackComponent
       component: _reactSpring.animated.div,
       style: {
         opacity: titleSpringProps.opacity,
-        transform: titleSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION)
+        transform: titleSpringProps.translation.to(TRANSLATION_INTERPOLATION)
       },
       customClasses: {
         typography: (0, _classnames.default)(classes.title, customClasses.title)
@@ -72,12 +72,12 @@ var ProfileCardAnimatedBackComponent = function ProfileCardAnimatedBackComponent
       },
       component: _reactSpring.animated.div,
       style: {
-        transform: contentContainerSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION)
+        transform: contentContainerSpringProps.translation.to(TRANSLATION_INTERPOLATION)
       }
     }, /*#__PURE__*/_react.default.createElement(_reactSpring.animated.div, {
       className: customClasses.contentAnimated,
       style: {
-        transform: contentSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION),
+        transform: contentSpringProps.translation.to(TRANSLATION_INTERPOLATION),
         opacity: contentSpringProps.opacity
       }
     }, content)))
