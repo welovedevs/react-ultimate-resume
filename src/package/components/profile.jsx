@@ -57,7 +57,7 @@ const DeveloperProfileComponent = ({
                                        options,
                                        mode,
                                        onEdit: onEditProps = DEFAULT_FUNCTION,
-                                       onIsEditingChanged,
+                                       onIsEditingChanged = DEFAULT_FUNCTION,
                                        onCustomizationChanged,
                                        onFilesUpload = DEFAULT_UPLOAD_FUNCTION,
                                        additionalNodes,
