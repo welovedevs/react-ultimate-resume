@@ -22,9 +22,9 @@ Export your JSONResume from WeLoveDevs.com or any website supporting the schema.
 
 I highly recommend working on a separate branch with you own data.
 
-`git checkout -b mine`
+`git checkout -b my_new_branch`
 
-Then you can replace `json_stub.json` content or link your profile from `App.jsx`
+We provide the JsonResume to the component in `App.jsx`. Feel free to edit the `src/data/json_stub.json` or to provide your own component via an API or such. 
 
 Test it out :
 
@@ -38,14 +38,11 @@ And visit http://localhost:3000
 
 ## BUILD
 
-🚔 Use `yarn build:app` 🚓
+🚔 Use `yarn build` 🚓
 
 You may serve your `build` folder locally :
 
-```
-yarn global add serve
-serve -s build
-```
+`yarn serve`
 
 Visit http://localhost:5000
 
