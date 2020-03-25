@@ -120,13 +120,15 @@ const SelectComponent = memo(({ value, onChange, classes, id }) => {
                 )),
         []
     );
+
+    console.log({ value });
     return (
         <Select
             textFieldProps={{
                 fullWidth: true,
                 variant: 'flat'
             }}
-            value={value?.year()}
+            value={moment.isMoment(value) ? value.year() : null}
             onChange={onChange}
             textFieldIconProps={{ className: classes.selectIcon }}
         >
