@@ -180,7 +180,7 @@ const ExperienceItem = SortableElement(
                         <animated.div
                             className={classes.arrowContainer}
                             style={{
-                                transform: rotate.interpolate(value => `rotate(${value}deg)`)
+                                transform: rotate.to(value => `rotate(${value}deg)`)
                             }}
                         >
                             <ArrowIcon className={cn('refinement-arrow')} />

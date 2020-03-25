@@ -52,7 +52,7 @@ const ProfileCardAnimatedBackComponent = ({ title, children: content, customClas
                 component={animated.div}
                 style={{
                     opacity: titleSpringProps.opacity,
-                    transform: titleSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION)
+                    transform: titleSpringProps.translation.to(TRANSLATION_INTERPOLATION)
                 }}
                 customClasses={{ typography: cn(classes.title, customClasses.title) }}
             >
@@ -64,13 +64,13 @@ const ProfileCardAnimatedBackComponent = ({ title, children: content, customClas
                 }}
                 component={animated.div}
                 style={{
-                    transform: contentContainerSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION)
+                    transform: contentContainerSpringProps.translation.to(TRANSLATION_INTERPOLATION)
                 }}
             >
                 <animated.div
                     className={customClasses.contentAnimated}
                     style={{
-                        transform: contentSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION),
+                        transform: contentSpringProps.translation.to(TRANSLATION_INTERPOLATION),
                         opacity: contentSpringProps.opacity
                     }}
                 >

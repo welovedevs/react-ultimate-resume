@@ -26,8 +26,7 @@ export const useTechnologies = () => {
                     throw new Error(`${res.status} ${res.statusText}`);
                 })
                 .then(fetchedTechnologies =>
-                    dispatch({ type: TECHNOLOGIES_RECEIVED, technologies: fetchedTechnologies })
-                )
+                    dispatch({ type: TECHNOLOGIES_RECEIVED, technologies: fetchedTechnologies }))
                 .catch(e => {
                     console.error('Failed to fetch technologies', e);
                     dispatch({ type: TECHNOLOGIES_RECEIVED, technologies: DEFAULT_OBJECT });

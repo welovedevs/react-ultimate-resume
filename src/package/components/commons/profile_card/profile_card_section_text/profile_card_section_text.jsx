@@ -9,10 +9,10 @@ import { styles } from './profile_card_section_text_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardSectionTextComponent = ({ children, customClasses = {} }) => {
+const ProfileCardSectionTextComponent = ({ children, component, customClasses = {} }) => {
     const classes = useStyles();
     return (
-        <Typography component="p" customClasses={{ container: cn(classes.container, customClasses.container) }}>
+        <Typography component={component} customClasses={{ container: cn(classes.container, customClasses.container) }}>
             {children}
         </Typography>
     );

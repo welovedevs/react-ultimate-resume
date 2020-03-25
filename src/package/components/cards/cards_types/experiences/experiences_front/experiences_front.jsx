@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { Fragment, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
@@ -80,7 +80,11 @@ const ExperiencesFrontComponent = ({ data, handleAddButtonClick }) => {
                 />
             );
         }
-        return builder;
+        return builder.map((value, index) => (
+            <Fragment key={`builder_part_${index}`}>
+                {value}
+            </Fragment>
+        ));
     }, [data.work]);
 
     return (

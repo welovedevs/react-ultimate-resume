@@ -39,8 +39,7 @@ export const THEME_SCHEMA = yup.object({
                 }),
                 {}
             )
-        )
-    ),
+        )),
     miscellaneous: yup.object({
         backgroundColor: isHex.required(),
         color: isHex.required(),

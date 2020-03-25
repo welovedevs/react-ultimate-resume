@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import React, { Fragment, memo, useMemo } from 'react';
 
 import { useIntl } from 'react-intl';
 import { createUseStyles } from 'react-jss';
@@ -52,7 +52,11 @@ const ExperienceContent = ({ experience, variant, classes }) => {
             builder.push(<br />);
         }
         builder.push(dateString);
-        return builder;
+        return builder.map((value, index) => (
+            <Fragment key={`builder_part_${index}`}>
+                {value}
+            </Fragment>
+        ));
     }, [buildTitle, experience]);
     return (
         <ProfileCardSection key={id} cardVariant={variant}>

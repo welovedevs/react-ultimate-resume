@@ -54,7 +54,7 @@ const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace }) 
                                 color="secondary"
                                 style={{
                                     opacity: props.opacity,
-                                    transform: props.scale.interpolate(value => `scale3d(${value}, ${value}, ${value})`)
+                                    transform: props.scale.to(value => `scale3d(${value}, ${value}, ${value})`)
                                 }}
                             >
                                 <Tooltip title="Delete this place">

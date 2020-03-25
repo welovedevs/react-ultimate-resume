@@ -80,7 +80,7 @@ const DreamJobBackComponent = ({ data }) => {
                             defaultMessage="Current job's issues"
                         />
                     </ProfileCardSectionTitle>
-                    <ProfileCardSectionText>
+                    <ProfileCardSectionText component="div">
                         <DreamJobCurrentJobIssues currentJobIssues={currentJobIssues} />
                     </ProfileCardSectionText>
                 </ProfileCardSection>

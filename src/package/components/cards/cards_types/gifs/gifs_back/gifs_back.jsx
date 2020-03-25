@@ -73,7 +73,7 @@ const GifsBackComponent = ({ data, handleAddButtonClick }) => {
                         }
                     >
                         {(data.interests ?? []).map(({ gifUrl, name }) => (
-                            <SlideItem gifUrl={gifUrl} name={name} classes={classes} />
+                            <SlideItem key={`gif_${gifUrl}_${name}`} gifUrl={gifUrl} name={name} classes={classes} />
                         ))}
                     </Slider>
                 </div>
@@ -139,7 +139,7 @@ const Arrow = ({ classes, onClick, arrowRole }) => {
             onFocus={handleMouseDown}
             onBlur={handleMouseUp}
             style={{
-                transform: springProps.scale.interpolate(value => `scale3d(${value}, ${value}, ${value})`)
+                transform: springProps.scale.to(value => `scale3d(${value}, ${value}, ${value})`)
             }}
         >
             <ArrowIcon />
@@ -154,11 +154,10 @@ const SlideItem = ({ gifUrl, name, classes }) => {
     return <img key={`gifs_back_carousel_image_${gifUrl}_${name}`} className={classes.image} src={gifUrl} alt={name} />;
 };
 
-const TransitioningItem = ({ item, key, props, pauseSlider, resumeSlider, classes }) => {
+const TransitioningItem = ({ item, props, pauseSlider, resumeSlider, classes }) => {
     if (!item?.gifUrl) {
         return (
             <animated.div
-                key={key}
                 className={classes.transitioningItemWithoutGif}
                 style={props}
                 onMouseEnter={pauseSlider}
@@ -179,7 +178,6 @@ const TransitioningItem = ({ item, key, props, pauseSlider, resumeSlider, classe
     }
     return (
         <Typography
-            key={key}
             customClasses={{ container: classes.slideName }}
             component={animated.div}
             style={props}

@@ -1915,9 +1915,9 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@wld/ui@https://github.com/welovedevs/wld-design-system.git#v1.1.8":
-  version "1.1.8"
-  resolved "https://github.com/welovedevs/wld-design-system.git#619d070d8308c05dbf99ae9d67d4491a142aaae1"
+"@wld/ui@https://github.com/welovedevs/wld-design-system.git#v1.1.9":
+  version "1.1.9"
+  resolved "https://github.com/welovedevs/wld-design-system.git#4a1083e2c8ccf19a9e8b430763c1761e14512a3b"
   dependencies:
     "@material-ui/core" "^4.9.3"
     "@material-ui/icons" "^4.9.1"
