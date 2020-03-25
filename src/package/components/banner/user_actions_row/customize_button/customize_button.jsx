@@ -21,7 +21,7 @@ export const CustomizeButton = ({ customizationOptions }) => {
         <>
             <CustomizeDialog open={dialogOpen} onClose={close} customizationOptions={customizationOptions} />
             <Button variant="outlined" color="light" onClick={open}>
-                <Twemoji svt text="🎨" className={classes.icon} />
+                <Twemoji svg text="🎨" className={classes.icon} />
                 {!isMobile && formatMessage(translations.customize)}
             </Button>
         </>
