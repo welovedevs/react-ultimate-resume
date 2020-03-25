@@ -17,12 +17,14 @@ var _styles_utils = require("../../../utils/styles/styles_utils");
 
 var LoadingSpinnerComponent = function LoadingSpinnerComponent(_ref) {
   var _ref$color = _ref.color,
-      color = _ref$color === void 0 ? 'primary' : _ref$color;
+      color = _ref$color === void 0 ? 'primary' : _ref$color,
+      height = _ref.height;
   var theme = (0, _reactJss.useTheme)();
   var colorHex = (0, _react.useMemo)(function () {
     return (0, _styles_utils.getHexFromPaletteColor)(theme, color);
   }, [theme, color]);
   return _react.default.createElement(_respinner.WaveLoading, {
+    height: height,
     stroke: colorHex,
     strokeWidth: 3,
     count: 2
