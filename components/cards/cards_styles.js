@@ -14,7 +14,7 @@ var styles = function styles(theme) {
       display: 'flex',
       justifyContent: 'center',
       position: 'relative',
-      zIndex: 2,
+      zIndex: 3,
       flexWrap: 'wrap'
     }
   };
