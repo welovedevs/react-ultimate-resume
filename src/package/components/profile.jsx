@@ -53,7 +53,7 @@ const DEFAULT_FUNCTION = () => {};
 const DEFAULT_UPLOAD_FUNCTION = async () => 'https://source.unsplash.com/random/4000x2000';
 
 const DeveloperProfileComponent = ({
-                                       data = DEFAULT_OBJECT,
+                                       data: originalData = DEFAULT_OBJECT,
                                        options,
                                        mode,
                                        onEdit: onEditProps = DEFAULT_FUNCTION,
@@ -90,6 +90,9 @@ const DeveloperProfileComponent = ({
         }),
         [apiKeys, endpoints, additionalNodes, receivedGlobalClasses]
     );
+
+    const data = useMemo(() => originalData, [JSON.stringify(originalData)]);
+
     const context = useMemo(
         () => ({
             data,
