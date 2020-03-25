@@ -28,22 +28,21 @@ var AddButtonDashedComponent = function AddButtonDashedComponent(_ref) {
       _ref$classes = _ref.classes,
       receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var classes = useStyles();
-  return (/*#__PURE__*/_react.default.createElement(_ui.Tooltip, {
-      title: title
-    }, /*#__PURE__*/_react.default.createElement("button", {
-      type: "button",
-      className: (0, _classnames.default)(classes.container, receivedClasses.container),
-      onClick: onClick
-    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      customClasses: {
-        container: receivedClasses.typography
-      },
-      variant: "h2"
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "AddButton.plus",
-      defaultMessage: "+"
-    }))))
-  );
+  return _react.default.createElement(_ui.Tooltip, {
+    title: title
+  }, _react.default.createElement("button", {
+    type: "button",
+    className: (0, _classnames.default)(classes.container, receivedClasses.container),
+    onClick: onClick
+  }, _react.default.createElement(_ui.Typography, {
+    customClasses: {
+      container: receivedClasses.typography
+    },
+    variant: "h2"
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "AddButton.plus",
+    defaultMessage: "+"
+  }))));
 };
 
 var AddButtonDashed = AddButtonDashedComponent;

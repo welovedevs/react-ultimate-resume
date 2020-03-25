@@ -32,27 +32,25 @@ var ContractType = function ContractType(_ref) {
   }
 
   if (contracts.length <= 1) {
-    return (/*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "Basics.Back.WorkContract.single",
-        defaultMessage: 'Looking for a {contractType} contract',
-        values: {
-          contractType: (0, _lodash.default)(formatMessage(_contract_types_translations.default[lastContract] || _contract_types_translations.default.unknown))
-        }
-      })
-    );
+    return _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Basics.Back.WorkContract.single",
+      defaultMessage: 'Looking for a {contractType} contract',
+      values: {
+        contractType: (0, _lodash.default)(formatMessage(_contract_types_translations.default[lastContract] || _contract_types_translations.default.unknown))
+      }
+    });
   }
 
-  return (/*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Basics.Back.WorkContract.multi",
-      defaultMessage: 'Looking for a {contracts} or {lastContract} contract',
-      values: {
-        lastContract: formatMessage(_contract_types_translations.default[lastContract]),
-        contracts: contracts.map(function (key) {
-          return (0, _lodash.default)(formatMessage(_contract_types_translations.default[key] || _contract_types_translations.default.unknown));
-        }).join(', ')
-      }
-    })
-  );
+  return _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Basics.Back.WorkContract.multi",
+    defaultMessage: 'Looking for a {contracts} or {lastContract} contract',
+    values: {
+      lastContract: formatMessage(_contract_types_translations.default[lastContract]),
+      contracts: contracts.map(function (key) {
+        return (0, _lodash.default)(formatMessage(_contract_types_translations.default[key] || _contract_types_translations.default.unknown));
+      }).join(', ')
+    }
+  });
 };
 
 exports.ContractType = ContractType;

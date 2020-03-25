@@ -23,18 +23,16 @@ var DreamJobSalarySectionContentComponent = function DreamJobSalarySectionConten
       averageDailyRate = _ref.averageDailyRate;
 
   if ((0, _has_only_freelance_contract.hasOnlyFreelanceContract)(contractTypes)) {
-    return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "Dreamjob.Back.AverageDailyRate.Title",
-        defaultMessage: "Average Daily Rate"
-      })), /*#__PURE__*/_react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, "".concat(averageDailyRate, " \u20AC")))
-    );
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Dreamjob.Back.AverageDailyRate.Title",
+      defaultMessage: "Average Daily Rate"
+    })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, "".concat(averageDailyRate, " \u20AC")));
   }
 
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Dreamjob.Back.Salary.Title",
-      defaultMessage: "Ideal yearly salary"
-    })), /*#__PURE__*/_react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, "".concat(salary, " k\u20AC")))
-  );
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Dreamjob.Back.Salary.Title",
+    defaultMessage: "Ideal yearly salary"
+  })), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, "".concat(salary, " k\u20AC")));
 };
 
 var DreamJobSalarySectionContent = DreamJobSalarySectionContentComponent;

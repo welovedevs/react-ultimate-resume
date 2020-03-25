@@ -47,33 +47,31 @@ var OtherSkills = function OtherSkills(_ref) {
   var color = (0, _react.useMemo)(function () {
     return (0, _styles_utils.getColorsFromCardVariant)(theme, variant).color;
   }, [theme, variant]);
-  return (/*#__PURE__*/_react.default.createElement(_reactSpring.animated.div, {
-      className: classes.otherSkillsContainer,
-      style: {
-        opacity: style.opacity,
-        transform: yt.interpolate(function (value) {
-          return "translate3d(0, ".concat(value, "px,0)");
-        })
-      }
-    }, /*#__PURE__*/_react.default.createElement(_typography.Typography, {
-      variant: "h3",
-      component: "h3",
-      customClasses: {
-        container: classes.otherSkillsTitle
-      }
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Skills.otherskills.title",
-      defaultMessage: "I also master"
-    })), othersSkills.map(function (skill) {
-      return (/*#__PURE__*/_react.default.createElement(_other_skill_progress.default, {
-          key: "other_skill_".concat(skill.name),
-          color: color,
-          value: skill.value,
-          name: skill.name
-        })
-      );
-    }))
-  );
+  return _react.default.createElement(_reactSpring.animated.div, {
+    className: classes.otherSkillsContainer,
+    style: {
+      opacity: style.opacity,
+      transform: yt.interpolate(function (value) {
+        return "translate3d(0, ".concat(value, "px,0)");
+      })
+    }
+  }, _react.default.createElement(_typography.Typography, {
+    variant: "h3",
+    component: "h3",
+    customClasses: {
+      container: classes.otherSkillsTitle
+    }
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Skills.otherskills.title",
+    defaultMessage: "I also master"
+  })), othersSkills.map(function (skill) {
+    return _react.default.createElement(_other_skill_progress.default, {
+      key: "other_skill_".concat(skill.name),
+      color: color,
+      value: skill.value,
+      name: skill.name
+    });
+  }));
 };
 
 var _default = OtherSkills;

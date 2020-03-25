@@ -41,17 +41,16 @@ var ProfileCardTitleComponent = function ProfileCardTitleComponent(_ref) {
     variant: variant,
     overrideColor: overrideColor
   });
-  return (/*#__PURE__*/_react.default.createElement(Component, {
-      className: (0, _classnames.default)(classes.container, customClasses.container),
-      style: style
-    }, beforeTypography, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      variant: "h2",
-      component: "h3",
-      customClasses: {
-        container: (0, _classnames.default)(classes.typography, customClasses.typography)
-      }
-    }, children))
-  );
+  return _react.default.createElement(Component, {
+    className: (0, _classnames.default)(classes.container, customClasses.container),
+    style: style
+  }, beforeTypography, _react.default.createElement(_ui.Typography, {
+    variant: "h2",
+    component: "h3",
+    customClasses: {
+      container: (0, _classnames.default)(classes.typography, customClasses.typography)
+    }
+  }, children));
 };
 
 var ProfileCardTitle = ProfileCardTitleComponent;

@@ -35,22 +35,21 @@ var UploadFileDialogComponent = function UploadFileDialogComponent(_ref) {
       return url;
     });
   }, [onFileUploaded, onFilesUpload]);
-  return (/*#__PURE__*/_react.default.createElement(_core.Dialog, {
-      open: open,
-      onClose: onClose
-    }, /*#__PURE__*/_react.default.createElement(_dialog_title.DialogTitle, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "UploadDialog.title",
-      defaultMessage: "Upload a file"
-    })), /*#__PURE__*/_react.default.createElement(_core.DialogContent, null, /*#__PURE__*/_react.default.createElement(_file_drop_zone.FileDropZone, {
-      onDrop: onDrop
-    })), /*#__PURE__*/_react.default.createElement(_core.DialogActions, null, /*#__PURE__*/_react.default.createElement(_ui.Button, {
-      size: "small",
-      onClick: onClose
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Main.lang.close",
-      defaultMessage: "Close"
-    }))))
-  );
+  return _react.default.createElement(_core.Dialog, {
+    open: open,
+    onClose: onClose
+  }, _react.default.createElement(_dialog_title.DialogTitle, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "UploadDialog.title",
+    defaultMessage: "Upload a file"
+  })), _react.default.createElement(_core.DialogContent, null, _react.default.createElement(_file_drop_zone.FileDropZone, {
+    onDrop: onDrop
+  })), _react.default.createElement(_core.DialogActions, null, _react.default.createElement(_ui.Button, {
+    size: "small",
+    onClick: onClose
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.close",
+    defaultMessage: "Close"
+  }))));
 };
 
 var UploadFileDialog = UploadFileDialogComponent;

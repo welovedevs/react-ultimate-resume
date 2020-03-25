@@ -39,15 +39,14 @@ var InterestedByBackComponent = function InterestedByBackComponent(props) {
   var overrideColor = (0, _react.useMemo)(function () {
     return (0, _styles_utils.getColorsFromCardVariant)(theme, variant).backgroundColor;
   }, [theme, variant]);
-  return (/*#__PURE__*/_react.default.createElement(_interested_by_front.InterestedByFront, (0, _extends2.default)({
-      customClasses: {
-        container: classes.container,
-        typography: classes.typography
-      },
-      overrideColor: overrideColor,
-      dismissButton: true
-    }, props))
-  );
+  return _react.default.createElement(_interested_by_front.InterestedByFront, (0, _extends2.default)({
+    customClasses: {
+      container: classes.container,
+      typography: classes.typography
+    },
+    overrideColor: overrideColor,
+    dismissButton: true
+  }, props));
 };
 
 var InterestedByBack = (0, _react.memo)(InterestedByBackComponent);

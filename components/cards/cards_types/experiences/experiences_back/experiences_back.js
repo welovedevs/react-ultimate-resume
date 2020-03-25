@@ -93,21 +93,20 @@ var ExperienceContent = function ExperienceContent(_ref) {
     }
 
     if (builder.length) {
-      builder.push( /*#__PURE__*/_react.default.createElement("br", null));
+      builder.push(_react.default.createElement("br", null));
     }
 
     builder.push(dateString);
     return builder;
   }, [buildTitle, experience]);
-  return (/*#__PURE__*/_react.default.createElement(_profile_card_section.ProfileCardSection, {
-      key: id,
-      cardVariant: variant
-    }, /*#__PURE__*/_react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, position), /*#__PURE__*/_react.default.createElement(_profile_card_section_subtitle.ProfileCardSectionSubtitle, {
-      customClasses: {
-        container: classes.subtitle
-      }
-    }, title), /*#__PURE__*/_react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, summary))
-  );
+  return _react.default.createElement(_profile_card_section.ProfileCardSection, {
+    key: id,
+    cardVariant: variant
+  }, _react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, position), _react.default.createElement(_profile_card_section_subtitle.ProfileCardSectionSubtitle, {
+    customClasses: {
+      container: classes.subtitle
+    }
+  }, title), _react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, summary));
 };
 
 var Content = function Content(_ref2) {
@@ -126,19 +125,17 @@ var Content = function Content(_ref2) {
   });
 
   if (!hasWork) {
-    return (/*#__PURE__*/_react.default.createElement(_no_work.NoWork, {
-        handleAddButtonClick: handleAddButtonClick
-      })
-    );
+    return _react.default.createElement(_no_work.NoWork, {
+      handleAddButtonClick: handleAddButtonClick
+    });
   }
 
   return experiences.map(function (experience) {
-    return (/*#__PURE__*/_react.default.createElement(ExperienceContent, {
-        key: "work_experience_".concat(experience.id),
-        experience: experience,
-        classes: classes
-      })
-    );
+    return _react.default.createElement(ExperienceContent, {
+      key: "work_experience_".concat(experience.id),
+      experience: experience,
+      classes: classes
+    });
   });
 };
 
@@ -146,14 +143,13 @@ var ExperiencesBackComponent = function ExperiencesBackComponent(_ref4) {
   var data = _ref4.data,
       handleAddButtonClick = _ref4.handleAddButtonClick;
   var classes = useStyles();
-  return (/*#__PURE__*/_react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
-      title: "Experiences"
-    }, /*#__PURE__*/_react.default.createElement(Content, {
-      data: data,
-      handleAddButtonClick: handleAddButtonClick,
-      classes: classes
-    }))
-  );
+  return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
+    title: "Experiences"
+  }, _react.default.createElement(Content, {
+    data: data,
+    handleAddButtonClick: handleAddButtonClick,
+    classes: classes
+  }));
 };
 
 var ExperiencesBack = (0, _react.memo)(ExperiencesBackComponent);

@@ -87,53 +87,52 @@ var ShareLinksComponent = function ShareLinksComponent(_ref) {
     });
     observer.observe(document.querySelector('#footer-share-links'));
   }, []);
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      id: "footer-share-links",
-      className: (0, _classnames.default)(classes.container, useSmallLayout && classes.smallLayoutContainer)
-    }, !useSmallLayout && /*#__PURE__*/_react.default.createElement(_reactSpring.animated.div, {
-      className: classes.backgroundLine,
-      style: backgroundLineSpringProps
-    }), /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.icons
-    }, Object.entries(_share_links_data.SHARE_LINKS_DATA).map(function (_ref2) {
-      var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
-          entryId = _ref3[0],
-          _ref3$ = _ref3[1],
-          getLink = _ref3$.getLink,
-          Icon = _ref3$.icon,
-          tooltipTranslation = _ref3$.tooltipTranslation;
+  return _react.default.createElement("div", {
+    id: "footer-share-links",
+    className: (0, _classnames.default)(classes.container, useSmallLayout && classes.smallLayoutContainer)
+  }, !useSmallLayout && _react.default.createElement(_reactSpring.animated.div, {
+    className: classes.backgroundLine,
+    style: backgroundLineSpringProps
+  }), _react.default.createElement("div", {
+    className: classes.icons
+  }, Object.entries(_share_links_data.SHARE_LINKS_DATA).map(function (_ref2) {
+    var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
+        entryId = _ref3[0],
+        _ref3$ = _ref3[1],
+        getLink = _ref3$.getLink,
+        Icon = _ref3$.icon,
+        tooltipTranslation = _ref3$.tooltipTranslation;
 
-      var content = /*#__PURE__*/_react.default.createElement(Icon, {
-        key: "share_link_icon_".concat(entryId),
-        className: classes.icon
-      });
+    var content = _react.default.createElement(Icon, {
+      key: "share_link_icon_".concat(entryId),
+      className: classes.icon
+    });
 
-      if (typeof getLink === 'function') {
-        content = /*#__PURE__*/_react.default.createElement("a", {
-          key: "share_link_link_".concat(entryId),
-          className: classes.link,
-          href: getLink({
-            link: link,
-            translatedMessage: translatedMessage
-          }),
-          target: "_blank",
-          rel: "noreferrer noopener"
-        }, content);
-      }
+    if (typeof getLink === 'function') {
+      content = _react.default.createElement("a", {
+        key: "share_link_link_".concat(entryId),
+        className: classes.link,
+        href: getLink({
+          link: link,
+          translatedMessage: translatedMessage
+        }),
+        target: "_blank",
+        rel: "noreferrer noopener"
+      }, content);
+    }
 
-      if (tooltipTranslation) {
-        content = /*#__PURE__*/_react.default.createElement(_ui.Tooltip, {
-          key: "share_link_tooltip_".concat(entryId),
-          title: tooltipTranslation
-        }, /*#__PURE__*/_react.default.createElement("button", {
-          className: classes.button,
-          type: "button"
-        }, content));
-      }
+    if (tooltipTranslation) {
+      content = _react.default.createElement(_ui.Tooltip, {
+        key: "share_link_tooltip_".concat(entryId),
+        title: tooltipTranslation
+      }, _react.default.createElement("button", {
+        className: classes.button,
+        type: "button"
+      }, content));
+    }
 
-      return content;
-    })))
-  );
+    return content;
+  })));
 };
 
 var ShareLinks = (0, _react.memo)(ShareLinksComponent);

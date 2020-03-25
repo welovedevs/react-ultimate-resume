@@ -43,23 +43,21 @@ var SoundtrackCardEditDialog = function SoundtrackCardEditDialog(_ref) {
       data = _ref.data,
       onEdit = _ref.onEdit,
       isEditing = _ref.isEditing;
-  return (/*#__PURE__*/_react.default.createElement(_edit_dialog.EditDialog, {
-      data: data,
-      onEdit: onEdit,
-      onClose: onClose,
-      isEditing: isEditing,
-      open: open,
-      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "Sountrack.editDialog.title",
-        defaultMessage: "Embed your musical tastes in your profile."
-      })
-    }, function (helpers) {
-      return (/*#__PURE__*/_react.default.createElement(Content, {
-          helpers: helpers
-        })
-      );
+  return _react.default.createElement(_edit_dialog.EditDialog, {
+    data: data,
+    onEdit: onEdit,
+    onClose: onClose,
+    isEditing: isEditing,
+    open: open,
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Sountrack.editDialog.title",
+      defaultMessage: "Embed your musical tastes in your profile."
     })
-  );
+  }, function (helpers) {
+    return _react.default.createElement(Content, {
+      helpers: helpers
+    });
+  });
 };
 
 exports.SoundtrackCardEditDialog = SoundtrackCardEditDialog;
@@ -122,43 +120,42 @@ var Content = function Content(_ref2) {
       setHasLoaded(null);
     }
   }, [isValidUrl]);
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: classes.container
-    }, /*#__PURE__*/_react.default.createElement(_edit_dialog_field.EditDialogField, {
-      classes: {
-        container: classes.field
-      },
-      error: errors.codingReason,
-      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "Soundtrack.editDialog.embedUrl.title",
-        defaultMessage: "Enter a Spotify embed URL."
-      }),
-      subtitle: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "Soundtrack.editDialog.embedUrl.subtitle",
-        defaultMessage: "Ex: https://open.spotify.com/embed/album/79dL7FLiJFOO0EoehUHQBv"
-      })
-    }, /*#__PURE__*/_react.default.createElement(_ui.TextField, {
-      onChange: handleFieldChange,
-      name: "embedUrl",
-      value: embedUrl,
-      variant: "flat",
-      onClick: clearField,
-      onFocus: clearField,
-      fullWidth: true
-    })), /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.divider
-    }), /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.iframeContainer
-    }, hasLoaded === null && /*#__PURE__*/_react.default.createElement(_loading_spinner.LoadingSpinner, null), iframeUrl && /*#__PURE__*/_react.default.createElement("iframe", {
-      className: classes.iframe,
-      key: frameHashCode,
-      title: "Soundtrack",
-      src: iframeUrl,
-      height: "100%",
-      width: 600,
-      frameBorder: "0",
-      allow: "encrypted-media",
-      onLoad: handleLoad
-    })))
-  );
+  return _react.default.createElement("div", {
+    className: classes.container
+  }, _react.default.createElement(_edit_dialog_field.EditDialogField, {
+    classes: {
+      container: classes.field
+    },
+    error: errors.codingReason,
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Soundtrack.editDialog.embedUrl.title",
+      defaultMessage: "Enter a Spotify embed URL."
+    }),
+    subtitle: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Soundtrack.editDialog.embedUrl.subtitle",
+      defaultMessage: "Ex: https://open.spotify.com/embed/album/79dL7FLiJFOO0EoehUHQBv"
+    })
+  }, _react.default.createElement(_ui.TextField, {
+    onChange: handleFieldChange,
+    name: "embedUrl",
+    value: embedUrl,
+    variant: "flat",
+    onClick: clearField,
+    onFocus: clearField,
+    fullWidth: true
+  })), _react.default.createElement("div", {
+    className: classes.divider
+  }), _react.default.createElement("div", {
+    className: classes.iframeContainer
+  }, hasLoaded === null && _react.default.createElement(_loading_spinner.LoadingSpinner, null), iframeUrl && _react.default.createElement("iframe", {
+    className: classes.iframe,
+    key: frameHashCode,
+    title: "Soundtrack",
+    src: iframeUrl,
+    height: "100%",
+    width: 600,
+    frameBorder: "0",
+    allow: "encrypted-media",
+    onLoad: handleLoad
+  })));
 };

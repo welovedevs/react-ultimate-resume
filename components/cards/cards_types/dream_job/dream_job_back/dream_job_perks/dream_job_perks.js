@@ -31,29 +31,27 @@ var DreamJobPerksComponent = function DreamJobPerksComponent(_ref) {
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
 
-  return (/*#__PURE__*/_react.default.createElement("ul", {
-      className: classes.list
-    }, Object.entries(perks).filter(function (_ref2) {
-      var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
-          value = _ref3[1];
+  return _react.default.createElement("ul", {
+    className: classes.list
+  }, Object.entries(perks).filter(function (_ref2) {
+    var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
+        value = _ref3[1];
 
-      return Boolean(value);
-    }).map(function (_ref4) {
-      var _ref5 = (0, _slicedToArray2.default)(_ref4, 2),
-          perkId = _ref5[0],
-          value = _ref5[1];
+    return Boolean(value);
+  }).map(function (_ref4) {
+    var _ref5 = (0, _slicedToArray2.default)(_ref4, 2),
+        perkId = _ref5[0],
+        value = _ref5[1];
 
-      if (perkId === _job_perks_utils.JobPerks.OTHER) {
-        return value;
-      }
+    if (perkId === _job_perks_utils.JobPerks.OTHER) {
+      return value;
+    }
 
-      return (/*#__PURE__*/_react.default.createElement("li", {
-          className: classes.listItem,
-          key: "dream_job_perk_".concat(perkId)
-        }, formatMessage(_job_perks_translations.jobPerksTranslations[perkId.toLowerCase()] || _job_perks_translations.jobPerksTranslations.others))
-      );
-    }))
-  );
+    return _react.default.createElement("li", {
+      className: classes.listItem,
+      key: "dream_job_perk_".concat(perkId)
+    }, formatMessage(_job_perks_translations.jobPerksTranslations[perkId.toLowerCase()] || _job_perks_translations.jobPerksTranslations.others));
+  }));
 };
 
 var DreamJobPerks = DreamJobPerksComponent;

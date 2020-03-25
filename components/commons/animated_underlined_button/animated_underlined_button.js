@@ -46,23 +46,22 @@ var AnimatedUnderlinedButtonComponent = function AnimatedUnderlinedButtonCompone
   var underlineTransitions = (0, _reactSpring.useTransition)(isUnderlineDisplayed, function (item) {
     return "".concat(item ? 'visible' : 'hidden', "_underline");
   }, _animated_underlined_button_spring_props.ANIMATED_UNDERLINED_BUTTON_TRANSITIONS_SPRING_PROPS);
-  return (/*#__PURE__*/_react.default.createElement("button", (0, _extends2.default)({
-      type: "button",
-      className: classes.container,
-      onClick: onClick
-    }, handlers), children, /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.underlineContainer
-    }, underlineTransitions.map(function (_ref2) {
-      var item = _ref2.item,
-          key = _ref2.key,
-          props = _ref2.props;
-      return item && /*#__PURE__*/_react.default.createElement(_reactSpring.animated.div, {
-        key: key,
-        className: classes.underline,
-        style: props
-      });
-    })))
-  );
+  return _react.default.createElement("button", (0, _extends2.default)({
+    type: "button",
+    className: classes.container,
+    onClick: onClick
+  }, handlers), children, _react.default.createElement("div", {
+    className: classes.underlineContainer
+  }, underlineTransitions.map(function (_ref2) {
+    var item = _ref2.item,
+        key = _ref2.key,
+        props = _ref2.props;
+    return item && _react.default.createElement(_reactSpring.animated.div, {
+      key: key,
+      className: classes.underline,
+      style: props
+    });
+  })));
 };
 
 var AnimatedUnderlinedButton = AnimatedUnderlinedButtonComponent;

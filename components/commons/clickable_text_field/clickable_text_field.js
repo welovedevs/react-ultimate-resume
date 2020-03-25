@@ -24,14 +24,13 @@ var _ui = require("@wld/ui");
 var _clickable_text_field_styles = require("./clickable_text_field_styles");
 
 var KeyboardArrowDownIcon = function KeyboardArrowDownIcon(props) {
-  return (/*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("path", {
-      d: "M1.52 1l6 6 6-6",
-      stroke: "#000",
-      strokeWidth: "2",
-      strokeLinecap: "round",
-      strokeLinejoin: "round"
-    }))
-  );
+  return _react.default.createElement("svg", props, _react.default.createElement("path", {
+    d: "M1.52 1l6 6 6-6",
+    stroke: "#000",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }));
 };
 
 KeyboardArrowDownIcon.defaultProps = {
@@ -59,23 +58,22 @@ var ClickableTextFieldComponent = function ClickableTextFieldComponent(_ref) {
   }),
       rotationSpring = _useSpring.rotation;
 
-  return (/*#__PURE__*/_react.default.createElement(_ui.TextField, (0, _extends2.default)({
-      readOnly: true,
-      className: (0, _classnames.default)(classes.container, customClasses.container)
-    }, other), /*#__PURE__*/_react.default.createElement(_reactSpring.animated.span, {
-      style: {
-        transform: rotationSpring.interpolate(function (value) {
-          return "rotate(".concat(value, "deg)");
-        })
-      }
-    }, /*#__PURE__*/_react.default.createElement(_ui.TextFieldIcon, textFieldIconProps, /*#__PURE__*/_react.default.createElement(KeyboardArrowDownIcon, null))), /*#__PURE__*/_react.default.createElement("button", (0, _extends2.default)({
-      ref: interactionsLayerRef,
-      className: (0, _classnames.default)(classes.handleInteractionsLayer, customClasses.handleInteractionsLayer),
-      type: "button"
-    }, {
-      onClick: onClick
-    })))
-  );
+  return _react.default.createElement(_ui.TextField, (0, _extends2.default)({
+    readOnly: true,
+    className: (0, _classnames.default)(classes.container, customClasses.container)
+  }, other), _react.default.createElement(_reactSpring.animated.span, {
+    style: {
+      transform: rotationSpring.interpolate(function (value) {
+        return "rotate(".concat(value, "deg)");
+      })
+    }
+  }, _react.default.createElement(_ui.TextFieldIcon, textFieldIconProps, _react.default.createElement(KeyboardArrowDownIcon, null))), _react.default.createElement("button", (0, _extends2.default)({
+    ref: interactionsLayerRef,
+    className: (0, _classnames.default)(classes.handleInteractionsLayer, customClasses.handleInteractionsLayer),
+    type: "button"
+  }, {
+    onClick: onClick
+  })));
 };
 
 var ClickableTextField = ClickableTextFieldComponent;

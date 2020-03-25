@@ -24,27 +24,26 @@ var useStyles = (0, _reactJss.createUseStyles)(_no_project_styles.styles);
 var NoProjectComponent = function NoProjectComponent(_ref) {
   var handleAddButtonClick = _ref.handleAddButtonClick;
   var classes = useStyles();
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: classes.container
-    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      style: {
-        color: 'inherit'
-      },
-      variant: "h4",
-      component: "h4"
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Projects.noProject.title",
-      defaultMessage: "Describe a project that you've enjoyed as a developer. This project may have been realized during your studies, your personal time or while working at a company."
-    })), /*#__PURE__*/_react.default.createElement(_no_data_button.NoDataButton, {
-      handleAddButtonClick: handleAddButtonClick,
-      classes: {
-        container: classes.button
-      }
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Projects.noProject.buttonLabel",
-      defaultMessage: "Ajouter un projet"
-    })))
-  );
+  return _react.default.createElement("div", {
+    className: classes.container
+  }, _react.default.createElement(_ui.Typography, {
+    style: {
+      color: 'inherit'
+    },
+    variant: "h4",
+    component: "h4"
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Projects.noProject.title",
+    defaultMessage: "Describe a project that you've enjoyed as a developer. This project may have been realized during your studies, your personal time or while working at a company."
+  })), _react.default.createElement(_no_data_button.NoDataButton, {
+    handleAddButtonClick: handleAddButtonClick,
+    classes: {
+      container: classes.button
+    }
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Projects.noProject.buttonLabel",
+    defaultMessage: "Ajouter un projet"
+  })));
 };
 
 var NoProject = NoProjectComponent;

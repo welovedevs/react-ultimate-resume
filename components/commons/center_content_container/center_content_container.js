@@ -28,10 +28,9 @@ var CenterContentContainerComponent = function CenterContentContainerComponent(_
   var classes = useStyles({
     minus: minus
   });
-  return (/*#__PURE__*/React.createElement("div", {
-      className: (0, _classnames.default)(classes.container, customClasses.container)
-    }, children)
-  );
+  return React.createElement("div", {
+    className: (0, _classnames.default)(classes.container, customClasses.container)
+  }, children);
 };
 
 var CenterContentContainer = CenterContentContainerComponent;

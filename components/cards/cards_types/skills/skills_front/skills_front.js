@@ -86,22 +86,21 @@ var SkillsFrontComponent = function SkillsFrontComponent(_ref) {
   var hasSkill = (0, _react.useMemo)(function () {
     return (0, _exists_and_not_empty.existsAndNotEmpty)(data === null || data === void 0 ? void 0 : data.skills);
   }, [data]);
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, /*#__PURE__*/_react.default.createElement(_center_content_container.CenterContentContainer, {
-      customClasses: {
-        container: classes.container
-      }
-    }, /*#__PURE__*/_react.default.createElement(Content, {
-      hasSkill: hasSkill,
-      techno: techno,
-      handleAddButtonClick: handleAddButtonClick,
-      classes: classes
-    }))), hasSkill && /*#__PURE__*/_react.default.createElement(_profile_card_actions.ProfileCardActions, null, /*#__PURE__*/_react.default.createElement(_profile_card_button.ProfileCardButton, {
-      onClick: handleButtonClick
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Skills.front.action",
-      defaultMessage: "More skills"
-    }))))
-  );
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, _react.default.createElement(_center_content_container.CenterContentContainer, {
+    customClasses: {
+      container: classes.container
+    }
+  }, _react.default.createElement(Content, {
+    hasSkill: hasSkill,
+    techno: techno,
+    handleAddButtonClick: handleAddButtonClick,
+    classes: classes
+  }))), hasSkill && _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+    onClick: handleButtonClick
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Skills.front.action",
+    defaultMessage: "More skills"
+  }))));
 };
 
 var Content = function Content(_ref2) {
@@ -111,44 +110,42 @@ var Content = function Content(_ref2) {
       classes = _ref2.classes;
 
   if (hasSkill) {
-    return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(Picture, {
-        techno: techno,
-        classes: classes
-      }), /*#__PURE__*/_react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
-        classes: {
-          container: classes.typography
-        }
-      }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "Skills.front.title",
-        defaultMessage: "I mainly write {techno} stuff",
-        values: {
-          techno: techno === null || techno === void 0 ? void 0 : techno.name
-        }
-      })))
-    );
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(Picture, {
+      techno: techno,
+      classes: classes
+    }), _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
+      classes: {
+        container: classes.typography
+      }
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Skills.front.title",
+      defaultMessage: "I mainly write {techno} stuff",
+      values: {
+        techno: techno === null || techno === void 0 ? void 0 : techno.name
+      }
+    })));
   }
 
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: classes.noSkill
-    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      variant: "h3",
-      component: "h3",
-      customClasses: {
-        container: classes.noSkillTypography
-      }
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Skills.front.noSkill",
-      defaultMessage: "Vous n'avez pas encore ajout\xE9 de comp\xE9tences !"
-    })), /*#__PURE__*/_react.default.createElement(_no_data_button.NoDataButton, {
-      handleAddButtonClick: handleAddButtonClick,
-      classes: {
-        container: classes.addButton
-      }
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Skills.noSkill.buttonLabel",
-      defaultMessage: "Ajouter une comp\xE9tence"
-    })))
-  );
+  return _react.default.createElement("div", {
+    className: classes.noSkill
+  }, _react.default.createElement(_ui.Typography, {
+    variant: "h3",
+    component: "h3",
+    customClasses: {
+      container: classes.noSkillTypography
+    }
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Skills.front.noSkill",
+    defaultMessage: "Vous n'avez pas encore ajout\xE9 de comp\xE9tences !"
+  })), _react.default.createElement(_no_data_button.NoDataButton, {
+    handleAddButtonClick: handleAddButtonClick,
+    classes: {
+      container: classes.addButton
+    }
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Skills.noSkill.buttonLabel",
+    defaultMessage: "Ajouter une comp\xE9tence"
+  })));
 };
 
 var Picture = function Picture(_ref3) {
@@ -178,12 +175,11 @@ var Picture = function Picture(_ref3) {
     return null;
   }
 
-  return (/*#__PURE__*/_react.default.createElement("img", {
-      src: src,
-      alt: techno === null || techno === void 0 ? void 0 : techno.name,
-      className: classes.logo
-    })
-  );
+  return _react.default.createElement("img", {
+    src: src,
+    alt: techno === null || techno === void 0 ? void 0 : techno.name,
+    className: classes.logo
+  });
 };
 
 var SkillsFront = (0, _react.memo)(SkillsFrontComponent);

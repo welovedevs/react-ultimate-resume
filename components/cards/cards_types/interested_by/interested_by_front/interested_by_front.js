@@ -65,24 +65,23 @@ var InterestedByFrontComponent = function InterestedByFrontComponent(_ref) {
   var handleButtonClick = (0, _react.useCallback)(function () {
     return setSide(side === _side.SIDES.FRONT ? _side.SIDES.BACK : _side.SIDES.FRONT);
   }, [side, setSide]);
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, {
-      customClasses: {
-        container: (0, _classnames.default)(classes.container, customClasses.container)
-      }
-    }, /*#__PURE__*/_react.default.createElement(_center_content_container.CenterContentContainer, null, /*#__PURE__*/_react.default.createElement(Content, {
-      interestedBy: interestedBy,
-      setIsTypographyTruncated: setIsTypographyTruncated,
-      handleAddButtonClick: handleAddButtonClick,
-      overrideColor: overrideColor,
-      classes: classes,
-      customClasses: customClasses
-    }))), isTypographyTruncated && !dismissButton && interestedBy && /*#__PURE__*/_react.default.createElement(_profile_card_actions.ProfileCardActions, null, /*#__PURE__*/_react.default.createElement(_profile_card_button.ProfileCardButton, {
-      onClick: handleButtonClick
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "InterestedBy.front.action",
-      defaultMessage: "See all"
-    }))))
-  );
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, {
+    customClasses: {
+      container: (0, _classnames.default)(classes.container, customClasses.container)
+    }
+  }, _react.default.createElement(_center_content_container.CenterContentContainer, null, _react.default.createElement(Content, {
+    interestedBy: interestedBy,
+    setIsTypographyTruncated: setIsTypographyTruncated,
+    handleAddButtonClick: handleAddButtonClick,
+    overrideColor: overrideColor,
+    classes: classes,
+    customClasses: customClasses
+  }))), isTypographyTruncated && !dismissButton && interestedBy && _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
+    onClick: handleButtonClick
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "InterestedBy.front.action",
+    defaultMessage: "See all"
+  }))));
 };
 
 var Content = function Content(_ref2) {
@@ -102,42 +101,40 @@ var Content = function Content(_ref2) {
   }, [typographyReference.current]);
 
   if (!interestedBy) {
-    return (/*#__PURE__*/_react.default.createElement("div", {
-        className: classes.noInterested
-      }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-        variant: "h3",
-        component: "h3",
-        customClasses: {
-          container: classes.noInterestedTypography
-        }
-      }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "InterestedBy.front.noInterested",
-        defaultMessage: "Vous n'avez pas encore ajout\xE9 de techno qui vous int\xE9resse !"
-      })), /*#__PURE__*/_react.default.createElement(_no_data_button.NoDataButton, {
-        handleAddButtonClick: handleAddButtonClick,
-        classes: {
-          container: classes.addButton
-        }
-      }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "InterestedBy.noInterested.buttonLabel",
-        defaultMessage: "Ajouter"
-      })))
-    );
+    return _react.default.createElement("div", {
+      className: classes.noInterested
+    }, _react.default.createElement(_ui.Typography, {
+      variant: "h3",
+      component: "h3",
+      customClasses: {
+        container: classes.noInterestedTypography
+      }
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "InterestedBy.front.noInterested",
+      defaultMessage: "Vous n'avez pas encore ajout\xE9 de techno qui vous int\xE9resse !"
+    })), _react.default.createElement(_no_data_button.NoDataButton, {
+      handleAddButtonClick: handleAddButtonClick,
+      classes: {
+        container: classes.addButton
+      }
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "InterestedBy.noInterested.buttonLabel",
+      defaultMessage: "Ajouter"
+    })));
   }
 
-  return (/*#__PURE__*/_react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
-      ref: typographyReference,
-      classes: {
-        container: (0, _classnames.default)(classes.typography, customClasses.typography)
-      },
-      overrideColor: overrideColor
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "InterestedBy.front.content",
-      defaultMessage: "Interested by:"
-    }), /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.interestedByValue
-    }, interestedBy))
-  );
+  return _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
+    ref: typographyReference,
+    classes: {
+      container: (0, _classnames.default)(classes.typography, customClasses.typography)
+    },
+    overrideColor: overrideColor
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "InterestedBy.front.content",
+    defaultMessage: "Interested by:"
+  }), _react.default.createElement("div", {
+    className: classes.interestedByValue
+  }, interestedBy));
 };
 
 var InterestedByFront = (0, _react.memo)(InterestedByFrontComponent);

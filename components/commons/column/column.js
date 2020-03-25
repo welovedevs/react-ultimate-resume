@@ -22,10 +22,9 @@ var ColumnComponent = function ColumnComponent(_ref) {
       _ref$customClasses = _ref.customClasses,
       customClasses = _ref$customClasses === void 0 ? {} : _ref$customClasses;
   var classes = useStyles();
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _classnames.default)(classes.container, customClasses.container)
-    }, children)
-  );
+  return _react.default.createElement("div", {
+    className: (0, _classnames.default)(classes.container, customClasses.container)
+  }, children);
 };
 
 var Column = ColumnComponent;

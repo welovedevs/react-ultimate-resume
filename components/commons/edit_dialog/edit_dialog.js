@@ -47,30 +47,29 @@ var EditDialogComponent = function EditDialogComponent(_ref) {
   var classes = useStyles();
   var theme = (0, _reactJss.useTheme)();
   var isMobile = (0, _useMediaQuery.default)("(max-width: ".concat(theme.screenSizes.small, "px)"));
-  return (/*#__PURE__*/_react.default.createElement(_core.Dialog, {
-      fullScreen: fullScreen || isMobile,
-      classes: {
-        paper: (0, _classnames.default)(classes.paper, receivedClasses.paper, fullScreen && classes.fullScreen)
-      },
-      open: open,
-      onClose: onClose
-    }, /*#__PURE__*/_react.default.createElement(_formik.Formik, {
-      validateOnChange: false,
-      initialValues: data,
-      onSubmit: function onSubmit(newValues) {
-        return onEdit(newValues);
-      },
-      validationSchema: validationSchema
-    }, /*#__PURE__*/_react.default.createElement(TitleContent, {
-      title: title,
-      fullScreen: fullScreen,
-      isMobile: isMobile,
-      onClose: onClose,
-      classes: classes,
-      receivedClasses: receivedClasses,
-      isEditing: isEditing
-    }, children)))
-  );
+  return _react.default.createElement(_core.Dialog, {
+    fullScreen: fullScreen || isMobile,
+    classes: {
+      paper: (0, _classnames.default)(classes.paper, receivedClasses.paper, fullScreen && classes.fullScreen)
+    },
+    open: open,
+    onClose: onClose
+  }, _react.default.createElement(_formik.Formik, {
+    validateOnChange: false,
+    initialValues: data,
+    onSubmit: function onSubmit(newValues) {
+      return onEdit(newValues);
+    },
+    validationSchema: validationSchema
+  }, _react.default.createElement(TitleContent, {
+    title: title,
+    fullScreen: fullScreen,
+    isMobile: isMobile,
+    onClose: onClose,
+    classes: classes,
+    receivedClasses: receivedClasses,
+    isEditing: isEditing
+  }, children)));
 };
 
 var TitleContent = function TitleContent(_ref2) {
@@ -88,27 +87,26 @@ var TitleContent = function TitleContent(_ref2) {
       setFieldValue = _useFormikContext.setFieldValue,
       values = _useFormikContext.values;
 
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.titleContainer
-    }, /*#__PURE__*/_react.default.createElement(_dialog_title.DialogTitle, null, title), fullScreen && !isMobile && /*#__PURE__*/_react.default.createElement(Actions, {
-      fullScreen: true,
-      onClose: onClose,
-      handleSubmit: handleSubmit,
-      classes: classes,
-      receivedClasses: receivedClasses,
-      isEditing: isEditing
-    })), /*#__PURE__*/_react.default.createElement(Content, {
-      onClose: onClose,
-      handleSubmit: handleSubmit,
-      setFieldValue: setFieldValue,
-      values: values,
-      fullScreen: fullScreen,
-      isMobile: isMobile,
-      classes: classes,
-      receivedClasses: receivedClasses,
-      isEditing: isEditing
-    }, children))
-  );
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    className: classes.titleContainer
+  }, _react.default.createElement(_dialog_title.DialogTitle, null, title), fullScreen && !isMobile && _react.default.createElement(Actions, {
+    fullScreen: true,
+    onClose: onClose,
+    handleSubmit: handleSubmit,
+    classes: classes,
+    receivedClasses: receivedClasses,
+    isEditing: isEditing
+  })), _react.default.createElement(Content, {
+    onClose: onClose,
+    handleSubmit: handleSubmit,
+    setFieldValue: setFieldValue,
+    values: values,
+    fullScreen: fullScreen,
+    isMobile: isMobile,
+    classes: classes,
+    receivedClasses: receivedClasses,
+    isEditing: isEditing
+  }, children));
 };
 
 var Content = function Content(_ref3) {
@@ -133,23 +131,22 @@ var Content = function Content(_ref3) {
       return setFieldValue(name, !values[name]);
     };
   }, [setFieldValue, values]);
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_core.DialogContent, {
-      classes: {
-        root: (0, _classnames.default)(classes.content, receivedClasses.content)
-      }
-    }, children({
-      handleValueChange: handleValueChange,
-      toggleValue: toggleValue,
-      fullScreen: fullScreen,
-      isMobile: isMobile
-    })), (!fullScreen || isMobile) && /*#__PURE__*/_react.default.createElement(Actions, {
-      onClose: onClose,
-      handleSubmit: handleSubmit,
-      classes: classes,
-      receivedClasses: receivedClasses,
-      isEditing: isEditing
-    }))
-  );
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_core.DialogContent, {
+    classes: {
+      root: (0, _classnames.default)(classes.content, receivedClasses.content)
+    }
+  }, children({
+    handleValueChange: handleValueChange,
+    toggleValue: toggleValue,
+    fullScreen: fullScreen,
+    isMobile: isMobile
+  })), (!fullScreen || isMobile) && _react.default.createElement(Actions, {
+    onClose: onClose,
+    handleSubmit: handleSubmit,
+    classes: classes,
+    receivedClasses: receivedClasses,
+    isEditing: isEditing
+  }));
 };
 
 var Actions = function Actions(_ref4) {
@@ -159,32 +156,31 @@ var Actions = function Actions(_ref4) {
       classes = _ref4.classes,
       receivedClasses = _ref4.receivedClasses,
       isEditing = _ref4.isEditing;
-  return (/*#__PURE__*/_react.default.createElement(_core.DialogActions, {
-      classes: {
-        root: (0, _classnames.default)(classes.actions, receivedClasses.actions)
-      }
-    }, /*#__PURE__*/_react.default.createElement(_ui.Tooltip, {
-      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "EditDialog.close.tooltip",
-        defaultMessage: "Any modification won't be saved!"
-      })
-    }, /*#__PURE__*/_react.default.createElement(_ui.Button, {
-      size: "small",
-      onClick: onClose
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Main.lang.close",
-      defaultMessage: "Close"
-    }))), isEditing && /*#__PURE__*/_react.default.createElement(_ui.Button, {
-      variant: fullScreen ? 'contained' : 'text',
-      type: "submit",
-      size: "small",
-      color: "primary",
-      onClick: handleSubmit
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Main.lang.save",
-      defaultMessage: "Save"
-    })))
-  );
+  return _react.default.createElement(_core.DialogActions, {
+    classes: {
+      root: (0, _classnames.default)(classes.actions, receivedClasses.actions)
+    }
+  }, _react.default.createElement(_ui.Tooltip, {
+    title: _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "EditDialog.close.tooltip",
+      defaultMessage: "Any modification won't be saved!"
+    })
+  }, _react.default.createElement(_ui.Button, {
+    size: "small",
+    onClick: onClose
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.close",
+    defaultMessage: "Close"
+  }))), isEditing && _react.default.createElement(_ui.Button, {
+    variant: fullScreen ? 'contained' : 'text',
+    type: "submit",
+    size: "small",
+    color: "primary",
+    onClick: handleSubmit
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.save",
+    defaultMessage: "Save"
+  })));
 };
 
 var EditDialog = EditDialogComponent;

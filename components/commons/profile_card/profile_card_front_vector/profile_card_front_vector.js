@@ -33,10 +33,9 @@ var ProfileCardFrontVectorComponent = function ProfileCardFrontVectorComponent(_
   var classes = useStyles({
     variant: variant
   });
-  return (/*#__PURE__*/_react.default.createElement(Vector, {
-      className: (0, _classnames.default)(classes.container, customClasses.container)
-    })
-  );
+  return _react.default.createElement(Vector, {
+    className: (0, _classnames.default)(classes.container, customClasses.container)
+  });
 };
 
 var ProfileCardFrontVector = ProfileCardFrontVectorComponent;

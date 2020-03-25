@@ -68,34 +68,32 @@ var ProjectsBackComponent = function ProjectsBackComponent(_ref) {
       projects: newProjects
     });
   }, [data, onEdit]);
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card_title.ProfileCardTitle, {
-      customClasses: {
-        container: classes.title,
-        typography: classes.typography
-      },
-      beforeTypography: /*#__PURE__*/_react.default.createElement("div", {
-        className: classes.background
-      }, imageSrc && /*#__PURE__*/_react.default.createElement("img", {
-        className: classes.backgroundImage,
-        src: imageSrc,
-        alt: alt
-      }), !imageSrc && /*#__PURE__*/_react.default.createElement("div", {
-        className: classes.stubBackground
-      }))
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Projects.back.title",
-      defaultMessage: "Projects"
-    })), /*#__PURE__*/_react.default.createElement(_profile_card_content.ProfileCardContent, null, (_data$projects4 = data.projects) === null || _data$projects4 === void 0 ? void 0 : _data$projects4.map(function (project) {
-      return (/*#__PURE__*/_react.default.createElement(_project_section.ProjectSection, {
-          project: project,
-          key: "project_".concat(project.id),
-          onDelete: handleProjectDeletion
-        })
-      );
-    }), !(0, _exists_and_not_empty.existsAndNotEmpty)(data === null || data === void 0 ? void 0 : data.projects) && /*#__PURE__*/_react.default.createElement(_no_project.NoProject, {
-      handleAddButtonClick: handleAddButtonClick
-    })))
-  );
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_title.ProfileCardTitle, {
+    customClasses: {
+      container: classes.title,
+      typography: classes.typography
+    },
+    beforeTypography: _react.default.createElement("div", {
+      className: classes.background
+    }, imageSrc && _react.default.createElement("img", {
+      className: classes.backgroundImage,
+      src: imageSrc,
+      alt: alt
+    }), !imageSrc && _react.default.createElement("div", {
+      className: classes.stubBackground
+    }))
+  }, _react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Projects.back.title",
+    defaultMessage: "Projects"
+  })), _react.default.createElement(_profile_card_content.ProfileCardContent, null, (_data$projects4 = data.projects) === null || _data$projects4 === void 0 ? void 0 : _data$projects4.map(function (project) {
+    return _react.default.createElement(_project_section.ProjectSection, {
+      project: project,
+      key: "project_".concat(project.id),
+      onDelete: handleProjectDeletion
+    });
+  }), !(0, _exists_and_not_empty.existsAndNotEmpty)(data === null || data === void 0 ? void 0 : data.projects) && _react.default.createElement(_no_project.NoProject, {
+    handleAddButtonClick: handleAddButtonClick
+  })));
 };
 
 var ProjectsBack = (0, _react.memo)(ProjectsBackComponent);

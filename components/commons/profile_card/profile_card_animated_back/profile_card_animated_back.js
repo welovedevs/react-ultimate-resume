@@ -57,31 +57,30 @@ var ProfileCardAnimatedBackComponent = function ProfileCardAnimatedBackComponent
   });
   (0, _reactSpring.useChain)([contentContainerSpringReference, contentSpringReference], [0, 0.2]);
   (0, _reactSpring.useChain)([contentContainerSpringReference, titleSpringReference], [0, 0.3]);
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card_title.ProfileCardTitle, {
-      component: _reactSpring.animated.div,
-      style: {
-        opacity: titleSpringProps.opacity,
-        transform: titleSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION)
-      },
-      customClasses: {
-        typography: (0, _classnames.default)(classes.title, customClasses.title)
-      }
-    }, title), /*#__PURE__*/_react.default.createElement(_profile_card_content.ProfileCardContent, {
-      customClasses: {
-        container: (0, _classnames.default)(classes.content, customClasses.content)
-      },
-      component: _reactSpring.animated.div,
-      style: {
-        transform: contentContainerSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION)
-      }
-    }, /*#__PURE__*/_react.default.createElement(_reactSpring.animated.div, {
-      className: customClasses.contentAnimated,
-      style: {
-        transform: contentSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION),
-        opacity: contentSpringProps.opacity
-      }
-    }, content)))
-  );
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_title.ProfileCardTitle, {
+    component: _reactSpring.animated.div,
+    style: {
+      opacity: titleSpringProps.opacity,
+      transform: titleSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION)
+    },
+    customClasses: {
+      typography: (0, _classnames.default)(classes.title, customClasses.title)
+    }
+  }, title), _react.default.createElement(_profile_card_content.ProfileCardContent, {
+    customClasses: {
+      container: (0, _classnames.default)(classes.content, customClasses.content)
+    },
+    component: _reactSpring.animated.div,
+    style: {
+      transform: contentContainerSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION)
+    }
+  }, _react.default.createElement(_reactSpring.animated.div, {
+    className: customClasses.contentAnimated,
+    style: {
+      transform: contentSpringProps.translation.interpolate(TRANSLATION_INTERPOLATION),
+      opacity: contentSpringProps.opacity
+    }
+  }, content)));
 };
 
 var ProfileCardAnimatedBack = ProfileCardAnimatedBackComponent;

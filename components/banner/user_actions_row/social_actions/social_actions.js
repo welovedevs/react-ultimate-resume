@@ -18,10 +18,9 @@ var useStyles = (0, _reactJss.createUseStyles)(_social_actions_styles.styles);
 var SocialActionsComponent = function SocialActionsComponent(_ref) {
   var children = _ref.children;
   var classes = useStyles();
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: classes.container
-    }, children)
-  );
+  return _react.default.createElement("div", {
+    className: classes.container
+  }, children);
 };
 
 var SocialActions = SocialActionsComponent;
