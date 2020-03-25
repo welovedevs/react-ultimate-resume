@@ -93,10 +93,14 @@ const run = async () => {
     const cleanBuildBranchSpinner = ora('Cleaning build branch...').start();
     let rootFiles = fs.readdirSync(__dirname);
     if (rootFiles && rootFiles.length) {
-        rootFiles = rootFiles.filter((name) => !TO_PRESERVE_DURING_CLEAN_UP.includes(name));
-        cleanBuildBranchSpinner.text = `Cleaning build branch... (Removing ${rootFiles.length} element${rootFiles.length > 1 ? 's' : ''})...`;
+        rootFiles = rootFiles.filter(name => !TO_PRESERVE_DURING_CLEAN_UP.includes(name));
+        cleanBuildBranchSpinner.text = `Cleaning build branch... (Removing ${rootFiles.length} element${
+            rootFiles.length > 1 ? 's' : ''
+        })...`;
         rootFiles.forEach((name, index) => {
-            cleanBuildBranchSpinner.text = `Cleaning build branch... (Removing ${rootFiles.length} element${rootFiles.length > 1 ? 's' : ''}) (${index + 1} / ${rootFiles.length})...`;
+            cleanBuildBranchSpinner.text = `Cleaning build branch... (Removing ${rootFiles.length} element${
+                rootFiles.length > 1 ? 's' : ''
+            }) (${index + 1} / ${rootFiles.length})...`;
             rimraf.sync(__dirname + `/${name}`, {}, () => {});
         });
     }
@@ -136,7 +140,7 @@ const run = async () => {
 
     const buildingPackageSpinner = ora(`Building fresh package...`).start();
     try {
-        await exec('npm run build');
+        await exec('npm run package');
     } catch (error) {
         buildingPackageSpinner.fail('Package build failed.');
         if (isVerbose) {
@@ -149,9 +153,9 @@ const run = async () => {
     const postBuildCleanUpSpinner = ora('Doing post-build clean-up...').start();
     const rootNewFiles = fs.readdirSync(__dirname);
     rootNewFiles
-        .filter((name) => !srcFiles.includes(name) && !TO_PRESERVE_DURING_CLEAN_UP.includes(name))
-        .forEach((fileName) => {
-            rimraf.sync(__dirname + `/${fileName}`, {}, () => {})
+        .filter(name => !srcFiles.includes(name) && !TO_PRESERVE_DURING_CLEAN_UP.includes(name))
+        .forEach(fileName => {
+            rimraf.sync(__dirname + `/${fileName}`, {}, () => {});
         });
     postBuildCleanUpSpinner.succeed('Did post-build clean up.');
 
