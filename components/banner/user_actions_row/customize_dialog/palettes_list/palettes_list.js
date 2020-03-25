@@ -79,53 +79,55 @@ var PalettesListComponent = function PalettesListComponent(_ref) {
   var transitions = (0, _reactSpring.useTransition)(displayedPalettes, function (item) {
     return "palette_".concat(item.join('_'));
   }, _palettes_list_spring_props.PALETTES_LIST_TRANSITIONS_SPRING_PROPS);
-  return _react.default.createElement("div", {
-    ref: containerReference,
-    id: "scrollable_".concat(classes.container),
-    className: (0, _classnames.default)(classes.container, receivedClasses.container)
-  }, currentPalette && _react.default.createElement("div", {
-    className: classes.selectedPaletteContainer
-  }, _react.default.createElement(_palette_visual.PaletteVisual, {
-    palette: currentPalette
-  }), _react.default.createElement("div", {
-    className: classes.divider
-  })), _react.default.createElement(_reactInfiniteScroller.default, {
-    hasMore: itemsToShow < _palettes.palettes.length,
-    loader: _react.default.createElement(_loading_spinner.LoadingSpinner, null),
-    pageStart: 0,
-    useWindow: false,
-    loadMore: setNextDisplayedPalettes,
-    getScrollParent: function getScrollParent() {
-      return containerReference.current;
-    }
-  }, transitions.map(function (_ref2, paletteIndex) {
-    var item = _ref2.item,
-        key = _ref2.key,
-        props = _ref2.props;
-    return _react.default.createElement(_reactSpring.animated.button, {
-      key: key,
-      type: "button",
-      className: classes.selectablePaletteContainer,
-      onClick: onSelectChanged(item),
-      style: props
-    }, _react.default.createElement(_ui.Typography, {
-      color: "dark",
-      customClasses: {
-        container: classes.selectablePaletteIndex
-      },
-      variant: "h3"
-    }, "".concat(paletteIndex + 1, ".")), _react.default.createElement(_palette_visual.PaletteVisual, {
-      classes: {
-        tooltipPopper: classes.tooltipPopper,
-        color: classes.paletteVisualColor
-      },
-      palette: ['primary', 'secondary', 'tertiary'].reduce(function (acc, keyName, index) {
-        return _objectSpread({}, acc, (0, _defineProperty2.default)({}, keyName, {
-          500: item[index]
-        }));
-      }, {})
-    }));
-  })));
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      ref: containerReference,
+      id: "scrollable_".concat(classes.container),
+      className: (0, _classnames.default)(classes.container, receivedClasses.container)
+    }, currentPalette && /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.selectedPaletteContainer
+    }, /*#__PURE__*/_react.default.createElement(_palette_visual.PaletteVisual, {
+      palette: currentPalette
+    }), /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.divider
+    })), /*#__PURE__*/_react.default.createElement(_reactInfiniteScroller.default, {
+      hasMore: itemsToShow < _palettes.palettes.length,
+      loader: /*#__PURE__*/_react.default.createElement(_loading_spinner.LoadingSpinner, null),
+      pageStart: 0,
+      useWindow: false,
+      loadMore: setNextDisplayedPalettes,
+      getScrollParent: function getScrollParent() {
+        return containerReference.current;
+      }
+    }, transitions.map(function (_ref2, paletteIndex) {
+      var item = _ref2.item,
+          key = _ref2.key,
+          props = _ref2.props;
+      return (/*#__PURE__*/_react.default.createElement(_reactSpring.animated.button, {
+          key: key,
+          type: "button",
+          className: classes.selectablePaletteContainer,
+          onClick: onSelectChanged(item),
+          style: props
+        }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+          color: "dark",
+          customClasses: {
+            container: classes.selectablePaletteIndex
+          },
+          variant: "h3"
+        }, "".concat(paletteIndex + 1, ".")), /*#__PURE__*/_react.default.createElement(_palette_visual.PaletteVisual, {
+          classes: {
+            tooltipPopper: classes.tooltipPopper,
+            color: classes.paletteVisualColor
+          },
+          palette: ['primary', 'secondary', 'tertiary'].reduce(function (acc, keyName, index) {
+            return _objectSpread({}, acc, (0, _defineProperty2.default)({}, keyName, {
+              500: item[index]
+            }));
+          }, {})
+        }))
+      );
+    })))
+  );
 };
 
 var PalettesList = PalettesListComponent;

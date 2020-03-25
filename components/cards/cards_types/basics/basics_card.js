@@ -56,27 +56,30 @@ var BasicsCardComponent = function BasicsCardComponent(_ref) {
     return null;
   }
 
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card.ProfileCard, {
-    kind: "basics",
-    data: mappedData,
-    isEditingProfile: isEditing,
-    editDialog: {
-      component: _basic_edit_dialog.BasicsCardEditDialog,
-      validationSchema: _validator.BasicsValidationSchema,
-      onEdit: onDialogEdited
-    },
-    sides: {
-      front: function front(props) {
-        return _react.default.createElement(_basics_front.BasicsFront, props);
+  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card.ProfileCard, {
+      kind: "basics",
+      data: mappedData,
+      isEditingProfile: isEditing,
+      editDialog: {
+        component: _basic_edit_dialog.BasicsCardEditDialog,
+        validationSchema: _validator.BasicsValidationSchema,
+        onEdit: onDialogEdited
       },
-      back: function back(props) {
-        return _react.default.createElement(_basics_back.BasicsBack, props);
-      }
-    },
-    variant: variant,
-    isComplete: isComplete,
-    side: side
-  }));
+      sides: {
+        front: function front(props) {
+          return (/*#__PURE__*/_react.default.createElement(_basics_front.BasicsFront, props)
+          );
+        },
+        back: function back(props) {
+          return (/*#__PURE__*/_react.default.createElement(_basics_back.BasicsBack, props)
+          );
+        }
+      },
+      variant: variant,
+      isComplete: isComplete,
+      side: side
+    }))
+  );
 };
 
 var BasicsCard = BasicsCardComponent;

@@ -108,7 +108,7 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref2) {
   var _options$customizatio;
 
   var _ref2$data = _ref2.data,
-      data = _ref2$data === void 0 ? DEFAULT_OBJECT : _ref2$data,
+      originalData = _ref2$data === void 0 ? DEFAULT_OBJECT : _ref2$data,
       options = _ref2.options,
       mode = _ref2.mode,
       _ref2$onEdit = _ref2.onEdit,
@@ -153,6 +153,9 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref2) {
       receivedGlobalClasses: receivedGlobalClasses
     };
   }, [apiKeys, endpoints, additionalNodes, receivedGlobalClasses]);
+  var data = (0, _react.useMemo)(function () {
+    return originalData;
+  }, [JSON.stringify(originalData)]);
   var context = (0, _react.useMemo)(function () {
     return {
       data: data,
@@ -167,21 +170,22 @@ var DeveloperProfileComponent = function DeveloperProfileComponent(_ref2) {
   var side = (0, _react.useMemo)(function () {
     return isEditing && _side.SIDES.BACK || (options === null || options === void 0 ? void 0 : options.side);
   }, [options, isEditing]);
-  return _react.default.createElement("div", {
-    className: classes.container
-  }, _react.default.createElement(_contexts.StaticDataContext.Provider, {
-    value: staticContext
-  }, _react.default.createElement(_contexts.StoreContext.Provider, {
-    value: store
-  }, _react.default.createElement(_contexts.DeveloperProfileContext.Provider, {
-    value: context
-  }, _react.default.createElement(_banner.Banner, {
-    customizationOptions: options.customization,
-    onCustomizationChanged: onCustomizationChanged
-  }), additionalNodes === null || additionalNodes === void 0 ? void 0 : additionalNodes.beforeCards, _react.default.createElement(_cards.Cards, {
-    cardsOrder: (_options$customizatio = options.customization) === null || _options$customizatio === void 0 ? void 0 : _options$customizatio.cardsOrder,
-    side: side
-  }), !options.dismissFooter && _react.default.createElement(_footer.Footer, null)))));
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: classes.container
+    }, /*#__PURE__*/_react.default.createElement(_contexts.StaticDataContext.Provider, {
+      value: staticContext
+    }, /*#__PURE__*/_react.default.createElement(_contexts.StoreContext.Provider, {
+      value: store
+    }, /*#__PURE__*/_react.default.createElement(_contexts.DeveloperProfileContext.Provider, {
+      value: context
+    }, /*#__PURE__*/_react.default.createElement(_banner.Banner, {
+      customizationOptions: options.customization,
+      onCustomizationChanged: onCustomizationChanged
+    }), additionalNodes === null || additionalNodes === void 0 ? void 0 : additionalNodes.beforeCards, /*#__PURE__*/_react.default.createElement(_cards.Cards, {
+      cardsOrder: (_options$customizatio = options.customization) === null || _options$customizatio === void 0 ? void 0 : _options$customizatio.cardsOrder,
+      side: side
+    }), !options.dismissFooter && /*#__PURE__*/_react.default.createElement(_footer.Footer, null)))))
+  );
 };
 
 var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3) {
@@ -208,23 +212,24 @@ var WithProvidersDeveloperProfile = function WithProvidersDeveloperProfile(_ref3
   var providerMessages = (0, _react.useMemo)(function () {
     return _objectSpread({}, (parentIntl === null || parentIntl === void 0 ? void 0 : parentIntl.messages) || {}, {}, messages[locale] || messages.en);
   }, [parentIntl, locale]);
-  return _react.default.createElement(_reactJss.ThemeProvider, {
-    theme: builtTheme
-  }, _react.default.createElement(_reactIntl.IntlProvider, {
-    locale: locale,
-    messages: providerMessages,
-    defaultLocale: locale
-  }, _react.default.createElement(DeveloperProfileComponent, {
-    data: data,
-    mode: mode,
-    onEdit: onEdit,
-    onCustomizationChanged: onCustomizationChanged,
-    onIsEditingChanged: onIsEditingChanged,
-    options: mergedOptions,
-    additionalNodes: additionalNodes,
-    onFilesUpload: onFilesUpload,
-    classes: classes
-  })));
+  return (/*#__PURE__*/_react.default.createElement(_reactJss.ThemeProvider, {
+      theme: builtTheme
+    }, /*#__PURE__*/_react.default.createElement(_reactIntl.IntlProvider, {
+      locale: locale,
+      messages: providerMessages,
+      defaultLocale: locale
+    }, /*#__PURE__*/_react.default.createElement(DeveloperProfileComponent, {
+      data: data,
+      mode: mode,
+      onEdit: onEdit,
+      onCustomizationChanged: onCustomizationChanged,
+      onIsEditingChanged: onIsEditingChanged,
+      options: mergedOptions,
+      additionalNodes: additionalNodes,
+      onFilesUpload: onFilesUpload,
+      classes: classes
+    })))
+  );
 };
 
 var DeveloperProfile = (0, _reactIntl.injectIntl)(WithProvidersDeveloperProfile, {

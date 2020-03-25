@@ -60,48 +60,49 @@ var PerksFieldComponent = function PerksFieldComponent(_ref) {
   }, _objectSpread({}, _perks_field_transitions_spring_props.PERKS_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS, {
     unique: true
   }));
-  return _react.default.createElement(_edit_dialog_field.EditDialogField, {
-    error: error,
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "DreamJob.editDialog.perks.title",
-      defaultMessage: "What perks are important to you ?"
-    })
-  }, _react.default.createElement(_checkbox_group.CheckboxGroup, {
-    rows: 2,
-    values: checkboxGroupPerks,
-    translations: _job_perks_translations.jobPerksTranslations,
-    value: checkedPerks,
-    name: "perks",
-    variant: "outlined",
-    onChange: onChange
-  }), _react.default.createElement("div", {
-    className: classes.othersCheckbox
-  }, _react.default.createElement(_checkbox_group2.CheckboxField, {
-    title: _react.default.createElement(_ui.Typography, null, formatMessage(_job_perks_translations.jobPerksTranslations.others)),
-    onClick: toggleOtherPerk,
-    checked: otherPerk !== null,
-    variant: "outlined",
-    color: "secondary"
-  })), transitions.map(function (_ref2) {
-    var item = _ref2.item,
-        key = _ref2.key,
-        props = _ref2.props;
-    return item && _react.default.createElement(_ui.TextField, {
-      fullWidth: true,
-      key: key,
-      containerElement: _reactSpring.animated.div,
-      customClasses: {
-        container: (0, _classnames.default)(classes.textField, classes.otherTextField)
-      },
-      onChange: handleChange,
-      name: "perks[".concat(_job_perks_utils.JobPerks.OTHER, "]"),
-      value: perks[_job_perks_utils.JobPerks.OTHER],
-      variant: "flat",
-      containerProps: {
-        style: props
-      }
-    });
-  }));
+  return (/*#__PURE__*/_react.default.createElement(_edit_dialog_field.EditDialogField, {
+      error: error,
+      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "DreamJob.editDialog.perks.title",
+        defaultMessage: "What perks are important to you ?"
+      })
+    }, /*#__PURE__*/_react.default.createElement(_checkbox_group.CheckboxGroup, {
+      rows: 2,
+      values: checkboxGroupPerks,
+      translations: _job_perks_translations.jobPerksTranslations,
+      value: checkedPerks,
+      name: "perks",
+      variant: "outlined",
+      onChange: onChange
+    }), /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.othersCheckbox
+    }, /*#__PURE__*/_react.default.createElement(_checkbox_group2.CheckboxField, {
+      title: /*#__PURE__*/_react.default.createElement(_ui.Typography, null, formatMessage(_job_perks_translations.jobPerksTranslations.others)),
+      onClick: toggleOtherPerk,
+      checked: otherPerk !== null,
+      variant: "outlined",
+      color: "secondary"
+    })), transitions.map(function (_ref2) {
+      var item = _ref2.item,
+          key = _ref2.key,
+          props = _ref2.props;
+      return item && /*#__PURE__*/_react.default.createElement(_ui.TextField, {
+        fullWidth: true,
+        key: key,
+        containerElement: _reactSpring.animated.div,
+        customClasses: {
+          container: (0, _classnames.default)(classes.textField, classes.otherTextField)
+        },
+        onChange: handleChange,
+        name: "perks[".concat(_job_perks_utils.JobPerks.OTHER, "]"),
+        value: perks[_job_perks_utils.JobPerks.OTHER],
+        variant: "flat",
+        containerProps: {
+          style: props
+        }
+      });
+    }))
+  );
 };
 
 var PerksField = PerksFieldComponent;

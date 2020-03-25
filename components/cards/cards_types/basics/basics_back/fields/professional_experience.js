@@ -24,22 +24,24 @@ var ExperienceYears = function ExperienceYears(_ref) {
   }, [experienceYears]);
 
   if (experienceValue === 0) {
-    return _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Basics.Back.ExperienceYear.noExperience",
-      defaultMessage: 'No experience (yet!)',
+    return (/*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Basics.Back.ExperienceYear.noExperience",
+        defaultMessage: 'No experience (yet!)',
+        values: {
+          experienceYears: experienceYears
+        }
+      })
+    );
+  }
+
+  return (/*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Basics.Back.ExperienceYear.value",
+      defaultMessage: '{experienceYears, plural, one {# year} other {# years} }  of experience',
       values: {
         experienceYears: experienceYears
       }
-    });
-  }
-
-  return _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Basics.Back.ExperienceYear.value",
-    defaultMessage: '{experienceYears, plural, one {# year} other {# years} }  of experience',
-    values: {
-      experienceYears: experienceYears
-    }
-  });
+    })
+  );
 };
 
 exports.ExperienceYears = ExperienceYears;

@@ -26,22 +26,23 @@ var OtherSkillProgress = function OtherSkillProgress(_ref) {
   var classes = useStyles({
     color: color
   });
-  return _react.default.createElement("div", {
-    className: classes.container
-  }, _react.default.createElement(_typography.Typography, {
-    variant: "h4",
-    component: "h4",
-    color: color,
-    customClasses: {
-      container: classes.skillLabel
-    }
-  }, name), _react.default.createElement(_progress_bar.ProgressBar, {
-    customClasses: {
-      container: classes.progressBarCustomContainer,
-      bar: classes.progressBarCustomBar
-    },
-    value: value
-  }));
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: classes.container
+    }, /*#__PURE__*/_react.default.createElement(_typography.Typography, {
+      variant: "h4",
+      component: "h4",
+      color: color,
+      customClasses: {
+        container: classes.skillLabel
+      }
+    }, name), /*#__PURE__*/_react.default.createElement(_progress_bar.ProgressBar, {
+      customClasses: {
+        container: classes.progressBarCustomContainer,
+        bar: classes.progressBarCustomBar
+      },
+      value: value
+    }))
+  );
 };
 
 var _default = OtherSkillProgress;

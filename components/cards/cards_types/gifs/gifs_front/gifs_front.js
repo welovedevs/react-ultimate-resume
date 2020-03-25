@@ -66,31 +66,32 @@ var GifsFrontComponent = function GifsFrontComponent(_ref) {
   var hasHobby = (0, _react.useMemo)(function () {
     return (0, _exists_and_not_empty.existsAndNotEmpty)(data === null || data === void 0 ? void 0 : data.interests);
   }, [data]);
-  return _react.default.createElement(_gifs_sides_commons.GifsSidesCommons, {
-    classes: {
-      container: classes.container
-    },
-    underLayer: gifUrl && _react.default.createElement("img", {
-      className: classes.image,
-      src: gifUrl,
-      alt: name
-    })
-  }, !gifUrl && _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, {
-    customClasses: {
-      container: classes.paddedFront
-    }
-  }, _react.default.createElement(Content, {
-    hasHobby: hasHobby,
-    name: name,
-    handleAddButtonClick: handleAddButtonClick,
-    classes: classes
-  })), hasHobby && _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
-    onClick: handleButtonClick,
-    overrideColor: "light"
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Gifs.front.action",
-    defaultMessage: "See all hobbies"
-  }))));
+  return (/*#__PURE__*/_react.default.createElement(_gifs_sides_commons.GifsSidesCommons, {
+      classes: {
+        container: classes.container
+      },
+      underLayer: gifUrl && /*#__PURE__*/_react.default.createElement("img", {
+        className: classes.image,
+        src: gifUrl,
+        alt: name
+      })
+    }, !gifUrl && /*#__PURE__*/_react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, {
+      customClasses: {
+        container: classes.paddedFront
+      }
+    }, /*#__PURE__*/_react.default.createElement(Content, {
+      hasHobby: hasHobby,
+      name: name,
+      handleAddButtonClick: handleAddButtonClick,
+      classes: classes
+    })), hasHobby && /*#__PURE__*/_react.default.createElement(_profile_card_actions.ProfileCardActions, null, /*#__PURE__*/_react.default.createElement(_profile_card_button.ProfileCardButton, {
+      onClick: handleButtonClick,
+      overrideColor: "light"
+    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Gifs.front.action",
+      defaultMessage: "See all hobbies"
+    }))))
+  );
 };
 
 var Content = function Content(_ref4) {
@@ -118,35 +119,37 @@ var Content = function Content(_ref4) {
   }, []);
 
   if (!hasHobby) {
-    return _react.default.createElement("div", {
-      className: classes.noHobby
-    }, _react.default.createElement(_ui.Typography, {
-      variant: "h3",
-      component: "h3",
-      customClasses: {
-        container: classes.noHobbyTypography
-      }
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Gifs.front.noHobby",
-      defaultMessage: "Vous n'avez pas encore ajout\xE9 de hobbies !"
-    })), _react.default.createElement(_no_data_button.NoDataButton, {
-      handleAddButtonClick: handleAddButtonClick,
-      classes: {
-        container: classes.addButton
-      },
-      color: "secondary"
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Gifs.noHobby.buttonLabel",
-      defaultMessage: "Ajouter un hobby"
-    })));
+    return (/*#__PURE__*/_react.default.createElement("div", {
+        className: classes.noHobby
+      }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+        variant: "h3",
+        component: "h3",
+        customClasses: {
+          container: classes.noHobbyTypography
+        }
+      }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Gifs.front.noHobby",
+        defaultMessage: "Vous n'avez pas encore ajout\xE9 de hobbies !"
+      })), /*#__PURE__*/_react.default.createElement(_no_data_button.NoDataButton, {
+        handleAddButtonClick: handleAddButtonClick,
+        classes: {
+          container: classes.addButton
+        },
+        color: "secondary"
+      }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Gifs.noHobby.buttonLabel",
+        defaultMessage: "Ajouter un hobby"
+      })))
+    );
   }
 
-  return _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
-    ref: typographyReference,
-    classes: {
-      container: (0, _classnames.default)(classes.withoutGifTypography, isTypographyTruncated && classes.truncatedTypography)
-    }
-  }, name);
+  return (/*#__PURE__*/_react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
+      ref: typographyReference,
+      classes: {
+        container: (0, _classnames.default)(classes.withoutGifTypography, isTypographyTruncated && classes.truncatedTypography)
+      }
+    }, name)
+  );
 };
 
 var GifsFront = (0, _react.memo)(GifsFrontComponent);

@@ -65,27 +65,30 @@ var LanguagesCardComponent = function LanguagesCardComponent(_ref) {
     return null;
   }
 
-  return _react.default.createElement(_profile_card.ProfileCard, {
-    kind: "languages",
-    isEditingProfile: isEditing,
-    isComplete: isComplete,
-    data: mappedData,
-    sides: {
-      front: function front(props) {
-        return _react.default.createElement(_languages_front.LanguagesFront, props);
+  return (/*#__PURE__*/_react.default.createElement(_profile_card.ProfileCard, {
+      kind: "languages",
+      isEditingProfile: isEditing,
+      isComplete: isComplete,
+      data: mappedData,
+      sides: {
+        front: function front(props) {
+          return (/*#__PURE__*/_react.default.createElement(_languages_front.LanguagesFront, props)
+          );
+        },
+        back: function back(props) {
+          return (/*#__PURE__*/_react.default.createElement(_languages_back.LanguagesBack, props)
+          );
+        }
       },
-      back: function back(props) {
-        return _react.default.createElement(_languages_back.LanguagesBack, props);
+      variant: variant,
+      side: currentSide,
+      editDialog: {
+        component: _languages_card_edit_dialog.LanguagesCardEditDialog,
+        validationSchema: _validator.LanguageValidator,
+        onEdit: onDialogEdited
       }
-    },
-    variant: variant,
-    side: currentSide,
-    editDialog: {
-      component: _languages_card_edit_dialog.LanguagesCardEditDialog,
-      validationSchema: _validator.LanguageValidator,
-      onEdit: onDialogEdited
-    }
-  });
+    })
+  );
 };
 
 var LanguagesCard = LanguagesCardComponent;

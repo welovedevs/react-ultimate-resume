@@ -80,7 +80,7 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
     }
 
     if (builder.length) {
-      builder.push(_react.default.createElement("br", null));
+      builder.push( /*#__PURE__*/_react.default.createElement("br", null));
     }
 
     if (firstExperience === null || firstExperience === void 0 ? void 0 : firstExperience.name) {
@@ -89,7 +89,7 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
       builder.push("@".concat(firstExperience.location));
     } else if (firstExperience === null || firstExperience === void 0 ? void 0 : firstExperience.stillEmployed) {
       if (_moment.default.isMoment(firstExperience === null || firstExperience === void 0 ? void 0 : firstExperience.startDate)) {
-        builder.push(_react.default.createElement(_reactIntl.FormattedMessage, {
+        builder.push( /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
           id: "Experience.front.title.since",
           defaultMessage: "Since {year}",
           values: {
@@ -97,7 +97,7 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
           }
         }));
       } else {
-        builder.push(_react.default.createElement(_reactIntl.FormattedMessage, {
+        builder.push( /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
           id: "Experience.front.title.stillEmployed",
           defaultMessage: "Still employed"
         }));
@@ -110,7 +110,7 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
       var startYear = startDate.year();
       var endYear = endDate.year();
       var isSameYear = startYear === endYear;
-      builder.push(_react.default.createElement(_reactIntl.FormattedMessage, {
+      builder.push( /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
         id: "Experience.front.title.fromTo",
         defaultMessage: "From {start} to {end}",
         values: {
@@ -122,21 +122,22 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
 
     return builder;
   }, [data.work]);
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, _react.default.createElement(_center_content_container.CenterContentContainer, {
-    customClasses: {
-      container: classes.container
-    }
-  }, _react.default.createElement(Content, {
-    hasWork: hasWork,
-    title: title,
-    handleAddButtonClick: handleAddButtonClick,
-    classes: classes
-  }))), hasWork && _react.default.createElement(_profile_card_actions.ProfileCardActions, null, _react.default.createElement(_profile_card_button.ProfileCardButton, {
-    onClick: handleButtonClick
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Experiences.front.action",
-    defaultMessage: "See all experiences"
-  }))));
+  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, /*#__PURE__*/_react.default.createElement(_center_content_container.CenterContentContainer, {
+      customClasses: {
+        container: classes.container
+      }
+    }, /*#__PURE__*/_react.default.createElement(Content, {
+      hasWork: hasWork,
+      title: title,
+      handleAddButtonClick: handleAddButtonClick,
+      classes: classes
+    }))), hasWork && /*#__PURE__*/_react.default.createElement(_profile_card_actions.ProfileCardActions, null, /*#__PURE__*/_react.default.createElement(_profile_card_button.ProfileCardButton, {
+      onClick: handleButtonClick
+    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Experiences.front.action",
+      defaultMessage: "See all experiences"
+    }))))
+  );
 };
 
 var Content = function Content(_ref2) {
@@ -161,36 +162,38 @@ var Content = function Content(_ref2) {
   }, []);
 
   if (hasWork) {
-    return _react.default.createElement("div", {
-      className: classes.textsContainer
-    }, _react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
-      ref: typographyReference,
-      classes: {
-        container: (0, _classnames.default)(classes.typography, isTypographyTruncated && classes.truncatedTypography)
-      }
-    }, title));
+    return (/*#__PURE__*/_react.default.createElement("div", {
+        className: classes.textsContainer
+      }, /*#__PURE__*/_react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
+        ref: typographyReference,
+        classes: {
+          container: (0, _classnames.default)(classes.typography, isTypographyTruncated && classes.truncatedTypography)
+        }
+      }, title))
+    );
   }
 
-  return _react.default.createElement("div", {
-    className: classes.noWork
-  }, _react.default.createElement(_ui.Typography, {
-    variant: "h3",
-    component: "h3",
-    customClasses: {
-      container: classes.noWorkTypography
-    }
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Experiences.front.noWork",
-    defaultMessage: "Vous n'avez pas encore ajout\xE9 d'exp\xE9riences !"
-  })), _react.default.createElement(_no_data_button.NoDataButton, {
-    handleAddButtonClick: handleAddButtonClick,
-    classes: {
-      container: classes.addButton
-    }
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Experiences.noWork.buttonLabel",
-    defaultMessage: "Ajouter une exp\xE9rience"
-  })));
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: classes.noWork
+    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      variant: "h3",
+      component: "h3",
+      customClasses: {
+        container: classes.noWorkTypography
+      }
+    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Experiences.front.noWork",
+      defaultMessage: "Vous n'avez pas encore ajout\xE9 d'exp\xE9riences !"
+    })), /*#__PURE__*/_react.default.createElement(_no_data_button.NoDataButton, {
+      handleAddButtonClick: handleAddButtonClick,
+      classes: {
+        container: classes.addButton
+      }
+    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Experiences.noWork.buttonLabel",
+      defaultMessage: "Ajouter une exp\xE9rience"
+    })))
+  );
 };
 
 var ExperiencesFront = (0, _react.memo)(ExperiencesFrontComponent);

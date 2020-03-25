@@ -26,19 +26,21 @@ var JobSearchStateFieldComponent = function JobSearchStateFieldComponent(_ref) {
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
 
-  return _react.default.createElement(_select.Select, {
-    value: value,
-    onChange: handleChange('searchState'),
-    textFieldProps: {
-      variant: 'flat',
-      fullWidth: true
-    }
-  }, _job_search_state.JOB_SEARCH_STATE.map(function (elemValue, index) {
-    return _react.default.createElement(_ui.ListItem, {
-      key: "job_search_state".concat(elemValue, "_").concat(index),
-      value: elemValue
-    }, formatMessage(_job_search_state_translations.translations[elemValue]));
-  }));
+  return (/*#__PURE__*/_react.default.createElement(_select.Select, {
+      value: value,
+      onChange: handleChange('searchState'),
+      textFieldProps: {
+        variant: 'flat',
+        fullWidth: true
+      }
+    }, _job_search_state.JOB_SEARCH_STATE.map(function (elemValue, index) {
+      return (/*#__PURE__*/_react.default.createElement(_ui.ListItem, {
+          key: "job_search_state".concat(elemValue, "_").concat(index),
+          value: elemValue
+        }, formatMessage(_job_search_state_translations.translations[elemValue]))
+      );
+    }))
+  );
 };
 
 var JobSearchStateField = JobSearchStateFieldComponent;

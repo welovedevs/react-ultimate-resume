@@ -65,27 +65,30 @@ var ExperiencesCardComponent = function ExperiencesCardComponent(_ref) {
     return null;
   }
 
-  return _react.default.createElement(_profile_card.ProfileCard, {
-    kind: "experience",
-    isEditingProfile: isEditing,
-    isComplete: isComplete,
-    data: mappedData,
-    sides: {
-      front: function front(props) {
-        return _react.default.createElement(_experiences_front.ExperiencesFront, props);
+  return (/*#__PURE__*/_react.default.createElement(_profile_card.ProfileCard, {
+      kind: "experience",
+      isEditingProfile: isEditing,
+      isComplete: isComplete,
+      data: mappedData,
+      sides: {
+        front: function front(props) {
+          return (/*#__PURE__*/_react.default.createElement(_experiences_front.ExperiencesFront, props)
+          );
+        },
+        back: function back(props) {
+          return (/*#__PURE__*/_react.default.createElement(_experiences_back.ExperiencesBack, props)
+          );
+        }
       },
-      back: function back(props) {
-        return _react.default.createElement(_experiences_back.ExperiencesBack, props);
-      }
-    },
-    editDialog: {
-      component: _experiences_edit_dialog.ExperiencesEditDialog,
-      validationSchema: _validator.WorkValidator,
-      onEdit: onDialogEdited
-    },
-    variant: variant,
-    side: currentSide
-  });
+      editDialog: {
+        component: _experiences_edit_dialog.ExperiencesEditDialog,
+        validationSchema: _validator.WorkValidator,
+        onEdit: onDialogEdited
+      },
+      variant: variant,
+      side: currentSide
+    })
+  );
 };
 
 var ExperiencesCard = ExperiencesCardComponent;

@@ -18,9 +18,10 @@ var useStyles = (0, _reactJss.createUseStyles)(_profile_card_actions_styles.styl
 var ProfileCardActionsComponent = function ProfileCardActionsComponent(_ref) {
   var children = _ref.children;
   var classes = useStyles();
-  return _react.default.createElement("div", {
-    className: classes.container
-  }, children);
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: classes.container
+    }, children)
+  );
 };
 
 var ProfileCardActions = ProfileCardActionsComponent;

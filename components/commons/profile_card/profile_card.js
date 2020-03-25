@@ -210,58 +210,60 @@ var ProfileCardComponent = function ProfileCardComponent(_ref) {
       dispatch: dispatch
     };
   }, [JSON.stringify(state)]);
-  return _react.default.createElement(_react.default.Fragment, null, mode === 'edit' && (isEditingProfile || forceOpenEditDialog) && _react.default.createElement(ProfileCardContext.Provider, {
-    value: contextData
-  }, _react.default.createElement(_profile_card_edit_dialog.ProfileCardEditDialog, {
-    editDialog: editDialog,
-    open: openEditDialog,
-    onClose: setEditDialogClosed,
-    data: data,
-    isEditing: isEditingProfile || forceOpenEditDialog
-  })), _react.default.createElement(_profile_card_incomplete_popper.ProfileCardIncompletePopper, {
-    open: isComplete !== true,
-    anchorElement: containerElement
-  }), _react.default.createElement(_ui.Card, (0, _extends2.default)({
-    containerRef: containerReference,
-    customClasses: {
-      container: classes.container
-    },
-    id: id,
-    elevation: 1
-  }, !isSmall && !sideProps && {
-    onMouseEnter: handleMouseEnter,
-    onMouseLeave: handleMouseLeave
-  }), mode === 'edit' && editButtonTransitions.map(function (_ref2) {
-    var item = _ref2.item,
-        key = _ref2.key,
-        props = _ref2.props;
-    return item && _react.default.createElement(_reactSpring.animated.div, {
-      className: classes.editButtonContainer,
-      key: key,
-      style: props
-    }, _react.default.createElement(EditAction, {
-      customEditAction: customEditAction,
-      setEditDialogOpened: setEditDialogOpened
-    }));
-  }), _react.default.createElement(ProfileCardContext.Provider, {
-    value: contextData
-  }, children, transitions.map(function (_ref3) {
-    var item = _ref3.item,
-        key = _ref3.key,
-        props = _ref3.props;
-
-    var SideComponent = sides[item] || function () {
-      return null;
-    };
-
-    return _react.default.createElement(_profile_card_side.ProfileCardSide, {
-      key: key,
-      style: props
-    }, _react.default.createElement(SideComponent, {
+  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, mode === 'edit' && (isEditingProfile || forceOpenEditDialog) && /*#__PURE__*/_react.default.createElement(ProfileCardContext.Provider, {
+      value: contextData
+    }, /*#__PURE__*/_react.default.createElement(_profile_card_edit_dialog.ProfileCardEditDialog, {
+      editDialog: editDialog,
+      open: openEditDialog,
+      onClose: setEditDialogClosed,
       data: data,
-      handleAddButtonClick: handleAddButtonClick
-    }));
-  }))));
+      isEditing: isEditingProfile || forceOpenEditDialog
+    })), /*#__PURE__*/_react.default.createElement(_profile_card_incomplete_popper.ProfileCardIncompletePopper, {
+      open: isComplete !== true,
+      anchorElement: containerElement
+    }), /*#__PURE__*/_react.default.createElement(_ui.Card, (0, _extends2.default)({
+      containerRef: containerReference,
+      customClasses: {
+        container: classes.container
+      },
+      id: id,
+      elevation: 1
+    }, !isSmall && !sideProps && {
+      onMouseEnter: handleMouseEnter,
+      onMouseLeave: handleMouseLeave
+    }), mode === 'edit' && editButtonTransitions.map(function (_ref2) {
+      var item = _ref2.item,
+          key = _ref2.key,
+          props = _ref2.props;
+      return item && /*#__PURE__*/_react.default.createElement(_reactSpring.animated.div, {
+        className: classes.editButtonContainer,
+        key: key,
+        style: props
+      }, /*#__PURE__*/_react.default.createElement(EditAction, {
+        customEditAction: customEditAction,
+        setEditDialogOpened: setEditDialogOpened
+      }));
+    }), /*#__PURE__*/_react.default.createElement(ProfileCardContext.Provider, {
+      value: contextData
+    }, children, transitions.map(function (_ref3) {
+      var item = _ref3.item,
+          key = _ref3.key,
+          props = _ref3.props;
+
+      var SideComponent = sides[item] || function () {
+        return null;
+      };
+
+      return (/*#__PURE__*/_react.default.createElement(_profile_card_side.ProfileCardSide, {
+          key: key,
+          style: props
+        }, /*#__PURE__*/_react.default.createElement(SideComponent, {
+          data: data,
+          handleAddButtonClick: handleAddButtonClick
+        }))
+      );
+    }))))
+  );
 };
 
 var EditAction = function EditAction(_ref4) {
@@ -273,14 +275,16 @@ var EditAction = function EditAction(_ref4) {
 
   if (customEditAction) {
     var Component = customEditAction;
-    return _react.default.createElement(Component, {
-      onClick: onCustomClick
-    });
+    return (/*#__PURE__*/_react.default.createElement(Component, {
+        onClick: onCustomClick
+      })
+    );
   }
 
-  return _react.default.createElement(_profile_card_edit_button.ProfileCardEditButton, {
-    setEditDialogOpened: setEditDialogOpened
-  });
+  return (/*#__PURE__*/_react.default.createElement(_profile_card_edit_button.ProfileCardEditButton, {
+      setEditDialogOpened: setEditDialogOpened
+    })
+  );
 };
 
 var ProfileCard = ProfileCardComponent;

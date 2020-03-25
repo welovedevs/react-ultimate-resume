@@ -29,21 +29,22 @@ var VisaFieldComponent = function VisaFieldComponent(_ref) {
       _ref$classes = _ref.classes,
       receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var classes = useStyles();
-  return _react.default.createElement(_checkbox_group.CheckboxField, {
-    classes: {
-      container: (0, _classnames.default)(classes.container, receivedClasses.container)
-    },
-    variant: "outlined",
-    color: "primary",
-    title: _react.default.createElement(_ui.Typography, null, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Basics.editDialog.visaSponsorship",
-      defaultMessage: "I require a visa sponsorship"
-    })),
-    value: value,
-    onClick: toggleValue('visaSponsorship'),
-    onChange: toggleValue('visaSponsorship'),
-    checked: value
-  });
+  return (/*#__PURE__*/_react.default.createElement(_checkbox_group.CheckboxField, {
+      classes: {
+        container: (0, _classnames.default)(classes.container, receivedClasses.container)
+      },
+      variant: "outlined",
+      color: "primary",
+      title: /*#__PURE__*/_react.default.createElement(_ui.Typography, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Basics.editDialog.visaSponsorship",
+        defaultMessage: "I require a visa sponsorship"
+      })),
+      value: value,
+      onClick: toggleValue('visaSponsorship'),
+      onChange: toggleValue('visaSponsorship'),
+      checked: value
+    })
+  );
 };
 
 var VisaField = VisaFieldComponent;

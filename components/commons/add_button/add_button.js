@@ -22,9 +22,10 @@ var _reactIntl = require("react-intl");
 var _add_button_styles = require("./add_button_styles");
 
 var AddIcon = function AddIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("path", {
-    d: "M14.52 8h-6v6h-2V8h-6V6h6V0h2v6h6v2z"
-  }));
+  return (/*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("path", {
+      d: "M14.52 8h-6v6h-2V8h-6V6h6V0h2v6h6v2z"
+    }))
+  );
 };
 
 AddIcon.defaultProps = {
@@ -45,15 +46,16 @@ var AddButtonComponent = function AddButtonComponent(_ref) {
   var classes = useStyles({
     color: color
   });
-  return _react.default.createElement(_ui.Button, (0, _extends2.default)({
-    color: color,
-    variant: variant
-  }, other), _react.default.createElement(AddIcon, {
-    className: classes.icon
-  }), _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Main.Lang.Add",
-    defaultMessage: "Add"
-  }));
+  return (/*#__PURE__*/_react.default.createElement(_ui.Button, (0, _extends2.default)({
+      color: color,
+      variant: variant
+    }, other), /*#__PURE__*/_react.default.createElement(AddIcon, {
+      className: classes.icon
+    }), /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Main.Lang.Add",
+      defaultMessage: "Add"
+    }))
+  );
 };
 
 var AddButton = AddButtonComponent;

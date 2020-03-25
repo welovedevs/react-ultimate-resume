@@ -58,27 +58,30 @@ var InterestedByCardComponent = function InterestedByCardComponent(_ref) {
     return null;
   }
 
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_profile_card.ProfileCard, {
-    kind: "interested_by",
-    data: mappedData,
-    isComplete: isComplete,
-    isEditingProfile: isEditing,
-    sides: {
-      front: function front(props) {
-        return _react.default.createElement(_interested_by_front.InterestedByFront, props);
+  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card.ProfileCard, {
+      kind: "interested_by",
+      data: mappedData,
+      isComplete: isComplete,
+      isEditingProfile: isEditing,
+      sides: {
+        front: function front(props) {
+          return (/*#__PURE__*/_react.default.createElement(_interested_by_front.InterestedByFront, props)
+          );
+        },
+        back: function back(props) {
+          return (/*#__PURE__*/_react.default.createElement(_interested_by_back.InterestedByBack, props)
+          );
+        }
       },
-      back: function back(props) {
-        return _react.default.createElement(_interested_by_back.InterestedByBack, props);
-      }
-    },
-    editDialog: {
-      component: _interested_by_edit_dialog.InterestedByEditDialog,
-      validationSchema: _validator.interestedByValidationSchema,
-      onEdit: onDialogEdited
-    },
-    variant: variant,
-    side: side
-  }));
+      editDialog: {
+        component: _interested_by_edit_dialog.InterestedByEditDialog,
+        validationSchema: _validator.interestedByValidationSchema,
+        onEdit: onDialogEdited
+      },
+      variant: variant,
+      side: side
+    }))
+  );
 };
 
 var InterestedByCard = InterestedByCardComponent;

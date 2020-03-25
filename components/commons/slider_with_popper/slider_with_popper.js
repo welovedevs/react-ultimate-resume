@@ -78,35 +78,36 @@ var SliderWithPopper = function SliderWithPopper(_ref) {
       onChange(e);
     }
   }, [onChange]);
-  return _react.default.createElement(_ui.Slider, {
-    classes: {
-      container: (0, _classnames.default)(classes.container, receivedClasses.container)
-    },
-    color: color,
-    name: name,
-    value: localValue,
-    onChange: handleChange,
-    min: min,
-    max: max,
-    onMouseDown: handleFocus,
-    onMouseUp: handleBlur,
-    thumbReference: thumbReference,
-    thumbChildren: _react.default.createElement(_ui.PopperCard, (0, _extends2.default)({
-      open: isFocused,
-      anchorElement: thumbReference.current,
-      popperProps: {
-        disablePortal: true,
-        modifiers: {
-          preventOverflow: {
-            boundariesElement: 'viewport'
-          },
-          hide: {
-            enabled: false
+  return (/*#__PURE__*/_react.default.createElement(_ui.Slider, {
+      classes: {
+        container: (0, _classnames.default)(classes.container, receivedClasses.container)
+      },
+      color: color,
+      name: name,
+      value: localValue,
+      onChange: handleChange,
+      min: min,
+      max: max,
+      onMouseDown: handleFocus,
+      onMouseUp: handleBlur,
+      thumbReference: thumbReference,
+      thumbChildren: /*#__PURE__*/_react.default.createElement(_ui.PopperCard, (0, _extends2.default)({
+        open: isFocused,
+        anchorElement: thumbReference.current,
+        popperProps: {
+          disablePortal: true,
+          modifiers: {
+            preventOverflow: {
+              boundariesElement: 'viewport'
+            },
+            hide: {
+              enabled: false
+            }
           }
         }
-      }
-    }, popperCardProps), localValue)
-  });
+      }, popperCardProps), localValue)
+    })
+  );
 };
 
 exports.SliderWithPopper = SliderWithPopper;

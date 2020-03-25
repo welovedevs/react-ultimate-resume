@@ -36,33 +36,35 @@ var SkillsEditDialogComponent = function SkillsEditDialogComponent(_ref) {
   var validationSchemaToPass = (0, _react.useMemo)(function () {
     return validationSchema(formatMessage);
   }, [validationSchema]);
-  return _react.default.createElement(_edit_dialog.EditDialog, {
-    fullScreen: true,
-    classes: {
-      paper: classes.paper,
-      content: classes.content
-    },
-    open: open,
-    isEditing: isEditing,
-    onClose: onClose,
-    data: data,
-    onEdit: onEdit,
-    validationSchema: validationSchemaToPass,
-    dialogClasses: {
-      dialog: {
-        root: classes.dialogRoot,
-        paper: classes.dialogPaper
-      }
-    },
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Skills.editDialog.title",
-      defaultMessage: "What are your main skills?"
+  return (/*#__PURE__*/_react.default.createElement(_edit_dialog.EditDialog, {
+      fullScreen: true,
+      classes: {
+        paper: classes.paper,
+        content: classes.content
+      },
+      open: open,
+      isEditing: isEditing,
+      onClose: onClose,
+      data: data,
+      onEdit: onEdit,
+      validationSchema: validationSchemaToPass,
+      dialogClasses: {
+        dialog: {
+          root: classes.dialogRoot,
+          paper: classes.dialogPaper
+        }
+      },
+      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Skills.editDialog.title",
+        defaultMessage: "What are your main skills?"
+      })
+    }, function (helpers) {
+      return (/*#__PURE__*/_react.default.createElement(_skills_edit_form.SkillsEditForm, {
+          helpers: helpers
+        })
+      );
     })
-  }, function (helpers) {
-    return _react.default.createElement(_skills_edit_form.SkillsEditForm, {
-      helpers: helpers
-    });
-  });
+  );
 };
 
 var SkillsEditDialog = SkillsEditDialogComponent;

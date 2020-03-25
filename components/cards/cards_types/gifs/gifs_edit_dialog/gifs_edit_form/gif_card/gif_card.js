@@ -49,45 +49,46 @@ var GifCardComponent = function GifCardComponent(_ref) {
   (0, _react.useEffect)(function () {
     return setInput(name);
   }, [name]);
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_ui.Card, {
-    className: classes.container
-  }, (imageEditable || additionalActions) && _react.default.createElement("div", {
-    className: classes.actions
-  }, imageEditable && gifUrl && _react.default.createElement(_bouncing_round_button.BouncingRoundButton, {
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "GifsEditDialog.gifCard.changeGif",
-      defaultMessage: "Changer this gif"
-    }),
-    onClick: onImageEditClick
-  }), additionalActions), _react.default.createElement(CardTopHalf, {
-    error: error,
-    gifUrl: gifUrl,
-    name: name,
-    onImageEditClick: onImageEditClick,
-    classes: classes
-  }), _react.default.createElement("div", {
-    className: classes.content
-  }, _react.default.createElement(_ui.TextField, {
-    customClasses: {
-      container: classes.textField
-    },
-    fullWidth: true,
-    placeholder: "Gif's name",
-    variant: "flat",
-    value: input,
-    onChange: handleTextFieldChange
-  }), (error === null || error === void 0 ? void 0 : error.name) && _react.default.createElement(_ui.Typography, {
-    color: "danger",
-    component: "div",
-    variant: "helper"
-  }, error === null || error === void 0 ? void 0 : error.name)), _react.default.createElement(_ui.PopperCardActions, null, _react.default.createElement(_ui.Button, {
-    color: "danger",
-    size: "small",
-    onClick: onRemove
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Main.lang.remove",
-    defaultMessage: "Remove"
-  })))));
+  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_ui.Card, {
+      className: classes.container
+    }, (imageEditable || additionalActions) && /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.actions
+    }, imageEditable && gifUrl && /*#__PURE__*/_react.default.createElement(_bouncing_round_button.BouncingRoundButton, {
+      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "GifsEditDialog.gifCard.changeGif",
+        defaultMessage: "Changer this gif"
+      }),
+      onClick: onImageEditClick
+    }), additionalActions), /*#__PURE__*/_react.default.createElement(CardTopHalf, {
+      error: error,
+      gifUrl: gifUrl,
+      name: name,
+      onImageEditClick: onImageEditClick,
+      classes: classes
+    }), /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.content
+    }, /*#__PURE__*/_react.default.createElement(_ui.TextField, {
+      customClasses: {
+        container: classes.textField
+      },
+      fullWidth: true,
+      placeholder: "Gif's name",
+      variant: "flat",
+      value: input,
+      onChange: handleTextFieldChange
+    }), (error === null || error === void 0 ? void 0 : error.name) && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      color: "danger",
+      component: "div",
+      variant: "helper"
+    }, error === null || error === void 0 ? void 0 : error.name)), /*#__PURE__*/_react.default.createElement(_ui.PopperCardActions, null, /*#__PURE__*/_react.default.createElement(_ui.Button, {
+      color: "danger",
+      size: "small",
+      onClick: onRemove
+    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Main.lang.remove",
+      defaultMessage: "Remove"
+    })))))
+  );
 };
 
 var CardTopHalf = function CardTopHalf(_ref2) {
@@ -98,31 +99,33 @@ var CardTopHalf = function CardTopHalf(_ref2) {
       onImageEditClick = _ref2.onImageEditClick;
 
   if (!gifUrl) {
-    return _react.default.createElement("div", {
-      className: classes.addGifButtonContainer
-    }, _react.default.createElement(_ui.Button, {
-      customClasses: {
-        container: classes.addGifButton
-      },
-      color: "primary",
-      variant: "outlined",
-      onClick: onImageEditClick
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "GifsEditDialog.gifCard.addGif",
-      defaultMessage: "Add a gif"
-    })));
+    return (/*#__PURE__*/_react.default.createElement("div", {
+        className: classes.addGifButtonContainer
+      }, /*#__PURE__*/_react.default.createElement(_ui.Button, {
+        customClasses: {
+          container: classes.addGifButton
+        },
+        color: "primary",
+        variant: "outlined",
+        onClick: onImageEditClick
+      }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "GifsEditDialog.gifCard.addGif",
+        defaultMessage: "Add a gif"
+      })))
+    );
   }
 
-  return _react.default.createElement("div", {
-    className: classes.imageContainer
-  }, (error === null || error === void 0 ? void 0 : error.gifUrl) && _react.default.createElement(_ui.Typography, {
-    color: "danger",
-    variant: "p"
-  }, error === null || error === void 0 ? void 0 : error.gifUrl), _react.default.createElement("img", {
-    className: classes.image,
-    src: gifUrl,
-    alt: name
-  }));
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: classes.imageContainer
+    }, (error === null || error === void 0 ? void 0 : error.gifUrl) && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      color: "danger",
+      variant: "p"
+    }, error === null || error === void 0 ? void 0 : error.gifUrl), /*#__PURE__*/_react.default.createElement("img", {
+      className: classes.image,
+      src: gifUrl,
+      alt: name
+    }))
+  );
 };
 
 var GifCard = GifCardComponent;

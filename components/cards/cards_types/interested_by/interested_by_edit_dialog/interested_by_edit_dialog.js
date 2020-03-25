@@ -37,22 +37,24 @@ var InterestedByEditDialogComponent = function InterestedByEditDialogComponent(_
   var validationSchemaToPass = (0, _react.useMemo)(function () {
     return validationSchema(formatMessage);
   }, [validationSchema]);
-  return _react.default.createElement(_edit_dialog.EditDialog, {
-    open: open,
-    onClose: onClose,
-    data: data,
-    isEditing: isEditing,
-    onEdit: onEdit,
-    validationSchema: validationSchemaToPass,
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "InterestedBy.editDialog.title",
-      defaultMessage: "What technologies are you interested in?"
+  return (/*#__PURE__*/_react.default.createElement(_edit_dialog.EditDialog, {
+      open: open,
+      onClose: onClose,
+      data: data,
+      isEditing: isEditing,
+      onEdit: onEdit,
+      validationSchema: validationSchemaToPass,
+      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "InterestedBy.editDialog.title",
+        defaultMessage: "What technologies are you interested in?"
+      })
+    }, function (helpers) {
+      return (/*#__PURE__*/_react.default.createElement(Content, {
+          helpers: helpers
+        })
+      );
     })
-  }, function (helpers) {
-    return _react.default.createElement(Content, {
-      helpers: helpers
-    });
-  });
+  );
 };
 
 var Content = function Content() {
@@ -66,18 +68,19 @@ var Content = function Content() {
   var _useIntl2 = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl2.formatMessage;
 
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_edit_dialog_field.EditDialogField, {
-    error: errors === null || errors === void 0 ? void 0 : errors.interestedBy
-  }, _react.default.createElement(_ui.TextField, {
-    multiline: true,
-    variant: "flat",
-    fullWidth: true,
-    rows: 4,
-    placeholder: formatMessage(_intested_by_translations.default.interestedByPlaceholder),
-    value: interestedBy,
-    onChange: handleChange,
-    name: "interestedBy"
-  })));
+  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_edit_dialog_field.EditDialogField, {
+      error: errors === null || errors === void 0 ? void 0 : errors.interestedBy
+    }, /*#__PURE__*/_react.default.createElement(_ui.TextField, {
+      multiline: true,
+      variant: "flat",
+      fullWidth: true,
+      rows: 4,
+      placeholder: formatMessage(_intested_by_translations.default.interestedByPlaceholder),
+      value: interestedBy,
+      onChange: handleChange,
+      name: "interestedBy"
+    })))
+  );
 };
 
 var InterestedByEditDialog = InterestedByEditDialogComponent;

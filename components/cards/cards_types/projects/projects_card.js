@@ -65,31 +65,35 @@ var ProjectsCardComponent = function ProjectsCardComponent(_ref) {
     return null;
   }
 
-  return _react.default.createElement(_profile_card.ProfileCard, {
-    kind: "projects",
-    data: mappedData,
-    isComplete: isComplete,
-    isEditingProfile: isEditing,
-    sides: {
-      front: function front(props) {
-        return _react.default.createElement(_projects_front.ProjectsFront, props);
+  return (/*#__PURE__*/_react.default.createElement(_profile_card.ProfileCard, {
+      kind: "projects",
+      data: mappedData,
+      isComplete: isComplete,
+      isEditingProfile: isEditing,
+      sides: {
+        front: function front(props) {
+          return (/*#__PURE__*/_react.default.createElement(_projects_front.ProjectsFront, props)
+          );
+        },
+        back: function back(props) {
+          return (/*#__PURE__*/_react.default.createElement(_projects_back.ProjectsBack, props)
+          );
+        }
       },
-      back: function back(props) {
-        return _react.default.createElement(_projects_back.ProjectsBack, props);
+      variant: variant,
+      side: currentSide,
+      customEditAction: function customEditAction(props) {
+        return (/*#__PURE__*/_react.default.createElement(_add_button_rounded.AddButton, (0, _extends2.default)({
+            title: "Ajouter un projet"
+          }, props))
+        );
+      },
+      editDialog: {
+        component: _project_dialog.ProjectDialog,
+        data: {}
       }
-    },
-    variant: variant,
-    side: currentSide,
-    customEditAction: function customEditAction(props) {
-      return _react.default.createElement(_add_button_rounded.AddButton, (0, _extends2.default)({
-        title: "Ajouter un projet"
-      }, props));
-    },
-    editDialog: {
-      component: _project_dialog.ProjectDialog,
-      data: {}
-    }
-  });
+    })
+  );
 };
 
 var ProjectsCard = ProjectsCardComponent;

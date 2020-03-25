@@ -40,26 +40,28 @@ var PaletteVisualComponent = function PaletteVisualComponent(_ref) {
     return null;
   }
 
-  return _react.default.createElement("div", {
-    className: (0, _classnames.default)(classes.container, receivedClasses.container)
-  }, paletteEntries.map(function (_ref2) {
-    var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
-        key = _ref3[0],
-        hex = _ref3[1][500];
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: (0, _classnames.default)(classes.container, receivedClasses.container)
+    }, paletteEntries.map(function (_ref2) {
+      var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
+          key = _ref3[0],
+          hex = _ref3[1][500];
 
-    return _react.default.createElement(_ui.Tooltip, {
-      key: "palette_visual_color_".concat(key, "_").concat(hex),
-      title: translations[key],
-      customClasses: {
-        popper: receivedClasses.tooltipPopper
-      }
-    }, _react.default.createElement("div", {
-      className: (0, _classnames.default)(classes.color, receivedClasses.color),
-      style: {
-        color: hex
-      }
-    }));
-  }));
+      return (/*#__PURE__*/_react.default.createElement(_ui.Tooltip, {
+          key: "palette_visual_color_".concat(key, "_").concat(hex),
+          title: translations[key],
+          customClasses: {
+            popper: receivedClasses.tooltipPopper
+          }
+        }, /*#__PURE__*/_react.default.createElement("div", {
+          className: (0, _classnames.default)(classes.color, receivedClasses.color),
+          style: {
+            color: hex
+          }
+        }))
+      );
+    }))
+  );
 };
 
 var PaletteVisual = PaletteVisualComponent;

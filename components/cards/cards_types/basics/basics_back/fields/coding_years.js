@@ -24,19 +24,21 @@ var CodingYears = function CodingYears(_ref) {
   }, [codingYears]);
 
   if (codingYearsValue === 0) {
-    return _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Basics.Back.CodingYears.noExperience",
-      defaultMessage: "I've just started coding"
-    });
+    return (/*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Basics.Back.CodingYears.noExperience",
+        defaultMessage: "I've just started coding"
+      })
+    );
   }
 
-  return _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Basics.Back.CodingYears.value",
-    defaultMessage: '{codingYears, plural, one {# year} other {# years} } coding',
-    values: {
-      codingYears: codingYears
-    }
-  });
+  return (/*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Basics.Back.CodingYears.value",
+      defaultMessage: '{codingYears, plural, one {# year} other {# years} } coding',
+      values: {
+        codingYears: codingYears
+      }
+    })
+  );
 };
 
 exports.CodingYears = CodingYears;

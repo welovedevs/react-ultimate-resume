@@ -101,48 +101,50 @@ var ProjectDialogContentImagesComponent = function ProjectDialogContentImagesCom
       }
     });
   }, [theme, variant]);
-  return _react.default.createElement("div", {
-    className: classes.container
-  }, isEditing && _react.default.createElement(_project_dialog_content_add_image.ProjectDialogContentAddImage, null), transitions.map(function (_ref4, index) {
-    var item = _ref4.item,
-        key = _ref4.key,
-        props = _ref4.props;
-    return _react.default.createElement(_project_dialog_content_image.ProjectDialogContentImage, {
-      key: key,
-      component: isEditing ? _reactSpring.animated.button : _reactSpring.animated.div,
-      style: props,
-      url: item.url,
-      name: item.name,
-      handleImageClick: handleImageClick(index)
-    });
-  }), _react.default.createElement(_reactImages.ModalGateway, null, modalCarouselIndex !== null && _react.default.createElement(_reactImages.Modal, {
-    onClose: handleModalClose,
-    styles: {
-      blanket: function blanket(base) {
-        return _objectSpread({}, base, {
-          zIndex: 2100
-        });
-      },
-      positioner: function positioner(base) {
-        return _objectSpread({}, base, {
-          zIndex: 2110
-        });
-      },
-      dialog: function dialog(base) {
-        return _objectSpread({}, base, {
-          zIndex: 2120,
-          fontFamily: 'Avenir Next'
-        });
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: classes.container
+    }, isEditing && /*#__PURE__*/_react.default.createElement(_project_dialog_content_add_image.ProjectDialogContentAddImage, null), transitions.map(function (_ref4, index) {
+      var item = _ref4.item,
+          key = _ref4.key,
+          props = _ref4.props;
+      return (/*#__PURE__*/_react.default.createElement(_project_dialog_content_image.ProjectDialogContentImage, {
+          key: key,
+          component: isEditing ? _reactSpring.animated.button : _reactSpring.animated.div,
+          style: props,
+          url: item.url,
+          name: item.name,
+          handleImageClick: handleImageClick(index)
+        })
+      );
+    }), /*#__PURE__*/_react.default.createElement(_reactImages.ModalGateway, null, modalCarouselIndex !== null && /*#__PURE__*/_react.default.createElement(_reactImages.Modal, {
+      onClose: handleModalClose,
+      styles: {
+        blanket: function blanket(base) {
+          return _objectSpread({}, base, {
+            zIndex: 2100
+          });
+        },
+        positioner: function positioner(base) {
+          return _objectSpread({}, base, {
+            zIndex: 2110
+          });
+        },
+        dialog: function dialog(base) {
+          return _objectSpread({}, base, {
+            zIndex: 2120,
+            fontFamily: 'Avenir Next'
+          });
+        }
       }
-    }
-  }, _react.default.createElement(_reactImages.default, {
-    views: views,
-    currentIndex: modalCarouselIndex,
-    styles: {
-      navigationNext: navButtonStyles,
-      navigationPrev: navButtonStyles
-    }
-  }))));
+    }, /*#__PURE__*/_react.default.createElement(_reactImages.default, {
+      views: views,
+      currentIndex: modalCarouselIndex,
+      styles: {
+        navigationNext: navButtonStyles,
+        navigationPrev: navButtonStyles
+      }
+    }))))
+  );
 };
 
 var ProjectDialogContentImages = ProjectDialogContentImagesComponent;

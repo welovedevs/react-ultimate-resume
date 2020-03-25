@@ -80,35 +80,36 @@ var TechnologyItem = function TechnologyItem(_ref) {
   var selectedItemLayerTransitions = (0, _reactSpring.useTransition)(selectedItem, function (selected) {
     return "selected_item_layer_".concat(selected === null || selected === void 0 ? void 0 : selected.name);
   }, _all_technologies_picker_spring_props.SELECTED_ITEM_LAYER_TRANSITIONS_SPRING_PROPS);
-  return _react.default.createElement("button", {
-    className: classes.technologyItem,
-    type: "button",
-    onClick: onClick
-  }, _react.default.createElement(_ui.Card, {
-    customClasses: {
-      container: classes.technologyImageContainer
-    }
-  }, _react.default.createElement("img", {
-    src: imgUrl,
-    alt: item.name,
-    className: classes.technologyImage
-  }), selectedItemLayerTransitions.map(function (_ref3) {
-    var selected = _ref3.item,
-        key = _ref3.key,
-        props = _ref3.props;
-    return selected && _react.default.createElement(_reactSpring.animated.div, {
-      key: key,
-      className: classes.selectedTechnologyLayer,
-      style: props
-    }, _react.default.createElement(_ui.Typography, {
-      color: "light",
-      variant: "h3"
-    }, selected.index + 1));
-  })), _react.default.createElement(_ui.Typography, {
-    customClasses: {
-      container: classes.typography
-    }
-  }, item.name));
+  return (/*#__PURE__*/_react.default.createElement("button", {
+      className: classes.technologyItem,
+      type: "button",
+      onClick: onClick
+    }, /*#__PURE__*/_react.default.createElement(_ui.Card, {
+      customClasses: {
+        container: classes.technologyImageContainer
+      }
+    }, /*#__PURE__*/_react.default.createElement("img", {
+      src: imgUrl,
+      alt: item.name,
+      className: classes.technologyImage
+    }), selectedItemLayerTransitions.map(function (_ref3) {
+      var selected = _ref3.item,
+          key = _ref3.key,
+          props = _ref3.props;
+      return selected && /*#__PURE__*/_react.default.createElement(_reactSpring.animated.div, {
+        key: key,
+        className: classes.selectedTechnologyLayer,
+        style: props
+      }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+        color: "light",
+        variant: "h3"
+      }, selected.index + 1));
+    })), /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      customClasses: {
+        container: classes.typography
+      }
+    }, item.name))
+  );
 };
 
 var AllTechnologiesPickerComponent = function AllTechnologiesPickerComponent(_ref4) {
@@ -201,51 +202,53 @@ var AllTechnologiesPickerComponent = function AllTechnologiesPickerComponent(_re
   var toggleOtherPerk = (0, _react.useCallback)(function () {
     setOnlySelected(!onlySelected);
   }, [onlySelected]);
-  return _react.default.createElement("div", {
-    className: (0, _classnames.default)(classes.container, receivedClasses.container)
-  }, _react.default.createElement(_ui.TextField, {
-    customClasses: {
-      container: classes.textField
-    },
-    fullWidth: isMobile,
-    variant: "outlined",
-    value: query,
-    onChange: handleTextFieldChange,
-    placeholder: "Mobile, Javascript, etc..."
-  }), isMobile && _react.default.createElement(_checkbox_group.CheckboxField, {
-    title: _react.default.createElement(_ui.Typography, null, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Skills.EditDialog.onlySelected",
-      defaultMessage: "Only selected"
-    })),
-    onClick: toggleOtherPerk,
-    checked: onlySelected,
-    variant: "outlined",
-    color: "secondary"
-  }), _react.default.createElement("div", {
-    className: (0, _classnames.default)(classes.technologiesList, receivedClasses.technologiesList)
-  }, (animationEnded.current ? displayedItems : displayedItemsTransitions).map(function (values, index) {
-    var item = animationEnded.current ? values : values.item;
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: (0, _classnames.default)(classes.container, receivedClasses.container)
+    }, /*#__PURE__*/_react.default.createElement(_ui.TextField, {
+      customClasses: {
+        container: classes.textField
+      },
+      fullWidth: isMobile,
+      variant: "outlined",
+      value: query,
+      onChange: handleTextFieldChange,
+      placeholder: "Mobile, Javascript, etc..."
+    }), isMobile && /*#__PURE__*/_react.default.createElement(_checkbox_group.CheckboxField, {
+      title: /*#__PURE__*/_react.default.createElement(_ui.Typography, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Skills.EditDialog.onlySelected",
+        defaultMessage: "Only selected"
+      })),
+      onClick: toggleOtherPerk,
+      checked: onlySelected,
+      variant: "outlined",
+      color: "secondary"
+    }), /*#__PURE__*/_react.default.createElement("div", {
+      className: (0, _classnames.default)(classes.technologiesList, receivedClasses.technologiesList)
+    }, (animationEnded.current ? displayedItems : displayedItemsTransitions).map(function (values, index) {
+      var item = animationEnded.current ? values : values.item;
 
-    var technologyItem = _react.default.createElement(TechnologyItem, {
-      key: "technology_".concat(item.name, "_").concat(index),
-      selectedItems: selectedItems,
-      item: item,
-      onAdd: onAdd,
-      onDelete: onDelete,
-      classes: classes
-    });
+      var technologyItem = /*#__PURE__*/_react.default.createElement(TechnologyItem, {
+        key: "technology_".concat(item.name, "_").concat(index),
+        selectedItems: selectedItems,
+        item: item,
+        onAdd: onAdd,
+        onDelete: onDelete,
+        classes: classes
+      });
 
-    if (!animationEnded.current) {
-      var key = values.key,
-          props = values.props;
-      return _react.default.createElement(_reactSpring.animated.div, {
-        key: key,
-        style: props
-      }, technologyItem);
-    }
+      if (!animationEnded.current) {
+        var key = values.key,
+            props = values.props;
+        return (/*#__PURE__*/_react.default.createElement(_reactSpring.animated.div, {
+            key: key,
+            style: props
+          }, technologyItem)
+        );
+      }
 
-    return technologyItem;
-  })));
+      return technologyItem;
+    })))
+  );
 };
 
 var AllTechnologiesPicker = AllTechnologiesPickerComponent;

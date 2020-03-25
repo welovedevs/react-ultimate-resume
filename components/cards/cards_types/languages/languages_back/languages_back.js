@@ -51,18 +51,19 @@ var LanguagesBackComponent = function LanguagesBackComponent(_ref) {
   var classes = useStyles({
     itemSize: (_ref2 = (_data$languages = data.languages) === null || _data$languages === void 0 ? void 0 : _data$languages.length) !== null && _ref2 !== void 0 ? _ref2 : 0
   });
-  return _react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
-    title: "Languages",
-    customClasses: {
-      content: classes.content,
-      contentAnimated: classes.contentAnimated,
-      title: classes.cardTitle
-    }
-  }, _react.default.createElement(Content, {
-    data: data,
-    handleAddButtonClick: handleAddButtonClick,
-    classes: classes
-  }));
+  return (/*#__PURE__*/_react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
+      title: "Languages",
+      customClasses: {
+        content: classes.content,
+        contentAnimated: classes.contentAnimated,
+        title: classes.cardTitle
+      }
+    }, /*#__PURE__*/_react.default.createElement(Content, {
+      data: data,
+      handleAddButtonClick: handleAddButtonClick,
+      classes: classes
+    }))
+  );
 };
 
 var Content = function Content(_ref3) {
@@ -107,34 +108,37 @@ var Content = function Content(_ref3) {
   }, [data]);
 
   if (!hasLanguage) {
-    return _react.default.createElement(_no_language.NoLanguage, {
-      handleAddButtonClick: handleAddButtonClick
-    });
+    return (/*#__PURE__*/_react.default.createElement(_no_language.NoLanguage, {
+        handleAddButtonClick: handleAddButtonClick
+      })
+    );
   }
 
-  return _react.default.createElement("div", {
-    className: classes.columnsContainer
-  }, transitions.map(function (_ref7, index) {
-    var _ref8, _data$languages4, _item$language;
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: classes.columnsContainer
+    }, transitions.map(function (_ref7, index) {
+      var _ref8, _data$languages4, _item$language;
 
-    var item = _ref7.item,
-        key = _ref7.key,
-        props = _ref7.props;
-    return _react.default.createElement(_language_column.LanguageColumn, {
-      itemsSize: (_ref8 = (_data$languages4 = data.languages) === null || _data$languages4 === void 0 ? void 0 : _data$languages4.length) !== null && _ref8 !== void 0 ? _ref8 : 0,
-      key: key,
-      component: _reactSpring.animated.div,
-      item: item,
-      style: _objectSpread({}, props, {
-        backgroundColor: colorPalette[index],
-        color: backColor
-      }),
-      cardVariant: variant
-    }, _react.default.createElement("button", {
-      className: classes.languageLettersButton,
-      type: "button"
-    }, (_item$language = item.language) === null || _item$language === void 0 ? void 0 : _item$language.substring(0, 2).toUpperCase()));
-  }));
+      var item = _ref7.item,
+          key = _ref7.key,
+          props = _ref7.props;
+      return (/*#__PURE__*/_react.default.createElement(_language_column.LanguageColumn, {
+          itemsSize: (_ref8 = (_data$languages4 = data.languages) === null || _data$languages4 === void 0 ? void 0 : _data$languages4.length) !== null && _ref8 !== void 0 ? _ref8 : 0,
+          key: key,
+          component: _reactSpring.animated.div,
+          item: item,
+          style: _objectSpread({}, props, {
+            backgroundColor: colorPalette[index],
+            color: backColor
+          }),
+          cardVariant: variant
+        }, /*#__PURE__*/_react.default.createElement("button", {
+          className: classes.languageLettersButton,
+          type: "button"
+        }, (_item$language = item.language) === null || _item$language === void 0 ? void 0 : _item$language.substring(0, 2).toUpperCase()))
+      );
+    }))
+  );
 };
 
 var LanguagesBack = (0, _react.memo)(LanguagesBackComponent);

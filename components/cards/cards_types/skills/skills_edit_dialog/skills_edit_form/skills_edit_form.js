@@ -71,30 +71,31 @@ var SkillsEditFormComponent = function SkillsEditFormComponent(_ref) {
     return handleValueChange("skills[".concat(item.index, "]"))(item);
   }, []);
   var globalError = typeof errors === 'string' && errors;
-  return _react.default.createElement("div", {
-    className: classes.container
-  }, _react.default.createElement(_all_technologies_picker.AllTechnologiesPicker, {
-    selectedItems: values.skills,
-    onAdd: addItem,
-    onDelete: deleteItem,
-    classes: {
-      container: classes.allTechnologies,
-      technologiesList: classes.technologiesList
-    }
-  }), !isMobile && _react.default.createElement("div", {
-    className: classes.divider
-  }), !isMobile && _react.default.createElement("div", {
-    className: classes.column
-  }, globalError && _react.default.createElement(_ui.Typography, {
-    color: "danger",
-    component: "p"
-  }, errors), _react.default.createElement(_selected_technologies.SelectedTechnologies, {
-    className: classes.selectedTechnologies,
-    items: values.skills,
-    onDelete: deleteItem,
-    onChange: onArrayChange,
-    onItemChange: onItemChange
-  })));
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: classes.container
+    }, /*#__PURE__*/_react.default.createElement(_all_technologies_picker.AllTechnologiesPicker, {
+      selectedItems: values.skills,
+      onAdd: addItem,
+      onDelete: deleteItem,
+      classes: {
+        container: classes.allTechnologies,
+        technologiesList: classes.technologiesList
+      }
+    }), !isMobile && /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.divider
+    }), !isMobile && /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.column
+    }, globalError && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      color: "danger",
+      component: "p"
+    }, errors), /*#__PURE__*/_react.default.createElement(_selected_technologies.SelectedTechnologies, {
+      className: classes.selectedTechnologies,
+      items: values.skills,
+      onDelete: deleteItem,
+      onChange: onArrayChange,
+      onItemChange: onItemChange
+    })))
+  );
 };
 
 var SkillsEditForm = SkillsEditFormComponent;

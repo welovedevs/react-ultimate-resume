@@ -21,10 +21,11 @@ var ProfileCardSideComponent = function ProfileCardSideComponent(_ref) {
   var style = _ref.style,
       children = _ref.children;
   var classes = useStyles();
-  return _react.default.createElement(_reactSpring.animated.div, {
-    className: classes.container,
-    style: style
-  }, children);
+  return (/*#__PURE__*/_react.default.createElement(_reactSpring.animated.div, {
+      className: classes.container,
+      style: style
+    }, children)
+  );
 };
 
 var ProfileCardSide = ProfileCardSideComponent;

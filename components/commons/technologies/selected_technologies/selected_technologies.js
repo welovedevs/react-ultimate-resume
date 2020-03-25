@@ -34,9 +34,10 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var DeleteIcon = function DeleteIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("path", {
-    d: "M8.277 25.334C8.277 26.8 9.498 28 10.99 28h10.857c1.493 0 2.714-1.2 2.714-2.666v-16H8.277v16zm17.642-20h-4.75L19.813 4h-6.785L11.67 5.333H6.92V8h19V5.333z"
-  }));
+  return (/*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("path", {
+      d: "M8.277 25.334C8.277 26.8 9.498 28 10.99 28h10.857c1.493 0 2.714-1.2 2.714-2.666v-16H8.277v16zm17.642-20h-4.75L19.813 4h-6.785L11.67 5.333H6.92V8h19V5.333z"
+    }))
+  );
 };
 
 DeleteIcon.defaultProps = {
@@ -48,9 +49,10 @@ DeleteIcon.defaultProps = {
 };
 
 var MoveIcon = function MoveIcon(props) {
-  return _react.default.createElement("svg", props, _react.default.createElement("path", {
-    d: "M3.52 18h18v-2h-18v2zm0-5h18v-2h-18v2zm0-7v2h18V6h-18z"
-  }));
+  return (/*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("path", {
+      d: "M3.52 18h18v-2h-18v2zm0-5h18v-2h-18v2zm0-7v2h18V6h-18z"
+    }))
+  );
 };
 
 MoveIcon.defaultProps = {
@@ -90,74 +92,75 @@ var TechnologyRow = (0, _reactSortableHoc.SortableElement)(function (_ref) {
 
     return technology.url;
   }, [technologies, item]);
-  return _react.default.createElement("li", {
-    className: classes.listItem,
-    style: {
-      zIndex: itemsLength - technologyIndex
-    }
-  }, _react.default.createElement(DragHandle, {
-    classes: classes
-  }), _react.default.createElement("div", {
-    className: classes.divider
-  }), _react.default.createElement(_ui.Tooltip, {
-    title: _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Main.lang.delete",
-      defaultMessage: "Delete"
-    })
-  }, _react.default.createElement("button", {
-    className: classes.removeButton,
-    type: "button",
-    onClick: function onClick() {
-      return onRemove(item.id);
-    }
-  }, _react.default.createElement(DeleteIcon, {
-    className: classes.removeIcon
-  }))), _react.default.createElement("div", {
-    className: classes.divider
-  }), _react.default.createElement(_ui.Card, {
-    className: classes.logo
-  }, _react.default.createElement("img", {
-    className: classes.logoImage,
-    alt: item.name,
-    src: imgUrl
-  })), _react.default.createElement("div", {
-    className: classes.textWrapper
-  }, _react.default.createElement(_ui.Typography, {
-    color: "dark",
-    variant: "label"
-  }, item.name), _react.default.createElement("div", {
-    className: classes.sliderValueContainer
-  }, _react.default.createElement(_ui.Typography, {
-    customClasses: {
-      container: classes.sliderValue
-    },
-    color: "dark",
-    variant: "label"
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Skills.Dialog.SliderValue",
-    defaultMessage: "{valueNode}%",
-    values: {
-      valueNode: _react.default.createElement("span", {
-        className: classes.bolden
-      }, item.value)
-    }
-  })), _react.default.createElement(_slider_with_popper.SliderWithPopper, {
-    color: "primary",
-    name: "skill_value_".concat(item.id),
-    value: item.value,
-    onChange: sliderChange,
-    min: 0,
-    max: 100,
-    debounce: 50,
-    classes: {
-      container: classes.slider
-    },
-    popperCardProps: {
-      customClasses: {
-        popper: classes.popper
+  return (/*#__PURE__*/_react.default.createElement("li", {
+      className: classes.listItem,
+      style: {
+        zIndex: itemsLength - technologyIndex
       }
-    }
-  }))));
+    }, /*#__PURE__*/_react.default.createElement(DragHandle, {
+      classes: classes
+    }), /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.divider
+    }), /*#__PURE__*/_react.default.createElement(_ui.Tooltip, {
+      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Main.lang.delete",
+        defaultMessage: "Delete"
+      })
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      className: classes.removeButton,
+      type: "button",
+      onClick: function onClick() {
+        return onRemove(item.id);
+      }
+    }, /*#__PURE__*/_react.default.createElement(DeleteIcon, {
+      className: classes.removeIcon
+    }))), /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.divider
+    }), /*#__PURE__*/_react.default.createElement(_ui.Card, {
+      className: classes.logo
+    }, /*#__PURE__*/_react.default.createElement("img", {
+      className: classes.logoImage,
+      alt: item.name,
+      src: imgUrl
+    })), /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.textWrapper
+    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      color: "dark",
+      variant: "label"
+    }, item.name), /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.sliderValueContainer
+    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      customClasses: {
+        container: classes.sliderValue
+      },
+      color: "dark",
+      variant: "label"
+    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Skills.Dialog.SliderValue",
+      defaultMessage: "{valueNode}%",
+      values: {
+        valueNode: /*#__PURE__*/_react.default.createElement("span", {
+          className: classes.bolden
+        }, item.value)
+      }
+    })), /*#__PURE__*/_react.default.createElement(_slider_with_popper.SliderWithPopper, {
+      color: "primary",
+      name: "skill_value_".concat(item.id),
+      value: item.value,
+      onChange: sliderChange,
+      min: 0,
+      max: 100,
+      debounce: 50,
+      classes: {
+        container: classes.slider
+      },
+      popperCardProps: {
+        customClasses: {
+          popper: classes.popper
+        }
+      }
+    }))))
+  );
 });
 var SortableTechnologies = (0, _reactSortableHoc.SortableContainer)(function (_ref2) {
   var items = _ref2.items,
@@ -168,32 +171,35 @@ var SortableTechnologies = (0, _reactSortableHoc.SortableContainer)(function (_r
       className = _ref2.className,
       receivedClasses = _ref2.receivedClasses,
       itemsLength = _ref2.itemsLength;
-  return _react.default.createElement(_ui.List, {
-    className: (0, _classnames.default)(classes.container, className, receivedClasses.container)
-  }, items.map(function (item, index) {
-    return _react.default.createElement(TechnologyRow, {
-      key: "selected_technology_row_".concat(item.id),
-      onRemove: onDelete,
-      id: item.id,
-      onChange: onItemChange,
-      technologyIndex: index,
-      index: index,
-      item: item,
-      schools: schools,
-      receivedClasses: receivedClasses,
-      classes: classes,
-      itemsLength: itemsLength
-    });
-  }));
+  return (/*#__PURE__*/_react.default.createElement(_ui.List, {
+      className: (0, _classnames.default)(classes.container, className, receivedClasses.container)
+    }, items.map(function (item, index) {
+      return (/*#__PURE__*/_react.default.createElement(TechnologyRow, {
+          key: "selected_technology_row_".concat(item.id),
+          onRemove: onDelete,
+          id: item.id,
+          onChange: onItemChange,
+          technologyIndex: index,
+          index: index,
+          item: item,
+          schools: schools,
+          receivedClasses: receivedClasses,
+          classes: classes,
+          itemsLength: itemsLength
+        })
+      );
+    }))
+  );
 });
 var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (_ref3) {
   var classes = _ref3.classes;
-  return _react.default.createElement("button", {
-    className: classes.dragHandleButton,
-    type: "button"
-  }, _react.default.createElement(MoveIcon, {
-    className: classes.dragHandle
-  }));
+  return (/*#__PURE__*/_react.default.createElement("button", {
+      className: classes.dragHandleButton,
+      type: "button"
+    }, /*#__PURE__*/_react.default.createElement(MoveIcon, {
+      className: classes.dragHandle
+    }))
+  );
 });
 
 var SelectedTechnologiesComponent = function SelectedTechnologiesComponent(_ref4) {
@@ -217,22 +223,23 @@ var SelectedTechnologiesComponent = function SelectedTechnologiesComponent(_ref4
       });
     }));
   }, [items, onChange]);
-  return _react.default.createElement(SortableTechnologies, {
-    lockToContainerEdges: true,
-    className: className,
-    helperClass: classes.sortableHelper,
-    items: items,
-    onSortEnd: move,
-    distance: 20,
-    useDragHandle: true,
-    lockAxis: "y",
-    name: "education",
-    onItemChange: onItemChange,
-    onDelete: onDelete,
-    receivedClasses: receivedClasses,
-    itemsLength: itemsLength,
-    classes: classes
-  });
+  return (/*#__PURE__*/_react.default.createElement(SortableTechnologies, {
+      lockToContainerEdges: true,
+      className: className,
+      helperClass: classes.sortableHelper,
+      items: items,
+      onSortEnd: move,
+      distance: 20,
+      useDragHandle: true,
+      lockAxis: "y",
+      name: "education",
+      onItemChange: onItemChange,
+      onDelete: onDelete,
+      receivedClasses: receivedClasses,
+      itemsLength: itemsLength,
+      classes: classes
+    })
+  );
 };
 
 var SelectedTechnologies = SelectedTechnologiesComponent;

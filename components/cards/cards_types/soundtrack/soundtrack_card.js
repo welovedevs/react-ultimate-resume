@@ -67,28 +67,31 @@ var SoundtrackCardComponent = function SoundtrackCardComponent(_ref) {
     return null;
   }
 
-  return _react.default.createElement(_profile_card.ProfileCard, {
-    kind: "soundtrack",
-    isComplete: isComplete,
-    isEditingProfile: isEditing,
-    data: mappedData,
-    sides: {
-      front: function front(props) {
-        return _react.default.createElement(_soundtrack_front.SoundtrackFront, props);
+  return (/*#__PURE__*/_react.default.createElement(_profile_card.ProfileCard, {
+      kind: "soundtrack",
+      isComplete: isComplete,
+      isEditingProfile: isEditing,
+      data: mappedData,
+      sides: {
+        front: function front(props) {
+          return (/*#__PURE__*/_react.default.createElement(_soundtrack_front.SoundtrackFront, props)
+          );
+        },
+        back: function back(props) {
+          return (/*#__PURE__*/_react.default.createElement(_soundtrack_back.SoundtrackBack, props)
+          );
+        }
       },
-      back: function back(props) {
-        return _react.default.createElement(_soundtrack_back.SoundtrackBack, props);
-      }
-    },
-    editDialog: {
-      component: _soundtrack_card_edit_dialog.SoundtrackCardEditDialog,
-      onEdit: onDialogEdited,
-      validationSchema: _validator.SoundtrackValidationSchema
-    },
-    variant: variant,
-    side: currentSide,
-    isTransitionUnique: false
-  });
+      editDialog: {
+        component: _soundtrack_card_edit_dialog.SoundtrackCardEditDialog,
+        onEdit: onDialogEdited,
+        validationSchema: _validator.SoundtrackValidationSchema
+      },
+      variant: variant,
+      side: currentSide,
+      isTransitionUnique: false
+    })
+  );
 };
 
 var SoundtrackCard = SoundtrackCardComponent;

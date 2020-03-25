@@ -33,13 +33,14 @@ var ProjectDialogContentDateComponent = function ProjectDialogContentDateCompone
   var classes = useStyles({
     isEditing: isEditing
   });
-  return _react.default.createElement("div", {
-    className: classes.container
-  }, _react.default.createElement(Content, {
-    date: date,
-    isEditing: isEditing,
-    classes: classes
-  }));
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: classes.container
+    }, /*#__PURE__*/_react.default.createElement(Content, {
+      date: date,
+      isEditing: isEditing,
+      classes: classes
+    }))
+  );
 };
 
 var Content = function Content(_ref2) {
@@ -48,28 +49,31 @@ var Content = function Content(_ref2) {
       classes = _ref2.classes;
 
   if (isEditing) {
-    return _react.default.createElement(EditingContent, {
-      title: date,
-      classes: classes
-    });
+    return (/*#__PURE__*/_react.default.createElement(EditingContent, {
+        title: date,
+        classes: classes
+      })
+    );
   }
 
-  return _react.default.createElement(DefaultContent, {
-    title: date,
-    classes: classes
-  });
+  return (/*#__PURE__*/_react.default.createElement(DefaultContent, {
+      title: date,
+      classes: classes
+    })
+  );
 };
 
 var DefaultContent = function DefaultContent(_ref3) {
   var date = _ref3.date,
       classes = _ref3.classes;
-  return _react.default.createElement(_ui.Typography, {
-    variant: "h2",
-    component: "h3",
-    customClasses: {
-      container: classes.typography
-    }
-  }, date && date.format('LL'));
+  return (/*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      variant: "h2",
+      component: "h3",
+      customClasses: {
+        container: classes.typography
+      }
+    }, date && date.format('LL'))
+  );
 };
 
 var EditingContent = function EditingContent(_ref4) {
@@ -83,26 +87,27 @@ var EditingContent = function EditingContent(_ref4) {
   var handleStartDate = (0, _react.useCallback)(function (value) {
     setFieldValue('date', value);
   }, [JSON.stringify(values)]);
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_pickers.MuiPickersUtilsProvider, {
-    utils: _moment.default
-  }, _react.default.createElement(_year_month.YearMonth, {
-    textfieldProps: {
-      fullWidth: true
-    },
-    className: classes.datePicker,
-    variant: "flat",
-    value: values.date,
-    onChange: handleStartDate,
-    title: {
-      id: 'Project.editDialog.date',
-      defaultMessage: 'Project date'
-    },
-    error: errors === null || errors === void 0 ? void 0 : errors.date
-  })), (errors === null || errors === void 0 ? void 0 : errors.date) && _react.default.createElement(_ui.Typography, {
-    color: "danger",
-    variant: "helper",
-    component: "p"
-  }, errors.date));
+  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_pickers.MuiPickersUtilsProvider, {
+      utils: _moment.default
+    }, /*#__PURE__*/_react.default.createElement(_year_month.YearMonth, {
+      textfieldProps: {
+        fullWidth: true
+      },
+      className: classes.datePicker,
+      variant: "flat",
+      value: values.date,
+      onChange: handleStartDate,
+      title: {
+        id: 'Project.editDialog.date',
+        defaultMessage: 'Project date'
+      },
+      error: errors === null || errors === void 0 ? void 0 : errors.date
+    })), (errors === null || errors === void 0 ? void 0 : errors.date) && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      color: "danger",
+      variant: "helper",
+      component: "p"
+    }, errors.date))
+  );
 };
 
 var ProjectDialogContentDate = ProjectDialogContentDateComponent;

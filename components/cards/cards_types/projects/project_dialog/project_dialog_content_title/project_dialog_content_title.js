@@ -27,13 +27,14 @@ var ProjectDialogContentTitleComponent = function ProjectDialogContentTitleCompo
   var classes = useStyles({
     isEditing: isEditing
   });
-  return _react.default.createElement("div", {
-    className: classes.container
-  }, _react.default.createElement(Content, {
-    title: title,
-    isEditing: isEditing,
-    classes: classes
-  }));
+  return (/*#__PURE__*/_react.default.createElement("div", {
+      className: classes.container
+    }, /*#__PURE__*/_react.default.createElement(Content, {
+      title: title,
+      isEditing: isEditing,
+      classes: classes
+    }))
+  );
 };
 
 var Content = function Content(_ref2) {
@@ -42,28 +43,31 @@ var Content = function Content(_ref2) {
       classes = _ref2.classes;
 
   if (isEditing) {
-    return _react.default.createElement(EditingContent, {
-      title: title,
-      classes: classes
-    });
+    return (/*#__PURE__*/_react.default.createElement(EditingContent, {
+        title: title,
+        classes: classes
+      })
+    );
   }
 
-  return _react.default.createElement(DefaultContent, {
-    title: title,
-    classes: classes
-  });
+  return (/*#__PURE__*/_react.default.createElement(DefaultContent, {
+      title: title,
+      classes: classes
+    })
+  );
 };
 
 var DefaultContent = function DefaultContent(_ref3) {
   var title = _ref3.title,
       classes = _ref3.classes;
-  return _react.default.createElement(_ui.Typography, {
-    variant: "h2",
-    component: "h3",
-    customClasses: {
-      container: classes.typography
-    }
-  }, title);
+  return (/*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      variant: "h2",
+      component: "h3",
+      customClasses: {
+        container: classes.typography
+      }
+    }, title)
+  );
 };
 
 var EditingContent = function EditingContent(_ref4) {
@@ -74,26 +78,27 @@ var EditingContent = function EditingContent(_ref4) {
       values = _useFormikContext.values,
       errors = _useFormikContext.errors;
 
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_ui.Typography, {
-    variant: "label",
-    component: "div"
-  }, _react.default.createElement(_reactIntl.FormattedMessage, {
-    id: "Projects.dialog.content.title",
-    defaultMessage: "Project title"
-  })), _react.default.createElement(_ui.TextField, {
-    fullWidth: true,
-    variant: "flat",
-    onChange: handleChange,
-    name: "name",
-    value: values.name,
-    customClasses: {
-      container: classes.textField
-    }
-  }), (errors === null || errors === void 0 ? void 0 : errors.name) && _react.default.createElement(_ui.Typography, {
-    color: "danger",
-    variant: "helper",
-    component: "p"
-  }, errors.name));
+  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      variant: "label",
+      component: "div"
+    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Projects.dialog.content.title",
+      defaultMessage: "Project title"
+    })), /*#__PURE__*/_react.default.createElement(_ui.TextField, {
+      fullWidth: true,
+      variant: "flat",
+      onChange: handleChange,
+      name: "name",
+      value: values.name,
+      customClasses: {
+        container: classes.textField
+      }
+    }), (errors === null || errors === void 0 ? void 0 : errors.name) && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      color: "danger",
+      variant: "helper",
+      component: "p"
+    }, errors.name))
+  );
 };
 
 var ProjectDialogContentTitle = ProjectDialogContentTitleComponent;

@@ -38,11 +38,12 @@ var ProfileCardContentComponent = function ProfileCardContentComponent(_ref) {
   var classes = useStyles({
     variant: variant
   });
-  return _react.default.createElement(Component, (0, _extends2.default)({
-    className: (0, _classnames.default)(classes.container, customClasses.container)
-  }, {
-    style: style
-  }), children);
+  return (/*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
+      className: (0, _classnames.default)(classes.container, customClasses.container)
+    }, {
+      style: style
+    }), children)
+  );
 };
 
 var ProfileCardContent = ProfileCardContentComponent;

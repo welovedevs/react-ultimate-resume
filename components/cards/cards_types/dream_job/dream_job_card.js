@@ -56,23 +56,24 @@ var DreamJobCardComponent = function DreamJobCardComponent(_ref) {
     return null;
   }
 
-  return _react.default.createElement(_profile_card.ProfileCard, {
-    kind: "dreamjob",
-    isEditingProfile: isEditing,
-    isComplete: isComplete,
-    data: mappedData,
-    sides: {
-      front: _dream_job_front.DreamJobFront,
-      back: _dream_job_back.DreamJobBack
-    },
-    editDialog: {
-      component: _dream_job_card_edit_dialog.DreamJobCardEditDialog,
-      validationSchema: _validator.DreamJobValidationSchema,
-      onEdit: onDialogEdited
-    },
-    variant: variant,
-    side: side
-  });
+  return (/*#__PURE__*/_react.default.createElement(_profile_card.ProfileCard, {
+      kind: "dreamjob",
+      isEditingProfile: isEditing,
+      isComplete: isComplete,
+      data: mappedData,
+      sides: {
+        front: _dream_job_front.DreamJobFront,
+        back: _dream_job_back.DreamJobBack
+      },
+      editDialog: {
+        component: _dream_job_card_edit_dialog.DreamJobCardEditDialog,
+        validationSchema: _validator.DreamJobValidationSchema,
+        onEdit: onDialogEdited
+      },
+      variant: variant,
+      side: side
+    })
+  );
 };
 
 var DreamJobCard = DreamJobCardComponent;
