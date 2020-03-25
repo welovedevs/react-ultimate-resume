@@ -37,6 +37,7 @@
         "classnames": "^2.2.6",
         "copy-to-clipboard": "^3.3.1",
         "cp-cli": "^2.0.0",
+        "downloadjs": "^1.4.7",
         "formik": "^2.1.2",
         "lodash": "^4.17.15",
         "moment": "^2.24.0",
@@ -60,8 +61,10 @@
         "yup": "^0.28.0"
     },
     "devDependencies": {
-        "@babel/cli": "^7.7.7",
-        "@babel/core": "^7.7.7",
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.9.0",
+        "@babel/plugin-transform-react-jsx-development": "^7.9.0",
+        "@babel/helper-validator-identifier": "^7.9.0",
         "@babel/plugin-proposal-optional-chaining": "^7.7.5",
         "@babel/plugin-transform-runtime": "^7.8.3",
         "@babel/preset-env": "^7.7.7",
