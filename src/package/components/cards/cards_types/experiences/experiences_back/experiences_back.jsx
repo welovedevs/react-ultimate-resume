@@ -30,7 +30,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
             return formatMessage(translations.since, { year: experience.startDate.format('MMM YYYY') });
         }
         const startDate = experience.startDate.isValid() ? experience.startDate.format('MMM YYYY') : '';
-        const endDate = experience.endDate.isValid() ? experience.startDate.format('MMM YYYY') : '';
+        const endDate = experience.endDate.isValid() ? experience.endDate.format('MMM YYYY') : '';
         return `${startDate} - ${endDate}`;
     }, [experience]);
 
@@ -52,11 +52,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
             builder.push(<br />);
         }
         builder.push(dateString);
-        return builder.map((value, index) => (
-            <Fragment key={`builder_part_${index}`}>
-                {value}
-            </Fragment>
-        ));
+        return builder.map((value, index) => <Fragment key={`builder_part_${index}`}>{value}</Fragment>);
     }, [buildTitle, experience]);
     return (
         <ProfileCardSection key={id} cardVariant={variant}>
