@@ -56,9 +56,9 @@ var ProjectsBackComponent = function ProjectsBackComponent(_ref) {
     variant: variant
   });
   var imageSrc = (0, _react.useMemo)(function () {
-    var _ref2, _data$projects, _data$projects$, _data$projects$$image;
+    var _data$projects$0$imag, _data$projects, _data$projects$, _data$projects$$image;
 
-    return (_ref2 = (_data$projects = data.projects) === null || _data$projects === void 0 ? void 0 : (_data$projects$ = _data$projects[0]) === null || _data$projects$ === void 0 ? void 0 : (_data$projects$$image = _data$projects$.images) === null || _data$projects$$image === void 0 ? void 0 : _data$projects$$image.url) !== null && _ref2 !== void 0 ? _ref2 : _images.DEFAULT_PROJECT_IMAGE;
+    return (_data$projects$0$imag = (_data$projects = data.projects) === null || _data$projects === void 0 ? void 0 : (_data$projects$ = _data$projects[0]) === null || _data$projects$ === void 0 ? void 0 : (_data$projects$$image = _data$projects$.images) === null || _data$projects$$image === void 0 ? void 0 : _data$projects$$image.url) !== null && _data$projects$0$imag !== void 0 ? _data$projects$0$imag : _images.DEFAULT_PROJECT_IMAGE;
   }, [(_data$projects2 = data.projects) === null || _data$projects2 === void 0 ? void 0 : (_data$projects2$ = _data$projects2[0]) === null || _data$projects2$ === void 0 ? void 0 : _data$projects2$.images]);
   var alt = (_data$projects3 = data.projects) === null || _data$projects3 === void 0 ? void 0 : (_data$projects3$ = _data$projects3[0]) === null || _data$projects3$ === void 0 ? void 0 : _data$projects3$.title;
   var handleProjectDeletion = (0, _react.useCallback)(function (index) {
@@ -68,34 +68,32 @@ var ProjectsBackComponent = function ProjectsBackComponent(_ref) {
       projects: newProjects
     });
   }, [data, onEdit]);
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card_title.ProfileCardTitle, {
-      customClasses: {
-        container: classes.title,
-        typography: classes.typography
-      },
-      beforeTypography: /*#__PURE__*/_react.default.createElement("div", {
-        className: classes.background
-      }, imageSrc && /*#__PURE__*/_react.default.createElement("img", {
-        className: classes.backgroundImage,
-        src: imageSrc,
-        alt: alt
-      }), !imageSrc && /*#__PURE__*/_react.default.createElement("div", {
-        className: classes.stubBackground
-      }))
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Projects.back.title",
-      defaultMessage: "Projects"
-    })), /*#__PURE__*/_react.default.createElement(_profile_card_content.ProfileCardContent, null, (_data$projects4 = data.projects) === null || _data$projects4 === void 0 ? void 0 : _data$projects4.map(function (project) {
-      return (/*#__PURE__*/_react.default.createElement(_project_section.ProjectSection, {
-          project: project,
-          key: "project_".concat(project.id),
-          onDelete: handleProjectDeletion
-        })
-      );
-    }), !(0, _exists_and_not_empty.existsAndNotEmpty)(data === null || data === void 0 ? void 0 : data.projects) && /*#__PURE__*/_react.default.createElement(_no_project.NoProject, {
-      handleAddButtonClick: handleAddButtonClick
-    })))
-  );
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card_title.ProfileCardTitle, {
+    customClasses: {
+      container: classes.title,
+      typography: classes.typography
+    },
+    beforeTypography: /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.background
+    }, imageSrc && /*#__PURE__*/_react.default.createElement("img", {
+      className: classes.backgroundImage,
+      src: imageSrc,
+      alt: alt
+    }), !imageSrc && /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.stubBackground
+    }))
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Projects.back.title",
+    defaultMessage: "Projects"
+  })), /*#__PURE__*/_react.default.createElement(_profile_card_content.ProfileCardContent, null, (_data$projects4 = data.projects) === null || _data$projects4 === void 0 ? void 0 : _data$projects4.map(function (project) {
+    return /*#__PURE__*/_react.default.createElement(_project_section.ProjectSection, {
+      project: project,
+      key: "project_".concat(project.id),
+      onDelete: handleProjectDeletion
+    });
+  }), !(0, _exists_and_not_empty.existsAndNotEmpty)(data === null || data === void 0 ? void 0 : data.projects) && /*#__PURE__*/_react.default.createElement(_no_project.NoProject, {
+    handleAddButtonClick: handleAddButtonClick
+  })));
 };
 
 var ProjectsBack = (0, _react.memo)(ProjectsBackComponent);

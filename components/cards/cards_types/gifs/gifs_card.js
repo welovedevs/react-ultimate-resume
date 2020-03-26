@@ -65,30 +65,27 @@ var GifsCardComponent = function GifsCardComponent(_ref) {
     return null;
   }
 
-  return (/*#__PURE__*/_react.default.createElement(_profile_card.ProfileCard, {
-      kind: "gifs",
-      isEditingProfile: isEditing,
-      isComplete: isComplete,
-      data: mappedData,
-      sides: {
-        front: function front(props) {
-          return (/*#__PURE__*/_react.default.createElement(_gifs_front.GifsFront, props)
-          );
-        },
-        back: function back(props) {
-          return (/*#__PURE__*/_react.default.createElement(_gifs_back.GifsBack, props)
-          );
-        }
+  return /*#__PURE__*/_react.default.createElement(_profile_card.ProfileCard, {
+    kind: "gifs",
+    isEditingProfile: isEditing,
+    isComplete: isComplete,
+    data: mappedData,
+    sides: {
+      front: function front(props) {
+        return /*#__PURE__*/_react.default.createElement(_gifs_front.GifsFront, props);
       },
-      editDialog: {
-        component: _gifs_edit_dialog.GifsEditDialog,
-        validationSchema: _validator.interestsValidator,
-        onEdit: onDialogEdited
-      },
-      variant: variant,
-      side: currentSide
-    })
-  );
+      back: function back(props) {
+        return /*#__PURE__*/_react.default.createElement(_gifs_back.GifsBack, props);
+      }
+    },
+    editDialog: {
+      component: _gifs_edit_dialog.GifsEditDialog,
+      validationSchema: _validator.interestsValidator,
+      onEdit: onDialogEdited
+    },
+    variant: variant,
+    side: currentSide
+  });
 };
 
 var GifsCard = GifsCardComponent;

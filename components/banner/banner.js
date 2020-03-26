@@ -84,54 +84,53 @@ var BannerComponent = function BannerComponent(_ref) {
     config: _reactSpring.config.molasses
   }));
   var bannerImageCredits = customizationOptions === null || customizationOptions === void 0 ? void 0 : (_customizationOptions = customizationOptions.imageHeader) === null || _customizationOptions === void 0 ? void 0 : _customizationOptions.credits;
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _classnames.default)(classes.container, globalReceivedBannerClasses.container)
-    }, isEditing && onCustomizationChanged && /*#__PURE__*/_react.default.createElement(_edit_header_image_button.EditHeaderImageButton, {
-      customizationOptions: customizationOptions
-    }), /*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _classnames.default)(classes.overlay, globalReceivedBannerClasses.overlay)
-    }), transitions === null || transitions === void 0 ? void 0 : transitions.map(function (_ref2) {
-      var item = _ref2.item,
-          key = _ref2.key,
-          props = _ref2.props;
-      return item && /*#__PURE__*/_react.default.createElement(_reactSpring.animated.img, {
-        key: key,
-        className: classes.image,
-        src: item === null || item === void 0 ? void 0 : item.url,
-        alt: item === null || item === void 0 ? void 0 : item.alt,
-        style: props
-      });
-    }), /*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _classnames.default)(classes.content, globalReceivedBannerClasses.content)
-    }, /*#__PURE__*/_react.default.createElement(_user_informations.UserInformations, null), /*#__PURE__*/_react.default.createElement(_social_actions.SocialActions, null, actionsButtons, mode === 'edit' && /*#__PURE__*/_react.default.createElement(_edit_button.EditButton, null), mode === 'edit' && /*#__PURE__*/_react.default.createElement(_customize_button.CustomizeButton, {
-      customizationOptions: customizationOptions
-    }))), (bannerImageCredits === null || bannerImageCredits === void 0 ? void 0 : bannerImageCredits.name) && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      customClasses: {
-        container: (0, _classnames.default)(classes.credits, globalReceivedBannerClasses.credits)
-      },
-      variant: "body3"
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Unsplash.credit",
-      defaultMessage: "Photo by {name} on {unsplashLink}",
-      values: {
-        name: /*#__PURE__*/_react.default.createElement("a", {
-          className: classes.author,
-          href: bannerImageCredits.url,
-          target: "_blank",
-          rel: "noopener noreferrer",
-          title: bannerImageCredits.name
-        }, bannerImageCredits.name),
-        unsplashLink: /*#__PURE__*/_react.default.createElement("a", {
-          href: encodeURI('https://unsplash.com/?utm_source=W3D Developer Profile&utm_medium=referral'),
-          target: "_blank",
-          rel: "noopener noreferrer"
-        }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-          id: "Unsplash.brandName",
-          defaultMessage: "Unsplash"
-        }))
-      }
-    })))
-  );
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: (0, _classnames.default)(classes.container, globalReceivedBannerClasses.container)
+  }, isEditing && onCustomizationChanged && /*#__PURE__*/_react.default.createElement(_edit_header_image_button.EditHeaderImageButton, {
+    customizationOptions: customizationOptions
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: (0, _classnames.default)(classes.overlay, globalReceivedBannerClasses.overlay)
+  }), transitions === null || transitions === void 0 ? void 0 : transitions.map(function (_ref2) {
+    var item = _ref2.item,
+        key = _ref2.key,
+        props = _ref2.props;
+    return item && /*#__PURE__*/_react.default.createElement(_reactSpring.animated.img, {
+      key: key,
+      className: classes.image,
+      src: item === null || item === void 0 ? void 0 : item.url,
+      alt: item === null || item === void 0 ? void 0 : item.alt,
+      style: props
+    });
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: (0, _classnames.default)(classes.content, globalReceivedBannerClasses.content)
+  }, /*#__PURE__*/_react.default.createElement(_user_informations.UserInformations, null), /*#__PURE__*/_react.default.createElement(_social_actions.SocialActions, null, actionsButtons, mode === 'edit' && /*#__PURE__*/_react.default.createElement(_edit_button.EditButton, null), mode === 'edit' && /*#__PURE__*/_react.default.createElement(_customize_button.CustomizeButton, {
+    customizationOptions: customizationOptions
+  }))), (bannerImageCredits === null || bannerImageCredits === void 0 ? void 0 : bannerImageCredits.name) && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    customClasses: {
+      container: (0, _classnames.default)(classes.credits, globalReceivedBannerClasses.credits)
+    },
+    variant: "body3"
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Unsplash.credit",
+    defaultMessage: "Photo by {name} on {unsplashLink}",
+    values: {
+      name: /*#__PURE__*/_react.default.createElement("a", {
+        className: classes.author,
+        href: bannerImageCredits.url,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        title: bannerImageCredits.name
+      }, bannerImageCredits.name),
+      unsplashLink: /*#__PURE__*/_react.default.createElement("a", {
+        href: encodeURI('https://unsplash.com/?utm_source=W3D Developer Profile&utm_medium=referral'),
+        target: "_blank",
+        rel: "noopener noreferrer"
+      }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Unsplash.brandName",
+        defaultMessage: "Unsplash"
+      }))
+    }
+  })));
 };
 
 var Banner = (0, _react.memo)(BannerComponent);

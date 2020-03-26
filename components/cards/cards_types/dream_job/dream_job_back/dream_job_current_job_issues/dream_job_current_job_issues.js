@@ -29,28 +29,26 @@ var DreamJobCurrentJobIssuesComponent = function DreamJobCurrentJobIssuesCompone
   var _useIntl = (0, _reactIntl.useIntl)(),
       formatMessage = _useIntl.formatMessage;
 
-  return (/*#__PURE__*/_react.default.createElement("ul", {
-      className: classes.list
-    }, Object.entries(currentJobIssues).filter(function (_ref2) {
-      var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
-          value = _ref3[1];
+  return /*#__PURE__*/_react.default.createElement("ul", {
+    className: classes.list
+  }, Object.entries(currentJobIssues).filter(function (_ref2) {
+    var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
+        value = _ref3[1];
 
-      return Boolean(value);
-    }).map(function (_ref4) {
-      var _ref5 = (0, _slicedToArray2.default)(_ref4, 1),
-          issueId = _ref5[0];
+    return Boolean(value);
+  }).map(function (_ref4) {
+    var _ref5 = (0, _slicedToArray2.default)(_ref4, 1),
+        issueId = _ref5[0];
 
-      if (!_job_issues_translations.translations[issueId]) {
-        return null;
-      }
+    if (!_job_issues_translations.translations[issueId]) {
+      return null;
+    }
 
-      return (/*#__PURE__*/_react.default.createElement("li", {
-          className: classes.listItem,
-          key: "dream_job_current_job_issue_".concat(issueId)
-        }, formatMessage(_job_issues_translations.translations[issueId]))
-      );
-    }))
-  );
+    return /*#__PURE__*/_react.default.createElement("li", {
+      className: classes.listItem,
+      key: "dream_job_current_job_issue_".concat(issueId)
+    }, formatMessage(_job_issues_translations.translations[issueId]));
+  }));
 };
 
 var DreamJobCurrentJobIssues = DreamJobCurrentJobIssuesComponent;

@@ -48,10 +48,9 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var MoveIcon = function MoveIcon(props) {
-  return (/*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("path", {
-      d: "M3.52 18h18v-2h-18v2zm0-5h18v-2h-18v2zm0-7v2h18V6h-18z"
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("path", {
+    d: "M3.52 18h18v-2h-18v2zm0-5h18v-2h-18v2zm0-7v2h18V6h-18z"
+  }));
 };
 
 MoveIcon.defaultProps = {
@@ -63,10 +62,9 @@ MoveIcon.defaultProps = {
 };
 
 var TrashIcon = function TrashIcon(props) {
-  return (/*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("path", {
-      d: "M8.277 25.334C8.277 26.8 9.498 28 10.99 28h10.857c1.493 0 2.714-1.2 2.714-2.666v-16H8.277v16zm17.642-20h-4.75L19.813 4h-6.785L11.67 5.333H6.92V8h19V5.333z"
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("path", {
+    d: "M8.277 25.334C8.277 26.8 9.498 28 10.99 28h10.857c1.493 0 2.714-1.2 2.714-2.666v-16H8.277v16zm17.642-20h-4.75L19.813 4h-6.785L11.67 5.333H6.92V8h19V5.333z"
+  }));
 };
 
 TrashIcon.defaultProps = {
@@ -92,24 +90,22 @@ var LanguagesCardEditDialogComponent = function LanguagesCardEditDialogComponent
   var validationSchemaToPass = (0, _react.useMemo)(function () {
     return validationSchema(formatMessage);
   }, [validationSchema]);
-  return (/*#__PURE__*/_react.default.createElement(_edit_dialog.EditDialog, {
-      open: open,
-      onClose: onClose,
-      data: data,
-      isEditing: isEditing,
-      onEdit: onEdit,
-      validationSchema: validationSchemaToPass,
-      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "Languages.editDialog.title",
-        defaultMessage: "Your languages"
-      })
-    }, function (helpers) {
-      return (/*#__PURE__*/_react.default.createElement(LanguagesEditFormWrapper, {
-          helpers: helpers
-        })
-      );
+  return /*#__PURE__*/_react.default.createElement(_edit_dialog.EditDialog, {
+    open: open,
+    onClose: onClose,
+    data: data,
+    isEditing: isEditing,
+    onEdit: onEdit,
+    validationSchema: validationSchemaToPass,
+    title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Languages.editDialog.title",
+      defaultMessage: "Your languages"
     })
-  );
+  }, function (helpers) {
+    return /*#__PURE__*/_react.default.createElement(LanguagesEditFormWrapper, {
+      helpers: helpers
+    });
+  });
 };
 
 var LanguageItem = (0, _reactSortableHoc.SortableElement)(function (_ref2) {
@@ -132,78 +128,77 @@ var LanguageItem = (0, _reactSortableHoc.SortableElement)(function (_ref2) {
   var handleValueChange = (0, _react.useCallback)(function (e) {
     return onChange(index, 'value', Number(e.target.value));
   }, [index]);
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: classes.itemContainer
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.actions
-    }, /*#__PURE__*/_react.default.createElement(DragHandle, {
-      classes: classes
-    }), /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.divider
-    }), /*#__PURE__*/_react.default.createElement(_ui.Tooltip, {
-      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "Main.lang.delete",
-        defaultMessage: "Delete"
-      })
-    }, /*#__PURE__*/_react.default.createElement("button", {
-      type: "button",
-      className: classes.button,
-      onClick: onRemove(id)
-    }, /*#__PURE__*/_react.default.createElement(TrashIcon, {
-      className: classes.removeIcon
-    }))), !isMobile && /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.divider
-    })), /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.listItem
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.fieldGroup
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.field
-    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      color: "dark",
-      variant: "label"
-    }, formatMessage(_languages_edit_dialog_translations.default.language)), /*#__PURE__*/_react.default.createElement(_ui.TextField, {
-      value: language.language,
-      onChange: handleLanguageChange,
-      id: "language_language_".concat(id),
-      placeholder: formatMessage(_languages_edit_dialog_translations.default.languagePlaceholder),
-      variant: "flat"
-    }), fieldErrors && fieldErrors.language && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      color: "danger",
-      variant: "helper",
-      component: "p"
-    }, fieldErrors.language)), /*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _classnames.default)(classes.field, classes.sliderValueContainer)
-    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.itemContainer
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.actions
+  }, /*#__PURE__*/_react.default.createElement(DragHandle, {
+    classes: classes
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.divider
+  }), /*#__PURE__*/_react.default.createElement(_ui.Tooltip, {
+    title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Main.lang.delete",
+      defaultMessage: "Delete"
+    })
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    className: classes.button,
+    onClick: onRemove(id)
+  }, /*#__PURE__*/_react.default.createElement(TrashIcon, {
+    className: classes.removeIcon
+  }))), !isMobile && /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.divider
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.listItem
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.fieldGroup
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.field
+  }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    color: "dark",
+    variant: "label"
+  }, formatMessage(_languages_edit_dialog_translations.default.language)), /*#__PURE__*/_react.default.createElement(_ui.TextField, {
+    value: language.language,
+    onChange: handleLanguageChange,
+    id: "language_language_".concat(id),
+    placeholder: formatMessage(_languages_edit_dialog_translations.default.languagePlaceholder),
+    variant: "flat"
+  }), fieldErrors && fieldErrors.language && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    color: "danger",
+    variant: "helper",
+    component: "p"
+  }, fieldErrors.language)), /*#__PURE__*/_react.default.createElement("div", {
+    className: (0, _classnames.default)(classes.field, classes.sliderValueContainer)
+  }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    customClasses: {
+      container: classes.sliderValue
+    },
+    color: "dark",
+    variant: "label"
+  }, formatMessage(_languages_edit_dialog_translations.default.level, {
+    valueNode: /*#__PURE__*/_react.default.createElement("span", {
+      className: classes.bolden
+    }, language.value)
+  })), /*#__PURE__*/_react.default.createElement(_slider_with_popper.SliderWithPopper, {
+    color: "primary",
+    name: "value",
+    value: language.value,
+    onChange: handleValueChange,
+    min: 0,
+    max: 100,
+    className: classes.slider,
+    popperCardProps: {
       customClasses: {
-        container: classes.sliderValue
-      },
-      color: "dark",
-      variant: "label"
-    }, formatMessage(_languages_edit_dialog_translations.default.level, {
-      valueNode: /*#__PURE__*/_react.default.createElement("span", {
-        className: classes.bolden
-      }, language.value)
-    })), /*#__PURE__*/_react.default.createElement(_slider_with_popper.SliderWithPopper, {
-      color: "primary",
-      name: "value",
-      value: language.value,
-      onChange: handleValueChange,
-      min: 0,
-      max: 100,
-      className: classes.slider,
-      popperCardProps: {
-        customClasses: {
-          container: classes.sliderPopperCard,
-          arrowContainer: classes.sliderPopperCardArrowContainer
-        }
+        container: classes.sliderPopperCard,
+        arrowContainer: classes.sliderPopperCardArrowContainer
       }
-    }), fieldErrors && fieldErrors.value && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      color: "danger",
-      variant: "helper",
-      component: "p"
-    }, fieldErrors.value)))))
-  );
+    }
+  }), fieldErrors && fieldErrors.value && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    color: "danger",
+    variant: "helper",
+    component: "p"
+  }, fieldErrors.value)))));
 });
 var SortableLanguagesItems = (0, _reactSortableHoc.SortableContainer)(function (_ref3) {
   var items = _ref3.items,
@@ -213,32 +208,29 @@ var SortableLanguagesItems = (0, _reactSortableHoc.SortableContainer)(function (
       name = _ref3.name,
       schools = _ref3.schools,
       classes = _ref3.classes;
-  return (/*#__PURE__*/_react.default.createElement(_ui.List, null, items === null || items === void 0 ? void 0 : items.map(function (language, index) {
-      return (/*#__PURE__*/_react.default.createElement(LanguageItem, (0, _extends2.default)({
-          key: "".concat(name, "_").concat(language.id, "_").concat(index),
-          onChange: onChange,
-          onRemove: onDelete,
-          id: language.id,
-          languageIndex: index,
-          error: errors && errors[index]
-        }, {
-          index: index,
-          language: language,
-          schools: schools,
-          classes: classes
-        }))
-      );
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement(_ui.List, null, items === null || items === void 0 ? void 0 : items.map(function (language, index) {
+    return /*#__PURE__*/_react.default.createElement(LanguageItem, (0, _extends2.default)({
+      key: "".concat(name, "_").concat(language.id, "_").concat(index),
+      onChange: onChange,
+      onRemove: onDelete,
+      id: language.id,
+      languageIndex: index,
+      error: errors && errors[index]
+    }, {
+      index: index,
+      language: language,
+      schools: schools,
+      classes: classes
+    }));
+  }));
 });
 var DragHandle = (0, _reactSortableHoc.SortableHandle)(function (_ref4) {
   var classes = _ref4.classes;
-  return (/*#__PURE__*/_react.default.createElement("button", {
-      type: "button"
-    }, /*#__PURE__*/_react.default.createElement(MoveIcon, {
-      className: classes.dragHandle
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement("button", {
+    type: "button"
+  }, /*#__PURE__*/_react.default.createElement(MoveIcon, {
+    className: classes.dragHandle
+  }));
 });
 
 var LanguagesEditForm = function LanguagesEditForm(_ref5) {
@@ -250,27 +242,26 @@ var LanguagesEditForm = function LanguagesEditForm(_ref5) {
       validationErrors = _ref5.errors;
   var classes = useStyles();
   var globalError = typeof validationErrors === 'string' && validationErrors;
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(SortableLanguagesItems, (0, _extends2.default)({
-      useDragHandle: true,
-      lockToContainerEdges: true,
-      helperClass: classes.sortableHelper,
-      items: data,
-      onSortEnd: onMove,
-      distance: 20,
-      lockAxis: "y",
-      name: "education",
-      onChange: onValueChange,
-      onDelete: onDelete,
-      errors: validationErrors
-    }, {
-      classes: classes
-    })), /*#__PURE__*/_react.default.createElement(_add_button.AddButton, {
-      onClick: onAdd
-    }), globalError && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      color: "danger",
-      component: "p"
-    }, validationErrors))
-  );
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(SortableLanguagesItems, (0, _extends2.default)({
+    useDragHandle: true,
+    lockToContainerEdges: true,
+    helperClass: classes.sortableHelper,
+    items: data,
+    onSortEnd: onMove,
+    distance: 20,
+    lockAxis: "y",
+    name: "education",
+    onChange: onValueChange,
+    onDelete: onDelete,
+    errors: validationErrors
+  }, {
+    classes: classes
+  })), /*#__PURE__*/_react.default.createElement(_add_button.AddButton, {
+    onClick: onAdd
+  }), globalError && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    color: "danger",
+    component: "p"
+  }, validationErrors));
 };
 
 exports.LanguagesEditForm = LanguagesEditForm;
@@ -294,32 +285,31 @@ var LanguagesEditFormWrapper = function LanguagesEditFormWrapper(_ref6) {
     };
   }, [languages]);
   var addLanguage = (0, _react.useCallback)(function () {
-    var _ref8;
+    var _languages$length;
 
     var id = (0, _v.default)();
     handleValueChange('languages')([].concat((0, _toConsumableArray2.default)(languages !== null && languages !== void 0 ? languages : []), [{
-      index: (_ref8 = languages === null || languages === void 0 ? void 0 : languages.length) !== null && _ref8 !== void 0 ? _ref8 : 0,
+      index: (_languages$length = languages === null || languages === void 0 ? void 0 : languages.length) !== null && _languages$length !== void 0 ? _languages$length : 0,
       id: id
     }]));
   }, [JSON.stringify(languages)]);
-  var move = (0, _react.useCallback)(function (_ref9) {
-    var oldIndex = _ref9.oldIndex,
-        newIndex = _ref9.newIndex;
+  var move = (0, _react.useCallback)(function (_ref8) {
+    var oldIndex = _ref8.oldIndex,
+        newIndex = _ref8.newIndex;
     handleValueChange('languages')((0, _reactSortableHoc.arrayMove)(languages, oldIndex, newIndex).map(function (data, index) {
       return _objectSpread({}, data, {
         index: index
       });
     }));
   }, [languages]);
-  return (/*#__PURE__*/_react.default.createElement(LanguagesEditForm, {
-      data: languages,
-      onMove: move,
-      onValueChange: languageChanged,
-      onDelete: languageDeleted,
-      onAdd: addLanguage,
-      errors: validationErrors === null || validationErrors === void 0 ? void 0 : validationErrors.languages
-    })
-  );
+  return /*#__PURE__*/_react.default.createElement(LanguagesEditForm, {
+    data: languages,
+    onMove: move,
+    onValueChange: languageChanged,
+    onDelete: languageDeleted,
+    onAdd: addLanguage,
+    errors: validationErrors === null || validationErrors === void 0 ? void 0 : validationErrors.languages
+  });
 };
 
 var LanguagesCardEditDialog = LanguagesCardEditDialogComponent;

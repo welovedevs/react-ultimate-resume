@@ -99,27 +99,26 @@ var CustomLabel = function CustomLabel(props) {
       textAnchor = _useMemo.textAnchor,
       logoXOffset = _useMemo.logoXOffset;
 
-  return (/*#__PURE__*/_react.default.createElement("g", null, /*#__PURE__*/_react.default.createElement("g", null, /*#__PURE__*/_react.default.createElement("path", {
-      d: "M".concat(startX, ",").concat(startY, "L").concat(inflexionX, ",").concat(inflexionY, "L").concat(endX, ",").concat(endY),
-      stroke: customColor,
-      fill: "none"
-    }), /*#__PURE__*/_react.default.createElement("g", {
-      transform: "translate(".concat(endX + (cos >= 0 ? 1 : -1) * 8, ",").concat(endY - 10, ")"),
-      width: "100"
-    }, /*#__PURE__*/_react.default.createElement("image", {
-      width: "25",
-      height: "25",
-      xlinkHref: src,
-      y: "-10",
-      transform: "translate(".concat(logoXOffset, ",-6)")
-    }), /*#__PURE__*/_react.default.createElement("text", {
-      textAnchor: textAnchor,
-      fill: customColor,
-      fontWeight: "500",
-      className: classes.text,
-      transform: "translate(0, 29)"
-    }, name))))
-  );
+  return /*#__PURE__*/_react.default.createElement("g", null, /*#__PURE__*/_react.default.createElement("g", null, /*#__PURE__*/_react.default.createElement("path", {
+    d: "M".concat(startX, ",").concat(startY, "L").concat(inflexionX, ",").concat(inflexionY, "L").concat(endX, ",").concat(endY),
+    stroke: customColor,
+    fill: "none"
+  }), /*#__PURE__*/_react.default.createElement("g", {
+    transform: "translate(".concat(endX + (cos >= 0 ? 1 : -1) * 8, ",").concat(endY - 10, ")"),
+    width: "100"
+  }, /*#__PURE__*/_react.default.createElement("image", {
+    width: "25",
+    height: "25",
+    xlinkHref: src,
+    y: "-10",
+    transform: "translate(".concat(logoXOffset, ",-6)")
+  }), /*#__PURE__*/_react.default.createElement("text", {
+    textAnchor: textAnchor,
+    fill: customColor,
+    fontWeight: "500",
+    className: classes.text,
+    transform: "translate(0, 29)"
+  }, name))));
 };
 
 exports.CustomLabel = CustomLabel;

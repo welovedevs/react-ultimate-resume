@@ -65,30 +65,27 @@ var StudiesCardComponent = function StudiesCardComponent(_ref) {
     return null;
   }
 
-  return (/*#__PURE__*/_react.default.createElement(_profile_card.ProfileCard, {
-      kind: "studies",
-      data: mappedData,
-      isComplete: isComplete,
-      isEditingProfile: isEditing,
-      sides: {
-        front: function front(props) {
-          return (/*#__PURE__*/_react.default.createElement(_studies_front.StudiesFront, props)
-          );
-        },
-        back: function back(props) {
-          return (/*#__PURE__*/_react.default.createElement(_studies_back.StudiesBack, props)
-          );
-        }
+  return /*#__PURE__*/_react.default.createElement(_profile_card.ProfileCard, {
+    kind: "studies",
+    data: mappedData,
+    isComplete: isComplete,
+    isEditingProfile: isEditing,
+    sides: {
+      front: function front(props) {
+        return /*#__PURE__*/_react.default.createElement(_studies_front.StudiesFront, props);
       },
-      editDialog: {
-        component: _studies_card_edit_dialog.StudiesCardEditDialog,
-        validationSchema: _validator.StudiesValidator,
-        onEdit: onDialogEdited
-      },
-      variant: variant,
-      side: currentSide
-    })
-  );
+      back: function back(props) {
+        return /*#__PURE__*/_react.default.createElement(_studies_back.StudiesBack, props);
+      }
+    },
+    editDialog: {
+      component: _studies_card_edit_dialog.StudiesCardEditDialog,
+      validationSchema: _validator.StudiesValidator,
+      onEdit: onDialogEdited
+    },
+    variant: variant,
+    side: currentSide
+  });
 };
 
 var StudiesCard = StudiesCardComponent;

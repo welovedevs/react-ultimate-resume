@@ -121,28 +121,26 @@ var ExperiencesFrontComponent = function ExperiencesFrontComponent(_ref) {
     }
 
     return builder.map(function (value, index) {
-      return (/*#__PURE__*/_react.default.createElement(_react.Fragment, {
-          key: "builder_part_".concat(index)
-        }, value)
-      );
+      return /*#__PURE__*/_react.default.createElement(_react.Fragment, {
+        key: "builder_part_".concat(index)
+      }, value);
     });
   }, [data.work]);
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, /*#__PURE__*/_react.default.createElement(_center_content_container.CenterContentContainer, {
-      customClasses: {
-        container: classes.container
-      }
-    }, /*#__PURE__*/_react.default.createElement(Content, {
-      hasWork: hasWork,
-      title: title,
-      handleAddButtonClick: handleAddButtonClick,
-      classes: classes
-    }))), hasWork && /*#__PURE__*/_react.default.createElement(_profile_card_actions.ProfileCardActions, null, /*#__PURE__*/_react.default.createElement(_profile_card_button.ProfileCardButton, {
-      onClick: handleButtonClick
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Experiences.front.action",
-      defaultMessage: "See all experiences"
-    }))))
-  );
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card_padding_front.ProfileCardPaddedFront, null, /*#__PURE__*/_react.default.createElement(_center_content_container.CenterContentContainer, {
+    customClasses: {
+      container: classes.container
+    }
+  }, /*#__PURE__*/_react.default.createElement(Content, {
+    hasWork: hasWork,
+    title: title,
+    handleAddButtonClick: handleAddButtonClick,
+    classes: classes
+  }))), hasWork && /*#__PURE__*/_react.default.createElement(_profile_card_actions.ProfileCardActions, null, /*#__PURE__*/_react.default.createElement(_profile_card_button.ProfileCardButton, {
+    onClick: handleButtonClick
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Experiences.front.action",
+    defaultMessage: "See all experiences"
+  }))));
 };
 
 var Content = function Content(_ref2) {
@@ -167,38 +165,36 @@ var Content = function Content(_ref2) {
   }, []);
 
   if (hasWork) {
-    return (/*#__PURE__*/_react.default.createElement("div", {
-        className: classes.textsContainer
-      }, /*#__PURE__*/_react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
-        ref: typographyReference,
-        classes: {
-          container: (0, _classnames.default)(classes.typography, isTypographyTruncated && classes.truncatedTypography)
-        }
-      }, title))
-    );
+    return /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.textsContainer
+    }, /*#__PURE__*/_react.default.createElement(_profile_card_front_typography.ProfileCardFrontTypography, {
+      ref: typographyReference,
+      classes: {
+        container: (0, _classnames.default)(classes.typography, isTypographyTruncated && classes.truncatedTypography)
+      }
+    }, title));
   }
 
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: classes.noWork
-    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      variant: "h3",
-      component: "h3",
-      customClasses: {
-        container: classes.noWorkTypography
-      }
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Experiences.front.noWork",
-      defaultMessage: "Vous n'avez pas encore ajout\xE9 d'exp\xE9riences !"
-    })), /*#__PURE__*/_react.default.createElement(_no_data_button.NoDataButton, {
-      handleAddButtonClick: handleAddButtonClick,
-      classes: {
-        container: classes.addButton
-      }
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Experiences.noWork.buttonLabel",
-      defaultMessage: "Ajouter une exp\xE9rience"
-    })))
-  );
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.noWork
+  }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    variant: "h3",
+    component: "h3",
+    customClasses: {
+      container: classes.noWorkTypography
+    }
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Experiences.front.noWork",
+    defaultMessage: "Vous n'avez pas encore ajout\xE9 d'exp\xE9riences !"
+  })), /*#__PURE__*/_react.default.createElement(_no_data_button.NoDataButton, {
+    handleAddButtonClick: handleAddButtonClick,
+    classes: {
+      container: classes.addButton
+    }
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Experiences.noWork.buttonLabel",
+    defaultMessage: "Ajouter une exp\xE9rience"
+  })));
 };
 
 var ExperiencesFront = (0, _react.memo)(ExperiencesFrontComponent);

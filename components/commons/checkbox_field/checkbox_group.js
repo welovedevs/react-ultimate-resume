@@ -33,20 +33,19 @@ var CheckboxField = function CheckboxField(_ref) {
       _ref$classes = _ref.classes,
       receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var classes = useStyles();
-  return (/*#__PURE__*/_react.default.createElement("button", {
-      className: (0, _classnames.default)(classes.container, receivedClasses.container),
-      type: "button",
-      onClick: onClick
-    }, /*#__PURE__*/_react.default.createElement(_ui.Checkbox, {
-      className: classes.checkbox,
-      variant: variant,
-      color: color,
-      checked: checked,
-      value: value,
-      name: name,
-      onChange: onChange
-    }), title)
-  );
+  return /*#__PURE__*/_react.default.createElement("button", {
+    className: (0, _classnames.default)(classes.container, receivedClasses.container),
+    type: "button",
+    onClick: onClick
+  }, /*#__PURE__*/_react.default.createElement(_ui.Checkbox, {
+    className: classes.checkbox,
+    variant: variant,
+    color: color,
+    checked: checked,
+    value: value,
+    name: name,
+    onChange: onChange
+  }), title);
 };
 
 exports.CheckboxField = CheckboxField;

@@ -24,24 +24,22 @@ var StudiesLevel = function StudiesLevel(_ref) {
   }, [studiesLevel]);
 
   if (studiesLevelValue === 0) {
-    return (/*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "Basics.Back.StudiesLevel.noHigherEducation",
-        defaultMessage: "Did not pursue higher education",
-        values: {
-          studiesLevel: studiesLevelValue
-        }
-      })
-    );
-  }
-
-  return (/*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Basics.Back.StudiesLevel.value",
-      defaultMessage: '{studiesLevel, plural, one {# year} other {# years}} higher education',
+    return /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Basics.Back.StudiesLevel.noHigherEducation",
+      defaultMessage: "Did not pursue higher education",
       values: {
         studiesLevel: studiesLevelValue
       }
-    })
-  );
+    });
+  }
+
+  return /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Basics.Back.StudiesLevel.value",
+    defaultMessage: '{studiesLevel, plural, one {# year} other {# years}} higher education',
+    values: {
+      studiesLevel: studiesLevelValue
+    }
+  });
 };
 
 exports.StudiesLevel = StudiesLevel;

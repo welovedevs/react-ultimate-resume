@@ -60,28 +60,26 @@ var ProjectDialogComponent = function ProjectDialogComponent(_ref) {
   var validator = (0, _react.useMemo)(function () {
     return (0, _validator.ProjectValidator)(formatMessage);
   }, []);
-  return (/*#__PURE__*/_react.default.createElement(_edit_dialog.EditDialog, {
-      classes: {
-        content: classes.container,
-        paper: classes.paper
-      },
-      open: open,
-      onClose: onClose,
-      data: project || DEFAULT_OBJECT,
-      onEdit: onDialogEdited,
-      validationSchema: validator,
-      isEditing: isEditing,
-      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "Project.editDialog.title",
-        defaultMessage: "Project's details"
-      })
-    }, function () {
-      return (/*#__PURE__*/_react.default.createElement(ProjectDialogContent, {
-          isEditing: isEditing
-        })
-      );
+  return /*#__PURE__*/_react.default.createElement(_edit_dialog.EditDialog, {
+    classes: {
+      content: classes.container,
+      paper: classes.paper
+    },
+    open: open,
+    onClose: onClose,
+    data: project || DEFAULT_OBJECT,
+    onEdit: onDialogEdited,
+    validationSchema: validator,
+    isEditing: isEditing,
+    title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Project.editDialog.title",
+      defaultMessage: "Project's details"
     })
-  );
+  }, function () {
+    return /*#__PURE__*/_react.default.createElement(ProjectDialogContent, {
+      isEditing: isEditing
+    });
+  });
 };
 
 var ProjectDialogContent = function ProjectDialogContent(_ref2) {
@@ -91,25 +89,24 @@ var ProjectDialogContent = function ProjectDialogContent(_ref2) {
   var _useFormikContext = (0, _formik.useFormikContext)(),
       project = _useFormikContext.values;
 
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.headrow
-    }, /*#__PURE__*/_react.default.createElement(_project_dialog_content_title.ProjectDialogContentTitle, {
-      isEditing: isEditing,
-      title: project.title
-    }), /*#__PURE__*/_react.default.createElement(_project_dialog_content_date.ProjectDialogContentDate, {
-      isEditing: isEditing,
-      date: project.data
-    })), /*#__PURE__*/_react.default.createElement(_project_dialog_content_description.ProjectDialogContentDescription, {
-      isEditing: isEditing,
-      description: project.description
-    }), /*#__PURE__*/_react.default.createElement(_project_dialog_content_link.ProjectDialogContentLink, {
-      isEditing: isEditing,
-      link: project.link
-    }), /*#__PURE__*/_react.default.createElement(_project_dialog_content_images.ProjectDialogContentImages, {
-      isEditing: isEditing,
-      images: project.images
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.headrow
+  }, /*#__PURE__*/_react.default.createElement(_project_dialog_content_title.ProjectDialogContentTitle, {
+    isEditing: isEditing,
+    title: project.title
+  }), /*#__PURE__*/_react.default.createElement(_project_dialog_content_date.ProjectDialogContentDate, {
+    isEditing: isEditing,
+    date: project.data
+  })), /*#__PURE__*/_react.default.createElement(_project_dialog_content_description.ProjectDialogContentDescription, {
+    isEditing: isEditing,
+    description: project.description
+  }), /*#__PURE__*/_react.default.createElement(_project_dialog_content_link.ProjectDialogContentLink, {
+    isEditing: isEditing,
+    link: project.link
+  }), /*#__PURE__*/_react.default.createElement(_project_dialog_content_images.ProjectDialogContentImages, {
+    isEditing: isEditing,
+    images: project.images
+  }));
 };
 
 var ProjectDialog = ProjectDialogComponent;

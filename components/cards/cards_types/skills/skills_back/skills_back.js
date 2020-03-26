@@ -40,14 +40,13 @@ var useStyles = (0, _reactJss.createUseStyles)(_skills_back_styles.styles);
 var SkillsBackComponent = function SkillsBackComponent(_ref) {
   var data = _ref.data,
       handleAddButtonClick = _ref.handleAddButtonClick;
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card_title.ProfileCardTitle, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Skills.back.title",
-      defaultMessage: "Skills"
-    })), /*#__PURE__*/_react.default.createElement(Content, {
-      data: data,
-      handleAddButtonClick: handleAddButtonClick
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_profile_card_title.ProfileCardTitle, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Skills.back.title",
+    defaultMessage: "Skills"
+  })), /*#__PURE__*/_react.default.createElement(Content, {
+    data: data,
+    handleAddButtonClick: handleAddButtonClick
+  }));
 };
 
 var Content = function Content(_ref2) {
@@ -143,26 +142,24 @@ var Content = function Content(_ref2) {
   }, [othersSkills]);
 
   if (!hasSkill) {
-    return (/*#__PURE__*/_react.default.createElement(_no_skill.NoSkill, {
-        handleAddButtonClick: handleAddButtonClick
-      })
-    );
+    return /*#__PURE__*/_react.default.createElement(_no_skill.NoSkill, {
+      handleAddButtonClick: handleAddButtonClick
+    });
   }
 
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: classes.container,
-      onScroll: onScroll,
-      style: springGraphOpacityProps
-    }, /*#__PURE__*/_react.default.createElement(_skills_pie_chart.default, {
-      variant: variant,
-      data: top3Skills,
-      springOnScrollOpacityProps: springOnScrollOpacityProps
-    }), othersSkills.length > 1 && /*#__PURE__*/_react.default.createElement(_other_skills.default, {
-      style: springSkillOpacityProps,
-      othersSkills: othersSkills,
-      springTranslationProps: springTranslationProps
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.container,
+    onScroll: onScroll,
+    style: springGraphOpacityProps
+  }, /*#__PURE__*/_react.default.createElement(_skills_pie_chart.default, {
+    variant: variant,
+    data: top3Skills,
+    springOnScrollOpacityProps: springOnScrollOpacityProps
+  }), othersSkills.length > 1 && /*#__PURE__*/_react.default.createElement(_other_skills.default, {
+    style: springSkillOpacityProps,
+    othersSkills: othersSkills,
+    springTranslationProps: springTranslationProps
+  }));
 };
 
 var SkillsBack = (0, _react.memo)(SkillsBackComponent);

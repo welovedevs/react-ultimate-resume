@@ -24,29 +24,28 @@ var useStyles = (0, _reactJss.createUseStyles)(_no_hobby_styles.styles);
 var NoHobbyComponent = function NoHobbyComponent(_ref) {
   var handleAddButtonClick = _ref.handleAddButtonClick;
   var classes = useStyles();
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: classes.container
-    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      style: {
-        color: 'inherit'
-      },
-      variant: "h4",
-      component: "h4",
-      className: classes.noGifDescription
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Gifs.noHobby.title",
-      defaultMessage: "Vos hobbies seront affich\xE9s sous la forme d'un gif trop styl\xE9 !"
-    })), /*#__PURE__*/_react.default.createElement(_no_data_button.NoDataButton, {
-      color: "secondary",
-      handleAddButtonClick: handleAddButtonClick,
-      classes: {
-        container: classes.button
-      }
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Gifs.noHobby.buttonLabel",
-      defaultMessage: "Ajouter un hobby"
-    })))
-  );
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.container
+  }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    style: {
+      color: 'inherit'
+    },
+    variant: "h4",
+    component: "h4",
+    className: classes.noGifDescription
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Gifs.noHobby.title",
+    defaultMessage: "Vos hobbies seront affich\xE9s sous la forme d'un gif trop styl\xE9 !"
+  })), /*#__PURE__*/_react.default.createElement(_no_data_button.NoDataButton, {
+    color: "secondary",
+    handleAddButtonClick: handleAddButtonClick,
+    classes: {
+      container: classes.button
+    }
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Gifs.noHobby.buttonLabel",
+    defaultMessage: "Ajouter un hobby"
+  })));
 };
 
 var NoHobby = NoHobbyComponent;

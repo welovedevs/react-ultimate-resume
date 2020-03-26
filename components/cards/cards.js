@@ -86,10 +86,9 @@ var CardsComponent = function CardsComponent(_ref) {
       });
     }).filter(Boolean);
   }, [cardsOrder, side]);
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: classes.container
-    }, beforeNode, cards, afterNode)
-  );
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.container
+  }, beforeNode, cards, afterNode);
 };
 
 var Cards = CardsComponent;

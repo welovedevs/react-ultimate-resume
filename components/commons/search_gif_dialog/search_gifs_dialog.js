@@ -53,47 +53,46 @@ var SearchGifsDialogComponent = function SearchGifsDialogComponent(_ref) {
   var handleInputChange = (0, _react.useCallback)(function (event) {
     return setQuery(event.target.value);
   }, []);
-  return (/*#__PURE__*/_react.default.createElement(_core.Dialog, {
-      classes: {
-        paper: classes.paper
-      },
-      open: open,
-      onClose: onClose
-    }, /*#__PURE__*/_react.default.createElement(_dialog_title.DialogTitle, {
-      classes: {
-        root: classes.title
-      }
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Gifs.searchdialog.title",
-      defaultMessage: "Search gifs"
-    }), /*#__PURE__*/_react.default.createElement("img", {
-      src: _Poweredby_100pxWhite_VertText.default
-    })), /*#__PURE__*/_react.default.createElement(_core.DialogContent, {
-      classes: {
-        root: classes.content
-      }
-    }, /*#__PURE__*/_react.default.createElement(_ui.TextField, {
-      customClasses: {
-        container: classes.textField
-      },
-      fullWidth: true,
-      onChange: handleInputChange,
-      value: query,
-      variant: "flat",
-      placeholder: "Burrito, development, etc..."
-    }), /*#__PURE__*/_react.default.createElement(Results, {
-      query: query,
-      debouncedQuery: debouncedQuery,
-      onSelect: onSelect,
-      classes: classes
-    })), /*#__PURE__*/_react.default.createElement(_core.DialogActions, null, /*#__PURE__*/_react.default.createElement(_ui.Button, {
-      size: "small",
-      onClick: onClose
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Main.lang.close",
-      defaultMessage: "Close"
-    }))))
-  );
+  return /*#__PURE__*/_react.default.createElement(_core.Dialog, {
+    classes: {
+      paper: classes.paper
+    },
+    open: open,
+    onClose: onClose
+  }, /*#__PURE__*/_react.default.createElement(_dialog_title.DialogTitle, {
+    classes: {
+      root: classes.title
+    }
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Gifs.searchdialog.title",
+    defaultMessage: "Search gifs"
+  }), /*#__PURE__*/_react.default.createElement("img", {
+    src: _Poweredby_100pxWhite_VertText.default
+  })), /*#__PURE__*/_react.default.createElement(_core.DialogContent, {
+    classes: {
+      root: classes.content
+    }
+  }, /*#__PURE__*/_react.default.createElement(_ui.TextField, {
+    customClasses: {
+      container: classes.textField
+    },
+    fullWidth: true,
+    onChange: handleInputChange,
+    value: query,
+    variant: "flat",
+    placeholder: "Burrito, development, etc..."
+  }), /*#__PURE__*/_react.default.createElement(Results, {
+    query: query,
+    debouncedQuery: debouncedQuery,
+    onSelect: onSelect,
+    classes: classes
+  })), /*#__PURE__*/_react.default.createElement(_core.DialogActions, null, /*#__PURE__*/_react.default.createElement(_ui.Button, {
+    size: "small",
+    onClick: onClose
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.close",
+    defaultMessage: "Close"
+  }))));
 };
 
 var Results = function Results(_ref2) {
@@ -123,28 +122,26 @@ var Results = function Results(_ref2) {
       });
     };
   }, [onSelect, query]);
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: classes.results
-    }, loading && /*#__PURE__*/_react.default.createElement(_loading_spinner.LoadingSpinner, null), !loading && gifs && debouncedQuery && gifs.map(function (_ref3) {
-      var id = _ref3.id,
-          url = _ref3.url,
-          title = _ref3.title;
-      return (/*#__PURE__*/_react.default.createElement(_ui.Tooltip, {
-          key: "giphy_item_".concat(id),
-          title: "Select this gif"
-        }, /*#__PURE__*/_react.default.createElement("button", {
-          key: "result_".concat(id),
-          type: "button",
-          className: classes.imageContainer,
-          onClick: handleClick(url, id, title)
-        }, /*#__PURE__*/_react.default.createElement("img", {
-          className: classes.image,
-          src: url,
-          alt: title
-        })))
-      );
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.results
+  }, loading && /*#__PURE__*/_react.default.createElement(_loading_spinner.LoadingSpinner, null), !loading && gifs && debouncedQuery && gifs.map(function (_ref3) {
+    var id = _ref3.id,
+        url = _ref3.url,
+        title = _ref3.title;
+    return /*#__PURE__*/_react.default.createElement(_ui.Tooltip, {
+      key: "giphy_item_".concat(id),
+      title: "Select this gif"
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      key: "result_".concat(id),
+      type: "button",
+      className: classes.imageContainer,
+      onClick: handleClick(url, id, title)
+    }, /*#__PURE__*/_react.default.createElement("img", {
+      className: classes.image,
+      src: url,
+      alt: title
+    })));
+  }));
 };
 
 var SearchGifsDialog = SearchGifsDialogComponent;

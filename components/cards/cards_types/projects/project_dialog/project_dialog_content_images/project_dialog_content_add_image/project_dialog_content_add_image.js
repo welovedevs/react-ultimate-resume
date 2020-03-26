@@ -39,15 +39,14 @@ var ProjectDialogContentAddImageComponent = function ProjectDialogContentAddImag
       url: url
     }]));
   }, [JSON.stringify(values.images)]);
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_url_upload_file_dialog.UrlUploadFileDialog, {
-      open: openDialog,
-      onClose: setDialogClosed,
-      onAdd: onFileAdded
-    }), /*#__PURE__*/_react.default.createElement(_add_button_dashed.AddButtonDashed, {
-      onClick: setDialogOpened,
-      title: "Add an image"
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_url_upload_file_dialog.UrlUploadFileDialog, {
+    open: openDialog,
+    onClose: setDialogClosed,
+    onAdd: onFileAdded
+  }), /*#__PURE__*/_react.default.createElement(_add_button_dashed.AddButtonDashed, {
+    onClick: setDialogOpened,
+    title: "Add an image"
+  }));
 };
 
 var ProjectDialogContentAddImage = ProjectDialogContentAddImageComponent;

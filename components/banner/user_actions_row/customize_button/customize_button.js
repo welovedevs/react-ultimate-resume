@@ -47,20 +47,19 @@ var CustomizeButton = function CustomizeButton(_ref) {
   var isMobile = (0, _core.useMediaQuery)('(max-width:500px)', {
     defaultMatches: true
   });
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_customize_dialog.CustomizeDialog, {
-      open: dialogOpen,
-      onClose: close,
-      customizationOptions: customizationOptions
-    }), /*#__PURE__*/_react.default.createElement(_ui.Button, {
-      variant: "outlined",
-      color: "light",
-      onClick: open
-    }, /*#__PURE__*/_react.default.createElement(_reactEmojiRender.Twemoji, {
-      svg: true,
-      text: "\uD83C\uDFA8",
-      className: classes.icon
-    }), !isMobile && formatMessage(_customize_button_translations.translations.customize)))
-  );
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_customize_dialog.CustomizeDialog, {
+    open: dialogOpen,
+    onClose: close,
+    customizationOptions: customizationOptions
+  }), /*#__PURE__*/_react.default.createElement(_ui.Button, {
+    variant: "outlined",
+    color: "light",
+    onClick: open
+  }, /*#__PURE__*/_react.default.createElement(_reactEmojiRender.Twemoji, {
+    svg: true,
+    text: "\uD83C\uDFA8",
+    className: classes.icon
+  }), !isMobile && formatMessage(_customize_button_translations.translations.customize)));
 };
 
 exports.CustomizeButton = CustomizeButton;

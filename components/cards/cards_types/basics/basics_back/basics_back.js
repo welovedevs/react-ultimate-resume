@@ -65,20 +65,18 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
       personalDescription = data.personalDescription;
   var descriptionContent = (0, _react.useMemo)(function () {
     if (!personalDescription && mode === 'edit') {
-      return (/*#__PURE__*/_react.default.createElement(_no_data_button.NoDataButton, {
-          handleAddButtonClick: handleAddButtonClick,
-          classes: {
-            container: classes.addButton
-          }
-        }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-          id: "Basics.noDescription.buttonLabel",
-          defaultMessage: "Ajouter une description"
-        }))
-      );
+      return /*#__PURE__*/_react.default.createElement(_no_data_button.NoDataButton, {
+        handleAddButtonClick: handleAddButtonClick,
+        classes: {
+          container: classes.addButton
+        }
+      }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "Basics.noDescription.buttonLabel",
+        defaultMessage: "Ajouter une description"
+      }));
     }
 
-    return (/*#__PURE__*/_react.default.createElement("span", null, personalDescription)
-    );
+    return /*#__PURE__*/_react.default.createElement("span", null, personalDescription);
   }, [personalDescription, mode, handleAddButtonClick, classes]);
   var sections = (0, _react.useMemo)(function () {
     return {
@@ -132,29 +130,27 @@ var BasicsBackComponent = function BasicsBackComponent(_ref) {
       }
     };
   }, [currentCityName, experienceYears, contractTypes, studiesLevel, codingYears, codingReason, visaSponsorship, personalDescription, descriptionContent, searchState]);
-  return (/*#__PURE__*/_react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
-      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "Basics.Back.Title",
-        defaultMessage: "Who?"
-      })
-    }, Object.entries(sections).filter(function (_ref2) {
-      var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
-          hide = _ref3[1].hide;
+  return /*#__PURE__*/_react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
+    title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Basics.Back.Title",
+      defaultMessage: "Who?"
+    })
+  }, Object.entries(sections).filter(function (_ref2) {
+    var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
+        hide = _ref3[1].hide;
 
-      return !hide;
-    }).map(function (_ref4) {
-      var _ref5 = (0, _slicedToArray2.default)(_ref4, 2),
-          id = _ref5[0],
-          _ref5$ = _ref5[1],
-          title = _ref5$.title,
-          value = _ref5$.value;
+    return !hide;
+  }).map(function (_ref4) {
+    var _ref5 = (0, _slicedToArray2.default)(_ref4, 2),
+        id = _ref5[0],
+        _ref5$ = _ref5[1],
+        title = _ref5$.title,
+        value = _ref5$.value;
 
-      return (/*#__PURE__*/_react.default.createElement(_profile_card_section.ProfileCardSection, {
-          key: id
-        }, title && /*#__PURE__*/_react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, title), /*#__PURE__*/_react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, value))
-      );
-    }))
-  );
+    return /*#__PURE__*/_react.default.createElement(_profile_card_section.ProfileCardSection, {
+      key: id
+    }, title && /*#__PURE__*/_react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, title), /*#__PURE__*/_react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, value));
+  }));
 };
 
 var JobSearchState = function JobSearchState(_ref6) {
@@ -167,8 +163,7 @@ var JobSearchState = function JobSearchState(_ref6) {
     return null;
   }
 
-  return (/*#__PURE__*/_react.default.createElement("span", null, formatMessage(_job_search_state_translations.translations[searchState] || _job_search_state_translations.translations.unknown))
-  );
+  return /*#__PURE__*/_react.default.createElement("span", null, formatMessage(_job_search_state_translations.translations[searchState] || _job_search_state_translations.translations.unknown));
 };
 
 var BasicsBack = (0, _react.memo)(BasicsBackComponent);

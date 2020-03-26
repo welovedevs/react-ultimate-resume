@@ -56,8 +56,7 @@ var Study = function Study(_ref) {
 
     return '';
   }, [endDate]);
-  return (/*#__PURE__*/_react.default.createElement(_profile_card_section.ProfileCardSection, null, /*#__PURE__*/_react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, title), /*#__PURE__*/_react.default.createElement(_profile_card_section_subtitle.ProfileCardSectionSubtitle, null, body), date && /*#__PURE__*/_react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, date))
-  );
+  return /*#__PURE__*/_react.default.createElement(_profile_card_section.ProfileCardSection, null, /*#__PURE__*/_react.default.createElement(_profile_card_section_title.ProfileCardSectionTitle, null, title), /*#__PURE__*/_react.default.createElement(_profile_card_section_subtitle.ProfileCardSectionSubtitle, null, body), date && /*#__PURE__*/_react.default.createElement(_profile_card_section_text.ProfileCardSectionText, null, date));
 };
 
 var Content = function Content(_ref2) {
@@ -68,31 +67,28 @@ var Content = function Content(_ref2) {
   }, [data]);
 
   if (!hasEducation) {
-    return (/*#__PURE__*/_react.default.createElement(_no_studies.NoStudies, {
-        handleAddButtonClick: handleAddButtonClick
-      })
-    );
+    return /*#__PURE__*/_react.default.createElement(_no_studies.NoStudies, {
+      handleAddButtonClick: handleAddButtonClick
+    });
   }
 
   return data === null || data === void 0 ? void 0 : data.map(function (study, index) {
-    return (/*#__PURE__*/_react.default.createElement(Study, {
-        key: "study_".concat(index, "_").concat(study.id),
-        study: study
-      })
-    );
+    return /*#__PURE__*/_react.default.createElement(Study, {
+      key: "study_".concat(index, "_").concat(study.id),
+      study: study
+    });
   });
 };
 
 var StudiesBackComponent = function StudiesBackComponent(_ref3) {
   var data = _ref3.data.education,
       handleAddButtonClick = _ref3.handleAddButtonClick;
-  return (/*#__PURE__*/_react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
-      title: "Studies"
-    }, /*#__PURE__*/_react.default.createElement(Content, {
-      data: data,
-      handleAddButtonClick: handleAddButtonClick
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
+    title: "Studies"
+  }, /*#__PURE__*/_react.default.createElement(Content, {
+    data: data,
+    handleAddButtonClick: handleAddButtonClick
+  }));
 };
 
 var StudiesBack = (0, _react.memo)(StudiesBackComponent);

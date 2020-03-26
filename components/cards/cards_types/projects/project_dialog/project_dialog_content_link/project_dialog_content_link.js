@@ -27,14 +27,13 @@ var ProjectDialogContentLinkComponent = function ProjectDialogContentLinkCompone
   var classes = useStyles({
     isEditing: isEditing
   });
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: classes.container
-    }, /*#__PURE__*/_react.default.createElement(Content, {
-      title: link,
-      isEditing: isEditing,
-      classes: classes
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.container
+  }, /*#__PURE__*/_react.default.createElement(Content, {
+    title: link,
+    isEditing: isEditing,
+    classes: classes
+  }));
 };
 
 var Content = function Content(_ref2) {
@@ -43,31 +42,28 @@ var Content = function Content(_ref2) {
       classes = _ref2.classes;
 
   if (isEditing) {
-    return (/*#__PURE__*/_react.default.createElement(EditingContent, {
-        title: link,
-        classes: classes
-      })
-    );
-  }
-
-  return (/*#__PURE__*/_react.default.createElement(DefaultContent, {
+    return /*#__PURE__*/_react.default.createElement(EditingContent, {
       title: link,
       classes: classes
-    })
-  );
+    });
+  }
+
+  return /*#__PURE__*/_react.default.createElement(DefaultContent, {
+    title: link,
+    classes: classes
+  });
 };
 
 var DefaultContent = function DefaultContent(_ref3) {
   var link = _ref3.link,
       classes = _ref3.classes;
-  return (/*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      variant: "h2",
-      component: "h3",
-      customClasses: {
-        container: classes.typography
-      }
-    }, link)
-  );
+  return /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    variant: "h2",
+    component: "h3",
+    customClasses: {
+      container: classes.typography
+    }
+  }, link);
 };
 
 var EditingContent = function EditingContent(_ref4) {
@@ -78,27 +74,26 @@ var EditingContent = function EditingContent(_ref4) {
       values = _useFormikContext.values,
       errors = _useFormikContext.errors;
 
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      variant: "label",
-      component: "div"
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Project.dialog.link.title",
-      defaultMessage: "Project's list"
-    })), /*#__PURE__*/_react.default.createElement(_ui.TextField, {
-      fullWidth: true,
-      variant: "flat",
-      onChange: handleChange,
-      name: "link",
-      value: values.link,
-      customClasses: {
-        container: classes.textField
-      }
-    }), (errors === null || errors === void 0 ? void 0 : errors.link) && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      color: "danger",
-      variant: "helper",
-      component: "p"
-    }, errors.link))
-  );
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    variant: "label",
+    component: "div"
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Project.dialog.link.title",
+    defaultMessage: "Project's list"
+  })), /*#__PURE__*/_react.default.createElement(_ui.TextField, {
+    fullWidth: true,
+    variant: "flat",
+    onChange: handleChange,
+    name: "link",
+    value: values.link,
+    customClasses: {
+      container: classes.textField
+    }
+  }), (errors === null || errors === void 0 ? void 0 : errors.link) && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    color: "danger",
+    variant: "helper",
+    component: "p"
+  }, errors.link));
 };
 
 var ProjectDialogContentLink = ProjectDialogContentLinkComponent;

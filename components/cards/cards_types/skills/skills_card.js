@@ -65,30 +65,27 @@ var SkillsCardComponent = function SkillsCardComponent(_ref) {
     return null;
   }
 
-  return (/*#__PURE__*/_react.default.createElement(_profile_card.ProfileCard, {
-      kind: "skills",
-      isEditingProfile: isEditing,
-      isComplete: isComplete,
-      sides: {
-        front: function front(props) {
-          return (/*#__PURE__*/_react.default.createElement(_skills_front.SkillsFront, props)
-          );
-        },
-        back: function back(props) {
-          return (/*#__PURE__*/_react.default.createElement(_skills_back.SkillsBack, props)
-          );
-        }
+  return /*#__PURE__*/_react.default.createElement(_profile_card.ProfileCard, {
+    kind: "skills",
+    isEditingProfile: isEditing,
+    isComplete: isComplete,
+    sides: {
+      front: function front(props) {
+        return /*#__PURE__*/_react.default.createElement(_skills_front.SkillsFront, props);
       },
-      editDialog: {
-        component: _skills_edit_dialog.SkillsEditDialog,
-        validationSchema: _validator.SkillsValidationSchema,
-        onEdit: onDialogEdited
-      },
-      data: mappedData,
-      variant: variant,
-      side: currentSide
-    })
-  );
+      back: function back(props) {
+        return /*#__PURE__*/_react.default.createElement(_skills_back.SkillsBack, props);
+      }
+    },
+    editDialog: {
+      component: _skills_edit_dialog.SkillsEditDialog,
+      validationSchema: _validator.SkillsValidationSchema,
+      onEdit: onDialogEdited
+    },
+    data: mappedData,
+    variant: variant,
+    side: currentSide
+  });
 };
 
 var SkillsCard = SkillsCardComponent;

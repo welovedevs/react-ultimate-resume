@@ -67,45 +67,44 @@ var SelectComponent = function SelectComponent(_ref) {
     return !disabled && setAnchorElement(e.currentTarget);
   }, [disabled]);
   var selectedChildValue = getValueFromChildren(children, value);
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_core.Menu, {
-      anchorEl: anchorElement,
-      keepMounted: true,
-      open: Boolean(anchorElement),
-      onClose: handleClose
-    }, _react.default.Children.map(children, function (child) {
-      return (0, _react.cloneElement)(child, {
-        onClick: function onClick() {
-          if (onChange) {
-            onChange(child.props.value);
-          }
-
-          setAnchorElement(null);
-        },
-        onMouseOver: function onMouseOver() {
-          if (_onMouseOver) {
-            _onMouseOver(child.props.value);
-          }
-        },
-        onFocus: function onFocus() {
-          if (_onFocus) {
-            _onFocus(child.props.value);
-          }
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_core.Menu, {
+    anchorEl: anchorElement,
+    keepMounted: true,
+    open: Boolean(anchorElement),
+    onClose: handleClose
+  }, _react.default.Children.map(children, function (child) {
+    return (0, _react.cloneElement)(child, {
+      onClick: function onClick() {
+        if (onChange) {
+          onChange(child.props.value);
         }
-      });
-    })), /*#__PURE__*/_react.default.createElement(_clickable_text_field.ClickableTextField, (0, _extends2.default)({
-      customClasses: {
-        container: className
+
+        setAnchorElement(null);
       },
-      value: selectedChildValue,
-      onClick: setAnchorElementCallback,
-      arrowRotation: anchorElement ? -90 : 0
-    }, {
-      id: id,
-      textFieldIconProps: textFieldIconProps,
-      fullWidth: fullWidth,
-      disabled: disabled
-    }, textFieldProps)))
-  );
+      onMouseOver: function onMouseOver() {
+        if (_onMouseOver) {
+          _onMouseOver(child.props.value);
+        }
+      },
+      onFocus: function onFocus() {
+        if (_onFocus) {
+          _onFocus(child.props.value);
+        }
+      }
+    });
+  })), /*#__PURE__*/_react.default.createElement(_clickable_text_field.ClickableTextField, (0, _extends2.default)({
+    customClasses: {
+      container: className
+    },
+    value: selectedChildValue,
+    onClick: setAnchorElementCallback,
+    arrowRotation: anchorElement ? -90 : 0
+  }, {
+    id: id,
+    textFieldIconProps: textFieldIconProps,
+    fullWidth: fullWidth,
+    disabled: disabled
+  }, textFieldProps)));
 };
 
 var Select = (0, _reactJss.default)(_select_styles.default)(SelectComponent);

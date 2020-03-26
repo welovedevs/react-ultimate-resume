@@ -40,27 +40,26 @@ var UserInformationsComponent = function UserInformationsComponent() {
       additionalNodes = _useAdditionalNodes2[0];
 
   var classes = useStyles();
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: classes.container
-    }, /*#__PURE__*/_react.default.createElement(_avatar.Avatar, {
-      src: (_data$basics = data.basics) === null || _data$basics === void 0 ? void 0 : _data$basics.picture
-    }), /*#__PURE__*/_react.default.createElement(_column.Column, {
-      customClasses: {
-        container: classes.textColumn
-      }
-    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      customClasses: {
-        container: classes.name
-      },
-      variant: "h3",
-      component: "h3"
-    }, (_data$basics2 = data.basics) === null || _data$basics2 === void 0 ? void 0 : _data$basics2.name), /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      customClasses: {
-        container: classes.description
-      },
-      component: "h4"
-    }, (_data$basics3 = data.basics) === null || _data$basics3 === void 0 ? void 0 : _data$basics3.summary), additionalNodes))
-  );
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.container
+  }, /*#__PURE__*/_react.default.createElement(_avatar.Avatar, {
+    src: (_data$basics = data.basics) === null || _data$basics === void 0 ? void 0 : _data$basics.picture
+  }), /*#__PURE__*/_react.default.createElement(_column.Column, {
+    customClasses: {
+      container: classes.textColumn
+    }
+  }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    customClasses: {
+      container: classes.name
+    },
+    variant: "h3",
+    component: "h3"
+  }, (_data$basics2 = data.basics) === null || _data$basics2 === void 0 ? void 0 : _data$basics2.name), /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    customClasses: {
+      container: classes.description
+    },
+    component: "h4"
+  }, (_data$basics3 = data.basics) === null || _data$basics3 === void 0 ? void 0 : _data$basics3.summary), additionalNodes));
 };
 
 var UserInformations = UserInformationsComponent;

@@ -45,10 +45,10 @@ var mapWorkToJsonResume = function mapWorkToJsonResume(data) {
 
   return {
     work: (_data$work = data.work) === null || _data$work === void 0 ? void 0 : _data$work.map(function (work) {
-      var _ref, _work$place, _work$startDate, _work$endDate;
+      var _work$place$name, _work$place, _work$startDate, _work$endDate;
 
       return _objectSpread({}, work, {
-        location: (_ref = (_work$place = work.place) === null || _work$place === void 0 ? void 0 : _work$place.name) !== null && _ref !== void 0 ? _ref : work.location,
+        location: (_work$place$name = (_work$place = work.place) === null || _work$place === void 0 ? void 0 : _work$place.name) !== null && _work$place$name !== void 0 ? _work$place$name : work.location,
         startDate: (_work$startDate = work.startDate) === null || _work$startDate === void 0 ? void 0 : _work$startDate.format('YYYY-MM-DD'),
         endDate: (_work$endDate = work.endDate) === null || _work$endDate === void 0 ? void 0 : _work$endDate.format('YYYY-MM-DD')
       });

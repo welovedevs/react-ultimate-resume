@@ -44,45 +44,44 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 var useStyles = (0, _reactJss.createUseStyles)(_languages_back_styles.styles);
 
 var LanguagesBackComponent = function LanguagesBackComponent(_ref) {
-  var _ref2, _data$languages;
+  var _data$languages$lengt, _data$languages;
 
   var data = _ref.data,
       handleAddButtonClick = _ref.handleAddButtonClick;
   var classes = useStyles({
-    itemSize: (_ref2 = (_data$languages = data.languages) === null || _data$languages === void 0 ? void 0 : _data$languages.length) !== null && _ref2 !== void 0 ? _ref2 : 0
+    itemSize: (_data$languages$lengt = (_data$languages = data.languages) === null || _data$languages === void 0 ? void 0 : _data$languages.length) !== null && _data$languages$lengt !== void 0 ? _data$languages$lengt : 0
   });
-  return (/*#__PURE__*/_react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
-      title: "Languages",
-      customClasses: {
-        content: classes.content,
-        contentAnimated: classes.contentAnimated,
-        title: classes.cardTitle
-      }
-    }, /*#__PURE__*/_react.default.createElement(Content, {
-      data: data,
-      handleAddButtonClick: handleAddButtonClick,
-      classes: classes
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement(_profile_card_animated_back.ProfileCardAnimatedBack, {
+    title: "Languages",
+    customClasses: {
+      content: classes.content,
+      contentAnimated: classes.contentAnimated,
+      title: classes.cardTitle
+    }
+  }, /*#__PURE__*/_react.default.createElement(Content, {
+    data: data,
+    handleAddButtonClick: handleAddButtonClick,
+    classes: classes
+  }));
 };
 
-var Content = function Content(_ref3) {
-  var _data$languages2, _ref5;
+var Content = function Content(_ref2) {
+  var _data$languages2, _data$languages3;
 
-  var data = _ref3.data,
-      handleAddButtonClick = _ref3.handleAddButtonClick,
-      classes = _ref3.classes;
+  var data = _ref2.data,
+      handleAddButtonClick = _ref2.handleAddButtonClick,
+      classes = _ref2.classes;
   var theme = (0, _reactJss.useTheme)();
 
   var _useCardVariant = (0, _use_card_variant.useCardVariant)(),
       _useCardVariant2 = (0, _slicedToArray2.default)(_useCardVariant, 1),
       variant = _useCardVariant2[0];
 
-  var transitions = (0, _reactSpring.useTransition)((_data$languages2 = data.languages) !== null && _data$languages2 !== void 0 ? _data$languages2 : [], function (_ref4) {
-    var id = _ref4.id;
+  var transitions = (0, _reactSpring.useTransition)((_data$languages2 = data.languages) !== null && _data$languages2 !== void 0 ? _data$languages2 : [], function (_ref3) {
+    var id = _ref3.id;
     return "language_column_".concat(id);
   }, _objectSpread({}, _languages_back_spring_props.LANGUAGES_COLUMN_TRANSITIONS_SPRING_PROPS, {
-    trail: 175 * 3 / ((_ref5 = data === null || data === void 0 ? void 0 : data.languages) !== null && _ref5 !== void 0 ? _ref5 : []).length
+    trail: 175 * 3 / ((_data$languages3 = data === null || data === void 0 ? void 0 : data.languages) !== null && _data$languages3 !== void 0 ? _data$languages3 : []).length
   }));
 
   var _useMemo = (0, _react.useMemo)(function () {
@@ -95,10 +94,10 @@ var Content = function Content(_ref3) {
       backBackgroundColor = _useMemo.backBackgroundColor;
 
   var colorPalette = (0, _react.useMemo)(function () {
-    var _ref6, _data$languages3;
+    var _data$languages$lengt2, _data$languages4;
 
     return Array.from({
-      length: (_ref6 = (_data$languages3 = data.languages) === null || _data$languages3 === void 0 ? void 0 : _data$languages3.length) !== null && _ref6 !== void 0 ? _ref6 : 0
+      length: (_data$languages$lengt2 = (_data$languages4 = data.languages) === null || _data$languages4 === void 0 ? void 0 : _data$languages4.length) !== null && _data$languages$lengt2 !== void 0 ? _data$languages$lengt2 : 0
     }, function (v, k) {
       return _chromaJs.default.mix(backColor, backBackgroundColor, 2 * k / 15).hex();
     });
@@ -108,37 +107,34 @@ var Content = function Content(_ref3) {
   }, [data]);
 
   if (!hasLanguage) {
-    return (/*#__PURE__*/_react.default.createElement(_no_language.NoLanguage, {
-        handleAddButtonClick: handleAddButtonClick
-      })
-    );
+    return /*#__PURE__*/_react.default.createElement(_no_language.NoLanguage, {
+      handleAddButtonClick: handleAddButtonClick
+    });
   }
 
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: classes.columnsContainer
-    }, transitions.map(function (_ref7, index) {
-      var _ref8, _data$languages4, _item$language;
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.columnsContainer
+  }, transitions.map(function (_ref4, index) {
+    var _data$languages$lengt3, _data$languages5, _item$language;
 
-      var item = _ref7.item,
-          key = _ref7.key,
-          props = _ref7.props;
-      return (/*#__PURE__*/_react.default.createElement(_language_column.LanguageColumn, {
-          itemsSize: (_ref8 = (_data$languages4 = data.languages) === null || _data$languages4 === void 0 ? void 0 : _data$languages4.length) !== null && _ref8 !== void 0 ? _ref8 : 0,
-          key: key,
-          component: _reactSpring.animated.div,
-          item: item,
-          style: _objectSpread({}, props, {
-            backgroundColor: colorPalette[index],
-            color: backColor
-          }),
-          cardVariant: variant
-        }, /*#__PURE__*/_react.default.createElement("button", {
-          className: classes.languageLettersButton,
-          type: "button"
-        }, (_item$language = item.language) === null || _item$language === void 0 ? void 0 : _item$language.substring(0, 2).toUpperCase()))
-      );
-    }))
-  );
+    var item = _ref4.item,
+        key = _ref4.key,
+        props = _ref4.props;
+    return /*#__PURE__*/_react.default.createElement(_language_column.LanguageColumn, {
+      itemsSize: (_data$languages$lengt3 = (_data$languages5 = data.languages) === null || _data$languages5 === void 0 ? void 0 : _data$languages5.length) !== null && _data$languages$lengt3 !== void 0 ? _data$languages$lengt3 : 0,
+      key: key,
+      component: _reactSpring.animated.div,
+      item: item,
+      style: _objectSpread({}, props, {
+        backgroundColor: colorPalette[index],
+        color: backColor
+      }),
+      cardVariant: variant
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      className: classes.languageLettersButton,
+      type: "button"
+    }, (_item$language = item.language) === null || _item$language === void 0 ? void 0 : _item$language.substring(0, 2).toUpperCase()));
+  }));
 };
 
 var LanguagesBack = (0, _react.memo)(LanguagesBackComponent);

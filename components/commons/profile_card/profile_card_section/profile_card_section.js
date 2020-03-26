@@ -33,10 +33,9 @@ var ProfileCardSectionComponent = function ProfileCardSectionComponent(_ref) {
   var classes = useStyles({
     variant: variant
   });
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _classnames.default)(classes.container, customClasses.container)
-    }, children)
-  );
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: (0, _classnames.default)(classes.container, customClasses.container)
+  }, children);
 };
 
 var ProfileCardSection = ProfileCardSectionComponent;

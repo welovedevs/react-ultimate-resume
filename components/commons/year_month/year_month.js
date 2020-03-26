@@ -70,52 +70,50 @@ var YearMonthComponent = function YearMonthComponent(_ref) {
   var date = (0, _react.useMemo)(function () {
     return value ? new Date(value.year(), value.month()) : new Date();
   }, [value]);
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _classnames.default)(className, classes.fieldsContainer)
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.selectContainer
-    }, /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, title && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      color: "dark",
-      variant: "label",
-      component: function component(_ref2) {
-        var children = _ref2.children,
-            props = (0, _objectWithoutProperties2.default)(_ref2, ["children"]);
-        return (/*#__PURE__*/_react.default.createElement(_reactEmojiRender.Twemoji, (0, _extends2.default)({
-            svg: true,
-            text: children
-          }, props))
-        );
-      }
-    }, formatMessage(title))), /*#__PURE__*/_react.default.createElement(_ui.TextField, (0, _extends2.default)({}, textfieldProps, {
-      variant: variant,
-      value: (value === null || value === void 0 ? void 0 : value.format('MMMM YYYY')) || '',
-      onClick: function onClick() {
-        return setIsOpen(true);
-      }
-    })), /*#__PURE__*/_react.default.createElement(_pickers.MuiPickersUtilsProvider, {
-      utils: _moment.default
-    }, /*#__PURE__*/_react.default.createElement(_pickers.DatePicker, {
-      clearable: true,
-      open: isOpen,
-      views: ['year', 'month'],
-      minDate: new Date('1980-01-01'),
-      maxDate: new Date(),
-      className: classes.input,
-      InputProps: {
-        className: classes.pickerInput,
-        disableUnderline: true
-      },
-      value: date,
-      onChange: onPickerChange,
-      onClose: function onClose() {
-        return setIsOpen(false);
-      }
-    })), error && typeof error === 'string' && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      color: "danger",
-      variant: "helper",
-      component: "p"
-    }, error)))
-  );
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: (0, _classnames.default)(className, classes.fieldsContainer)
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.selectContainer
+  }, /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, title && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    color: "dark",
+    variant: "label",
+    component: function component(_ref2) {
+      var children = _ref2.children,
+          props = (0, _objectWithoutProperties2.default)(_ref2, ["children"]);
+      return /*#__PURE__*/_react.default.createElement(_reactEmojiRender.Twemoji, (0, _extends2.default)({
+        svg: true,
+        text: children
+      }, props));
+    }
+  }, formatMessage(title))), /*#__PURE__*/_react.default.createElement(_ui.TextField, (0, _extends2.default)({}, textfieldProps, {
+    variant: variant,
+    value: (value === null || value === void 0 ? void 0 : value.format('MMMM YYYY')) || '',
+    onClick: function onClick() {
+      return setIsOpen(true);
+    }
+  })), /*#__PURE__*/_react.default.createElement(_pickers.MuiPickersUtilsProvider, {
+    utils: _moment.default
+  }, /*#__PURE__*/_react.default.createElement(_pickers.DatePicker, {
+    clearable: true,
+    open: isOpen,
+    views: ['year', 'month'],
+    minDate: new Date('1980-01-01'),
+    maxDate: new Date(),
+    className: classes.input,
+    InputProps: {
+      className: classes.pickerInput,
+      disableUnderline: true
+    },
+    value: date,
+    onChange: onPickerChange,
+    onClose: function onClose() {
+      return setIsOpen(false);
+    }
+  })), error && typeof error === 'string' && /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    color: "danger",
+    variant: "helper",
+    component: "p"
+  }, error)));
 };
 
 var YearMonth = (0, _react.memo)(YearMonthComponent, function (nextProps, oldProps) {

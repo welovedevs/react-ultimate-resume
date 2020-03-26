@@ -37,16 +37,15 @@ var AvatarComponent = function AvatarComponent(_ref) {
       _useAdditionalNodes2 = (0, _slicedToArray2.default)(_useAdditionalNodes, 1),
       nodes = _useAdditionalNodes2[0];
 
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _classnames.default)(classes.container, receivedGlobalClasses.container)
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _classnames.default)(classes.imageContainer, classes.imageContainer)
-    }, /*#__PURE__*/_react.default.createElement("img", {
-      className: (0, _classnames.default)(classes.image, receivedGlobalClasses.image),
-      src: src,
-      alt: displayedName
-    })), nodes)
-  );
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: (0, _classnames.default)(classes.container, receivedGlobalClasses.container)
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: (0, _classnames.default)(classes.imageContainer, classes.imageContainer)
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    className: (0, _classnames.default)(classes.image, receivedGlobalClasses.image),
+    src: src,
+    alt: displayedName
+  })), nodes);
 };
 
 var Avatar = AvatarComponent;

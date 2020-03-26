@@ -27,22 +27,21 @@ var GifsSidesCommonsComponent = function GifsSidesCommonsComponent(_ref) {
       _ref$classes = _ref.classes,
       receivedClasses = _ref$classes === void 0 ? {} : _ref$classes;
   var classes = useStyles();
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _classnames.default)(classes.container, receivedClasses.container)
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.underLayerContainer
-    }, underLayer), /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.darkenLayer
-    }), /*#__PURE__*/_react.default.createElement(_profile_card_title.ProfileCardTitle, {
-      overrideColor: "light",
-      customClasses: {
-        container: classes.title
-      }
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Hobbies.side.commons",
-      defaultMessage: "Hobbies"
-    })), children)
-  );
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: (0, _classnames.default)(classes.container, receivedClasses.container)
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.underLayerContainer
+  }, underLayer), /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.darkenLayer
+  }), /*#__PURE__*/_react.default.createElement(_profile_card_title.ProfileCardTitle, {
+    overrideColor: "light",
+    customClasses: {
+      container: classes.title
+    }
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Hobbies.side.commons",
+    defaultMessage: "Hobbies"
+  })), children);
 };
 
 var GifsSidesCommons = GifsSidesCommonsComponent;

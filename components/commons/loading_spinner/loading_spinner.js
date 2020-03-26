@@ -23,13 +23,12 @@ var LoadingSpinnerComponent = function LoadingSpinnerComponent(_ref) {
   var colorHex = (0, _react.useMemo)(function () {
     return (0, _styles_utils.getHexFromPaletteColor)(theme, color);
   }, [theme, color]);
-  return (/*#__PURE__*/_react.default.createElement(_respinner.WaveLoading, {
-      height: height,
-      stroke: colorHex,
-      strokeWidth: 3,
-      count: 2
-    })
-  );
+  return /*#__PURE__*/_react.default.createElement(_respinner.WaveLoading, {
+    height: height,
+    stroke: colorHex,
+    strokeWidth: 3,
+    count: 2
+  });
 };
 
 var LoadingSpinner = LoadingSpinnerComponent;

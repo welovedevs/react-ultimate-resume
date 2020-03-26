@@ -20,14 +20,13 @@ var useStyles = (0, _reactJss.createUseStyles)(_profile_card_section_title_style
 var ProfileCardSectionTitleComponent = function ProfileCardSectionTitleComponent(_ref) {
   var children = _ref.children;
   var classes = useStyles();
-  return (/*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      variant: "h2",
-      component: "h3",
-      customClasses: {
-        container: classes.container
-      }
-    }, children)
-  );
+  return /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    variant: "h2",
+    component: "h3",
+    customClasses: {
+      container: classes.container
+    }
+  }, children);
 };
 
 var ProfileCardSectionTitle = ProfileCardSectionTitleComponent;

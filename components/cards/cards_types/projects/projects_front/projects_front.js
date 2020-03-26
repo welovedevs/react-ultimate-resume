@@ -61,13 +61,13 @@ var ProjectsFrontComponent = function ProjectsFrontComponent(_ref) {
       variant = _useCardVariant2[0];
 
   var imageSrc = (0, _react.useMemo)(function () {
-    var _ref2, _data$projects, _data$projects$, _data$projects$$image;
+    var _data$projects$0$imag, _data$projects, _data$projects$, _data$projects$$image;
 
-    return (_ref2 = (_data$projects = data.projects) === null || _data$projects === void 0 ? void 0 : (_data$projects$ = _data$projects[0]) === null || _data$projects$ === void 0 ? void 0 : (_data$projects$$image = _data$projects$.images) === null || _data$projects$$image === void 0 ? void 0 : _data$projects$$image.url) !== null && _ref2 !== void 0 ? _ref2 : _images.DEFAULT_PROJECT_IMAGE;
+    return (_data$projects$0$imag = (_data$projects = data.projects) === null || _data$projects === void 0 ? void 0 : (_data$projects$ = _data$projects[0]) === null || _data$projects$ === void 0 ? void 0 : (_data$projects$$image = _data$projects$.images) === null || _data$projects$$image === void 0 ? void 0 : _data$projects$$image.url) !== null && _data$projects$0$imag !== void 0 ? _data$projects$0$imag : _images.DEFAULT_PROJECT_IMAGE;
   }, [(_data$projects2 = data.projects) === null || _data$projects2 === void 0 ? void 0 : (_data$projects2$ = _data$projects2[0]) === null || _data$projects2$ === void 0 ? void 0 : _data$projects2$.images]);
   var alt = (_data$projects3 = data.projects) === null || _data$projects3 === void 0 ? void 0 : (_data$projects3$ = _data$projects3[0]) === null || _data$projects3$ === void 0 ? void 0 : _data$projects3$.title;
   var projectTitle = (0, _react.useMemo)(function () {
-    var _data$projects4, _data$projects5, _ref3, _data$projects7, _data$projects7$0$des;
+    var _data$projects4, _data$projects5, _data$projects$0$desc, _data$projects7, _data$projects7$0$des;
 
     if (!((_data$projects4 = data.projects) === null || _data$projects4 === void 0 ? void 0 : _data$projects4[0])) {
       return '';
@@ -79,7 +79,7 @@ var ProjectsFrontComponent = function ProjectsFrontComponent(_ref) {
       return (_data$projects6 = data.projects) === null || _data$projects6 === void 0 ? void 0 : _data$projects6[0].name;
     }
 
-    return (_ref3 = (_data$projects7 = data.projects) === null || _data$projects7 === void 0 ? void 0 : (_data$projects7$0$des = _data$projects7[0].description) === null || _data$projects7$0$des === void 0 ? void 0 : _data$projects7$0$des.slice(0, 20)) !== null && _ref3 !== void 0 ? _ref3 : '';
+    return (_data$projects$0$desc = (_data$projects7 = data.projects) === null || _data$projects7 === void 0 ? void 0 : (_data$projects7$0$des = _data$projects7[0].description) === null || _data$projects7$0$des === void 0 ? void 0 : _data$projects7$0$des.slice(0, 20)) !== null && _data$projects$0$desc !== void 0 ? _data$projects$0$desc : '';
   }, [(_data$projects8 = data.projects) === null || _data$projects8 === void 0 ? void 0 : _data$projects8[0]]);
   var classes = useStyles({
     variant: variant,
@@ -88,81 +88,77 @@ var ProjectsFrontComponent = function ProjectsFrontComponent(_ref) {
   var hasProject = (0, _react.useMemo)(function () {
     return (0, _exists_and_not_empty.existsAndNotEmpty)(data === null || data === void 0 ? void 0 : data.projects);
   }, [data]);
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.background
-    }, imageSrc && /*#__PURE__*/_react.default.createElement("img", {
-      className: classes.backgroundImage,
-      src: imageSrc,
-      alt: alt
-    })), /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.content
-    }, /*#__PURE__*/_react.default.createElement(Content, {
-      hasProject: hasProject,
-      projectTitle: projectTitle,
-      handleAddButtonClick: handleAddButtonClick,
-      classes: classes
-    })), hasProject && /*#__PURE__*/_react.default.createElement(_profile_card_actions.ProfileCardActions, null, /*#__PURE__*/_react.default.createElement(_profile_card_button.ProfileCardButton, {
-      onClick: handleButtonClick
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Projects.front.action",
-      defaultMessage: "See {count} project{count, plural, one {} other {s}}",
-      values: {
-        count: (_data$projects9 = data.projects) === null || _data$projects9 === void 0 ? void 0 : _data$projects9.length
-      }
-    }))))
-  );
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.background
+  }, imageSrc && /*#__PURE__*/_react.default.createElement("img", {
+    className: classes.backgroundImage,
+    src: imageSrc,
+    alt: alt
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.content
+  }, /*#__PURE__*/_react.default.createElement(Content, {
+    hasProject: hasProject,
+    projectTitle: projectTitle,
+    handleAddButtonClick: handleAddButtonClick,
+    classes: classes
+  })), hasProject && /*#__PURE__*/_react.default.createElement(_profile_card_actions.ProfileCardActions, null, /*#__PURE__*/_react.default.createElement(_profile_card_button.ProfileCardButton, {
+    onClick: handleButtonClick
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Projects.front.action",
+    defaultMessage: "See {count} project{count, plural, one {} other {s}}",
+    values: {
+      count: (_data$projects9 = data.projects) === null || _data$projects9 === void 0 ? void 0 : _data$projects9.length
+    }
+  }))));
 };
 
-var Content = function Content(_ref4) {
-  var hasProject = _ref4.hasProject,
-      projectTitle = _ref4.projectTitle,
-      handleAddButtonClick = _ref4.handleAddButtonClick,
-      classes = _ref4.classes;
+var Content = function Content(_ref2) {
+  var hasProject = _ref2.hasProject,
+      projectTitle = _ref2.projectTitle,
+      handleAddButtonClick = _ref2.handleAddButtonClick,
+      classes = _ref2.classes;
 
   if (hasProject) {
-    return (/*#__PURE__*/_react.default.createElement(_ui.Typography, {
-        variant: "h2",
-        component: "h2",
-        customClasses: {
-          container: classes.text
-        }
-      }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "Projects.front.title",
-        defaultMessage: "My <emoji>\u2665\uFE0F</emoji> project : ",
-        values: {
-          emoji: function emoji(value) {
-            return (/*#__PURE__*/_react.default.createElement(_reactEmojiRender.Twemoji, {
-                svg: true,
-                text: value
-              })
-            );
-          }
-        }
-      }), projectTitle)
-    );
-  }
-
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: classes.noProject
-    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      variant: "h3",
-      component: "h3",
+    return /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      variant: "h2",
+      component: "h2",
       customClasses: {
-        container: classes.noProjectTypography
+        container: classes.text
       }
     }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Projects.front.noProject",
-      defaultMessage: "You didn't add any projects."
-    }), projectTitle), /*#__PURE__*/_react.default.createElement(_no_data_button.NoDataButton, {
-      classes: {
-        container: classes.addButton
-      },
-      handleAddButtonClick: handleAddButtonClick
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Projects.noProject.buttonLabel",
-      defaultMessage: "Ajouter un projet"
-    })))
-  );
+      id: "Projects.front.title",
+      defaultMessage: "My <emoji>\u2665\uFE0F</emoji> project : ",
+      values: {
+        emoji: function emoji(value) {
+          return /*#__PURE__*/_react.default.createElement(_reactEmojiRender.Twemoji, {
+            svg: true,
+            text: value
+          });
+        }
+      }
+    }), projectTitle);
+  }
+
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.noProject
+  }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    variant: "h3",
+    component: "h3",
+    customClasses: {
+      container: classes.noProjectTypography
+    }
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Projects.front.noProject",
+    defaultMessage: "You didn't add any projects."
+  }), projectTitle), /*#__PURE__*/_react.default.createElement(_no_data_button.NoDataButton, {
+    classes: {
+      container: classes.addButton
+    },
+    handleAddButtonClick: handleAddButtonClick
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Projects.noProject.buttonLabel",
+    defaultMessage: "Ajouter un projet"
+  })));
 };
 
 var ProjectsFront = (0, _react.memo)(ProjectsFrontComponent);

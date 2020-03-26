@@ -44,14 +44,13 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var ArrowIcon = function ArrowIcon(props) {
-  return (/*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("path", {
-      d: "M7 16h18M16 7l9 9-9 9",
-      stroke: "#F5F5F5",
-      strokeWidth: "2",
-      strokeLinecap: "round",
-      strokeLinejoin: "round"
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("path", {
+    d: "M7 16h18M16 7l9 9-9 9",
+    stroke: "#F5F5F5",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }));
 };
 
 ArrowIcon.defaultProps = {
@@ -111,51 +110,49 @@ var GifsBackComponent = function GifsBackComponent(_ref) {
 
     return (_sliderReference$curr2 = sliderReference.current) === null || _sliderReference$curr2 === void 0 ? void 0 : _sliderReference$curr2.slickPlay();
   }, []);
-  return (/*#__PURE__*/_react.default.createElement(_gifs_sides_commons.GifsSidesCommons, {
-      underLayer: /*#__PURE__*/_react.default.createElement("div", {
-        className: classes.slidesContainer
-      }, /*#__PURE__*/_react.default.createElement(_reactSlick.default, (0, _extends2.default)({}, SETTINGS, {
-        ref: sliderReference,
-        beforeChange: handleBeforeChange,
-        prevArrow: /*#__PURE__*/_react.default.createElement(Arrow, {
-          classes: classes,
-          arrowRole: "prev",
-          buttonProps: {
-            className: classes.previousButton
-          }
-        }),
-        nextArrow: /*#__PURE__*/_react.default.createElement(Arrow, {
-          classes: classes,
-          arrowRole: "next",
-          buttonProps: {
-            className: classes.nextButton
-          }
-        })
-      }), ((_data$interests = data.interests) !== null && _data$interests !== void 0 ? _data$interests : []).map(function (_ref2) {
-        var gifUrl = _ref2.gifUrl,
-            name = _ref2.name;
-        return (/*#__PURE__*/_react.default.createElement(SlideItem, {
-            key: "gif_".concat(gifUrl, "_").concat(name),
-            gifUrl: gifUrl,
-            name: name,
-            classes: classes
-          })
-        );
-      })))
-    }, /*#__PURE__*/_react.default.createElement(Content, {
-      data: data,
-      hasChanged: hasChanged,
-      currentIndex: currentIndex,
-      pauseSlider: pauseSlider,
-      resumeSlider: resumeSlider,
-      handleAddButtonClick: handleAddButtonClick,
-      classes: classes
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement(_gifs_sides_commons.GifsSidesCommons, {
+    underLayer: /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.slidesContainer
+    }, /*#__PURE__*/_react.default.createElement(_reactSlick.default, (0, _extends2.default)({}, SETTINGS, {
+      ref: sliderReference,
+      beforeChange: handleBeforeChange,
+      prevArrow: /*#__PURE__*/_react.default.createElement(Arrow, {
+        classes: classes,
+        arrowRole: "prev",
+        buttonProps: {
+          className: classes.previousButton
+        }
+      }),
+      nextArrow: /*#__PURE__*/_react.default.createElement(Arrow, {
+        classes: classes,
+        arrowRole: "next",
+        buttonProps: {
+          className: classes.nextButton
+        }
+      })
+    }), ((_data$interests = data.interests) !== null && _data$interests !== void 0 ? _data$interests : []).map(function (_ref2) {
+      var gifUrl = _ref2.gifUrl,
+          name = _ref2.name;
+      return /*#__PURE__*/_react.default.createElement(SlideItem, {
+        key: "gif_".concat(gifUrl, "_").concat(name),
+        gifUrl: gifUrl,
+        name: name,
+        classes: classes
+      });
+    })))
+  }, /*#__PURE__*/_react.default.createElement(Content, {
+    data: data,
+    hasChanged: hasChanged,
+    currentIndex: currentIndex,
+    pauseSlider: pauseSlider,
+    resumeSlider: resumeSlider,
+    handleAddButtonClick: handleAddButtonClick,
+    classes: classes
+  }));
 };
 
 var Content = function Content(_ref3) {
-  var _ref4, _data$interests2;
+  var _data$interests$curre, _data$interests2;
 
   var data = _ref3.data,
       pauseSlider = _ref3.pauseSlider,
@@ -167,23 +164,22 @@ var Content = function Content(_ref3) {
   var hasHobby = (0, _react.useMemo)(function () {
     return (0, _exists_and_not_empty.existsAndNotEmpty)(data === null || data === void 0 ? void 0 : data.interests);
   }, [data]);
-  var transitions = (0, _reactSpring.useTransition)((_ref4 = (_data$interests2 = data.interests) === null || _data$interests2 === void 0 ? void 0 : _data$interests2[currentIndex]) !== null && _ref4 !== void 0 ? _ref4 : {}, function (item) {
+  var transitions = (0, _reactSpring.useTransition)((_data$interests$curre = (_data$interests2 = data.interests) === null || _data$interests2 === void 0 ? void 0 : _data$interests2[currentIndex]) !== null && _data$interests$curre !== void 0 ? _data$interests$curre : {}, function (item) {
     return "gif_name_".concat(item.name);
   }, _objectSpread({}, _gifs_back_spring_props.GIFS_BACK_TRANSITIONS_SPRING_PROPS, {
     immediate: !hasChanged.current
   }));
 
   if (!hasHobby) {
-    return (/*#__PURE__*/_react.default.createElement(_no_hobby.NoHobby, {
-        handleAddButtonClick: handleAddButtonClick
-      })
-    );
+    return /*#__PURE__*/_react.default.createElement(_no_hobby.NoHobby, {
+      handleAddButtonClick: handleAddButtonClick
+    });
   }
 
-  return transitions.map(function (_ref5) {
-    var item = _ref5.item,
-        key = _ref5.key,
-        props = _ref5.props;
+  return transitions.map(function (_ref4) {
+    var item = _ref4.item,
+        key = _ref4.key,
+        props = _ref4.props;
     return (item === null || item === void 0 ? void 0 : item.name) && /*#__PURE__*/_react.default.createElement(TransitioningItem, {
       item: item,
       key: key,
@@ -202,10 +198,10 @@ var PRESSED_ARROW_SPRING_PROPS = Object.freeze({
   scale: 0.9
 });
 
-var Arrow = function Arrow(_ref6) {
-  var classes = _ref6.classes,
-      onClick = _ref6.onClick,
-      arrowRole = _ref6.arrowRole;
+var Arrow = function Arrow(_ref5) {
+  var classes = _ref5.classes,
+      onClick = _ref5.onClick,
+      arrowRole = _ref5.arrowRole;
 
   var _useSpring = (0, _reactSpring.useSpring)(function () {
     return DEFAULT_ARROW_SPRING_PROPS;
@@ -220,78 +216,73 @@ var Arrow = function Arrow(_ref6) {
   var handleMouseUp = (0, _react.useCallback)(function () {
     return setSpringProps(DEFAULT_ARROW_SPRING_PROPS);
   }, [setSpringProps]);
-  return (/*#__PURE__*/_react.default.createElement(_reactSpring.animated.button, {
-      onClick: onClick,
-      className: (0, _classnames.default)(classes.arrow, arrowRole === 'next' && classes.nextArrow, arrowRole === 'prev' && (0, _classnames.default)(classes.reverseArrow, classes.prevArrow)),
-      type: "button",
-      onMouseDown: handleMouseDown,
-      onMouseUp: handleMouseUp,
-      onFocus: handleMouseDown,
-      onBlur: handleMouseUp,
-      style: {
-        transform: springProps.scale.to(function (value) {
-          return "scale3d(".concat(value, ", ").concat(value, ", ").concat(value, ")");
-        })
-      }
-    }, /*#__PURE__*/_react.default.createElement(ArrowIcon, null))
-  );
+  return /*#__PURE__*/_react.default.createElement(_reactSpring.animated.button, {
+    onClick: onClick,
+    className: (0, _classnames.default)(classes.arrow, arrowRole === 'next' && classes.nextArrow, arrowRole === 'prev' && (0, _classnames.default)(classes.reverseArrow, classes.prevArrow)),
+    type: "button",
+    onMouseDown: handleMouseDown,
+    onMouseUp: handleMouseUp,
+    onFocus: handleMouseDown,
+    onBlur: handleMouseUp,
+    style: {
+      transform: springProps.scale.to(function (value) {
+        return "scale3d(".concat(value, ", ").concat(value, ", ").concat(value, ")");
+      })
+    }
+  }, /*#__PURE__*/_react.default.createElement(ArrowIcon, null));
 };
 
-var SlideItem = function SlideItem(_ref7) {
-  var gifUrl = _ref7.gifUrl,
-      name = _ref7.name,
-      classes = _ref7.classes;
+var SlideItem = function SlideItem(_ref6) {
+  var gifUrl = _ref6.gifUrl,
+      name = _ref6.name,
+      classes = _ref6.classes;
 
   if (!gifUrl) {
-    return (/*#__PURE__*/_react.default.createElement("div", {
-        className: classes.solidBackground
-      })
-    );
+    return /*#__PURE__*/_react.default.createElement("div", {
+      className: classes.solidBackground
+    });
   }
 
-  return (/*#__PURE__*/_react.default.createElement("img", {
-      key: "gifs_back_carousel_image_".concat(gifUrl, "_").concat(name),
-      className: classes.image,
-      src: gifUrl,
-      alt: name
-    })
-  );
+  return /*#__PURE__*/_react.default.createElement("img", {
+    key: "gifs_back_carousel_image_".concat(gifUrl, "_").concat(name),
+    className: classes.image,
+    src: gifUrl,
+    alt: name
+  });
 };
 
-var TransitioningItem = function TransitioningItem(_ref8) {
-  var item = _ref8.item,
-      props = _ref8.props,
-      pauseSlider = _ref8.pauseSlider,
-      resumeSlider = _ref8.resumeSlider,
-      classes = _ref8.classes;
+var TransitioningItem = function TransitioningItem(_ref7) {
+  var item = _ref7.item,
+      props = _ref7.props,
+      pauseSlider = _ref7.pauseSlider,
+      resumeSlider = _ref7.resumeSlider,
+      classes = _ref7.classes;
 
   if (!(item === null || item === void 0 ? void 0 : item.gifUrl)) {
-    return (/*#__PURE__*/_react.default.createElement(_reactSpring.animated.div, {
-        className: classes.transitioningItemWithoutGif,
-        style: props,
-        onMouseEnter: pauseSlider,
-        onMouseLeave: resumeSlider
-      }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-        customClasses: {
-          container: classes.slideNameWithoutGif
-        },
-        color: "light",
-        variant: "h3",
-        component: "h4"
-      }, item.name))
-    );
+    return /*#__PURE__*/_react.default.createElement(_reactSpring.animated.div, {
+      className: classes.transitioningItemWithoutGif,
+      style: props,
+      onMouseEnter: pauseSlider,
+      onMouseLeave: resumeSlider
+    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      customClasses: {
+        container: classes.slideNameWithoutGif
+      },
+      color: "light",
+      variant: "h3",
+      component: "h4"
+    }, item.name));
   }
 
-  return (/*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      customClasses: {
-        container: classes.slideName
-      },
-      component: _reactSpring.animated.div,
-      style: props,
-      color: "light",
-      variant: "h2"
-    }, item.name)
-  );
+  return /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    customClasses: {
+      container: classes.slideName
+    },
+    component: _reactSpring.animated.div,
+    style: props,
+    color: "light",
+    variant: "h2"
+  }, item.name);
 };
 
 var GifsBack = (0, _react.memo)(GifsBackComponent);

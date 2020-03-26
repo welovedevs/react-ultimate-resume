@@ -28,14 +28,13 @@ var _profile_card_button_styles = require("./profile_card_button_styles");
 var _use_card_variant = require("../../../hooks/profile_card_hooks/use_card_variant");
 
 var ArrowRight = function ArrowRight(props) {
-  return (/*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("path", {
-      d: "M7 16h18M16 7l9 9-9 9",
-      stroke: "#F5F5F5",
-      strokeWidth: "2",
-      strokeLinecap: "round",
-      strokeLinejoin: "round"
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("path", {
+    d: "M7 16h18M16 7l9 9-9 9",
+    stroke: "#F5F5F5",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }));
 };
 
 ArrowRight.defaultProps = {
@@ -74,30 +73,29 @@ var ProfileCardButtonComponent = (0, _reactJss.default)(_profile_card_button_sty
       return ACTIVE_SPRING_PROPS;
     });
   }, []);
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: classes.container
-    }, /*#__PURE__*/_react.default.createElement(_ui.Button, (0, _extends2.default)({
-      customClasses: {
-        container: classes.button,
-        typography: classes.typography
-      },
-      size: "small",
-      variant: "text",
-      onMouseEnter: setActiveSpringProps,
-      onMouseLeave: setDefaultSpringProps,
-      onFocus: setActiveSpringProps,
-      onBlur: setDefaultSpringProps
-    }, other), children), /*#__PURE__*/_react.default.createElement(_reactSpring.animated.span, {
-      className: classes.arrowContainer,
-      style: {
-        transform: springProps.translation.to(function (value) {
-          return "translate3d(".concat(value, "px, 0, 0)");
-        })
-      }
-    }, /*#__PURE__*/_react.default.createElement(ArrowRight, {
-      className: classes.arrow
-    })))
-  );
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.container
+  }, /*#__PURE__*/_react.default.createElement(_ui.Button, (0, _extends2.default)({
+    customClasses: {
+      container: classes.button,
+      typography: classes.typography
+    },
+    size: "small",
+    variant: "text",
+    onMouseEnter: setActiveSpringProps,
+    onMouseLeave: setDefaultSpringProps,
+    onFocus: setActiveSpringProps,
+    onBlur: setDefaultSpringProps
+  }, other), children), /*#__PURE__*/_react.default.createElement(_reactSpring.animated.span, {
+    className: classes.arrowContainer,
+    style: {
+      transform: springProps.translation.to(function (value) {
+        return "translate3d(".concat(value, "px, 0, 0)");
+      })
+    }
+  }, /*#__PURE__*/_react.default.createElement(ArrowRight, {
+    className: classes.arrow
+  })));
 });
 
 var InjectVariantProfileCardButton = function InjectVariantProfileCardButton(props) {
@@ -105,10 +103,9 @@ var InjectVariantProfileCardButton = function InjectVariantProfileCardButton(pro
       _useCardVariant2 = (0, _slicedToArray2.default)(_useCardVariant, 1),
       variant = _useCardVariant2[0];
 
-  return (/*#__PURE__*/_react.default.createElement(ProfileCardButtonComponent, (0, _extends2.default)({}, props, {
-      variant: variant
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement(ProfileCardButtonComponent, (0, _extends2.default)({}, props, {
+    variant: variant
+  }));
 };
 
 var ProfileCardButton = InjectVariantProfileCardButton;

@@ -127,56 +127,55 @@ var CustomizeDialogComponent = function CustomizeDialogComponent(_ref) {
     newCustomization.cardsOrder = cardsOrder;
     setValue(newCustomization);
   }, [value]);
-  return (/*#__PURE__*/_react.default.createElement(_core.Dialog, {
-      fullScreen: true,
-      open: open,
-      classes: {
-        root: classes.root,
-        paper: classes.paper
-      },
-      onClose: onClose
-    }, /*#__PURE__*/_react.default.createElement(_dialog_title.DialogTitle, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Banner.actions.customize.dialog.title",
-      defaultMessage: "Customize your profile"
-    })), /*#__PURE__*/_react.default.createElement(_core.DialogContent, {
-      classes: {
-        root: classes.content
-      }
-    }, /*#__PURE__*/_react.default.createElement(_palettes_list.PalettesList, {
-      classes: {
-        container: classes.palettesList
-      },
-      onChange: onPaletteChanged,
-      value: value === null || value === void 0 ? void 0 : (_value$theme = value.theme) === null || _value$theme === void 0 ? void 0 : _value$theme.palette
-    }), !onlyShowPalettesList && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.dividerContainer
-    }, /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.divider
-    })), /*#__PURE__*/_react.default.createElement(_reactJss.ThemeProvider, {
-      theme: builtTheme
-    }, /*#__PURE__*/_react.default.createElement(_cards_orderer.CardsOrderer, {
-      onChange: onCardOrdered,
-      value: value === null || value === void 0 ? void 0 : value.cardsOrder
-    })))), /*#__PURE__*/_react.default.createElement(_core.DialogActions, {
-      classes: {
-        root: classes.actions
-      }
-    }, /*#__PURE__*/_react.default.createElement(_ui.Button, {
-      size: "small",
-      onClick: onClose
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Main.lang.close",
-      deaultMessage: "Close"
-    })), /*#__PURE__*/_react.default.createElement(_ui.Button, {
-      color: "primary",
-      variant: "contained",
-      size: "small",
-      onClick: onSave
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Main.lang.save",
-      defaultMessage: "Save"
-    }))))
-  );
+  return /*#__PURE__*/_react.default.createElement(_core.Dialog, {
+    fullScreen: true,
+    open: open,
+    classes: {
+      root: classes.root,
+      paper: classes.paper
+    },
+    onClose: onClose
+  }, /*#__PURE__*/_react.default.createElement(_dialog_title.DialogTitle, null, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Banner.actions.customize.dialog.title",
+    defaultMessage: "Customize your profile"
+  })), /*#__PURE__*/_react.default.createElement(_core.DialogContent, {
+    classes: {
+      root: classes.content
+    }
+  }, /*#__PURE__*/_react.default.createElement(_palettes_list.PalettesList, {
+    classes: {
+      container: classes.palettesList
+    },
+    onChange: onPaletteChanged,
+    value: value === null || value === void 0 ? void 0 : (_value$theme = value.theme) === null || _value$theme === void 0 ? void 0 : _value$theme.palette
+  }), !onlyShowPalettesList && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.dividerContainer
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.divider
+  })), /*#__PURE__*/_react.default.createElement(_reactJss.ThemeProvider, {
+    theme: builtTheme
+  }, /*#__PURE__*/_react.default.createElement(_cards_orderer.CardsOrderer, {
+    onChange: onCardOrdered,
+    value: value === null || value === void 0 ? void 0 : value.cardsOrder
+  })))), /*#__PURE__*/_react.default.createElement(_core.DialogActions, {
+    classes: {
+      root: classes.actions
+    }
+  }, /*#__PURE__*/_react.default.createElement(_ui.Button, {
+    size: "small",
+    onClick: onClose
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.close",
+    deaultMessage: "Close"
+  })), /*#__PURE__*/_react.default.createElement(_ui.Button, {
+    color: "primary",
+    variant: "contained",
+    size: "small",
+    onClick: onSave
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.save",
+    defaultMessage: "Save"
+  }))));
 };
 
 var CustomizeDialog = CustomizeDialogComponent;

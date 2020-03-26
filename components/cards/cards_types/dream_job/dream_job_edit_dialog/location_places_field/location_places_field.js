@@ -34,10 +34,9 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var TrashIcon = function TrashIcon(props) {
-  return (/*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("path", {
-      d: "M8.277 25.334C8.277 26.8 9.498 28 10.99 28h10.857c1.493 0 2.714-1.2 2.714-2.666v-16H8.277v16zm17.642-20h-4.75L19.813 4h-6.785L11.67 5.333H6.92V8h19V5.333z"
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("path", {
+    d: "M8.277 25.334C8.277 26.8 9.498 28 10.99 28h10.857c1.493 0 2.714-1.2 2.714-2.666v-16H8.277v16zm17.642-20h-4.75L19.813 4h-6.785L11.67 5.333H6.92V8h19V5.333z"
+  }));
 };
 
 TrashIcon.defaultProps = {
@@ -64,48 +63,47 @@ var LocationPlacesFieldComponent = function LocationPlacesFieldComponent(_ref) {
   }, _objectSpread({}, _location_places_field_transitions_spring_props.LOCATION_PLACES_FIELD_TRANSITIONS_SPRING_PROPS, {}, (placesValues === null || placesValues === void 0 ? void 0 : placesValues.length) && {
     trail: 500 / placesValues.length
   }));
-  return (/*#__PURE__*/_react.default.createElement(_edit_dialog_field.EditDialogField, {
-      error: error,
-      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "DreamJob.editDialog.location.title",
-        defaultMessage: "What's your dream job location?"
-      })
-    }, /*#__PURE__*/_react.default.createElement(_location_field.LocationField, {
-      fullWidth: true,
-      classes: {
-        container: classes.locationField
-      },
-      variant: "flat",
-      onLocationSelected: addPlace
-    }), /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.places
-    }, transitions.map(function (_ref3) {
-      var item = _ref3.item,
-          key = _ref3.key,
-          props = _ref3.props;
-      return item && /*#__PURE__*/_react.default.createElement(_ui.Tag, {
-        key: key,
-        className: classes.place,
-        color: "secondary",
-        style: {
-          opacity: props.opacity,
-          transform: props.scale.to(function (value) {
-            return "scale3d(".concat(value, ", ").concat(value, ", ").concat(value, ")");
-          })
-        }
-      }, /*#__PURE__*/_react.default.createElement(_ui.Tooltip, {
-        title: "Delete this place"
-      }, /*#__PURE__*/_react.default.createElement("button", {
-        type: "button",
-        onClick: removePlace(item.id)
-      }, /*#__PURE__*/_react.default.createElement(TrashIcon, {
-        className: classes.deleteIcon
-      }))), /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-        variant: "body2",
-        color: "light"
-      }, item.name));
-    })))
-  );
+  return /*#__PURE__*/_react.default.createElement(_edit_dialog_field.EditDialogField, {
+    error: error,
+    title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "DreamJob.editDialog.location.title",
+      defaultMessage: "What's your dream job location?"
+    })
+  }, /*#__PURE__*/_react.default.createElement(_location_field.LocationField, {
+    fullWidth: true,
+    classes: {
+      container: classes.locationField
+    },
+    variant: "flat",
+    onLocationSelected: addPlace
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.places
+  }, transitions.map(function (_ref3) {
+    var item = _ref3.item,
+        key = _ref3.key,
+        props = _ref3.props;
+    return item && /*#__PURE__*/_react.default.createElement(_ui.Tag, {
+      key: key,
+      className: classes.place,
+      color: "secondary",
+      style: {
+        opacity: props.opacity,
+        transform: props.scale.to(function (value) {
+          return "scale3d(".concat(value, ", ").concat(value, ", ").concat(value, ")");
+        })
+      }
+    }, /*#__PURE__*/_react.default.createElement(_ui.Tooltip, {
+      title: "Delete this place"
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      type: "button",
+      onClick: removePlace(item.id)
+    }, /*#__PURE__*/_react.default.createElement(TrashIcon, {
+      className: classes.deleteIcon
+    }))), /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+      variant: "body2",
+      color: "light"
+    }, item.name));
+  })));
 };
 
 var LocationPlacesField = LocationPlacesFieldComponent;

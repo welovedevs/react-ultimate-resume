@@ -92,42 +92,41 @@ var LocationFieldComponent = function LocationFieldComponent(_ref) {
     setIsFocused(false);
     setInput('');
   }, [locale, onLocationSelected]);
-  return (/*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _classnames.default)(classes.container, receivedClasses.container)
-    }, /*#__PURE__*/_react.default.createElement(_ui.TextField, {
-      fullWidth: fullWidth,
-      className: classes.input,
-      onClick: function onClick(e) {
-        return e.target && e.target.select && e.target.select();
-      },
-      value: input,
-      onChange: handleChange,
-      placeholder: formatMessage(_location_field_translations.translations.placeholder),
-      onBlur: function onBlur() {
-        if (!preventBlur) {
-          setIsFocused(false);
-        }
-      },
-      onFocus: function onFocus() {
-        return setIsFocused(true);
-      },
-      variant: variant || 'outlined',
-      label: formatMessage(_location_field_translations.translations.title),
-      containerRef: inputRef
-    }), isFocused && /*#__PURE__*/_react.default.createElement(PredictionsList, (0, _extends2.default)({
-      setPreventBlur: setPreventBlur,
-      input: inputRef.current
-    }, {
-      predictions: predictions,
-      classes: classes,
-      onPredictionSelected: onPredictionSelected,
-      locale: locale,
-      setIsFocused: setIsFocused,
-      setInput: setInput,
-      clear: clear,
-      clearOnSelect: clearOnSelect
-    })))
-  );
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: (0, _classnames.default)(classes.container, receivedClasses.container)
+  }, /*#__PURE__*/_react.default.createElement(_ui.TextField, {
+    fullWidth: fullWidth,
+    className: classes.input,
+    onClick: function onClick(e) {
+      return e.target && e.target.select && e.target.select();
+    },
+    value: input,
+    onChange: handleChange,
+    placeholder: formatMessage(_location_field_translations.translations.placeholder),
+    onBlur: function onBlur() {
+      if (!preventBlur) {
+        setIsFocused(false);
+      }
+    },
+    onFocus: function onFocus() {
+      return setIsFocused(true);
+    },
+    variant: variant || 'outlined',
+    label: formatMessage(_location_field_translations.translations.title),
+    containerRef: inputRef
+  }), isFocused && /*#__PURE__*/_react.default.createElement(PredictionsList, (0, _extends2.default)({
+    setPreventBlur: setPreventBlur,
+    input: inputRef.current
+  }, {
+    predictions: predictions,
+    classes: classes,
+    onPredictionSelected: onPredictionSelected,
+    locale: locale,
+    setIsFocused: setIsFocused,
+    setInput: setInput,
+    clear: clear,
+    clearOnSelect: clearOnSelect
+  })));
 };
 
 var PredictionsList = function PredictionsList(_ref2) {
@@ -145,35 +144,33 @@ var PredictionsList = function PredictionsList(_ref2) {
       input.focus();
     }
   }, []);
-  return (/*#__PURE__*/_react.default.createElement(_ui.PopperCard, {
-      open: true,
-      anchorElement: input,
-      customClasses: {
-        popper: classes.popperCard
-      }
-    }, /*#__PURE__*/_react.default.createElement(_ui.List, null, predictions.filter(function (item) {
-      return item;
-    }).map(function (_ref3) {
-      var description = _ref3.description,
-          placeId = _ref3.place_id;
-      return (/*#__PURE__*/_react.default.createElement(_ui.ListItem, {
-          key: "prediction_".concat(placeId),
-          onMouseDown: function onMouseDown() {
-            return setPreventBlur(true);
-          },
-          onMouseUp: onMouseUp,
-          onClick: function onClick() {
-            if (!placeId) {
-              return;
-            }
+  return /*#__PURE__*/_react.default.createElement(_ui.PopperCard, {
+    open: true,
+    anchorElement: input,
+    customClasses: {
+      popper: classes.popperCard
+    }
+  }, /*#__PURE__*/_react.default.createElement(_ui.List, null, predictions.filter(function (item) {
+    return item;
+  }).map(function (_ref3) {
+    var description = _ref3.description,
+        placeId = _ref3.place_id;
+    return /*#__PURE__*/_react.default.createElement(_ui.ListItem, {
+      key: "prediction_".concat(placeId),
+      onMouseDown: function onMouseDown() {
+        return setPreventBlur(true);
+      },
+      onMouseUp: onMouseUp,
+      onClick: function onClick() {
+        if (!placeId) {
+          return;
+        }
 
-            setInput(description);
-            onPredictionSelected(placeId, description);
-          }
-        }, /*#__PURE__*/_react.default.createElement(_ui.Typography, null, description || ''))
-      );
-    })))
-  );
+        setInput(description);
+        onPredictionSelected(placeId, description);
+      }
+    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, null, description || ''));
+  })));
 };
 
 var LocationField = LocationFieldComponent;

@@ -56,26 +56,25 @@ var CopyWrapperComponent = function CopyWrapperComponent(_ref) {
     (0, _copyToClipboard.default)(value);
     setShowSnack(true);
   }, [value]);
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, _react.default.Children.map(children, function (child) {
-      return _react.default.cloneElement(child, _objectSpread({}, child.props, {
-        onClick: mergeOnClicks(handleCopyToClipboardClick, child.props.onClick)
-      }));
-    }), /*#__PURE__*/_react.default.createElement(_core.Portal, null, /*#__PURE__*/_react.default.createElement(_core.Snackbar, {
-      anchorOrigin: {
-        horizontal: 'left',
-        vertical: 'bottom'
-      },
-      open: showSnack,
-      message: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "Main.lang.copied",
-        defaultMessage: "Copied in your clipboard"
-      }),
-      autoHideDuration: 5000,
-      onClose: function onClose() {
-        return setShowSnack(false);
-      }
-    })))
-  );
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, _react.default.Children.map(children, function (child) {
+    return _react.default.cloneElement(child, _objectSpread({}, child.props, {
+      onClick: mergeOnClicks(handleCopyToClipboardClick, child.props.onClick)
+    }));
+  }), /*#__PURE__*/_react.default.createElement(_core.Portal, null, /*#__PURE__*/_react.default.createElement(_core.Snackbar, {
+    anchorOrigin: {
+      horizontal: 'left',
+      vertical: 'bottom'
+    },
+    open: showSnack,
+    message: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Main.lang.copied",
+      defaultMessage: "Copied in your clipboard"
+    }),
+    autoHideDuration: 5000,
+    onClose: function onClose() {
+      return setShowSnack(false);
+    }
+  })));
 };
 
 var CopyWrapper = CopyWrapperComponent;

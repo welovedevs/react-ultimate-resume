@@ -211,7 +211,7 @@
   "Skills.form.validation.atLeastOne": "Sélectionnez au moins une technologie",
   "Skills.front.action": "Voir plus",
   "Skills.front.noSkill": "Vous n'avez pas encore ajouté de compétences !",
-  "Skills.front.title": "Je code en {techno}",
+  "Skills.front.title": "Je code avec {techno}",
   "Skills.noSkill.buttonLabel": "Ajouter une compétence",
   "Skills.noSkill.title": "Ajoutez ici toutes les compétences que vous maitrisez !",
   "Skills.otherskills.title": "Je maîtrise aussi",

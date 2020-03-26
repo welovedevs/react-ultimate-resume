@@ -35,24 +35,23 @@ var ConfirmDialogComponent = function ConfirmDialogComponent(_ref) {
       title = _ref$title === void 0 ? DefaultTitle : _ref$title,
       _ref$content = _ref.content,
       content = _ref$content === void 0 ? DefaultContent : _ref$content;
-  return (/*#__PURE__*/_react.default.createElement(_core.Dialog, {
-      open: open,
-      onClose: onClose
-    }, /*#__PURE__*/_react.default.createElement(_dialog_title.DialogTitle, null, title), /*#__PURE__*/_react.default.createElement(_core.DialogContent, null, /*#__PURE__*/_react.default.createElement(_ui.Typography, null, content)), /*#__PURE__*/_react.default.createElement(_core.DialogActions, null, /*#__PURE__*/_react.default.createElement(_ui.Button, {
-      size: "small",
-      onClick: onClose
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Main.lang.close",
-      defaultMessage: "Close"
-    })), /*#__PURE__*/_react.default.createElement(_ui.Button, {
-      color: "primary",
-      size: "small",
-      onClick: onConfirm
-    }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "Main.lang.confirm",
-      defaultMessage: "Confirm"
-    }))))
-  );
+  return /*#__PURE__*/_react.default.createElement(_core.Dialog, {
+    open: open,
+    onClose: onClose
+  }, /*#__PURE__*/_react.default.createElement(_dialog_title.DialogTitle, null, title), /*#__PURE__*/_react.default.createElement(_core.DialogContent, null, /*#__PURE__*/_react.default.createElement(_ui.Typography, null, content)), /*#__PURE__*/_react.default.createElement(_core.DialogActions, null, /*#__PURE__*/_react.default.createElement(_ui.Button, {
+    size: "small",
+    onClick: onClose
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.close",
+    defaultMessage: "Close"
+  })), /*#__PURE__*/_react.default.createElement(_ui.Button, {
+    color: "primary",
+    size: "small",
+    onClick: onConfirm
+  }, /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+    id: "Main.lang.confirm",
+    defaultMessage: "Confirm"
+  }))));
 };
 
 var ConfirmDialog = ConfirmDialogComponent;

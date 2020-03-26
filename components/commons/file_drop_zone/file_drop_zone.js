@@ -30,17 +30,16 @@ var _loading_spinner = require("../loading_spinner/loading_spinner");
 var _file_drop_zone_styles = require("./file_drop_zone_styles");
 
 var DropFileIcon = function DropFileIcon(props) {
-  return (/*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("g", {
-      fill: "none",
-      stroke: "#000",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      strokeWidth: "1.5"
-    }, /*#__PURE__*/_react.default.createElement("path", {
-      d: "M28.75 18.75c5.524 0 10 4.477 10 10s-4.476 10-10 10-10-4.476-10-10 4.477-10 10-10zM28.75 23.75v10M28.75 33.75L25 30M28.75 33.75L32.5 30M6.25 11.25h17.5M6.25 18.75h10M6.25 26.25h6.25M12.5 33.75H3.75c-1.38 0-2.5-1.12-2.5-2.5V3.75c0-1.38 1.12-2.5 2.5-2.5h17.715c.664 0 1.299.263 1.767.732l4.787 4.786c.468.469.732 1.104.732 1.767V12.5",
-      strokeWidth: "2.50005"
-    })))
-  );
+  return /*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("g", {
+    fill: "none",
+    stroke: "#000",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "1.5"
+  }, /*#__PURE__*/_react.default.createElement("path", {
+    d: "M28.75 18.75c5.524 0 10 4.477 10 10s-4.476 10-10 10-10-4.476-10-10 4.477-10 10-10zM28.75 23.75v10M28.75 33.75L25 30M28.75 33.75L32.5 30M6.25 11.25h17.5M6.25 18.75h10M6.25 26.25h6.25M12.5 33.75H3.75c-1.38 0-2.5-1.12-2.5-2.5V3.75c0-1.38 1.12-2.5 2.5-2.5h17.715c.664 0 1.299.263 1.767.732l4.787 4.786c.468.469.732 1.104.732 1.767V12.5",
+    strokeWidth: "2.50005"
+  })));
 };
 
 DropFileIcon.defaultProps = {
@@ -49,20 +48,19 @@ DropFileIcon.defaultProps = {
 };
 
 var SuccessIcon = function SuccessIcon(props) {
-  return (/*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("g", {
-      fill: "none",
-      stroke: "#000",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      strokeWidth: "1.5"
-    }, /*#__PURE__*/_react.default.createElement("path", {
-      d: "M10 22.039l4.084 5.795a1.749 1.749 0 0 0 2.845.085L30 11.38",
-      strokeWidth: "2.50005"
-    }), /*#__PURE__*/_react.default.createElement("path", {
-      d: "M20 1.248c10.356 0 18.75 8.396 18.75 18.75S30.357 38.75 20 38.75 1.25 30.354 1.25 20 9.645 1.249 20 1.249z",
-      strokeWidth: "2.50005"
-    })))
-  );
+  return /*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("g", {
+    fill: "none",
+    stroke: "#000",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "1.5"
+  }, /*#__PURE__*/_react.default.createElement("path", {
+    d: "M10 22.039l4.084 5.795a1.749 1.749 0 0 0 2.845.085L30 11.38",
+    strokeWidth: "2.50005"
+  }), /*#__PURE__*/_react.default.createElement("path", {
+    d: "M20 1.248c10.356 0 18.75 8.396 18.75 18.75S30.357 38.75 20 38.75 1.25 30.354 1.25 20 9.645 1.249 20 1.249z",
+    strokeWidth: "2.50005"
+  })));
 };
 
 SuccessIcon.defaultProps = {
@@ -71,17 +69,16 @@ SuccessIcon.defaultProps = {
 };
 
 var RemoveIcon = function RemoveIcon(props) {
-  return (/*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("g", {
-      fill: "none",
-      stroke: "#000",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      strokeWidth: "1.5"
-    }, /*#__PURE__*/_react.default.createElement("path", {
-      d: "M25.304 14.697L14.697 25.302M14.697 14.697l10.607 10.605M20 1.25c10.356 0 18.75 8.395 18.75 18.75S30.357 38.75 20 38.75 1.25 30.357 1.25 20 9.645 1.25 20 1.25z",
-      strokeWidth: "2.50005"
-    })))
-  );
+  return /*#__PURE__*/_react.default.createElement("svg", props, /*#__PURE__*/_react.default.createElement("g", {
+    fill: "none",
+    stroke: "#000",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "1.5"
+  }, /*#__PURE__*/_react.default.createElement("path", {
+    d: "M25.304 14.697L14.697 25.302M14.697 14.697l10.607 10.605M20 1.25c10.356 0 18.75 8.395 18.75 18.75S30.357 38.75 20 38.75 1.25 30.357 1.25 20 9.645 1.25 20 1.25z",
+    strokeWidth: "2.50005"
+  })));
 };
 
 RemoveIcon.defaultProps = {
@@ -173,19 +170,18 @@ var FileDropZoneComponent = function FileDropZoneComponent(_ref) {
       getInputProps = _useDropzone.getInputProps,
       isDragActive = _useDropzone.isDragActive;
 
-  return (/*#__PURE__*/_react.default.createElement("button", (0, _extends2.default)({
-      className: classes.container,
-      type: "button"
-    }, getRootProps()), /*#__PURE__*/_react.default.createElement(Content, {
-      waiting: waiting,
-      loading: loading,
-      error: error,
-      success: success,
-      getInputProps: getInputProps,
-      isDragActive: isDragActive,
-      classes: classes
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement("button", (0, _extends2.default)({
+    className: classes.container,
+    type: "button"
+  }, getRootProps()), /*#__PURE__*/_react.default.createElement(Content, {
+    waiting: waiting,
+    loading: loading,
+    error: error,
+    success: success,
+    getInputProps: getInputProps,
+    isDragActive: isDragActive,
+    classes: classes
+  }));
 };
 
 var Content = function Content(_ref3) {
@@ -198,23 +194,21 @@ var Content = function Content(_ref3) {
       classes = _ref3.classes;
 
   if (loading) {
-    return (/*#__PURE__*/_react.default.createElement(_loading_spinner.LoadingSpinner, null)
-    );
+    return /*#__PURE__*/_react.default.createElement(_loading_spinner.LoadingSpinner, null);
   }
 
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("input", getInputProps()), /*#__PURE__*/_react.default.createElement(Icon, {
-      waiting: waiting,
-      error: error,
-      success: success,
-      classes: classes
-    }), /*#__PURE__*/_react.default.createElement(Label, {
-      waiting: waiting,
-      error: error,
-      success: success,
-      isDragActive: isDragActive,
-      classes: classes
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("input", getInputProps()), /*#__PURE__*/_react.default.createElement(Icon, {
+    waiting: waiting,
+    error: error,
+    success: success,
+    classes: classes
+  }), /*#__PURE__*/_react.default.createElement(Label, {
+    waiting: waiting,
+    error: error,
+    success: success,
+    isDragActive: isDragActive,
+    classes: classes
+  }));
 };
 
 var Icon = function Icon(_ref4) {
@@ -224,24 +218,21 @@ var Icon = function Icon(_ref4) {
       classes = _ref4.classes;
 
   if (error) {
-    return (/*#__PURE__*/_react.default.createElement(RemoveIcon, {
-        className: classes.icon
-      })
-    );
+    return /*#__PURE__*/_react.default.createElement(RemoveIcon, {
+      className: classes.icon
+    });
   }
 
   if (waiting) {
-    return (/*#__PURE__*/_react.default.createElement(DropFileIcon, {
-        className: classes.icon
-      })
-    );
+    return /*#__PURE__*/_react.default.createElement(DropFileIcon, {
+      className: classes.icon
+    });
   }
 
   if (success) {
-    return (/*#__PURE__*/_react.default.createElement(SuccessIcon, {
-        className: classes.icon
-      })
-    );
+    return /*#__PURE__*/_react.default.createElement(SuccessIcon, {
+      className: classes.icon
+    });
   }
 
   return null;
@@ -265,14 +256,13 @@ var Label = function Label(_ref5) {
     text = "Drag'n drop files or click here.";
   }
 
-  return (/*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      customClasses: {
-        container: classes.typography
-      },
-      variant: "h4",
-      component: "h4"
-    }, text)
-  );
+  return /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    customClasses: {
+      container: classes.typography
+    },
+    variant: "h4",
+    component: "h4"
+  }, text);
 };
 
 var FileDropZone = FileDropZoneComponent;

@@ -60,49 +60,48 @@ var CurrentJobIssuesFieldComponent = function CurrentJobIssuesFieldComponent(_re
   }, _objectSpread({}, _current_job_issues_field_spring_props.CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS, {
     unique: true
   }));
-  return (/*#__PURE__*/_react.default.createElement(_edit_dialog_field.EditDialogField, {
-      error: error,
-      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "DreamJob.editDialog.currentJobIssues.title",
-        defaultMessage: "Which issues do you encounter in your current job?"
-      })
-    }, /*#__PURE__*/_react.default.createElement(_checkbox_group.CheckboxGroup, {
-      rows: 2,
-      values: checkboxGroupCurrentJobIssues,
-      translations: _job_issues_translations.translations,
-      value: checkedCurrentJobIssues,
-      name: "perks",
-      variant: "outlined",
-      onChange: onChange
-    }), /*#__PURE__*/_react.default.createElement("div", {
-      className: classes.othersCheckbox
-    }, /*#__PURE__*/_react.default.createElement(_checkbox_group2.CheckboxField, {
-      title: /*#__PURE__*/_react.default.createElement(_ui.Typography, null, formatMessage(_job_issues_translations.translations.other)),
-      onClick: toggleOtherCurrentJobIssue,
-      checked: otherCurrentJobIssue !== null,
-      variant: "outlined",
-      color: "secondary"
-    })), transitions.map(function (_ref2) {
-      var item = _ref2.item,
-          key = _ref2.key,
-          props = _ref2.props;
-      return item && /*#__PURE__*/_react.default.createElement(_ui.TextField, {
-        fullWidth: true,
-        key: key,
-        containerElement: _reactSpring.animated.div,
-        customClasses: {
-          container: (0, _classnames.default)(classes.textField, classes.otherTextField)
-        },
-        onChange: handleChange,
-        name: "currentJobIssue[".concat(_job_issues_utils.JobIssues.OTHER, "]"),
-        value: currentJobIssues[_job_issues_utils.JobIssues.OTHER],
-        variant: "flat",
-        containerProps: {
-          style: props
-        }
-      });
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement(_edit_dialog_field.EditDialogField, {
+    error: error,
+    title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "DreamJob.editDialog.currentJobIssues.title",
+      defaultMessage: "Which issues do you encounter in your current job?"
+    })
+  }, /*#__PURE__*/_react.default.createElement(_checkbox_group.CheckboxGroup, {
+    rows: 2,
+    values: checkboxGroupCurrentJobIssues,
+    translations: _job_issues_translations.translations,
+    value: checkedCurrentJobIssues,
+    name: "perks",
+    variant: "outlined",
+    onChange: onChange
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: classes.othersCheckbox
+  }, /*#__PURE__*/_react.default.createElement(_checkbox_group2.CheckboxField, {
+    title: /*#__PURE__*/_react.default.createElement(_ui.Typography, null, formatMessage(_job_issues_translations.translations.other)),
+    onClick: toggleOtherCurrentJobIssue,
+    checked: otherCurrentJobIssue !== null,
+    variant: "outlined",
+    color: "secondary"
+  })), transitions.map(function (_ref2) {
+    var item = _ref2.item,
+        key = _ref2.key,
+        props = _ref2.props;
+    return item && /*#__PURE__*/_react.default.createElement(_ui.TextField, {
+      fullWidth: true,
+      key: key,
+      containerElement: _reactSpring.animated.div,
+      customClasses: {
+        container: (0, _classnames.default)(classes.textField, classes.otherTextField)
+      },
+      onChange: handleChange,
+      name: "currentJobIssue[".concat(_job_issues_utils.JobIssues.OTHER, "]"),
+      value: currentJobIssues[_job_issues_utils.JobIssues.OTHER],
+      variant: "flat",
+      containerProps: {
+        style: props
+      }
+    });
+  }));
 };
 
 var CurrentJobIssuesField = CurrentJobIssuesFieldComponent;

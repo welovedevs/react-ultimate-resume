@@ -36,29 +36,27 @@ var GifsEditDialogComponent = function GifsEditDialogComponent(_ref) {
   var validationSchemaToPass = (0, _react.useMemo)(function () {
     return validationSchema(formatMessage);
   }, [validationSchema]);
-  return (/*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_edit_dialog.EditDialog, {
-      fullScreen: true,
-      classes: {
-        paper: classes.paper,
-        content: classes.dialogRoot
-      },
-      open: open,
-      onClose: onClose,
-      validationSchema: validationSchemaToPass,
-      isEditing: isEditing,
-      data: data,
-      onEdit: onEdit,
-      title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "Interests.editDialog.title",
-        defaultMessage: "Show your loved hobbies with fancy gifs!"
-      })
-    }, function (helpers) {
-      return (/*#__PURE__*/_react.default.createElement(_gifs_edit_form.GifsEditForm, {
-          helpers: helpers
-        })
-      );
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_edit_dialog.EditDialog, {
+    fullScreen: true,
+    classes: {
+      paper: classes.paper,
+      content: classes.dialogRoot
+    },
+    open: open,
+    onClose: onClose,
+    validationSchema: validationSchemaToPass,
+    isEditing: isEditing,
+    data: data,
+    onEdit: onEdit,
+    title: /*#__PURE__*/_react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "Interests.editDialog.title",
+      defaultMessage: "Show your loved hobbies with fancy gifs!"
+    })
+  }, function (helpers) {
+    return /*#__PURE__*/_react.default.createElement(_gifs_edit_form.GifsEditForm, {
+      helpers: helpers
+    });
+  }));
 };
 
 var GifsEditDialog = GifsEditDialogComponent;

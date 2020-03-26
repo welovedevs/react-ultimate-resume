@@ -33,23 +33,22 @@ var LanguageColumnComponent = function LanguageColumnComponent(_ref) {
     color: color,
     itemsSize: itemsSize
   });
-  return (/*#__PURE__*/_react.default.createElement(_ui.Tooltip, {
-      open: true,
-      customClasses: {
-        container: classes.popper
-      },
-      title: "".concat(language, " : ").concat(value, "%")
-    }, /*#__PURE__*/_react.default.createElement(Component, {
-      className: classes.container,
-      style: style
-    }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
-      variant: "h2",
-      color: "light",
-      customClasses: {
-        container: classes.typography
-      }
-    }, children)))
-  );
+  return /*#__PURE__*/_react.default.createElement(_ui.Tooltip, {
+    open: true,
+    customClasses: {
+      container: classes.popper
+    },
+    title: "".concat(language, " : ").concat(value, "%")
+  }, /*#__PURE__*/_react.default.createElement(Component, {
+    className: classes.container,
+    style: style
+  }, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+    variant: "h2",
+    color: "light",
+    customClasses: {
+      container: classes.typography
+    }
+  }, children)));
 };
 
 var LanguageColumn = LanguageColumnComponent;
