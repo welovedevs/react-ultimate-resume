@@ -1,7 +1,8 @@
-export const mapJsonResumeToBasicData = jsonResume => {
+export const mapJsonResumeToBasicData = (jsonResume) => {
     const city = jsonResume.basics?.location?.city;
     const countryCode = jsonResume.basics?.location?.countryCode;
     return {
+        name: jsonResume?.basics?.name,
         currentCity: ((city || countryCode) && { name: `${city}${countryCode && `, ${countryCode}`}` }) ?? {},
         summary: jsonResume?.basics?.summary,
         experienceYears: jsonResume?.specific?.work?.experienceYears,
@@ -10,28 +11,29 @@ export const mapJsonResumeToBasicData = jsonResume => {
         codingReason: jsonResume?.specific?.work?.codingReason,
         visaSponsorship: jsonResume?.specific?.basics?.visaSponsorship,
         searchState: jsonResume?.specific?.work?.searchState,
-        personalDescription: jsonResume?.specific?.basics?.personalDescription
+        personalDescription: jsonResume?.specific?.basics?.personalDescription,
     };
 };
 
-export const mapBasicsDataToJsonResume = data => ({
+export const mapBasicsDataToJsonResume = (data) => ({
     basics: {
+        name: data.name,
         summary: data.summary,
-        location: data.currentCity && { ...data.currentCity, city: data.currentCity.name }
+        location: data.currentCity && { ...data.currentCity, city: data.currentCity.name },
     },
     specific: {
         basics: {
             visaSponsorship: data.visaSponsorship,
-            personalDescription: data.personalDescription
+            personalDescription: data.personalDescription,
         },
         work: {
             experienceYears: data.experienceYears,
             codingYears: data.codingYears,
             codingReason: data.codingReason,
-            searchState: data.searchState
+            searchState: data.searchState,
         },
         education: {
-            studiesLevel: data.studiesLevel
-        }
-    }
+            studiesLevel: data.studiesLevel,
+        },
+    },
 });
