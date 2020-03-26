@@ -185,11 +185,7 @@
         "dreamJob": {
             "locations": [
                 { "name": "Lille, France" },
-                { "name": "Paris,France" },
-                { "name": "Valenciennes, France" },
-                { "name": "Lille, France" },
-                { "name": "Paris,France" },
-                { "name": "Valenciennes, France" }
+                { "name": "Paris,France" }
             ],
             "remoteFrequency": "regularly"
         },

@@ -41,6 +41,7 @@ const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace }) 
                 classes={{
                     container: classes.locationField
                 }}
+                clearOnSelect
                 variant="flat"
                 onLocationSelected={addPlace}
             />
