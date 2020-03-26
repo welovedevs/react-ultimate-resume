@@ -1,8 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
-
-import merge from 'lodash/merge';
 import isArray from 'lodash/isArray';
 import mergeWith from 'lodash/mergeWith';
 import cloneDeep from 'lodash/cloneDeep';
@@ -16,11 +14,12 @@ import { ReactComponent as SaveIcon } from './package/assets/icons/drop_file.svg
 import { styles } from './app_styles';
 
 const useStyles = createUseStyles(styles);
-const mergeFunction = (objValue, srcValue) => {
+const mergeFunction = (objValue, srcValue, key) => {
+    console.log({ objValue, srcValue, key });
     if (!objValue || isArray(objValue)) {
         return srcValue;
     }
-    return merge(objValue, srcValue);
+    return undefined;
 };
 
 const mode = 'edit';
