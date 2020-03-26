@@ -15,7 +15,8 @@
         "build": "react-scripts build",
         "build:messages": "NODE_ENV=production babel ./src >/dev/null",
         "serve": "react-scripts build && serve build",
-        "manage:translations": "node ./translationRunner.js"
+        "manage:translations": "node ./translationRunner.js",
+        "gh-deploy" : "yarn build && gh-pages -d build"
     },
     "author": "",
     "license": "ISC",
@@ -76,6 +77,7 @@
         "eslint-plugin-jsx-a11y": "^6.2.3",
         "eslint-plugin-react": "^7.17.0",
         "eslint-plugin-react-hooks": "^2.3.0",
+        "gh-pages": "^2.2.0",
         "husky": "^3.1.0",
         "lint-staged": "^10.0.8",
         "ora": "^4.0.3",
