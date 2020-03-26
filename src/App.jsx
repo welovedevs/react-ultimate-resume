@@ -35,7 +35,15 @@ function App() {
     const onCustomizationChanged = useCallback(setCustomization, [data]);
 
     const handleClick = useCallback(async () => {
-        download(JSON.stringify(data), `${`Resume-${data?.basics?.name || 'Developer'}`.replace(' ', '-')}.json`);
+        // eslint-disable-next-line no-undef
+        const blob = new Blob([JSON.stringify(data)], {
+            type: 'text/plain; charset=utf-8'
+        });
+        download(
+            blob,
+            `${`Resume-${data?.basics?.name || 'Developer'}`.replace(' ', '-')}.json`,
+            'text/plain; charset=utf-8'
+        );
     }, [JSON.stringify(data)]);
 
     return (
