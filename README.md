@@ -65,6 +65,10 @@ Replace the default JSON Resume with yours
 /src/data/json_stub.json
 ```
 
+### Deploy on you own server
+
+You can deploy your resume on your own server in few minutes. Follow our [HOW TO documentation](https://github.com/welovedevs/react-ultimate-resume/blob/master/how-to/standalone-deploy-thedamfr.md). 
+
 ### Parameters
 
 **Parameter**|**Type**|**Description**
