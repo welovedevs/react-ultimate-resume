@@ -137,11 +137,7 @@
         }
     ],
     "languages": [
-        {
-            "language": "English",
-            "value": 100,
-            "fluency": "Native speaker"
-        }
+        { "language": "English", "value": 100, "fluency": "Native speaker" }
     ],
     "interests": [
         {
@@ -164,12 +160,7 @@
             "name": "J'aime faire de la course à pied et des randonnées en famille le weekend."
         }
     ],
-    "references": [
-        {
-            "name": "Jane Doe",
-            "reference": "Reference..."
-        }
-    ],
+    "references": [{ "name": "Jane Doe", "reference": "Reference..." }],
     "projects": [
         {
             "name": "Développement d'un serpent connecté",
@@ -194,14 +185,9 @@
             "remoteFrequency": "regularly"
         },
         "currentJob": {
-            "issues": {
-                "boring_management": true,
-                "boring_team": true
-            }
+            "issues": { "boring_management": true, "boring_team": true }
         },
-        "education": {
-            "studiesLevel": 5
-        },
+        "education": { "studiesLevel": 5 },
         "work": {
             "contractTypes": ["permanent"],
             "codingYears": 7,
@@ -213,5 +199,66 @@
             "embedUrl": "https://open.spotify.com/embed/playlist/37i9dQZF1DWWl7MndYYxge"
         },
         "interestedBy": "Angular, la blochain et les chatons."
+    },
+    "customization": {
+        "imageHeader": {
+            "url": "https://cdn.filestackcontent.com/8I2wVnCRTFxypXRYLRsp",
+            "alt": "Default Banner"
+        },
+        "theme": {
+            "palette": {
+                "primary": {
+                    "50": "#ffecf0",
+                    "100": "#ffd9e0",
+                    "200": "#ffb4c1",
+                    "300": "#fe8ea3",
+                    "400": "#fe6984",
+                    "500": "#fe4365",
+                    "600": "#cb3651",
+                    "700": "#98283d",
+                    "800": "#661b28",
+                    "900": "#330d14",
+                    "contrastDefaultColor": "light"
+                },
+                "secondary": {
+                    "50": "#fff5f5",
+                    "100": "#feebeb",
+                    "200": "#fed8d7",
+                    "300": "#fdc4c2",
+                    "400": "#fdb1ae",
+                    "500": "#fc9d9a",
+                    "600": "#ca7e7b",
+                    "700": "#975e5c",
+                    "800": "#653f3e",
+                    "900": "#321f1f",
+                    "contrastDefaultColor": "light"
+                },
+                "tertiary": {
+                    "50": "#fefaf7",
+                    "100": "#fef5ef",
+                    "200": "#fdebde",
+                    "300": "#fbe1ce",
+                    "400": "#fad7bd",
+                    "500": "#f9cdad",
+                    "600": "#c7a48a",
+                    "700": "#957b68",
+                    "800": "#645245",
+                    "900": "#322923",
+                    "contrastDefaultColor": "light"
+                }
+            }
+        },
+        "cardsOrder": [
+            { "type": "basics", "variant": 4 },
+            { "type": "projects", "variant": 4 },
+            { "type": "skills", "variant": 0 },
+            { "type": "dreamjob", "variant": 4 },
+            { "type": "experiences", "variant": 4 },
+            { "type": "studies", "variant": 4 },
+            { "type": "gifs", "variant": 0 },
+            { "type": "interestedBy", "variant": 3 },
+            { "type": "language", "variant": 4 },
+            { "type": "soundtrack", "variant": 4 }
+        ]
     }
 }

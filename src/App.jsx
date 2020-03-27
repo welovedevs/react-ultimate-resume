@@ -30,13 +30,13 @@ function App() {
     const onEdit = useCallback(newData => setData(mergeWith(cloneDeep(data), newData, mergeFunction)), [
         JSON.stringify(data)
     ]);
-    const [customization, setCustomization] = useState({});
+    const [customization, setCustomization] = useState(data.resumeCustomization || {});
 
     const onCustomizationChanged = useCallback(setCustomization, [data]);
 
     const handleClick = useCallback(async () => {
         // eslint-disable-next-line no-undef
-        const blob = new Blob([JSON.stringify(data)], {
+        const blob = new Blob([JSON.stringify({ ...data, resumeCustomization: customization })], {
             type: 'text/plain; charset=utf-8'
         });
         download(
@@ -44,7 +44,7 @@ function App() {
             `${`Resume-${data?.basics?.name || 'Developer'}`.replace(' ', '-')}.json`,
             'text/plain; charset=utf-8'
         );
-    }, [JSON.stringify(data)]);
+    }, [JSON.stringify(data), JSON.stringify(customization)]);
 
     return (
         <DeveloperProfile
