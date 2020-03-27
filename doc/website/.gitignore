@@ -1,0 +1,9 @@
+.docusaurus 
+.clever.json
+.DS_Store
+
+translated_docs
+build/
+yarn.lock
+node_modules/
+i18n/*

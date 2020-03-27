@@ -1,5 +1,12 @@
+---
+id: home
+title: Documentation
+sidebar_label: Home
+---
+
+
 <p align="center">
-  <img src="https://cdn.filestackcontent.com/compress/fyFHRMfCRL2xhwCVtx0F" width="400" />
+  <img src="https://cdn.filestackcontent.com/compress/fyFHRMfCRL2xhwCVtx0F" width="200" />
 </p>
 
 <br />
@@ -19,12 +26,6 @@ This app is built using the popular [create-react-app](https://github.com/facebo
 ### Preview
 
 [![Resume Preview](https://cdn.filestackcontent.com/compress/resize=width:500/rfXY8TNARdao9DdQSaJe)](https://vincent-cotro.welovedevs.com)
-
-### Docs
-
-Docs can be found [Here](https://welovedevs.com/react-ultimate-resume/docs/home). 
-
-Feel free to improve it with a PR ♥️
 
 ### Features
 
@@ -73,7 +74,7 @@ Replace the default JSON Resume with yours
 
 ### Deploy on you own server
 
-You can deploy your resume on your own server in few minutes. Follow our [HOW TO documentation](https://welovedevs.com/react-ultimate-resume/docs/deploy-fork). 
+You can deploy your resume on your own server in few minutes. Follow our [HOW TO documentation](deploy-fork.md). 
 
 ### Parameters
 
