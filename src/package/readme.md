@@ -17,7 +17,7 @@ Sections -
 
 You can integrate this profile as such:
 
-```
+```javascript
 import { DeveloperProfile } from '@wld/developer-profile';
 
 const ApplicationComponent = () => {
@@ -34,15 +34,17 @@ export const Application = ApplicationComponent;
 
 If you want to use the google maps autocomplete api, please make sure to add
 
-```
+```html
 <script
-   type="text/javascript"
-   src="https://maps.googleapis.com/maps/api/js?key=[YOUR_GMAPS_API_KEY]&libraries=places"
+    type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=[YOUR_GMAPS_API_KEY]&libraries=places"
 ></script>
 ```
-In the header of your HTML page. 
+
+In the header of your HTML page.
 
 If you want to use the GIPHY api, please make sure to provide a apikey.giphy to the options props of the profile
+
 ## Theming
 
 We created a default theme based on WeLoveDevs' graphical identity.
@@ -50,7 +52,6 @@ We created a default theme based on WeLoveDevs' graphical identity.
 You can modify this theme and create your own unique style.
 
 Please see `utils/styles/theme/theme.js` for an example.
-
 
 # Pull Requests & Coding Guideline
 
@@ -64,17 +65,22 @@ Even though we - at WeLoveDevs - really like spreading as much as we can, we dec
 
 Example:
 
-Do **not** write
+🚫 Do **not** write
 
-`<Component {...{ key, data } />`
+```javascript
+<Component {...{ key, data } />
+```
 
-Do write
+✅ Do write
 
-`<Component key={key} data={data} />`
-
-
+```javascript
+<Component key={key} data={data} />
+```
 
 ## Architecture
 
 We use a project structure which, we believe, is the most readable.
-````
+
+```
+
+```
