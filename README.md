@@ -125,13 +125,13 @@ We added a few extra features that you will love :
 - ⚡ Server side rendering for ultra fast loading
 - 🔒 Secured using reCAPTCHA v3, HTTPS and Cloudflare
 
-### Built by the community 
-
-https://web-develop.me/ - by [@liorchalma](https://github.com/liorchamla)
-
 ### i18n
 
 The resume is currently available in English and in French. Feel free to contribute with your language translation file !   
+
+### Built by the community 💖
+
+https://web-develop.me/ - by [@liorchalma](https://github.com/liorchamla)
 
 ### Contributors
 This project exists thanks to all the people who contribute.
