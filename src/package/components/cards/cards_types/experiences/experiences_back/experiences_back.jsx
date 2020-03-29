@@ -23,14 +23,16 @@ const ExperienceContent = ({ experience, variant, classes }) => {
 
     const { id, name, summary, place, position } = experience;
     const dateString = useMemo(() => {
+        const displayAsYear = experience.displayDatesAsYears ? experience.displayDatesAsYears : false;
+        const displayFormat = displayAsYear ? 'YYYY' : 'MMM YYYY';
         if (!experience.endDate) {
             if (!experience.startDate) {
                 return '';
             }
-            return formatMessage(translations.since, { year: experience.startDate.format('MMM YYYY') });
+            return formatMessage(translations.since, { year: experience.startDate.format(displayFormat) });
         }
-        const startDate = experience.startDate.isValid() ? experience.startDate.format('MMM YYYY') : '';
-        const endDate = experience.endDate.isValid() ? experience.endDate.format('MMM YYYY') : '';
+        const startDate = experience.startDate.isValid() ? experience.startDate.format(displayFormat) : '';
+        const endDate = experience.endDate.isValid() ? experience.endDate.format(displayFormat) : '';
         return `${startDate} - ${endDate}`;
     }, [experience]);
 
@@ -72,7 +74,7 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
     if (!hasWork) {
         return <NoWork {...{ handleAddButtonClick }} />;
     }
-    return experiences.map(experience => (
+    return experiences.map((experience) => (
         <ExperienceContent key={`work_experience_${experience.id}`} experience={experience} classes={classes} />
     ));
 };
