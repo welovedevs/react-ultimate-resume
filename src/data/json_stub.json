@@ -2,7 +2,7 @@
     "basics": {
         "name": "John Doe",
         "label": "Programmer",
-        "picture": "",
+        "picture": "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
         "email": "john@gmail.com",
         "phone": "(912) 555-4321",
         "website": "http://johndoe.com",

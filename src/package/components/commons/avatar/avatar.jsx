@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
@@ -10,14 +10,22 @@ import { styles } from './avatar_styles';
 
 const useStyles = createUseStyles(styles);
 
-const AvatarComponent = ({ src = 'https://i.pravatar.cc/1000', displayedName }) => {
+const DEFAULT_IMAGE = 'https://i.pravatar.cc/250';
+const AvatarComponent = ({ src, displayedName }) => {
     const classes = useStyles();
     const [receivedGlobalClasses] = useReceivedGlobalClasses('banner.avatar');
     const [nodes] = useAdditionalNodes('banner.avatar', null);
+
+    const pictureSource = useMemo(() => src || DEFAULT_IMAGE, [src]);
+
     return (
         <div className={cn(classes.container, receivedGlobalClasses.container)}>
             <div className={cn(classes.imageContainer, classes.imageContainer)}>
-                <img className={cn(classes.image, receivedGlobalClasses.image)} src={src} alt={displayedName} />
+                <img
+                    className={cn(classes.image, receivedGlobalClasses.image)}
+                    src={pictureSource}
+                    alt={displayedName}
+                />
             </div>
             {nodes}
         </div>
