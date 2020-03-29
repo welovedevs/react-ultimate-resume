@@ -10,12 +10,12 @@ export const mapWorkFromJsonResume = (jsonResume) => ({
         endDate: work.endDate && moment(work.endDate, 'YYYY-MM-DD'),
         place: {
             name: work.location,
-            placeId: work.placeId,
+            placeId: work.placeId
         },
         stillEmployed: !work.endDate,
         displayDatesAsYears: jsonResume.customization?.work?.displayDatesAsYears,
-        index,
-    })),
+        index
+    }))
 });
 
 export const mapWorkToJsonResume = (data) => ({
@@ -23,6 +23,6 @@ export const mapWorkToJsonResume = (data) => ({
         ...work,
         location: work.place?.name ?? work.location,
         startDate: work.startDate?.format('YYYY-MM-DD'),
-        endDate: work.endDate?.format('YYYY-MM-DD'),
-    })),
+        endDate: work.endDate?.format('YYYY-MM-DD')
+    }))
 });
