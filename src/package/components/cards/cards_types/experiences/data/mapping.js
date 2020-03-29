@@ -1,7 +1,7 @@
 import moment from 'moment';
 import uuid from 'uuid/v4';
 
-export const mapWorkFromJsonResume = jsonResume => ({
+export const mapWorkFromJsonResume = (jsonResume) => ({
     work: jsonResume?.work?.map((work, index) => ({
         ...work,
         // generating uuid for manipulating data if not present
@@ -10,18 +10,19 @@ export const mapWorkFromJsonResume = jsonResume => ({
         endDate: work.endDate && moment(work.endDate, 'YYYY-MM-DD'),
         place: {
             name: work.location,
-            placeId: work.placeId
+            placeId: work.placeId,
         },
         stillEmployed: !work.endDate,
-        index
-    }))
+        displayDatesAsYears: jsonResume.customization?.work?.displayDatesAsYears,
+        index,
+    })),
 });
 
-export const mapWorkToJsonResume = data => ({
-    work: data.work?.map(work => ({
+export const mapWorkToJsonResume = (data) => ({
+    work: data.work?.map((work) => ({
         ...work,
         location: work.place?.name ?? work.location,
         startDate: work.startDate?.format('YYYY-MM-DD'),
-        endDate: work.endDate?.format('YYYY-MM-DD')
-    }))
+        endDate: work.endDate?.format('YYYY-MM-DD'),
+    })),
 });
