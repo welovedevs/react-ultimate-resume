@@ -17,7 +17,9 @@
         "build:messages": "NODE_ENV=production babel ./src >/dev/null",
         "serve": "react-scripts build && serve build",
         "manage:translations": "node ./translationRunner.js",
-        "gh-deploy": "yarn build && gh-pages -d build"
+        "gh-deploy": "yarn build && gh-pages -d build",
+        "version:beta" : "npm version prerelease --preid=beta",
+        "version:release" : "npm version ${VERSION:-patch}"
     },
     "author": "",
     "license": "ISC",

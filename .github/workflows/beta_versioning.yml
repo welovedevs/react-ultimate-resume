@@ -1,0 +1,35 @@
+## This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+## For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+#
+# This workflow is disabled until we find a way to make commit from github actions?
+#name: On beta tag
+#
+#on:
+#  push:
+#    tags:
+#      - 'v[0-9].[0-9]+.[0-9]+.beta*'
+#jobs:
+#  build:
+#    needs: version
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: actions/setup-node@v1
+#        with:
+#          node-version: 12
+#      - run: yarn install
+#      - run: npm run test-build
+#  publish-npm:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: actions/setup-node@v1
+#        with:
+#          node-version: 12
+#          registry-url: https://registry.npmjs.org/
+#      - run: yarn install
+#      - run: node package.js
+#      - run: npm publish --scope=welovedevs --access public
+#        env:
+#          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
