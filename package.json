@@ -1,6 +1,6 @@
 {
     "name": "@welovedevs/react-ultimate-resume",
-    "version": "0.0.4-beta.0",
+    "version": "0.0.4-beta.1",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
@@ -18,8 +18,8 @@
         "serve": "react-scripts build && serve build",
         "manage:translations": "node ./translationRunner.js",
         "gh-deploy": "yarn build && gh-pages -d build",
-        "version:beta" : "npm version prerelease --preid=beta",
-        "version:release" : "npm version ${VERSION:-patch}"
+        "version:beta": "npm version prerelease --preid=beta",
+        "version:release": "npm version ${VERSION:-patch}"
     },
     "author": "",
     "license": "ISC",
