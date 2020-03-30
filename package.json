@@ -10,7 +10,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "prepackage": "rimraf lib ",
         "package": "./node_modules/.bin/babel src/package -d .",
-        "postpackage": "cp-cli src/package/readme.md readme.md && cp-cli src/package/i18n i18n && cp-cli src/package/assets assets",
+        "postpackage": "cp-cli src/package/i18n i18n && cp-cli src/package/assets assets",
         "test-build": "rimraf ./test-build && ./node_modules/.bin/babel src -d ./test_build",
         "posttest-build": "rimraf ./test_build ./styles ",
         "build": "react-scripts build",
@@ -21,7 +21,11 @@
         "version:beta": "npm version prerelease --preid=beta",
         "version:release": "npm version ${VERSION:-patch}"
     },
-    "author": "",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/welovedevs/react-ultimate-resume.git"
+    },
+    "author": "WeLoveDevs.com",
     "license": "AGPLv3",
     "peerDependencies": {
         "@material-ui/core": "^4.8.3",
