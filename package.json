@@ -1,5 +1,5 @@
 {
-    "name": "@welovedevs/developer-profile",
+    "name": "@welovedevs/react-ultimate-resume",
     "version": "0.0.4-beta.0",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
