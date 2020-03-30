@@ -7,9 +7,19 @@
         <meta name="theme-color" content="#000000" />
         <meta name="description" content="Web site created using create-react-app" />
         <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+        <script lang="javascript">
+            function gm_authFailure(e) {
+                //google maps auth failed, setting it globally
+                google.init_error = "auth_failed";
+            };
+            function gm_map_ready(e) {
+                //google maps initialized
+                google.ready = true;
+            };
+        </script>
         <script
             type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?key=%REACT_APP_GOOGLE_MAPS%&libraries=places"
+            src="https://maps.googleapis.com/maps/api/js?key=%REACT_APP_GOOGLE_MAPS%&libraries=places&callback=gm_map_ready"
         ></script>
         <!--
       manifest.json provides metadata used when your web app is installed on a

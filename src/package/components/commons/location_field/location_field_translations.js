@@ -7,6 +7,10 @@ export const translations = defineMessages({
     },
     placeholder: {
         id: 'DeveloperProfile.locationField.placeholder',
-        defaultMessage: 'Paris, France'
+        defaultMessage: 'Start typing to search (ex : Paris...)'
+    },
+    stubPlaceholder: {
+        id: 'DeveloperProfile.locationField.stubPlaceholder',
+        defaultMessage: 'Your location '
     }
 });
