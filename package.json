@@ -22,7 +22,7 @@
         "version:release": "npm version ${VERSION:-patch}"
     },
     "author": "",
-    "license": "ISC",
+    "license": "AGPLv3",
     "peerDependencies": {
         "@material-ui/core": "^4.8.3",
         "@wld/ui": "https://github.com/welovedevs/wld-design-system.git#v1.1.6-8",
