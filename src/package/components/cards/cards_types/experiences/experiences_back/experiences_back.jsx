@@ -14,17 +14,17 @@ import { translations } from './experiences_translations';
 import { useAdditionalNodes } from '../../../../hooks/use_additional_nodes';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoWork } from './no_work/no_work';
+import { useCustomization } from '../../../../hooks/use_customization';
 
 const useStyles = createUseStyles(styles);
 
 const ExperienceContent = ({ experience, variant, classes }) => {
     const { formatMessage } = useIntl();
     const [buildTitle] = useAdditionalNodes('cards.experiences.back.experience.content.buildTitle', null);
-
+    const [customization] = useCustomization();
     const { id, name, summary, place, position } = experience;
     const dateString = useMemo(() => {
-        const displayAsYear = experience.displayDatesAsYears ? experience.displayDatesAsYears : false;
-        const displayFormat = displayAsYear ? 'YYYY' : 'MMM YYYY';
+        const displayFormat = customization?.fields?.work?.customDateFormat || 'MMM YYYY';
         if (!experience.endDate) {
             if (!experience.startDate) {
                 return '';
@@ -34,7 +34,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
         const startDate = experience.startDate.isValid() ? experience.startDate.format(displayFormat) : '';
         const endDate = experience.endDate.isValid() ? experience.endDate.format(displayFormat) : '';
         return `${startDate} - ${endDate}`;
-    }, [experience]);
+    }, [experience, customization?.fields?.work?.customDateFormat]);
 
     const title = useMemo(() => {
         if (typeof buildTitle === 'function') {
@@ -74,7 +74,7 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
     if (!hasWork) {
         return <NoWork {...{ handleAddButtonClick }} />;
     }
-    return experiences.map((experience) => (
+    return experiences.map(experience => (
         <ExperienceContent key={`work_experience_${experience.id}`} experience={experience} classes={classes} />
     ));
 };
