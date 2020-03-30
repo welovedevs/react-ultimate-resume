@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl';
 import { animated, useChain, useTransition } from 'react-spring';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
-import { Card, TextField, Typography } from '@wld/ui';
+import { Card, TextField, Typography } from '@welovedevs/ui';
 
 import { useTechnologies } from '../../../hooks/technologies/use_technologies';
 
@@ -98,7 +98,8 @@ const AllTechnologiesPickerComponent = ({ selectedItems, onAdd, onDelete, classe
                     return selectedItems.some(({ name: selectedName }) => selectedName === name);
                 })
                 .filter(({ name, tags }) =>
-                    [...(tags ?? []), name].some(value => value.toLowerCase().includes(debouncedQuery.toLowerCase())))
+                    [...(tags ?? []), name].some(value => value.toLowerCase().includes(debouncedQuery.toLowerCase()))
+                )
                 .slice(0, 35),
         [technologies, debouncedQuery, onlySelected]
     );

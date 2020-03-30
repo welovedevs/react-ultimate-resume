@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss';
 import Slider from 'react-slick';
 import { animated, useSpring, useTransition } from 'react-spring';
 
-import { Typography } from '@wld/ui';
+import { Typography } from '@welovedevs/ui';
 
 import { ReactComponent as ArrowIcon } from '../../../../../assets/icons/arrow-right.svg';
 

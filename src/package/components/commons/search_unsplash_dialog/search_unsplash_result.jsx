@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss';
 import { useDebounce } from 'use-debounce';
 
 import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
-import { Button, TextField, Tooltip } from '@wld/ui';
+import { Button, TextField, Tooltip } from '@welovedevs/ui';
 
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';
 import { LoadingSpinner } from '../loading_spinner/loading_spinner';

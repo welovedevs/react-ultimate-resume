@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import injectSheet from 'react-jss';
 import { animated, useSpring } from 'react-spring';
 
-import { Button } from '@wld/ui';
+import { Button } from '@welovedevs/ui';
 
 import { ReactComponent as ArrowRight } from '../../../../assets/icons/arrow-right.svg';
 

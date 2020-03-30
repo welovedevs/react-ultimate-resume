@@ -6,7 +6,7 @@ import mergeWith from 'lodash/mergeWith';
 import omit from 'lodash/omit';
 import cloneDeep from 'lodash/cloneDeep';
 import download from 'downloadjs';
-import { Button } from '@wld/ui';
+import { Button } from '@welovedevs/ui';
 
 import JsonStub from './data/json_stub.json';
 import DeveloperProfile from './package';

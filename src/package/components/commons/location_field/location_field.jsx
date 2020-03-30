@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { useIntl } from 'react-intl';
 
-import { List, ListItem, PopperCard, TextField, Typography } from '@wld/ui';
+import { List, ListItem, PopperCard, TextField, Typography } from '@welovedevs/ui';
 
 import { useGoogleMapsPredictions } from '../../hooks/location/use_google_maps_predictions';
 

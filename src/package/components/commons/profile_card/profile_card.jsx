@@ -3,7 +3,7 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useR
 import { createUseStyles, useTheme } from 'react-jss';
 import { animated, config, useTransition } from 'react-spring';
 
-import { Card } from '@wld/ui';
+import { Card } from '@welovedevs/ui';
 
 import { useMediaQuery } from '@material-ui/core';
 

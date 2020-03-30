@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
-import { Typography } from '@wld/ui';
+import { Typography } from '@welovedevs/ui';
 import { ProfileCardActions } from '../../../../commons/profile_card/profile_card_actions/profile_card_actions';
 import { ProfileCardButton } from '../../../../commons/profile_card/profile_card_button/profile_card_button';
 import { GifsSidesCommons } from '../gifs_sides_commons/gifs_sides_commons';

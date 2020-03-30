@@ -3,7 +3,7 @@ import React, { memo, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 
-import { PopperCard, Typography } from '@wld/ui';
+import { PopperCard, Typography } from '@welovedevs/ui';
 
 import { ReactComponent as WarnIcon } from '../../../../assets/icons/warn.svg';
 

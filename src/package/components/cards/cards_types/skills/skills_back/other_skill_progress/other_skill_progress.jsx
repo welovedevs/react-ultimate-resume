@@ -1,8 +1,8 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 
-import { ProgressBar } from '@wld/ui/progress_bar/progress_bar';
-import { Typography } from '@wld/ui/typography/typography';
+import { ProgressBar } from '@welovedevs/ui/progress_bar/progress_bar';
+import { Typography } from '@welovedevs/ui/typography/typography';
 
 import { styles } from './other_skill_progress_styles';
 

@@ -9,7 +9,7 @@ import isEqual from 'lodash/isEqual';
 import pick from 'lodash/pick';
 
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { TextField, Typography } from '@wld/ui';
+import { TextField, Typography } from '@welovedevs/ui';
 
 import styles from './year_month_styles';
 
@@ -76,4 +76,5 @@ const YearMonthComponent = ({ className, value, onChange, title, error, variant,
 };
 
 export const YearMonth = memo(YearMonthComponent, (nextProps, oldProps) =>
-    isEqual(pick(nextProps, ['value', 'error', 'onChange']), pick(oldProps, ['value', 'error', 'onChange'])));
+    isEqual(pick(nextProps, ['value', 'error', 'onChange']), pick(oldProps, ['value', 'error', 'onChange']))
+);

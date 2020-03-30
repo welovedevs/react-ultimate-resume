@@ -6,7 +6,7 @@ import { createUseStyles, useTheme } from 'react-jss';
 import { Formik, useFormikContext } from 'formik';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Button, Tooltip } from '@wld/ui';
+import { Button, Tooltip } from '@welovedevs/ui';
 
 import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
 

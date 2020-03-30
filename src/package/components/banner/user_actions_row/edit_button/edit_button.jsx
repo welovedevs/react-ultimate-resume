@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles, useTheme } from 'react-jss';
-import { Button } from '@wld/ui';
+import { Button } from '@welovedevs/ui';
 
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { ReactComponent as EditIcon } from '../../../../assets/icons/edit.svg';

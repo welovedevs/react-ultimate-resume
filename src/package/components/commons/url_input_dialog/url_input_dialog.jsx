@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
-import { Button, TextField } from '@wld/ui';
+import { Button, TextField } from '@welovedevs/ui';
 
 import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
 

@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 
-import { Tooltip } from '@wld/ui';
+import { Tooltip } from '@welovedevs/ui';
 
 import { PALETTE_KEY_TRANSLATIONS } from './palette_visual_translations';
 

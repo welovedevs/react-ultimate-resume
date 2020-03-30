@@ -12,7 +12,7 @@ import keyBy from 'lodash/keyBy';
 import uuid from 'uuid/v4';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
-import { Checkbox, List, ListItem, TextField, Tooltip, Typography } from '@wld/ui';
+import { Checkbox, List, ListItem, TextField, Tooltip, Typography } from '@welovedevs/ui';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { YearMonth } from '../../../../commons/year_month/year_month';

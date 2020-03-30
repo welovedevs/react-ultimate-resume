@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss';
 import InfiniteScroll from 'react-infinite-scroller';
 import { animated, useTransition } from 'react-spring';
 
-import { Typography } from '@wld/ui';
+import { Typography } from '@welovedevs/ui';
 
 import { PaletteVisual } from '../palette_visual/palette_visual';
 import { LoadingSpinner } from '../../../../commons/loading_spinner/loading_spinner';

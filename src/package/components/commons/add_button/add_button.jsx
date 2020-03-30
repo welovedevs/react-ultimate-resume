@@ -2,7 +2,7 @@ import React from 'react';
 
 import { createUseStyles } from 'react-jss';
 
-import { Button } from '@wld/ui';
+import { Button } from '@welovedevs/ui';
 import { FormattedMessage } from 'react-intl';
 
 import { ReactComponent as AddIcon } from '../../../assets/icons/add.svg';

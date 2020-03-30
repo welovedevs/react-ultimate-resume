@@ -4,7 +4,7 @@ import { createUseStyles } from 'react-jss';
 
 import cn from 'classnames';
 
-import { Typography } from '@wld/ui';
+import { Typography } from '@welovedevs/ui';
 
 import { styles } from './dialog_title_styles';
 

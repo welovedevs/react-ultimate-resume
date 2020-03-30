@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 
-import { PopperCard, Slider } from '@wld/ui';
+import { PopperCard, Slider } from '@welovedevs/ui';
 
 import { styles } from './slider_with_popper_styles';
 

@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { animated, useSpring } from 'react-spring';
 
-import { TextField, TextFieldIcon } from '@wld/ui';
+import { TextField, TextFieldIcon } from '@welovedevs/ui';
 
 import { ReactComponent as KeyboardArrowDownIcon } from '../../../assets/icons/keyboard_arrow_down.svg';
 

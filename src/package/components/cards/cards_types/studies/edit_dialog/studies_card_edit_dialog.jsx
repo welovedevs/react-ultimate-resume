@@ -13,7 +13,7 @@ import range from 'lodash/range';
 import moment from 'moment';
 import uuid from 'uuid/v4';
 
-import { List, ListItem, TextField, Tooltip, Typography } from '@wld/ui';
+import { List, ListItem, TextField, Tooltip, Typography } from '@welovedevs/ui';
 
 import { MenuItem, useMediaQuery } from '@material-ui/core';
 

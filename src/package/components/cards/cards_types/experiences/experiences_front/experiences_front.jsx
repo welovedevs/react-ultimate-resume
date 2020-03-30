@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 import moment from 'moment';
 
-import { Typography } from '@wld/ui';
+import { Typography } from '@welovedevs/ui';
 import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
 import { ProfileCardActions } from '../../../../commons/profile_card/profile_card_actions/profile_card_actions';
@@ -80,11 +80,7 @@ const ExperiencesFrontComponent = ({ data, handleAddButtonClick }) => {
                 />
             );
         }
-        return builder.map((value, index) => (
-            <Fragment key={`builder_part_${index}`}>
-                {value}
-            </Fragment>
-        ));
+        return builder.map((value, index) => <Fragment key={`builder_part_${index}`}>{value}</Fragment>);
     }, [data.work]);
 
     return (

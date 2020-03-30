@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 
-import { Card, List, Tooltip, Typography } from '@wld/ui';
+import { Card, List, Tooltip, Typography } from '@welovedevs/ui';
 
 import { SliderWithPopper } from '../../slider_with_popper/slider_with_popper';
 

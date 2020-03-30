@@ -3,7 +3,7 @@ import React, { useCallback, useContext, useMemo, useRef } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { useDebounce } from 'use-debounce';
 
-import { PopperCard, Checkbox } from '@wld/ui';
+import { PopperCard, Checkbox } from '@welovedevs/ui';
 
 import { PaletteVisual } from '../palette_visual/palette_visual';
 import { Context } from '../card_orderer/cards_orderer';

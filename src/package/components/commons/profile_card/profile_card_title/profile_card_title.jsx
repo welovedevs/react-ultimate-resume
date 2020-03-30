@@ -3,7 +3,7 @@ import React from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 
-import { Typography } from '@wld/ui';
+import { Typography } from '@welovedevs/ui';
 
 import { useCardVariant } from '../../../hooks/profile_card_hooks/use_card_variant';
 

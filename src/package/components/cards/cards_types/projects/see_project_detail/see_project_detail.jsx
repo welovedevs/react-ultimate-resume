@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
-import { Typography } from '@wld/ui';
+import { Typography } from '@welovedevs/ui';
 
 import { ProjectDialog } from '../project_dialog/project_dialog';
 import { AnimatedUnderlinedButton } from '../../../../commons/animated_underlined_button/animated_underlined_button';

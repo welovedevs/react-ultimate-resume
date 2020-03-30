@@ -1,4 +1,4 @@
-import { Button } from '@wld/ui';
+import { Button } from '@welovedevs/ui';
 
 import React from 'react';
 

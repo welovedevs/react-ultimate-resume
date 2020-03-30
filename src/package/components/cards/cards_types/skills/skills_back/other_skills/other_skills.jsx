@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { createUseStyles, useTheme } from 'react-jss';
 import { animated } from 'react-spring';
 
-import { Typography } from '@wld/ui/typography/typography';
+import { Typography } from '@welovedevs/ui/typography/typography';
 
 import OtherSkillProgress from '../other_skill_progress/other_skill_progress';
 import { getColorsFromCardVariant } from '../../../../../../utils/styles/styles_utils';

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useIntl } from 'react-intl';
 
-import { ListItem } from '@wld/ui';
+import { ListItem } from '@welovedevs/ui';
 
 import { Select } from '../../../../../commons/select/select';
 

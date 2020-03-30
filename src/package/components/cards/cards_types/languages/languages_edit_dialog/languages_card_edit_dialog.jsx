@@ -6,7 +6,7 @@ import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'r
 
 import uuid from 'uuid/v4';
 
-import { List, TextField, Tooltip, Typography } from '@wld/ui';
+import { List, TextField, Tooltip, Typography } from '@welovedevs/ui';
 import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
 
 import { useFormikContext } from 'formik';

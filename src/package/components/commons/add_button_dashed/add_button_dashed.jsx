@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
-import { Tooltip, Typography } from '@wld/ui';
+import { Tooltip, Typography } from '@welovedevs/ui';
 
 import { styles } from './add_button_dashed_styles';
 

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import { createUseStyles } from 'react-jss';
 
-import { Typography } from '@wld/ui';
+import { Typography } from '@welovedevs/ui';
 
 import { Avatar } from '../../../commons/avatar/avatar';
 import { Column } from '../../../commons/column/column';

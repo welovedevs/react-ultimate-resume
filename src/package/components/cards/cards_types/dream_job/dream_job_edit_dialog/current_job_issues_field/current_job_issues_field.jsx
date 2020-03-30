@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss';
 import { animated, useTransition } from 'react-spring';
 
 import { FormattedMessage, useIntl } from 'react-intl';
-import { TextField, Typography } from '@wld/ui';
+import { TextField, Typography } from '@welovedevs/ui';
 import { CheckboxGroup } from '../../../../../commons/checkbox_group/checkbox_group';
 import { CheckboxField } from '../../../../../commons/checkbox_field/checkbox_group';
 import { JobIssues } from '../../../../../../utils/enums/job_issues/job_issues_utils';

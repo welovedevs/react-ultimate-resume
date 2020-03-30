@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles, useTheme } from 'react-jss';
-import { Typography } from '@wld/ui';
+import { Typography } from '@welovedevs/ui';
 
 import { ProfileCardSectionTitle } from '../../../../../commons/profile_card/profile_card_section_title/profile_card_section_title';
 import { ProfileCardSectionSubtitle } from '../../../../../commons/profile_card/profile_card_section_subtitle/profile_card_section_subtitle';

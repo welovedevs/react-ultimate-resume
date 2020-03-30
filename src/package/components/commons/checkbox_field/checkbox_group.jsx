@@ -3,7 +3,7 @@ import React from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 
-import { Checkbox } from '@wld/ui';
+import { Checkbox } from '@welovedevs/ui';
 
 import { checkboxStyles } from './checkbox_styles';
 

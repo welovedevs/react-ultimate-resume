@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { TextField } from '@wld/ui';
+import { TextField } from '@welovedevs/ui';
 import { EditDialogField } from '../../../../../commons/edit_dialog_field/edit_dialog_field';
 
 import { hasOnlyFreelanceContract } from '../../../../utils/has_only_freelance_contract';

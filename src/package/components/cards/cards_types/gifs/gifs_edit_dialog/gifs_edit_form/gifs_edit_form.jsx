@@ -10,7 +10,7 @@ import uuid from 'uuid/v4';
 import { arrayMove } from 'react-sortable-hoc';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
-import { Typography } from '@wld/ui';
+import { Typography } from '@welovedevs/ui';
 
 import { SearchGifsDialog } from '../../../../../commons/search_gif_dialog/search_gifs_dialog';
 import { AddButtonDashed } from '../../../../../commons/add_button_dashed/add_button_dashed';

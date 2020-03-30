@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { useFormikContext } from 'formik';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Typography } from '@wld/ui';
+import { Typography } from '@welovedevs/ui';
 import uuid from 'uuid/v4';
 
 import { AllTechnologiesPicker } from '../../../../../commons/technologies/all_technologies_picker/all_technologies_picker';

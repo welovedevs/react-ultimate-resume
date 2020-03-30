@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 import MomentUtils from '@date-io/moment';
-import { Typography } from '@wld/ui';
+import { Typography } from '@welovedevs/ui';
 import { useFormikContext } from 'formik';
 import { styles } from './project_dialog_content_date_styles';
 

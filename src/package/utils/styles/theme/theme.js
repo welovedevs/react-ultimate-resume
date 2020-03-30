@@ -2,7 +2,7 @@ import mergeWith from 'lodash/mergeWith';
 import merge from 'lodash/merge';
 import cloneDeep from 'lodash/cloneDeep';
 import isArray from 'lodash/isArray';
-import DESIGN_SYSTEM_DEFAULT_PALETTE from '@wld/ui/styles/palettes';
+import DESIGN_SYSTEM_DEFAULT_PALETTE from '@welovedevs/ui/styles/palettes';
 
 import { THEME_SCHEMA } from './theme_schema';
 import { transformTheme } from './theme_transforms';

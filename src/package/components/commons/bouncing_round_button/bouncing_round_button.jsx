@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { animated, useSpring } from 'react-spring';
 
-import { Tooltip } from '@wld/ui';
+import { Tooltip } from '@welovedevs/ui';
 
 import { ReactComponent as EditIcon } from '../../../assets/icons/edit.svg';
 

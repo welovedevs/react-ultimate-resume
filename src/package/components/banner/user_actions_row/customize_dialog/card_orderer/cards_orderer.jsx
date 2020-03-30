@@ -4,7 +4,7 @@ import { createUseStyles } from 'react-jss';
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 import cloneDeep from 'lodash/cloneDeep';
 
-import { List } from '@wld/ui';
+import { List } from '@welovedevs/ui';
 
 import { CardStub } from '../card_stub/card_stub';
 import { DEFAULT_CARD_ORDER } from '../../../../cards/utils/cards_order';

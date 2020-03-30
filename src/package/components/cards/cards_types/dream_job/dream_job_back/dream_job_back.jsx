@@ -3,7 +3,7 @@ import React, { memo, useMemo, useRef } from 'react';
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import { List, ListItem, PopperCard, Typography } from '@wld/ui';
+import { List, ListItem, PopperCard, Typography } from '@welovedevs/ui';
 
 import { ProfileCardSection } from '../../../../commons/profile_card/profile_card_section/profile_card_section';
 import { ProfileCardSectionTitle } from '../../../../commons/profile_card/profile_card_section_title/profile_card_section_title';

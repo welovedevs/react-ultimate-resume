@@ -1,7 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 
-import { Button } from '@wld/ui';
+import { Button } from '@welovedevs/ui';
 import { useMediaQuery } from '@material-ui/core';
 import { createUseStyles } from 'react-jss';
 import { Twemoji } from 'react-emoji-render';

@@ -4,7 +4,7 @@ import { createUseStyles } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useFormikContext } from 'formik';
 
-import { TextField, Typography } from '@wld/ui';
+import { TextField, Typography } from '@welovedevs/ui';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { EditDialogField } from '../../../../commons/edit_dialog_field/edit_dialog_field';

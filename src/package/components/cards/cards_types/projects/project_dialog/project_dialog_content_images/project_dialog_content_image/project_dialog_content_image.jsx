@@ -4,7 +4,7 @@ import { createUseStyles } from 'react-jss';
 import { animated, useTransition } from 'react-spring';
 
 import { useFormikContext } from 'formik';
-import { Tooltip } from '@wld/ui';
+import { Tooltip } from '@welovedevs/ui';
 
 import { useIsEditing } from '../../../../../../hooks/use_is_editing';
 import { useOpenerState } from '../../../../../../hooks/use_opener_state';

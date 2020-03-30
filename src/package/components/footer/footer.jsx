@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 
-import { Tooltip } from '@wld/ui';
+import { Tooltip } from '@welovedevs/ui';
 import { useMediaQuery } from '@material-ui/core';
 
 import { ShareLinks } from './share_links/share_links';

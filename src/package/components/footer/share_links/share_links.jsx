@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss';
 import { useIntl } from 'react-intl';
 import { animated, config, useSpring } from 'react-spring';
 
-import { Tooltip } from '@wld/ui';
+import { Tooltip } from '@welovedevs/ui';
 import { SHARE_LINKS_DATA } from './share_links_data';
 import { BACKGROUND_LINE_SPRING_PROPS } from './share_links_spring_props';
 

@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { useFormikContext } from 'formik';
 import { useDebounce } from 'use-debounce';
 
-import { TextField } from '@wld/ui';
+import { TextField } from '@welovedevs/ui';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { EditDialogField } from '../../../../commons/edit_dialog_field/edit_dialog_field';
