@@ -5,8 +5,8 @@
 <br />
 
 # react-ultimate-resume by WeLoveDevs.com
-![npm (scoped)](https://img.shields.io/npm/v/@welovedevs/react-ultimate-resume?color=%23220DAD)
-![npm](https://img.shields.io/npm/dw/@welovedevs/react-ultimate-resume?color=%23220DAD)
+[![npm (scoped)](https://img.shields.io/npm/v/@welovedevs/react-ultimate-resume?color=%23220DAD)](https://www.npmjs.com/package/@welovedevs/react-ultimate-resume)
+[![npm](https://img.shields.io/npm/dw/@welovedevs/react-ultimate-resume?color=%23220DAD)](https://www.npmjs.com/package/@welovedevs/react-ultimate-resume)
 
 **react-ultimate-resume** is an open-source customizable software developer resume to highlight your skills and experiences.
 
