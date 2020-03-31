@@ -75,6 +75,21 @@ Replace the default JSON Resume with yours
 
 You can deploy your resume on your own server in few minutes. Follow our [HOW TO documentation](https://welovedevs.com/react-ultimate-resume/docs/deploy-fork). 
 
+### Use inside your project
+
+You can install the resume directly inside your project.
+
+```
+npm i @welovedevs/react-ultimate-resume
+```
+
+Then
+
+```
+import DeveloperProfile from '@welovedevs/react-ultimate-resume';
+```
+
+
 ### Parameters
 
 **Parameter**|**Type**|**Description**
