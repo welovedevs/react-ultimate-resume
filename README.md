@@ -5,6 +5,9 @@
 <br />
 
 # react-ultimate-resume by WeLoveDevs.com
+![npm (scoped)](https://img.shields.io/npm/v/@welovedevs/react-ultimate-resume?color=%23220DAD)
+![npm](https://img.shields.io/npm/dw/@welovedevs/react-ultimate-resume?color=%23220DAD)
+
 **react-ultimate-resume** is an open-source customizable software developer resume to highlight your skills and experiences.
 
 Discover a modern approach of the traditionnal CV that includes animations and latest front-end technologies. Impress recruiters or customers with your projects, hobbies and experiences as never before.
@@ -19,6 +22,7 @@ This app is built using the popular [create-react-app](https://github.com/facebo
 ### Preview
 
 [![Resume Preview](https://cdn.filestackcontent.com/compress/resize=width:500/rfXY8TNARdao9DdQSaJe)](https://vincent-cotro.welovedevs.com)
+
 
 ### Docs
 
