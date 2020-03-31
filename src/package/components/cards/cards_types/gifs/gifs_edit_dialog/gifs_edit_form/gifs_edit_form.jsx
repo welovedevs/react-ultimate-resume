@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 
 import { createUseStyles, useTheme } from 'react-jss';
 import { useFormikContext } from 'formik';
@@ -17,6 +17,8 @@ import { AddButtonDashed } from '../../../../../commons/add_button_dashed/add_bu
 import { GifsSortableCards } from './gifs_sortable_cards/gifs_sortable_cards';
 
 import { styles } from './gifs_edit_form_styles';
+import { StaticDataContext } from '../../../../../../utils/context/contexts';
+import { URLFallbackDialog } from '../../../../../commons/url_fallback_dialog.jsx/url_fallback_dialog';
 
 const useStyles = createUseStyles(styles);
 
@@ -26,8 +28,11 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
     const classes = useStyles();
     const {
         values: { interests },
-        errors: validationErrors
+        errors: validationErrors,
     } = useFormikContext();
+
+    const { apiKeys } = useContext(StaticDataContext);
+    const hasGiphyKey = useMemo(() => !!apiKeys.giphy, [apiKeys.giphy]);
 
     const [selectedIndex, setSelectedIndex] = useState(null);
     const removeSelectedIndex = useCallback(() => setSelectedIndex(null), []);
@@ -41,7 +46,7 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
     }, []);
 
     const interestDeleted = useCallback(
-        id => {
+        (id) => {
             handleValueChange('interests')(Object.values(omit(keyedValues, id)));
         },
         [JSON.stringify(keyedValues), JSON.stringify(interests)]
@@ -52,7 +57,7 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
         handleValueChange('interests')(
             interests.concat({
                 index: interests.length,
-                id
+                id,
             })
         );
 
@@ -78,14 +83,29 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
         },
         [interestChanged, selectedIndex]
     );
+    const handleGifChange = useCallback(
+        (url) => {
+            interestChanged(selectedIndex, 'gifUrl', url);
+        },
+        [interestChanged, selectedIndex]
+    );
 
     return (
         <>
-            <SearchGifsDialog
-                open={Boolean(selectedIndex !== null)}
-                onClose={removeSelectedIndex}
-                onSelect={handleGifSelection}
-            />
+            {hasGiphyKey && (
+                <SearchGifsDialog
+                    open={Boolean(selectedIndex !== null)}
+                    onClose={removeSelectedIndex}
+                    onSelect={handleGifSelection}
+                />
+            )}
+            {!hasGiphyKey && (
+                <URLFallbackDialog
+                    open={Boolean(selectedIndex !== null)}
+                    onClose={removeSelectedIndex}
+                    onChange={handleGifChange}
+                />
+            )}
             {globalError && (
                 <Typography color="danger" variant="h4" component="h4">
                     {globalError}
@@ -94,7 +114,7 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
             {isMobile && (
                 <AddButtonDashed
                     classes={{
-                        container: classes.addButtonDashed
+                        container: classes.addButtonDashed,
                     }}
                     onClick={addInterest}
                 />
@@ -110,7 +130,7 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
             {!isMobile && (
                 <AddButtonDashed
                     classes={{
-                        container: classes.addButtonDashed
+                        container: classes.addButtonDashed,
                     }}
                     onClick={addInterest}
                 />

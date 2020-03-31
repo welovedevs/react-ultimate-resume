@@ -33,7 +33,7 @@ if (!Intl.PluralRules) {
 
 const messages = {
     en,
-    fr
+    fr,
 };
 const useStyles = createUseStyles(styles);
 
@@ -42,15 +42,14 @@ const DEFAULT_OPTIONS = Object.freeze({
     customization: {
         imageHeader: {
             url: 'https://cdn.filestackcontent.com/8I2wVnCRTFxypXRYLRsp',
-            alt: 'Default Banner'
-        }
+            alt: 'Default Banner',
+        },
     },
-    dismissFooter: false
+    dismissFooter: false,
 });
 
 const DEFAULT_OBJECT = {};
 const DEFAULT_FUNCTION = () => {};
-const DEFAULT_UPLOAD_FUNCTION = async () => 'https://source.unsplash.com/random/4000x2000';
 
 const DeveloperProfileComponent = ({
     data: originalData = DEFAULT_OBJECT,
@@ -59,15 +58,15 @@ const DeveloperProfileComponent = ({
     onEdit: onEditProps = DEFAULT_FUNCTION,
     onIsEditingChanged = DEFAULT_FUNCTION,
     onCustomizationChanged,
-    onFilesUpload = DEFAULT_UPLOAD_FUNCTION,
+    onFilesUpload,
     additionalNodes,
-    classes: receivedGlobalClasses = {}
+    classes: receivedGlobalClasses = {},
 }) => {
     const classes = useStyles(styles);
     const { apiKeys, endpoints } = options;
     const [isEditing, setIsEditing] = useState(false);
     const onEdit = useCallback(
-        newData => {
+        (newData) => {
             if (typeof onEditProps === 'function') {
                 onEditProps(newData);
             }
@@ -75,14 +74,14 @@ const DeveloperProfileComponent = ({
         [onEditProps]
     );
     const setIsEditingWithCallback = useCallback(
-        newValue => {
+        (newValue) => {
             setIsEditing(newValue);
             onIsEditingChanged(newValue);
         },
         [onIsEditingChanged, setIsEditing]
     );
     const store = {
-        technologies: useReducer(technologiesReducer, technologiesInitialState)
+        technologies: useReducer(technologiesReducer, technologiesInitialState),
     };
     const staticContext = useMemo(
         () => ({
@@ -90,7 +89,7 @@ const DeveloperProfileComponent = ({
             endpoints,
             additionalNodes,
             receivedGlobalClasses,
-            customization: options?.customization
+            customization: options?.customization,
         }),
         [apiKeys, endpoints, additionalNodes, receivedGlobalClasses, JSON.stringify(options?.customization)]
     );
@@ -105,7 +104,7 @@ const DeveloperProfileComponent = ({
             onEdit,
             onCustomizationChanged,
             onFilesUpload,
-            mode
+            mode,
         }),
         [data, isEditing, onEdit, mode, onCustomizationChanged, onFilesUpload]
     );
@@ -141,7 +140,7 @@ const WithProvidersDeveloperProfile = ({
     additionalNodes,
     classes,
     onFilesUpload,
-    intl: parentIntl
+    intl: parentIntl,
 }) => {
     const mergedOptions = useMemo(
         () => mergeWith(cloneDeep(DEFAULT_OPTIONS), JSON.parse(JSON.stringify(options || {})), mergeOmitNull),

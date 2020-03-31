@@ -2,22 +2,22 @@ import { flex } from '../../../utils/styles/styles_utils';
 
 const { center } = flex;
 
-export const styles = theme => {
+export const styles = (theme) => {
     const {
         palette,
-        miscellaneous: { spacing }
+        miscellaneous: { spacing },
     } = theme;
     return {
         content: {
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
         },
         buttonContainer: {
             width: '100%',
-            display: 'flex'
+            display: 'flex',
         },
         button: {
-            width: '100%'
+            width: '100%',
         },
         divider: {
             margin: [spacing * 4, 0],
@@ -30,13 +30,16 @@ export const styles = theme => {
                 top: 'calc(50% - (1px / 2))',
                 left: 0,
                 backgroundColor: palette.dark[50],
-                content: "''"
-            }
+                content: "''",
+            },
         },
         dividerOr: {
             zIndex: 1,
             padding: [0, spacing * 2],
-            backgroundColor: '#fff'
-        }
+            backgroundColor: '#fff',
+        },
+        unsplashStub: {
+            padding: [spacing, 0],
+        },
     };
 };
