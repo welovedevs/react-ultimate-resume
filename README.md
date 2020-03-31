@@ -10,7 +10,7 @@
 
 **react-ultimate-resume** is an open-source customizable software developer resume to highlight your skills and experiences.
 
-Discover a modern approach of the traditionnal CV that includes animations and latest front-end technologies. Impress recruiters or customers with your projects, hobbies and experiences as never before.
+Discover a modern approach of the traditional CV that includes animations and latest front-end technologies. Impress recruiters or customers with your projects, hobbies and experiences as never before.
 
 We used [JSON Resume](https://github.com/jsonresume), a community driven open source initiative to create a JSON based standard for resumes.
 Discover the official schema [here](https://jsonresume.org/schema/).
