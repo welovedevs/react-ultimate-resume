@@ -30,7 +30,7 @@ function App() {
     const [data, setData] = useState(omit(JsonStub, 'resumeCustomization'));
 
     const onEdit = useCallback((newData) => setData(mergeWith(cloneDeep(data), newData, mergeFunction)), [
-        JSON.stringify(data),
+        JSON.stringify(data)
     ]);
     const [customization, setCustomization] = useState(JsonStub.resumeCustomization || {});
 
@@ -39,7 +39,7 @@ function App() {
     const handleClick = useCallback(async () => {
         // eslint-disable-next-line no-undef
         const blob = new Blob([JSON.stringify({ ...data, resumeCustomization: customization })], {
-            type: 'text/plain; charset=utf-8',
+            type: 'text/plain; charset=utf-8'
         });
         download(
             blob,
@@ -57,13 +57,13 @@ function App() {
             options={{
                 // side: 'back',
                 apiKeys: {
-                    giphy: process.env.REACT_APP_GIPHY,
+                    giphy: process.env.REACT_APP_GIPHY
                 },
                 endpoints: {
                     devicons:
-                        'https://firebasestorage.googleapis.com/v0/b/jechercheundev.appspot.com/o/technologies%2Ftechnologies_list.json?alt=media&token=459028ba-d9bc-4480-a3c4-88633afab7e2',
+                        'https://firebasestorage.googleapis.com/v0/b/jechercheundev.appspot.com/o/technologies%2Ftechnologies_list.json?alt=media&token=459028ba-d9bc-4480-a3c4-88633afab7e2'
                 },
-                customization,
+                customization
             }}
             additionalNodes={{
                 banner: {
@@ -72,8 +72,8 @@ function App() {
                             <SaveIcon className={classes.saveIcon} />
                             <FormattedMessage id="Profile.header.jsonResume.download" defaultMessage="Export" />
                         </Button>
-                    ),
-                },
+                    )
+                }
             }}
         />
     );
