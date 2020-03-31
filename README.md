@@ -23,6 +23,7 @@ This app is built using the popular [create-react-app](https://github.com/facebo
 
 [![Resume Preview](https://cdn.filestackcontent.com/compress/resize=width:500/rfXY8TNARdao9DdQSaJe)](https://vincent-cotro.welovedevs.com)
 
+[Demo profile here](https://vincent-cotro.welovedevs.com/)
 
 ### Docs
 
