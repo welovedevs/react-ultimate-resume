@@ -28,8 +28,8 @@ export const ContractType = ({ contractTypes = [] }) => {
             values={{
                 lastContract: formatMessage(translations[lastContract]),
                 contracts: contracts
-                    .map((key) => capitalize(formatMessage(translations[key] || translations.unknown)))
-                    .join(', '),
+                    .map(key => capitalize(formatMessage(translations[key] || translations.unknown)))
+                    .join(', ')
             }}
         />
     );
