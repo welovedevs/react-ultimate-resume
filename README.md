@@ -1,3 +1,7 @@
+# 🌟 01/04/2020 Announcement 🌟
+This is a very special day for us, we are listed on Product Hunt !  
+[Take a break to send your feedback and rate us 🙏🏻](https://www.producthunt.com/posts/react-ultimate-resume) 
+
 <p align="center">
   <img src="https://cdn.filestackcontent.com/compress/fyFHRMfCRL2xhwCVtx0F" width="400" />
 </p>
