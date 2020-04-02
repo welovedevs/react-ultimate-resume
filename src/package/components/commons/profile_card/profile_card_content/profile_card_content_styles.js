@@ -13,7 +13,7 @@ const getContentBackgroundColor = (theme, cardVariant) => {
     return getHexFromPaletteColor(theme, backBackgroundColor);
 };
 
-export const styles = theme => {
+export const styles = (theme) => {
     const {
         miscellaneous: { spacing },
         screenSizes

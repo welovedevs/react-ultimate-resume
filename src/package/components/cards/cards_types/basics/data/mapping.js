@@ -1,4 +1,4 @@
-export const mapJsonResumeToBasicData = jsonResume => {
+export const mapJsonResumeToBasicData = (jsonResume) => {
     const city = jsonResume.basics?.location?.city;
     const countryCode = jsonResume.basics?.location?.countryCode;
     return {
@@ -14,7 +14,7 @@ export const mapJsonResumeToBasicData = jsonResume => {
     };
 };
 
-export const mapBasicsDataToJsonResume = data => ({
+export const mapBasicsDataToJsonResume = (data) => ({
     basics: {
         summary: data.summary,
         location: data.currentCity && { ...data.currentCity, city: data.currentCity.name }

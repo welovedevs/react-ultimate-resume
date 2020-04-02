@@ -27,7 +27,7 @@ const CheckboxGroupComponent = ({
     const { formatMessage } = useIntl();
 
     const onFieldClicked = useCallback(
-        enumValue => () => {
+        (enumValue) => () => {
             if (typeof onChange !== 'function') {
                 return;
             }
@@ -35,7 +35,7 @@ const CheckboxGroupComponent = ({
                 onChange([...value, enumValue]);
                 return;
             }
-            onChange(value.filter(checkedItem => checkedItem !== enumValue));
+            onChange(value.filter((checkedItem) => checkedItem !== enumValue));
         },
         [value, onChange]
     );

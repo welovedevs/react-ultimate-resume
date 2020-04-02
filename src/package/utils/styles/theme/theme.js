@@ -53,7 +53,7 @@ export const DEFAULT_THEME = Object.freeze({
     }
 });
 
-export const getRandomCardVariant = theme => Math.floor(Math.random() * theme.components?.cards?.variants?.length);
+export const getRandomCardVariant = (theme) => Math.floor(Math.random() * theme.components?.cards?.variants?.length);
 
 const mergeFunction = (objValue, srcValue) => {
     if (isArray(objValue)) {
@@ -62,7 +62,7 @@ const mergeFunction = (objValue, srcValue) => {
     return merge(objValue, srcValue);
 };
 
-export const buildTheme = theme => {
+export const buildTheme = (theme) => {
     const merged = mergeWith(cloneDeep(DEFAULT_THEME), theme, mergeFunction);
     try {
         THEME_SCHEMA.validateSync(merged, {

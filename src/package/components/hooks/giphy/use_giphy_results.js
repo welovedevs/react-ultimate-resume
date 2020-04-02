@@ -40,12 +40,12 @@ export const useGiphyResults = (input, page = 0, limit = 20, timeout = 800) => {
             fetch(
                 encodeURI(
                     GIPHY_API_ENDPOINT +
-                    Object.entries(params)
-                        .map(([key, value]) => `${key}=${value}`)
-                        .join('&')
+                        Object.entries(params)
+                            .map(([key, value]) => `${key}=${value}`)
+                            .join('&')
                 )
             )
-                .then(res => {
+                .then((res) => {
                     if (res.status.toString().startsWith('2')) {
                         return res.json();
                     }
@@ -60,7 +60,7 @@ export const useGiphyResults = (input, page = 0, limit = 20, timeout = 800) => {
                         }))
                     );
                 })
-                .catch(e => {
+                .catch((e) => {
                     console.warn('Failed to fecth from giphy', e.message);
                     setError(e.message);
                 })

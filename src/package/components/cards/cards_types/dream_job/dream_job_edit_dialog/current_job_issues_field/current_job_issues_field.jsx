@@ -33,7 +33,7 @@ const CurrentJobIssuesFieldComponent = ({
 
     const transitions = useTransition(
         otherCurrentJobIssue !== null,
-        item => `other_field_${item ? 'visible' : 'invisible'}`,
+        (item) => `other_field_${item ? 'visible' : 'invisible'}`,
         {
             ...CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS,
             unique: true

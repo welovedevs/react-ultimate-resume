@@ -27,7 +27,7 @@ const ProjectDialogComponent = ({ open, onClose, data: project, isEditing }) => 
     const { onEdit, data: resume } = useContext(DeveloperProfileContext);
 
     const onDialogEdited = useCallback(
-        editedData => {
+        (editedData) => {
             const updateProjectsArray1 = updateProjectsArray(mapProjectToJsonResume(editedData), resume);
             onEdit(updateProjectsArray1);
             onClose();

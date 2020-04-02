@@ -15,7 +15,7 @@ const StudiesCardComponent = ({ variant, side }) => {
     const mappedData = useMemo(() => mapStudiesFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(
-        editedData => {
+        (editedData) => {
             onEdit(mapStudiesToJsonResume(editedData));
         },
         [onEdit]
@@ -41,8 +41,8 @@ const StudiesCardComponent = ({ variant, side }) => {
             isComplete={isComplete}
             isEditingProfile={isEditing}
             sides={{
-                front: props => <StudiesFront {...props} />,
-                back: props => <StudiesBack {...props} />
+                front: (props) => <StudiesFront {...props} />,
+                back: (props) => <StudiesBack {...props} />
             }}
             editDialog={{
                 component: StudiesCardEditDialog,

@@ -36,7 +36,7 @@ const ShareLinksComponent = ({ useSmallLayout }) => {
         }
         // eslint-disable-next-line no-undef
         const observer = new IntersectionObserver(
-            entries => {
+            (entries) => {
                 if (entries[0].isIntersecting === true) {
                     setBackgroundLineSpringProps(BACKGROUND_LINE_SPRING_PROPS.active);
                 } else {

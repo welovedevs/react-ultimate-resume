@@ -74,7 +74,7 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
     if (!hasWork) {
         return <NoWork {...{ handleAddButtonClick }} />;
     }
-    return experiences.map(experience => (
+    return experiences.map((experience) => (
         <ExperienceContent key={`work_experience_${experience.id}`} experience={experience} classes={classes} />
     ));
 };

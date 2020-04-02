@@ -2,12 +2,12 @@ import * as Yup from 'yup';
 import { validationTranslations } from '../../../../../utils/validation_translations';
 import { interestsTranslations } from './validator_translations';
 
-export const interestsValidator = formatMessage =>
+export const interestsValidator = (formatMessage) =>
     Yup.object().shape({
         interests: Yup.array()
             .of(
                 Yup.object()
-                    .transform(value => ({ ...value, stillEmployed: !value.endDate }))
+                    .transform((value) => ({ ...value, stillEmployed: !value.endDate }))
                     .shape({
                         name: Yup.string()
                             .required(formatMessage(validationTranslations.required))
@@ -18,12 +18,10 @@ export const interestsValidator = formatMessage =>
             .required(formatMessage(interestsTranslations.atLeastOne))
     });
 
-export const validateInterestsComplete = data => {
+export const validateInterestsComplete = (data) => {
     try {
         Yup.object({
-            interests: Yup.array()
-                .required()
-                .min(1)
+            interests: Yup.array().required().min(1)
         }).validateSync(data);
     } catch (e) {
         return false;

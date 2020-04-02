@@ -9,7 +9,7 @@ export const useCardSide = () => {
     const { side } = state;
 
     const setCardSide = useCallback(
-        newSide =>
+        (newSide) =>
             dispatch({
                 type: SET_SIDE,
                 side: newSide

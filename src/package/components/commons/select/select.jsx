@@ -8,7 +8,7 @@ import { ClickableTextField } from '../clickable_text_field/clickable_text_field
 import styles from './select_styles';
 
 function getValueFromChildren(children, value) {
-    const selectedChild = children.map(child => child.props || {}).find(childProps => childProps.value === value);
+    const selectedChild = children.map((child) => child.props || {}).find((childProps) => childProps.value === value);
     if (selectedChild && typeof selectedChild.children === 'string') {
         return selectedChild.children;
     }
@@ -36,13 +36,13 @@ const SelectComponent = ({
         }
         return setAnchorElement(null);
     }, []);
-    const setAnchorElementCallback = useCallback(e => !disabled && setAnchorElement(e.currentTarget), [disabled]);
+    const setAnchorElementCallback = useCallback((e) => !disabled && setAnchorElement(e.currentTarget), [disabled]);
 
     const selectedChildValue = getValueFromChildren(children, value);
     return (
         <>
             <Menu anchorEl={anchorElement} keepMounted open={Boolean(anchorElement)} onClose={handleClose}>
-                {React.Children.map(children, child =>
+                {React.Children.map(children, (child) =>
                     cloneElement(child, {
                         onClick: () => {
                             if (onChange) {
@@ -60,7 +60,8 @@ const SelectComponent = ({
                                 onFocus(child.props.value);
                             }
                         }
-                    }))}
+                    })
+                )}
             </Menu>
             <ClickableTextField
                 customClasses={{

@@ -25,7 +25,7 @@ const ProjectDialogContentImagesComponent = ({ images = [], isEditing }) => {
     const views = useMemo(() => images.map(({ name, url }) => ({ caption: name, src: url })), [images]);
 
     const handleImageClick = useCallback(
-        index => () => {
+        (index) => () => {
             if (isEditing) {
                 return;
             }
@@ -45,7 +45,7 @@ const ProjectDialogContentImagesComponent = ({ images = [], isEditing }) => {
     });
 
     const navButtonStyles = useCallback(
-        base => ({
+        (base) => ({
             ...base,
             backgroundColor: getHexFromPaletteColor(theme, getColorsFromCardVariant(theme, variant).backgroundColor),
             boxShadow: '0 1px 6px rgba(0, 0, 0, 0.18)',
@@ -83,9 +83,9 @@ const ProjectDialogContentImagesComponent = ({ images = [], isEditing }) => {
                     <Modal
                         onClose={handleModalClose}
                         styles={{
-                            blanket: base => ({ ...base, zIndex: 2100 }),
-                            positioner: base => ({ ...base, zIndex: 2110 }),
-                            dialog: base => ({ ...base, zIndex: 2120, fontFamily: 'Avenir Next' })
+                            blanket: (base) => ({ ...base, zIndex: 2100 }),
+                            positioner: (base) => ({ ...base, zIndex: 2110 }),
+                            dialog: (base) => ({ ...base, zIndex: 2120, fontFamily: 'Avenir Next' })
                         }}
                     >
                         <Carousel

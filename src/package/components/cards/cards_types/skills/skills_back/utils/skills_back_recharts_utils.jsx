@@ -10,7 +10,7 @@ import { DEFAULT_TECHNO_HANDLE } from '../../../../../../utils/icons';
 
 const useStyles = createUseStyles(styles);
 
-const CustomLabel = props => {
+const CustomLabel = (props) => {
     const theme = useTheme();
     const classes = useStyles();
     const [variant] = useCardVariant();
@@ -29,8 +29,9 @@ const CustomLabel = props => {
         const hex = getHexFromPaletteColor(theme, backgroundColor);
         const luminance = chroma(hex).luminance();
         if (luminance < 0.98) {
-            return `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle ||
-                DEFAULT_TECHNO_HANDLE}`;
+            return `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${
+                techno?.handle || DEFAULT_TECHNO_HANDLE
+            }`;
         }
         return `https://process.filestackapi.com/output=format:png/${techno?.handle || DEFAULT_TECHNO_HANDLE}`;
     }, [techno, theme, backgroundColor]);

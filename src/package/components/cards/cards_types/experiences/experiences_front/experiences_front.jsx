@@ -63,7 +63,7 @@ const ExperiencesFrontComponent = ({ data, handleAddButtonClick }) => {
                     <FormattedMessage id="Experience.front.title.stillEmployed" defaultMessage="Still employed" />
                 );
             }
-        } else if (!['endDate', 'startDate'].some(key => !moment.isMoment(firstExperience?.[key]))) {
+        } else if (!['endDate', 'startDate'].some((key) => !moment.isMoment(firstExperience?.[key]))) {
             const { startDate } = firstExperience;
             const { endDate } = firstExperience;
             const startYear = startDate.year();

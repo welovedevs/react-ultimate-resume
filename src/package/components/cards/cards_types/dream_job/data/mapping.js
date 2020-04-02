@@ -1,7 +1,7 @@
 import uuid from 'uuid/v4';
 
-export const mapDreamJobFromJsonResume = jsonResume => ({
-    places: (jsonResume.specific?.dreamJob?.locations ?? []).map(location => ({
+export const mapDreamJobFromJsonResume = (jsonResume) => ({
+    places: (jsonResume.specific?.dreamJob?.locations ?? []).map((location) => ({
         ...location,
         id: location.id || uuid()
     })),
@@ -13,7 +13,7 @@ export const mapDreamJobFromJsonResume = jsonResume => ({
     currentJobIssues: jsonResume.specific?.currentJob?.issues
 });
 
-export const mapDreamJobToJsonResume = data => ({
+export const mapDreamJobToJsonResume = (data) => ({
     specific: {
         dreamJob: {
             locations: data.places,

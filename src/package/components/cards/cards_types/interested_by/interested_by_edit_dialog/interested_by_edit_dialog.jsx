@@ -28,7 +28,7 @@ const InterestedByEditDialogComponent = ({ open, onClose, data, onEdit, validati
                 />
             }
         >
-            {helpers => <Content helpers={helpers} />}
+            {(helpers) => <Content helpers={helpers} />}
         </EditDialog>
     );
 };

@@ -2,7 +2,7 @@ import { flex, getHexFromPaletteColor } from '../../../utils/styles/styles_utils
 
 const { center } = flex;
 
-export const styles = theme => ({
+export const styles = (theme) => ({
     container: {
         height: 50,
         width: 50,

@@ -14,8 +14,8 @@ const UploadFileDialogComponent = ({ open, onClose, onFileUploaded }) => {
     const { onFilesUpload } = useContext(DeveloperProfileContext);
 
     const onDrop = useCallback(
-        files =>
-            onFilesUpload(files).then(url => {
+        (files) =>
+            onFilesUpload(files).then((url) => {
                 onFileUploaded(url);
                 return url;
             }),

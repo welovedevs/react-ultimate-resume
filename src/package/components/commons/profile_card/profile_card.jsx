@@ -106,7 +106,7 @@ const ProfileCardComponent = ({
     const hasSideChanged = useRef(false);
 
     const setSide = useCallback(
-        newSide => {
+        (newSide) => {
             if (sideProps) {
                 return;
             }
@@ -141,7 +141,7 @@ const ProfileCardComponent = ({
         hasSideChanged.current = true;
     }, [side]);
 
-    const transitions = useTransition(side, item => `card_side_${item}_${kind}`, {
+    const transitions = useTransition(side, (item) => `card_side_${item}_${kind}`, {
         ...transitionsSpringProps,
         unique: isTransitionUnique,
         immediate: !hasSideChanged.current
@@ -153,7 +153,7 @@ const ProfileCardComponent = ({
 
     const editButtonTransitions = useTransition(
         isEditingProfile,
-        item => (item ? 'visible_editing_button' : 'invisible_editing_button'),
+        (item) => (item ? 'visible_editing_button' : 'invisible_editing_button'),
         {
             ...PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_SPRING_PROPS,
             unique: true

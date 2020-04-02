@@ -38,7 +38,7 @@ const DefaultContent = ({ date, classes }) => (
 const EditingContent = ({ classes }) => {
     const { setFieldValue, values, errors } = useFormikContext();
     const handleStartDate = useCallback(
-        value => {
+        (value) => {
             setFieldValue('date', value);
         },
         [JSON.stringify(values)]

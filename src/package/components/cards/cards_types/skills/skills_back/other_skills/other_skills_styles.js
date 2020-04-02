@@ -1,6 +1,6 @@
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../../utils/styles/styles_utils';
 
-export const styles = theme => ({
+export const styles = (theme) => ({
     otherSkillsContainer: {
         width: '100%',
         padding: `${theme.miscellaneous.spacing * 3}px ${theme.miscellaneous.spacing * 5}px`

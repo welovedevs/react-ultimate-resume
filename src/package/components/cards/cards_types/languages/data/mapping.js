@@ -1,6 +1,6 @@
 import uuid from 'uuid/v4';
 
-export const mapLanguagesFromJsonResume = jsonResume => ({
+export const mapLanguagesFromJsonResume = (jsonResume) => ({
     languages: jsonResume?.languages?.map((language, index) => ({
         ...language,
         // generating uuid for manipulating data if not present
@@ -9,6 +9,6 @@ export const mapLanguagesFromJsonResume = jsonResume => ({
     }))
 });
 
-export const mapLanguagesToJsonResume = data => ({
+export const mapLanguagesToJsonResume = (data) => ({
     languages: data.languages
 });

@@ -34,7 +34,7 @@ export const SoundtrackCardEditDialog = ({ open, onClose, data, onEdit, isEditin
             />
         }
     >
-        {helpers => <Content helpers={helpers} />}
+        {(helpers) => <Content helpers={helpers} />}
     </EditDialog>
 );
 
@@ -49,7 +49,7 @@ const Content = ({ helpers: { fullScreen, isMobile } }) => {
     const handleLoad = useCallback(() => setHasLoaded(true), []);
 
     const handleFieldChange = useCallback(
-        event => {
+        (event) => {
             const {
                 target: { value }
             } = event;

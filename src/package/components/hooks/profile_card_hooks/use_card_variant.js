@@ -9,7 +9,7 @@ export const useCardVariant = () => {
     const variant = useMemo(() => state.variant, [state.variant.toString()]);
 
     const setCardVariant = useCallback(
-        newVariant =>
+        (newVariant) =>
             dispatch({
                 type: SET_VARIANT,
                 variant: newVariant

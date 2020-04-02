@@ -67,7 +67,7 @@ const DeveloperProfileComponent = ({
     const { apiKeys, endpoints } = options;
     const [isEditing, setIsEditing] = useState(false);
     const onEdit = useCallback(
-        newData => {
+        (newData) => {
             if (typeof onEditProps === 'function') {
                 onEditProps(newData);
             }
@@ -75,7 +75,7 @@ const DeveloperProfileComponent = ({
         [onEditProps]
     );
     const setIsEditingWithCallback = useCallback(
-        newValue => {
+        (newValue) => {
             setIsEditing(newValue);
             onIsEditingChanged(newValue);
         },

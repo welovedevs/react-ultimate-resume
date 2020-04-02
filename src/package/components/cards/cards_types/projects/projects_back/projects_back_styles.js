@@ -2,7 +2,7 @@ import { flex, getColorsFromCardVariant, getHexFromPaletteColor } from '../../..
 
 const { center } = flex;
 
-export const styles = theme => {
+export const styles = (theme) => {
     const { palette } = theme;
     return {
         title: {

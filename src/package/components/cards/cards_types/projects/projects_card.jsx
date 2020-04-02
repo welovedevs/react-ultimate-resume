@@ -35,12 +35,12 @@ const ProjectsCardComponent = ({ variant, side }) => {
             isComplete={isComplete}
             isEditingProfile={isEditing}
             sides={{
-                front: props => <ProjectsFront {...props} />,
-                back: props => <ProjectsBack {...props} />
+                front: (props) => <ProjectsFront {...props} />,
+                back: (props) => <ProjectsBack {...props} />
             }}
             variant={variant}
             side={currentSide}
-            customEditAction={props => <AddButton title="Ajouter un projet" {...props} />}
+            customEditAction={(props) => <AddButton title="Ajouter un projet" {...props} />}
             editDialog={{
                 component: ProjectDialog,
                 data: {}

@@ -1,6 +1,6 @@
 import PaletteHelper from 'values.js';
 
-export const buildShadedPalette = hex => {
+export const buildShadedPalette = (hex) => {
     const values = new PaletteHelper(hex);
     return {
         50: `#${values.tint(90).hex}`,

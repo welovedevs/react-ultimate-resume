@@ -17,7 +17,7 @@ const ExperiencesCardComponent = ({ variant, side }) => {
 
     const mappedData = useMemo(() => mapWorkFromJsonResume(data), [data]);
 
-    const onDialogEdited = useCallback(editedData => onEdit(mapWorkToJsonResume(editedData)), [onEdit]);
+    const onDialogEdited = useCallback((editedData) => onEdit(mapWorkToJsonResume(editedData)), [onEdit]);
 
     const isComplete = useMemo(() => validateWorkComplete(mappedData), [mappedData]);
 
@@ -38,8 +38,8 @@ const ExperiencesCardComponent = ({ variant, side }) => {
             isComplete={isComplete}
             data={mappedData}
             sides={{
-                front: props => <ExperiencesFront {...props} />,
-                back: props => <ExperiencesBack {...props} />
+                front: (props) => <ExperiencesFront {...props} />,
+                back: (props) => <ExperiencesBack {...props} />
             }}
             editDialog={{
                 component: ExperiencesEditDialog,

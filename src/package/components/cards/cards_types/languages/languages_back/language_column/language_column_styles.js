@@ -3,7 +3,7 @@ import { createScreenWidthMediaQuery } from '../../../../../../utils/styles/styl
 const MIN = 30;
 const MAX = 100;
 
-export const styles = theme => {
+export const styles = (theme) => {
     const {
         miscellaneous: { spacing },
         screenSizes

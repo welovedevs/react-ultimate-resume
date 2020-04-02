@@ -18,7 +18,7 @@ const SkillsCardComponent = ({ variant, side }) => {
     const mappedData = useMemo(() => mapSkillsFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(
-        editedData => {
+        (editedData) => {
             onEdit(mapSkillsToJsonResume(editedData));
         },
         [onEdit]
@@ -42,8 +42,8 @@ const SkillsCardComponent = ({ variant, side }) => {
             isEditingProfile={isEditing}
             isComplete={isComplete}
             sides={{
-                front: props => <SkillsFront {...props} />,
-                back: props => <SkillsBack {...props} />
+                front: (props) => <SkillsFront {...props} />,
+                back: (props) => <SkillsBack {...props} />
             }}
             editDialog={{
                 component: SkillsEditDialog,

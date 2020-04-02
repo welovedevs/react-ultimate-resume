@@ -7,7 +7,7 @@
         "start": "touch .env.local && sh -ac 'sh .env.${NODE_ENV:-local}; PORT=${PORT:-3000} EXTEND_ESLINT=true BROWSER=none react-scripts start'",
         "dev": "yarn start",
         "eject": "react-scripts eject",
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "react-scripts test",
         "prepackage": "rimraf lib ",
         "package": "./node_modules/.bin/babel src/package -d .",
         "postpackage": "cp-cli src/package/i18n i18n && cp-cli src/package/assets assets",
@@ -48,6 +48,7 @@
         "formik": "^2.1.2",
         "lodash": "^4.17.15",
         "moment": "^2.24.0",
+        "prop-types": "15.7.2",
         "react-dropzone": "^10.2.1",
         "react-emoji-render": "^1.2.1",
         "react-images": "^1.1.0-beta.3",
@@ -73,10 +74,12 @@
         "@babel/plugin-transform-runtime": "^7.9.0",
         "@babel/preset-env": "^7.9.0",
         "@babel/preset-react": "^7.9.4",
+        "@testing-library/jest-dom": "5.3.0",
+        "@testing-library/react": "10.0.1",
         "babel-plugin-css-modules-transform": "^1.6.2",
         "babel-plugin-inline-react-svg": "^1.1.1",
-        "babel-plugin-transform-import-styles": "^0.0.11",
         "babel-plugin-react-intl": "^7.0.0",
+        "babel-plugin-transform-import-styles": "^0.0.11",
         "eslint": "^6.8.0",
         "eslint-config-airbnb": "^18.0.1",
         "eslint-plugin-babel": "^5.3.0",
@@ -88,6 +91,7 @@
         "husky": "^3.1.0",
         "lint-staged": "^10.0.8",
         "ora": "^4.0.3",
+        "prettier": "2.0.2",
         "react-intl-translations-manager": "^5.0.3",
         "react-scripts": "^3.4.1",
         "readline-sync": "^1.4.10",
@@ -111,7 +115,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run test-build --scripts-prepend-node-path && lint-staged"
+            "pre-commit": "npm run test-build --scripts-prepend-node-path && CI=true yarn test && lint-staged"
         }
     },
     "lint-staged": {

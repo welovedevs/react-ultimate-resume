@@ -31,7 +31,7 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
     const [globalReceivedBannerClasses = {}] = useReceivedGlobalClasses('banner');
     const [isEditing] = useIsEditing();
 
-    const transitions = useTransition(customizationOptions?.imageHeader || null, item => `${item?.alt}_${item.url}`, {
+    const transitions = useTransition(customizationOptions?.imageHeader || null, (item) => `${item?.alt}_${item.url}`, {
         ...OPACITY_TRANSITIONS,
         unique: true,
         config: config.molasses
