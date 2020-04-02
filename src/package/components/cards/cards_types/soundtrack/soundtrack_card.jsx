@@ -17,7 +17,7 @@ const SoundtrackCardComponent = ({ variant, side }) => {
     const mappedData = useMemo(() => JsonResumeToFlatObject(data, SoundtrackMapping), [data]);
 
     const onDialogEdited = useCallback(
-        editedData => {
+        (editedData) => {
             onEdit(FlatObjectToJsonResume(editedData, SoundtrackMapping));
         },
         [onEdit]
@@ -43,8 +43,8 @@ const SoundtrackCardComponent = ({ variant, side }) => {
             isEditingProfile={isEditing}
             data={mappedData}
             sides={{
-                front: props => <SoundtrackFront {...props} />,
-                back: props => <SoundtrackBack {...props} />
+                front: (props) => <SoundtrackFront {...props} />,
+                back: (props) => <SoundtrackBack {...props} />
             }}
             editDialog={{
                 component: SoundtrackCardEditDialog,

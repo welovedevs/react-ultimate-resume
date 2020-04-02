@@ -30,8 +30,8 @@ import { styles } from './dream_job_card_edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
-const checkboxGroupPerks = Object.values(JobPerks).filter(perk => perk !== JobPerks.OTHER);
-const checkboxGroupCurrentJobIssues = Object.values(JobIssues).filter(key => key !== JobIssues.OTHER);
+const checkboxGroupPerks = Object.values(JobPerks).filter((perk) => perk !== JobPerks.OTHER);
+const checkboxGroupCurrentJobIssues = Object.values(JobIssues).filter((key) => key !== JobIssues.OTHER);
 
 const DEFAULT_OBJECT = {};
 
@@ -49,7 +49,7 @@ const DreamJobCardEditDialogComponent = ({ open, onClose, data, onEdit, validati
             validationSchema={validationSchemaToPass}
             title={<FormattedMessage id="DreamJob.editDialog.title" defaultMessage="Your dream job information" />}
         >
-            {helpers => <Content helpers={helpers} />}
+            {(helpers) => <Content helpers={helpers} />}
         </EditDialog>
     );
 };
@@ -63,16 +63,17 @@ const Content = ({ helpers: { handleValueChange } }) => {
     const perks = values.perks ?? DEFAULT_OBJECT;
     const currentJobIssues = values.currentJobIssues ?? DEFAULT_OBJECT;
 
-    const addPlace = useCallback(place => handleValueChange('places')(places.concat({ ...place, id: uuid() })), [
+    const addPlace = useCallback((place) => handleValueChange('places')(places.concat({ ...place, id: uuid() })), [
         places
     ]);
 
-    const removePlace = useCallback(id => () => handleValueChange('places')(places.filter(place => place.id !== id)), [
-        places
-    ]);
+    const removePlace = useCallback(
+        (id) => () => handleValueChange('places')(places.filter((place) => place.id !== id)),
+        [places]
+    );
 
     const onChangePerks = useCallback(
-        newPerks =>
+        (newPerks) =>
             handleValueChange('perks')({
                 ...newPerks.reduce((acc, perk) => {
                     acc[perk] = true;
@@ -84,7 +85,7 @@ const Content = ({ helpers: { handleValueChange } }) => {
     );
 
     const onChangeCurrentJobIssues = useCallback(
-        newCurrentJobIssues =>
+        (newCurrentJobIssues) =>
             handleValueChange('currentJobIssues')({
                 ...newCurrentJobIssues.reduce((acc, issue) => {
                     acc[issue] = true;

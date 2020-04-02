@@ -31,7 +31,7 @@ const SkillsEditDialogComponent = ({ open, onClose, data, onEdit, validationSche
             dialogClasses={{ dialog: { root: classes.dialogRoot, paper: classes.dialogPaper } }}
             title={<FormattedMessage id="Skills.editDialog.title" defaultMessage="What are your main skills?" />}
         >
-            {helpers => <SkillsEditForm helpers={helpers} />}
+            {(helpers) => <SkillsEditForm helpers={helpers} />}
         </EditDialog>
     );
 };

@@ -53,31 +53,34 @@ const DEFAULT_FUNCTION = () => {};
 const DEFAULT_UPLOAD_FUNCTION = async () => 'https://source.unsplash.com/random/4000x2000';
 
 const DeveloperProfileComponent = ({
-                                       data: originalData = DEFAULT_OBJECT,
-                                       options,
-                                       mode,
-                                       onEdit: onEditProps = DEFAULT_FUNCTION,
-                                       onIsEditingChanged = DEFAULT_FUNCTION,
-                                       onCustomizationChanged,
-                                       onFilesUpload = DEFAULT_UPLOAD_FUNCTION,
-                                       additionalNodes,
-                                       classes: receivedGlobalClasses = {}
-                                   }) => {
+    data: originalData = DEFAULT_OBJECT,
+    options,
+    mode,
+    onEdit: onEditProps = DEFAULT_FUNCTION,
+    onIsEditingChanged = DEFAULT_FUNCTION,
+    onCustomizationChanged,
+    onFilesUpload = DEFAULT_UPLOAD_FUNCTION,
+    additionalNodes,
+    classes: receivedGlobalClasses = {}
+}) => {
     const classes = useStyles(styles);
     const { apiKeys, endpoints } = options;
     const [isEditing, setIsEditing] = useState(false);
     const onEdit = useCallback(
-        newData => {
+        (newData) => {
             if (typeof onEditProps === 'function') {
                 onEditProps(newData);
             }
         },
         [onEditProps]
     );
-    const setIsEditingWithCallback = useCallback((newValue) => {
-        setIsEditing(newValue);
-        onIsEditingChanged(newValue);
-    }, [onIsEditingChanged, setIsEditing]);
+    const setIsEditingWithCallback = useCallback(
+        (newValue) => {
+            setIsEditing(newValue);
+            onIsEditingChanged(newValue);
+        },
+        [onIsEditingChanged, setIsEditing]
+    );
     const store = {
         technologies: useReducer(technologiesReducer, technologiesInitialState)
     };

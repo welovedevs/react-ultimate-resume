@@ -3,7 +3,7 @@ import { createScreenWidthMediaQuery, flex } from '../../utils/styles/styles_uti
 
 const { center } = flex;
 
-export const styles = theme => {
+export const styles = (theme) => {
     const {
         palette,
         screenSizes,
@@ -11,10 +11,7 @@ export const styles = theme => {
     } = theme;
 
     const primaryRgb = palette.primary.rgbShades[500].join(', ');
-    const darkenPrimaryRgb = chroma(palette.primary.rgbShades[500])
-        .darken(2)
-        .rgb()
-        .join(', ');
+    const darkenPrimaryRgb = chroma(palette.primary.rgbShades[500]).darken(2).rgb().join(', ');
 
     const QUERY_MEDIUM = createScreenWidthMediaQuery('max-width', screenSizes.medium);
     const QUERY_BETWEEN_MEDIUM_SMALL = createScreenWidthMediaQuery(

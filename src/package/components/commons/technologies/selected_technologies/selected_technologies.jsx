@@ -22,7 +22,7 @@ const TechnologyRow = SortableElement(({ item, onRemove, onChange, classes, item
     const { technologies } = useTechnologies();
 
     const sliderChange = useCallback(
-        e => {
+        (e) => {
             onChange({ ...item, value: Number(e.target.value) });
         },
         [item, onChange]

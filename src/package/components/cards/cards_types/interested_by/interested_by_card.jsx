@@ -18,7 +18,7 @@ const InterestedByCardComponent = ({ variant, side }) => {
     const mappedData = useMemo(() => JsonResumeToFlatObject(data, interestedByMapping), [data]);
 
     const onDialogEdited = useCallback(
-        editedData => {
+        (editedData) => {
             onEdit(FlatObjectToJsonResume(editedData, interestedByMapping));
         },
         [onEdit]
@@ -37,8 +37,8 @@ const InterestedByCardComponent = ({ variant, side }) => {
                 isComplete={isComplete}
                 isEditingProfile={isEditing}
                 sides={{
-                    front: props => <InterestedByFront {...props} />,
-                    back: props => <InterestedByBack {...props} />
+                    front: (props) => <InterestedByFront {...props} />,
+                    back: (props) => <InterestedByBack {...props} />
                 }}
                 editDialog={{
                     component: InterestedByEditDialog,

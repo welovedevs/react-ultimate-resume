@@ -59,7 +59,7 @@ const DreamJobBackComponent = ({ data }) => {
             )}
             {existsAndNotEmpty(perks) &&
                 typeof perks === 'object' &&
-                Object.values(perks).some(value => existsAndNotEmpty(value)) && (
+                Object.values(perks).some((value) => existsAndNotEmpty(value)) && (
                     <ProfileCardSection>
                         <ProfileCardSectionTitle>
                             <FormattedMessage
@@ -155,7 +155,7 @@ const DreamJobPlaces = ({ places = [], classes }) => {
             >
                 <List>
                     {remainingPlaces
-                        .filter(item => item)
+                        .filter((item) => item)
                         .map(({ name }, index) => (
                             <ListItem key={`place_popper_${index}`}>
                                 <Typography>{name}</Typography>

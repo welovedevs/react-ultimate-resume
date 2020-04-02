@@ -41,7 +41,7 @@ const SkillsPieChart = ({ data, variant, springOnOpenOpacityProps, springOnScrol
                         isAnimationActive={false}
                         dataKey="value"
                         labelLine={false}
-                        label={shapeProps => (
+                        label={(shapeProps) => (
                             <CustomLabel
                                 customColor={contentColor}
                                 springProps={springOnOpenOpacityProps}

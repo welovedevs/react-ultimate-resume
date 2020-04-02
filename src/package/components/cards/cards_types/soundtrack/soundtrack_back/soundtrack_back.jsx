@@ -47,7 +47,7 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
 
     const loadingSpinnerTransitions = useTransition(
         hasLoaded,
-        item => `${item ? 'invisible' : 'visible'}_loading_soundtrack_spinner`,
+        (item) => `${item ? 'invisible' : 'visible'}_loading_soundtrack_spinner`,
         { ...LOADING_SPINNER_TRANSITIONS, unique: true }
     );
 

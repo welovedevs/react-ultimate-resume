@@ -49,7 +49,7 @@ const CardStubComponent = ({ data: { type, variant }, cardIndex, onItemChanged }
     const Component = useMemo(() => CARD_TYPE_MAPPING[type] ?? (() => null), []);
 
     const onVariantChanged = useCallback(
-        value => () => {
+        (value) => () => {
             onItemChanged(cardIndex, { type, variant: value });
         },
         [onItemChanged]
@@ -72,7 +72,7 @@ const CardStubComponent = ({ data: { type, variant }, cardIndex, onItemChanged }
 
 const CardVariants = ({ variant, onVariantChanged, classes }) => {
     const theme = useTheme();
-    const handleMouseDown = useCallback(event => {
+    const handleMouseDown = useCallback((event) => {
         event.preventDefault();
         event.stopPropagation();
     }, []);

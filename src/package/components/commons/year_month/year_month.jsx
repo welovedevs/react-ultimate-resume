@@ -20,7 +20,7 @@ const YearMonthComponent = ({ className, value, onChange, title, error, variant,
     const { formatMessage } = useIntl();
     const [isOpen, setIsOpen] = useState(false);
     const onPickerChange = useCallback(
-        newValue => {
+        (newValue) => {
             if (newValue === null) {
                 onChange(null);
                 return;

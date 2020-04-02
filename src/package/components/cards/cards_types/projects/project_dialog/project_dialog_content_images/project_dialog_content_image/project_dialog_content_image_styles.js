@@ -2,7 +2,7 @@ import { flex, getHexFromPaletteColor } from '../../../../../../../utils/styles/
 
 const { center } = flex;
 
-export const styles = theme => {
+export const styles = (theme) => {
     const {
         miscellaneous: { spacing },
         palette

@@ -24,7 +24,7 @@ const GifCardComponent = ({
 
     const [input, setInput] = useState(name);
 
-    const handleTextFieldChange = useCallback(event => {
+    const handleTextFieldChange = useCallback((event) => {
         const {
             target: { value }
         } = event;

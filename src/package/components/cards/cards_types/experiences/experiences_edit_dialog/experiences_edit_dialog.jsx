@@ -55,7 +55,7 @@ const ExperiencesEditDialogComponent = ({ open, onClose, data, onEdit, validatio
                 />
             }
         >
-            {helpers => <ExperiencesEditFormWrapper helpers={helpers} />}
+            {(helpers) => <ExperiencesEditFormWrapper helpers={helpers} />}
         </EditDialog>
     );
 };
@@ -72,7 +72,7 @@ const ExperiencesEditFormWrapper = ({ helpers: { handleValueChange } }) => {
         handleValueChange(`work[${experienceIndex}].${field}`)(value);
     }, []);
     const experienceDeleted = useCallback(
-        idToDelete => () => {
+        (idToDelete) => () => {
             handleValueChange('work')(work.filter(({ id }) => id !== idToDelete));
         },
         [JSON.stringify(work)]
@@ -153,7 +153,7 @@ const ExperienceItem = SortableElement(
 
         const contentTransitions = useTransition(
             !folded ? experience : null,
-            item => `${item ? 'visible' : 'invisible'}_experience_${item?.id}_content`,
+            (item) => `${item ? 'visible' : 'invisible'}_experience_${item?.id}_content`,
             {
                 ...EXPERIENCE_CONTENT_TRANSITION_SPRING_PROPS,
                 unique: true
@@ -180,7 +180,7 @@ const ExperienceItem = SortableElement(
                         <animated.div
                             className={classes.arrowContainer}
                             style={{
-                                transform: rotate.to(value => `rotate(${value}deg)`)
+                                transform: rotate.to((value) => `rotate(${value}deg)`)
                             }}
                         >
                             <ArrowIcon className={cn('refinement-arrow')} />
@@ -228,13 +228,13 @@ const ContentFields = ({ fieldErrors, id, formatMessage, experience, onChange, c
         <StillEmployedField value={stillEmployed} {...{ handleStillEmployedChange, formatMessage, classes }} />
     );
 
-    const handleNameChange = useCallback(e => onChange(index, 'name', e.target.value), [index]);
-    const handlePositionChange = useCallback(e => onChange(index, 'position', e.target.value), [index]);
-    const handleSummaryChange = useCallback(e => onChange(index, 'summary', e.target.value), [index]);
-    const handleStartDate = useCallback(value => onChange(index, 'startDate', value), [index]);
-    const handleEndDate = useCallback(value => onChange(index, 'endDate', value), [index]);
-    const handleLocationChange = useCallback(value => onChange(index, 'place', value), [index]);
-    const handleLocationTextChange = useCallback(value => onChange(index, 'place', { name: value.target.value }), [
+    const handleNameChange = useCallback((e) => onChange(index, 'name', e.target.value), [index]);
+    const handlePositionChange = useCallback((e) => onChange(index, 'position', e.target.value), [index]);
+    const handleSummaryChange = useCallback((e) => onChange(index, 'summary', e.target.value), [index]);
+    const handleStartDate = useCallback((value) => onChange(index, 'startDate', value), [index]);
+    const handleEndDate = useCallback((value) => onChange(index, 'endDate', value), [index]);
+    const handleLocationChange = useCallback((value) => onChange(index, 'place', value), [index]);
+    const handleLocationTextChange = useCallback((value) => onChange(index, 'place', { name: value.target.value }), [
         index
     ]);
 
@@ -424,7 +424,7 @@ const ExperiencesEditForm = ({ data, errors, onAdd, onMove, onFieldChange, onDel
     );
 
     const toggleFold = useCallback(
-        id => value => {
+        (id) => (value) => {
             const newFoldState = { ...foldedState };
             newFoldState[id] = value;
             setFoldState(newFoldState);

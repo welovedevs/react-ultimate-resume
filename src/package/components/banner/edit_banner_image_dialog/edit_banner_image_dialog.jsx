@@ -26,7 +26,7 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
     const [openSearchUnsplashDialog, setSearchUnsplashDialogOpened, setSearchUnsplashDialogClosed] = useCallbackOpen();
 
     const onImageSelected = useCallback(
-        payload => {
+        (payload) => {
             onChange(payload);
             onClose();
             setSearchUnsplashDialogClosed();
@@ -35,8 +35,8 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
     );
 
     const onDrop = useCallback(
-        files =>
-            onFilesUpload(files).then(url => {
+        (files) =>
+            onFilesUpload(files).then((url) => {
                 onImageSelected({ url });
                 return url;
             }),

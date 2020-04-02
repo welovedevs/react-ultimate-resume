@@ -28,7 +28,7 @@ const ProjectsBackComponent = ({ data, handleAddButtonClick }) => {
     const alt = data.projects?.[0]?.title;
 
     const handleProjectDeletion = useCallback(
-        index => {
+        (index) => {
             const newProjects = [...data.projects];
             newProjects.splice(index, 1);
             onEdit({ projects: newProjects });
@@ -53,7 +53,7 @@ const ProjectsBackComponent = ({ data, handleAddButtonClick }) => {
                 <FormattedMessage id="Projects.back.title" defaultMessage="Projects" />
             </ProfileCardTitle>
             <ProfileCardContent>
-                {data.projects?.map(project => (
+                {data.projects?.map((project) => (
                     <ProjectSection project={project} key={`project_${project.id}`} onDelete={handleProjectDeletion} />
                 ))}
                 {!existsAndNotEmpty(data?.projects) && <NoProject handleAddButtonClick={handleAddButtonClick} />}

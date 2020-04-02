@@ -62,7 +62,7 @@ const Content = ({ data, handleAddButtonClick }) => {
     }, [data]);
 
     const onScroll = useCallback(
-        e => {
+        (e) => {
             const newOpacity = Math.max(1 - e.target.scrollTop / 60, 0);
 
             if (newOpacity === 0) {

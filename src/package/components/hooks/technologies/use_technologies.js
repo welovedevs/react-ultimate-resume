@@ -19,15 +19,16 @@ export const useTechnologies = () => {
             dispatch({ type: TECHNOLOGIES_STARTED });
             // eslint-disable-next-line no-undef
             fetch(endpoints.devicons)
-                .then(res => {
+                .then((res) => {
                     if (res.status.toString().startsWith('2')) {
                         return res.json();
                     }
                     throw new Error(`${res.status} ${res.statusText}`);
                 })
-                .then(fetchedTechnologies =>
-                    dispatch({ type: TECHNOLOGIES_RECEIVED, technologies: fetchedTechnologies }))
-                .catch(e => {
+                .then((fetchedTechnologies) =>
+                    dispatch({ type: TECHNOLOGIES_RECEIVED, technologies: fetchedTechnologies })
+                )
+                .catch((e) => {
                     console.error('Failed to fetch technologies', e);
                     dispatch({ type: TECHNOLOGIES_RECEIVED, technologies: DEFAULT_OBJECT });
                 });

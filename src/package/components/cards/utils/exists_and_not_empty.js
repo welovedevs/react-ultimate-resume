@@ -1,4 +1,4 @@
-export const existsAndNotEmpty = value => {
+export const existsAndNotEmpty = (value) => {
     if (!value) {
         return false;
     }

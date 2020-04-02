@@ -15,7 +15,7 @@ const LanguagesCardComponent = ({ variant, side }) => {
     const mappedData = useMemo(() => mapLanguagesFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(
-        editedData => {
+        (editedData) => {
             onEdit(mapLanguagesToJsonResume(editedData));
         },
         [onEdit]
@@ -40,8 +40,8 @@ const LanguagesCardComponent = ({ variant, side }) => {
             isComplete={isComplete}
             data={mappedData}
             sides={{
-                front: props => <LanguagesFront {...props} />,
-                back: props => <LanguagesBack {...props} />
+                front: (props) => <LanguagesFront {...props} />,
+                back: (props) => <LanguagesBack {...props} />
             }}
             variant={variant}
             side={currentSide}

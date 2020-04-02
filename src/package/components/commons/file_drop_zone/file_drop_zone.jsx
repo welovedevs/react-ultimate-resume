@@ -35,7 +35,7 @@ const FileDropZoneComponent = ({ onDrop = DEFAULT_ON_DROP }) => {
     );
 
     const handleDrop = useCallback(
-        async parameters => {
+        async (parameters) => {
             if (typeof onDrop !== 'function') {
                 return;
             }

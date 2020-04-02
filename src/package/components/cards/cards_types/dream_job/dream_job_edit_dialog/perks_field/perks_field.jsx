@@ -32,7 +32,7 @@ const PerksFieldComponent = ({
     const classes = useStyles();
     const { formatMessage } = useIntl();
 
-    const transitions = useTransition(otherPerk !== null, item => `other_field_${item ? 'visible' : 'invisible'}`, {
+    const transitions = useTransition(otherPerk !== null, (item) => `other_field_${item ? 'visible' : 'invisible'}`, {
         ...PERKS_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS,
         unique: true
     });
