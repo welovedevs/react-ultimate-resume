@@ -1,3 +1,7 @@
+# 🌟 01/04/2020 Announcement 🌟
+This is a very special day for us, we are listed on Product Hunt !  
+[Take a break to send your feedback and rate us 🙏🏻](https://www.producthunt.com/posts/react-ultimate-resume) 
+
 <p align="center">
   <img src="https://cdn.filestackcontent.com/compress/fyFHRMfCRL2xhwCVtx0F" width="400" />
 </p>
@@ -5,9 +9,12 @@
 <br />
 
 # react-ultimate-resume by WeLoveDevs.com
+[![npm (scoped)](https://img.shields.io/npm/v/@welovedevs/react-ultimate-resume?color=%23220DAD)](https://www.npmjs.com/package/@welovedevs/react-ultimate-resume)
+[![npm](https://img.shields.io/npm/dw/@welovedevs/react-ultimate-resume?color=%23220DAD)](https://www.npmjs.com/package/@welovedevs/react-ultimate-resume)
+
 **react-ultimate-resume** is an open-source customizable software developer resume to highlight your skills and experiences.
 
-Discover a modern approach of the traditionnal CV that includes animations and latest front-end technologies. Impress recruiters or customers with your projects, hobbies and experiences as never before.
+Discover a modern approach of the traditional CV that includes animations and latest front-end technologies. Impress recruiters or customers with your projects, hobbies and experiences as never before.
 
 We used [JSON Resume](https://github.com/jsonresume), a community driven open source initiative to create a JSON based standard for resumes.
 Discover the official schema [here](https://jsonresume.org/schema/).
@@ -19,6 +26,8 @@ This app is built using the popular [create-react-app](https://github.com/facebo
 ### Preview
 
 [![Resume Preview](https://cdn.filestackcontent.com/compress/resize=width:500/rfXY8TNARdao9DdQSaJe)](https://vincent-cotro.welovedevs.com)
+
+[Demo profile here](https://vincent-cotro.welovedevs.com/)
 
 ### Docs
 
@@ -74,6 +83,21 @@ Replace the default JSON Resume with yours
 ### Deploy on you own server
 
 You can deploy your resume on your own server in few minutes. Follow our [HOW TO documentation](https://welovedevs.com/react-ultimate-resume/docs/deploy-fork). 
+
+### Use inside your project
+
+You can install the resume directly inside your project.
+
+```
+npm i @welovedevs/react-ultimate-resume
+```
+
+Then
+
+```
+import DeveloperProfile from '@welovedevs/react-ultimate-resume';
+```
+
 
 ### Parameters
 

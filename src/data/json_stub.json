@@ -214,6 +214,11 @@
             { "type": "interestedBy", "variant": 3 },
             { "type": "language", "variant": 4 },
             { "type": "soundtrack", "variant": 4 }
-        ]
+        ],
+        "fields": {
+            "work": {
+                "customDateFormat": "YYYY"
+            }
+        }
     }
 }

@@ -89,9 +89,10 @@ const DeveloperProfileComponent = ({
             apiKeys: { giphy: apiKeys?.giphy, unsplash: apiKeys?.unsplash },
             endpoints,
             additionalNodes,
-            receivedGlobalClasses
+            receivedGlobalClasses,
+            customization: options?.customization
         }),
-        [apiKeys, endpoints, additionalNodes, receivedGlobalClasses]
+        [apiKeys, endpoints, additionalNodes, receivedGlobalClasses, JSON.stringify(options?.customization)]
     );
 
     const data = useMemo(() => originalData, [JSON.stringify(originalData)]);
