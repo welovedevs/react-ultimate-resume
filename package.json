@@ -29,7 +29,7 @@
     "license": "AGPLv3",
     "peerDependencies": {
         "@material-ui/core": "^4.8.3",
-        "@welovedevs/ui": "^1.0.0",
+        "@welovedevs/ui": "^1.0.3",
         "formik": "^2.1.2",
         "react": "^16.12.0",
         "react-dom": "^16.12.0"
@@ -39,7 +39,7 @@
         "@formatjs/intl-pluralrules": "^1.5.2",
         "@formatjs/intl-relativetimeformat": "^4.5.9",
         "@material-ui/pickers": "^3.2.9",
-        "@welovedevs/ui": "^1.0.0",
+        "@welovedevs/ui": "^1.0.3",
         "chroma-js": "^2.1.0",
         "classnames": "^2.2.6",
         "copy-to-clipboard": "^3.3.1",
