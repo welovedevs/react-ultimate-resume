@@ -37,14 +37,14 @@ ConfirmDialogComponent.propTypes = {
     onClose: PropTypes.func,
     onConfirm: PropTypes.func,
     title: PropTypes.element,
-    content: PropTypes.element,
+    content: PropTypes.element
 };
 
 ConfirmDialogComponent.defaultProps = {
     onClose: () => {},
     onConfirm: () => {},
     title: DefaultTitle,
-    content: DefaultContent,
+    content: DefaultContent
 };
 
 export const ConfirmDialog = ConfirmDialogComponent;
