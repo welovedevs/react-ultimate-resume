@@ -27,7 +27,7 @@ const UploadFileDialogComponent = ({ open, onClose, onFileUploaded }) => {
                 <FormattedMessage id="UploadDialog.title" defaultMessage="Upload a file" />
             </DialogTitle>
             <DialogContent>
-                <FileDropZone onDrop={onDrop} />
+                <FileDropZone disabled={!onFilesUpload} onDrop={onDrop} />
             </DialogContent>
             <DialogActions>
                 <Button size="small" onClick={onClose}>

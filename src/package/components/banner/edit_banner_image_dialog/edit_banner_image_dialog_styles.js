@@ -37,6 +37,9 @@ export const styles = (theme) => {
             zIndex: 1,
             padding: [0, spacing * 2],
             backgroundColor: '#fff'
+        },
+        unsplashStub: {
+            padding: [spacing, 0]
         }
     };
 };
