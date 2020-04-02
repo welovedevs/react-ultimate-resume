@@ -40,7 +40,7 @@ const UnsplashButton = ({ setSearchUnsplashDialogOpened, hasUnsplashEndpoint }) 
                     variant="outlined"
                     onClick={setSearchUnsplashDialogOpened}
                     customClasses={{
-                        container: classes.button,
+                        container: classes.button
                     }}
                 >
                     <FormattedMessage id="Banner.EditImageDialog.unsplashButton" defaultMessage="Search on unsplash" />
@@ -63,7 +63,7 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
     const hasUnsplashEndpoint = useMemo(() => !!endpoints.unsplashProxy, [endpoints.unsplashProxy]);
     const needsFailoverField = useMemo(() => !hasUnsplashEndpoint && !onFilesUpload, [
         hasUnsplashEndpoint,
-        onFilesUpload,
+        onFilesUpload
     ]);
 
     const onImageSelected = useCallback(

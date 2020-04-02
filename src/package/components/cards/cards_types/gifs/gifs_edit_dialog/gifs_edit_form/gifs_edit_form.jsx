@@ -28,7 +28,7 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
     const classes = useStyles();
     const {
         values: { interests },
-        errors: validationErrors,
+        errors: validationErrors
     } = useFormikContext();
 
     const { apiKeys } = useContext(StaticDataContext);
@@ -57,7 +57,7 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
         handleValueChange('interests')(
             interests.concat({
                 index: interests.length,
-                id,
+                id
             })
         );
 
@@ -114,7 +114,7 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
             {isMobile && (
                 <AddButtonDashed
                     classes={{
-                        container: classes.addButtonDashed,
+                        container: classes.addButtonDashed
                     }}
                     onClick={addInterest}
                 />
@@ -130,7 +130,7 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
             {!isMobile && (
                 <AddButtonDashed
                     classes={{
-                        container: classes.addButtonDashed,
+                        container: classes.addButtonDashed
                     }}
                     onClick={addInterest}
                 />

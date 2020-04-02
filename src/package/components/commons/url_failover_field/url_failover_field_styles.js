@@ -1,9 +1,9 @@
 export const styles = (theme) => ({
     container: {
-        minWidth: 200,
+        minWidth: 200
     },
     title: {
         paddingLeft: theme.miscellaneous.spacing,
-        margin: [theme.miscellaneous.spacing, 0],
-    },
+        margin: [theme.miscellaneous.spacing, 0]
+    }
 });

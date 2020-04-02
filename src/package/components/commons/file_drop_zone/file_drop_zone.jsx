@@ -30,7 +30,7 @@ const FileDropZoneComponent = ({ disabled = false, onDrop = DEFAULT_ON_DROP }) =
         () => ({
             waiting: fileUrl === false,
             loading: fileUrl === null,
-            success: Boolean(fileUrl),
+            success: Boolean(fileUrl)
         }),
         [fileUrl]
     );

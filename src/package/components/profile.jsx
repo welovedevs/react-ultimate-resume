@@ -33,7 +33,7 @@ if (!Intl.PluralRules) {
 
 const messages = {
     en,
-    fr,
+    fr
 };
 const useStyles = createUseStyles(styles);
 
@@ -42,10 +42,10 @@ const DEFAULT_OPTIONS = Object.freeze({
     customization: {
         imageHeader: {
             url: 'https://cdn.filestackcontent.com/8I2wVnCRTFxypXRYLRsp',
-            alt: 'Default Banner',
-        },
+            alt: 'Default Banner'
+        }
     },
-    dismissFooter: false,
+    dismissFooter: false
 });
 
 const DEFAULT_OBJECT = {};
@@ -60,7 +60,7 @@ const DeveloperProfileComponent = ({
     onCustomizationChanged,
     onFilesUpload,
     additionalNodes,
-    classes: receivedGlobalClasses = {},
+    classes: receivedGlobalClasses = {}
 }) => {
     const classes = useStyles(styles);
     const { apiKeys, endpoints } = options;
@@ -81,7 +81,7 @@ const DeveloperProfileComponent = ({
         [onIsEditingChanged, setIsEditing]
     );
     const store = {
-        technologies: useReducer(technologiesReducer, technologiesInitialState),
+        technologies: useReducer(technologiesReducer, technologiesInitialState)
     };
     const staticContext = useMemo(
         () => ({
@@ -89,7 +89,7 @@ const DeveloperProfileComponent = ({
             endpoints,
             additionalNodes,
             receivedGlobalClasses,
-            customization: options?.customization,
+            customization: options?.customization
         }),
         [apiKeys, endpoints, additionalNodes, receivedGlobalClasses, JSON.stringify(options?.customization)]
     );
@@ -104,7 +104,7 @@ const DeveloperProfileComponent = ({
             onEdit,
             onCustomizationChanged,
             onFilesUpload,
-            mode,
+            mode
         }),
         [data, isEditing, onEdit, mode, onCustomizationChanged, onFilesUpload]
     );
@@ -140,7 +140,7 @@ const WithProvidersDeveloperProfile = ({
     additionalNodes,
     classes,
     onFilesUpload,
-    intl: parentIntl,
+    intl: parentIntl
 }) => {
     const mergedOptions = useMemo(
         () => mergeWith(cloneDeep(DEFAULT_OPTIONS), JSON.parse(JSON.stringify(options || {})), mergeOmitNull),
