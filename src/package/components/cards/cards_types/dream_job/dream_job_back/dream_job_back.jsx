@@ -92,9 +92,7 @@ const DreamJobBackComponent = ({ data }) => {
 const DreamJobLocations = ({ remoteFrequency, places, classes }) => {
     const { formatMessage } = useIntl();
     if (remoteFrequency === REMOTE_FREQUENCY.FULL_TIME) {
-        return (
-            <FormattedMessage id="Dreamjob.Back.Location.RemoteOnly" defaultMessage="I only want to work remotely" />
-        );
+        return <FormattedMessage id="Dreamjob.Back.Location.RemoteOnly" defaultMessage="I want to work remotely" />;
     }
 
     return (
