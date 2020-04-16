@@ -10,7 +10,6 @@ export const useCardSide = () => {
 
     const setCardSide = useCallback(
         (newSide) => {
-            console.log('click ', side, newSide, changingSides);
             if (changingSides) {
                 return;
             }
