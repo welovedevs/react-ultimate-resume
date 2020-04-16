@@ -69,7 +69,13 @@ const Content = ({ helpers: { handleValueChange } }) => {
 
     return (
         <>
-            <LocationPlacesField error={errors?.places} places={places} addPlace={addPlace} removePlace={removePlace} />
+            <LocationPlacesField
+                onChange={handleValueChange('places')}
+                error={errors?.places}
+                places={places}
+                addPlace={addPlace}
+                removePlace={removePlace}
+            />
             <PerksField
                 error={errors?.perks}
                 perks={perks}
