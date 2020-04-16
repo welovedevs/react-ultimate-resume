@@ -201,7 +201,7 @@
     "Projects.dialog.content.title": "Titre du projet",
     "Projects.front.action": "Voir {count} projet{count, plural, one {} other {s}}",
     "Projects.front.noProject": "Vous n'avez pas encore ajouté de projet !",
-    "Projects.front.title": "Mon project coup de coeur<emoji>♥️</emoji> : ",
+    "Projects.front.title": "Mon projet coup de coeur<emoji>♥️</emoji> : ",
     "Projects.noProject.buttonLabel": "Ajouter un projet",
     "Projects.noProject.title": "Décrivez ici un projet qui vous a plus en tant que développeur, ce projet peut avoir été réalisé pendant vos études, sur votre temps personnel ou au sein d'une entreprise.",
     "Skills.Dialog.SliderValue": "{valueNode}%",
