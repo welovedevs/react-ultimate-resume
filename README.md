@@ -5,7 +5,7 @@
 <br />
 
 # react-ultimate-resume by WeLoveDevs.com
-[![npm (scoped)](https://img.shields.io/npm/v/@welovedevs/react-ultimate-resume?color=%23220DAD)](https://www.npmjs.com/package/@welovedevs/react-ultimate-resume)
+[![Financial Contributors on Open Collective](https://opencollective.com/react-ultimate-resume/all/badge.svg?label=financial+contributors)](https://opencollective.com/react-ultimate-resume) [![npm (scoped)](https://img.shields.io/npm/v/@welovedevs/react-ultimate-resume?color=%23220DAD)](https://www.npmjs.com/package/@welovedevs/react-ultimate-resume)
 [![npm](https://img.shields.io/npm/dw/@welovedevs/react-ultimate-resume?color=%23220DAD)](https://www.npmjs.com/package/@welovedevs/react-ultimate-resume)
 
 **react-ultimate-resume** is an open-source customizable software developer resume to highlight your skills and experiences.
@@ -177,3 +177,33 @@ react-ultimate-resume is relased under [GNU AGPL v3 license](https://github.com/
 WeLoveDevs.com is a website crafted for developers (by Developers) looking for new career opportunities.
 More than 1700 companies use WeLoveDevs.com to find their talents.
 Discover your next company [here](https://welovedevs.com/app/companies)
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/welovedevs/react-ultimate-resume/graphs/contributors"><img src="https://opencollective.com/react-ultimate-resume/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/react-ultimate-resume/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/react-ultimate-resume"><img src="https://opencollective.com/react-ultimate-resume/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/react-ultimate-resume/contribute)]
+
+<a href="https://opencollective.com/react-ultimate-resume/organization/0/website"><img src="https://opencollective.com/react-ultimate-resume/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/react-ultimate-resume/organization/1/website"><img src="https://opencollective.com/react-ultimate-resume/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/react-ultimate-resume/organization/2/website"><img src="https://opencollective.com/react-ultimate-resume/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/react-ultimate-resume/organization/3/website"><img src="https://opencollective.com/react-ultimate-resume/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/react-ultimate-resume/organization/4/website"><img src="https://opencollective.com/react-ultimate-resume/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/react-ultimate-resume/organization/5/website"><img src="https://opencollective.com/react-ultimate-resume/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/react-ultimate-resume/organization/6/website"><img src="https://opencollective.com/react-ultimate-resume/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/react-ultimate-resume/organization/7/website"><img src="https://opencollective.com/react-ultimate-resume/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/react-ultimate-resume/organization/8/website"><img src="https://opencollective.com/react-ultimate-resume/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/react-ultimate-resume/organization/9/website"><img src="https://opencollective.com/react-ultimate-resume/organization/9/avatar.svg"></a>
