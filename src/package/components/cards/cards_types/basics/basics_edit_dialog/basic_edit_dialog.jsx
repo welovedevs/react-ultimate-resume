@@ -31,7 +31,7 @@ const BasicsCardEditDialogComponent = ({ open, onClose, data, onEdit, validation
             validationSchema={validationSchemaToPass}
             title={<FormattedMessage id="Basics.editDialog.title" defaultMessage="Your basic informations" />}
         >
-            {helpers => <Content helpers={helpers} />}
+            {(helpers) => <Content helpers={helpers} />}
         </EditDialog>
     );
 };

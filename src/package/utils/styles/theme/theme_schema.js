@@ -12,9 +12,9 @@ const SHADES_SCHEMA = Object.freeze({
 
 const isExistingColorInPalette = yup.string().test(
     'is-existing-color-in-palette',
-    args => `Color \`${args.value}\` must be present in palette.`,
+    (args) => `Color \`${args.value}\` must be present in palette.`,
     // eslint-disable-next-line func-names
-    function(value) {
+    function (value) {
         return Boolean(this?.options?.context?.palette?.[value]);
     }
 );
@@ -39,7 +39,8 @@ export const THEME_SCHEMA = yup.object({
                 }),
                 {}
             )
-        )),
+        )
+    ),
     miscellaneous: yup.object({
         backgroundColor: isHex.required(),
         color: isHex.required(),
@@ -60,10 +61,7 @@ export const THEME_SCHEMA = yup.object({
             width: yup.number().required(),
             borderRadius: yup.number().required(),
             default: CARD_VARIANT_SCHEMA,
-            variants: yup
-                .array()
-                .of(CARD_VARIANT_SCHEMA)
-                .required()
+            variants: yup.array().of(CARD_VARIANT_SCHEMA).required()
         })
     })
 });

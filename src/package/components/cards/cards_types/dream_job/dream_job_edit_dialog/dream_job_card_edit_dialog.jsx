@@ -14,8 +14,6 @@ import { CheckboxGroup } from '../../../../commons/checkbox_group/checkbox_group
 import { CONTRACT_TYPES } from '../../../../../utils/enums/contract_types/contract_types';
 
 import { Select } from '../../../../commons/select/select';
-import { JobPerks } from '../../../../../utils/enums/job_perks/job_perks_utils';
-import { JobIssues } from '../../../../../utils/enums/job_issues/job_issues_utils';
 import { SalaryField } from './salary_field/salary_field';
 
 import { PerksField } from './perks_field/perks_field';
@@ -29,9 +27,6 @@ import { contractTypesTranslations } from '../../../../../utils/enums/contract_t
 import { styles } from './dream_job_card_edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
-
-const checkboxGroupPerks = Object.values(JobPerks).filter(perk => perk !== JobPerks.OTHER);
-const checkboxGroupCurrentJobIssues = Object.values(JobIssues).filter(key => key !== JobIssues.OTHER);
 
 const DEFAULT_OBJECT = {};
 
@@ -49,7 +44,7 @@ const DreamJobCardEditDialogComponent = ({ open, onClose, data, onEdit, validati
             validationSchema={validationSchemaToPass}
             title={<FormattedMessage id="DreamJob.editDialog.title" defaultMessage="Your dream job information" />}
         >
-            {helpers => <Content helpers={helpers} />}
+            {(helpers) => <Content helpers={helpers} />}
         </EditDialog>
     );
 };
@@ -57,92 +52,35 @@ const DreamJobCardEditDialogComponent = ({ open, onClose, data, onEdit, validati
 const Content = ({ helpers: { handleValueChange } }) => {
     const { formatMessage } = useIntl();
     const classes = useStyles();
-    const { values, errors, handleChange } = useFormikContext();
+    const { values, errors, handleChange, setFieldValue } = useFormikContext();
     const { averageDailyRate, places, salary, remoteFrequency, contractTypes } = values;
 
     const perks = values.perks ?? DEFAULT_OBJECT;
     const currentJobIssues = values.currentJobIssues ?? DEFAULT_OBJECT;
 
-    const addPlace = useCallback(place => handleValueChange('places')(places.concat({ ...place, id: uuid() })), [
+    const addPlace = useCallback((place) => handleValueChange('places')(places.concat({ ...place, id: uuid() })), [
         places
     ]);
 
-    const removePlace = useCallback(id => () => handleValueChange('places')(places.filter(place => place.id !== id)), [
-        places
-    ]);
-
-    const onChangePerks = useCallback(
-        newPerks =>
-            handleValueChange('perks')({
-                ...newPerks.reduce((acc, perk) => {
-                    acc[perk] = true;
-                    return acc;
-                }, {}),
-                [JobPerks.OTHER]: perks[JobPerks.OTHER]
-            }),
-        [perks]
+    const removePlace = useCallback(
+        (id) => () => handleValueChange('places')(places.filter((place) => place.id !== id)),
+        [places]
     );
 
-    const onChangeCurrentJobIssues = useCallback(
-        newCurrentJobIssues =>
-            handleValueChange('currentJobIssues')({
-                ...newCurrentJobIssues.reduce((acc, issue) => {
-                    acc[issue] = true;
-                    return acc;
-                }, {}),
-                [JobIssues.OTHER]: currentJobIssues[JobIssues.OTHER]
-            }),
-        [currentJobIssues]
-    );
-
-    const checkedPerks = useMemo(
-        () =>
-            Object.entries(perks || {})
-                .filter(([, value]) => value === true)
-                .map(([perk]) => perk),
-        [perks]
-    );
-
-    const checkedCurrentJobIssues = useMemo(
-        () =>
-            Object.entries(currentJobIssues || {})
-                .filter(([, value]) => value === true)
-                .map(([issue]) => issue),
-        [currentJobIssues]
-    );
-
-    const toggleOtherPerk = useCallback(
-        () =>
-            handleValueChange('perks')({
-                ...perks,
-                [JobPerks.OTHER]: perks[JobPerks.OTHER] !== null ? null : ''
-            }),
-        [perks]
-    );
-
-    const toggleOtherCurrentJobIssue = useCallback(
-        () =>
-            handleValueChange('currentJobIssues')({
-                ...currentJobIssues,
-                [JobIssues.OTHER]: currentJobIssues[JobIssues.OTHER] !== null ? null : ''
-            }),
-        [currentJobIssues]
-    );
-
-    const otherPerk = useMemo(() => perks[JobPerks.OTHER] ?? null, [perks]);
-    const otherCurrentJobIssue = useMemo(() => currentJobIssues[JobIssues.OTHER] ?? null, [currentJobIssues]);
     return (
         <>
-            <LocationPlacesField error={errors?.places} places={places} addPlace={addPlace} removePlace={removePlace} />
+            <LocationPlacesField
+                onChange={handleValueChange('places')}
+                error={errors?.places}
+                places={places}
+                addPlace={addPlace}
+                removePlace={removePlace}
+            />
             <PerksField
                 error={errors?.perks}
-                checkboxGroupPerks={checkboxGroupPerks}
-                checkedPerks={checkedPerks}
-                onChange={onChangePerks}
-                toggleOtherPerk={toggleOtherPerk}
-                otherPerk={otherPerk}
-                handleChange={handleChange}
                 perks={perks}
+                onChange={handleValueChange('perks')}
+                setFieldValue={setFieldValue}
             />
             <EditDialogField
                 error={errors.remoteFrequency}
@@ -194,13 +132,9 @@ const Content = ({ helpers: { handleValueChange } }) => {
             />
             <CurrentJobIssuesField
                 error={errors?.currentJobIssues}
-                checkboxGroupCurrentJobIssues={checkboxGroupCurrentJobIssues}
-                checkedCurrentJobIssues={checkedCurrentJobIssues}
-                onChange={onChangeCurrentJobIssues}
-                toggleOtherCurrentJobIssue={toggleOtherCurrentJobIssue}
-                otherCurrentJobIssue={otherCurrentJobIssue}
-                handleChange={handleChange}
                 currentJobIssues={currentJobIssues}
+                onChange={handleValueChange('currentJobIssues')}
+                setFieldValue={setFieldValue}
             />
         </>
     );

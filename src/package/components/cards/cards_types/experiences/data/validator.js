@@ -3,14 +3,14 @@ import moment from 'moment';
 import { validationTranslations } from '../../../../../utils/validation_translations';
 import { workTranslations } from './validator_translations';
 
-export const WorkValidator = formatMessage =>
+export const WorkValidator = (formatMessage) =>
     Yup.object().shape({
         work: Yup.array()
             .required(formatMessage(workTranslations.atLeastOne))
             .min(1, formatMessage(workTranslations.atLeastOne))
             .of(
                 Yup.object()
-                    .transform(value => ({ ...value, stillEmployed: !value.endDate }))
+                    .transform((value) => ({ ...value, stillEmployed: !value.endDate }))
                     .shape({
                         position: Yup.string().required(formatMessage(validationTranslations.required)),
                         name: Yup.string().min(5, formatMessage(validationTranslations.min, { min: 5 })),
@@ -29,12 +29,12 @@ export const WorkValidator = formatMessage =>
                             .test(
                                 'is-not-in-future',
                                 formatMessage(workTranslations.noFutureDate),
-                                value => value && value.isBefore(moment().add(1, 'day'))
+                                (value) => value && value.isBefore(moment().add(1, 'day'))
                             )
                             .test(
                                 'is-not-empty',
                                 formatMessage(validationTranslations.required),
-                                value =>
+                                (value) =>
                                     !!value &&
                                     !Number.isNaN(Number(value.year())) &&
                                     !Number.isNaN(Number(value.month()))
@@ -42,20 +42,18 @@ export const WorkValidator = formatMessage =>
 
                         endDate: Yup.object().when('stillEmployed', {
                             is: true,
-                            then: Yup.object()
-                                .nullable()
-                                .notRequired(),
-                            otherwise: Yup.object().when('startDate', start =>
+                            then: Yup.object().nullable().notRequired(),
+                            otherwise: Yup.object().when('startDate', (start) =>
                                 Yup.object()
                                     .test(
                                         'is-not-empty',
                                         formatMessage(validationTranslations.required),
-                                        value =>
+                                        (value) =>
                                             !!value &&
                                             !Number.isNaN(Number(value.year())) &&
                                             !Number.isNaN(Number(value.month()))
                                     )
-                                    .test('isafter', formatMessage(validationTranslations.isAfter), value => {
+                                    .test('isafter', formatMessage(validationTranslations.isAfter), (value) => {
                                         if (
                                             !start ||
                                             Number.isNaN(Number(start.year())) ||
@@ -63,19 +61,18 @@ export const WorkValidator = formatMessage =>
                                         ) {
                                             return true;
                                         }
-                                        return moment(value).isAfter(start);
-                                    }))
+                                        return moment(value).isSameOrAfter(start);
+                                    })
+                            )
                         })
                     })
             )
     });
 
-export const validateWorkComplete = data => {
+export const validateWorkComplete = (data) => {
     try {
         Yup.object({
-            work: Yup.array()
-                .required()
-                .min(1)
+            work: Yup.array().required().min(1)
         }).validateSync(data);
     } catch (e) {
         return false;

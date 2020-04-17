@@ -19,7 +19,7 @@ const AnimatedUnderlinedButtonComponent = ({ color = 'primary', onClick, childre
 
     const underlineTransitions = useTransition(
         isUnderlineDisplayed,
-        item => `${item ? 'visible' : 'hidden'}_underline`,
+        (item) => `${item ? 'visible' : 'hidden'}_underline`,
         ANIMATED_UNDERLINED_BUTTON_TRANSITIONS_SPRING_PROPS
     );
 

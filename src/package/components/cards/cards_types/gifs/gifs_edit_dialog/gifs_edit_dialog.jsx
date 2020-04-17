@@ -37,7 +37,7 @@ const GifsEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema
                     />
                 }
             >
-                {helpers => <GifsEditForm helpers={helpers} />}
+                {(helpers) => <GifsEditForm helpers={helpers} />}
             </EditDialog>
         </>
     );

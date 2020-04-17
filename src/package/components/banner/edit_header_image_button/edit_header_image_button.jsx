@@ -26,7 +26,7 @@ export const EditHeaderImageButton = ({ customizationOptions }) => {
     const [open, onOpen, onClose] = useCallbackOpen();
 
     const onChange = useCallback(
-        value => {
+        (value) => {
             if (typeof onCustomizationChanged === 'function') {
                 onCustomizationChanged({ ...customizationOptions, imageHeader: value });
             }

@@ -173,11 +173,11 @@
         },
         "dreamJob": {
             "locations": [
-                { "name": "Lille, France" },
-                { "name": "Paris,France" },
                 { "name": "Valenciennes, France" },
                 { "name": "Lille, France" },
                 { "name": "Paris,France" },
+                { "name": "Paris,France" },
+                { "name": "Lille, France" },
                 { "name": "Valenciennes, France" }
             ],
             "remoteFrequency": "regularly"
@@ -214,6 +214,11 @@
             { "type": "interestedBy", "variant": 3 },
             { "type": "language", "variant": 4 },
             { "type": "soundtrack", "variant": 4 }
-        ]
+        ],
+        "fields": {
+            "work": {
+                "customDateFormat": "YYYY"
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import capitalize from 'lodash';
+import capitalize from 'lodash/capitalize';
 
 import translations from './contract_types_translations';
 
@@ -12,7 +12,6 @@ export const ContractType = ({ contractTypes = [] }) => {
     if (!lastContract) {
         return null;
     }
-
     if (contracts.length <= 1) {
         return (
             <FormattedMessage
@@ -29,7 +28,7 @@ export const ContractType = ({ contractTypes = [] }) => {
             values={{
                 lastContract: formatMessage(translations[lastContract]),
                 contracts: contracts
-                    .map(key => capitalize(formatMessage(translations[key] || translations.unknown)))
+                    .map((key) => capitalize(formatMessage(translations[key] || translations.unknown)))
                     .join(', ')
             }}
         />

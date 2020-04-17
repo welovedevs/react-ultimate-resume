@@ -89,7 +89,7 @@ const GifsBackComponent = ({ data, handleAddButtonClick }) => {
 const Content = ({ data, pauseSlider, hasChanged, currentIndex, resumeSlider, handleAddButtonClick, classes }) => {
     const hasHobby = useMemo(() => existsAndNotEmpty(data?.interests), [data]);
 
-    const transitions = useTransition(data.interests?.[currentIndex] ?? {}, item => `gif_name_${item.name}`, {
+    const transitions = useTransition(data.interests?.[currentIndex] ?? {}, (item) => `gif_name_${item.name}`, {
         ...GIFS_BACK_TRANSITIONS_SPRING_PROPS,
         immediate: !hasChanged.current
     });
@@ -139,7 +139,7 @@ const Arrow = ({ classes, onClick, arrowRole }) => {
             onFocus={handleMouseDown}
             onBlur={handleMouseUp}
             style={{
-                transform: springProps.scale.to(value => `scale3d(${value}, ${value}, ${value})`)
+                transform: springProps.scale.to((value) => `scale3d(${value}, ${value}, ${value})`)
             }}
         >
             <ArrowIcon />

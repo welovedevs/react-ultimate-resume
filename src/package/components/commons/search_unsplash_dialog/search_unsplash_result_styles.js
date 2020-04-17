@@ -1,6 +1,6 @@
 import { withCustomVerticalScrollbar } from '../../../utils/styles/styles_utils';
 
-export const styles = theme => {
+export const styles = (theme) => {
     const {
         palette,
         miscellaneous: { spacing }

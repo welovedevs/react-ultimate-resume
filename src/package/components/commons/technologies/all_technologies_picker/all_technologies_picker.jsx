@@ -42,7 +42,7 @@ const TechnologyItem = ({ item, classes, selectedItems = [], onAdd, onDelete }) 
 
     const selectedItemLayerTransitions = useTransition(
         selectedItem,
-        selected => `selected_item_layer_${selected?.name}`,
+        (selected) => `selected_item_layer_${selected?.name}`,
         SELECTED_ITEM_LAYER_TRANSITIONS_SPRING_PROPS
     );
 
@@ -98,22 +98,22 @@ const AllTechnologiesPickerComponent = ({ selectedItems, onAdd, onDelete, classe
                     return selectedItems.some(({ name: selectedName }) => selectedName === name);
                 })
                 .filter(({ name, tags }) =>
-                    [...(tags ?? []), name].some(value => value.toLowerCase().includes(debouncedQuery.toLowerCase()))
+                    [...(tags ?? []), name].some((value) => value.toLowerCase().includes(debouncedQuery.toLowerCase()))
                 )
                 .slice(0, 35),
         [technologies, debouncedQuery, onlySelected]
     );
 
-    const handleTextFieldChange = useCallback(event => setQuery(event.target.value), []);
+    const handleTextFieldChange = useCallback((event) => setQuery(event.target.value), []);
 
     const displayedItemsTransitions = useTransition(
         !animationEnded.current ? displayedItems : null,
-        item => `technology_${item?.name}`,
+        (item) => `technology_${item?.name}`,
         {
             ...ALL_TECHNOLOGIES_TRANSITIONS_SPRING_PROPS,
             trail: 1250 / displayedItems.length,
             onRest: async () => {
-                await new Promise(resolve => setTimeout(resolve, 200));
+                await new Promise((resolve) => setTimeout(resolve, 200));
                 animationEnded.current = true;
             },
             ref: animationReference

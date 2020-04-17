@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
@@ -8,7 +8,7 @@ import { Button, Typography } from '@welovedevs/ui';
 import { Dialog, DialogContent, DialogActions } from '@material-ui/core';
 
 import { DialogTitle } from '../../commons/dialog/dialog_title/dialog_title';
-import { DeveloperProfileContext } from '../../../utils/context/contexts';
+import { DeveloperProfileContext, StaticDataContext } from '../../../utils/context/contexts';
 
 import { FileDropZone } from '../../commons/file_drop_zone/file_drop_zone';
 import { SearchUnsplashDialog } from '../../commons/search_unsplash_dialog/search_unsplash_result';
@@ -16,17 +16,58 @@ import { SearchUnsplashDialog } from '../../commons/search_unsplash_dialog/searc
 import { useCallbackOpen } from '../../hooks/use_callback_open';
 
 import { styles } from './edit_banner_image_dialog_styles';
+import { URLFailoverField } from '../../commons/url_failover_field/url_failover_field';
 
 const useStyles = createUseStyles(styles);
 
-const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
+const UnsplashButton = ({ setSearchUnsplashDialogOpened, hasUnsplashEndpoint }) => {
     const classes = useStyles();
-    const { onFilesUpload } = useContext(DeveloperProfileContext);
+    if (!hasUnsplashEndpoint) {
+        return (
+            <Typography className={classes.unsplashStub} component="div">
+                <FormattedMessage
+                    id="Banner.EditImageDialog.noUnsplashButton"
+                    defaultMessage="⚠️ No key, unsplash upload is disabled"
+                />
+            </Typography>
+        );
+    }
+    return (
+        <>
+            <div className={classes.buttonContainer}>
+                <Button
+                    color="primary"
+                    variant="outlined"
+                    onClick={setSearchUnsplashDialogOpened}
+                    customClasses={{
+                        container: classes.button
+                    }}
+                >
+                    <FormattedMessage id="Banner.EditImageDialog.unsplashButton" defaultMessage="Search on unsplash" />
+                </Button>
+            </div>
+            <div className={classes.divider}>
+                <Typography className={classes.dividerOr} variant="h4" component="h4">
+                    <FormattedMessage id="Main.Lang.Or" defaultMessage="or" />
+                </Typography>
+            </div>
+        </>
+    );
+};
 
+const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
     const [openSearchUnsplashDialog, setSearchUnsplashDialogOpened, setSearchUnsplashDialogClosed] = useCallbackOpen();
+    const { endpoints } = useContext(StaticDataContext);
+
+    const { onFilesUpload } = useContext(DeveloperProfileContext);
+    const hasUnsplashEndpoint = useMemo(() => !!endpoints.unsplashProxy, [endpoints.unsplashProxy]);
+    const needsFailoverField = useMemo(() => !hasUnsplashEndpoint && !onFilesUpload, [
+        hasUnsplashEndpoint,
+        onFilesUpload
+    ]);
 
     const onImageSelected = useCallback(
-        payload => {
+        (payload) => {
             onChange(payload);
             onClose();
             setSearchUnsplashDialogClosed();
@@ -34,9 +75,16 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
         [onChange, onClose]
     );
 
+    const onImageChanged = useCallback(
+        (payload) => {
+            onChange(payload);
+        },
+        [onChange, onClose]
+    );
+
     const onDrop = useCallback(
-        files =>
-            onFilesUpload(files).then(url => {
+        (files) =>
+            onFilesUpload(files).then((url) => {
                 onImageSelected({ url });
                 return url;
             }),
@@ -46,37 +94,24 @@ const EditBannerImageDialogComponent = ({ open, onClose, onChange }) => {
 
     return (
         <>
-            <SearchUnsplashDialog
-                open={openSearchUnsplashDialog}
-                onClose={setSearchUnsplashDialogClosed}
-                onSelect={onImageSelected}
-            />
+            {hasUnsplashEndpoint && (
+                <SearchUnsplashDialog
+                    open={openSearchUnsplashDialog}
+                    onClose={setSearchUnsplashDialogClosed}
+                    onSelect={onImageSelected}
+                />
+            )}
             <Dialog open={open} onClose={onClose}>
                 <DialogTitle>
                     <FormattedMessage id="Banner.EditImageDialog.Title" defaultMessage="Pick an image" />
                 </DialogTitle>
-                <DialogContent classes={{ root: classes.content }}>
-                    <div className={classes.buttonContainer}>
-                        <Button
-                            color="primary"
-                            variant="outlined"
-                            onClick={setSearchUnsplashDialogOpened}
-                            customClasses={{
-                                container: classes.button
-                            }}
-                        >
-                            <FormattedMessage
-                                id="Banner.EditImageDialog.unsplashButton"
-                                defaultMessage="Search on unsplash"
-                            />
-                        </Button>
-                    </div>
-                    <div className={classes.divider}>
-                        <Typography className={classes.dividerOr} variant="h4" component="h4">
-                            <FormattedMessage id="Main.Lang.Or" defaultMessage="or" />
-                        </Typography>
-                    </div>
-                    <FileDropZone onDrop={onDrop} />
+                <DialogContent>
+                    <UnsplashButton
+                        setSearchUnsplashDialogOpened={setSearchUnsplashDialogOpened}
+                        hasUnsplashEndpoint={hasUnsplashEndpoint}
+                    />
+                    <FileDropZone disabled={!onFilesUpload} onDrop={onDrop} />
+                    {needsFailoverField && <URLFailoverField onChange={onImageChanged} />}
                 </DialogContent>
                 <DialogActions>
                     <Button size="small" color="danger" onClick={onClear}>

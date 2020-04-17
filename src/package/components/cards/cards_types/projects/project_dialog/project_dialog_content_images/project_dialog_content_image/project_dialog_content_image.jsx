@@ -24,7 +24,7 @@ const ProjectDialogContentImageComponent = ({ component: Component = 'div', url,
 
     const editLayerTransitions = useTransition(
         showEditLayer,
-        item => `${item ? 'visible' : 'invisible'}_edit_layer`,
+        (item) => `${item ? 'visible' : 'invisible'}_edit_layer`,
         PROJECT_DIALOG_CONTENT_IMAGE_EDIT_LAYER_SPRING_PROPS
     );
 

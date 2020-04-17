@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -30,5 +31,20 @@ const ConfirmDialogComponent = ({ open, onClose, onConfirm, title = DefaultTitle
         </DialogActions>
     </Dialog>
 );
+
+ConfirmDialogComponent.propTypes = {
+    open: PropTypes.bool.isRequired,
+    onClose: PropTypes.func,
+    onConfirm: PropTypes.func,
+    title: PropTypes.element,
+    content: PropTypes.element
+};
+
+ConfirmDialogComponent.defaultProps = {
+    onClose: () => {},
+    onConfirm: () => {},
+    title: DefaultTitle,
+    content: DefaultContent
+};
 
 export const ConfirmDialog = ConfirmDialogComponent;

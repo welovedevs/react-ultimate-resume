@@ -1,4 +1,4 @@
-export default theme => ({
+export default (theme) => ({
     section: {
         padding: theme.spacing,
         display: 'flex',

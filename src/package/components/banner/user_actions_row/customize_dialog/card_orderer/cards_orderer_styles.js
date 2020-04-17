@@ -2,7 +2,7 @@ import { withCustomVerticalScrollbar } from '../../../../../utils/styles/styles_
 
 const CARD_DIMENSION = 200;
 
-export const styles = theme => {
+export const styles = (theme) => {
     const {
         miscellaneous: { spacing }
     } = theme;

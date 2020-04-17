@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { Portal, Snackbar } from '@material-ui/core';
 
 const mergeOnClicks = (...fns) => (...args) => {
-    fns.forEach(fn => {
+    fns.forEach((fn) => {
         if (typeof fn === 'function') {
             fn(args);
         }
@@ -21,11 +21,12 @@ const CopyWrapperComponent = ({ value, children }) => {
 
     return (
         <>
-            {React.Children.map(children, child =>
+            {React.Children.map(children, (child) =>
                 React.cloneElement(child, {
                     ...child.props,
                     onClick: mergeOnClicks(handleCopyToClipboardClick, child.props.onClick)
-                }))}
+                })
+            )}
             <Portal>
                 <Snackbar
                     anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}

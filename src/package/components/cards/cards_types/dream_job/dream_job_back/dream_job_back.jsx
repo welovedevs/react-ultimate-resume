@@ -59,7 +59,7 @@ const DreamJobBackComponent = ({ data }) => {
             )}
             {existsAndNotEmpty(perks) &&
                 typeof perks === 'object' &&
-                Object.values(perks).some(value => existsAndNotEmpty(value)) && (
+                Object.values(perks).some((value) => existsAndNotEmpty(value)) && (
                     <ProfileCardSection>
                         <ProfileCardSectionTitle>
                             <FormattedMessage
@@ -92,9 +92,7 @@ const DreamJobBackComponent = ({ data }) => {
 const DreamJobLocations = ({ remoteFrequency, places, classes }) => {
     const { formatMessage } = useIntl();
     if (remoteFrequency === REMOTE_FREQUENCY.FULL_TIME) {
-        return (
-            <FormattedMessage id="Dreamjob.Back.Location.RemoteOnly" defaultMessage="I only want to work remotely" />
-        );
+        return <FormattedMessage id="Dreamjob.Back.Location.RemoteOnly" defaultMessage="I want to work remotely" />;
     }
 
     return (
@@ -155,7 +153,7 @@ const DreamJobPlaces = ({ places = [], classes }) => {
             >
                 <List>
                     {remainingPlaces
-                        .filter(item => item)
+                        .filter((item) => item)
                         .map(({ name }, index) => (
                             <ListItem key={`place_popper_${index}`}>
                                 <Typography>{name}</Typography>

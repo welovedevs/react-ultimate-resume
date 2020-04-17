@@ -21,7 +21,7 @@ const SearchGifsDialogComponent = ({ open, onClose, onSelect }) => {
     const [query, setQuery] = useState('');
     const [debouncedQuery] = useDebounce(query, 500);
 
-    const handleInputChange = useCallback(event => setQuery(event.target.value), []);
+    const handleInputChange = useCallback((event) => setQuery(event.target.value), []);
 
     return (
         <Dialog

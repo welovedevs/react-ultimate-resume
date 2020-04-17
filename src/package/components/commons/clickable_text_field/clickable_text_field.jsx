@@ -26,7 +26,7 @@ const ClickableTextFieldComponent = ({
         <TextField readOnly className={cn(classes.container, customClasses.container)} {...other}>
             <animated.span
                 style={{
-                    transform: rotationSpring.to(value => `rotate(${value}deg)`)
+                    transform: rotationSpring.to((value) => `rotate(${value}deg)`)
                 }}
             >
                 <TextFieldIcon {...textFieldIconProps}>

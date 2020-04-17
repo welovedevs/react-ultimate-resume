@@ -15,7 +15,7 @@ export const useGoogleMapsPredictions = (input, options = DEFAULT_OPTIONS) => {
             setPredictions([]);
             return;
         }
-        const filteredPredictions = receivedPredictions.filter(p => p.types && !p.types.includes('country'));
+        const filteredPredictions = receivedPredictions.filter((p) => p.types && !p.types.includes('country'));
         setPredictions(filteredPredictions);
     }, []);
     useEffect(() => {

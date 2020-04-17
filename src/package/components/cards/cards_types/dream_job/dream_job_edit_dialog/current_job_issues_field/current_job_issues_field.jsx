@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
@@ -17,28 +17,67 @@ import { translations } from '../../../../../../utils/enums/job_issues/job_issue
 import { styles } from './current_job_issues_field_styles';
 
 const useStyles = createUseStyles(styles);
+const checkboxGroupCurrentJobIssues = Object.values(JobIssues).filter((key) => key !== JobIssues.OTHER);
 
-const CurrentJobIssuesFieldComponent = ({
-    error,
-    checkboxGroupCurrentJobIssues,
-    checkedCurrentJobIssues,
-    onChange,
-    toggleOtherCurrentJobIssue,
-    otherCurrentJobIssue,
-    handleChange,
-    currentJobIssues
-}) => {
+const CurrentJobIssuesFieldComponent = ({ error, currentJobIssues, onChange, setFieldValue }) => {
+    const timerRef = useRef();
     const classes = useStyles();
     const { formatMessage } = useIntl();
+    const otherCurrentJobIssue = useMemo(() => currentJobIssues[JobIssues.OTHER] ?? null, [currentJobIssues]);
+    const [otherCurrentJobIssueValue, setOtherCurrentJobIssueValue] = useState(otherCurrentJobIssue);
+
+    const checkedCurrentJobIssues = useMemo(
+        () =>
+            Object.entries(currentJobIssues || {})
+                .filter(([, value]) => value === true)
+                .map(([issue]) => issue),
+        [currentJobIssues]
+    );
 
     const transitions = useTransition(
         otherCurrentJobIssue !== null,
-        item => `other_field_${item ? 'visible' : 'invisible'}`,
+        (item) => `other_field_${item ? 'visible' : 'invisible'}`,
         {
             ...CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS,
             unique: true
         }
     );
+    const handleCheckboxGroupChange = useCallback(
+        (newCurrentJobIssues) =>
+            onChange({
+                ...newCurrentJobIssues.reduce((acc, issue) => {
+                    acc[issue] = true;
+                    return acc;
+                }, {}),
+                [JobIssues.OTHER]: currentJobIssues[JobIssues.OTHER]
+            }),
+        [currentJobIssues]
+    );
+
+    const toggleOtherCurrentJobIssue = useCallback(
+        () =>
+            setFieldValue(
+                `currentJobIssues.${JobIssues.OTHER}`,
+                typeof currentJobIssues[JobIssues.OTHER] === 'string' ? null : ''
+            ),
+        [currentJobIssues]
+    );
+    useEffect(() => setOtherCurrentJobIssueValue(otherCurrentJobIssue), [otherCurrentJobIssue]);
+
+    const handleOtherJobIssueChange = useCallback((e) => setOtherCurrentJobIssueValue(e.target.value), []);
+
+    useEffect(() => {
+        if (timerRef.current) {
+            clearTimeout(timerRef.current);
+        }
+        if (typeof otherCurrentJobIssueValue !== 'string' || !otherCurrentJobIssueValue.length) {
+            return;
+        }
+
+        timerRef.current = setTimeout(() => {
+            setFieldValue(`currentJobIssues.${JobIssues.OTHER}`, otherCurrentJobIssueValue);
+        }, 500);
+    }, [otherCurrentJobIssueValue]);
 
     return (
         <EditDialogField
@@ -55,9 +94,9 @@ const CurrentJobIssuesFieldComponent = ({
                 values={checkboxGroupCurrentJobIssues}
                 translations={translations}
                 value={checkedCurrentJobIssues}
-                name="perks"
+                name="currentJobIssues"
                 variant="outlined"
-                onChange={onChange}
+                onChange={handleCheckboxGroupChange}
             />
             <div className={classes.othersCheckbox}>
                 <CheckboxField
@@ -76,9 +115,9 @@ const CurrentJobIssuesFieldComponent = ({
                             key={key}
                             containerElement={animated.div}
                             customClasses={{ container: cn(classes.textField, classes.otherTextField) }}
-                            onChange={handleChange}
-                            name={`currentJobIssue[${JobIssues.OTHER}]`}
-                            value={currentJobIssues[JobIssues.OTHER]}
+                            onChange={handleOtherJobIssueChange}
+                            name={`currentJobIssues[${JobIssues.OTHER}]`}
+                            value={otherCurrentJobIssueValue}
                             variant="flat"
                             containerProps={{ style: props }}
                         />

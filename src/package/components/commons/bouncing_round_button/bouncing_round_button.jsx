@@ -37,7 +37,7 @@ const BouncingRoundButtonComponent = ({
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
                 style={{
-                    transform: springProps.scale.to(value => `scale3d(${value}, ${value}, ${value})`)
+                    transform: springProps.scale.to((value) => `scale3d(${value}, ${value}, ${value})`)
                 }}
             >
                 <Icon className={cn(classes.icon, classes.iconContainer)} />

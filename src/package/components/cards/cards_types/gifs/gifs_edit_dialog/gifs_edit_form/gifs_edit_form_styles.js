@@ -1,6 +1,6 @@
 import { createScreenWidthMediaQuery } from '../../../../../../utils/styles/styles_utils';
 
-export const styles = theme => {
+export const styles = (theme) => {
     const {
         miscellaneous: { spacing }
     } = theme;

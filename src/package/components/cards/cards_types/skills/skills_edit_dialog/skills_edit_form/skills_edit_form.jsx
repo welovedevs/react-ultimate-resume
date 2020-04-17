@@ -23,7 +23,7 @@ const SkillsEditFormComponent = ({ helpers: { handleValueChange } }) => {
 
     const { skills: errors } = validationErrors;
     const addItem = useCallback(
-        name =>
+        (name) =>
             handleValueChange(`skills[${values.skills.length}]`)({
                 name,
                 index: values.skills.length,
@@ -33,14 +33,14 @@ const SkillsEditFormComponent = ({ helpers: { handleValueChange } }) => {
         [values]
     );
     const deleteItem = useCallback(
-        id =>
+        (id) =>
             handleValueChange('skills')(
                 values.skills.filter(({ id: skillId }) => skillId !== id).map((skill, index) => ({ ...skill, index }))
             ),
         [values.skills]
     );
-    const onArrayChange = useCallback(array => handleValueChange('skills')(array), [values.skills]);
-    const onItemChange = useCallback(item => handleValueChange(`skills[${item.index}]`)(item), []);
+    const onArrayChange = useCallback((array) => handleValueChange('skills')(array), [values.skills]);
+    const onItemChange = useCallback((item) => handleValueChange(`skills[${item.index}]`)(item), []);
 
     const globalError = typeof errors === 'string' && errors;
 

@@ -10,7 +10,7 @@ import { getColorsFromCardVariant } from '../../../../../utils/styles/styles_uti
 
 const useStyles = createUseStyles(styles);
 
-const InterestedByBackComponent = props => {
+const InterestedByBackComponent = (props) => {
     const [variant] = useCardVariant();
     const classes = useStyles({ variant });
     const theme = useTheme();

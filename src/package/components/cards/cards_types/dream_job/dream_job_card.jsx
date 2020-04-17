@@ -16,7 +16,7 @@ const DreamJobCardComponent = ({ variant, side }) => {
     const mappedData = useMemo(() => mapDreamJobFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(
-        editedData => {
+        (editedData) => {
             onEdit(mapDreamJobToJsonResume(editedData));
         },
         [onEdit]

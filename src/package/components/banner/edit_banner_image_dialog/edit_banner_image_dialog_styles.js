@@ -2,7 +2,7 @@ import { flex } from '../../../utils/styles/styles_utils';
 
 const { center } = flex;
 
-export const styles = theme => {
+export const styles = (theme) => {
     const {
         palette,
         miscellaneous: { spacing }
@@ -37,6 +37,9 @@ export const styles = theme => {
             zIndex: 1,
             padding: [0, spacing * 2],
             backgroundColor: '#fff'
+        },
+        unsplashStub: {
+            padding: [spacing, 0]
         }
     };
 };

@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 import { validationTranslations } from '../../../../../utils/validation_translations';
 import { dreamjobValidationTranslations } from './validator_translations';
 
-export const DreamJobValidationSchema = formatMessage =>
+export const DreamJobValidationSchema = (formatMessage) =>
     Yup.object({
         places: Yup.array().of(
             Yup.object().shape({
@@ -15,21 +15,21 @@ export const DreamJobValidationSchema = formatMessage =>
             .test(
                 'is-not-empty',
                 formatMessage(dreamjobValidationTranslations.atLeastOneContractType),
-                value => !!(value || []).length
+                (value) => !!(value || []).length
             )
             .test(
                 'is-exclusif',
                 formatMessage(dreamjobValidationTranslations.selectByGroup),
-                value =>
+                (value) =>
                     !(
-                        ['permanent', 'fixedTerm', 'freelance'].filter(val => value.includes(val)).length &&
-                        ['apprenticeship', 'internship'].filter(val => value.includes(val)).length
+                        ['permanent', 'fixedTerm', 'freelance'].filter((val) => value.includes(val)).length &&
+                        ['apprenticeship', 'internship'].filter((val) => value.includes(val)).length
                     )
             ),
         salary: Yup.number().min(1, formatMessage(validationTranslations.min, { min: 1 }))
     });
 
-export const validateDreamjobComplete = data => {
+export const validateDreamjobComplete = (data) => {
     try {
         Yup.object({
             places: Yup.array().required(),

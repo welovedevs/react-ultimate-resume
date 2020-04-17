@@ -1,6 +1,6 @@
 import get from 'lodash/get';
 
-const hexToRgb = hex => {
+const hexToRgb = (hex) => {
     let c;
     if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
         c = hex.substring(1).split('');
@@ -15,7 +15,7 @@ const hexToRgb = hex => {
 };
 
 const THEME_TRANSFORMS = Object.freeze({
-    palette: colors =>
+    palette: (colors) =>
         Object.entries(colors).reduce((colorsAcc, [colorName, shades]) => {
             const colorAccumulator = colorsAcc;
             colorAccumulator[colorName] = {
@@ -33,7 +33,7 @@ const THEME_TRANSFORMS = Object.freeze({
         }, {})
 });
 
-export const transformTheme = theme =>
+export const transformTheme = (theme) =>
     Object.entries(THEME_TRANSFORMS).reduce((acc, [path, transform]) => {
         acc[path] = transform(get(theme, path));
         return acc;

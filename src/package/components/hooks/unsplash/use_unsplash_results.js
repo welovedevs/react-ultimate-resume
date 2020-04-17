@@ -41,7 +41,7 @@ export const useUnsplashResults = (input, page = 0, limit = 12, timeout = 800) =
             fetch(`${endpoints.unsplashProxy}?url=${url}`, {
                 method: 'GET'
             })
-                .then(async res => {
+                .then(async (res) => {
                     if (`${res.status}`.startsWith('2')) {
                         const functionResult = await res.json();
                         if (`${functionResult?.unsplashStatus}`.startsWith('2')) {
@@ -51,7 +51,7 @@ export const useUnsplashResults = (input, page = 0, limit = 12, timeout = 800) =
                     }
                     throw new Error(`${res.status} ${res.statusText}`);
                 })
-                .then(res => {
+                .then((res) => {
                     setResults(
                         res?.data?.results.map(({ id, user, description, urls, links }) => ({
                             id,
@@ -62,7 +62,7 @@ export const useUnsplashResults = (input, page = 0, limit = 12, timeout = 800) =
                         }))
                     );
                 })
-                .catch(e => {
+                .catch((e) => {
                     console.warn('Failed to fetch from unsplash', e.message);
                     setError(e.message);
                 })

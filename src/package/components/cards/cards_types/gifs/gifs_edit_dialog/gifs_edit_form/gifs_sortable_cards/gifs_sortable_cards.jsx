@@ -67,7 +67,7 @@ const DragHandle = SortableHandle(() => (
 const SortableGifItem = SortableElement(
     ({ id, interest, onChange, onRemove, error: fieldErrors, interestIndex: index, setSelectedIndex, classes }) => {
         const handleRemove = useCallback(() => onRemove(id), [id, onRemove]);
-        const handleChange = useCallback(field => value => onChange(index, field, value), [onChange]);
+        const handleChange = useCallback((field) => (value) => onChange(index, field, value), [onChange]);
         const handleImageEditClick = useCallback(() => setSelectedIndex(index), []);
         return (
             <li className={classes.listItem}>

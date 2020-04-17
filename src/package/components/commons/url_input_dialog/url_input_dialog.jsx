@@ -17,7 +17,7 @@ const UrlInputDialogComponent = ({ open, onClose, onConfirm }) => {
     const classes = useStyles();
     const [url, setUrl] = useState('');
 
-    const handleTextFieldChange = useCallback(event => setUrl(event.target.value), []);
+    const handleTextFieldChange = useCallback((event) => setUrl(event.target.value), []);
     const onClick = useCallback(() => onConfirm(url), [url]);
 
     return (

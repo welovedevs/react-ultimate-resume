@@ -56,7 +56,7 @@ const StudiesCardEditDialogComponent = ({ open, onClose, data, onEdit, validatio
             validationSchema={validationSchemaToPass}
             title={<FormattedMessage id="Studies.editDialog.title" defaultMessage="Your studies" />}
         >
-            {helpers => <FormationsEditFormWrapper helpers={helpers} />}
+            {(helpers) => <FormationsEditFormWrapper helpers={helpers} />}
         </EditDialog>
     );
 };
@@ -73,7 +73,7 @@ const FormationsEditFormWrapper = ({ helpers: { handleValueChange } }) => {
         handleValueChange(`education[${educationsIndex}].${field}`)(value);
     }, []);
     const formationDeleted = useCallback(
-        deletedId => () => {
+        (deletedId) => () => {
             handleValueChange('education')(education.filter(({ id }) => deletedId !== id));
         },
         [JSON.stringify(education)]
@@ -113,7 +113,7 @@ const SelectComponent = memo(({ value, onChange, classes, id }) => {
         () =>
             range(1980, moment().year() + 8)
                 .sort((a, b) => b - a)
-                .map(year => (
+                .map((year) => (
                     <MenuItem key={`formation_year_${id}_${year}`} value={year}>
                         {year}
                     </MenuItem>
@@ -143,12 +143,12 @@ const FormationItem = SortableElement(
 
         const { formatMessage } = useIntl();
 
-        const handleInstitutionChange = useCallback(event => onChange(index, 'institution', event.target.value), [
+        const handleInstitutionChange = useCallback((event) => onChange(index, 'institution', event.target.value), [
             index
         ]);
-        const handleStudyType = useCallback(event => onChange(index, 'studyType', event.target.value), [index]);
-        const handleAreaChange = useCallback(event => onChange(index, 'area', event.target.value), [index]);
-        const handleEndDate = useCallback(value => onChange(index, 'endDate', moment({ year: value })), [index]);
+        const handleStudyType = useCallback((event) => onChange(index, 'studyType', event.target.value), [index]);
+        const handleAreaChange = useCallback((event) => onChange(index, 'area', event.target.value), [index]);
+        const handleEndDate = useCallback((value) => onChange(index, 'endDate', moment({ year: value })), [index]);
 
         const { rotate } = useSpring({
             rotate: folded ? -90 : 0
@@ -156,7 +156,7 @@ const FormationItem = SortableElement(
 
         const contentTransitions = useTransition(
             !folded ? formation : null,
-            item => `${item ? 'visible' : 'invisible'}_study_${item?.id}_content`,
+            (item) => `${item ? 'visible' : 'invisible'}_study_${item?.id}_content`,
             {
                 ...STUDIES_CONTENT_TRANSITION_SPRING_PROPS,
                 unique: true,
@@ -186,7 +186,7 @@ const FormationItem = SortableElement(
                             <animated.div
                                 className={classes.arrowContainer}
                                 style={{
-                                    transform: rotate.to(value => `rotate(${value}deg)`)
+                                    transform: rotate.to((value) => `rotate(${value}deg)`)
                                 }}
                             >
                                 <ArrowIcon className={cn('refinement-arrow')} />
@@ -297,7 +297,7 @@ const SortableFormationsItems = SortableContainer(
         );
 
         const toggleFold = useCallback(
-            id => value => {
+            (id) => (value) => {
                 const newFoldState = { ...foldedState };
                 newFoldState[id] = value;
                 setFoldState(newFoldState);

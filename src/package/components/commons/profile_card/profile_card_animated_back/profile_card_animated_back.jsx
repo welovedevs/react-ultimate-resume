@@ -17,7 +17,7 @@ import { styles } from './profile_card_animated_back_styles';
 
 const useStyles = createUseStyles(styles);
 
-const TRANSLATION_INTERPOLATION = value => `translate3d(0, ${value}%, 0)`;
+const TRANSLATION_INTERPOLATION = (value) => `translate3d(0, ${value}%, 0)`;
 
 const ProfileCardAnimatedBackComponent = ({ title, children: content, customClasses = {} }) => {
     const classes = useStyles();

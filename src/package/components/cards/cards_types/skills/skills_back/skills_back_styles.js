@@ -4,7 +4,7 @@ import {
     withCustomVerticalScrollbar
 } from '../../../../../utils/styles/styles_utils';
 
-export const styles = theme => ({
+export const styles = (theme) => ({
     container: ({ variant }) => ({
         display: 'flex',
         flexWrap: 'wrap',

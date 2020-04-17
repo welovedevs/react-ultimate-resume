@@ -36,7 +36,7 @@ export const SliderWithPopper = ({
     }, [value]);
 
     const handleChange = useCallback(
-        e => {
+        (e) => {
             e.persist();
             const newValue = e.target.value;
             if (timer.current) {

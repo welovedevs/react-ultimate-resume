@@ -1,4 +1,4 @@
-export const styles = theme => {
+export const styles = (theme) => {
     const {
         miscellaneous: { spacing }
     } = theme;
@@ -19,6 +19,20 @@ export const styles = theme => {
             height: 24,
             marginRight: spacing,
             cursor: 'pointer'
+        },
+        sortableHelper: {
+            zIndex: 10000000000
+        },
+        dragHandleButton: {
+            display: 'flex'
+        },
+        dragHandle: {
+            marginRight: spacing,
+            width: 18,
+            height: 18,
+            '& g': {
+                stroke: 'white'
+            }
         }
     };
 };

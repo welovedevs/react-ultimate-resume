@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
@@ -19,23 +19,60 @@ import { styles } from './perks_field_styles';
 
 const useStyles = createUseStyles(styles);
 
-const PerksFieldComponent = ({
-    error,
-    checkboxGroupPerks,
-    checkedPerks,
-    onChange,
-    toggleOtherPerk,
-    otherPerk,
-    handleChange,
-    perks
-}) => {
+const checkboxGroupPerks = Object.values(JobPerks).filter((perk) => perk !== JobPerks.OTHER);
+
+const PerksFieldComponent = ({ error, perks, onChange, setFieldValue }) => {
+    const timerRef = useRef();
+
     const classes = useStyles();
     const { formatMessage } = useIntl();
+    const otherPerk = useMemo(() => perks[JobPerks.OTHER] ?? null, [perks]);
+    const [otherPerkValue, setOtherPerkValue] = useState(otherPerk);
 
-    const transitions = useTransition(otherPerk !== null, item => `other_field_${item ? 'visible' : 'invisible'}`, {
+    const checkedPerks = useMemo(
+        () =>
+            Object.entries(perks || {})
+                .filter(([, value]) => value === true)
+                .map(([perk]) => perk),
+        [perks]
+    );
+
+    const transitions = useTransition(otherPerk !== null, (item) => `other_field_${item ? 'visible' : 'invisible'}`, {
         ...PERKS_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS,
         unique: true
     });
+
+    const handleCheckboxGroupChange = useCallback(
+        (newPerks) =>
+            onChange({
+                ...newPerks.reduce((acc, perk) => {
+                    acc[perk] = true;
+                    return acc;
+                }, {}),
+                [JobPerks.OTHER]: perks[JobPerks.OTHER]
+            }),
+        [perks]
+    );
+
+    const toggleOtherPerk = useCallback(
+        () => setFieldValue(`perks.${JobPerks.OTHER}`, typeof perks[JobPerks.OTHER] === 'string' ? null : ''),
+        [perks]
+    );
+
+    useEffect(() => setOtherPerkValue(otherPerk), [otherPerk]);
+    const handleOtherPerkValueChange = useCallback((e) => setOtherPerkValue(e.target.value), []);
+    useEffect(() => {
+        if (timerRef.current) {
+            clearTimeout(timerRef.current);
+        }
+        if (typeof otherPerkValue !== 'string' || !otherPerkValue.length) {
+            return;
+        }
+
+        timerRef.current = setTimeout(() => {
+            setFieldValue(`perks.${JobPerks.OTHER}`, otherPerkValue);
+        }, 500);
+    }, [otherPerkValue]);
 
     return (
         <EditDialogField
@@ -54,7 +91,7 @@ const PerksFieldComponent = ({
                 value={checkedPerks}
                 name="perks"
                 variant="outlined"
-                onChange={onChange}
+                onChange={handleCheckboxGroupChange}
             />
             <div className={classes.othersCheckbox}>
                 <CheckboxField
@@ -73,9 +110,9 @@ const PerksFieldComponent = ({
                             key={key}
                             containerElement={animated.div}
                             customClasses={{ container: cn(classes.textField, classes.otherTextField) }}
-                            onChange={handleChange}
+                            onChange={handleOtherPerkValueChange}
                             name={`perks[${JobPerks.OTHER}]`}
-                            value={perks[JobPerks.OTHER]}
+                            value={otherPerkValue}
                             variant="flat"
                             containerProps={{ style: props }}
                         />

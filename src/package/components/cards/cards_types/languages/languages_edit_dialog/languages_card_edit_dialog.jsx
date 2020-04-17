@@ -37,7 +37,7 @@ const LanguagesCardEditDialogComponent = ({ open, onClose, data, onEdit, validat
             validationSchema={validationSchemaToPass}
             title={<FormattedMessage id="Languages.editDialog.title" defaultMessage="Your languages" />}
         >
-            {helpers => <LanguagesEditFormWrapper helpers={helpers} />}
+            {(helpers) => <LanguagesEditFormWrapper helpers={helpers} />}
         </EditDialog>
     );
 };
@@ -48,8 +48,8 @@ const LanguageItem = SortableElement(
         const theme = useTheme();
         const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
 
-        const handleLanguageChange = useCallback(e => onChange(index, 'language', e.target.value), [index]);
-        const handleValueChange = useCallback(e => onChange(index, 'value', Number(e.target.value)), [index]);
+        const handleLanguageChange = useCallback((e) => onChange(index, 'language', e.target.value), [index]);
+        const handleValueChange = useCallback((e) => onChange(index, 'value', Number(e.target.value)), [index]);
 
         return (
             <div className={classes.itemContainer}>
@@ -189,7 +189,7 @@ const LanguagesEditFormWrapper = ({ helpers: { handleValueChange } }) => {
         handleValueChange(`languages[${experienceIndex}].${field}`)(value);
     }, []);
     const languageDeleted = useCallback(
-        deletingId => () => {
+        (deletingId) => () => {
             handleValueChange('languages')(languages.filter(({ id }) => deletingId !== id));
         },
         [languages]

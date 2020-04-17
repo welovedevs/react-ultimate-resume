@@ -86,7 +86,7 @@ const Content = ({ hasProject, projectTitle, handleAddButtonClick, classes }) =>
                     id="Projects.front.title"
                     defaultMessage="My <emoji>♥️</emoji> project : "
                     values={{
-                        emoji: value => <Twemoji svg text={value} />
+                        emoji: (value) => <Twemoji svg text={value} />
                     }}
                 />
                 {projectTitle}

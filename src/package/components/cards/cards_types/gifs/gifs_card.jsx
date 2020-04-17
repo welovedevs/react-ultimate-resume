@@ -18,7 +18,7 @@ const GifsCardComponent = ({ variant, side }) => {
     const mappedData = useMemo(() => mapInterestsFromJsonResume(data), [data]);
 
     const onDialogEdited = useCallback(
-        editedData => {
+        (editedData) => {
             onEdit(mapInterestsToJsonResume(editedData));
         },
         [onEdit]
@@ -43,8 +43,8 @@ const GifsCardComponent = ({ variant, side }) => {
             isComplete={isComplete}
             data={mappedData}
             sides={{
-                front: props => <GifsFront {...props} />,
-                back: props => <GifsBack {...props} />
+                front: (props) => <GifsFront {...props} />,
+                back: (props) => <GifsBack {...props} />
             }}
             editDialog={{
                 component: GifsEditDialog,

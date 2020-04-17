@@ -17,7 +17,7 @@ const BasicsCardComponent = ({ variant, side }) => {
     const mappedData = useMemo(() => mapJsonResumeToBasicData(data), [data]);
 
     const onDialogEdited = useCallback(
-        editedData => {
+        (editedData) => {
             onEdit(mapBasicsDataToJsonResume(editedData));
         },
         [onEdit]
@@ -41,8 +41,8 @@ const BasicsCardComponent = ({ variant, side }) => {
                     onEdit: onDialogEdited
                 }}
                 sides={{
-                    front: props => <BasicsFront {...props} />,
-                    back: props => <BasicsBack {...props} />
+                    front: (props) => <BasicsFront {...props} />,
+                    back: (props) => <BasicsBack {...props} />
                 }}
                 variant={variant}
                 isComplete={isComplete}

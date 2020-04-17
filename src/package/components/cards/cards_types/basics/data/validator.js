@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import { validationTranslations } from '../../../../../utils/validation_translations';
 
-export const BasicsValidationSchema = formatMessage =>
+export const BasicsValidationSchema = (formatMessage) =>
     Yup.object({
         summary: Yup.string()
             .required(formatMessage(validationTranslations.required))
@@ -30,7 +30,7 @@ export const BasicsValidationSchema = formatMessage =>
         codingReason: Yup.string().min(10, formatMessage(validationTranslations.min, { min: 10 }))
     });
 
-export const validateBasicsComplete = data => {
+export const validateBasicsComplete = (data) => {
     try {
         Yup.object({
             experienceYears: Yup.number().required(),

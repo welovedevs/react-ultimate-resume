@@ -29,7 +29,7 @@ const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSel
     const clear = useCallback(() => setInput(''), []);
 
     const handleChange = useCallback(
-        event => {
+        (event) => {
             setInput(event.target.value);
             if (typeof onChange === 'function') {
                 event.persist();
@@ -55,7 +55,7 @@ const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSel
             <TextField
                 fullWidth={fullWidth}
                 className={classes.input}
-                onClick={e => e.target && e.target.select && e.target.select()}
+                onClick={(e) => e.target && e.target.select && e.target.select()}
                 value={input}
                 onChange={handleChange}
                 placeholder={formatMessage(translations.placeholder)}
@@ -106,7 +106,7 @@ const PredictionsList = ({ predictions = [], setPreventBlur, input, onPrediction
         >
             <List>
                 {predictions
-                    .filter(item => item)
+                    .filter((item) => item)
                     .map(({ description, place_id: placeId }) => (
                         <ListItem
                             key={`prediction_${placeId}`}
@@ -136,7 +136,7 @@ const StubLocationField = ({ variant, onLocationSelected, value, clearOnSelect, 
     }, [value]);
 
     const handleChange = useCallback(
-        e => {
+        (e) => {
             setInput(e.target.value);
             if (typeof onChange === 'function') {
                 e.persist();
@@ -146,7 +146,7 @@ const StubLocationField = ({ variant, onLocationSelected, value, clearOnSelect, 
         [onChange]
     );
     const onKeyDown = useCallback(
-        e => {
+        (e) => {
             if (e.keyCode === 13) {
                 onLocationSelected({ name: input });
                 if (clearOnSelect) {

@@ -44,7 +44,7 @@ const EditDialogComponent = ({
             <Formik
                 validateOnChange={false}
                 initialValues={data}
-                onSubmit={newValues => onEdit(newValues)}
+                onSubmit={(newValues) => onEdit(newValues)}
                 validationSchema={validationSchema}
             >
                 <TitleContent
@@ -110,13 +110,13 @@ const Content = ({
     isEditing
 }) => {
     const handleValueChange = useCallback(
-        name => value => {
+        (name) => (value) => {
             console.log(`[Edit Dialog] Setting field ${name} to value.`, { value });
             return setFieldValue(name, value);
         },
         [setFieldValue]
     );
-    const toggleValue = useCallback(name => () => setFieldValue(name, !values[name]), [setFieldValue, values]);
+    const toggleValue = useCallback((name) => () => setFieldValue(name, !values[name]), [setFieldValue, values]);
 
     return (
         <>

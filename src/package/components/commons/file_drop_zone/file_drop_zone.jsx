@@ -1,7 +1,8 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
-import { createUseStyles } from 'react-jss';
 import { useDropzone } from 'react-dropzone';
+import { FormattedMessage } from 'react-intl';
+import { createUseStyles } from 'react-jss';
 
 import { Typography } from '@welovedevs/ui';
 
@@ -19,7 +20,7 @@ const DEFAULT_ON_DROP = () => {
     throw new Error('Did not provide a valid onDrop function.');
 };
 
-const FileDropZoneComponent = ({ onDrop = DEFAULT_ON_DROP }) => {
+const FileDropZoneComponent = ({ disabled = false, onDrop = DEFAULT_ON_DROP }) => {
     const classes = useStyles();
 
     const [fileUrl, setFileUrl] = useState(false);
@@ -35,7 +36,7 @@ const FileDropZoneComponent = ({ onDrop = DEFAULT_ON_DROP }) => {
     );
 
     const handleDrop = useCallback(
-        async parameters => {
+        async (parameters) => {
             if (typeof onDrop !== 'function') {
                 return;
             }
@@ -53,7 +54,16 @@ const FileDropZoneComponent = ({ onDrop = DEFAULT_ON_DROP }) => {
     );
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop: handleDrop });
-
+    if (disabled) {
+        return (
+            <Typography>
+                <FormattedMessage
+                    id="Dropzone.disabled"
+                    defaultMessage="⚠️ Dropzone is disabled, no upload callback set. "
+                />
+            </Typography>
+        );
+    }
     return (
         <button className={classes.container} type="button" {...getRootProps()}>
             <Content

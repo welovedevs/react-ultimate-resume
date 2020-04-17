@@ -7,7 +7,7 @@ import {
 
 const { center } = flex;
 
-export const styles = theme => {
+export const styles = (theme) => {
     const {
         palette,
         miscellaneous: { spacing }

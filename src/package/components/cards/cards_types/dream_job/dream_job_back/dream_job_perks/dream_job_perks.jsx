@@ -18,7 +18,11 @@ const DreamJobPerksComponent = ({ perks = {} }) => {
                 .filter(([, value]) => Boolean(value))
                 .map(([perkId, value]) => {
                     if (perkId === JobPerks.OTHER) {
-                        return value;
+                        return (
+                            <li className={classes.listItem} key={`dream_job_perk_${perkId}`}>
+                                {value}
+                            </li>
+                        );
                     }
                     return (
                         <li className={classes.listItem} key={`dream_job_perk_${perkId}`}>
