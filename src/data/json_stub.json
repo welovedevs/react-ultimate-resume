@@ -1,22 +1,22 @@
 {
     "basics": {
         "name": "Nwaobi Daniel",
-        "label": "Programmer",
+        "label": "Developer",
         "picture": "",
-        "email": "john@gmail.com",
-        "phone": "(912) 555-4321",
-        "website": "http://johndoe.com",
-        "summary": "A summary of John Doe...",
+        "email": "dannychukz15@gmail.com",
+        "phone": "(080) 222-7-3025",
+        "website": "http://nwaobidaniel.com",
+        "summary": "A summary of Nwaobi Daniel...",
         "location": {
             "address": "2712 Broadway St",
             "postalCode": "CA 94115",
-            "city": "San Francisco",
-            "countryCode": "US",
-            "region": "California"
+            "city": "Benin City",
+            "countryCode": "NG",
+            "region": "Edo State"
         },
         "profiles": [{
             "network": "Twitter",
-            "username": "john",
+            "username": "Nwaobi Daniel",
             "url": "http://twitter.com/john"
         }]
     },
