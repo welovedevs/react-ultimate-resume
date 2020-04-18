@@ -1,6 +1,6 @@
 {
     "basics": {
-        "name": "John Doe",
+        "name": "Nwaobi Daniel",
         "label": "Programmer",
         "picture": "",
         "email": "john@gmail.com",
@@ -14,16 +14,13 @@
             "countryCode": "US",
             "region": "California"
         },
-        "profiles": [
-            {
-                "network": "Twitter",
-                "username": "john",
-                "url": "http://twitter.com/john"
-            }
-        ]
+        "profiles": [{
+            "network": "Twitter",
+            "username": "john",
+            "url": "http://twitter.com/john"
+        }]
     },
-    "work": [
-        {
+    "work": [{
             "name": "Company 2 ",
             "position": "Worker",
             "website": "http://company.com",
@@ -51,18 +48,15 @@
             "highlights": ["Started the company"]
         }
     ],
-    "volunteer": [
-        {
-            "organization": "Organization",
-            "position": "Volunteer",
-            "website": "http://organization.com/",
-            "endDate": "2013-01-01",
-            "summary": "Description...",
-            "highlights": ["Awarded 'Volunteer of the Month'"]
-        }
-    ],
-    "education": [
-        {
+    "volunteer": [{
+        "organization": "Organization",
+        "position": "Volunteer",
+        "website": "http://organization.com/",
+        "endDate": "2013-01-01",
+        "summary": "Description...",
+        "highlights": ["Awarded 'Volunteer of the Month'"]
+    }],
+    "education": [{
             "institution": "ISEN",
             "area": "Software Development",
             "studyType": "Engineer Degree",
@@ -81,25 +75,20 @@
             "courses": ["DB1101 - Basic SQL"]
         }
     ],
-    "awards": [
-        {
-            "title": "Award",
-            "date": "2014-11-01",
-            "awarder": "Company",
-            "summary": "There is no spoon."
-        }
-    ],
-    "publications": [
-        {
-            "name": "Publication",
-            "publisher": "Company",
-            "releaseDate": "2014-10-01",
-            "website": "http://publication.com",
-            "summary": "Description..."
-        }
-    ],
-    "skills": [
-        {
+    "awards": [{
+        "title": "Award",
+        "date": "2014-11-01",
+        "awarder": "Company",
+        "summary": "There is no spoon."
+    }],
+    "publications": [{
+        "name": "Publication",
+        "publisher": "Company",
+        "releaseDate": "2014-10-01",
+        "website": "http://publication.com",
+        "summary": "Description..."
+    }],
+    "skills": [{
             "name": "Reactaaa",
             "level": "Master",
             "value": 100,
@@ -137,8 +126,7 @@
         }
     ],
     "languages": [{ "language": "English", "value": 100, "fluency": "Native speaker" }],
-    "interests": [
-        {
+    "interests": [{
             "name": "Burritos",
             "gifUrl": "https://media.giphy.com/media/d8WjGORtSEWqc/giphy.gif"
         },
@@ -159,13 +147,11 @@
         }
     ],
     "references": [{ "name": "Jane Doe", "reference": "Reference..." }],
-    "projects": [
-        {
-            "name": "Développement d'un serpent connecté",
-            "description": "Et oui, vous avez bien entendu !\nUn serpent connecté, c'est comme une montre connectée, mais en serpent, en fait ça ressemble pas une montre, mais ça reste connecté 🚀",
-            "images": []
-        }
-    ],
+    "projects": [{
+        "name": "Développement d'un serpent connecté",
+        "description": "Et oui, vous avez bien entendu !\nUn serpent connecté, c'est comme une montre connectée, mais en serpent, en fait ça ressemble pas une montre, mais ça reste connecté 🚀",
+        "images": []
+    }],
     "specific": {
         "basics": {
             "visaSponsorship": true,
