@@ -1,0 +1,84 @@
+/* eslint no-unused-vars: 0 */
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+
+import { createUseStyles } from 'react-jss';
+import { FormattedMessage } from 'react-intl';
+
+import { Dialog, DialogContent, DialogActions } from '@material-ui/core';
+
+import { Button, Typography } from '@welovedevs/ui';
+
+import { DialogTitle } from '../../../../../commons/dialog/dialog_title/dialog_title';
+import { DeveloperProfileContext } from '../../../../../../utils/context/contexts';
+import { ContactInfosDialogTextFields } from './contact_infos_dialog_textfields/contact_infos_dialog_textfields';
+
+import { styles } from './contact_infos_dialog_styles';
+import { CONTACT_INFOS_DATA } from '../contact_infos_data';
+
+const useStyles = createUseStyles(styles);
+
+export const ContactInfosDialog = ({ open, onClose, contactInformations }) => {
+    const { data, onEdit } = useContext(DeveloperProfileContext);
+    const [inputs, setInputs] = useState(contactInformations);
+
+    useEffect(() => setInputs(contactInformations), [contactInformations]);
+
+    const handleSave = useCallback(() => {
+        if (!inputs) {
+            return;
+        }
+        const edits = Object.entries(inputs).reduce((acc, [contactInformationId, value]) => {
+            if (value === contactInformations[contactInformationId]) {
+                return acc;
+            }
+            return {
+                ...acc,
+                [CONTACT_INFOS_DATA?.[contactInformationId]?.path]: value
+            };
+        }, {});
+        onEdit(edits);
+        onClose();
+    }, [contactInformations, inputs]);
+
+    const classes = useStyles();
+    return (
+        <Dialog
+            {...{
+                open,
+                onClose
+            }}
+        >
+            <DialogTitle>
+                <FormattedMessage
+                    id="Banner.UserInformations.ContactInfos.Dialog.Title"
+                    defaultMessage="Edit your contact informations?"
+                />
+            </DialogTitle>
+            <DialogContent>
+                <Typography
+                    color="dark"
+                    customClasses={{
+                        container: classes.typography
+                    }}
+                >
+                    <FormattedMessage
+                        id="Banner.UserInformations.ContactInfos.Dialog.Content"
+                        defaultMessage="You can add contact informations to your profile. Please be aware that those informations might be scrapped and used for unknown purposes. <bolder>Add them at your own risks!</bolder>"
+                        values={{
+                            bolder: (chunks) => <span className={classes.bolder}>{chunks}</span>
+                        }}
+                    />
+                </Typography>
+                <ContactInfosDialogTextFields inputs={inputs} setInputs={setInputs} />
+            </DialogContent>
+            <DialogActions>
+                <Button size="small" onClick={onClose}>
+                    <FormattedMessage id="Main.lang.close" defaultMessage="Fermer" />
+                </Button>
+                <Button color="primary" size="small" onClick={handleSave}>
+                    <FormattedMessage id="Main.lang.save" defaultMessage="Sauvegarder" />
+                </Button>
+            </DialogActions>
+        </Dialog>
+    );
+};
