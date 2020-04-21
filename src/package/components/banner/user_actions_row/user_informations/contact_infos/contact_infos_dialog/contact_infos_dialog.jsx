@@ -1,10 +1,10 @@
 /* eslint no-unused-vars: 0 */
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 
-import { Dialog, DialogContent, DialogActions } from '@material-ui/core';
+import { Dialog, DialogContent, DialogActions, useMediaQuery } from '@material-ui/core';
 
 import { Button, Typography } from '@welovedevs/ui';
 
@@ -18,8 +18,10 @@ import { CONTACT_INFOS_DATA } from '../contact_infos_data';
 const useStyles = createUseStyles(styles);
 
 export const ContactInfosDialog = ({ open, onClose, contactInformations }) => {
-    const { data, onEdit } = useContext(DeveloperProfileContext);
+    const { onEdit } = useContext(DeveloperProfileContext);
     const [inputs, setInputs] = useState(contactInformations);
+    const theme = useTheme();
+    const fullScreen = useMediaQuery(`(max-width: ${theme?.screenSizes.small}px)`, { defaultMatches: true });
 
     useEffect(() => setInputs(contactInformations), [contactInformations]);
 
@@ -42,12 +44,7 @@ export const ContactInfosDialog = ({ open, onClose, contactInformations }) => {
 
     const classes = useStyles();
     return (
-        <Dialog
-            {...{
-                open,
-                onClose
-            }}
-        >
+        <Dialog open={open} onClose={onClose} fullScreen={fullScreen}>
             <DialogTitle>
                 <FormattedMessage
                     id="Banner.UserInformations.ContactInfos.Dialog.Title"
