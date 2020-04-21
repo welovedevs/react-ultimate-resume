@@ -8,5 +8,9 @@ export const translations = defineMessages({
     phone: {
         id: 'Banner.UserInformations.ContactInformations.Phone',
         defaultMessage: 'Phone number'
+    },
+    name: {
+        id: 'Banner.UserInformations.ContactInformations.Name',
+        defaultMessage: 'Name'
     }
 });

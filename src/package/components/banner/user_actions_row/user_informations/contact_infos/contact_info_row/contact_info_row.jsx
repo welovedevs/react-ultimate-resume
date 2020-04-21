@@ -12,7 +12,6 @@ const useStyles = createUseStyles(styles);
 export const ContactInfoRow = ({ icon: Icon, translation, value }) => {
     const classes = useStyles();
     const { formatMessage } = useIntl();
-    console.log(translation);
     return (
         <div className={classes.container}>
             <Tooltip title={formatMessage(translation)}>

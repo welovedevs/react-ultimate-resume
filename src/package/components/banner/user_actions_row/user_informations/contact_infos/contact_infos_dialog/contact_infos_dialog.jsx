@@ -4,14 +4,15 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 
+import set from 'lodash/set';
+
 import { Dialog, DialogContent, DialogActions, useMediaQuery } from '@material-ui/core';
 
 import { Button, Typography } from '@welovedevs/ui';
-
 import { DialogTitle } from '../../../../../commons/dialog/dialog_title/dialog_title';
 import { DeveloperProfileContext } from '../../../../../../utils/context/contexts';
-import { ContactInfosDialogTextFields } from './contact_infos_dialog_textfields/contact_infos_dialog_textfields';
 
+import { ContactInfosDialogTextFields } from './contact_infos_dialog_textfields/contact_infos_dialog_textfields';
 import { styles } from './contact_infos_dialog_styles';
 import { CONTACT_INFOS_DATA } from '../contact_infos_data';
 
@@ -33,11 +34,10 @@ export const ContactInfosDialog = ({ open, onClose, contactInformations }) => {
             if (value === contactInformations[contactInformationId]) {
                 return acc;
             }
-            return {
-                ...acc,
-                [CONTACT_INFOS_DATA?.[contactInformationId]?.path]: value
-            };
+            set(acc, CONTACT_INFOS_DATA?.[contactInformationId]?.path, value);
+            return acc;
         }, {});
+
         onEdit(edits);
         onClose();
     }, [contactInformations, inputs]);
