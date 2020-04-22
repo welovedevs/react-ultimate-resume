@@ -55,6 +55,7 @@ function App() {
             onEdit={onEdit}
             onCustomizationChanged={onCustomizationChanged}
             options={{
+                // locale: 'tr',
                 // side: 'back',
                 apiKeys: {
                     giphy: process.env.REACT_APP_GIPHY
