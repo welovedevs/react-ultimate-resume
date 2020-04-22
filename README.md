@@ -147,7 +147,7 @@ We added a few extra features that you will love :
 
 ### i18n
 
-The resume is currently available in English and in French. Feel free to contribute with your language translation file !   
+The resume is currently available in English, French and Turkish. Feel free to contribute with your language translation file !   
 
 ### Built by the community 💖
 
