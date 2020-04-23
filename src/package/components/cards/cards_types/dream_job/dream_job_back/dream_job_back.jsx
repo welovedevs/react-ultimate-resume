@@ -27,7 +27,16 @@ const useStyles = createUseStyles(styles);
 
 const DreamJobBackComponent = ({ data }) => {
     const classes = useStyles();
-    const { averageDailyRate, places, perks, salary, remoteFrequency, contractTypes, currentJobIssues } = data;
+    const {
+        averageDailyRate,
+        places,
+        perks,
+        salary,
+        currency,
+        remoteFrequency,
+        contractTypes,
+        currentJobIssues
+    } = data;
     const isFreelance = hasOnlyFreelanceContract(contractTypes) ? salary : averageDailyRate;
 
     return (
@@ -44,6 +53,7 @@ const DreamJobBackComponent = ({ data }) => {
                             contractTypes={contractTypes}
                             averageDailyRate={averageDailyRate}
                             salary={salary}
+                            currency={currency}
                         />
                     </ProfileCardSection>
                 )}
