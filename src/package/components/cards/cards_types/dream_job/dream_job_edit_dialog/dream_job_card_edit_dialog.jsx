@@ -21,7 +21,9 @@ import { CurrentJobIssuesField } from './current_job_issues_field/current_job_is
 import { LocationPlacesField } from './location_places_field/location_places_field';
 
 import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
+import { CURRENCIES } from '../../../../../utils/enums/currencies/currencies_utils';
 import { remoteSelectTranslations } from '../../../../../utils/enums/remote/remote_filter_translations';
+import { currenciesSelectTranslations } from '../../../../../utils/enums/currencies/currencies_filter_translations';
 import { contractTypesTranslations } from '../../../../../utils/enums/contract_types/contract_types_translations';
 
 import { styles } from './dream_job_card_edit_dialog_styles';
@@ -53,7 +55,7 @@ const Content = ({ helpers: { handleValueChange } }) => {
     const { formatMessage } = useIntl();
     const classes = useStyles();
     const { values, errors, handleChange, setFieldValue } = useFormikContext();
-    const { averageDailyRate, places, salary, remoteFrequency, contractTypes } = values;
+    const { averageDailyRate, places, salary, currency, remoteFrequency, contractTypes } = values;
 
     const perks = values.perks ?? DEFAULT_OBJECT;
     const currentJobIssues = values.currentJobIssues ?? DEFAULT_OBJECT;
@@ -130,6 +132,28 @@ const Content = ({ helpers: { handleValueChange } }) => {
                 errors={errors}
                 handleChange={handleChange}
             />
+            <EditDialogField
+                title={
+                    <FormattedMessage
+                        id="DreamJob.editDialog.currency.title"
+                        defaultMessage="What is your desired currency?"
+                    />
+                }
+            >
+                <Select
+                    fullWidth
+                    value={currency}
+                    onChange={handleChange('currency')}
+                    textFieldProps={{ variant: 'flat' }}
+                    textFieldIconProps={{ className: classes.selectIcon }}
+                >
+                    {Object.values(CURRENCIES).map((elemValue, index) => (
+                        <ListItem key={`currency_${elemValue}_${index}`} value={elemValue}>
+                            {formatMessage(currenciesSelectTranslations[elemValue])}
+                        </ListItem>
+                    ))}
+                </Select>
+            </EditDialogField>
             <CurrentJobIssuesField
                 error={errors?.currentJobIssues}
                 currentJobIssues={currentJobIssues}
