@@ -1,12 +1,18 @@
 import React from 'react';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { ProfileCardSectionTitle } from '../../../../../commons/profile_card/profile_card_section_title/profile_card_section_title';
 import { ProfileCardSectionText } from '../../../../../commons/profile_card/profile_card_section_text/profile_card_section_text';
 import { hasOnlyFreelanceContract } from '../../../../utils/has_only_freelance_contract';
+import {
+    currenciesDisplayTranslationsBefore,
+    currenciesDisplayTranslationsAfter
+} from '../../../../../../utils/enums/currencies/currencies_filter_translations';
 
-const DreamJobSalarySectionContentComponent = ({ contractTypes, salary, averageDailyRate }) => {
+const DreamJobSalarySectionContentComponent = ({ contractTypes, salary, currency, averageDailyRate }) => {
+    const { formatMessage } = useIntl();
+
     if (hasOnlyFreelanceContract(contractTypes)) {
         return (
             <>
@@ -22,7 +28,13 @@ const DreamJobSalarySectionContentComponent = ({ contractTypes, salary, averageD
             <ProfileCardSectionTitle>
                 <FormattedMessage id="Dreamjob.Back.Salary.Title" defaultMessage="Ideal yearly salary" />
             </ProfileCardSectionTitle>
-            <ProfileCardSectionText>{`${salary} k€`}</ProfileCardSectionText>
+            <ProfileCardSectionText>
+                {formatMessage(
+                    currenciesDisplayTranslationsBefore[currency] || currenciesDisplayTranslationsBefore.euro
+                )}
+                {`${salary}`}
+                {formatMessage(currenciesDisplayTranslationsAfter[currency] || currenciesDisplayTranslationsAfter.euro)}
+            </ProfileCardSectionText>
         </>
     );
 };
