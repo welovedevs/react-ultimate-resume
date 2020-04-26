@@ -19,7 +19,15 @@ const DreamJobSalarySectionContentComponent = ({ contractTypes, salary, currency
                 <ProfileCardSectionTitle>
                     <FormattedMessage id="Dreamjob.Back.AverageDailyRate.Title" defaultMessage="Average Daily Rate" />
                 </ProfileCardSectionTitle>
-                <ProfileCardSectionText>{`${averageDailyRate} €`}</ProfileCardSectionText>
+                <ProfileCardSectionText>
+                    {formatMessage(
+                        currenciesDisplayTranslationsBefore[currency] || currenciesDisplayTranslationsBefore.euro
+                    )}
+                    {`${averageDailyRate}`}
+                    {formatMessage(
+                        currenciesDisplayTranslationsAfter[currency] || currenciesDisplayTranslationsAfter.euro
+                    )}
+                </ProfileCardSectionText>
             </>
         );
     }
