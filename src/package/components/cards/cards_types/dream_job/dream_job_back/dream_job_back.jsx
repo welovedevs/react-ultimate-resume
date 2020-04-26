@@ -37,7 +37,7 @@ const DreamJobBackComponent = ({ data }) => {
         contractTypes,
         currentJobIssues
     } = data;
-    const isFreelance = hasOnlyFreelanceContract(contractTypes) ? salary : averageDailyRate;
+    const isFreelance = hasOnlyFreelanceContract(contractTypes);
 
     return (
         <ProfileCardAnimatedBack title={<FormattedMessage id="Dreamjob.Back.Title" defaultMessage="Dream job" />}>
