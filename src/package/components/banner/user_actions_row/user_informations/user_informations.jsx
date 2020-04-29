@@ -23,7 +23,7 @@ export const UserInformations = () => {
     const { data } = useContext(DeveloperProfileContext);
     const [additionalNodes] = useAdditionalNodes('banner.userInformations', null);
     const [isEditing] = useIsEditing();
-    const showContactInformations = useOptions('showContactInfos');
+    const [showContactInformations] = useOptions('showContactInfos');
 
     const contactInformations = useMemo(
         () =>
