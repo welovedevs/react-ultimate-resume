@@ -180,6 +180,7 @@
                 { "name": "Lille, France" },
                 { "name": "Valenciennes, France" }
             ],
+            "salary": "45",
             "remoteFrequency": "regularly"
         },
         "currentJob": {

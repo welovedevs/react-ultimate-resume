@@ -5,10 +5,11 @@ import { EditDialogField } from '../../../../../commons/edit_dialog_field/edit_d
 
 import { hasOnlyFreelanceContract } from '../../../../utils/has_only_freelance_contract';
 
-const SalaryFieldComponent = ({ salary, averageDailyRate, errors, contractTypes, handleChange }) => {
+const SalaryFieldComponent = ({ salary, averageDailyRate, errors, contractTypes, handleChange, className }) => {
     const isFreelance = hasOnlyFreelanceContract(contractTypes);
     return (
         <EditDialogField
+            classes={{ container: className }}
             title={<Title isFreelance={isFreelance} />}
             error={errors?.[isFreelance ? 'averageDailyRate' : 'salary']}
         >

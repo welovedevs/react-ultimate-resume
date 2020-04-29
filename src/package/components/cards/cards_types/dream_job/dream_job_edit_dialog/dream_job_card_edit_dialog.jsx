@@ -125,35 +125,40 @@ const Content = ({ helpers: { handleValueChange } }) => {
                     onChange={handleValueChange('contractTypes')}
                 />
             </EditDialogField>
-            <SalaryField
-                salary={salary}
-                contractTypes={contractTypes}
-                averageDailyRate={averageDailyRate}
-                errors={errors}
-                handleChange={handleChange}
-            />
-            <EditDialogField
-                title={
-                    <FormattedMessage
-                        id="DreamJob.editDialog.currency.title"
-                        defaultMessage="What is your desired currency?"
-                    />
-                }
-            >
-                <Select
-                    fullWidth
-                    value={currency}
-                    onChange={handleChange('currency')}
-                    textFieldProps={{ variant: 'flat' }}
-                    textFieldIconProps={{ className: classes.selectIcon }}
+            <div className={classes.formGroup}>
+                <SalaryField
+                    className={classes.leftFormGroupField}
+                    salary={salary}
+                    contractTypes={contractTypes}
+                    averageDailyRate={averageDailyRate}
+                    errors={errors}
+                    handleChange={handleChange}
+                />
+                <EditDialogField
+                    classes={{ container: classes.formGroupField }}
+                    title={
+                        <FormattedMessage
+                            id="DreamJob.editDialog.currency.title"
+                            defaultMessage="What is your desired currency?"
+                        />
+                    }
                 >
-                    {Object.values(CURRENCIES).map((elemValue, index) => (
-                        <ListItem key={`currency_${elemValue}_${index}`} value={elemValue}>
-                            {formatMessage(currenciesSelectTranslations[elemValue])}
-                        </ListItem>
-                    ))}
-                </Select>
-            </EditDialogField>
+                    <Select
+                        fullWidth
+                        value={currency}
+                        onChange={handleChange('currency')}
+                        textFieldProps={{ variant: 'flat' }}
+                        textFieldIconProps={{ className: classes.selectIcon }}
+                    >
+                        {Object.values(CURRENCIES).map((elemValue, index) => (
+                            <ListItem key={`currency_${elemValue}_${index}`} value={elemValue}>
+                                {formatMessage(currenciesSelectTranslations[elemValue])}
+                            </ListItem>
+                        ))}
+                    </Select>
+                </EditDialogField>
+            </div>
+
             <CurrentJobIssuesField
                 error={errors?.currentJobIssues}
                 currentJobIssues={currentJobIssues}
