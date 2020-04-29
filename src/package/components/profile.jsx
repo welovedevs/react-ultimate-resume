@@ -47,7 +47,7 @@ const DEFAULT_OPTIONS = Object.freeze({
             alt: 'Default Banner'
         }
     },
-    showContactInfos: true,
+    showContactInfos: false,
     dismissFooter: false
 });
 
