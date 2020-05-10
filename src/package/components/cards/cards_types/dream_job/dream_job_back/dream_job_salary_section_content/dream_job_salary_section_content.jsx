@@ -35,7 +35,7 @@ const DreamJobSalarySectionContentComponent = ({ contractTypes, salary, currency
                 <FormattedNumber
                     /* eslint-disable-next-line react/style-prop-object */
                     style="currency"
-                    value={salary * 1000}
+                    value={salary}
                     currency={currency || 'eur'}
                     currencyDisplay="name"
                     notation="compact"
