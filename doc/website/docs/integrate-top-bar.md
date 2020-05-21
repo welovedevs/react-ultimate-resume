@@ -3,7 +3,7 @@ id: integrate-top-bar
 title: Top bar buttons
 ---
 
-#Integrate top bar buttons
+# Integrate top bar buttons
 
 As you can see on [the reference site](https://vincent-cotro.welovedevs.com), we've integrated two buttons in the header.
 This can be done via the `additionalNodes.banner.actionButton` props
