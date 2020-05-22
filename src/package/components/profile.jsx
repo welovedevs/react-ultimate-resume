@@ -46,7 +46,8 @@ const DEFAULT_OPTIONS = Object.freeze({
         }
     },
     showContactInfos: true,
-    dismissFooter: false
+    dismissFooter: false,
+    maxCardsPerRow: null
 });
 
 const DEFAULT_OBJECT = {};
@@ -122,7 +123,11 @@ const DeveloperProfileComponent = ({
                             onCustomizationChanged={onCustomizationChanged}
                         />
                         {additionalNodes?.beforeCards}
-                        <Cards cardsOrder={options.customization?.cardsOrder} side={side} />
+                        <Cards
+                            cardsOrder={options.customization?.cardsOrder}
+                            maxCardsPerRow={options?.maxCardsPerRow}
+                            side={side}
+                        />
                         {!options.dismissFooter && <Footer />}
                     </DeveloperProfileContext.Provider>
                 </StoreContext.Provider>
@@ -147,6 +152,8 @@ const WithProvidersDeveloperProfile = ({
         () => mergeWith(cloneDeep(DEFAULT_OPTIONS), JSON.parse(JSON.stringify(options || {})), mergeOmitNull),
         [JSON.stringify(options)]
     );
+
+    console.log({ mergedOptions });
 
     const { locale, customization } = mergedOptions;
     const builtTheme = useMemo(() => buildTheme(customization?.theme), [customization?.theme]);
