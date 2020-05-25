@@ -19,11 +19,11 @@ import {
     SET_VARIANT
 } from '../../../store/profile_card/profile_card_actions_types';
 import { getProfileCardInitialState, profileCardReducer } from '../../../store/profile_card/profile_card_reducer';
-
-import { styles } from './profile_card_styles';
+import { DeveloperProfileContext } from '../../../utils/context/contexts';
 import { PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_SPRING_PROPS } from './profile_card_spring_props';
 import { SIDES } from './profile_card_side/side';
-import { DeveloperProfileContext } from '../../../utils/context/contexts';
+
+import { styles } from './profile_card_styles';
 
 const useStyles = createUseStyles(styles);
 

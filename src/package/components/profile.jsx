@@ -47,6 +47,7 @@ const DEFAULT_OPTIONS = Object.freeze({
             alt: 'Default Banner'
         }
     },
+    maxCardsPerRow: null
     showContactInfos: false,
     dismissFooter: false
 });
@@ -127,7 +128,11 @@ const DeveloperProfileComponent = ({
                             onCustomizationChanged={onCustomizationChanged}
                         />
                         {additionalNodes?.beforeCards}
-                        <Cards cardsOrder={options.customization?.cardsOrder} side={side} />
+                        <Cards
+                            cardsOrder={options.customization?.cardsOrder}
+                            maxCardsPerRow={options?.maxCardsPerRow}
+                            side={side}
+                        />
                         {!options.dismissFooter && <Footer />}
                     </DeveloperProfileContext.Provider>
                 </StoreContext.Provider>
