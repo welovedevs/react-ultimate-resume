@@ -1,11 +1,18 @@
-import { SET_CHANGING_SIDES, SET_HAS_DIALOG_OPENED, SET_SIDE, SET_VARIANT } from './profile_card_actions_types';
+import {
+    SET_CHANGING_SIDES,
+    SET_HAS_DIALOG_OPENED,
+    SET_IS_EDITING,
+    SET_SIDE,
+    SET_VARIANT
+} from './profile_card_actions_types';
 import { SIDES } from '../../components/commons/profile_card/profile_card_side/side';
 
 const PROFILE_CARD_DEFAULT_STATE = Object.freeze({
     hasDialogOpened: false,
     side: SIDES.FRONT,
     variant: null,
-    changingSides: false
+    changingSides: false,
+    isEditing: false
 });
 
 export const getProfileCardInitialState = (initialValues = {}) => ({
@@ -37,6 +44,12 @@ export const profileCardReducer = (state, action) => {
             return {
                 ...state,
                 changingSides: action.value
+            };
+
+        case SET_IS_EDITING:
+            return {
+                ...state,
+                isEditing: action.value
             };
 
         default:

@@ -111,7 +111,7 @@ const Content = ({
 }) => {
     const handleValueChange = useCallback(
         (name) => (value) => {
-            console.log(`[Edit Dialog] Setting field ${name} to value.`, { value });
+            console.debug(`[Edit Dialog] Setting field ${name} to value.`, { value });
             return setFieldValue(name, value);
         },
         [setFieldValue]

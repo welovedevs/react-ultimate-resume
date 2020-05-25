@@ -1,7 +1,11 @@
 export const styles = (theme) => {
     const {
-        miscellaneous: { spacing }
+        miscellaneous: { spacing },
+        components: {
+            cards: { width: cardWidth }
+        }
     } = theme;
+
     return {
         container: {
             width: '100%',
@@ -9,8 +13,15 @@ export const styles = (theme) => {
             display: 'flex',
             justifyContent: 'center',
             position: 'relative',
-            zIndex: 3,
-            flexWrap: 'wrap'
-        }
+            zIndex: 3
+        },
+        cards: ({ maxCardsPerRow }) => ({
+            display: 'flex',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            ...(maxCardsPerRow && {
+                maxWidth: (cardWidth + spacing * 2 * 2) * maxCardsPerRow
+            })
+        })
     };
 };
