@@ -153,8 +153,6 @@ const WithProvidersDeveloperProfile = ({
         [JSON.stringify(options)]
     );
 
-    console.log({ mergedOptions });
-
     const { locale, customization } = mergedOptions;
     const builtTheme = useMemo(() => buildTheme(customization?.theme), [customization?.theme]);
 

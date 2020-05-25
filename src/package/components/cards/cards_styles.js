@@ -15,14 +15,13 @@ export const styles = (theme) => {
             position: 'relative',
             zIndex: 3
         },
-        cards: ({ maxCardsPerRow }) =>
-            console.log({ maxCardsPerRow }) || {
-                display: 'flex',
-                justifyContent: 'center',
-                flexWrap: 'wrap',
-                ...(maxCardsPerRow && {
-                    maxWidth: (cardWidth + spacing * 2 * 2) * maxCardsPerRow
-                })
-            }
+        cards: ({ maxCardsPerRow }) => ({
+            display: 'flex',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            ...(maxCardsPerRow && {
+                maxWidth: (cardWidth + spacing * 2 * 2) * maxCardsPerRow
+            })
+        })
     };
 };
