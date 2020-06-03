@@ -66,8 +66,8 @@ function App() {
                 },
                 // dismissFooter : true
                 // showContactInfos: true,
-                customization
-                // maxCardsPerRow: 3
+                customization,
+                maxCardsPerRow: 3
             }}
             additionalNodes={{
                 banner: {
