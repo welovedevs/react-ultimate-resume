@@ -48,8 +48,6 @@ const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
 
     const currentCityName = data?.currentCity?.name;
 
-    console.log({ data });
-
     return (
         <ProfileCardPaddedFront>
             <CenterContentContainer customClasses={{ container: classes.container }}>
