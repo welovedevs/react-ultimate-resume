@@ -5,11 +5,11 @@ export const mapJsonResumeToBasicData = (jsonResume) => {
     console.log({ city, countryCode });
     return {
         currentCity:
-            city || countryCode
-                ? {
+            city || countryCode ?
+                {
                       name: `${[city, countryCode].filter((key) => Boolean(key)).join(', ')}`
-                  }
-                : {},
+                  } :
+                {},
         summary: jsonResume?.basics?.summary,
         experienceYears: jsonResume?.specific?.work?.experienceYears,
         studiesLevel: jsonResume?.specific?.education?.studiesLevel,
