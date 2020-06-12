@@ -48,6 +48,8 @@ const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
 
     const currentCityName = data?.currentCity?.name;
 
+    console.log({ data });
+
     return (
         <ProfileCardPaddedFront>
             <CenterContentContainer customClasses={{ container: classes.container }}>
@@ -71,7 +73,7 @@ const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
                             classes={{ container: classes.location }}
                         >
                             <LocationIcon className={classes.locationIcon} />
-                            {data?.currentCity?.name}
+                            {currentCityName}
                         </ProfileCardFrontTypography>
                     )}
                 </div>
