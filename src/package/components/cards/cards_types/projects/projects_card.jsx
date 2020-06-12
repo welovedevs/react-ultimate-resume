@@ -52,7 +52,7 @@ const ProjectsCardComponent = ({ variant, side }) => {
             side={currentSide}
             customEditAction={(props) => (
                 <div className={classes.actions}>
-                    {data.projects?.length >= 1 && (
+                    {data.projects?.length > 1 && (
                         <SortProjectsButton
                             projects={data?.projects}
                             title={<FormattedMessage id="Projects.Actions.Sort" defaultMessage="Sort projects" />}
