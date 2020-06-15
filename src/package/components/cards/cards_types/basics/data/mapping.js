@@ -2,7 +2,6 @@ export const mapJsonResumeToBasicData = (jsonResume) => {
     const city = jsonResume.basics?.location?.city;
     const countryCode = jsonResume.basics?.location?.countryCode;
 
-    console.log({ city, countryCode });
     return {
         currentCity:
             city || countryCode ?
