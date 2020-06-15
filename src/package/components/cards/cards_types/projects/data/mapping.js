@@ -2,13 +2,15 @@ import uuid from 'uuid/v4';
 import moment from 'moment';
 
 export const mapProjectsFromJsonResume = (jsonResume) => ({
-    projects: jsonResume?.projects?.map((project, index) => ({
-        ...project,
-        // generating uuid for manipulating data if not present
-        id: project.id || uuid(),
-        date: project.endDate && moment(project.endDate, 'YYYY-MM-DD'),
-        index: project.index || index
-    }))
+    projects: jsonResume?.projects
+        ?.map((project, index) => ({
+            ...project,
+            // generating uuid for manipulating data if not present
+            id: project.id || uuid(),
+            date: project.endDate && moment(project.endDate, 'YYYY-MM-DD'),
+            index: project.index || index
+        }))
+        .sort(({ index: a }, { index: b }) => a - b)
 });
 
 export const mapProjectToJsonResume = (project) => ({
