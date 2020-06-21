@@ -176,6 +176,7 @@
     "InterestedBy.noInterested.buttonLabel": "Ajouter",
     "Interests.editDialog.title": "Montrez vos activités favorites avec des gifs stylés!",
     "Interests.form.validation.atLeastOne": "Selectionnez au moins un intêret et un gif !",
+    "Languages.back.title": "Langues",
     "Languages.editDialog.language.placeholder": "Ex : Anglais, Italien...",
     "Languages.editDialog.language.title": "Langage : ",
     "Languages.editDialog.level.title": "Niveau: {valueNode}%",

@@ -176,6 +176,7 @@
     "InterestedBy.noInterested.buttonLabel": "Add",
     "Interests.editDialog.title": "Show your loved hobbies with fancy gifs!",
     "Interests.form.validation.atLeastOne": "Select at least one interest and gif.",
+    "Languages.back.title": "Languages",
     "Languages.editDialog.language.placeholder": "Ex : English, Italian...",
     "Languages.editDialog.language.title": "Language : ",
     "Languages.editDialog.level.title": "Level: {valueNode}%",
