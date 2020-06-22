@@ -44,7 +44,7 @@ const GifCardComponent = ({
                                 title={
                                     <FormattedMessage
                                         id="GifsEditDialog.gifCard.changeGif"
-                                        defaultMessage="Changer this gif"
+                                        defaultMessage="Update this gif"
                                     />
                                 }
                                 onClick={onImageEditClick}

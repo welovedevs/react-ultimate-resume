@@ -70,10 +70,10 @@ export const ContactInfosDialog = ({ open, onClose, contactInformations }) => {
             </DialogContent>
             <DialogActions>
                 <Button size="small" onClick={onClose}>
-                    <FormattedMessage id="Main.lang.close" defaultMessage="Fermer" />
+                    <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
                 </Button>
                 <Button color="primary" size="small" onClick={handleSave}>
-                    <FormattedMessage id="Main.lang.save" defaultMessage="Sauvegarder" />
+                    <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
                 </Button>
             </DialogActions>
         </Dialog>
