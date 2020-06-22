@@ -65,6 +65,7 @@ function App() {
                 },
                 // dismissFooter : true
                 // showContactInfos: true,
+                // maxSkills: 6,
                 customization,
                 maxCardsPerRow: 3
             }}

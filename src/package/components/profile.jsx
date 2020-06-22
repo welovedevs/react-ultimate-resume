@@ -95,7 +95,8 @@ const DeveloperProfileComponent = ({
             receivedGlobalClasses,
             customization: options?.customization,
             options: {
-                showContactInfos: options?.showContactInfos
+                showContactInfos: options?.showContactInfos,
+                maxSkills: options?.maxSkills
             }
         }),
         [apiKeys, endpoints, additionalNodes, receivedGlobalClasses, JSON.stringify(options?.customization)]
