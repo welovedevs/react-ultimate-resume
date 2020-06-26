@@ -86,7 +86,7 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
             },
             codingYears: {
                 title: <FormattedMessage id="Basics.Back.CodingYears.title" defaultMessage="Experience" />,
-                hide: !personalDescription,
+                hide: !codingYears,
                 value: <CodingYears codingYears={codingYears} />
             },
             studies: {
