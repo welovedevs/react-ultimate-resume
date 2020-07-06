@@ -138,7 +138,7 @@
     "Experiences.noWork.title": "Kariyeriniz boyunca yaptığınız işleri buraya ekleyin.",
     "Footer.github.tooltip": "Kendi geliştirici profilinizi oluşturun!",
     "Footer.link.message": "Beni daha yakından tanıyın, @welovedevs'deki profilimi keşfedin ➡️ {link}",
-    "Footer.shareLinks.copyUrl": "Profilin URL'sini kopyala",
+    "Footer.shareLinks.copyUrl": "Profilin URL'sini kopyala  (misal: https://welovedevs.com)" ,
     "Footer.shareLinks.shareOnTooltip": " {platform} üzerinde paylaş",
     "Form.Url.input.title": "Bir URL girin",
     "Form.validation.global.changeNumber": "Lütfen bu alanın varsayılan değerini değiştirin",

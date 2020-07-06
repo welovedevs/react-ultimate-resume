@@ -21,10 +21,9 @@ import { useCallbackOpen } from '../../../../../hooks/use_callback_open';
 import { styles } from './project_section_styles';
 import { useCardVariant } from '../../../../../hooks/profile_card_hooks/use_card_variant';
 import { getColorsFromCardVariant } from '../../../../../../utils/styles/styles_utils';
+import { HttpRegex } from '../../data/validator';
 
 const useStyles = createUseStyles(styles);
-
-const HAS_HTTP_PROTOCOL = /^(?:f|ht)tps?:\/\//;
 
 const ProjectSectionContainer = ({ project, cardVariant, onDelete, index }) => {
     const classes = useStyles();
@@ -62,8 +61,8 @@ const Details = ({ project, index, onDelete, classes }) => {
     const projectLink = project.link;
 
     const link = useMemo(() => {
-        if (!HAS_HTTP_PROTOCOL.test(projectLink)) {
-            return `https://${projectLink}`;
+        if (!new RegExp(HttpRegex).test(projectLink)) {
+            return `http://${projectLink}`;
         }
         return projectLink;
     }, [projectLink]);
