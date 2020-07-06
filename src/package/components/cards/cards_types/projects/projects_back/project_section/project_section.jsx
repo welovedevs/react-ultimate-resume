@@ -24,6 +24,8 @@ import { getColorsFromCardVariant } from '../../../../../../utils/styles/styles_
 
 const useStyles = createUseStyles(styles);
 
+const HAS_HTTP_PROTOCOL = /^(?:f|ht)tps?:\/\//;
+
 const ProjectSectionContainer = ({ project, cardVariant, onDelete, index }) => {
     const classes = useStyles();
 
@@ -57,12 +59,21 @@ const Details = ({ project, index, onDelete, classes }) => {
 
     const color = getColorsFromCardVariant(theme, variant).backColor;
 
+    const projectLink = project.link;
+
+    const link = useMemo(() => {
+        if (!HAS_HTTP_PROTOCOL.test(projectLink)) {
+            return `https://${projectLink}`;
+        }
+        return projectLink;
+    }, [projectLink]);
+
     return (
         <div className={classes.details}>
             {project.link && (
                 <div className={classes.detail}>
                     <AnimatedUnderlinedButton color={color}>
-                        <a className={classes.link} href={project.link}>
+                        <a className={classes.link} href={link}>
                             <LinkIcon className={classes.detailIcon} />
                             <Typography customClasses={{ container: classes.detailTypography }} color="primary">
                                 <FormattedMessage id="Project.section.link" defaultMessage="Link" />
