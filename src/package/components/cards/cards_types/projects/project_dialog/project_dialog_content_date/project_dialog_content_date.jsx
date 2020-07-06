@@ -55,7 +55,6 @@ const EditingContent = ({ classes }) => {
                     value={values.date}
                     onChange={handleStartDate}
                     title={{ id: 'Project.editDialog.date', defaultMessage: 'Project date' }}
-                    error={errors?.date}
                 />
             </MuiPickersUtilsProvider>
             {errors?.date && (

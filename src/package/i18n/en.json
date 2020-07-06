@@ -71,7 +71,7 @@
   "Developer.contractType.freelance": "Freelance",
   "Developer.contractType.internship": "Internship",
   "Developer.contractType.permanent": "Permanent",
-  "Developer.contractType.unknown": "unknown",
+  "Developer.contractType.unknown": "Unknown",
   "Developer.developerJobSearchState.activelySearching": "I'm actively searching for a job",
   "Developer.developerJobSearchState.dreamjobOnly": "I'm only searching for my dream job",
   "Developer.developerJobSearchState.notSearching": "I'm not open to opportunities ",
@@ -159,7 +159,7 @@
   "Form.validation.global.number.max": "This field must be lower than  {max}",
   "Form.validation.global.number.min": "This field must be greater than {min}",
   "Form.validation.global.phoneNumber": "This field must be a phone number",
-  "Form.validation.global.url": "This field must be a valid URL",
+  "Form.validation.global.url": "This field must be a valid URL (ex: https://welovedevs.com)",
   "Gifs.front.action": "See all hobbies",
   "Gifs.front.noHobby": "You do not have any hobby yet !",
   "Gifs.noHobby.buttonLabel": "Add a hobby",
@@ -266,6 +266,5 @@
   "Unsplash.credit": "Photo by {name} on {unsplashLink}",
   "UploadDialog.title": "Upload a file",
   "Work.form.validation.atLeastOne": "Fill at least one work experience.",
-  "Work.form.validation.noFutureDate": "This date can't be in the future",
-  "Edit": "Edit"
+  "Work.form.validation.noFutureDate": "This date can't be in the future"
 }

@@ -170,7 +170,8 @@
             "index": 0,
             "name": "2 Développement d'un serpent connecté",
             "description": "Et oui, vous avez bien entendu !\nUn serpent connecté, c'est comme une montre connectée, mais en serpent, en fait ça ressemble pas une montre, mais ça reste connecté 🚀",
-            "images": []
+            "images": [],
+            "link" : "www.serpent.fr"
         }
     ],
     "specific": {

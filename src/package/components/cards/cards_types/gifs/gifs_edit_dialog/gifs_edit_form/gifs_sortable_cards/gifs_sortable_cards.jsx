@@ -62,7 +62,11 @@ const SortableGifsCards = SortableContainer(
 );
 
 const DragHandle = SortableHandle(() => (
-    <BouncingRoundButton title={<FormattedMessage id="GifsEditDialog.gifCard.dragGif" defaultMessage="Hold me to drag this card!" />} icon={MoveIcon} tooltipPlacement="bottom" />
+    <BouncingRoundButton
+        title={<FormattedMessage id="GifsEditDialog.gifCard.dragGif" defaultMessage="Hold me to drag this card!" />}
+        icon={MoveIcon}
+        tooltipPlacement="bottom"
+    />
 ));
 
 const SortableGifItem = SortableElement(
