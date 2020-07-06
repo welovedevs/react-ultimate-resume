@@ -3,6 +3,7 @@ import React, { useCallback } from 'react';
 import { createUseStyles } from 'react-jss';
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 
+import { FormattedMessage } from 'react-intl';
 import { GifCard } from '../gif_card/gif_card';
 import { BouncingRoundButton } from '../../../../../../commons/bouncing_round_button/bouncing_round_button';
 
@@ -61,7 +62,11 @@ const SortableGifsCards = SortableContainer(
 );
 
 const DragHandle = SortableHandle(() => (
-    <BouncingRoundButton title="Hold me to drag this card!" icon={MoveIcon} tooltipPlacement="bottom" />
+    <BouncingRoundButton
+        title={<FormattedMessage id="GifsEditDialog.gifCard.dragGif" defaultMessage="Hold me to drag this card!" />}
+        icon={MoveIcon}
+        tooltipPlacement="bottom"
+    />
 ));
 
 const SortableGifItem = SortableElement(

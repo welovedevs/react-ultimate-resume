@@ -1,4 +1,5 @@
 import React, { memo, useMemo } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { ProfileCardSection } from '../../../../commons/profile_card/profile_card_section/profile_card_section';
 import { ProfileCardSectionTitle } from '../../../../commons/profile_card/profile_card_section_title/profile_card_section_title';
 import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back';
@@ -51,7 +52,7 @@ const Content = ({ data, handleAddButtonClick }) => {
 };
 
 const StudiesBackComponent = ({ data: { education: data }, handleAddButtonClick }) => (
-    <ProfileCardAnimatedBack title="Studies">
+    <ProfileCardAnimatedBack title={<FormattedMessage id="Studies.back.title" defaultMessage="Studies" />}>
         <Content {...{ data, handleAddButtonClick }} />
     </ProfileCardAnimatedBack>
 );

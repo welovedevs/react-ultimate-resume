@@ -4,6 +4,7 @@ import { createUseStyles, useTheme } from 'react-jss';
 import { animated, useTransition } from 'react-spring';
 import chroma from 'chroma-js';
 
+import { FormattedMessage } from 'react-intl';
 import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back';
 import { LanguageColumn } from './language_column/language_column';
 
@@ -23,7 +24,7 @@ const LanguagesBackComponent = ({ data, handleAddButtonClick }) => {
 
     return (
         <ProfileCardAnimatedBack
-            title="Languages"
+            title={<FormattedMessage id="Languages.back.title" defaultMessage="Languages" />}
             customClasses={{
                 content: classes.content,
                 contentAnimated: classes.contentAnimated,
