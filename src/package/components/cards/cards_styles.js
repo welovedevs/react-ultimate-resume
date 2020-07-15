@@ -16,6 +16,7 @@ export const styles = (theme) => {
             zIndex: 3
         },
         cards: ({ maxCardsPerRow }) => ({
+            width: '100%',
             display: 'flex',
             justifyContent: 'center',
             flexWrap: 'wrap',
