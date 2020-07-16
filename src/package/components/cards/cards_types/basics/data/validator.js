@@ -33,7 +33,7 @@ export const BasicsValidationSchema = (formatMessage) =>
 export const validateBasicsComplete = (data) => {
     try {
         Yup.object({
-            experienceYears: Yup.number().required(),
+            codeExperienceYears: Yup.number().required(),
             codingYears: Yup.number().required()
         }).validateSync(data);
     } catch (e) {

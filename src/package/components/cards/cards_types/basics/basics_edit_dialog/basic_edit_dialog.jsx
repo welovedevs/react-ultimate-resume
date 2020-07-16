@@ -247,7 +247,7 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                 </div>
             </EditDialogField>
             <EditDialogField
-                error={errors.experienceYears}
+                error={errors.otherExperienceYears}
                 title={
                     <FormattedMessage
                         id="Basics.editDialog.otherExperienceYears.title"
