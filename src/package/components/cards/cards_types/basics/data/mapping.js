@@ -12,6 +12,8 @@ export const mapJsonResumeToBasicData = (jsonResume) => {
         currentCity,
         summary: jsonResume?.basics?.summary,
         experienceYears: jsonResume?.specific?.work?.experienceYears,
+        codeExperienceYears: jsonResume?.specific?.work?.codeExperienceYears,
+        otherExperienceYears: jsonResume?.specific?.work?.otherExperienceYears,
         studiesLevel: jsonResume?.specific?.education?.studiesLevel,
         codingYears: jsonResume?.specific?.work?.codingYears,
         codingReason: jsonResume?.specific?.work?.codingReason,
@@ -33,6 +35,8 @@ export const mapBasicsDataToJsonResume = (data) => ({
         },
         work: {
             experienceYears: data.experienceYears,
+            codeExperienceYears: data.codeExperienceYears,
+            otherExperienceYears: data.otherExperienceYears,
             codingYears: data.codingYears,
             codingReason: data.codingReason,
             searchState: data.searchState
