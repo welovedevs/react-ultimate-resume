@@ -9,7 +9,7 @@ export const CodeExperienceYears = ({ experienceYears, codeExperienceYears }) =>
         }
         return numberValue;
     }, [codeExperienceYears]);
-    if (experienceYears && Number.isNaN(Number(codeExperienceYears))) {
+    if (!Number.isNaN(Number(experienceYears)) && Number.isNaN(Number(codeExperienceYears))) {
         console.warn('experienceYears is deprecated, please use codeExperienceYears and otherExperienceYears');
         return null;
     }
