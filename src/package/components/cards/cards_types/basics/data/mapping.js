@@ -1,14 +1,15 @@
 export const mapJsonResumeToBasicData = (jsonResume) => {
     const city = jsonResume.basics?.location?.city;
     const countryCode = jsonResume.basics?.location?.countryCode;
+    let currentCity = {};
+    if (city || countryCode) {
+        currentCity = {
+            name: `${[city, countryCode].filter(Boolean).join(', ')}`
+        };
+    }
 
     return {
-        currentCity:
-            city || countryCode
-                ? {
-                      name: `${[city, countryCode].filter(Boolean).join(', ')}`
-                  }
-                : {},
+        currentCity,
         summary: jsonResume?.basics?.summary,
         experienceYears: jsonResume?.specific?.work?.experienceYears,
         studiesLevel: jsonResume?.specific?.education?.studiesLevel,
