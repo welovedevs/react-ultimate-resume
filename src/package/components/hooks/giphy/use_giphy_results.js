@@ -30,7 +30,7 @@ export const useGiphyResults = (input, page = 0, limit = 20, timeout = 800) => {
             setLoading(true);
             const params = {
                 lang: locale,
-                apiKey: apiKeys.giphy,
+                api_key: apiKeys.giphy,
                 q: input,
                 offset: page * limit,
                 limit
