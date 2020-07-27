@@ -150,6 +150,7 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                         color="primary"
                         name="codingYears"
                         value={codingYears}
+                        step={0.5}
                         onChange={handleChange}
                         min={0}
                         max={20}
@@ -237,6 +238,7 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                         onChange={handleChange}
                         min={0}
                         max={20}
+                        step={0.5}
                         popperCardProps={{
                             customClasses: {
                                 container: classes.sliderPopperCard,
@@ -279,6 +281,7 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                         onChange={handleChange}
                         min={0}
                         max={20}
+                        step={0.5}
                         popperCardProps={{
                             customClasses: {
                                 container: classes.sliderPopperCard,
