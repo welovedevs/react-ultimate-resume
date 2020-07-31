@@ -27,7 +27,7 @@ export const styles = (theme) => {
         },
         typography: {
             fontSize: 44,
-            lineHeight: 1.3,
+            lineHeight: 1.1,
             wordWrap: 'break-word',
             overflow: 'hidden',
             display: '-webkit-box',
