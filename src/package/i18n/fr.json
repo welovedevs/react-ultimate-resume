@@ -165,6 +165,7 @@
   "Form.validation.global.number.min": "Ce champ doit être supérieur à {min}",
   "Form.validation.global.phoneNumber": "Ce champ doit être un numéro de téléphone",
   "Form.validation.global.url": "Ce champ doit être une URL valide (ex: https://welovedevs.com)",
+  "Gifs.Dialog.hobbies.name.placeholder": "ex : Bateau, Guitare...",
   "Gifs.front.action": "Voir tous les hobbies",
   "Gifs.front.noHobby": "Vous n'avez pas encore ajouté de hobbies !",
   "Gifs.noHobby.buttonLabel": "Ajouter un hobby",
