@@ -1,19 +1,28 @@
 import React from 'react';
 
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, FormattedNumber } from 'react-intl';
 
 import { ProfileCardSectionTitle } from '../../../../../commons/profile_card/profile_card_section_title/profile_card_section_title';
 import { ProfileCardSectionText } from '../../../../../commons/profile_card/profile_card_section_text/profile_card_section_text';
 import { hasOnlyFreelanceContract } from '../../../../utils/has_only_freelance_contract';
 
-const DreamJobSalarySectionContentComponent = ({ contractTypes, salary, averageDailyRate }) => {
+const DreamJobSalarySectionContentComponent = ({ contractTypes, salary, currency, averageDailyRate }) => {
     if (hasOnlyFreelanceContract(contractTypes)) {
         return (
             <>
                 <ProfileCardSectionTitle>
                     <FormattedMessage id="Dreamjob.Back.AverageDailyRate.Title" defaultMessage="Average Daily Rate" />
                 </ProfileCardSectionTitle>
-                <ProfileCardSectionText>{`${averageDailyRate} €`}</ProfileCardSectionText>
+                <ProfileCardSectionText>
+                    <FormattedNumber
+                        /* eslint-disable-next-line react/style-prop-object */
+                        style="currency"
+                        value={averageDailyRate}
+                        currency={currency || 'eur'}
+                        currencyDisplay="name"
+                        notation="compact"
+                    />
+                </ProfileCardSectionText>
             </>
         );
     }
@@ -22,7 +31,16 @@ const DreamJobSalarySectionContentComponent = ({ contractTypes, salary, averageD
             <ProfileCardSectionTitle>
                 <FormattedMessage id="Dreamjob.Back.Salary.Title" defaultMessage="Ideal yearly salary" />
             </ProfileCardSectionTitle>
-            <ProfileCardSectionText>{`${salary} k€`}</ProfileCardSectionText>
+            <ProfileCardSectionText>
+                <FormattedNumber
+                    /* eslint-disable-next-line react/style-prop-object */
+                    style="currency"
+                    value={salary}
+                    currency={currency || 'eur'}
+                    currencyDisplay="name"
+                    notation="compact"
+                />
+            </ProfileCardSectionText>
         </>
     );
 };

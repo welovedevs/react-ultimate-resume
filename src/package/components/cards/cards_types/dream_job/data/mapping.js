@@ -7,6 +7,7 @@ export const mapDreamJobFromJsonResume = (jsonResume) => ({
     })),
     perks: jsonResume.specific?.dreamJob?.perks,
     salary: jsonResume.specific?.dreamJob?.salary,
+    currency: jsonResume.specific?.dreamJob?.currency,
     remoteFrequency: jsonResume.specific?.dreamJob?.remoteFrequency,
     averageDailyRate: jsonResume.specific?.dreamJob?.averageDailyRate,
     contractTypes: jsonResume.specific?.work?.contractTypes,
@@ -19,6 +20,7 @@ export const mapDreamJobToJsonResume = (data) => ({
             locations: data.places,
             perks: data.perks,
             salary: data.salary,
+            currency: data.currency,
             remoteFrequency: data.remoteFrequency,
             averageDailyRate: data.averageDailyRate
         },
