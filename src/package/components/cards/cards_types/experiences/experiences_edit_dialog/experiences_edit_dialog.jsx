@@ -27,6 +27,7 @@ import { EXPERIENCE_CONTENT_TRANSITION_SPRING_PROPS } from './experiences_edit_d
 
 import { translations } from './experiences_edit_dialog_translations';
 import { styles } from './experiences_edit_dialog_styles';
+import { useOptions } from '../../../../hooks/use_options';
 
 const useStyles = createUseStyles(styles);
 
@@ -146,6 +147,7 @@ const ExperienceItem = SortableElement(
         const { formatMessage } = useIntl();
         const theme = useTheme();
         const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
+        const [disableSortableExperience] = useOptions('disableSortableExperience', false);
 
         const { rotate } = useSpring({
             rotate: folded ? -90 : 0
@@ -160,12 +162,23 @@ const ExperienceItem = SortableElement(
             }
         );
 
+        const dragHandle = useMemo(() => {
+            if (disableSortableExperience) {
+                return null;
+            }
+
+            return (
+                <>
+                    <DragHandle classes={classes} />
+                    <div className={classes.divider} />
+                </>
+            );
+        }, [disableSortableExperience]);
         const hasError = Boolean(fieldErrors);
         return (
             <div className={classes.experience}>
                 <div className={classes.smallItemContainer}>
-                    <DragHandle classes={classes} />
-                    <div className={classes.divider} />
+                    {dragHandle}
                     <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Delete" />}>
                         <button className={classes.removeButton} type="button" onClick={onRemove(id)}>
                             <DeleteIcon className={classes.removeIcon} />
