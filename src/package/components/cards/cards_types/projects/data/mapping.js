@@ -26,8 +26,7 @@ export const updateProjectsArray = (newProject, jsonResume) => {
     if (!jsonResume.projects?.length) {
         return { projects: [newProject] };
     }
-    const newProjects = [...jsonResume.projects];
-
+    const newProjects = [...jsonResume.projects].sort(({ index: a }, { index: b }) => a - b);
     if (!Number.isNaN(Number(newProject.index))) {
         newProjects[newProject.index] = newProject;
         return { projects: newProjects };
