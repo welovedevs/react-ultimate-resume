@@ -30,7 +30,7 @@ const ProjectDialogComponent = ({ open, onClose, data: project, isEditing }) => 
         (editedData) => {
             const newProject = mapProjectToJsonResume(editedData);
             const newProjectArray = updateProjectsArray(newProject, resume);
-            console.log({ updateProjectsArray1: newProjectArray });
+            onEdit(newProjectArray);
             onClose();
         },
         [onEdit, resume]
