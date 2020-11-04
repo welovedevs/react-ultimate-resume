@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 import { DEFAULT_THEME } from '@welovedevs/ui/styles/theme';
-import { StylesProvider as MuiStylesProvider, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, StylesProvider as MuiStylesProvider, ThemeProvider } from '@material-ui/core/styles';
 import './styles/global.css';
 import './styles/animations.css';
 import { create } from 'jss';
-import { JssProvider, ThemeProvider as ReactJSSThemeProvider } from 'react-jss';
+import { JssProvider } from 'react-jss';
 import jssDefaultPreset from 'jss-preset-default';
 
 const muiInstance = create(jssDefaultPreset());
@@ -25,7 +25,10 @@ export const theme = createMuiTheme({
         return accCopy;
     }, DEFAULT_THEME.palette)
 });
-
+const jssStyleNode = document.createComment('insertion-point-jss');
+const muiStyleNode = document.createComment('mui-insertion-point');
+document.head.insertBefore(jssStyleNode, document.head.firstChild);
+document.head.insertBefore(muiStyleNode, document.head.firstChild);
 ReactDOM.render(
     <MuiStylesProvider jss={muiInstance}>
         <JssProvider jss={jssinstance}>
