@@ -155,7 +155,7 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                         min={0}
                         max={20}
                         popperCardProps={{
-                            customClasses: {
+                            classes: {
                                 container: classes.sliderPopperCard,
                                 arrowContainer: classes.sliderPopperCardArrowContainer
                             }
@@ -197,7 +197,7 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                         min={0}
                         max={12}
                         popperCardProps={{
-                            customClasses: {
+                            classes: {
                                 container: classes.sliderPopperCard,
                                 arrowContainer: classes.sliderPopperCardArrowContainer
                             }
@@ -240,7 +240,7 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                         max={20}
                         step={0.5}
                         popperCardProps={{
-                            customClasses: {
+                            classes: {
                                 container: classes.sliderPopperCard,
                                 arrowContainer: classes.sliderPopperCardArrowContainer
                             }
@@ -283,7 +283,7 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                         max={20}
                         step={0.5}
                         popperCardProps={{
-                            customClasses: {
+                            classes: {
                                 container: classes.sliderPopperCard,
                                 arrowContainer: classes.sliderPopperCardArrowContainer
                             }

@@ -18,7 +18,7 @@ const InterestedByBackComponent = (props) => {
 
     return (
         <InterestedByFront
-            customClasses={{
+            classes={{
                 container: classes.container,
                 typography: classes.typography
             }}

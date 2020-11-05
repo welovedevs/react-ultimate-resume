@@ -2,20 +2,22 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
 
 import { StaticDataContext } from '../../../utils/context/contexts';
+import { Giphy, MultiResponse } from 'giphy-api';
+import { GiphySearchResult } from './types';
 
 const GIPHY_API_ENDPOINT = 'https://api.giphy.com/v1/gifs/search?';
 
-export const useGiphyResults = (input, page = 0, limit = 20, timeout = 800) => {
-    const debounceSearch = useRef();
+export const useGiphyResults = (input: string, page = 0, limit = 20, timeout = 800) => {
+    const debounceSearch = useRef<number | null>(null);
     const { locale } = useIntl();
     const { apiKeys } = useContext(StaticDataContext);
-    const [lastLoaded, setLastLoaded] = useState(false);
-    const [results, setResults] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [lastLoaded, setLastLoaded] = useState<{ input: string; page: number } | null>(null);
+    const [results, setResults] = useState<Array<GiphySearchResult>>([]);
+    const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (!input || !apiKeys.giphy) {
+        if (!input || !apiKeys?.giphy) {
             setResults([]);
             return;
         }
@@ -26,7 +28,7 @@ export const useGiphyResults = (input, page = 0, limit = 20, timeout = 800) => {
         if (debounceSearch.current) {
             clearTimeout(debounceSearch.current);
         }
-        debounceSearch.current = setTimeout(() => {
+        debounceSearch.current = window.setTimeout(() => {
             setLoading(true);
             const params = {
                 lang: locale,
@@ -51,12 +53,18 @@ export const useGiphyResults = (input, page = 0, limit = 20, timeout = 800) => {
                     }
                     throw new Error(`${res.status} ${res.statusText}`);
                 })
-                .then(({ data }) => {
+                .then(({ data }: MultiResponse) => {
                     setResults(
-                        data.map(({ id, title, images }) => ({
+                        data.map(({ id, title, images, user }) => ({
                             id,
                             url: images?.downsized?.url,
-                            title
+                            title,
+                            user: user && {
+                                name: user.display_name,
+                                profileUrl: user.profile_url,
+                                isVerified: (user as any).is_verified as boolean,
+                                profileAvatarUrl: user.avatar_url
+                            }
                         }))
                     );
                 })

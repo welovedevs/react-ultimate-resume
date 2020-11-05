@@ -79,7 +79,7 @@ const PalettesListComponent = ({ value: currentPalette, onChange, classes: recei
                     >
                         <Typography
                             color="dark"
-                            customClasses={{
+                            classes={{
                                 container: classes.selectablePaletteIndex
                             }}
                             variant="h3"

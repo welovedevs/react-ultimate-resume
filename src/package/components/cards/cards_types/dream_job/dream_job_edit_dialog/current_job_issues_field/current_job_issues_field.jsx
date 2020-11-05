@@ -114,7 +114,7 @@ const CurrentJobIssuesFieldComponent = ({ error, currentJobIssues, onChange, set
                             fullWidth
                             key={key}
                             containerElement={animated.div}
-                            customClasses={{ container: cn(classes.textField, classes.otherTextField) }}
+                            classes={{ container: cn(classes.textField, classes.otherTextField) }}
                             onChange={handleOtherJobIssueChange}
                             name={`currentJobIssues[${JobIssues.OTHER}]`}
                             value={otherCurrentJobIssueValue}

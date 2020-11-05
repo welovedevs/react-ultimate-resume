@@ -49,7 +49,7 @@ const TechnologyItem = ({ item, classes, selectedItems = [], onAdd, onDelete }) 
     return (
         <button className={classes.technologyItem} type="button" onClick={onClick}>
             <Card
-                customClasses={{
+                classes={{
                     container: classes.technologyImageContainer
                 }}
             >
@@ -66,7 +66,7 @@ const TechnologyItem = ({ item, classes, selectedItems = [], onAdd, onDelete }) 
                 )}
             </Card>
             <Typography
-                customClasses={{
+                classes={{
                     container: classes.typography
                 }}
             >
@@ -129,7 +129,7 @@ const AllTechnologiesPickerComponent = ({ selectedItems, onAdd, onDelete, classe
     return (
         <div className={cn(classes.container, receivedClasses.container)}>
             <TextField
-                customClasses={{
+                classes={{
                     container: classes.textField
                 }}
                 fullWidth={isMobile}

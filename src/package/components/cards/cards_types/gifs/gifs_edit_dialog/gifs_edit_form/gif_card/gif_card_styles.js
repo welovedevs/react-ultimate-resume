@@ -30,6 +30,20 @@ export const styles = (theme) => {
             top: 0,
             left: 0
         },
+        gifUrl: {
+            position: 'absolute',
+            bottom: 5,
+            left: 5,
+            zIndex: 2,
+            // backgroundColor: 'rgba(255,255,255,0.4)',
+            padding: 4,
+            fontWeight: 500,
+            fontSize: 9
+        },
+        gifUrlTypoography: {
+            fontWeight: 700,
+            fontSize: 9
+        },
         addGifButtonContainer: {
             padding: [spacing * 10, spacing * 2, 0],
             display: 'flex'

@@ -117,7 +117,7 @@ const Label = ({ waiting, error, success, isDragActive, classes }) => {
         text = "Drag'n drop files or click here.";
     }
     return (
-        <Typography customClasses={{ container: classes.typography }} variant="h4" component="h4">
+        <Typography classes={{ container: classes.typography }} variant="h4" component="h4">
             {text}
         </Typography>
     );

@@ -15,12 +15,12 @@ const EditDialogFieldComponent = ({ title, subtitle, children, error, classes: r
     return (
         <div className={cn(classes.container, receivedClasses.container)}>
             {title && (
-                <Typography customClasses={{ container: classes.title }} component="h3" variant="h4" color="dark">
+                <Typography classes={{ container: classes.title }} component="h3" variant="h4" color="dark">
                     {title}
                 </Typography>
             )}
             {subtitle && (
-                <Typography customClasses={{ container: classes.subtitle }} component="p" variant="body2" color="dark">
+                <Typography classes={{ container: classes.subtitle }} component="p" variant="body2" color="dark">
                     {subtitle}
                 </Typography>
             )}

@@ -51,6 +51,10 @@ export const styles = (theme) => {
                 '-webkit-line-clamp': 3,
                 maxHeight: 24 * 1.3 * 3
             }
+        },
+        credits: {
+            left: 10,
+            bottom: 10
         }
     };
 };

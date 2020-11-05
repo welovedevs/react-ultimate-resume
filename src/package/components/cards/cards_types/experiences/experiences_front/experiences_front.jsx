@@ -86,7 +86,7 @@ const ExperiencesFrontComponent = ({ data, handleAddButtonClick }) => {
     return (
         <>
             <ProfileCardPaddedFront>
-                <CenterContentContainer customClasses={{ container: classes.container }}>
+                <CenterContentContainer classes={{ container: classes.container }}>
                     <Content {...{ hasWork, title, handleAddButtonClick, classes }} />
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
@@ -128,7 +128,7 @@ const Content = ({ hasWork, title, handleAddButtonClick, classes }) => {
     }
     return (
         <div className={classes.noWork}>
-            <Typography variant="h3" component="h3" customClasses={{ container: classes.noWorkTypography }}>
+            <Typography variant="h3" component="h3" classes={{ container: classes.noWorkTypography }}>
                 <FormattedMessage
                     id="Experiences.front.noWork"
                     defaultMessage="Vous n'avez pas encore ajouté d'expériences !"

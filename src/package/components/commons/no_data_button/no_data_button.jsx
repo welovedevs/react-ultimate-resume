@@ -4,7 +4,7 @@ import React from 'react';
 
 const NoDataButtonComponent = ({ handleAddButtonClick, children, classes: receivedClasses = {} }) => (
     <Button
-        customClasses={{
+        classes={{
             container: receivedClasses.container
         }}
         style={{

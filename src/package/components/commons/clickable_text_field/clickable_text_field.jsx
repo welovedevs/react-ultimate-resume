@@ -16,14 +16,14 @@ const ClickableTextFieldComponent = ({
     interactionsLayerRef,
     onClick,
     textFieldIconProps,
-    customClasses = {},
+    classes: receivedClasses = {},
     arrowRotation = 0,
     ...other
 }) => {
     const classes = useStyles();
     const { rotation: rotationSpring } = useSpring({ rotation: arrowRotation });
     return (
-        <TextField readOnly className={cn(classes.container, customClasses.container)} {...other}>
+        <TextField readOnly className={cn(classes.container, receivedClasses.container)} {...other}>
             <animated.span
                 style={{
                     transform: rotationSpring.to((value) => `rotate(${value}deg)`)
@@ -35,7 +35,7 @@ const ClickableTextFieldComponent = ({
             </animated.span>
             <button
                 ref={interactionsLayerRef}
-                className={cn(classes.handleInteractionsLayer, customClasses.handleInteractionsLayer)}
+                className={cn(classes.handleInteractionsLayer, receivedClasses.handleInteractionsLayer)}
                 type="button"
                 {...{ onClick }}
             />

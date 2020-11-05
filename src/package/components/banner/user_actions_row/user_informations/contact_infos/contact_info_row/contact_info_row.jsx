@@ -20,7 +20,7 @@ export const ContactInfoRow = ({ icon: Icon, translation, value }) => {
                 </button>
             </Tooltip>
             <Typography
-                customClasses={{
+                classes={{
                     container: classes.typography
                 }}
                 color="light"

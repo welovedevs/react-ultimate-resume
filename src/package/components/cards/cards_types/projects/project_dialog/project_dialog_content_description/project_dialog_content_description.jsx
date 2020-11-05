@@ -27,7 +27,7 @@ const Content = ({ description, isEditing, classes }) => {
 };
 
 const DefaultContent = ({ description, classes }) => (
-    <Typography customClasses={{ container: classes.typography }}>{description}</Typography>
+    <Typography classes={{ container: classes.typography }}>{description}</Typography>
 );
 
 const EditingContent = ({ classes }) => {
@@ -46,7 +46,7 @@ const EditingContent = ({ classes }) => {
                 onChange={handleChange}
                 name="description"
                 value={values.description}
-                customClasses={{
+                classes={{
                     container: classes.textField
                 }}
             />

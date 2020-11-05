@@ -64,7 +64,7 @@ const SelectComponent = ({
                 )}
             </Menu>
             <ClickableTextField
-                customClasses={{
+                classes={{
                     container: className
                 }}
                 value={selectedChildValue}

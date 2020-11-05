@@ -27,7 +27,7 @@ const Content = ({ link, isEditing, classes }) => {
 };
 
 const DefaultContent = ({ link, classes }) => (
-    <Typography variant="h2" component="h3" customClasses={{ container: classes.typography }}>
+    <Typography variant="h2" component="h3" classes={{ container: classes.typography }}>
         {link}
     </Typography>
 );
@@ -46,7 +46,7 @@ const EditingContent = ({ classes }) => {
                 onChange={handleChange}
                 name="link"
                 value={values.link}
-                customClasses={{
+                classes={{
                     container: classes.textField
                 }}
             />

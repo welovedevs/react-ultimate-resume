@@ -100,7 +100,7 @@ const PredictionsList = ({ predictions = [], setPreventBlur, input, onPrediction
         <PopperCard
             open
             anchorElement={input}
-            customClasses={{
+            classes={{
                 popper: classes.popperCard
             }}
         >

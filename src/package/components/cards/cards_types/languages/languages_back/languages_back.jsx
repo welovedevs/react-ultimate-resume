@@ -25,7 +25,7 @@ const LanguagesBackComponent = ({ data, handleAddButtonClick }) => {
     return (
         <ProfileCardAnimatedBack
             title={<FormattedMessage id="Languages.back.title" defaultMessage="Languages" />}
-            customClasses={{
+            classes={{
                 content: classes.content,
                 contentAnimated: classes.contentAnimated,
                 title: classes.cardTitle

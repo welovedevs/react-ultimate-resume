@@ -66,7 +66,7 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
             </div>
             {bannerImageCredits?.name && (
                 <Typography
-                    customClasses={{ container: cn(classes.credits, globalReceivedBannerClasses.credits) }}
+                    classes={{ container: cn(classes.credits, globalReceivedBannerClasses.credits) }}
                     variant="body3"
                 >
                     <FormattedMessage

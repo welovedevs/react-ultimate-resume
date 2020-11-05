@@ -9,17 +9,15 @@ import { styles } from './profile_card_section_subtitle_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardSectionSubtitleComponent = ({ children, customClasses = {} }) => {
+export const ProfileCardSectionSubtitle = ({ children, classes: receivedClasses = {} }) => {
     const classes = useStyles();
     return (
         <Typography
             variant="h4"
             component="h4"
-            customClasses={{ container: cn(classes.container, customClasses.container) }}
+            classes={{ container: cn(classes.container, receivedClasses.container) }}
         >
             {children}
         </Typography>
     );
 };
-
-export const ProfileCardSectionSubtitle = ProfileCardSectionSubtitleComponent;

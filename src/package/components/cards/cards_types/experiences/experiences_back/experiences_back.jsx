@@ -59,9 +59,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
     return (
         <ProfileCardSection key={id} cardVariant={variant}>
             <ProfileCardSectionTitle>{position}</ProfileCardSectionTitle>
-            <ProfileCardSectionSubtitle customClasses={{ container: classes.subtitle }}>
-                {title}
-            </ProfileCardSectionSubtitle>
+            <ProfileCardSectionSubtitle classes={{ container: classes.subtitle }}>{title}</ProfileCardSectionSubtitle>
             <ProfileCardSectionText>{summary}</ProfileCardSectionText>
         </ProfileCardSection>
     );

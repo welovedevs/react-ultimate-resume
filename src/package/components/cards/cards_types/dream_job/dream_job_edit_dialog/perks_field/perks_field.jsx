@@ -109,7 +109,7 @@ const PerksFieldComponent = ({ error, perks, onChange, setFieldValue }) => {
                             fullWidth
                             key={key}
                             containerElement={animated.div}
-                            customClasses={{ container: cn(classes.textField, classes.otherTextField) }}
+                            classes={{ container: cn(classes.textField, classes.otherTextField) }}
                             onChange={handleOtherPerkValueChange}
                             name={`perks[${JobPerks.OTHER}]`}
                             value={otherPerkValue}

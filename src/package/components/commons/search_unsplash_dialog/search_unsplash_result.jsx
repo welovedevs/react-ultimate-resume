@@ -41,7 +41,7 @@ const SearchUnsplashDialogComponent = ({ open, onClose, onSelect }) => {
                 }}
             >
                 <TextField
-                    customClasses={{ container: classes.textField }}
+                    classes={{ container: classes.textField }}
                     fullWidth
                     onChange={handleInputChange}
                     value={query}

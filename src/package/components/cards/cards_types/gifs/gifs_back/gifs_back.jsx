@@ -18,6 +18,7 @@ import { GIFS_BACK_TRANSITIONS_SPRING_PROPS } from './gifs_back_spring_props';
 import { styles } from './gifs_back_styles';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoHobby } from './no_hobby/no_hobby';
+import { GifAuthorCredits } from '../../../../commons/gifs/gif_author_credits/gif_author_credits';
 
 const useStyles = createUseStyles(styles);
 
@@ -26,7 +27,7 @@ const SETTINGS = {
     dots: true,
     infinite: true,
     speed: 700,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 4000,
     slidesToShow: 1,
     slidesToScroll: 1
@@ -55,29 +56,25 @@ const GifsBackComponent = ({ data, handleAddButtonClick }) => {
 
     return (
         <GifsSidesCommons
+            classes={{ credits: classes.credits }}
             underLayer={
                 <div className={classes.slidesContainer}>
                     <Slider
                         {...SETTINGS}
                         ref={sliderReference}
                         beforeChange={handleBeforeChange}
-                        prevArrow={
-                            <Arrow
-                                classes={classes}
-                                arrowRole="prev"
-                                buttonProps={{ className: classes.previousButton }}
-                            />
-                        }
+                        prevArrow={<Arrow classes={classes} arrowRole="prev" />}
                         nextArrow={
                             <Arrow classes={classes} arrowRole="next" buttonProps={{ className: classes.nextButton }} />
                         }
                     >
-                        {(data.interests ?? []).map(({ gifUrl, name }) => (
+                        {(data.interests ?? []).map(({ gifUrl, name, gifUser }) => (
                             <SlideItem key={`gif_${gifUrl}_${name}`} gifUrl={gifUrl} name={name} classes={classes} />
                         ))}
                     </Slider>
                 </div>
             }
+            gifUser={data.interests?.[currentIndex]?.gifUser}
         >
             <Content
                 {...{ data, hasChanged, currentIndex, pauseSlider, resumeSlider, handleAddButtonClick, classes }}
@@ -151,7 +148,11 @@ const SlideItem = ({ gifUrl, name, classes }) => {
     if (!gifUrl) {
         return <div className={classes.solidBackground} />;
     }
-    return <img key={`gifs_back_carousel_image_${gifUrl}_${name}`} className={classes.image} src={gifUrl} alt={name} />;
+    return (
+        <>
+            <img key={`gifs_back_carousel_image_${gifUrl}_${name}`} className={classes.image} src={gifUrl} alt={name} />
+        </>
+    );
 };
 
 const TransitioningItem = ({ item, props, pauseSlider, resumeSlider, classes }) => {
@@ -164,7 +165,7 @@ const TransitioningItem = ({ item, props, pauseSlider, resumeSlider, classes }) 
                 onMouseLeave={resumeSlider}
             >
                 <Typography
-                    customClasses={{
+                    classes={{
                         container: classes.slideNameWithoutGif
                     }}
                     color="light"
@@ -178,7 +179,7 @@ const TransitioningItem = ({ item, props, pauseSlider, resumeSlider, classes }) 
     }
     return (
         <Typography
-            customClasses={{ container: classes.slideName }}
+            classes={{ container: classes.slideName }}
             component={animated.div}
             style={props}
             color="light"

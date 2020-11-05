@@ -417,7 +417,7 @@ const StillEmployedField = ({ value, classes, handleStillEmployedChange, formatM
             onClick={handleStillEmployedChange}
         >
             <Checkbox color="secondary" checked={value} variant="outlined" />
-            <Typography customClasses={{ container: classes.typography }} color="dark" component="div">
+            <Typography classes={{ container: classes.typography }} color="dark" component="div">
                 {formatMessage(translations.stillEmployed)}
             </Typography>
         </button>

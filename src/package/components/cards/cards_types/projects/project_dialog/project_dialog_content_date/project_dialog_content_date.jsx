@@ -30,7 +30,7 @@ const Content = ({ date, isEditing, classes }) => {
 };
 
 const DefaultContent = ({ date, classes }) => (
-    <Typography variant="h2" component="h3" customClasses={{ container: classes.typography }}>
+    <Typography variant="h2" component="h3" classes={{ container: classes.typography }}>
         {date && date.format('LL')}
     </Typography>
 );

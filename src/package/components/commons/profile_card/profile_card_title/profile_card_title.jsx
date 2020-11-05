@@ -11,24 +11,24 @@ import { styles } from './profile_card_title_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardTitleComponent = ({
+export const ProfileCardTitle = ({
     component: Component = 'div',
     style,
     beforeTypography,
     overrideColor,
     children,
-    customClasses = {}
+    classes: receivedClasses = {}
 }) => {
     const [variant] = useCardVariant();
     const classes = useStyles({ variant, overrideColor });
     return (
-        <Component className={cn(classes.container, customClasses.container)} style={style}>
+        <Component className={cn(classes.container, receivedClasses.container)} style={style}>
             {beforeTypography}
             <Typography
                 variant="h2"
                 component="h3"
-                customClasses={{
-                    container: cn(classes.typography, customClasses.typography)
+                classes={{
+                    container: cn(classes.typography, receivedClasses.typography)
                 }}
             >
                 {children}
@@ -36,5 +36,3 @@ const ProfileCardTitleComponent = ({
         </Component>
     );
 };
-
-export const ProfileCardTitle = ProfileCardTitleComponent;

@@ -49,7 +49,7 @@ const SkillsFrontComponent = ({ data, handleAddButtonClick }) => {
     return (
         <>
             <ProfileCardPaddedFront>
-                <CenterContentContainer customClasses={{ container: classes.container }}>
+                <CenterContentContainer classes={{ container: classes.container }}>
                     <Content {...{ hasSkill, techno, handleAddButtonClick, classes }} />
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
@@ -81,7 +81,7 @@ const Content = ({ hasSkill, techno, handleAddButtonClick, classes }) => {
     }
     return (
         <div className={classes.noSkill}>
-            <Typography variant="h3" component="h3" customClasses={{ container: classes.noSkillTypography }}>
+            <Typography variant="h3" component="h3" classes={{ container: classes.noSkillTypography }}>
                 <FormattedMessage
                     id="Skills.front.noSkill"
                     defaultMessage="Vous n'avez pas encore ajouté de compétences !"
@@ -107,8 +107,9 @@ const Picture = ({ techno, classes }) => {
         const hex = getHexFromPaletteColor(theme, backgroundColor);
         const luminance = chroma(hex).luminance();
         if (luminance < 0.98) {
-            return `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${techno?.handle ||
-                DEFAULT_TECHNO_HANDLE}`;
+            return `https://process.filestackapi.com/output=format:png/negative/modulate=brightness:1000/compress/${
+                techno?.handle || DEFAULT_TECHNO_HANDLE
+            }`;
         }
         return `https://process.filestackapi.com/output=format:png/${techno?.handle || DEFAULT_TECHNO_HANDLE}`;
     }, [techno, theme, backgroundColor]);

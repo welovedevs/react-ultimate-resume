@@ -30,7 +30,7 @@ const GifsFrontComponent = ({ data, handleAddButtonClick }) => {
         setSide
     ]);
 
-    const { gifUrl, name } = data.interests?.[0] ?? {};
+    const { gifUrl, name, gifUser } = data.interests?.[0] ?? {};
 
     const hasHobby = useMemo(() => existsAndNotEmpty(data?.interests), [data]);
 
@@ -40,9 +40,10 @@ const GifsFrontComponent = ({ data, handleAddButtonClick }) => {
                 container: classes.container
             }}
             underLayer={gifUrl && <img className={classes.image} src={gifUrl} alt={name} />}
+            gifUser={gifUser}
         >
             {!gifUrl && (
-                <ProfileCardPaddedFront customClasses={{ container: classes.paddedFront }}>
+                <ProfileCardPaddedFront classes={{ container: classes.paddedFront }}>
                     <Content {...{ hasHobby, name, handleAddButtonClick, classes }} />
                 </ProfileCardPaddedFront>
             )}
@@ -74,7 +75,7 @@ const Content = ({ hasHobby, name, handleAddButtonClick, classes }) => {
     if (!hasHobby) {
         return (
             <div className={classes.noHobby}>
-                <Typography variant="h3" component="h3" customClasses={{ container: classes.noHobbyTypography }}>
+                <Typography variant="h3" component="h3" classes={{ container: classes.noHobbyTypography }}>
                     <FormattedMessage
                         id="Gifs.front.noHobby"
                         defaultMessage="Vous n'avez pas encore ajouté de hobbies !"

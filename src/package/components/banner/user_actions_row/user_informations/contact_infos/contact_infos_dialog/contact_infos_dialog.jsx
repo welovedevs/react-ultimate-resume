@@ -54,7 +54,7 @@ export const ContactInfosDialog = ({ open, onClose, contactInformations }) => {
             <DialogContent>
                 <Typography
                     color="dark"
-                    customClasses={{
+                    classes={{
                         container: classes.typography
                     }}
                 >

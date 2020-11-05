@@ -19,7 +19,7 @@ const useStyles = createUseStyles(styles);
 
 const TRANSLATION_INTERPOLATION = (value) => `translate3d(0, ${value}%, 0)`;
 
-const ProfileCardAnimatedBackComponent = ({ title, children: content, customClasses = {} }) => {
+export const ProfileCardAnimatedBack = ({ title, children: content, classes: receivedClasses = {} }) => {
     const classes = useStyles();
     const contentContainerSpringReference = useRef();
     const contentSpringReference = useRef();
@@ -54,13 +54,13 @@ const ProfileCardAnimatedBackComponent = ({ title, children: content, customClas
                     opacity: titleSpringProps.opacity,
                     transform: titleSpringProps.translation.to(TRANSLATION_INTERPOLATION)
                 }}
-                customClasses={{ typography: cn(classes.title, customClasses.title) }}
+                classes={{ typography: cn(classes.title, receivedClasses.title) }}
             >
                 {title}
             </ProfileCardTitle>
             <ProfileCardContent
-                customClasses={{
-                    container: cn(classes.content, customClasses.content)
+                classes={{
+                    container: cn(classes.content, receivedClasses.content)
                 }}
                 component={animated.div}
                 style={{
@@ -68,7 +68,7 @@ const ProfileCardAnimatedBackComponent = ({ title, children: content, customClas
                 }}
             >
                 <animated.div
-                    className={customClasses.contentAnimated}
+                    className={receivedClasses.contentAnimated}
                     style={{
                         transform: contentSpringProps.translation.to(TRANSLATION_INTERPOLATION),
                         opacity: contentSpringProps.opacity
@@ -80,5 +80,3 @@ const ProfileCardAnimatedBackComponent = ({ title, children: content, customClas
         </>
     );
 };
-
-export const ProfileCardAnimatedBack = ProfileCardAnimatedBackComponent;

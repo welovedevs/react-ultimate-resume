@@ -32,7 +32,7 @@ const SoundtrackFrontComponent = ({ data, handleAddButtonClick }) => {
     return (
         <>
             <ProfileCardPaddedFront>
-                <CenterContentContainer customClasses={{ container: classes.container }}>
+                <CenterContentContainer classes={{ container: classes.container }}>
                     <Content {...{ data, handleAddButtonClick, classes }} />
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
@@ -51,7 +51,7 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
     if (!data?.embedUrl) {
         return (
             <div className={classes.noSoundTrack}>
-                <Typography variant="h3" component="h3" customClasses={{ container: classes.noSoundTrackTypography }}>
+                <Typography variant="h3" component="h3" classes={{ container: classes.noSoundTrackTypography }}>
                     <FormattedMessage
                         id="SoundTrack.front.noSoundTrack"
                         defaultMessage="Vous n'avez pas encore ajouté de playlist !"
@@ -70,7 +70,7 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
     }
     return (
         <>
-            <ProfileCardFrontVector customClasses={{ container: classes.logo }} vector={SpotifyLogo} />
+            <ProfileCardFrontVector classes={{ container: classes.logo }} vector={SpotifyLogo} />
             <ProfileCardFrontTypography classes={{ container: classes.typography }}>
                 <FormattedMessage id="Soundtrack.front.title" defaultMessage="Discover my favourite tracks" />
             </ProfileCardFrontTypography>

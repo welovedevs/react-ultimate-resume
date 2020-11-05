@@ -24,7 +24,7 @@ const ProfileCardIncompletePopperComponent = ({ open, onClose, anchorElement }) 
     }
     return (
         <PopperCard
-            customClasses={{
+            classes={{
                 container: classes.container,
                 arrowContainer: classes.arrowContainer
             }}

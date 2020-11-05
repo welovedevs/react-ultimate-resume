@@ -43,7 +43,7 @@ const ProjectSectionContainer = ({ project, cardVariant, onDelete, index }) => {
         <ProfileCardSection cardVariant={cardVariant}>
             <ProfileCardSectionTitle>{project.name}</ProfileCardSectionTitle>
             <ProfileCardSectionSubtitle>{formattedDate}</ProfileCardSectionSubtitle>
-            <ProfileCardSectionText customClasses={{ container: classes.sectionText }}>
+            <ProfileCardSectionText classes={{ container: classes.sectionText }}>
                 {descriptionChunks}
             </ProfileCardSectionText>
             <Details classes={classes} project={project} onDelete={onDelete} index={index} />
@@ -74,7 +74,7 @@ const Details = ({ project, index, onDelete, classes }) => {
                     <AnimatedUnderlinedButton color={color}>
                         <a className={classes.link} href={link}>
                             <LinkIcon className={classes.detailIcon} />
-                            <Typography customClasses={{ container: classes.detailTypography }} color="primary">
+                            <Typography classes={{ container: classes.detailTypography }} color="primary">
                                 <FormattedMessage id="Project.section.link" defaultMessage="Link" />
                             </Typography>
                         </a>
@@ -103,7 +103,7 @@ const RemoveProjectDetail = ({ color, index, onDelete, classes }) => {
             <div className={classes.detail}>
                 <AnimatedUnderlinedButton color={color} onClick={setDialogOpened}>
                     <RemoveIcon className={classes.detailDeleteIcon} />
-                    <Typography customClasses={{ container: classes.detailTypography }} color="primary">
+                    <Typography classes={{ container: classes.detailTypography }} color="primary">
                         <FormattedMessage id="Main.lang.delete" defaultMessage="Delete" />
                     </Typography>
                 </AnimatedUnderlinedButton>

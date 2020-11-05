@@ -30,7 +30,7 @@ const OtherSkills = ({ style, othersSkills, springTranslationProps: { yt } }) =>
                 transform: yt.to((value) => `translate3d(0, ${value}px,0)`)
             }}
         >
-            <Typography variant="h3" component="h3" customClasses={{ container: classes.otherSkillsTitle }}>
+            <Typography variant="h3" component="h3" classes={{ container: classes.otherSkillsTitle }}>
                 <FormattedMessage id="Skills.otherskills.title" defaultMessage="I also master" />
             </Typography>
             {othersSkills.map((skill) => (

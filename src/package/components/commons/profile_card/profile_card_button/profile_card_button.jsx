@@ -20,7 +20,7 @@ const ProfileCardButtonComponent = injectSheet(styles)(({ overrideColor, classes
     return (
         <div className={classes.container}>
             <Button
-                customClasses={{ container: classes.button, typography: classes.typography }}
+                classes={{ container: classes.button, typography: classes.typography }}
                 size="small"
                 variant="text"
                 onMouseEnter={setActiveSpringProps}

@@ -200,7 +200,7 @@ const ProfileCardComponent = ({
             <ProfileCardIncompletePopper open={isComplete !== true} anchorElement={containerElement} />
             <Card
                 containerRef={containerReference}
-                customClasses={{ container: classes.container }}
+                classes={{ container: classes.container }}
                 id={id}
                 elevation={1}
                 {...(!isSmall &&

@@ -61,7 +61,7 @@ const CardStubComponent = ({ data: { type, variant }, cardIndex, onItemChanged }
             <PopperCard
                 open={!isSorting && debouncedOpenPopperCard}
                 anchorElement={containerReference.current}
-                customClasses={{ popper: classes.popper }}
+                classes={{ popper: classes.popper }}
                 popperProps={{ placement: 'right' }}
             >
                 <CardVariants variant={variant} onVariantChanged={onVariantChanged} classes={classes} />
