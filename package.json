@@ -47,7 +47,7 @@
         "cp-cli": "^2.0.0",
         "downloadjs": "^1.4.7",
         "formik": "^2.1.2",
-        "jss-preset-default": "^10.3.0",
+        "jss-preset-default": "10.0.3",
         "lodash": "^4.17.15",
         "moment": "^2.24.0",
         "prop-types": "15.7.2",
@@ -101,6 +101,12 @@
         "rimraf": "^3.0.0",
         "serve": "^11.3.0",
         "typescript": "^4.0.5"
+    },
+    "resolutions": {
+        "jss": "10.0.3",
+        "react": "16.14.0",
+        "react-dom": "16.14.0",
+        "@material-ui/core": "4.11.0"
     },
     "eslintConfig": {
         "extends": "react-app"
