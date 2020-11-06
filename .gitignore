@@ -1,10 +1,5 @@
 #package files
-components/
-i18n/
-index.js
-store/
-styles
-/utils
+
 #build files
 build
 .env.*
