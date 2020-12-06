@@ -40,6 +40,7 @@
         "@formatjs/intl-relativetimeformat": "^4.5.9",
         "@material-ui/pickers": "^3.2.9",
         "@types/giphy-api": "^2.0.2",
+        "@types/lodash": "^4.14.165",
         "@welovedevs/ui": "1.1.0-beta.46",
         "chroma-js": "^2.1.0",
         "classnames": "^2.2.6",
