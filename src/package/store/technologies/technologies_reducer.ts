@@ -1,10 +1,18 @@
 import { TECHNOLOGIES_RECEIVED, TECHNOLOGIES_STARTED } from './technologies_actions_types';
 
+interface Action {
+    type: typeof TECHNOLOGIES_RECEIVED | typeof TECHNOLOGIES_STARTED;
+    technologies: any;
+}
+
+export interface TechnologiesReducerType {
+    technologies: unknown | undefined | null;
+}
 export const technologiesInitialState = Object.freeze({
     technologies: null
 });
 
-export const technologiesReducer = (state, action) => {
+export const technologiesReducer = (state: TechnologiesReducerType, action: Action) => {
     switch (action.type) {
         case TECHNOLOGIES_RECEIVED:
             return {

@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useReducer, useState } from 'react';
-import { injectIntl, IntlProvider } from 'react-intl';
-import { createUseStyles, ThemeProvider } from 'react-jss';
+import { injectIntl, IntlProvider, IntlShape, useIntl } from 'react-intl';
+import { ThemeProvider } from 'react-jss';
 
 import mergeWith from 'lodash/mergeWith';
 import cloneDeep from 'lodash/cloneDeep';
@@ -9,7 +9,7 @@ import { buildTheme } from '../utils/styles/theme/theme';
 import { Banner } from './banner/banner';
 import { Cards } from './cards/cards';
 
-import { styles } from './profile_styles';
+import { styles, Classes } from './profile_styles';
 
 import en from '../i18n/en.json';
 import fr from '../i18n/fr.json';
@@ -24,7 +24,8 @@ import { Options } from '../../../models/data';
 
 import '../styles/lib/slick-carousel/slick-theme.css';
 import '../styles/lib/slick-carousel/slick.css';
-import { Style } from '../../../models/jsstyle';
+
+import { makeStyles } from '@material-ui/core/styles';
 
 if (!Intl.PluralRules) {
     // eslint-disable-next-line global-require
@@ -40,7 +41,7 @@ const messages = {
     fr,
     tr
 };
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const DEFAULT_OPTIONS: Options.DefaultOptions = Object.freeze({
     locale: 'en',
@@ -58,7 +59,7 @@ const DEFAULT_OPTIONS: Options.DefaultOptions = Object.freeze({
 const DEFAULT_OBJECT = {};
 const DEFAULT_FUNCTION = (newData: any) => {};
 
-const DeveloperProfileComponent = ({
+const DeveloperProfileComponent: React.FC<DeveloperProfileProps> = ({
     data: originalData = DEFAULT_OBJECT,
     options,
     mode,
@@ -69,7 +70,7 @@ const DeveloperProfileComponent = ({
     additionalNodes,
     classes: receivedGlobalClasses = {}
 }) => {
-    const classes = useStyles(styles) as Style.ProfileStyle['container'];
+    const classes = useStyles({ classes: receivedGlobalClasses });
     const { apiKeys, endpoints } = options;
     const [isEditing, setIsEditing] = useState(false);
     const onEdit = useCallback(
@@ -83,12 +84,14 @@ const DeveloperProfileComponent = ({
     const setIsEditingWithCallback = useCallback(
         (newValue) => {
             setIsEditing(newValue);
-            onIsEditingChanged(newValue);
+            if (typeof onIsEditingChanged === 'function') {
+                onIsEditingChanged(newValue);
+            }
         },
         [onIsEditingChanged, setIsEditing]
     );
     const store = {
-        technologies: useReducer(technologiesReducer, technologiesInitialState)
+        technologies: useReducer(technologiesReducer as any, technologiesInitialState, () => technologiesInitialState)
     };
     const staticContext = useMemo(
         () => ({
@@ -146,7 +149,18 @@ const DeveloperProfileComponent = ({
     );
 };
 
-const WithProvidersDeveloperProfile = ({
+interface DeveloperProfileProps {
+    data: any;
+    mode: 'readOnly' | 'edit';
+    onEdit?: (any) => void;
+    onCustomizationChanged?: (any) => void;
+    onIsEditingChanged?: (any) => void;
+    options: any;
+    additionalNodes: any;
+    onFilesUpload?: (any) => void;
+    classes?: Classes;
+}
+const WithProvidersDeveloperProfile: React.FC<DeveloperProfileProps & { intl: IntlShape }> = ({
     data,
     onEdit,
     onCustomizationChanged,
@@ -190,4 +204,4 @@ const WithProvidersDeveloperProfile = ({
     );
 };
 
-export const DeveloperProfile = injectIntl(WithProvidersDeveloperProfile, { enforceContext: false });
+export const DeveloperProfile = injectIntl(WithProvidersDeveloperProfile as any, { enforceContext: false });
