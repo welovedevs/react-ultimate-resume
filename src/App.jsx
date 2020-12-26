@@ -63,12 +63,12 @@ function App() {
                     devicons:
                         'https://firebasestorage.googleapis.com/v0/b/jechercheundev.appspot.com/o/technologies%2Ftechnologies_list.json?alt=media&token=459028ba-d9bc-4480-a3c4-88633afab7e2'
                 },
-                // dismissFooter : true
-                // showContactInfos: true,
-                // maxSkills: 6,
+                // dismissFooter : true,
+                showContactInfos: true,
+                maxSkills: 10,
                 customization,
-                disableSortableExperience: false,
-                maxCardsPerRow: 3
+                disableSortableExperience: true,
+                maxCardsPerRow: 4
             }}
             additionalNodes={{
                 banner: {

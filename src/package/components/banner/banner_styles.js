@@ -21,7 +21,7 @@ export const styles = (theme) => {
 
     return {
         container: {
-            height: 400,
+            height: 365,
             width: '100%',
             position: 'relative',
             overflow: 'hidden',

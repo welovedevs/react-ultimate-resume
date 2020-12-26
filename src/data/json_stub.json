@@ -1,299 +1,421 @@
 {
     "basics": {
-        "name": "John Doe",
-        "label": "Programmer",
-        "picture": "",
-        "email": "john.doe@mail.com",
-        "phone": "(912) 555-4321",
-        "website": "http://johndoe.com",
-        "summary": "A summary of John Doe...",
+        "name": "Christopher Dupont",
+        "picture": "img/christopher-dupont.jpg",
+        "title": "Lead Software Engineer",
+        "summary": "Lead Software Engineer & Digital Strategist",
         "location": {
-            "address": "2712 Broadway St",
-            "postalCode": "CA 94115",
-            "city": "San Francisco",
-            "countryCode": "US",
-            "region": "California"
+            "locationCountryCode": "FR",
+            "city": "Paris",
+            "name": "Paris"
         },
-        "profiles": [
-            {
-                "network": "Twitter",
-                "username": "john",
-                "url": "http://twitter.com/john"
-            }
-        ]
+        "phone": "+33 7 56 89 84 33 / +212 6 07 37 33 33",
+        "email": "contact@christopher.consulting"
     },
     "work": [
         {
-            "name": "Company 2 ",
-            "position": "Worker",
-            "website": "http://company.com",
-            "startDate": "2014-01-01",
-            "summary": "Description...",
+            "name": "CD Consulting",
+            "position": "Digital Strategist",
+            "index": 7,
+            "startDate": "2015-01-01",
+            "summary": "Helping companies to grow their businesses and launch new products or working to build smarter and bigger. I've worked across a range of business areas including real estate, IT services, online business, hospitality, startups, water technologies, call centers and mobile technologies. Focus is on launching business and providing proof of concept leading to either first revenue or initial funding. Typically work with founders, CxO, or SVP- level and embed myself into the organisation as part of the team.",
             "location": "Paris, France",
-            "highlights": ["Started the company"]
+            "placeId": "ChIJD7fiBh9u5kcRYJSMaMOCCwQ",
+            "id": "-MGcROaUsMP98U1MzTwZ"
         },
         {
-            "name": "What a nice office",
-            "position": "President",
-            "website": "http://company.com",
-            "startDate": "2013-01-01",
-            "endDate": "2014-01-01",
-            "summary": "Description...",
-            "location": "Paris, France",
-            "highlights": ["Started the company"]
+            "name": "TravelRiser",
+            "position": "Founder and Managing Director",
+            "index": 6,
+            "startDate": "2011-04-01",
+            "endDate": "2014-11-01",
+            "summary": "With a team of 20 engineers and hospitality consultants based in Marrakech, we helped Hotels and guest houses to grow their online presence (Booking generation, SEO, advertising, ...), their partnerships (online and offline distributions contracts) and make them discover and implement new technologies (Yield Management, Booking Engine, PMS, ...).",
+            "location": "Marrakesh, Morocco",
+            "placeId": "ChIJUZ4Xlo3urw0RuK2HT1O2UFk",
+            "id": "-MGcRFffTfxQuvQ-jqaB"
         },
         {
-            "name": "What a nice experience",
-            "position": "Lead dev",
-            "website": "http://company.com",
-            "summary": "Description...",
-            "location": "Paris, France",
-            "highlights": ["Started the company"]
-        }
-    ],
-    "volunteer": [
+            "name": "Cyclad",
+            "position": "Managing Partner and Lead Development Engineer",
+            "index": 5,
+            "startDate": "2009-07-01",
+            "endDate": "2010-12-01",
+            "summary": "Development of the Moroccan subsidiary of Cyclad : creation and development of a new technology development (NICT) services offer for the French and Morocco markets, prospecting and customer relationship management, recruitment and management of commercial and technical teams (12 people), implementation of development processes using Agile SCRUM/XP methods, deployment of collaborative platforms and project management.",
+            "location": "Casablanca, Morocco",
+            "placeId": "ChIJOxGqeEfNpw0R0w8xT9jBBgs",
+            "id": "-MGcR2WY0DOWFrDgxIZw"
+        },
         {
-            "organization": "Organization",
-            "position": "Volunteer",
-            "website": "http://organization.com/",
-            "endDate": "2013-01-01",
-            "summary": "Description...",
-            "highlights": ["Awarded 'Volunteer of the Month'"]
+            "name": "Unikity",
+            "position": "Founder and Managing Director",
+            "index": 4,
+            "startDate": "2007-04-01",
+            "endDate": "2009-07-01",
+            "summary": "Community chat application developed with Adobe Flex technology, fundraising of €450k from business angels, management of a team of 5 people, analysis and development of the application, project sponsored by Adobe France, partnerships with content distributors (Warner, Universal,...).",
+            "location": "Paris, France",
+            "placeId": "ChIJD7fiBh9u5kcRYJSMaMOCCwQ",
+            "id": "-MGcQuWXGhBUZEflvrqv"
+        },
+        {
+            "name": "Equinoxe Media",
+            "position": "Project Manager and Lead Development Engineer",
+            "index": 3,
+            "startDate": "2006-08-01",
+            "endDate": "2007-03-01",
+            "summary": "Full supervision of a JEE web app like DropBox with online interactive editor : recruitment and coaching of the development team (6 people), writing of technical specifications, active participation in functional specifications, analysis and development of the application.",
+            "location": "Paris, France",
+            "placeId": "ChIJD7fiBh9u5kcRYJSMaMOCCwQ",
+            "id": "-MGcQf-m8HJB5udRRpjh"
+        },
+        {
+            "name": "ANEO",
+            "position": "IT Consultant",
+            "index": 2,
+            "startDate": "2006-04-01",
+            "endDate": "2006-08-01",
+            "summary": "Development of a J2EE reporting and billing application for the telecom sector (VoxMobili, US) using AGILE methods, security audits and technical support for AREVA and Société Générale (Paris), installation and deployment of an IT park for a construction company in Paris, redesign of the company's website.",
+            "location": "Issy-les-Moulineaux, France",
+            "placeId": "ChIJxy7Ltot65kcRoSduGnfQJos",
+            "id": "-MGcQUujSzh7ZT900cqD"
+        },
+        {
+            "name": "FPI",
+            "position": "System Administrator & Lead Development Engineer",
+            "index": 1,
+            "startDate": "2003-12-01",
+            "endDate": "2006-02-01",
+            "summary": "Within the automotive sector, management of an IT fleet of 25 remote locations: implementation of inter-site VPNs, permanent security audits, security and network architecture of Equip'Auto 2005 in Paris, development of a cars fleet management application on Pocket PC presented at this exhibition, creation of a IT Asset Management online software, creation of websites for the various group activities.",
+            "location": "Lille, France",
+            "placeId": "ChIJEW4ls3nVwkcRYGNkgT7xCgQ",
+            "id": "-MGcQKWLEC5uKK01m6sx"
+        },
+        {
+            "name": "Syn@ptic",
+            "position": "Software Developper",
+            "index": 0,
+            "startDate": "2003-07-01",
+            "endDate": "2003-08-01",
+            "summary": "Total redesign of a WinDev Desktop and Pocket PC application dedicated to the automotive sector as part of a voluntary internship.",
+            "location": "Lille, France",
+            "placeId": "ChIJEW4ls3nVwkcRYGNkgT7xCgQ",
+            "id": "-MGcQ7zd8rvljYT5LNjT"
         }
     ],
     "education": [
         {
-            "institution": "ISEN",
-            "area": "Software Development",
-            "studyType": "Engineer Degree",
-            "startDate": "2011-01-01",
-            "endDate": "2013-01-01",
-            "gpa": "4.0",
-            "courses": ["DB1101 - Basic SQL"]
-        },
-        {
-            "institution": "Université d'artois",
-            "area": "",
-            "studyType": "",
-            "startDate": "2011-01-01",
-            "endDate": "",
-            "gpa": "4.0",
-            "courses": ["DB1101 - Basic SQL"]
-        }
-    ],
-    "awards": [
-        {
-            "title": "Award",
-            "date": "2014-11-01",
-            "awarder": "Company",
-            "summary": "There is no spoon."
-        }
-    ],
-    "publications": [
-        {
-            "name": "Publication",
-            "publisher": "Company",
-            "releaseDate": "2014-10-01",
-            "website": "http://publication.com",
-            "summary": "Description..."
+            "id": "-MGcPmZf05OkxlzNHD08",
+            "institution": "University institute of technology, France",
+            "index": 0,
+            "area": "Computer Science",
+            "studyType": "Associate’s Degree",
+            "endDate": "2006-01-01"
         }
     ],
     "skills": [
         {
-            "name": "Reactaaa",
-            "level": "Master",
-            "value": 100,
-            "keywords": ["HTML", "CSS", "Javascript"]
+            "name": "PHP",
+            "index": 0,
+            "value": 95,
+            "id": "082743ad-8649-45c7-b6ee-830ff93b3176"
         },
         {
-            "name": "Angular",
-            "level": "Master",
+            "id": "20cd324c-782f-4529-8d6b-47169ae635e3",
+            "name": "Symfony",
+            "position": 0,
+            "value": 85,
+            "index": 1
+        },
+        {
+            "id": "45c79b97-5c49-4494-b484-8a66accf9c25",
+            "name": "API Platform",
+            "position": 1,
             "value": 80,
-            "keywords": ["HTML", "CSS", "Javascript"]
+            "index": 2
         },
         {
+            "id": "b8bc19b5-09fa-4207-b9e7-7cfba40103c3",
             "name": "NodeJS",
-            "level": "Master",
-            "value": 40,
-            "keywords": ["HTML", "CSS", "Javascript"]
+            "position": 4,
+            "value": 95,
+            "index": 3
         },
         {
-            "name": "Firebase",
-            "level": "Master",
-            "value": 60,
-            "keywords": ["HTML", "CSS", "Javascript"]
+            "id": "bbff98ff-e0d0-45b5-b8bb-f77202c36db8",
+            "name": "vueJS",
+            "position": 2,
+            "value": 85,
+            "index": 4
         },
         {
-            "name": "Gmail",
-            "level": "Master",
-            "value": 20,
-            "keywords": ["HTML", "CSS", "Javascript"]
+            "id": "6c9ee6e1-cf19-4fd2-9a6f-b7d2f18c308a",
+            "name": "NUXT",
+            "position": 5,
+            "value": 95,
+            "index": 5
         },
         {
-            "name": "K8S",
-            "level": "Master",
-            "value": 80,
-            "keywords": ["HTML", "CSS", "Javascript"]
+            "id": "20d6b5dd-737c-49ea-8379-587e07c82aa4",
+            "name": "Django",
+            "position": 3,
+            "value": 85,
+            "index": 6
+        },
+        {
+            "name": "Rails",
+            "index": 7,
+            "value": 95,
+            "id": "87d7bd7c-c938-454b-8ea1-ce38fc9c1e95"
+        },
+        {
+            "name": "SEO",
+            "index": 8,
+            "value": 90,
+            "id": "d2642b48-aab3-4ec3-a89a-81a4203e7831"
         }
     ],
-    "languages": [{ "language": "English", "value": 100, "fluency": "Native speaker" }],
+    "languages": [
+        {
+            "id": "-MGcRbxXk_WYk3WRCupD",
+            "name": "French",
+            "position": 0,
+            "value": 100,
+            "language": "French"
+        },
+        {
+            "id": "-MGcRdkLECyPfBJZ6bgs",
+            "name": "English",
+            "position": 1,
+            "value": 60,
+            "language": "English"
+        },
+        {
+            "id": "-MGcRgF2QGzNzI4kVZtM",
+            "name": "Moroccan",
+            "position": 2,
+            "value": 20,
+            "language": "Moroccan"
+        }
+    ],
     "interests": [
         {
-            "name": "France europe gif by nike football",
-            "gifUrl": "https://media1.giphy.com/media/3oD3YooLLYg0AfOPdK/giphy-downsized.gif?cid=f7fb5bbaegu1ofs48lty41dyowqsfo0wq9qq8h4czot7rwm1&rid=giphy-downsized.gif",
-            "id": "afa5739f-f868-464e-a1aa-18f5a3ff4e2b",
-            "gifUser": {
-                "name": "Nike Football",
-                "profileUrl": "https://giphy.com/nikefootball/",
-                "isVerified": true,
-                "profileAvatarUrl": "https://media1.giphy.com/avatars/nikefootball/vPyZcrShcXY8.jpg"
-            }
-        },
-        {
-            "name": "Burritos",
-            "gifUrl": "https://media.giphy.com/media/d8WjGORtSEWqc/giphy.gif"
-        },
-
-        {
-            "name": "Tendresse",
-            "gifUrl": "https://media.giphy.com/media/EehnUUCH2JcwU/giphy.gif"
-        },
-        {
-            "name": "Something",
-            "gifUrl": "https://media.giphy.com/media/xTiTnIuKP1BLsMTerS/giphy.gif"
-        },
-        {
-            "name": "J'aime faire de la course à pied et des randonnées en famille le weekend."
-        }
-    ],
-    "references": [{ "name": "Jane Doe", "reference": "Reference..." }],
-    "projects": [
-        {
-            "index": 5,
-            "date": { "month": 11, "year": 2019 },
-            "description": "Moteur de recherche via le nom de films réalisée avec ReactJs:\nRequête à l'Api rest avec Fetch, utilisation des hooks.\n",
-            "id": "7f1f4257-e5db-477d-aa5f-ababe0ab0b12",
-            "images": [{ "url": "https://cdn.filestackcontent.com/aBOkTTkCQ66VOHUy0q8L" }],
-            "link": "https://lovely-movie.netlify.app/",
-            "name": "Lovely Movie",
-            "endDate": "2019-12-01"
-        },
-        {
-            "index": 2,
-            "date": { "month": 0, "year": 2020 },
-            "description": "Application de gestion de tâches réalisée avec ReactJs / Redux / Firebase :\nCréation de composants avec Styled Components, gestions de formulaires et validation des entrées, création d'une authentification, récupération / création / modification / suppression de tâches.",
-            "id": "af4181b1-8955-47fb-8dd9-17c6974335d3",
-            "images": [{ "url": "https://cdn.filestackcontent.com/G2CckiqvScC9tsrvHYg4" }],
-            "link": "https://diary-todo.netlify.app/",
-            "name": "Journal d'une Todo",
-            "endDate": "2020-01-01"
-        },
-        {
-            "index": 4,
-            "date": { "month": 5, "year": 2020 },
-            "description": "Blog réalisé en Java JEE et Spring, avec création d'une base de données MySQL et connectée avec JDBC.",
-            "id": "af8c78c3-f7c6-4f3b-9c32-9d37a9032e14",
-            "images": [{ "url": "https://cdn.filestackcontent.com/rPp0wj4S2GhTr0qTcqOI" }],
-            "link": "https://btz-java-2003-pjt1-blog.javarover.wilders.dev/",
-            "name": "Charlie's Angels blog",
-            "endDate": "2020-06-01"
-        },
-        {
-            "index": 3,
-            "date": { "month": 5, "year": 2020 },
-            "description": "** Pensée uniquement pour téléphone **\nApplication permettant de connaître la météo actuelle d'une ville. Réalisée afin de découvrir VueJs.",
-            "id": "c64e6ca1-6300-4d7f-a305-8cfb7c99a9e6",
-            "images": [{ "url": "https://cdn.filestackcontent.com/w5oskUihSiYCxekOn9Ba" }],
-            "link": "https://appli-meteo.netlify.app/",
-            "name": "Application Météo",
-            "endDate": "2020-06-01"
-        },
-        {
-            "index": 1,
-            "date": { "month": 7, "year": 2020 },
-            "description": "Premières armes avec Angular et Typescript :\nMise en place d'un environnement Angular, développement d'une authentification avec Firebase, gestion des formulaires, utilisation d'observable avec RxJs.\n",
-            "id": "d9f7ca32-a40a-418e-affb-317bfb4f520e",
-            "images": [{ "url": "https://cdn.filestackcontent.com/NVOhKNFQR9OQ3jtkIyHi" }],
-            "link": "https://my-connected-library.netlify.app/",
-            "name": "Librairie Connectée",
-            "endDate": "2020-08-01"
-        },
-        {
-            "index": 6,
-            "date": { "month": 4, "year": 2019 },
-            "description": "Moteur de recherche basé sur le jeu World of Warcraft, premiers pas avec ReatJs.\nRequête à l'API Raider.io avec Axios.",
-            "id": "dbe2a8d9-dd9d-443d-8ae4-7a8e0b7939f5",
-            "images": [{ "url": "https://cdn.filestackcontent.com/FSysoX0ATvqy2BFvLF21" }],
-            "link": "https://wow-search-engine.netlify.app/",
-            "name": "WoW Search",
-            "endDate": "2019-05-01"
-        },
-        {
+            "gifUrl": "https://media4.giphy.com/media/9WHE2bo5Na9Gg/giphy.gif?cid=f7fb5bbawaz4q3hn94y8zrrukysqtd3vjkt86slt09fzjtn0&rid=giphy.gif",
+            "id": "71685d79-86b1-4ec2-9d7e-eac84c0c3e10",
             "index": 0,
-            "date": { "month": 6, "year": 2020 },
-            "description": "Application réalisée en 24h (challenge de formation) avec Java JEE et Spring:\nGestion d’un CRUD, création d'une API Rest, ajout d'un environnement de production avec une base de données PostgreSQL hébergée sur Heroku.",
-            "id": "ffb8a4f2-24e6-44ef-bbe7-0593b86d40be",
-            "images": [{ "url": "https://cdn.filestackcontent.com/7XpHKtFTC2VynppurrK5" }],
-            "link": "https://your-todos-list.herokuapp.com/",
-            "name": "Your Todo List",
-            "endDate": "2020-07-01"
+            "name": "Meditate"
+        },
+        {
+            "gifUrl": "https://media3.giphy.com/media/PiQejEf31116URju4V/giphy.gif?cid=f7fb5bbamgx6my573vdpnccrp09hkgl3bmq8ydn39spiwgm2&rid=giphy.gif",
+            "gifUser": {
+                "isVerified": false,
+                "name": "",
+                "profileAvatarUrl": "https://media0.giphy.com/avatars/default5.gif",
+                "profileUrl": "https://giphy.com/memecandy/"
+            },
+            "id": "b1cf3ed4-2aba-48f0-8e07-980f94d5e37c",
+            "index": 1,
+            "name": "Coding"
+        },
+        {
+            "gifUrl": "https://media2.giphy.com/media/xI2hQ0ubie0BW/giphy.gif?cid=f7fb5bbaa95b3amr9h81b03ceva6nahv348nk2r518ia9izn&rid=giphy.gif",
+            "id": "8a87860e-0c22-440b-b629-f86d74bc26ca",
+            "index": 2,
+            "name": "Physics"
+        },
+        {
+            "gifUrl": "https://media3.giphy.com/media/115BJle6N2Av0A/giphy.gif?cid=f7fb5bba83yqz9q5y1bce6h9olxurcdu28j79kdzeq2r2ehs&rid=giphy.gif",
+            "id": "6bb3a7fa-bef8-4246-be5f-d7768ddf4602",
+            "index": 3,
+            "name": "Hacking"
+        },
+        {
+            "gifUrl": "https://media2.giphy.com/media/8dYmJ6Buo3lYY/giphy.gif?cid=f7fb5bbaegwnyxm3e9k8uc5pco26xwuzvuklg6j7a4iipp02&rid=giphy.gif",
+            "id": "8095edcb-8e32-4579-8323-225d2a191e89",
+            "index": 4,
+            "name": "Reading"
+        },
+        {
+            "gifUrl": "https://media0.giphy.com/media/bq7BxkmMZgxURhomQI/giphy.gif?cid=f7fb5bba6clztv7x3zib6dezqqvy7cu52an84qujuh1txfhj&rid=giphy.gif",
+            "gifUser": {
+                "isVerified": true,
+                "name": "KLM",
+                "profileAvatarUrl": "https://media1.giphy.com/avatars/KLM/YG11uMROOOH4.jpg",
+                "profileUrl": "https://giphy.com/KLM/"
+            },
+            "id": "30d58940-3d29-4824-9e00-ef4f800e917c",
+            "index": 5,
+            "name": " Travel"
+        },
+        {
+            "gifUrl": "https://media3.giphy.com/media/30MPjZUuRDsMo/giphy.gif?cid=f7fb5bba1obb0q5xkep4udgzvrx9ky8iknik0wzpj1zywdn5&rid=giphy.gif",
+            "id": "4bd0f9a9-79f5-4920-9ecb-d04eecab094a",
+            "index": 6,
+            "name": "Healthy"
         }
     ],
+    "projects": [],
     "specific": {
         "basics": {
-            "visaSponsorship": true,
-            "personalDescription": "This is a longer description of me, of my backstory, my backyard, my backfire, my backend, my frontend and my friends."
+            "visaSponsorship": false,
+            "personalDescription": "After over 17 years of experiences in development on innovative projects with implementing processes, technologies and systems to help them achieve their goals. Expert in a wide variety of skills like programming, security, networking, performance tuning and web marketing. I’m committed to achieving my potential in making a positive difference. "
         },
         "dreamJob": {
             "locations": [
-                { "name": "Valenciennes, France" },
-                { "name": "Lille, France" },
-                { "name": "Paris,France" },
-                { "name": "Paris,France" },
-                { "name": "Lille, France" },
-                { "name": "Valenciennes, France" }
+                {
+                    "id": "ChIJ3-lU0BRWq48R0sBkoggQDPo",
+                    "index": 5,
+                    "placeId": "ChIJ3-lU0BRWq48R0sBkoggQDPo",
+                    "name": "San Miguelito, Panama"
+                },
+                {
+                    "id": "ChIJD7fiBh9u5kcRYJSMaMOCCwQ",
+                    "index": 1,
+                    "placeId": "ChIJD7fiBh9u5kcRYJSMaMOCCwQ",
+                    "name": "Paris, France"
+                },
+                {
+                    "id": "ChIJLUnNMUtfq48RYAlKoecR3dk",
+                    "index": 4,
+                    "placeId": "ChIJLUnNMUtfq48RYAlKoecR3dk",
+                    "name": "Panama"
+                },
+                {
+                    "id": "ChIJP3CKFZeprI8R86tRsWFm9Rc",
+                    "index": 6,
+                    "placeId": "ChIJP3CKFZeprI8R86tRsWFm9Rc",
+                    "name": "Panamá, Panama"
+                },
+                {
+                    "id": "ChIJUZ4Xlo3urw0RuK2HT1O2UFk",
+                    "index": 4,
+                    "placeId": "ChIJUZ4Xlo3urw0RuK2HT1O2UFk",
+                    "name": "Marrakesh, Morocco"
+                },
+                {
+                    "id": "ChIJ_1J17G-7rhIRMBBBL5z2BgQ",
+                    "index": 3,
+                    "placeId": "ChIJ_1J17G-7rhIRMBBBL5z2BgQ",
+                    "name": "Toulouse, France"
+                },
+                {
+                    "id": "ChIJgcpR9-gnVQ0RiXo5ewOGY3k",
+                    "index": 2,
+                    "placeId": "ChIJgcpR9-gnVQ0RiXo5ewOGY3k",
+                    "name": "Bordeaux, France"
+                }
             ],
-            "remoteFrequency": "regularly"
+            "salary": "",
+            "perks": {
+                "challenge": true,
+                "mood": true,
+                "others": "Human management",
+                "responsabilities": true,
+                "training": true,
+                "work_hours": true
+            },
+            "remoteFrequency": "fullTime"
         },
-        "currentJob": {
-            "issues": { "boring_management": true, "boring_team": true }
+        "currentJob": {},
+        "education": {
+            "studiesLevel": 2
         },
-        "education": { "studiesLevel": 5 },
         "work": {
-            "contractTypes": ["permanent"],
-            "codingYears": 7,
-            "codingReason": "J'ai commencé à coder sur Amstrad dans ma cave et je n'ai jamais arrêté depuis",
-            "searchState": "activelySearching",
-            "experienceYears": 0,
-            "codeExperienceYears": 1,
-            "otherExperienceYears": 1
+            "contractTypes": [
+                "fixedTerm",
+                "freelance",
+                "permanent"
+            ],
+            "codingYears": 20,
+            "codingReason": "",
+            "searchState": "dreamjobOnly",
+            "otherExperienceYears": 5.5,
+            "codeExperienceYears": 17.5
         },
         "sound": {
-            "embedUrl": "https://open.spotify.com/embed/playlist/37i9dQZF1DWWl7MndYYxge"
+            "embedUrl": "https://open.spotify.com/embed/playlist/1t6Q9tlk8TOB2lHXE3QNkw?si=POmAIpz0SuurxTL0Xn3miA"
         },
-        "interestedBy": "Angular, la blochain et les chatons."
+        "interestedBy": "Reality, Spirituality, AI, Security, Blockchain, ..."
     },
     "resumeCustomization": {
         "imageHeader": {
             "url": "https://cdn.filestackcontent.com/8I2wVnCRTFxypXRYLRsp",
             "alt": "Default Banner"
         },
-        "cardsOrder": [
-            { "type": "basics", "variant": 4 },
-            { "type": "projects", "variant": 4 },
-            { "type": "skills", "variant": 0 },
-            { "type": "dreamjob", "variant": 4 },
-            { "type": "experiences", "variant": 4 },
-            { "type": "studies", "variant": 4 },
-            { "type": "gifs", "variant": 0 },
-            { "type": "interestedBy", "variant": 3 },
-            { "type": "language", "variant": 4 },
-            { "type": "soundtrack", "variant": 4 }
-        ],
-        "fields": {
-            "work": {
-                "customDateFormat": "YYYY"
+        "theme": {
+            "palette": {
+                "primary": {
+                    "50": "#e6e6e6",
+                    "100": "#cccccc",
+                    "200": "#999999",
+                    "300": "#666666",
+                    "400": "#333333",
+                    "500": "#000000",
+                    "600": "#000000",
+                    "700": "#000000",
+                    "800": "#000000",
+                    "900": "#000000",
+                    "contrastDefaultColor": "light"
+                },
+                "secondary": {
+                    "50": "#f5e7e8",
+                    "100": "#eccfd1",
+                    "200": "#d9a0a4",
+                    "300": "#c57076",
+                    "400": "#b24149",
+                    "500": "#9f111b",
+                    "600": "#7f0e16",
+                    "700": "#5f0a10",
+                    "800": "#40070b",
+                    "900": "#200305",
+                    "contrastDefaultColor": "light"
+                },
+                "tertiary": {
+                    "50": "#f7e8e9",
+                    "100": "#efd0d3",
+                    "200": "#e0a2a7",
+                    "300": "#d0737b",
+                    "400": "#c1454f",
+                    "500": "#b11623",
+                    "600": "#8e121c",
+                    "700": "#6a0d15",
+                    "800": "#47090e",
+                    "900": "#230407",
+                    "contrastDefaultColor": "light"
+                }
             }
-        }
+        },
+        "cardsOrder": [
+            {
+                "type": "basics",
+                "variant": 0
+            },
+            {
+                "type": "skills",
+                "variant": 3
+            },
+            {
+                "type": "experiences",
+                "variant": 4
+            },
+            {
+                "type": "interestedBy",
+                "variant": 3
+            },
+            {
+                "type": "studies",
+                "variant": 4
+            },
+            {
+                "type": "soundtrack",
+                "variant": 4
+            },
+            {
+                "type": "gifs",
+                "variant": 3
+            },
+            {
+                "type": "language",
+                "variant": 4
+            }
+        ]
     }
 }
