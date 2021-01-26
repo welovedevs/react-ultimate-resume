@@ -76,7 +76,7 @@ const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace, on
 
     const onMove = useCallback(
         ({ oldIndex, newIndex }) => {
-            onChange(arrayMove(placesValues, oldIndex, newIndex));
+            onChange(arrayMove(placesValues, oldIndex, newIndex).map((item, index) => ({ ...item, index })));
         },
         [placesValues, onChange]
     );

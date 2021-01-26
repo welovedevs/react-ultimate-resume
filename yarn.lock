@@ -2519,10 +2519,10 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@welovedevs/ui@1.1.0-beta.46":
-  version "1.1.0-beta.46"
-  resolved "https://registry.yarnpkg.com/@welovedevs/ui/-/ui-1.1.0-beta.46.tgz#93637b40eebf11e03f51a6424f20817efb34fb1a"
-  integrity sha512-DkSUgood2YWZXrTWuMc5pHT566OPI+n1jb11kfzXfW++ApfDVMTaNeUUTK//N8oQVKPLvOKMcgG6OXUP0V5o0A==
+"@welovedevs/ui@1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@welovedevs/ui/-/ui-1.1.3.tgz#418ff280ce7efc9870e95d8836417313d5261747"
+  integrity sha512-71jWphIg3zIz1yeKm5zblA9/Ba59wix7da+VW+J6lZgac0huVPCqvdS7AuCrkwwXal+mMPhozyIS2v72NgCM/Q==
   dependencies:
     "@material-ui/core" "^4.11.0"
     "@material-ui/icons" "^4.9.1"
