@@ -14,6 +14,7 @@
   "Banner.image.editButton": "Banner resmini düzenle",
   "Basics.Back.CodeExperienceYear.noExperience": "Deneyim yok (henüz!)",
   "Basics.Back.CodeExperienceYear.value": "{experienceYears, çoğul, bir {# year} öbür {# years} } deneyim",
+  "Basics.Back.CodingReason.Title": "How i started coding",
   "Basics.Back.CodingYears.noExperience": "Kodlamaya yeni başladım",
   "Basics.Back.CodingYears.title": "Kod Deneyimi",
   "Basics.Back.CodingYears.value": "{codingYears, çoğul, bir [# year] öbür {# years}} yazılım (tüm deneyimler, çalışmalar, kişisel projeler, iş...)",

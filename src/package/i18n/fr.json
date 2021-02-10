@@ -14,6 +14,7 @@
   "Banner.image.editButton": "Changer l'image de la banière",
   "Basics.Back.CodeExperienceYear.noExperience": "Pas (encore!) d'expérience en tant que développeur",
   "Basics.Back.CodeExperienceYear.value": "{codeExperienceYears, plural, one {# année} other {# années}} en tant que développeur",
+  "Basics.Back.CodingReason.Title": "Je code grâce à ",
   "Basics.Back.CodingYears.noExperience": "Je viens de commencer à coder",
   "Basics.Back.CodingYears.title": "Expérience en code",
   "Basics.Back.CodingYears.value": "{codingYears, plural, one {# année} other {# années}} de code (toutes expérience, projets personnels ou pro confondus...)",

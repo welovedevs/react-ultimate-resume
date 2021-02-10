@@ -104,14 +104,12 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
             studies: {
                 title: <FormattedMessage id="Basics.Back.StudiesLevel.Title" defaultMessage="Training" />,
                 hide: !studiesLevel,
-                value: (
-                    <>
-                        <StudiesLevel studiesLevel={studiesLevel} />
-                        <br />
-                        <br />
-                        {codingReason && <span>{codingReason}</span>}
-                    </>
-                )
+                value: <StudiesLevel studiesLevel={studiesLevel} />
+            },
+            codingReason: {
+                title: <FormattedMessage id="Basics.Back.CodingReason.Title" defaultMessage="Why i code" />,
+                hide: !codingReason,
+                value: <span>{codingReason}</span>
             }
         }),
         [

@@ -27,8 +27,12 @@ export const styles = (theme) => {
             marginTop: spacing * 4,
             marginLeft: -spacing
         },
+        texts: {
+            width: '100%'
+        },
         mainTypography: {
             extend: 'text',
+            width: '100%',
             textOverflow: 'ellipsis',
             wordWrap: 'break-word',
             overflow: 'hidden',
