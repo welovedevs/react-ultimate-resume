@@ -47,6 +47,7 @@
         "cp-cli": "^2.0.0",
         "downloadjs": "^1.4.7",
         "formik": "^2.1.2",
+        "framer-motion": "^3.3.0",
         "jss-preset-default": "10.0.3",
         "lodash": "^4.17.15",
         "moment": "^2.24.0",
