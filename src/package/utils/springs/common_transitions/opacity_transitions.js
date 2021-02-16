@@ -1,5 +1,5 @@
-export const OPACITY_TRANSITIONS = Object.freeze({
-    from: {
+export const OPACITY_TRANSITIONS = {
+    initial: {
         opacity: 0
     },
     enter: {
@@ -8,4 +8,4 @@ export const OPACITY_TRANSITIONS = Object.freeze({
     leave: {
         opacity: 0
     }
-});
+};

@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
-import { animated, config, useTransition } from 'react-spring';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { Typography } from '@welovedevs/ui';
 
@@ -31,37 +31,35 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
     const [globalReceivedBannerClasses = {}] = useReceivedGlobalClasses('banner');
     const [isEditing] = useIsEditing();
 
-    const transitions = useTransition(customizationOptions?.imageHeader || null, (item) => `${item?.alt}_${item.url}`, {
-        ...OPACITY_TRANSITIONS,
-        unique: true,
-        config: config.molasses
-    });
-
+    const imageInformations = customizationOptions?.imageHeader;
     const bannerImageCredits = customizationOptions?.imageHeader?.credits;
+
     return (
         <div className={cn(classes.container, globalReceivedBannerClasses.container)}>
             {isEditing && onCustomizationChanged && (
                 <EditHeaderImageButton customizationOptions={customizationOptions} />
             )}
             <div className={cn(classes.overlay, globalReceivedBannerClasses.overlay)} />
-            {transitions?.map(
-                ({ item, key, props }) =>
-                    item && (
-                        <animated.img
-                            key={key}
-                            className={classes.image}
-                            src={item?.url}
-                            alt={item?.alt}
-                            style={props}
-                        />
-                    )
-            )}
+            <AnimatePresence>
+                {imageInformations && (
+                    <motion.img
+                        className={classes.image}
+                        src={imageInformations?.url}
+                        alt={imageInformations?.alt}
+                        variants={OPACITY_TRANSITIONS}
+                        transition={{ duration: 1 }}
+                        initial="initial"
+                        animate="enter"
+                        exit="leave"
+                    />
+                )}
+            </AnimatePresence>
             <div className={cn(classes.content, globalReceivedBannerClasses.content)}>
                 <UserInformations />
                 <SocialActions>
                     {actionsButtons}
                     {mode === 'edit' && <EditButton />}
-                    {mode === 'edit' && <CustomizeButton customizationOptions={customizationOptions} />}
+                    {mode === 'edit' && <CustomizeButton customizationOptions={customizationOptions} />}z
                 </SocialActions>
             </div>
             {bannerImageCredits?.name && (
