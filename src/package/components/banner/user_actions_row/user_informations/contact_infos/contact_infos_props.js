@@ -1,4 +1,4 @@
-export const DIVIDER_SPRING_PROPS = Object.freeze({
+export const DIVIDER_PROPS = Object.freeze({
     initial: {
         opacity: 0,
         translation: -25

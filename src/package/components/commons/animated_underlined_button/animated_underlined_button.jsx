@@ -24,7 +24,7 @@ const AnimatedUnderlinedButtonComponent = ({ color = 'primary', onClick, childre
         <button type="button" className={classes.container} onClick={onClick} {...handlers}>
             {children}
             <div className={classes.underlineContainer}>
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                     {isUnderlineDisplayed && (
                         <motion.div
                             variants={ANIMATED_UNDERLINED_BUTTON_TRANSITIONS_PROPS}

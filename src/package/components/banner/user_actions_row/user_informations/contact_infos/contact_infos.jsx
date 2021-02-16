@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { EditContactInfosButton } from './edit_contact_infos_button/edit_contact_infos_button';
 import { ContactInfoRow } from './contact_info_row/contact_info_row';
 
-import { DIVIDER_SPRING_PROPS } from './contact_infos_spring_props';
+import { DIVIDER_PROPS } from './contact_infos_props';
 import { CONTACT_INFOS_DATA } from './contact_infos_data';
 
 import { useIsEditing } from '../../../../hooks/use_is_editing';
@@ -31,7 +31,7 @@ const Divider = ({ classes }) => {
     return (
         <div className={classes.dividerContainer}>
             <motion.div
-                variants={DIVIDER_SPRING_PROPS}
+                variants={DIVIDER_PROPS}
                 className={classes.divider}
                 transition={{ duration: 1 }}
                 initial="initial"
