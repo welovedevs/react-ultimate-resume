@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { createUseStyles } from 'react-jss';
-import { animated, useSpring } from 'react-spring';
+import { motion } from 'framer-motion';
 
 import { EditContactInfosButton } from './edit_contact_infos_button/edit_contact_infos_button';
 import { ContactInfoRow } from './contact_info_row/contact_info_row';
@@ -16,10 +16,8 @@ import { styles } from './contact_infos_styles';
 const useStyles = createUseStyles(styles);
 
 export const ContactInfos = ({ contactInformations }) => {
-    // eslint-disable-next-line no-unused-vars
     const classes = useStyles();
     const [isEditing] = useIsEditing();
-
     return (
         <>
             <Divider classes={classes} />
@@ -30,15 +28,14 @@ export const ContactInfos = ({ contactInformations }) => {
 };
 
 const Divider = ({ classes }) => {
-    const springProps = useSpring(DIVIDER_SPRING_PROPS);
     return (
         <div className={classes.dividerContainer}>
-            <animated.div
+            <motion.div
+                variants={DIVIDER_SPRING_PROPS}
                 className={classes.divider}
-                style={{
-                    opacity: springProps.opacity,
-                    transform: springProps.translation.interpolate((value) => `translate3d(${value}%, 0, 0)`)
-                }}
+                transition={{ duration: 1 }}
+                initial="initial"
+                animate="animate"
             />
         </div>
     );

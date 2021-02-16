@@ -1,9 +1,9 @@
 export const DIVIDER_SPRING_PROPS = Object.freeze({
-    from: {
+    initial: {
         opacity: 0,
         translation: -25
     },
-    to: {
+    animate: {
         opacity: 1,
         translation: 0
     }
