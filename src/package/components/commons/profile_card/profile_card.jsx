@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 
 import { createUseStyles, useTheme } from 'react-jss';
-import { animated, config, useTransition } from 'react-spring';
+import { motion } from 'framer-motion';
 
 import { Card } from '@welovedevs/ui';
 
@@ -20,7 +20,7 @@ import {
 } from '../../../store/profile_card/profile_card_actions_types';
 import { getProfileCardInitialState, profileCardReducer } from '../../../store/profile_card/profile_card_reducer';
 import { DeveloperProfileContext } from '../../../utils/context/contexts';
-import { PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_SPRING_PROPS } from './profile_card_spring_props';
+import { PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_PROPS } from './profile_card_props';
 import { SIDES } from './profile_card_side/side';
 
 import { styles } from './profile_card_styles';
@@ -29,11 +29,10 @@ const useStyles = createUseStyles(styles);
 
 export const ProfileCardContext = createContext({});
 
-const DEFAULT_TRANSITIONS_SPRING_PROPS = {
-    from: { opacity: 0 },
+const DEFAULT_TRANSITIONS_PROPS = {
+    initial: { opacity: 0 },
     enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    config: config.default
+    leave: { opacity: 0 }
 };
 
 const ProfileCardComponent = ({
@@ -43,10 +42,8 @@ const ProfileCardComponent = ({
     sides,
     kind,
     variant,
-    isTransitionUnique = true,
     isEditingProfile,
     editDialog,
-    customTransitionsSpringProps,
     customEditAction,
     isComplete = true,
     side: sideProps
@@ -118,16 +115,6 @@ const ProfileCardComponent = ({
         setContainerElement(containerReference.current);
     }, []);
 
-    const transitionsSpringProps = useMemo(() => {
-        if (customTransitionsSpringProps) {
-            if (typeof customTransitionsSpringProps === 'function') {
-                return customTransitionsSpringProps(side);
-            }
-            return customTransitionsSpringProps;
-        }
-        return DEFAULT_TRANSITIONS_SPRING_PROPS;
-    }, [customTransitionsSpringProps, side]);
-
     const setSide = useCallback(
         (newSide) => {
             if (sideProps) {
@@ -161,28 +148,13 @@ const ProfileCardComponent = ({
         setSide(SIDES.FRONT);
     }, [hasDialogOpened, setSide]);
 
-    const transitions = useTransition(side, (item) => `card_side_${item}_${kind}`, {
-        ...transitionsSpringProps,
-        unique: isTransitionUnique,
-        onDestroyed: () => {
-            setChangingSides(false);
-        }
-    });
     const handleAddButtonClick = useCallback(() => {
         setOpenEditDialog(true);
         setForceOpenEditDialog(true);
     }, []);
 
-    const editButtonTransitions = useTransition(
-        isEditingProfile,
-        (item) => (item ? 'visible_editing_button' : 'invisible_editing_button'),
-        {
-            ...PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_SPRING_PROPS,
-            unique: true
-        }
-    );
-
     const contextData = useMemo(() => ({ state, dispatch }), [JSON.stringify(state)]);
+    const SideComponent = sides[side] || (() => null);
 
     return (
         <>
@@ -209,28 +181,22 @@ const ProfileCardComponent = ({
                         onMouseLeave: handleMouseLeave
                     })}
             >
-                {mode === 'edit' &&
-                    editButtonTransitions.map(
-                        ({ item, key, props }) =>
-                            item && (
-                                <animated.div className={classes.editButtonContainer} key={key} style={props}>
-                                    <EditAction
-                                        customEditAction={customEditAction}
-                                        setEditDialogOpened={setEditDialogOpened}
-                                    />
-                                </animated.div>
-                            )
-                    )}
+                {mode === 'edit' && isEditingProfile && (
+                    <motion.div
+                        variants={PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_PROPS}
+                        initial="initial"
+                        animate="enter"
+                        exit="leave"
+                        className={classes.editButtonContainer}
+                    >
+                        <EditAction customEditAction={customEditAction} setEditDialogOpened={setEditDialogOpened} />
+                    </motion.div>
+                )}
                 <ProfileCardContext.Provider value={contextData}>
                     {children}
-                    {transitions.map(({ item, key, props }) => {
-                        const SideComponent = sides[item] || (() => null);
-                        return (
-                            <ProfileCardSide key={key} style={props}>
-                                <SideComponent data={data} handleAddButtonClick={handleAddButtonClick} />
-                            </ProfileCardSide>
-                        );
-                    })}
+                    <ProfileCardSide key={`card_side_${side}_${kind}`} animationProps={DEFAULT_TRANSITIONS_PROPS}>
+                        <SideComponent data={data} handleAddButtonClick={handleAddButtonClick} />
+                    </ProfileCardSide>
                 </ProfileCardContext.Provider>
             </Card>
         </>
