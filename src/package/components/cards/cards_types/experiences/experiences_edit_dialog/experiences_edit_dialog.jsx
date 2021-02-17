@@ -192,26 +192,24 @@ const ExperienceItem = SortableElement(
                     </ListItem>
                 </div>
                 <AnimatePresence>
-                    {folded
-                        ? 'invisible'
-                        : 'visible' && (
-                              <motion.div
-                                  variants={EXPERIENCE_CONTENT_TRANSITION_PROPS}
-                                  initial="initial"
-                                  animate="animate"
-                                  exit="exit"
-                              >
-                                  <ContentFields
-                                      fieldErrors={fieldErrors}
-                                      id={id}
-                                      formatMessage={formatMessage}
-                                      experience={experience}
-                                      onChange={onChange}
-                                      classes={classes}
-                                      index={index}
-                                  />
-                              </motion.div>
-                          )}
+                    {!folded && (
+                        <motion.div
+                            variants={EXPERIENCE_CONTENT_TRANSITION_PROPS}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                        >
+                            <ContentFields
+                                fieldErrors={fieldErrors}
+                                id={id}
+                                formatMessage={formatMessage}
+                                experience={experience}
+                                onChange={onChange}
+                                classes={classes}
+                                index={index}
+                            />
+                        </motion.div>
+                    )}
                 </AnimatePresence>
             </div>
         );

@@ -100,25 +100,23 @@ const CurrentJobIssuesFieldComponent = ({ error, currentJobIssues, onChange, set
                 />
             </div>
             <AnimatePresence>
-                {otherCurrentJobIssue === null
-                    ? 'invisible'
-                    : 'visible' && (
-                          <TextField
-                              fullWidth
-                              containerElement={motion.div}
-                              classes={{ container: cn(classes.textField, classes.otherTextField) }}
-                              onChange={handleOtherJobIssueChange}
-                              name={`currentJobIssues[${JobIssues.OTHER}]`}
-                              value={otherCurrentJobIssueValue}
-                              variant="flat"
-                              containerProps={{
-                                  variants: { CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS },
-                                  initial: CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS.initial,
-                                  animate: CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS.enter,
-                                  exit: CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS.leave
-                              }}
-                          />
-                      )}
+                {otherCurrentJobIssue !== null && (
+                    <TextField
+                        fullWidth
+                        containerElement={motion.div}
+                        classes={{ container: cn(classes.textField, classes.otherTextField) }}
+                        onChange={handleOtherJobIssueChange}
+                        name={`currentJobIssues[${JobIssues.OTHER}]`}
+                        value={otherCurrentJobIssueValue}
+                        variant="flat"
+                        containerProps={{
+                            variants: { CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS },
+                            initial: CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS.initial,
+                            animate: CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS.enter,
+                            exit: CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS.leave
+                        }}
+                    />
+                )}
             </AnimatePresence>
         </EditDialogField>
     );
