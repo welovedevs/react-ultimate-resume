@@ -71,6 +71,11 @@ Run
 yarn start
 ```
 
+See the website on localhost with the following url:
+```
+localhost:3000
+```
+
 Replace the default JSON Resume with yours
 ```
 /src/data/json_stub.json
