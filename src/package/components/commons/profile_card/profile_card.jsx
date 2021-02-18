@@ -30,7 +30,7 @@ const useStyles = createUseStyles(styles);
 export const ProfileCardContext = createContext({});
 
 const DEFAULT_TRANSITIONS_PROPS = {
-    initial: { opacity: 0, transitionDuration: '0.5s' },
+    initial: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 }
 };

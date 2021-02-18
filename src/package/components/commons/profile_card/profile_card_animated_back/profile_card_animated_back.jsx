@@ -13,15 +13,19 @@ import { styles } from './profile_card_animated_back_styles';
 
 const useStyles = createUseStyles(styles);
 
+const spring = {
+    type: 'spring',
+    damping: 18,
+    stiffness: 100
+};
+
 export const ProfileCardAnimatedBack = ({ title, children: content, classes: receivedClasses = {} }) => {
     const classes = useStyles();
     return (
         <>
             <ProfileCardTitle
                 component={motion.div}
-                variants={TITLE_PROPS}
-                initial="default"
-                animate="active"
+                motionSettings={{ variants: TITLE_PROPS, initial: 'default', animate: 'active', transition: spring }}
                 classes={{ typography: cn(classes.title, receivedClasses.title) }}
             >
                 {title}
@@ -31,18 +35,13 @@ export const ProfileCardAnimatedBack = ({ title, children: content, classes: rec
                     container: cn(classes.content, receivedClasses.content)
                 }}
                 component={motion.div}
-                variants={CONTENT_CONTAINER_PROPS}
-                initial="default"
-                animate="active"
+                motionSettings={{ variants: CONTENT_PROPS, initial: 'default', animate: 'active', transition: spring }}
             >
-                <motion.div
+                <div
                     className={receivedClasses.contentAnimated}
-                    variants={CONTENT_PROPS}
-                    initial="default"
-                    animate="active"
                 >
                     {content}
-                </motion.div>
+                </div>
             </ProfileCardContent>
         </>
     );

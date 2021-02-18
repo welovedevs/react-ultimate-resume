@@ -14,9 +14,7 @@ const useStyles = createUseStyles(styles);
 
 export const ProfileCardTitle = ({
     component: Component = 'div',
-    variants,
-    initial,
-    animate,
+    motionSettings,
     beforeTypography,
     overrideColor,
     children,
@@ -26,7 +24,10 @@ export const ProfileCardTitle = ({
     const classes = useStyles({ variant, overrideColor });
     return (
         <AnimatePresence>
-            <Component className={cn(classes.container, receivedClasses.container)} {...{ variants, initial, animate }}>
+            <Component
+                className={cn(classes.container, receivedClasses.container)}
+                {...motionSettings}
+            >
                 {beforeTypography}
                 <Typography
                     variant="h2"
