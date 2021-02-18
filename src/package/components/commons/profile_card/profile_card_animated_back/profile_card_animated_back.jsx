@@ -7,16 +7,12 @@ import { motion } from 'framer-motion';
 import { ProfileCardTitle } from '../profile_card_title/profile_card_title';
 import { ProfileCardContent } from '../profile_card_content/profile_card_content';
 
-import { CONTENT_CONTAINER_PROPS, CONTENT_PROPS, TITLE_PROPS } from './profile_card_animated_back_transition';
+import { CONTENT_PROPS, TITLE_PROPS } from './profile_card_animated_back_transition';
 
 import { styles } from './profile_card_animated_back_styles';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = createUseStyles(styles);
-
-const spring = {
-    type: 'spring',
-    damping: 18
-};
 
 export const ProfileCardAnimatedBack = ({ title, children: content, classes: receivedClasses = {} }) => {
     const classes = useStyles();
@@ -36,11 +32,7 @@ export const ProfileCardAnimatedBack = ({ title, children: content, classes: rec
                 component={motion.div}
                 motionSettings={{ variants: CONTENT_PROPS, initial: 'default', animate: 'active', transition: spring }}
             >
-                <div
-                    className={receivedClasses.contentAnimated}
-                >
-                    {content}
-                </div>
+                <div className={receivedClasses.contentAnimated}>{content}</div>
             </ProfileCardContent>
         </>
     );

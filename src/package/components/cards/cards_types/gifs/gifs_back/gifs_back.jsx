@@ -12,19 +12,15 @@ import { GifsSidesCommons } from '../gifs_sides_commons/gifs_sides_commons';
 
 import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 
-import { GIFS_BACK_TRANSITIONS_SPRING_PROPS } from './gifs_back_spring_props';
+import { GIFS_BACK_TRANSITIONS_SPRING_PROPS } from './gifs_back_props';
 
 import { styles } from './gifs_back_styles';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoHobby } from './no_hobby/no_hobby';
 import { AnimatePresence, motion } from 'framer-motion';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = createUseStyles(styles);
-
-const spring = {
-    type: 'spring',
-    damping: 18
-};
 
 const SETTINGS = {
     arrows: true,
@@ -68,7 +64,7 @@ const GifsBackComponent = ({ data, handleAddButtonClick }) => {
                             <Arrow classes={classes} arrowRole="next" buttonProps={{ className: classes.nextButton }} />
                         }
                     >
-                        {(data.interests ?? []).map(({ gifUrl, name, gifUser }) => (
+                        {(data.interests ?? []).map(({ gifUrl, name }) => (
                             <SlideItem key={`gif_${gifUrl}_${name}`} gifUrl={gifUrl} name={name} classes={classes} />
                         ))}
                     </Slider>

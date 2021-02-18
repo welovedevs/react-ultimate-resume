@@ -1,5 +1,3 @@
-import { config } from 'react-spring';
-
 export const GIFS_BACK_TRANSITIONS_SPRING_PROPS = {
     toTheLeft: {
         opacity: 0,

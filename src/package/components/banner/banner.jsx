@@ -12,7 +12,7 @@ import { SocialActions } from './user_actions_row/social_actions/social_actions'
 import { CustomizeButton } from './user_actions_row/customize_button/customize_button';
 import { EditHeaderImageButton } from './edit_header_image_button/edit_header_image_button';
 
-import { OPACITY_TRANSITIONS } from '../../utils/springs/common_transitions/opacity_transitions';
+import { OPACITY_TRANSITIONS } from '../../utils/framer_motion/common_transitions/opacity_transitions';
 
 import { useIsEditing } from '../hooks/use_is_editing';
 import { useAdditionalNodes } from '../hooks/use_additional_nodes';
