@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { ProfileCardTitle } from '../profile_card_title/profile_card_title';
 import { ProfileCardContent } from '../profile_card_content/profile_card_content';
 
-import { CONTENT_CONTAINER_PROPS, CONTENT_PROPS, TITLE_PROPS } from './profile_card_animated_back';
+import { CONTENT_CONTAINER_PROPS, CONTENT_PROPS, TITLE_PROPS } from './profile_card_animated_back_transition';
 
 import { styles } from './profile_card_animated_back_styles';
 

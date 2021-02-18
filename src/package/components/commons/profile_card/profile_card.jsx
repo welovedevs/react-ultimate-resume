@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 
 import { createUseStyles, useTheme } from 'react-jss';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { Card } from '@welovedevs/ui';
 
@@ -30,7 +30,7 @@ const useStyles = createUseStyles(styles);
 export const ProfileCardContext = createContext({});
 
 const DEFAULT_TRANSITIONS_PROPS = {
-    initial: { opacity: 0 },
+    initial: { opacity: 0, transitionDuration: '0.5s' },
     enter: { opacity: 1 },
     leave: { opacity: 0 }
 };
@@ -194,9 +194,16 @@ const ProfileCardComponent = ({
                 )}
                 <ProfileCardContext.Provider value={contextData}>
                     {children}
-                    <ProfileCardSide key={`card_side_${side}_${kind}`} animationProps={DEFAULT_TRANSITIONS_PROPS}>
-                        <SideComponent data={data} handleAddButtonClick={handleAddButtonClick} />
-                    </ProfileCardSide>
+                    <AnimatePresence>
+                        {side && (
+                            <ProfileCardSide
+                                key={`card_side_${side}_${kind}`}
+                                animationProps={DEFAULT_TRANSITIONS_PROPS}
+                            >
+                                <SideComponent data={data} handleAddButtonClick={handleAddButtonClick} />
+                            </ProfileCardSide>
+                        )}
+                    </AnimatePresence>
                 </ProfileCardContext.Provider>
             </Card>
         </>
