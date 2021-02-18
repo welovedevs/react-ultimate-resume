@@ -136,7 +136,7 @@
             "keywords": ["HTML", "CSS", "Javascript"]
         }
     ],
-    "languages": [{ "language": "English", "value": 100, "fluency": "Native speaker" }],
+    "languages": [{ "language": "English", "value": 100, "fluency": "Native speaker" }, { "language": "Italien", "value": 15, "fluency": "Native speaker" } ],
     "interests": [
         {
             "name": "France europe gif by nike football",
