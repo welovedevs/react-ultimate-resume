@@ -1,18 +1,16 @@
 import { config } from 'react-spring';
 
 export const GIFS_BACK_TRANSITIONS_SPRING_PROPS = {
-    from: {
+    toTheLeft: {
         opacity: 0,
-        transform: 'translate3d(25%, 0, 0)'
+        x: '25%'
     },
-    enter: {
+    center: {
         opacity: 1,
-        transform: 'translate3d(0%, 0, 0)'
+        x: 0
     },
-    leave: {
+    toTheRight: {
         opacity: 0,
-        transform: 'translate3d(-25%, 0, 0)'
-    },
-    unique: true,
-    config: config.slow
+        x: '-25%'
+    }
 };

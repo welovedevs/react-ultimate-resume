@@ -1,6 +1,6 @@
-export const CONTENT_PROPS = {
+export const TITLE_PROPS = {
     default: {
-        y: '25%',
+        y: '-25%',
         opacity: 0
     },
     active: {
@@ -9,9 +9,9 @@ export const CONTENT_PROPS = {
     }
 };
 
-export const TITLE_PROPS = {
+export const CONTENT_PROPS = {
     default: {
-        y: '-25%',
+        y: '25%',
         opacity: 0
     },
     active: {

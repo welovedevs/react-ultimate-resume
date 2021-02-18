@@ -15,8 +15,7 @@ const useStyles = createUseStyles(styles);
 
 const spring = {
     type: 'spring',
-    damping: 18,
-    stiffness: 100
+    damping: 18
 };
 
 export const ProfileCardAnimatedBack = ({ title, children: content, classes: receivedClasses = {} }) => {
