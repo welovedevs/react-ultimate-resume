@@ -1,11 +1,11 @@
 export const LOADING_SPINNER_TRANSITIONS = {
-    from: {
+    initial: {
         opacity: 0
     },
-    enter: {
+    animate: {
         opacity: 1
     },
-    leave: {
+    exit: {
         opacity: 0
     }
 };
