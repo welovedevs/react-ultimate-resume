@@ -3,8 +3,7 @@ import React, { memo, useEffect, useMemo, useState } from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { useIntl } from 'react-intl';
-import { animated, config, useSpring } from 'react-spring';
-
+import { motion } from 'framer-motion';
 import { Tooltip } from '@welovedevs/ui';
 import { SHARE_LINKS_DATA } from './share_links_data';
 import { BACKGROUND_LINE_SPRING_PROPS } from './share_links_spring_props';
@@ -18,11 +17,6 @@ const ShareLinksComponent = ({ useSmallLayout }) => {
     const classes = useStyles();
     const { formatMessage } = useIntl();
     const [link, setLink] = useState();
-
-    const [backgroundLineSpringProps, setBackgroundLineSpringProps] = useSpring(() => ({
-        ...BACKGROUND_LINE_SPRING_PROPS.default,
-        config: config.slow
-    }));
 
     useEffect(() => {
         setLink((typeof window === 'undefined' ? {} : window).location?.href);
@@ -38,9 +32,9 @@ const ShareLinksComponent = ({ useSmallLayout }) => {
         const observer = new IntersectionObserver(
             (entries) => {
                 if (entries[0].isIntersecting === true) {
-                    setBackgroundLineSpringProps(BACKGROUND_LINE_SPRING_PROPS.active);
+                    return BACKGROUND_LINE_SPRING_PROPS.active;
                 } else {
-                    setBackgroundLineSpringProps(BACKGROUND_LINE_SPRING_PROPS.default);
+                    return BACKGROUND_LINE_SPRING_PROPS.default;
                 }
             },
             { threshold: [0] }
@@ -50,7 +44,18 @@ const ShareLinksComponent = ({ useSmallLayout }) => {
 
     return (
         <div id="footer-share-links" className={cn(classes.container, useSmallLayout && classes.smallLayoutContainer)}>
-            {!useSmallLayout && <animated.div className={classes.backgroundLine} style={backgroundLineSpringProps} />}
+            {!useSmallLayout && (
+                <motion.div
+                    className={classes.backgroundLine}
+                    variants={BACKGROUND_LINE_SPRING_PROPS}
+                    initial="default"
+                    animate="active"
+                    transition={{
+                        delay: 0.3,
+                        duration: 1
+                    }}
+                />
+            )}
             <div className={classes.icons}>
                 {Object.entries(SHARE_LINKS_DATA).map(([entryId, { getLink, icon: Icon, tooltipTranslation }]) => {
                     let content = <Icon key={`share_link_icon_${entryId}`} className={classes.icon} />;
