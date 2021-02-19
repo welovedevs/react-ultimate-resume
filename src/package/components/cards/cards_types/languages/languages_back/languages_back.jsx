@@ -68,7 +68,7 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
         <div className={classes.columnsContainer}>
             {items.map((item) => (
                 <LanguageColumn
-                    itemsSize={item.length ?? 0}
+                    itemsSize={data.languages?.length ?? 0}
                     key={`language_column_${item.id}`}
                     component={motion.div}
                     item={item}
