@@ -3,7 +3,6 @@ import React, { memo, useCallback, useMemo, useState } from 'react';
 import cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { animated, useSpring, useTransition, config } from 'react-spring';
 
 import { Twemoji } from 'react-emoji-render';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
@@ -29,7 +28,9 @@ import { AddButton } from '../../../../commons/add_button/add_button';
 
 import { translations } from './studies_translations';
 import { styles } from './studies_styles';
-import { STUDIES_CONTENT_TRANSITION_SPRING_PROPS } from './studies_edit_dialog_spring_props';
+import { STUDIES_CONTENT_TRANSITION_PROPS } from './studies_edit_dialog_props';
+import { AnimatePresence, motion } from 'framer-motion';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../../utils/framer_motion/common_types/spring_type';
 
 const DragHandle = SortableHandle(({ classes }) => (
     <button className={classes.dragHandleButton} type="button">
@@ -150,20 +151,6 @@ const FormationItem = SortableElement(
         const handleAreaChange = useCallback((event) => onChange(index, 'area', event.target.value), [index]);
         const handleEndDate = useCallback((value) => onChange(index, 'endDate', moment({ year: value })), [index]);
 
-        const { rotate } = useSpring({
-            rotate: folded ? -90 : 0
-        });
-
-        const contentTransitions = useTransition(
-            !folded ? formation : null,
-            (item) => `${item ? 'visible' : 'invisible'}_study_${item?.id}_content`,
-            {
-                ...STUDIES_CONTENT_TRANSITION_SPRING_PROPS,
-                unique: true,
-                ...config.stiff
-            }
-        );
-
         const hasError = Boolean(fieldErrors);
 
         return (
@@ -183,101 +170,103 @@ const FormationItem = SortableElement(
                             className={cn(classes.listItem, hasError && classes.listItemError)}
                             onClick={() => toggleFold(!folded)}
                         >
-                            <animated.div
+                            <motion.div
                                 className={classes.arrowContainer}
-                                style={{
-                                    transform: rotate.to((value) => `rotate(${value}deg)`)
+                                animate={{
+                                    transform: `rotate(${folded ? -90 : 0}deg)`
                                 }}
                             >
                                 <ArrowIcon className={cn('refinement-arrow')} />
-                            </animated.div>
+                            </motion.div>
                             {hasError && <Twemoji className={classes.warningIcon} svg text="⚠️" />}
                             <Typography className={classes.smallTitle} color="dark">
                                 {formation.institution}
                             </Typography>
                         </ListItem>
                     </div>
-                    {contentTransitions.map(
-                        ({ item, key, props }) =>
-                            item && (
-                                <animated.div
-                                    key={key}
-                                    style={props}
-                                    className={cn(classes.listItem, fieldErrors && classes.listItemError)}
-                                >
-                                    <div className={classes.fieldGroup}>
-                                        <div className={classes.field}>
-                                            <TextField
-                                                fullWidth
-                                                variant="flat"
-                                                value={formation.institution}
-                                                onChange={handleInstitutionChange}
-                                                id={`formation_institution_${id}`}
-                                                placeholder={formatMessage(translations.schoolNamePlaceholder)}
-                                            />
-                                            {fieldErrors && fieldErrors.institution && (
-                                                <Typography color="danger" variant="helper" component="p">
-                                                    {fieldErrors.institution}
-                                                </Typography>
-                                            )}
-                                        </div>
-                                        <div className={classes.field}>
-                                            <SelectComponent
-                                                onChange={handleEndDate}
-                                                id={formation.id}
-                                                value={formation.endDate}
-                                                classes={classes}
-                                            />
-                                            {fieldErrors && fieldErrors.endDate && (
-                                                <Typography color="danger" variant="helper" component="p">
-                                                    {fieldErrors.endDate}
-                                                </Typography>
-                                            )}
-                                        </div>
+                    <AnimatePresence>
+                        {!folded && (
+                            <motion.div
+                                variants={STUDIES_CONTENT_TRANSITION_PROPS}
+                                initial="initial"
+                                animate="animate"
+                                exit="exit"
+                                transition={spring}
+                                className={cn(classes.listItem, fieldErrors && classes.listItemError)}
+                            >
+                                <div className={classes.fieldGroup}>
+                                    <div className={classes.field}>
+                                        <TextField
+                                            fullWidth
+                                            variant="flat"
+                                            value={formation.institution}
+                                            onChange={handleInstitutionChange}
+                                            id={`formation_institution_${id}`}
+                                            placeholder={formatMessage(translations.schoolNamePlaceholder)}
+                                        />
+                                        {fieldErrors && fieldErrors.institution && (
+                                            <Typography color="danger" variant="helper" component="p">
+                                                {fieldErrors.institution}
+                                            </Typography>
+                                        )}
                                     </div>
-                                    <div className={classes.fieldGroup}>
-                                        <div className={classes.field}>
-                                            <TextField
-                                                id={`formation_diploma_${id}`}
-                                                fullWidth
-                                                variant="flat"
-                                                label={formatMessage(translations.diplomaTitle)}
-                                                placeholder={formatMessage(translations.diplomaPlaceholder)}
-                                                value={formation.studyType}
-                                                onChange={handleStudyType}
-                                                margin="normal"
-                                                error={fieldErrors && fieldErrors.studyType}
-                                            />
-
-                                            {fieldErrors && fieldErrors.studyType && (
-                                                <Typography color="danger" variant="helper" component="p">
-                                                    {fieldErrors.studyType}
-                                                </Typography>
-                                            )}
-                                        </div>
-                                        <div className={classes.field}>
-                                            <TextField
-                                                id={`formation_area_${id}`}
-                                                fullWidth
-                                                variant="flat"
-                                                label={formatMessage(translations.mainCourse)}
-                                                placeholder={formatMessage(translations.mainCoursePlaceholder)}
-                                                value={formation.area}
-                                                onChange={handleAreaChange}
-                                                margin="normal"
-                                                error={fieldErrors && fieldErrors.area}
-                                            />
-
-                                            {fieldErrors && fieldErrors.area && (
-                                                <Typography color="danger" variant="helper" component="p">
-                                                    {fieldErrors.area}
-                                                </Typography>
-                                            )}
-                                        </div>
+                                    <div className={classes.field}>
+                                        <SelectComponent
+                                            onChange={handleEndDate}
+                                            id={formation.id}
+                                            value={formation.endDate}
+                                            classes={classes}
+                                        />
+                                        {fieldErrors && fieldErrors.endDate && (
+                                            <Typography color="danger" variant="helper" component="p">
+                                                {fieldErrors.endDate}
+                                            </Typography>
+                                        )}
                                     </div>
-                                </animated.div>
-                            )
-                    )}
+                                </div>
+                                <div className={classes.fieldGroup}>
+                                    <div className={classes.field}>
+                                        <TextField
+                                            id={`formation_diploma_${id}`}
+                                            fullWidth
+                                            variant="flat"
+                                            label={formatMessage(translations.diplomaTitle)}
+                                            placeholder={formatMessage(translations.diplomaPlaceholder)}
+                                            value={formation.studyType}
+                                            onChange={handleStudyType}
+                                            margin="normal"
+                                            error={fieldErrors && fieldErrors.studyType}
+                                        />
+
+                                        {fieldErrors && fieldErrors.studyType && (
+                                            <Typography color="danger" variant="helper" component="p">
+                                                {fieldErrors.studyType}
+                                            </Typography>
+                                        )}
+                                    </div>
+                                    <div className={classes.field}>
+                                        <TextField
+                                            id={`formation_area_${id}`}
+                                            fullWidth
+                                            variant="flat"
+                                            label={formatMessage(translations.mainCourse)}
+                                            placeholder={formatMessage(translations.mainCoursePlaceholder)}
+                                            value={formation.area}
+                                            onChange={handleAreaChange}
+                                            margin="normal"
+                                            error={fieldErrors && fieldErrors.area}
+                                        />
+
+                                        {fieldErrors && fieldErrors.area && (
+                                            <Typography color="danger" variant="helper" component="p">
+                                                {fieldErrors.area}
+                                            </Typography>
+                                        )}
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
             </div>
         );
