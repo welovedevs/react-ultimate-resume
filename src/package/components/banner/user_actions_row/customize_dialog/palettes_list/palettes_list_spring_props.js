@@ -1,19 +1,25 @@
-import { config } from 'react-spring';
+import { motion } from 'framer-motion';
+import React from 'react';
 
 export const PALETTES_LIST_TRANSITIONS_SPRING_PROPS = Object.freeze({
-    from: {
-        opacity: 0,
-        transform: 'translate3d(-20px, 0, 0)'
+    hidden: {
+        opacity: 0
     },
-    enter: {
+    visible: {
         opacity: 1,
-        transform: 'translate3d(0, 0, 0)'
-    },
-    leave: {
+        transition: {
+            staggerChildren: 0.1
+        }
+    }
+});
+
+export const PALETTES_ITEM_TRANSITIONS_SPRING_PROPS = Object.freeze({
+    hidden: {
         opacity: 0,
-        transform: 'translate3d(-20px, 0, 0)'
+        x: -30
     },
-    trail: 1000 / 10,
-    config: config.wobbly,
-    unique: true
+    visible: {
+        opacity: 1,
+        x: 0
+    }
 });

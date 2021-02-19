@@ -59,7 +59,7 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
                 <SocialActions>
                     {actionsButtons}
                     {mode === 'edit' && <EditButton />}
-                    {mode === 'edit' && <CustomizeButton customizationOptions={customizationOptions} />}z
+                    {mode === 'edit' && <CustomizeButton customizationOptions={customizationOptions} />}
                 </SocialActions>
             </div>
             {bannerImageCredits?.name && (
