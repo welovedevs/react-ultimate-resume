@@ -64,7 +64,7 @@ const SearchGifsDialogComponent: React.FC<
                 <Results query={query} debouncedQuery={debouncedQuery} onSelect={onSelect} classes={classes} />
             </DialogContent>
             <DialogActions>
-                <Button size="small" onClick={() => onClose}>
+                <Button size="small" onClick={onClose as any}>
                     <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
                 </Button>
             </DialogActions>
