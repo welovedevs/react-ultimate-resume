@@ -1,4 +1,4 @@
-export const PALETTES_LIST_TRANSITIONS_SPRING_PROPS = Object.freeze({
+export const PALETTES_LIST_TRANSITIONS_PROPS = Object.freeze({
     hidden: {
         opacity: 0
     },
@@ -10,7 +10,7 @@ export const PALETTES_LIST_TRANSITIONS_SPRING_PROPS = Object.freeze({
     }
 });
 
-export const PALETTES_ITEM_TRANSITIONS_SPRING_PROPS = Object.freeze({
+export const PALETTES_ITEM_TRANSITIONS_PROPS = Object.freeze({
     hidden: {
         opacity: 0,
         x: -30

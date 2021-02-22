@@ -14,10 +14,7 @@ import { buildShadedPalette } from './utils/build_shaded_palette';
 
 import { palettes } from './utils/palettes';
 
-import {
-    PALETTES_LIST_TRANSITIONS_SPRING_PROPS,
-    PALETTES_ITEM_TRANSITIONS_SPRING_PROPS
-} from './palettes_list_spring_props';
+import { PALETTES_LIST_TRANSITIONS_PROPS, PALETTES_ITEM_TRANSITIONS_PROPS } from './palettes_list_transition_props';
 
 import { styles } from './palettes_list_styles';
 
@@ -65,10 +62,10 @@ const PalettesListComponent = ({ value: currentPalette, onChange, classes: recei
                 loadMore={setNextDisplayedPalettes}
                 getScrollParent={() => containerReference.current}
             >
-                <motion.div variants={PALETTES_LIST_TRANSITIONS_SPRING_PROPS} initial="hidden" animate="visible">
+                <motion.div variants={PALETTES_LIST_TRANSITIONS_PROPS} initial="hidden" animate="visible">
                     {displayedPalettes.map((item, paletteIndex) => (
                         <motion.button
-                            variants={PALETTES_ITEM_TRANSITIONS_SPRING_PROPS}
+                            variants={PALETTES_ITEM_TRANSITIONS_PROPS}
                             key={`palette_${item.join('_')}`}
                             type="button"
                             className={classes.selectablePaletteContainer}

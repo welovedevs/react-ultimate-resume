@@ -1,4 +1,4 @@
-export const SPRING_PROPS = Object.freeze({
+export const TRANSITION_PROPS = Object.freeze({
     default: {
         scale: 1
     },

@@ -1,4 +1,4 @@
-export const GIFS_BACK_TRANSITIONS_SPRING_PROPS = {
+export const GIFS_BACK_TRANSITIONS_PROPS = {
     toTheLeft: {
         opacity: 0,
         x: '25%'

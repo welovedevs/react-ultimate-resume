@@ -12,7 +12,7 @@ import { GifsSidesCommons } from '../gifs_sides_commons/gifs_sides_commons';
 
 import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 
-import { GIFS_BACK_TRANSITIONS_SPRING_PROPS } from './gifs_back_props';
+import { GIFS_BACK_TRANSITIONS_PROPS } from './gifs_back_props';
 
 import { styles } from './gifs_back_styles';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
@@ -115,7 +115,7 @@ const Content = ({ data, pauseSlider, previousIndex, currentIndex, resumeSlider,
                 pauseSlider={pauseSlider}
                 resumeSlider={resumeSlider}
                 motionConfig={{
-                    variants: GIFS_BACK_TRANSITIONS_SPRING_PROPS,
+                    variants: GIFS_BACK_TRANSITIONS_PROPS,
                     ...animationState,
                     transition: spring
                 }}

@@ -8,7 +8,7 @@ import { Tooltip } from '@welovedevs/ui';
 
 import { ReactComponent as EditIcon } from '../../../assets/icons/edit.svg';
 
-import { SPRING_PROPS } from './bouncing_round_button_spring_props';
+import { TRANSITION_PROPS } from './bouncing_round_button_props';
 
 import { styles } from './bouncing_round_button_styles';
 
@@ -29,7 +29,7 @@ const BouncingRoundButtonComponent = ({
                 type="button"
                 className={cn(classes.container, receivedClasses.container)}
                 onClick={onClick}
-                variants={SPRING_PROPS}
+                variants={TRANSITION_PROPS}
                 initial="default"
                 whileTap="active"
             >

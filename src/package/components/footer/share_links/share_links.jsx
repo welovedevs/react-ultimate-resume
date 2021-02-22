@@ -6,7 +6,7 @@ import { useIntl } from 'react-intl';
 import { motion } from 'framer-motion';
 import { Tooltip } from '@welovedevs/ui';
 import { SHARE_LINKS_DATA } from './share_links_data';
-import { BACKGROUND_LINE_SPRING_PROPS } from './share_links_spring_props';
+import { BACKGROUND_LINE_PROPS } from './share_links_props';
 
 import { styles } from './share_links_styles';
 import { translations } from './share_links_translations';
@@ -32,9 +32,9 @@ const ShareLinksComponent = ({ useSmallLayout }) => {
         const observer = new IntersectionObserver(
             (entries) => {
                 if (entries[0].isIntersecting === true) {
-                    return BACKGROUND_LINE_SPRING_PROPS.active;
+                    return BACKGROUND_LINE_PROPS.active;
                 } else {
-                    return BACKGROUND_LINE_SPRING_PROPS.default;
+                    return BACKGROUND_LINE_PROPS.default;
                 }
             },
             { threshold: [0] }
@@ -47,7 +47,7 @@ const ShareLinksComponent = ({ useSmallLayout }) => {
             {!useSmallLayout && (
                 <motion.div
                     className={classes.backgroundLine}
-                    variants={BACKGROUND_LINE_SPRING_PROPS}
+                    variants={BACKGROUND_LINE_PROPS}
                     initial="default"
                     animate="active"
                     transition={{

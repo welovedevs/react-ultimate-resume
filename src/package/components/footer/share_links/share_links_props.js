@@ -1,4 +1,4 @@
-export const BACKGROUND_LINE_SPRING_PROPS = {
+export const BACKGROUND_LINE_PROPS = {
     default: {
         scale: 0
     },
