@@ -3,7 +3,7 @@ import React, { useCallback, useMemo, useRef, useState } from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import InfiniteScroll from 'react-infinite-scroller';
-import { AnimatePresence, motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import { Typography } from '@welovedevs/ui';
 

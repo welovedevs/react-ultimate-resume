@@ -2,6 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 
 import { createUseStyles, useTheme } from 'react-jss';
 import { animated, useTransition } from 'react-spring';
+import { motion } from 'framer-motion';
 import Carousel, { Modal, ModalGateway } from 'react-images';
 
 import { ProjectDialogContentImage } from './project_dialog_content_image/project_dialog_content_image';

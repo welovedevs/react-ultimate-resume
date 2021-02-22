@@ -1,8 +1,8 @@
-import React, { memo, useCallback, useMemo, useRef } from 'react';
+import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
-import { config, useSpring, useChain } from 'react-spring';
+import { motion } from 'framer-motion';
 
 import { ProfileCardTitle } from '../../../../commons/profile_card/profile_card_title/profile_card_title';
 
@@ -13,6 +13,7 @@ import { styles } from './skills_back_styles';
 import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoSkill } from './no_skill/no_skill';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = createUseStyles(styles);
 
@@ -29,28 +30,33 @@ const Content = ({ data, handleAddButtonClick }) => {
     const [variant] = useCardVariant();
 
     const classes = useStyles({ variant });
-    const springSkillOpacityPropsRef = useRef();
-    const springGraphOpacityPropsRef = useRef();
+    const skillOpacityPropsRef = useRef();
+    const graphOpacityPropsRef = useRef();
+
+    const SKILL_OPACITY_PROPS = {
+        initial: {
+            opacity: 0
+        },
+        animate: {
+            opacity: 1
+        },
+        ref: skillOpacityPropsRef
+    };
+
+    const GRAPH_OPACITY_PROPS = {
+        initial: {
+            opacity: 0
+        },
+        animate: {
+            opacity: 1
+        },
+        ref: graphOpacityPropsRef
+    };
 
     const hasSkill = useMemo(() => existsAndNotEmpty(data?.skills), [data]);
 
-    const springSkillOpacityProps = useSpring({
-        from: { opacity: 0 },
-        to: { opacity: 1 },
-        ref: springSkillOpacityPropsRef
-    });
-    const springGraphOpacityProps = useSpring({
-        from: { opacity: 0 },
-        to: { opacity: 1 },
-        ref: springGraphOpacityPropsRef
-    });
-
-    useChain([springGraphOpacityPropsRef, springSkillOpacityPropsRef], [0, 0.1]);
-
-    const [springOnScrollOpacityProps, setSpringOnScrollOpacityProps] = useSpring(() => ({
-        opacity: 1
-    }));
-    const [springTranslationProps, setSpringTranslationProps] = useSpring(() => ({ yt: 0, config: config.slow }));
+    const [onScrollOpacityProps, setSpringOnScrollOpacityProps] = useState(1);
+    const [translationProps, setTranslationProps] = useState(0);
 
     const { top3Skills, othersSkills } = useMemo(() => {
         const newData = [...(data.skills ?? [])];
@@ -67,15 +73,15 @@ const Content = ({ data, handleAddButtonClick }) => {
 
             if (newOpacity === 0) {
                 if (othersSkills.length > 10) {
-                    setSpringTranslationProps({ yt: -100 });
+                    setTranslationProps(-100);
                 } else {
-                    setSpringTranslationProps({ yt: -100 + (e.target.scrollTop > 160 && e.target.scrollTop - 160) });
+                    setTranslationProps(-100 + (e.target.scrollTop > 160 && e.target.scrollTop - 160));
                 }
             } else {
-                setSpringTranslationProps({ yt: 0 });
+                setTranslationProps(0);
             }
 
-            return setSpringOnScrollOpacityProps({ opacity: newOpacity });
+            return setSpringOnScrollOpacityProps(newOpacity);
         },
         [othersSkills]
     );
@@ -85,20 +91,23 @@ const Content = ({ data, handleAddButtonClick }) => {
     }
 
     return (
-        <div className={classes.container} onScroll={onScroll} style={springGraphOpacityProps}>
-            <SkillsPieChart
-                variant={variant}
-                data={top3Skills}
-                springOnScrollOpacityProps={springOnScrollOpacityProps}
-            />
+        <motion.div
+            className={classes.container}
+            onScroll={onScroll}
+            variants={GRAPH_OPACITY_PROPS}
+            initial="initial"
+            animate="animate"
+            transition={spring}
+        >
+            <SkillsPieChart variant={variant} data={top3Skills} onScrollOpacityProps={onScrollOpacityProps} />
             {othersSkills.length > 1 && (
                 <OtherSkills
-                    style={springSkillOpacityProps}
+                    motionProps={{ variants: SKILL_OPACITY_PROPS, initial: 'initial', animate: 'animate' }}
                     othersSkills={othersSkills}
-                    springTranslationProps={springTranslationProps}
+                    translationProps={translationProps}
                 />
             )}
-        </div>
+        </motion.div>
     );
 };
 export const SkillsBack = memo(SkillsBackComponent);

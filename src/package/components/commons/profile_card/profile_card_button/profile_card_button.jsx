@@ -18,7 +18,7 @@ const ProfileCardButtonComponent = injectSheet(styles)(({ overrideColor, classes
     const [motionProps, setMotionProps] = useState(() => DEFAULT_MOTION_PROPS);
     const setDefaultMotionProps = useCallback(() => setMotionProps(() => DEFAULT_MOTION_PROPS), []);
     const setActiveMotionProps = useCallback(() => setMotionProps(() => ACTIVE_MOTION_PROPS), []);
-    console.log(motionProps);
+
     return (
         <div className={classes.container}>
             <Button
