@@ -100,7 +100,7 @@
     ],
     "skills": [
         {
-            "name": "Reactaaa",
+            "name": "React",
             "level": "Master",
             "value": 100,
             "keywords": ["HTML", "CSS", "Javascript"]
@@ -248,10 +248,7 @@
             "locations": [
                 { "name": "Valenciennes, France" },
                 { "name": "Lille, France" },
-                { "name": "Paris,France" },
-                { "name": "Paris,France" },
-                { "name": "Lille, France" },
-                { "name": "Valenciennes, France" }
+                { "name": "Paris,France" }
             ],
             "remoteFrequency": "regularly"
         },

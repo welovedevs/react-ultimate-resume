@@ -63,7 +63,7 @@ const ProjectDialogContentImagesComponent = ({ images = [], isEditing }) => {
             <AnimatePresence>
                 {images.map((item, index) => (
                     <ProjectDialogContentImage
-                        key={`project_image_${index}_${hashCode(item?.url)}`}
+                        key={`project_image_${index}_${hashCode(item.url)}`}
                         component={isEditing ? motion.button : motion.div}
                         motionConfig={{
                             variants: PROJECT_DIALOG_CONTENT_IMAGES_TRANSITIONS_PROPS,
