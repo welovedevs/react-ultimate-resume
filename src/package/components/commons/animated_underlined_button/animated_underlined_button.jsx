@@ -9,6 +9,7 @@ import { useOpenerState } from '../../hooks/use_opener_state';
 import { ANIMATED_UNDERLINED_BUTTON_TRANSITIONS_PROPS } from './animated_underlined_button_props';
 
 import { styles } from './animated_underlined_button_styles';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = createUseStyles(styles);
 
@@ -31,6 +32,7 @@ const AnimatedUnderlinedButtonComponent = ({ color = 'primary', onClick, childre
                             initial="initial"
                             animate="enter"
                             exit="leave"
+                            transition={spring}
                             className={classes.underline}
                         />
                     )}

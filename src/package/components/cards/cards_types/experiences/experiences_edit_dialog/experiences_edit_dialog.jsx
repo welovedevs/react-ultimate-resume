@@ -28,6 +28,7 @@ import { EXPERIENCE_CONTENT_TRANSITION_PROPS } from './experiences_edit_dialog_p
 import { translations } from './experiences_edit_dialog_translations';
 import { styles } from './experiences_edit_dialog_styles';
 import { useOptions } from '../../../../hooks/use_options';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = createUseStyles(styles);
 
@@ -198,6 +199,7 @@ const ExperienceItem = SortableElement(
                             initial="initial"
                             animate="animate"
                             exit="exit"
+                            transition={spring}
                         >
                             <ContentFields
                                 fieldErrors={fieldErrors}
