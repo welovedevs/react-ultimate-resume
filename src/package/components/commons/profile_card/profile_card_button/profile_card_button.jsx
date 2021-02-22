@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import injectSheet from 'react-jss';
-import { animated, useSpring } from 'react-spring';
+import { motion } from 'framer-motion';
 
 import { Button } from '@welovedevs/ui';
 
@@ -9,36 +9,39 @@ import { ReactComponent as ArrowRight } from '../../../../assets/icons/arrow-rig
 
 import { styles } from './profile_card_button_styles';
 import { useCardVariant } from '../../../hooks/profile_card_hooks/use_card_variant';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../utils/framer_motion/common_types/spring_type';
 
-const DEFAULT_SPRING_PROPS = { translation: 0 };
-const ACTIVE_SPRING_PROPS = { translation: 6 };
+const DEFAULT_MOTION_PROPS = 0;
+const ACTIVE_MOTION_PROPS = 6;
 
 const ProfileCardButtonComponent = injectSheet(styles)(({ overrideColor, classes, children, ...other }) => {
-    const [springProps, setSpringProps] = useSpring(() => DEFAULT_SPRING_PROPS);
-    const setDefaultSpringProps = useCallback(() => setSpringProps(() => DEFAULT_SPRING_PROPS), []);
-    const setActiveSpringProps = useCallback(() => setSpringProps(() => ACTIVE_SPRING_PROPS), []);
+    const [motionProps, setMotionProps] = useState(() => DEFAULT_MOTION_PROPS);
+    const setDefaultMotionProps = useCallback(() => setMotionProps(() => DEFAULT_MOTION_PROPS), []);
+    const setActiveMotionProps = useCallback(() => setMotionProps(() => ACTIVE_MOTION_PROPS), []);
+    console.log(motionProps);
     return (
         <div className={classes.container}>
             <Button
                 classes={{ container: classes.button, typography: classes.typography }}
                 size="small"
                 variant="text"
-                onMouseEnter={setActiveSpringProps}
-                onMouseLeave={setDefaultSpringProps}
-                onFocus={setActiveSpringProps}
-                onBlur={setDefaultSpringProps}
+                onMouseEnter={setActiveMotionProps}
+                onMouseLeave={setDefaultMotionProps}
+                onFocus={setActiveMotionProps}
+                onBlur={setDefaultMotionProps}
                 {...other}
             >
                 {children}
             </Button>
-            <animated.span
+            <motion.span
                 className={classes.arrowContainer}
-                style={{
-                    transform: springProps.translation.to((value) => `translate3d(${value}px, 0, 0)`)
+                animate={{
+                    x: `${motionProps}px`
                 }}
+                transition={spring}
             >
                 <ArrowRight className={classes.arrow} />
-            </animated.span>
+            </motion.span>
         </div>
     );
 });

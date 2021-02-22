@@ -12,6 +12,7 @@ import { CONTACT_INFOS_DATA } from './contact_infos_data';
 import { useIsEditing } from '../../../../hooks/use_is_editing';
 
 import { styles } from './contact_infos_styles';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = createUseStyles(styles);
 
@@ -33,7 +34,7 @@ const Divider = ({ classes }) => {
             <motion.div
                 variants={DIVIDER_PROPS}
                 className={classes.divider}
-                transition={{ duration: 1 }}
+                transition={spring}
                 initial="initial"
                 animate="animate"
             />
