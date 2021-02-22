@@ -17,14 +17,20 @@ import { styles } from './project_dialog_content_image_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectDialogContentImageComponent = ({ component: Component = 'div', url, name, style, handleImageClick }) => {
+const ProjectDialogContentImageComponent = ({
+    component: Component = 'div',
+    url,
+    name,
+    motionConfig,
+    handleImageClick
+}) => {
     const classes = useStyles();
     const [isEditing] = useIsEditing();
 
     const [showEditLayer, eventsHandlerElementProps] = useOpenerState();
 
     return (
-        <Component className={classes.container} style={style} {...(isEditing && eventsHandlerElementProps)}>
+        <Component className={classes.container} {...motionConfig} {...(isEditing && eventsHandlerElementProps)}>
             <Image url={url} name={name} handleImageClick={handleImageClick} isEditing={isEditing} classes={classes} />
             <AnimatePresence>
                 {showEditLayer && (
