@@ -24,16 +24,11 @@ import { PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_PROPS } from './profile_card_props
 import { SIDES } from './profile_card_side/side';
 
 import { styles } from './profile_card_styles';
+import { OPACITY_TRANSITIONS } from '../../../utils/framer_motion/common_transitions/opacity_transitions';
 
 const useStyles = createUseStyles(styles);
 
 export const ProfileCardContext = createContext({});
-
-const DEFAULT_TRANSITIONS_PROPS = {
-    initial: { opacity: 0 },
-    enter: { opacity: 1 },
-    exit: { opacity: 0 }
-};
 
 const ProfileCardComponent = ({
     id,
@@ -198,7 +193,7 @@ const ProfileCardComponent = ({
                         {side && (
                             <ProfileCardSide
                                 key={`card_side_${side}_${kind}`}
-                                animationProps={DEFAULT_TRANSITIONS_PROPS}
+                                animationProps={OPACITY_TRANSITIONS}
                             >
                                 <SideComponent data={data} handleAddButtonClick={handleAddButtonClick} />
                             </ProfileCardSide>

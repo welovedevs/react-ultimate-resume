@@ -16,8 +16,8 @@ export const ProfileCardSide = ({ children, animationProps }) => {
             variants={animationProps}
             transition={{ type: 'spring', velocity: 1, stiffness: 80 }}
             initial="initial"
-            animate="enter"
-            exit="leave"
+            animate="animate"
+            exit="exit"
         >
             {children}
         </motion.div>
