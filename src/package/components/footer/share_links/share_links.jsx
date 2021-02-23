@@ -17,6 +17,7 @@ const ShareLinksComponent = ({ useSmallLayout }) => {
     const classes = useStyles();
     const { formatMessage } = useIntl();
     const [link, setLink] = useState();
+    const [displayLines, setDisplayLines] = useState(false);
 
     useEffect(() => {
         setLink((typeof window === 'undefined' ? {} : window).location?.href);
@@ -32,9 +33,9 @@ const ShareLinksComponent = ({ useSmallLayout }) => {
         const observer = new IntersectionObserver(
             (entries) => {
                 if (entries[0].isIntersecting === true) {
-                    return BACKGROUND_LINE_PROPS.active;
+                    return setDisplayLines(true);
                 } else {
-                    return BACKGROUND_LINE_PROPS.default;
+                    return setDisplayLines(false);
                 }
             },
             { threshold: [0] }
@@ -47,12 +48,9 @@ const ShareLinksComponent = ({ useSmallLayout }) => {
             {!useSmallLayout && (
                 <motion.div
                     className={classes.backgroundLine}
-                    variants={BACKGROUND_LINE_PROPS}
-                    initial="default"
-                    animate="active"
+                    animate={{ scale: displayLines ? 1 : 0 }}
                     transition={{
-                        delay: 0.3,
-                        duration: 1
+                        delay: 0.3
                     }}
                 />
             )}
