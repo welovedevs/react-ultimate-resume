@@ -16,7 +16,7 @@ import { DEFAULT_SPRING_TYPE as spring } from '../../../../../../utils/framer_mo
 
 const useStyles = createUseStyles(styles);
 
-const OtherSkills = ({ motionProps, othersSkills, translationProps }) => {
+const OtherSkills = ({ motionProps, othersSkills }) => {
     const [variant] = useCardVariant();
     const classes = useStyles({ variant });
     const theme = useTheme();
@@ -27,9 +27,6 @@ const OtherSkills = ({ motionProps, othersSkills, translationProps }) => {
         <motion.div
             className={classes.otherSkillsContainer}
             {...motionProps}
-            animate={{
-                y: translationProps
-            }}
             transition={spring}
         >
             <Typography variant="h3" component="h3" classes={{ container: classes.otherSkillsTitle }}>

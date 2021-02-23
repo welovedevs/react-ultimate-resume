@@ -2,7 +2,6 @@ import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
-import { motion } from 'framer-motion';
 
 import { ProfileCardTitle } from '../../../../commons/profile_card/profile_card_title/profile_card_title';
 
@@ -13,7 +12,6 @@ import { styles } from './skills_back_styles';
 import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoSkill } from './no_skill/no_skill';
-import { DEFAULT_SPRING_TYPE as spring } from '../../../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = createUseStyles(styles);
 
@@ -30,28 +28,6 @@ const Content = ({ data, handleAddButtonClick }) => {
     const [variant] = useCardVariant();
 
     const classes = useStyles({ variant });
-    const skillOpacityPropsRef = useRef();
-    const graphOpacityPropsRef = useRef();
-
-    const SKILL_OPACITY_PROPS = {
-        initial: {
-            opacity: 0
-        },
-        animate: {
-            opacity: 1
-        },
-        ref: skillOpacityPropsRef
-    };
-
-    const GRAPH_OPACITY_PROPS = {
-        initial: {
-            opacity: 0
-        },
-        animate: {
-            opacity: 1
-        },
-        ref: graphOpacityPropsRef
-    };
 
     const hasSkill = useMemo(() => existsAndNotEmpty(data?.skills), [data]);
 
@@ -91,23 +67,19 @@ const Content = ({ data, handleAddButtonClick }) => {
     }
 
     return (
-        <motion.div
-            className={classes.container}
-            onScroll={onScroll}
-            variants={GRAPH_OPACITY_PROPS}
-            initial="initial"
-            animate="animate"
-            transition={spring}
-        >
+        <div className={classes.container} onScroll={onScroll}>
             <SkillsPieChart variant={variant} data={top3Skills} onScrollOpacityProps={onScrollOpacityProps} />
             {othersSkills.length > 1 && (
                 <OtherSkills
-                    motionProps={{ variants: SKILL_OPACITY_PROPS, initial: 'initial', animate: 'animate' }}
+                    motionProps={{
+                        animate: {
+                            y: translationProps
+                        }
+                    }}
                     othersSkills={othersSkills}
-                    translationProps={translationProps}
                 />
             )}
-        </motion.div>
+        </div>
     );
 };
 export const SkillsBack = memo(SkillsBackComponent);
