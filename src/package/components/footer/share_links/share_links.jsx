@@ -6,7 +6,6 @@ import { useIntl } from 'react-intl';
 import { motion } from 'framer-motion';
 import { Tooltip } from '@welovedevs/ui';
 import { SHARE_LINKS_DATA } from './share_links_data';
-import { BACKGROUND_LINE_PROPS } from './share_links_props';
 
 import { styles } from './share_links_styles';
 import { translations } from './share_links_translations';
