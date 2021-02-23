@@ -12,8 +12,8 @@ import { useOpenerState } from '../../../../../../hooks/use_opener_state';
 
 import { ReactComponent as DeleteIcon } from '../../../../../../../assets/icons/trash.svg';
 
-import { PROJECT_DIALOG_CONTENT_IMAGE_EDIT_LAYER_PROPS } from './project_dialog_content_image_edit_layer_props';
 import { styles } from './project_dialog_content_image_styles';
+import { OPACITY_TRANSITIONS } from '../../../../../../../utils/framer_motion/common_transitions/opacity_transitions';
 
 const useStyles = createUseStyles(styles);
 
@@ -36,7 +36,7 @@ const ProjectDialogContentImageComponent = ({
                 {showEditLayer && (
                     <EditLayer
                         motionConfig={{
-                            variants: PROJECT_DIALOG_CONTENT_IMAGE_EDIT_LAYER_PROPS,
+                            variants: OPACITY_TRANSITIONS,
                             initial: 'initial',
                             animate: 'animate',
                             exit: 'exit',

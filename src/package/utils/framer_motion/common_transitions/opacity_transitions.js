@@ -2,10 +2,10 @@ export const OPACITY_TRANSITIONS = {
     initial: {
         opacity: 0
     },
-    enter: {
+    animate: {
         opacity: 1
     },
-    leave: {
+    exit: {
         opacity: 0
     }
 };

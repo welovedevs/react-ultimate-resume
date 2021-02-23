@@ -49,8 +49,8 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
                         variants={OPACITY_TRANSITIONS}
                         transition={{ duration: 1 }}
                         initial="initial"
-                        animate="enter"
-                        exit="leave"
+                        animate="animate"
+                        exit="exit"
                     />
                 )}
             </AnimatePresence>

@@ -6,13 +6,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
 import { LoadingSpinner } from '../../../../commons/loading_spinner/loading_spinner';
 
-import { LOADING_SPINNER_TRANSITIONS } from './soundtrack_back_loading_spinner_transitions';
-
 import { getColorsFromCardVariant } from '../../../../../utils/styles/styles_utils';
 import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 
 import { styles } from './soundtrack_back_styles';
 import { NoSoundTrack } from './no_soundtrack/no_soundtrack';
+import { OPACITY_TRANSITIONS } from '../../../../../utils/framer_motion/common_transitions/opacity_transitions';
 
 const useStyles = createUseStyles(styles);
 
@@ -52,7 +51,7 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
                     {!hasLoaded && (
                         <motion.span
                             className={classes.loadingSpinnerChild}
-                            variants={LOADING_SPINNER_TRANSITIONS}
+                            variants={OPACITY_TRANSITIONS}
                             initial="initial"
                             animate="animate"
                             exit="exit"
