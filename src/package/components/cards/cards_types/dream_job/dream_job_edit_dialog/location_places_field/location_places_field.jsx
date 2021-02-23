@@ -32,23 +32,25 @@ const SortableTag = SortableElement(({ onRemove, item, motionConfig }) => {
     const classes = useStyles();
 
     return (
-        <motion.div {...motionConfig}>
-            <Tag className={classes.place} color="secondary">
-                <DragHandle classes={classes} />
-                <Tooltip
-                    title={
-                        <FormattedMessage id="DreamJob.editDialog.location.delete" defaultMessage="Delete this place" />
-                    }
-                >
-                    <button type="button" onClick={onRemove}>
-                        <TrashIcon className={classes.deleteIcon} />
-                    </button>
-                </Tooltip>
-                <Typography variant="body2" color="light">
-                    {item.name}
-                </Typography>
-            </Tag>
-        </motion.div>
+        <Tag
+            key={`${item.id}_${item.name}`}
+            component={motion.div}
+            classes={{ container: classes.place }}
+            color="secondary"
+            {...motionConfig}
+        >
+            <DragHandle classes={classes} />
+            <Tooltip
+                title={<FormattedMessage id="DreamJob.editDialog.location.delete" defaultMessage="Delete this place" />}
+            >
+                <button type="button" onClick={onRemove}>
+                    <TrashIcon className={classes.deleteIcon} />
+                </button>
+            </Tooltip>
+            <Typography variant="body2" color="light">
+                {item.name}
+            </Typography>
+        </Tag>
     );
 });
 const SortableTags = SortableContainer(({ onRemove, items }) => {
