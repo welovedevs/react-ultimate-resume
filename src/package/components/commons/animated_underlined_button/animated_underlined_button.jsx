@@ -31,7 +31,7 @@ const AnimatedUnderlinedButtonComponent = ({ color = 'primary', onClick, childre
                             variants={ANIMATED_UNDERLINED_BUTTON_TRANSITIONS_PROPS}
                             initial="initial"
                             animate="enter"
-                            exit="leave"
+                            exit="exit"
                             transition={spring}
                             className={classes.underline}
                         />

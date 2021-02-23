@@ -113,7 +113,7 @@ const CurrentJobIssuesFieldComponent = ({ error, currentJobIssues, onChange, set
                             variants: { CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS },
                             initial: 'initial',
                             animate: 'enter',
-                            exit: 'leave'
+                            exit: 'exit'
                         }}
                     />
                 )}

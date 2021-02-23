@@ -8,7 +8,7 @@ export const CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS = {
         opacity: 1,
         x: 0
     },
-    leave: {
+    exit: {
         opacity: 0,
         x: '-20px'
     }

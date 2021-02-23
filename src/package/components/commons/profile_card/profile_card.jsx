@@ -32,7 +32,7 @@ export const ProfileCardContext = createContext({});
 const DEFAULT_TRANSITIONS_PROPS = {
     initial: { opacity: 0 },
     enter: { opacity: 1 },
-    leave: { opacity: 0 }
+    exit: { opacity: 0 }
 };
 
 const ProfileCardComponent = ({
@@ -186,7 +186,7 @@ const ProfileCardComponent = ({
                         variants={PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_PROPS}
                         initial="initial"
                         animate="enter"
-                        exit="leave"
+                        exit="exit"
                         className={classes.editButtonContainer}
                     >
                         <EditAction customEditAction={customEditAction} setEditDialogOpened={setEditDialogOpened} />

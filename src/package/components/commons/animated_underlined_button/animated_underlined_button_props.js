@@ -7,7 +7,7 @@ export const ANIMATED_UNDERLINED_BUTTON_TRANSITIONS_PROPS = {
         opacity: 1,
         x: 0
     },
-    leave: {
+    exit: {
         opacity: 0,
         x: '100%'
     }
