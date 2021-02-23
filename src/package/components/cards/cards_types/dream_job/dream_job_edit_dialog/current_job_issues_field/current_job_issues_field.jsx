@@ -111,9 +111,9 @@ const CurrentJobIssuesFieldComponent = ({ error, currentJobIssues, onChange, set
                         variant="flat"
                         containerProps={{
                             variants: { CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS },
-                            initial: CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS.initial,
-                            animate: CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS.enter,
-                            exit: CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS.leave
+                            initial: 'initial',
+                            animate: 'enter',
+                            exit: 'leave'
                         }}
                     />
                 )}
