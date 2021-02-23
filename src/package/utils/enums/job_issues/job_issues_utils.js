@@ -1,4 +1,4 @@
-export const JobIssues = Object.freeze({
+export const JobIssues = {
     NO_TECH: 'no_tech',
     NO_RESPONSABILITIES: 'no_responsabilities',
     NO_CHALLENGE: 'no_challenge',
@@ -7,4 +7,4 @@ export const JobIssues = Object.freeze({
     SALARY: 'salary',
     LOCATION: 'location',
     OTHER: 'other'
-});
+};

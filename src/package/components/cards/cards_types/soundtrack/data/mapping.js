@@ -1,3 +1,3 @@
-export const SoundtrackMapping = Object.freeze({
+export const SoundtrackMapping = {
     embedUrl: 'specific.sound.embedUrl'
-});
+};

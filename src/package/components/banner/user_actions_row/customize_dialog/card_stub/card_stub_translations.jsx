@@ -2,7 +2,7 @@ import React from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
-export const CARD_STUB_TRANSLATIONS = Object.freeze({
+export const CARD_STUB_TRANSLATIONS = {
     backgroundColor: (
         <FormattedMessage id="CardStub.CardVariantTooltip.FrontBackground" defaultMessage="Card's front background" />
     ),
@@ -21,4 +21,4 @@ export const CARD_STUB_TRANSLATIONS = Object.freeze({
     backColor: (
         <FormattedMessage id="CardStub.CardVariantTooltip.BackColor" defaultMessage="Card's back texts & icons color" />
     )
-});
+};

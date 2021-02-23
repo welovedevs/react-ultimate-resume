@@ -2,13 +2,13 @@ import * as yup from 'yup';
 
 const isHex = yup.string().matches(/^#[0-9a-f]{3,6}$/i, 'Color shade must be written using the hex color syntax.');
 
-const SHADES_SCHEMA = Object.freeze({
+const SHADES_SCHEMA = {
     ...[50, 100, 150, 200, 250, 300, 350, 400, 450, 550, 600, 650, 700, 750, 800, 850, 900].reduce(
         (acc, shade) => ({ ...acc, [shade]: isHex.notRequired() }),
         {}
     ),
     500: isHex.required()
-});
+};
 
 const isExistingColorInPalette = yup.string().test(
     'is-existing-color-in-palette',

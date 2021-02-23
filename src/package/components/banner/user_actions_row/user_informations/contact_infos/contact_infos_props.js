@@ -1,4 +1,4 @@
-export const DIVIDER_PROPS = Object.freeze({
+export const DIVIDER_PROPS = {
     initial: {
         opacity: 0,
         translation: -25
@@ -7,4 +7,4 @@ export const DIVIDER_PROPS = Object.freeze({
         opacity: 1,
         translation: 0
     }
-});
+};

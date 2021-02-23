@@ -26,7 +26,7 @@ import { styles } from './card_stub_styles';
 
 const useStyles = createUseStyles(styles);
 
-const CARD_TYPE_MAPPING = Object.freeze({
+const CARD_TYPE_MAPPING = {
     basics: BasicsSvg,
     projects: ProjectsSvg,
     language: LanguagesSvg,
@@ -37,7 +37,7 @@ const CARD_TYPE_MAPPING = Object.freeze({
     skills: SkillsSvg,
     soundtrack: SoundtrackSvg,
     interestedBy: InterestedBySvg
-});
+};
 
 const CardStubComponent = ({ data: { type, variant }, cardIndex, onItemChanged }) => {
     const classes = useStyles({ variant });

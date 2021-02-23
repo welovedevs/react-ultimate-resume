@@ -1,4 +1,4 @@
-export const JobPerks = Object.freeze({
+export const JobPerks = {
     MOOD: 'mood',
     CHALLENGE: 'challenge',
     SALARY: 'salary',
@@ -7,4 +7,4 @@ export const JobPerks = Object.freeze({
     RESPONSABILITIES: 'responsabilities',
     PERKS: 'perks',
     OTHER: 'others'
-});
+};

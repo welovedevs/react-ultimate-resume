@@ -1,4 +1,4 @@
-export const PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_PROPS = Object.freeze({
+export const PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_PROPS = {
     initial: {
         opacity: 0,
         scale: 0.75
@@ -11,4 +11,4 @@ export const PROFILE_CARD_EDIT_BUTTON_TRANSITIONS_PROPS = Object.freeze({
         opacity: 0,
         scale: 0.75
     }
-});
+};
