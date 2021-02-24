@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 
 import injectSheet from 'react-jss';
 import { motion } from 'framer-motion';
@@ -11,22 +11,21 @@ import { styles } from './profile_card_button_styles';
 import { useCardVariant } from '../../../hooks/profile_card_hooks/use_card_variant';
 import { DEFAULT_SPRING_TYPE as spring } from '../../../../utils/framer_motion/common_types/spring_type';
 
-const ProfileCardButtonComponent = injectSheet(styles)(({ overrideColor, classes, children, ...other }) =>
-    (
-        <div className={classes.container}>
-            <Button
-                classes={{ container: classes.button, typography: classes.typography }}
-                size="small"
-                variant="text"
-                {...other}
-            >
-                {children}
-            </Button>
-            <motion.span className={classes.arrowContainer} whileHover={{ x: 6 }} transition={spring}>
-                <ArrowRight className={classes.arrow}/>
-            </motion.span>
-        </div>
-    ));
+const ProfileCardButtonComponent = injectSheet(styles)(({ overrideColor, classes, children, ...other }) => (
+    <motion.div className={classes.container} whileHover="hover">
+        <Button
+            classes={{ container: classes.button, typography: classes.typography }}
+            size="small"
+            variant="text"
+            {...other}
+        >
+            {children}
+        </Button>
+        <motion.span variants={{ hover: { x: 6 } }} className={classes.arrowContainer} transition={spring}>
+            <ArrowRight className={classes.arrow} />
+        </motion.span>
+    </motion.div>
+));
 
 const InjectVariantProfileCardButton = (props) => {
     const [variant] = useCardVariant();
