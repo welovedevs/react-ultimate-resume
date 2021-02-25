@@ -100,7 +100,7 @@
     ],
     "skills": [
         {
-            "name": "Reactaaa",
+            "name": "React",
             "level": "Master",
             "value": 100,
             "keywords": ["HTML", "CSS", "Javascript"]
@@ -136,8 +136,35 @@
             "keywords": ["HTML", "CSS", "Javascript"]
         }
     ],
-    "languages": [{ "language": "English", "value": 100, "fluency": "Native speaker" }],
+    "languages": [{ "language": "English", "value": 100, "fluency": "Native speaker" }, { "language": "Italien", "value": 15, "fluency": "Native speaker" } ],
     "interests": [
+        {
+            "name": "France europe gif by nike football",
+            "gifUrl": "https://media1.giphy.com/media/3oD3YooLLYg0AfOPdK/giphy-downsized.gif?cid=f7fb5bbaegu1ofs48lty41dyowqsfo0wq9qq8h4czot7rwm1&rid=giphy-downsized.gif",
+            "id": "afa5739f-f868-464e-a1aa-18f5a3ff4e2b",
+            "gifUser": {
+                "name": "Nike Football",
+                "profileUrl": "https://giphy.com/nikefootball/",
+                "isVerified": true,
+                "profileAvatarUrl": "https://media1.giphy.com/avatars/nikefootball/vPyZcrShcXY8.jpg"
+            }
+        },
+        {
+            "name": "Burritos",
+            "gifUrl": "https://media.giphy.com/media/d8WjGORtSEWqc/giphy.gif"
+        },
+
+        {
+            "name": "Tendresse",
+            "gifUrl": "https://media.giphy.com/media/EehnUUCH2JcwU/giphy.gif"
+        },
+        {
+            "name": "Something",
+            "gifUrl": "https://media.giphy.com/media/xTiTnIuKP1BLsMTerS/giphy.gif"
+        },
+        {
+            "name": "J'aime faire de la course à pied et des randonnées en famille le weekend."
+        }
     ],
     "references": [{ "name": "Jane Doe", "reference": "Reference..." }],
     "projects": [
@@ -221,10 +248,7 @@
             "locations": [
                 { "name": "Valenciennes, France" },
                 { "name": "Lille, France" },
-                { "name": "Paris,France" },
-                { "name": "Paris,France" },
-                { "name": "Lille, France" },
-                { "name": "Valenciennes, France" }
+                { "name": "Paris,France" }
             ],
             "remoteFrequency": "regularly"
         },

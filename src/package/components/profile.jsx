@@ -39,7 +39,7 @@ const messages = {
 };
 const useStyles = createUseStyles(styles);
 
-const DEFAULT_OPTIONS = Object.freeze({
+const DEFAULT_OPTIONS ={
     locale: 'en',
     customization: {
         imageHeader: {
@@ -50,7 +50,7 @@ const DEFAULT_OPTIONS = Object.freeze({
     maxCardsPerRow: null,
     showContactInfos: false,
     dismissFooter: false
-});
+};
 
 const DEFAULT_OBJECT = {};
 const DEFAULT_FUNCTION = () => {};

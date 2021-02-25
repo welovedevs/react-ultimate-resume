@@ -1,19 +1,25 @@
 import React from 'react';
 
 import { createUseStyles } from 'react-jss';
-import { animated } from 'react-spring';
+import { motion } from 'framer-motion';
 
 import { styles } from './profile_card_side_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardSideComponent = ({ style, children }) => {
+export const ProfileCardSide = ({ children, animationProps }) => {
     const classes = useStyles();
+
     return (
-        <animated.div className={classes.container} style={style}>
+        <motion.div
+            className={classes.container}
+            variants={animationProps}
+            transition={{ type: 'spring', velocity: 1, stiffness: 80 }}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+        >
             {children}
-        </animated.div>
+        </motion.div>
     );
 };
-
-export const ProfileCardSide = ProfileCardSideComponent;

@@ -2,7 +2,7 @@ export const styles = (theme) => {
     const { palette } = theme;
     return {
         container: {
-            '& *:not($underLayerContainer):not($darkenLayer)': {
+            '& > *:not($underLayerContainer):not($darkenLayer)': {
                 zIndex: 2
             }
             // position: 'relative'

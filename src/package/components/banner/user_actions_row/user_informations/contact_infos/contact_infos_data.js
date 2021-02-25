@@ -4,7 +4,7 @@ import { ReactComponent as PhoneIcon } from '../../../../../assets/icons/phone.s
 import { ReactComponent as EmailIcon } from '../../../../../assets/icons/email.svg';
 import { ReactComponent as PersonIcon } from '../../../../../assets/icons/person_info.svg';
 
-export const CONTACT_INFOS_DATA = Object.freeze({
+export const CONTACT_INFOS_DATA = {
     name: {
         path: 'basics.name',
         translation: translations.name,
@@ -21,4 +21,4 @@ export const CONTACT_INFOS_DATA = Object.freeze({
         translation: translations.email,
         icon: EmailIcon
     }
-});
+};

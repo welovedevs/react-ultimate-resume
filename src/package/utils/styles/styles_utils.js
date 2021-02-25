@@ -1,10 +1,10 @@
-export const flex = Object.freeze({
-    center: Object.freeze({
+export const flex = {
+    center: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
-    })
-});
+    }
+};
 
 export const withCustomHorizontalScrollbar = (color = '#c1c1c1') => ({
     '&::-webkit-scrollbar-track': {

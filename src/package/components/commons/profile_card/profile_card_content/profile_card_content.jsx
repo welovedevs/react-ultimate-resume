@@ -11,14 +11,14 @@ const useStyles = createUseStyles(styles);
 
 const ProfileCardContentComponent = ({
     component: Component = 'div',
-    style,
     children,
-    classes: receivedClasses = {}
+    classes: receivedClasses = {},
+    motionSettings
 }) => {
     const [variant] = useCardVariant();
     const classes = useStyles({ variant });
     return (
-        <Component className={cn(classes.container, receivedClasses.container)} {...{ style }}>
+        <Component className={cn(classes.container, receivedClasses.container)} {...motionSettings}>
             {children}
         </Component>
     );

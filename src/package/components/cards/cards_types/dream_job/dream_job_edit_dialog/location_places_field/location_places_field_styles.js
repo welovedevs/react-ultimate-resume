@@ -1,3 +1,5 @@
+import { secondary } from '@welovedevs/ui/styles';
+
 export const styles = (theme) => {
     const {
         miscellaneous: { spacing }
@@ -11,7 +13,9 @@ export const styles = (theme) => {
             flexWrap: 'wrap'
         },
         place: {
-            transformOrigin: 'center left'
+            transformOrigin: 'center left',
+            color: secondary[500]
+
         },
         deleteIcon: {
             fill: '#fff',

@@ -1,4 +1,4 @@
-export const SIDES = Object.freeze({
+export const SIDES = {
     FRONT: 'front',
     BACK: 'back'
-});
+};

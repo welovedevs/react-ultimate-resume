@@ -1,8 +1,8 @@
 import { TECHNOLOGIES_RECEIVED, TECHNOLOGIES_STARTED } from './technologies_actions_types';
 
-export const technologiesInitialState = Object.freeze({
+export const technologiesInitialState = {
     technologies: null
-});
+};
 
 export const technologiesReducer = (state, action) => {
     switch (action.type) {

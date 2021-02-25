@@ -14,7 +14,7 @@ const hexToRgb = (hex) => {
     throw new Error('Bad Hex');
 };
 
-const THEME_TRANSFORMS = Object.freeze({
+const THEME_TRANSFORMS = {
     palette: (colors) =>
         Object.entries(colors).reduce((colorsAcc, [colorName, shades]) => {
             const colorAccumulator = colorsAcc;
@@ -31,7 +31,7 @@ const THEME_TRANSFORMS = Object.freeze({
             };
             return colorAccumulator;
         }, {})
-});
+};
 
 export const transformTheme = (theme) =>
     Object.entries(THEME_TRANSFORMS).reduce((acc, [path, transform]) => {

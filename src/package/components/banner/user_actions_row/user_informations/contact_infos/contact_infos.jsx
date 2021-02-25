@@ -1,25 +1,24 @@
 import React from 'react';
 
 import { createUseStyles } from 'react-jss';
-import { animated, useSpring } from 'react-spring';
+import { motion } from 'framer-motion';
 
 import { EditContactInfosButton } from './edit_contact_infos_button/edit_contact_infos_button';
 import { ContactInfoRow } from './contact_info_row/contact_info_row';
 
-import { DIVIDER_SPRING_PROPS } from './contact_infos_spring_props';
+import { DIVIDER_PROPS } from './contact_infos_props';
 import { CONTACT_INFOS_DATA } from './contact_infos_data';
 
 import { useIsEditing } from '../../../../hooks/use_is_editing';
 
 import { styles } from './contact_infos_styles';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = createUseStyles(styles);
 
 export const ContactInfos = ({ contactInformations }) => {
-    // eslint-disable-next-line no-unused-vars
     const classes = useStyles();
     const [isEditing] = useIsEditing();
-
     return (
         <>
             <Divider classes={classes} />
@@ -30,15 +29,14 @@ export const ContactInfos = ({ contactInformations }) => {
 };
 
 const Divider = ({ classes }) => {
-    const springProps = useSpring(DIVIDER_SPRING_PROPS);
     return (
         <div className={classes.dividerContainer}>
-            <animated.div
+            <motion.div
+                variants={DIVIDER_PROPS}
                 className={classes.divider}
-                style={{
-                    opacity: springProps.opacity,
-                    transform: springProps.translation.interpolate((value) => `translate3d(${value}%, 0, 0)`)
-                }}
+                transition={spring}
+                initial="initial"
+                animate="animate"
             />
         </div>
     );

@@ -7,13 +7,13 @@ import {
 } from './profile_card_actions_types';
 import { SIDES } from '../../components/commons/profile_card/profile_card_side/side';
 
-const PROFILE_CARD_DEFAULT_STATE = Object.freeze({
+const PROFILE_CARD_DEFAULT_STATE = {
     hasDialogOpened: false,
     side: SIDES.FRONT,
     variant: null,
     changingSides: false,
     isEditing: false
-});
+};
 
 export const getProfileCardInitialState = (initialValues = {}) => ({
     ...{},

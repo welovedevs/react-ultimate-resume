@@ -1,3 +1,3 @@
-export const interestedByMapping = Object.freeze({
+export const interestedByMapping = {
     interestedBy: 'specific.interestedBy'
-});
+};
