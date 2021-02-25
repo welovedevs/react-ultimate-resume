@@ -37,6 +37,11 @@ export const styles = (theme) => {
         },
         cardsOrderer: {
             flex: 1
+        },
+        '@media all and (max-width: 1150px)': {
+            actions: {
+                position: 'unset'
+            }
         }
     };
 };
