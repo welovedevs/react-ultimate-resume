@@ -40,7 +40,7 @@
         "@formatjs/intl-relativetimeformat": "^4.5.9",
         "@material-ui/pickers": "^3.2.9",
         "@types/giphy-api": "^2.0.2",
-        "@welovedevs/ui": "1.1.4",
+        "@welovedevs/ui": "1.2.0",
         "chroma-js": "^2.1.0",
         "classnames": "^2.2.6",
         "copy-to-clipboard": "^3.3.1",
