@@ -20,7 +20,7 @@ export const EditContactInfosButton = ({ contactInformations }) => {
             <ContactInfosDialog open={openDialog} onClose={setDialogClosed} contactInformations={contactInformations} />
             <Button
                 variant="outlined"
-                customClasses={{
+                classes={{
                     container: classes.container
                 }}
                 onClick={setDialogOpened}

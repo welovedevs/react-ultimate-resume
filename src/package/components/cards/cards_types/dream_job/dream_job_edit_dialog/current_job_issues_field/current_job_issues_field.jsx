@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
-import { animated, useTransition } from 'react-spring';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 import { TextField, Typography } from '@welovedevs/ui';
@@ -11,7 +11,7 @@ import { CheckboxField } from '../../../../../commons/checkbox_field/checkbox_gr
 import { JobIssues } from '../../../../../../utils/enums/job_issues/job_issues_utils';
 import { EditDialogField } from '../../../../../commons/edit_dialog_field/edit_dialog_field';
 
-import { CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS } from './current_job_issues_field_spring_props';
+import { CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS } from './current_job_issues_field_props';
 
 import { translations } from '../../../../../../utils/enums/job_issues/job_issues_translations';
 import { styles } from './current_job_issues_field_styles';
@@ -34,14 +34,6 @@ const CurrentJobIssuesFieldComponent = ({ error, currentJobIssues, onChange, set
         [currentJobIssues]
     );
 
-    const transitions = useTransition(
-        otherCurrentJobIssue !== null,
-        (item) => `other_field_${item ? 'visible' : 'invisible'}`,
-        {
-            ...CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS,
-            unique: true
-        }
-    );
     const handleCheckboxGroupChange = useCallback(
         (newCurrentJobIssues) =>
             onChange({
@@ -107,22 +99,25 @@ const CurrentJobIssuesFieldComponent = ({ error, currentJobIssues, onChange, set
                     color="secondary"
                 />
             </div>
-            {transitions.map(
-                ({ item, key, props }) =>
-                    item && (
-                        <TextField
-                            fullWidth
-                            key={key}
-                            containerElement={animated.div}
-                            customClasses={{ container: cn(classes.textField, classes.otherTextField) }}
-                            onChange={handleOtherJobIssueChange}
-                            name={`currentJobIssues[${JobIssues.OTHER}]`}
-                            value={otherCurrentJobIssueValue}
-                            variant="flat"
-                            containerProps={{ style: props }}
-                        />
-                    )
-            )}
+            <AnimatePresence>
+                {otherCurrentJobIssue !== null && (
+                    <TextField
+                        fullWidth
+                        containerElement={motion.div}
+                        classes={{ container: cn(classes.textField, classes.otherTextField) }}
+                        onChange={handleOtherJobIssueChange}
+                        name={`currentJobIssues[${JobIssues.OTHER}]`}
+                        value={otherCurrentJobIssueValue}
+                        variant="flat"
+                        containerProps={{
+                            variants: { CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS },
+                            initial: 'initial',
+                            animate: 'enter',
+                            exit: 'exit'
+                        }}
+                    />
+                )}
+            </AnimatePresence>
         </EditDialogField>
     );
 };

@@ -3,7 +3,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { animated, useSpring, useTransition } from 'react-spring';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Twemoji } from 'react-emoji-render';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import { useFormikContext } from 'formik';
@@ -23,10 +23,12 @@ import { ReactComponent as MoveIcon } from '../../../../../assets/icons/move_lis
 import { ReactComponent as DeleteIcon } from '../../../../../assets/icons/trash.svg';
 import { ReactComponent as ArrowIcon } from '../../../../../assets/icons/keyboard_arrow_down.svg';
 
-import { EXPERIENCE_CONTENT_TRANSITION_SPRING_PROPS } from './experiences_edit_dialog_spring_props';
+import { EXPERIENCE_CONTENT_TRANSITION_PROPS } from './experiences_edit_dialog_props';
 
 import { translations } from './experiences_edit_dialog_translations';
 import { styles } from './experiences_edit_dialog_styles';
+import { useOptions } from '../../../../hooks/use_options';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = createUseStyles(styles);
 
@@ -146,26 +148,25 @@ const ExperienceItem = SortableElement(
         const { formatMessage } = useIntl();
         const theme = useTheme();
         const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
+        const [disableSortableExperience] = useOptions('disableSortableExperience', false);
 
-        const { rotate } = useSpring({
-            rotate: folded ? -90 : 0
-        });
-
-        const contentTransitions = useTransition(
-            !folded ? experience : null,
-            (item) => `${item ? 'visible' : 'invisible'}_experience_${item?.id}_content`,
-            {
-                ...EXPERIENCE_CONTENT_TRANSITION_SPRING_PROPS,
-                unique: true
+        const dragHandle = useMemo(() => {
+            if (disableSortableExperience) {
+                return null;
             }
-        );
 
+            return (
+                <>
+                    <DragHandle classes={classes} />
+                    <div className={classes.divider} />
+                </>
+            );
+        }, [disableSortableExperience]);
         const hasError = Boolean(fieldErrors);
         return (
             <div className={classes.experience}>
                 <div className={classes.smallItemContainer}>
-                    <DragHandle classes={classes} />
-                    <div className={classes.divider} />
+                    {dragHandle}
                     <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Delete" />}>
                         <button className={classes.removeButton} type="button" onClick={onRemove(id)}>
                             <DeleteIcon className={classes.removeIcon} />
@@ -177,37 +178,41 @@ const ExperienceItem = SortableElement(
                         className={cn(classes.listItem, hasError && classes.listItemError)}
                         onClick={() => toggleFold(!folded)}
                     >
-                        <animated.div
+                        <motion.div
                             className={classes.arrowContainer}
-                            style={{
-                                transform: rotate.to((value) => `rotate(${value}deg)`)
+                            animate={{
+                                transform: `rotate(${folded ? -90 : 0}deg)`
                             }}
                         >
                             <ArrowIcon className={cn('refinement-arrow')} />
-                        </animated.div>
+                        </motion.div>
                         {hasError && <Twemoji className={classes.warningIcon} svg text="⚠️" />}
                         <Typography className={classes.smallTitle} color="dark">
                             <JobTitle {...{ experience }} />
                         </Typography>
                     </ListItem>
                 </div>
-                {contentTransitions.map(
-                    ({ item, key, props }) =>
-                        item && (
-                            <animated.div key={key} style={props}>
-                                <ContentFields
-                                    key={key}
-                                    fieldErrors={fieldErrors}
-                                    id={id}
-                                    formatMessage={formatMessage}
-                                    experience={experience}
-                                    onChange={onChange}
-                                    classes={classes}
-                                    index={index}
-                                />
-                            </animated.div>
-                        )
-                )}
+                <AnimatePresence>
+                    {!folded && (
+                        <motion.div
+                            variants={EXPERIENCE_CONTENT_TRANSITION_PROPS}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            transition={spring}
+                        >
+                            <ContentFields
+                                fieldErrors={fieldErrors}
+                                id={id}
+                                formatMessage={formatMessage}
+                                experience={experience}
+                                onChange={onChange}
+                                classes={classes}
+                                index={index}
+                            />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         );
     }
@@ -404,7 +409,7 @@ const StillEmployedField = ({ value, classes, handleStillEmployedChange, formatM
             onClick={handleStillEmployedChange}
         >
             <Checkbox color="secondary" checked={value} variant="outlined" />
-            <Typography customClasses={{ container: classes.typography }} color="dark" component="div">
+            <Typography classes={{ container: classes.typography }} color="dark" component="div">
                 {formatMessage(translations.stillEmployed)}
             </Typography>
         </button>

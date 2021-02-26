@@ -15,6 +15,8 @@ import { translations } from '../../../../../utils/enums/job_serachstate/job_sea
 import { styles } from './basics_back_styles';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 import { ExperienceYears } from './fields/professional_experience';
+import { CodeExperienceYears } from './fields/code_professional_experience';
+import { OtherExperienceYears } from './fields/other_professional_experience';
 import { CodingYears } from './fields/coding_years';
 import { StudiesLevel } from './fields/studies_level';
 import { useMode } from '../../../../hooks/use_mode';
@@ -28,6 +30,8 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
     const {
         currentCity: { name: currentCityName },
         experienceYears,
+        codeExperienceYears,
+        otherExperienceYears,
         contractTypes,
         studiesLevel,
         codingYears,
@@ -76,7 +80,15 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
                 hide: !experienceYears && !existsAndNotEmpty(contractTypes) && !existsAndNotEmpty(searchState),
                 value: (
                     <>
-                        <ExperienceYears experienceYears={experienceYears} />
+                        <ExperienceYears experienceYears={experienceYears} codeExperienceYears={codeExperienceYears} />
+                        <CodeExperienceYears
+                            experienceYears={experienceYears}
+                            codeExperienceYears={codeExperienceYears}
+                        />
+                        <OtherExperienceYears
+                            otherExperienceYears={otherExperienceYears}
+                            codeExperienceYears={codeExperienceYears}
+                        />
                         <br />
                         <ContractType contractTypes={contractTypes} />
                         <br />
@@ -86,20 +98,18 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
             },
             codingYears: {
                 title: <FormattedMessage id="Basics.Back.CodingYears.title" defaultMessage="Experience" />,
-                hide: !personalDescription,
+                hide: Number.isNaN(Number(codingYears)),
                 value: <CodingYears codingYears={codingYears} />
             },
             studies: {
                 title: <FormattedMessage id="Basics.Back.StudiesLevel.Title" defaultMessage="Training" />,
                 hide: !studiesLevel,
-                value: (
-                    <>
-                        <StudiesLevel studiesLevel={studiesLevel} />
-                        <br />
-                        <br />
-                        {codingReason && <span>{codingReason}</span>}
-                    </>
-                )
+                value: <StudiesLevel studiesLevel={studiesLevel} />
+            },
+            codingReason: {
+                title: <FormattedMessage id="Basics.Back.CodingReason.Title" defaultMessage="Why i code" />,
+                hide: !codingReason,
+                value: <span>{codingReason}</span>
             }
         }),
         [

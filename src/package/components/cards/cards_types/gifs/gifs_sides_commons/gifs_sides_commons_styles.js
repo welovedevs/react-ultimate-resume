@@ -2,9 +2,10 @@ export const styles = (theme) => {
     const { palette } = theme;
     return {
         container: {
-            '& > *:not($underLayerContainer)': {
+            '& > *:not($underLayerContainer):not($darkenLayer)': {
                 zIndex: 2
             }
+            // position: 'relative'
         },
         underLayerContainer: {
             height: '100%',
@@ -25,6 +26,10 @@ export const styles = (theme) => {
             left: 0,
             backgroundColor: `rgba(${palette.dark.rgbShades[900].join(', ')}, .4)`,
             zIndex: 1
+        },
+        credits: {
+            left: 16,
+            bottom: 12
         }
     };
 };

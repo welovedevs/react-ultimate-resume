@@ -2,7 +2,6 @@ import React, { useCallback, useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
-import { useTransition } from 'react-spring';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 
 import { Tag, Tooltip, Typography } from '@welovedevs/ui';
@@ -10,13 +9,18 @@ import { Tag, Tooltip, Typography } from '@welovedevs/ui';
 import { LocationField } from '../../../../../commons/location_field/location_field';
 import { EditDialogField } from '../../../../../commons/edit_dialog_field/edit_dialog_field';
 
-import { LOCATION_PLACES_FIELD_TRANSITIONS_SPRING_PROPS } from './location_places_field_transitions_spring_props';
+import {
+    LOCATION_PLACES_FIELD_TRANSITIONS_PROPS,
+    LOCATION_PLACES_LIST_TRANSITION_PROPS
+} from './location_places_field_transitions_props';
 
 import { ReactComponent as TrashIcon } from '../../../../../../assets/icons/trash.svg';
 
 import { styles } from './location_places_field_styles';
 
 import { ReactComponent as MoveIcon } from '../../../../../../assets/icons/move.svg';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../../../utils/framer_motion/common_types/spring_type';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const useStyles = createUseStyles(styles);
 const DragHandle = SortableHandle(({ classes }) => (
@@ -24,20 +28,21 @@ const DragHandle = SortableHandle(({ classes }) => (
         <MoveIcon className={classes.dragHandle} />
     </button>
 ));
-const SortableTag = SortableElement(({ onRemove, item, style }) => {
+const SortableTag = SortableElement(({ onRemove, item, motionConfig }) => {
     const classes = useStyles();
 
     return (
         <Tag
-            className={classes.place}
+            key={`${item.id}_${item.name}`}
+            component={motion.div}
+            classes={{ container: classes.place }}
             color="secondary"
-            style={{
-                opacity: style.opacity,
-                transform: style.scale.to((value) => `scale3d(${value}, ${value}, ${value})`)
-            }}
+            {...motionConfig}
         >
             <DragHandle classes={classes} />
-            <Tooltip title="Delete this place">
+            <Tooltip
+                title={<FormattedMessage id="DreamJob.editDialog.location.delete" defaultMessage="Delete this place" />}
+            >
                 <button type="button" onClick={onRemove}>
                     <TrashIcon className={classes.deleteIcon} />
                 </button>
@@ -51,21 +56,32 @@ const SortableTag = SortableElement(({ onRemove, item, style }) => {
 const SortableTags = SortableContainer(({ onRemove, items }) => {
     const classes = useStyles();
 
-    const transitions = useTransition(items, ({ id }) => `place_${id}`, {
-        ...LOCATION_PLACES_FIELD_TRANSITIONS_SPRING_PROPS,
-        ...(items?.length && {
-            trail: 500 / items.length
-        })
-    });
     return (
-        <div className={classes.places}>
-            {transitions.map(
-                ({ item, key, props }, index) =>
-                    item && (
-                        <SortableTag index={index} key={key} item={item} style={props} onRemove={onRemove(item.id)} />
-                    )
-            )}
-        </div>
+        <motion.div
+            variants={LOCATION_PLACES_LIST_TRANSITION_PROPS}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className={classes.places}
+        >
+            <AnimatePresence>
+                {items.map(
+                    (item, index) =>
+                        item && (
+                            <SortableTag
+                                index={index}
+                                key={`place_${item.id}`}
+                                item={item}
+                                motionConfig={{
+                                    variants: LOCATION_PLACES_FIELD_TRANSITIONS_PROPS,
+                                    transition: spring
+                                }}
+                                onRemove={onRemove(item.id)}
+                            />
+                        )
+                )}
+            </AnimatePresence>
+        </motion.div>
     );
 });
 const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace, onChange }) => {
@@ -74,7 +90,7 @@ const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace, on
 
     const onMove = useCallback(
         ({ oldIndex, newIndex }) => {
-            onChange(arrayMove(placesValues, oldIndex, newIndex));
+            onChange(arrayMove(placesValues, oldIndex, newIndex).map((item, index) => ({ ...item, index })));
         },
         [placesValues, onChange]
     );

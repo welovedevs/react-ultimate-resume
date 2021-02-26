@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-const DEFAULT_OPTIONS = Object.freeze({
+const DEFAULT_OPTIONS = {
     type: ['(cities)']
-});
+};
 
 export const useGoogleMapsPredictions = (input, options = DEFAULT_OPTIONS) => {
     const timer = useRef();

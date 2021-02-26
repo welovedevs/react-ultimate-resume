@@ -1,16 +1,17 @@
 import React, { memo, useMemo } from 'react';
 
 import { createUseStyles, useTheme } from 'react-jss';
-import { animated, useTransition } from 'react-spring';
 import chroma from 'chroma-js';
-
+import { motion } from 'framer-motion';
+import { FormattedMessage } from 'react-intl';
 import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back';
 import { LanguageColumn } from './language_column/language_column';
 
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
 
 import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
-import { LANGUAGES_COLUMN_TRANSITIONS_SPRING_PROPS } from './languages_back_spring_props';
+import { LANGUAGES_COLUMN_TRANSITIONS_PROPS } from './languages_back_props';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../../utils/framer_motion/common_types/spring_type';
 
 import { styles } from './languages_back_styles';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
@@ -23,8 +24,8 @@ const LanguagesBackComponent = ({ data, handleAddButtonClick }) => {
 
     return (
         <ProfileCardAnimatedBack
-            title="Languages"
-            customClasses={{
+            title={<FormattedMessage id="Languages.back.title" defaultMessage="Languages" />}
+            classes={{
                 content: classes.content,
                 contentAnimated: classes.contentAnimated,
                 title: classes.cardTitle
@@ -38,10 +39,6 @@ const LanguagesBackComponent = ({ data, handleAddButtonClick }) => {
 const Content = ({ data, handleAddButtonClick, classes }) => {
     const theme = useTheme();
     const [variant] = useCardVariant();
-    const transitions = useTransition(data.languages ?? [], ({ id }) => `language_column_${id}`, {
-        ...LANGUAGES_COLUMN_TRANSITIONS_SPRING_PROPS,
-        trail: (175 * 3) / (data?.languages ?? []).length
-    });
 
     const { backColor, backBackgroundColor } = useMemo(
         () => ({
@@ -53,6 +50,7 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
         }),
         [theme, variant]
     );
+    const items = data.languages;
 
     const colorPalette = useMemo(
         () =>
@@ -68,15 +66,20 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
     }
     return (
         <div className={classes.columnsContainer}>
-            {transitions.map(({ item, key, props }, index) => (
+            {items.map((item) => (
                 <LanguageColumn
                     itemsSize={data.languages?.length ?? 0}
-                    key={key}
-                    component={animated.div}
+                    key={`language_column_${item.id}`}
+                    component={motion.div}
                     item={item}
+                    motionConfig={{
+                        variants: LANGUAGES_COLUMN_TRANSITIONS_PROPS,
+                        initial: 'initial',
+                        animate: 'animate',
+                        transition: spring
+                    }}
                     style={{
-                        ...props,
-                        backgroundColor: colorPalette[index],
+                        backgroundColor: colorPalette[item.index],
                         color: backColor
                     }}
                     cardVariant={variant}

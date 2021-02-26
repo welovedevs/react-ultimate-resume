@@ -35,7 +35,7 @@ const StudiesFrontComponent = ({ data: { education: data }, handleAddButtonClick
     return (
         <>
             <ProfileCardPaddedFront>
-                <CenterContentContainer customClasses={{ container: classes.container }}>
+                <CenterContentContainer classes={{ container: classes.container }}>
                     <Content {...{ hasEducation, data, handleAddButtonClick, classes }} />
                 </CenterContentContainer>
             </ProfileCardPaddedFront>
@@ -54,7 +54,7 @@ const Content = ({ hasEducation, data, handleAddButtonClick, classes }) => {
     if (hasEducation) {
         return (
             <>
-                <ProfileCardFrontVector customClasses={{ container: classes.logo }} vector={SchoolLogo} />
+                <ProfileCardFrontVector classes={{ container: classes.logo }} vector={SchoolLogo} />
                 <ProfileCardFrontTypography classes={{ container: classes.typography }}>
                     <FormattedMessage
                         id="Studies.title"
@@ -67,7 +67,7 @@ const Content = ({ hasEducation, data, handleAddButtonClick, classes }) => {
     }
     return (
         <div className={classes.noEducation}>
-            <Typography variant="h3" component="h3" customClasses={{ container: classes.noEducationTypography }}>
+            <Typography variant="h3" component="h3" classes={{ container: classes.noEducationTypography }}>
                 <FormattedMessage
                     id="Studies.front.noEducation"
                     defaultMessage="Vous n'avez pas encore ajouté de formations !"

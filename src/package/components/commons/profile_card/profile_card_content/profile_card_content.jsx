@@ -9,11 +9,16 @@ import { styles } from './profile_card_content_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardContentComponent = ({ component: Component = 'div', style, children, customClasses = {} }) => {
+const ProfileCardContentComponent = ({
+    component: Component = 'div',
+    children,
+    classes: receivedClasses = {},
+    motionSettings
+}) => {
     const [variant] = useCardVariant();
     const classes = useStyles({ variant });
     return (
-        <Component className={cn(classes.container, customClasses.container)} {...{ style }}>
+        <Component className={cn(classes.container, receivedClasses.container)} {...motionSettings}>
             {children}
         </Component>
     );

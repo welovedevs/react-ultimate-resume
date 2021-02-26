@@ -34,7 +34,7 @@ export const ContactInfosDialogTextFields = memo(({ inputs, setInputs }) => {
                     <TextField
                         key={`contact_info_field_${contactInformationId}`}
                         fullWidth
-                        customClasses={{
+                        classes={{
                             container: classes.textField
                         }}
                         variant="flat"

@@ -68,7 +68,7 @@ const Content = ({ hasLanguage, languagesNode, handleAddButtonClick, classes }) 
     }
     return (
         <div className={classes.noLanguage}>
-            <Typography variant="h3" component="h3" customClasses={{ container: classes.noLanguageTypography }}>
+            <Typography variant="h3" component="h3" classes={{ container: classes.noLanguageTypography }}>
                 <FormattedMessage
                     id="Languages.front.noLanguage"
                     defaultMessage="Vous n'avez pas encore ajouté de langues !"

@@ -15,7 +15,7 @@ export const BasicsValidationSchema = (formatMessage) =>
                     .min(5, formatMessage(validationTranslations.min, { min: 5 }))
                     .required(formatMessage(validationTranslations.required))
             }),
-        experienceYears: Yup.number()
+        codeExperienceYears: Yup.number()
             .min(0, formatMessage(validationTranslations.min, { min: 0 }))
             .max(20, formatMessage(validationTranslations.max, { max: 20 }))
             .required(formatMessage(validationTranslations.required)),
@@ -33,7 +33,6 @@ export const BasicsValidationSchema = (formatMessage) =>
 export const validateBasicsComplete = (data) => {
     try {
         Yup.object({
-            experienceYears: Yup.number().required(),
             codingYears: Yup.number().required()
         }).validateSync(data);
     } catch (e) {

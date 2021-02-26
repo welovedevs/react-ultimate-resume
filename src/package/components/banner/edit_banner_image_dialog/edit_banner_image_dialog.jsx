@@ -39,7 +39,7 @@ const UnsplashButton = ({ setSearchUnsplashDialogOpened, hasUnsplashEndpoint }) 
                     color="primary"
                     variant="outlined"
                     onClick={setSearchUnsplashDialogOpened}
-                    customClasses={{
+                    classes={{
                         container: classes.button
                     }}
                 >

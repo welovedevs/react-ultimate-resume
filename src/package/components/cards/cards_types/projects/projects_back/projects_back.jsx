@@ -39,7 +39,7 @@ const ProjectsBackComponent = ({ data, handleAddButtonClick }) => {
     return (
         <>
             <ProfileCardTitle
-                customClasses={{
+                classes={{
                     container: classes.title,
                     typography: classes.typography
                 }}

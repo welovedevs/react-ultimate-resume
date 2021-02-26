@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
 
 import { createUseStyles } from 'react-jss';
-import { animated, useTransition } from 'react-spring';
+import { AnimatePresence, motion } from 'framer-motion';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../../../../utils/framer_motion/common_types/spring_type';
 
 import { useFormikContext } from 'formik';
 import { Tooltip } from '@welovedevs/ui';
@@ -11,29 +12,41 @@ import { useOpenerState } from '../../../../../../hooks/use_opener_state';
 
 import { ReactComponent as DeleteIcon } from '../../../../../../../assets/icons/trash.svg';
 
-import { PROJECT_DIALOG_CONTENT_IMAGE_EDIT_LAYER_SPRING_PROPS } from './project_dialog_content_image_edit_layer_spring_props';
 import { styles } from './project_dialog_content_image_styles';
+import { OPACITY_TRANSITIONS } from '../../../../../../../utils/framer_motion/common_transitions/opacity_transitions';
 
 const useStyles = createUseStyles(styles);
 
-const ProjectDialogContentImageComponent = ({ component: Component = 'div', url, name, style, handleImageClick }) => {
+const ProjectDialogContentImageComponent = ({
+    component: Component = 'div',
+    url,
+    name,
+    motionConfig,
+    handleImageClick
+}) => {
     const classes = useStyles();
     const [isEditing] = useIsEditing();
 
     const [showEditLayer, eventsHandlerElementProps] = useOpenerState();
 
-    const editLayerTransitions = useTransition(
-        showEditLayer,
-        (item) => `${item ? 'visible' : 'invisible'}_edit_layer`,
-        PROJECT_DIALOG_CONTENT_IMAGE_EDIT_LAYER_SPRING_PROPS
-    );
-
     return (
-        <Component className={classes.container} style={style} {...(isEditing && eventsHandlerElementProps)}>
+        <Component className={classes.container} {...motionConfig} {...(isEditing && eventsHandlerElementProps)}>
             <Image url={url} name={name} handleImageClick={handleImageClick} isEditing={isEditing} classes={classes} />
-            {editLayerTransitions.map(
-                ({ item, key, props }) => item && <EditLayer key={key} style={props} classes={classes} url={url} />
-            )}
+            <AnimatePresence>
+                {showEditLayer && (
+                    <EditLayer
+                        motionConfig={{
+                            variants: OPACITY_TRANSITIONS,
+                            initial: 'initial',
+                            animate: 'animate',
+                            exit: 'exit',
+                            transition: spring
+                        }}
+                        classes={classes}
+                        url={url}
+                    />
+                )}
+            </AnimatePresence>
         </Component>
     );
 };
@@ -49,7 +62,7 @@ const Image = ({ url, name, handleImageClick, isEditing, classes }) => {
     return <img className={classes.image} src={url} alt={`Project ${name}`} />;
 };
 
-const EditLayer = ({ style, classes, url }) => {
+const EditLayer = ({ classes, url, motionConfig }) => {
     const { setFieldValue, values } = useFormikContext();
 
     const deleteImage = useCallback(() => {
@@ -60,13 +73,13 @@ const EditLayer = ({ style, classes, url }) => {
     }, [setFieldValue, values.images]);
 
     return (
-        <animated.div className={classes.editLayer} style={style}>
+        <motion.div className={classes.editLayer} {...motionConfig}>
             <Tooltip title="Supprimer cette image">
                 <button className={classes.deleteButton} type="button" onClick={deleteImage}>
                     <DeleteIcon className={classes.deleteIcon} />
                 </button>
             </Tooltip>
-        </animated.div>
+        </motion.div>
     );
 };
 

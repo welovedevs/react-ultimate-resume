@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
-import { animated, useTransition } from 'react-spring';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 import { TextField, Typography } from '@welovedevs/ui';
@@ -13,9 +12,11 @@ import { EditDialogField } from '../../../../../commons/edit_dialog_field/edit_d
 
 import { jobPerksTranslations } from '../../../../../../utils/enums/job_perks/job_perks_translations';
 
-import { PERKS_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS } from './perks_field_transitions_spring_props';
+import { PERKS_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS } from './perks_field_transitions_props';
 
 import { styles } from './perks_field_styles';
+import { AnimatePresence, motion } from 'framer-motion';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = createUseStyles(styles);
 
@@ -36,11 +37,6 @@ const PerksFieldComponent = ({ error, perks, onChange, setFieldValue }) => {
                 .map(([perk]) => perk),
         [perks]
     );
-
-    const transitions = useTransition(otherPerk !== null, (item) => `other_field_${item ? 'visible' : 'invisible'}`, {
-        ...PERKS_FIELD_OTHER_TEXTFIELD_TRANSITIONS_SPRING_PROPS,
-        unique: true
-    });
 
     const handleCheckboxGroupChange = useCallback(
         (newPerks) =>
@@ -102,21 +98,26 @@ const PerksFieldComponent = ({ error, perks, onChange, setFieldValue }) => {
                     color="secondary"
                 />
             </div>
-            {transitions.map(
-                ({ item, key, props }) =>
-                    item && (
-                        <TextField
-                            fullWidth
-                            key={key}
-                            containerElement={animated.div}
-                            customClasses={{ container: cn(classes.textField, classes.otherTextField) }}
-                            onChange={handleOtherPerkValueChange}
-                            name={`perks[${JobPerks.OTHER}]`}
-                            value={otherPerkValue}
-                            variant="flat"
-                            containerProps={{ style: props }}
-                        />
-                    )
+            {otherPerk !== null && (
+                <AnimatePresence>
+                    <TextField
+                        fullWidth
+                        key={`other_field_${otherPerk ? 'visible' : 'invisible'}`}
+                        containerElement={motion.div}
+                        classes={{ container: cn(classes.textField, classes.otherTextField) }}
+                        onChange={handleOtherPerkValueChange}
+                        name={`perks[${JobPerks.OTHER}]`}
+                        value={otherPerkValue}
+                        variant="flat"
+                        containerProps={{
+                            variants: PERKS_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS,
+                            initial: 'initial',
+                            animate: 'animate',
+                            exit: 'exit',
+                            transition: spring
+                        }}
+                    />
+                </AnimatePresence>
             )}
         </EditDialogField>
     );

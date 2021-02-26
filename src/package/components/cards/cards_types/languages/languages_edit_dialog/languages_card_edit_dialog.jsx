@@ -84,7 +84,7 @@ const LanguageItem = SortableElement(
                         </div>
                         <div className={cn(classes.field, classes.sliderValueContainer)}>
                             <Typography
-                                customClasses={{
+                                classes={{
                                     container: classes.sliderValue
                                 }}
                                 color="dark"
@@ -103,7 +103,7 @@ const LanguageItem = SortableElement(
                                 max={100}
                                 className={classes.slider}
                                 popperCardProps={{
-                                    customClasses: {
+                                    classes: {
                                         container: classes.sliderPopperCard,
                                         arrowContainer: classes.sliderPopperCardArrowContainer
                                     }

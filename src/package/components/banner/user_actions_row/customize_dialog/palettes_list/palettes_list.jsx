@@ -3,7 +3,7 @@ import React, { useCallback, useMemo, useRef, useState } from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import InfiniteScroll from 'react-infinite-scroller';
-import { animated, useTransition } from 'react-spring';
+import { motion } from 'framer-motion';
 
 import { Typography } from '@welovedevs/ui';
 
@@ -14,7 +14,7 @@ import { buildShadedPalette } from './utils/build_shaded_palette';
 
 import { palettes } from './utils/palettes';
 
-import { PALETTES_LIST_TRANSITIONS_SPRING_PROPS } from './palettes_list_spring_props';
+import { PALETTES_LIST_TRANSITIONS_PROPS, PALETTES_ITEM_TRANSITIONS_PROPS } from './palettes_list_transition_props';
 
 import { styles } from './palettes_list_styles';
 
@@ -39,15 +39,7 @@ const PalettesListComponent = ({ value: currentPalette, onChange, classes: recei
         []
     );
 
-    const setNextDisplayedPalettes = useCallback(() => {
-        setItemsToShow(itemsToShow + 10);
-    }, [itemsToShow, setItemsToShow]);
-
-    const transitions = useTransition(
-        displayedPalettes,
-        (item) => `palette_${item.join('_')}`,
-        PALETTES_LIST_TRANSITIONS_SPRING_PROPS
-    );
+    const setNextDisplayedPalettes = useCallback(() => setItemsToShow(itemsToShow + 10), [itemsToShow, setItemsToShow]);
 
     return (
         <div
@@ -62,6 +54,7 @@ const PalettesListComponent = ({ value: currentPalette, onChange, classes: recei
                 </div>
             )}
             <InfiniteScroll
+                key="scroll"
                 hasMore={itemsToShow < palettes.length}
                 loader={<LoadingSpinner />}
                 pageStart={0}
@@ -69,38 +62,40 @@ const PalettesListComponent = ({ value: currentPalette, onChange, classes: recei
                 loadMore={setNextDisplayedPalettes}
                 getScrollParent={() => containerReference.current}
             >
-                {transitions.map(({ item, key, props }, paletteIndex) => (
-                    <animated.button
-                        key={key}
-                        type="button"
-                        className={classes.selectablePaletteContainer}
-                        onClick={onSelectChanged(item)}
-                        style={props}
-                    >
-                        <Typography
-                            color="dark"
-                            customClasses={{
-                                container: classes.selectablePaletteIndex
-                            }}
-                            variant="h3"
+                <motion.div variants={PALETTES_LIST_TRANSITIONS_PROPS} initial="hidden" animate="visible">
+                    {displayedPalettes.map((item, paletteIndex) => (
+                        <motion.button
+                            variants={PALETTES_ITEM_TRANSITIONS_PROPS}
+                            key={`palette_${item.join('_')}`}
+                            type="button"
+                            className={classes.selectablePaletteContainer}
+                            onClick={onSelectChanged(item)}
                         >
-                            {`${paletteIndex + 1}.`}
-                        </Typography>
-                        <PaletteVisual
-                            classes={{
-                                tooltipPopper: classes.tooltipPopper,
-                                color: classes.paletteVisualColor
-                            }}
-                            palette={['primary', 'secondary', 'tertiary'].reduce(
-                                (acc, keyName, index) => ({
-                                    ...acc,
-                                    [keyName]: { 500: item[index] }
-                                }),
-                                {}
-                            )}
-                        />
-                    </animated.button>
-                ))}
+                            <Typography
+                                color="dark"
+                                classes={{
+                                    container: classes.selectablePaletteIndex
+                                }}
+                                variant="h3"
+                            >
+                                {`${paletteIndex + 1}.`}
+                            </Typography>
+                            <PaletteVisual
+                                classes={{
+                                    tooltipPopper: classes.tooltipPopper,
+                                    color: classes.paletteVisualColor
+                                }}
+                                palette={['primary', 'secondary', 'tertiary'].reduce(
+                                    (acc, keyName, index) => ({
+                                        ...acc,
+                                        [keyName]: { 500: item[index] }
+                                    }),
+                                    {}
+                                )}
+                            />
+                        </motion.button>
+                    ))}
+                </motion.div>
             </InfiniteScroll>
         </div>
     );

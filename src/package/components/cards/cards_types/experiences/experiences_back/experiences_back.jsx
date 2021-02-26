@@ -1,6 +1,6 @@
 import React, { Fragment, memo, useMemo } from 'react';
 
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { ProfileCardSection } from '../../../../commons/profile_card/profile_card_section/profile_card_section';
@@ -59,9 +59,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
     return (
         <ProfileCardSection key={id} cardVariant={variant}>
             <ProfileCardSectionTitle>{position}</ProfileCardSectionTitle>
-            <ProfileCardSectionSubtitle customClasses={{ container: classes.subtitle }}>
-                {title}
-            </ProfileCardSectionSubtitle>
+            <ProfileCardSectionSubtitle classes={{ container: classes.subtitle }}>{title}</ProfileCardSectionSubtitle>
             <ProfileCardSectionText>{summary}</ProfileCardSectionText>
         </ProfileCardSection>
     );
@@ -82,7 +80,7 @@ const Content = ({ data, handleAddButtonClick, classes }) => {
 const ExperiencesBackComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles();
     return (
-        <ProfileCardAnimatedBack title="Experiences">
+        <ProfileCardAnimatedBack title={<FormattedMessage id="Experience.back.title" defaultMessage="Experiences" />}>
             <Content {...{ data, handleAddButtonClick, classes }} />
         </ProfileCardAnimatedBack>
     );

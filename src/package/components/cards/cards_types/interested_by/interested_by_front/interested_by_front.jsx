@@ -23,7 +23,7 @@ const InterestedByFrontComponent = ({
     dismissButton,
     handleAddButtonClick,
     overrideColor,
-    customClasses = {}
+    classes: receivedClasses = {}
 }) => {
     const classes = useStyles({ overrideColor });
     const [side, setSide] = useCardSide();
@@ -37,7 +37,7 @@ const InterestedByFrontComponent = ({
 
     return (
         <>
-            <ProfileCardPaddedFront customClasses={{ container: cn(classes.container, customClasses.container) }}>
+            <ProfileCardPaddedFront classes={{ container: cn(classes.container, receivedClasses.container) }}>
                 <CenterContentContainer>
                     <Content
                         {...{
@@ -46,7 +46,7 @@ const InterestedByFrontComponent = ({
                             handleAddButtonClick,
                             overrideColor,
                             classes,
-                            customClasses
+                            receivedClasses
                         }}
                     />
                 </CenterContentContainer>
@@ -68,7 +68,7 @@ const Content = ({
     handleAddButtonClick,
     overrideColor,
     classes,
-    customClasses
+    receivedClasses
 }) => {
     const typographyReference = useRef();
 
@@ -82,7 +82,7 @@ const Content = ({
     if (!interestedBy) {
         return (
             <div className={classes.noInterested}>
-                <Typography variant="h3" component="h3" customClasses={{ container: classes.noInterestedTypography }}>
+                <Typography variant="h3" component="h3" classes={{ container: classes.noInterestedTypography }}>
                     <FormattedMessage
                         id="InterestedBy.front.noInterested"
                         defaultMessage="Vous n'avez pas encore ajouté de techno qui vous intéresse !"
@@ -103,7 +103,7 @@ const Content = ({
         <ProfileCardFrontTypography
             ref={typographyReference}
             classes={{
-                container: cn(classes.typography, customClasses.typography)
+                container: cn(classes.typography, receivedClasses.typography)
             }}
             overrideColor={overrideColor}
         >

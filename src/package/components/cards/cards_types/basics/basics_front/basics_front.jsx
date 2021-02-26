@@ -50,7 +50,7 @@ const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
 
     return (
         <ProfileCardPaddedFront>
-            <CenterContentContainer customClasses={{ container: classes.container }}>
+            <CenterContentContainer classes={{ container: classes.container }}>
                 <div className={classes.texts}>
                     <ProfileCardFrontTypography
                         component="div"
@@ -71,7 +71,7 @@ const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
                             classes={{ container: classes.location }}
                         >
                             <LocationIcon className={classes.locationIcon} />
-                            {data?.currentCity?.name}
+                            {currentCityName}
                         </ProfileCardFrontTypography>
                     )}
                 </div>

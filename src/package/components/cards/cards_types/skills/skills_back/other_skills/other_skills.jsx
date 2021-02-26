@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles, useTheme } from 'react-jss';
-import { animated } from 'react-spring';
+import { motion } from 'framer-motion';
 
 import { Typography } from '@welovedevs/ui/typography/typography';
 
@@ -12,10 +12,11 @@ import { getColorsFromCardVariant } from '../../../../../../utils/styles/styles_
 import { useCardVariant } from '../../../../../hooks/profile_card_hooks/use_card_variant';
 
 import { styles } from './other_skills_styles';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = createUseStyles(styles);
 
-const OtherSkills = ({ style, othersSkills, springTranslationProps: { yt } }) => {
+const OtherSkills = ({ motionProps, othersSkills }) => {
     const [variant] = useCardVariant();
     const classes = useStyles({ variant });
     const theme = useTheme();
@@ -23,14 +24,12 @@ const OtherSkills = ({ style, othersSkills, springTranslationProps: { yt } }) =>
     const color = useMemo(() => getColorsFromCardVariant(theme, variant).color, [theme, variant]);
 
     return (
-        <animated.div
+        <motion.div
             className={classes.otherSkillsContainer}
-            style={{
-                opacity: style.opacity,
-                transform: yt.to((value) => `translate3d(0, ${value}px,0)`)
-            }}
+            {...motionProps}
+            transition={spring}
         >
-            <Typography variant="h3" component="h3" customClasses={{ container: classes.otherSkillsTitle }}>
+            <Typography variant="h3" component="h3" classes={{ container: classes.otherSkillsTitle }}>
                 <FormattedMessage id="Skills.otherskills.title" defaultMessage="I also master" />
             </Typography>
             {othersSkills.map((skill) => (
@@ -41,7 +40,7 @@ const OtherSkills = ({ style, othersSkills, springTranslationProps: { yt } }) =>
                     name={skill.name}
                 />
             ))}
-        </animated.div>
+        </motion.div>
     );
 };
 

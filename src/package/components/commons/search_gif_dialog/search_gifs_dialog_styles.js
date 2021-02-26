@@ -32,7 +32,8 @@ export const styles = (theme) => {
             borderRadius: 5,
             overflow: 'hidden',
             backgroundColor: palette.dark[50],
-            margin: spacing * 2
+            margin: spacing * 2,
+            position: 'relative'
         },
         image: {
             height: '100%',

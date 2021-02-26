@@ -7,9 +7,7 @@ import { styles } from './center_content_container_styles';
 
 const useStyles = createUseStyles(styles);
 
-const CenterContentContainerComponent = ({ customClasses = {}, children, minus = 0 }) => {
+export const CenterContentContainer = ({ classes: receivedClasses = {}, children, minus = 0 }) => {
     const classes = useStyles({ minus });
-    return <div className={cn(classes.container, customClasses.container)}>{children}</div>;
+    return <div className={cn(classes.container, receivedClasses.container)}>{children}</div>;
 };
-
-export const CenterContentContainer = CenterContentContainerComponent;

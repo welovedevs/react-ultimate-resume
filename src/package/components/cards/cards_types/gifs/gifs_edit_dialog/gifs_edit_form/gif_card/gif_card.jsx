@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 
 import { Button, Card, PopperCardActions, TextField, Typography } from '@welovedevs/ui';
@@ -7,12 +7,15 @@ import { Button, Card, PopperCardActions, TextField, Typography } from '@weloved
 import { BouncingRoundButton } from '../../../../../../commons/bouncing_round_button/bouncing_round_button';
 
 import { styles } from './gif_card_styles';
+import { translations } from './gif_card_translations';
+import { GifAuthorCredits } from '../../../../../../commons/gifs/gif_author_credits/gif_author_credits';
 
 const useStyles = createUseStyles(styles);
 
-const GifCardComponent = ({
+export const GifCard = ({
     name,
     gifUrl,
+    gifUser,
     imageEditable,
     additionalActions,
     onImageEditClick,
@@ -21,6 +24,7 @@ const GifCardComponent = ({
     error
 }) => {
     const classes = useStyles();
+    const { formatMessage } = useIntl();
 
     const [input, setInput] = useState(name);
 
@@ -44,7 +48,7 @@ const GifCardComponent = ({
                                 title={
                                     <FormattedMessage
                                         id="GifsEditDialog.gifCard.changeGif"
-                                        defaultMessage="Changer this gif"
+                                        defaultMessage="Update this gif"
                                     />
                                 }
                                 onClick={onImageEditClick}
@@ -56,15 +60,16 @@ const GifCardComponent = ({
                 <CardTopHalf
                     error={error}
                     gifUrl={gifUrl}
+                    gifUser={gifUser}
                     name={name}
                     onImageEditClick={onImageEditClick}
                     classes={classes}
                 />
                 <div className={classes.content}>
                     <TextField
-                        customClasses={{ container: classes.textField }}
+                        classes={{ container: classes.textField }}
                         fullWidth
-                        placeholder="Gif's name"
+                        placeholder={formatMessage(translations.hobbiesNamePlaceholder)}
                         variant="flat"
                         value={input}
                         onChange={handleTextFieldChange}
@@ -85,12 +90,12 @@ const GifCardComponent = ({
     );
 };
 
-const CardTopHalf = ({ error, gifUrl, classes, name, onImageEditClick }) => {
+const CardTopHalf = ({ error, gifUrl, gifUser, classes, name, onImageEditClick }) => {
     if (!gifUrl) {
         return (
             <div className={classes.addGifButtonContainer}>
                 <Button
-                    customClasses={{
+                    classes={{
                         container: classes.addGifButton
                     }}
                     color="primary"
@@ -110,8 +115,7 @@ const CardTopHalf = ({ error, gifUrl, classes, name, onImageEditClick }) => {
                 </Typography>
             )}
             <img className={classes.image} src={gifUrl} alt={name} />
+            {gifUser && <GifAuthorCredits user={gifUser} />}
         </div>
     );
 };
-
-export const GifCard = GifCardComponent;

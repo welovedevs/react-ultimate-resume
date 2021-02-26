@@ -13,11 +13,7 @@ const useStyles = createUseStyles(styles);
 const DialogTitleComponent = ({ children, classes: receivedClasses = {} }) => {
     const classes = useStyles();
     return (
-        <Typography
-            variant="h3"
-            component="h3"
-            customClasses={{ container: cn(classes.container, receivedClasses.root) }}
-        >
+        <Typography variant="h3" component="h3" classes={{ container: cn(classes.container, receivedClasses.root) }}>
             {children}
         </Typography>
     );

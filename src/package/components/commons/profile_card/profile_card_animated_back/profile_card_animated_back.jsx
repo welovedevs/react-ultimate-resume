@@ -1,84 +1,39 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
-import { animated, useChain, useSpring } from 'react-spring';
+import { motion } from 'framer-motion';
 
 import { ProfileCardTitle } from '../profile_card_title/profile_card_title';
 import { ProfileCardContent } from '../profile_card_content/profile_card_content';
 
-import {
-    CONTENT_CONTAINER_SPRING_PROPS,
-    CONTENT_SPRING_PROPS,
-    TITLE_SPRING_PROPS
-} from './profile_card_animated_back_springs';
+import { CONTENT_PROPS, TITLE_PROPS } from './profile_card_animated_back_transition';
 
 import { styles } from './profile_card_animated_back_styles';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = createUseStyles(styles);
 
-const TRANSLATION_INTERPOLATION = (value) => `translate3d(0, ${value}%, 0)`;
-
-const ProfileCardAnimatedBackComponent = ({ title, children: content, customClasses = {} }) => {
+export const ProfileCardAnimatedBack = ({ title, children: content, classes: receivedClasses = {} }) => {
     const classes = useStyles();
-    const contentContainerSpringReference = useRef();
-    const contentSpringReference = useRef();
-    const titleSpringReference = useRef();
-
-    const contentContainerSpringProps = useSpring({
-        from: CONTENT_CONTAINER_SPRING_PROPS.default,
-        to: CONTENT_CONTAINER_SPRING_PROPS.active,
-        ref: contentContainerSpringReference
-    });
-
-    const contentSpringProps = useSpring({
-        from: CONTENT_SPRING_PROPS.default,
-        to: CONTENT_SPRING_PROPS.active,
-        ref: contentSpringReference
-    });
-
-    const titleSpringProps = useSpring({
-        from: TITLE_SPRING_PROPS.default,
-        to: TITLE_SPRING_PROPS.active,
-        ref: titleSpringReference
-    });
-
-    useChain([contentContainerSpringReference, contentSpringReference], [0, 0.2]);
-    useChain([contentContainerSpringReference, titleSpringReference], [0, 0.3]);
-
     return (
         <>
             <ProfileCardTitle
-                component={animated.div}
-                style={{
-                    opacity: titleSpringProps.opacity,
-                    transform: titleSpringProps.translation.to(TRANSLATION_INTERPOLATION)
-                }}
-                customClasses={{ typography: cn(classes.title, customClasses.title) }}
+                component={motion.div}
+                motionSettings={{ variants: TITLE_PROPS, initial: 'default', animate: 'active', transition: spring }}
+                classes={{ typography: cn(classes.title, receivedClasses.title) }}
             >
                 {title}
             </ProfileCardTitle>
             <ProfileCardContent
-                customClasses={{
-                    container: cn(classes.content, customClasses.content)
+                classes={{
+                    container: cn(classes.content, receivedClasses.content)
                 }}
-                component={animated.div}
-                style={{
-                    transform: contentContainerSpringProps.translation.to(TRANSLATION_INTERPOLATION)
-                }}
+                component={motion.div}
+                motionSettings={{ variants: CONTENT_PROPS, initial: 'default', animate: 'active', transition: spring }}
             >
-                <animated.div
-                    className={customClasses.contentAnimated}
-                    style={{
-                        transform: contentSpringProps.translation.to(TRANSLATION_INTERPOLATION),
-                        opacity: contentSpringProps.opacity
-                    }}
-                >
-                    {content}
-                </animated.div>
+                <div className={receivedClasses.contentAnimated}>{content}</div>
             </ProfileCardContent>
         </>
     );
 };
-
-export const ProfileCardAnimatedBack = ProfileCardAnimatedBackComponent;

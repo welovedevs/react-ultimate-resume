@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import { validationTranslations } from '../../../../../utils/validation_translations';
 import { dreamjobValidationTranslations } from './validator_translations';
+import { hasOnlyFreelanceContract } from '../../../utils/has_only_freelance_contract';
 
 export const DreamJobValidationSchema = (formatMessage) =>
     Yup.object({
@@ -26,7 +27,16 @@ export const DreamJobValidationSchema = (formatMessage) =>
                         ['apprenticeship', 'internship'].filter((val) => value.includes(val)).length
                     )
             ),
-        salary: Yup.number().min(1, formatMessage(validationTranslations.min, { min: 1 }))
+        salary: Yup.number().when('contractTypes', {
+            is: (contractType) => hasOnlyFreelanceContract(contractType),
+            then: Yup.number().nullable().notRequired(),
+            otherwise: Yup.number().min(1, formatMessage(validationTranslations.minNumber, { min: 1 }))
+        }),
+        averageDailyRate: Yup.number().when('contractTypes', {
+            is: (contractType) => hasOnlyFreelanceContract(contractType),
+            then: Yup.number().min(1, formatMessage(validationTranslations.minNumber, { min: 1 })),
+            otherwise: Yup.number().nullable().notRequired()
+        })
     });
 
 export const validateDreamjobComplete = (data) => {

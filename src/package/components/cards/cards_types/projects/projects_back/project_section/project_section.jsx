@@ -21,6 +21,7 @@ import { useCallbackOpen } from '../../../../../hooks/use_callback_open';
 import { styles } from './project_section_styles';
 import { useCardVariant } from '../../../../../hooks/profile_card_hooks/use_card_variant';
 import { getColorsFromCardVariant } from '../../../../../../utils/styles/styles_utils';
+import { HttpRegex } from '../../data/validator';
 
 const useStyles = createUseStyles(styles);
 
@@ -42,7 +43,7 @@ const ProjectSectionContainer = ({ project, cardVariant, onDelete, index }) => {
         <ProfileCardSection cardVariant={cardVariant}>
             <ProfileCardSectionTitle>{project.name}</ProfileCardSectionTitle>
             <ProfileCardSectionSubtitle>{formattedDate}</ProfileCardSectionSubtitle>
-            <ProfileCardSectionText customClasses={{ container: classes.sectionText }}>
+            <ProfileCardSectionText classes={{ container: classes.sectionText }}>
                 {descriptionChunks}
             </ProfileCardSectionText>
             <Details classes={classes} project={project} onDelete={onDelete} index={index} />
@@ -57,14 +58,23 @@ const Details = ({ project, index, onDelete, classes }) => {
 
     const color = getColorsFromCardVariant(theme, variant).backColor;
 
+    const projectLink = project.link;
+
+    const link = useMemo(() => {
+        if (!new RegExp(HttpRegex).test(projectLink)) {
+            return `http://${projectLink}`;
+        }
+        return projectLink;
+    }, [projectLink]);
+
     return (
         <div className={classes.details}>
             {project.link && (
                 <div className={classes.detail}>
                     <AnimatedUnderlinedButton color={color}>
-                        <a className={classes.link} href={project.link}>
+                        <a className={classes.link} href={link}>
                             <LinkIcon className={classes.detailIcon} />
-                            <Typography customClasses={{ container: classes.detailTypography }} color="primary">
+                            <Typography classes={{ container: classes.detailTypography }} color="primary">
                                 <FormattedMessage id="Project.section.link" defaultMessage="Link" />
                             </Typography>
                         </a>
@@ -93,7 +103,7 @@ const RemoveProjectDetail = ({ color, index, onDelete, classes }) => {
             <div className={classes.detail}>
                 <AnimatedUnderlinedButton color={color} onClick={setDialogOpened}>
                     <RemoveIcon className={classes.detailDeleteIcon} />
-                    <Typography customClasses={{ container: classes.detailTypography }} color="primary">
+                    <Typography classes={{ container: classes.detailTypography }} color="primary">
                         <FormattedMessage id="Main.lang.delete" defaultMessage="Delete" />
                     </Typography>
                 </AnimatedUnderlinedButton>

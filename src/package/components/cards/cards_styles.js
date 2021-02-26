@@ -1,3 +1,5 @@
+import { createScreenWidthMediaQuery } from '../../utils/styles/styles_utils';
+
 export const styles = (theme) => {
     const {
         miscellaneous: { spacing },
@@ -16,12 +18,18 @@ export const styles = (theme) => {
             zIndex: 3
         },
         cards: ({ maxCardsPerRow }) => ({
+            width: '100%',
             display: 'flex',
             justifyContent: 'center',
             flexWrap: 'wrap',
             ...(maxCardsPerRow && {
                 maxWidth: (cardWidth + spacing * 2 * 2) * maxCardsPerRow
             })
-        })
+        }),
+        [createScreenWidthMediaQuery('max-width', theme.screenSizes.medium)]: {
+            cards: {
+                maxWidth: '95% !important'
+            }
+        }
     };
 };

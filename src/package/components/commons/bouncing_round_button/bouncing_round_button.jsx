@@ -1,14 +1,14 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
-import { animated, useSpring } from 'react-spring';
+import { motion } from 'framer-motion';
 
 import { Tooltip } from '@welovedevs/ui';
 
 import { ReactComponent as EditIcon } from '../../../assets/icons/edit.svg';
 
-import { SPRING_PROPS } from './bouncing_round_button_spring_props';
+import { TRANSITION_PROPS } from './bouncing_round_button_props';
 
 import { styles } from './bouncing_round_button_styles';
 
@@ -22,26 +22,19 @@ const BouncingRoundButtonComponent = ({
     classes: receivedClasses = {}
 }) => {
     const classes = useStyles();
-    const [springProps, setSpringProps] = useSpring(() => SPRING_PROPS.default);
-
-    const handleMouseDown = useCallback(() => setSpringProps(SPRING_PROPS.active), []);
-    const handleMouseUp = useCallback(() => setSpringProps(SPRING_PROPS.default), []);
 
     return (
         <Tooltip title={title} placement={tooltipPlacement}>
-            <animated.button
+            <motion.button
                 type="button"
                 className={cn(classes.container, receivedClasses.container)}
                 onClick={onClick}
-                onMouseDown={handleMouseDown}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseUp}
-                style={{
-                    transform: springProps.scale.to((value) => `scale3d(${value}, ${value}, ${value})`)
-                }}
+                variants={TRANSITION_PROPS}
+                initial="default"
+                whileTap="active"
             >
                 <Icon className={cn(classes.icon, classes.iconContainer)} />
-            </animated.button>
+            </motion.button>
         </Tooltip>
     );
 };

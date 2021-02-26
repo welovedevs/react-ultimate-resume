@@ -19,7 +19,7 @@ export const styles = {
         overflow: 'hidden',
         minHeight: 'fit-content',
         fontSize: 36,
-        lineHeight: 1.3,
+        lineHeight: 1.1,
         textOverflow: 'ellipsis',
         display: '-webkit-box',
         '-webkit-line-clamp': 3,

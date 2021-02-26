@@ -81,7 +81,7 @@ const ProjectsFrontComponent = ({ data, handleAddButtonClick }) => {
 const Content = ({ hasProject, projectTitle, handleAddButtonClick, classes }) => {
     if (hasProject) {
         return (
-            <Typography variant="h2" component="h2" customClasses={{ container: classes.text }}>
+            <Typography variant="h2" component="h2" classes={{ container: classes.text }}>
                 <FormattedMessage
                     id="Projects.front.title"
                     defaultMessage="My <emoji>♥️</emoji> project : "
@@ -95,7 +95,7 @@ const Content = ({ hasProject, projectTitle, handleAddButtonClick, classes }) =>
     }
     return (
         <div className={classes.noProject}>
-            <Typography variant="h3" component="h3" customClasses={{ container: classes.noProjectTypography }}>
+            <Typography variant="h3" component="h3" classes={{ container: classes.noProjectTypography }}>
                 <FormattedMessage id="Projects.front.noProject" defaultMessage="You didn't add any projects." />
                 {projectTitle}
             </Typography>

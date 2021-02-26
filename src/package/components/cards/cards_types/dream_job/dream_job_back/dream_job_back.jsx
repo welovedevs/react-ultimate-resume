@@ -28,7 +28,7 @@ const useStyles = createUseStyles(styles);
 const DreamJobBackComponent = ({ data }) => {
     const classes = useStyles();
     const { averageDailyRate, places, perks, salary, remoteFrequency, contractTypes, currentJobIssues } = data;
-    const isFreelance = hasOnlyFreelanceContract(contractTypes) ? salary : averageDailyRate;
+    const isFreelance = hasOnlyFreelanceContract(contractTypes);
 
     return (
         <ProfileCardAnimatedBack title={<FormattedMessage id="Dreamjob.Back.Title" defaultMessage="Dream job" />}>

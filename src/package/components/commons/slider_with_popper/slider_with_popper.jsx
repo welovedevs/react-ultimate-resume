@@ -16,6 +16,7 @@ export const SliderWithPopper = ({
     onChange,
     min,
     max,
+    step,
     debounce = 500,
     classes: receivedClasses = {},
     popperCardProps
@@ -63,6 +64,7 @@ export const SliderWithPopper = ({
             onChange={handleChange}
             min={min}
             max={max}
+            step={step}
             onMouseDown={handleFocus}
             onMouseUp={handleBlur}
             thumbReference={thumbReference}

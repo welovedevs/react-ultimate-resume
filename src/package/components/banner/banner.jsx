@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
-import { animated, config, useTransition } from 'react-spring';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { Typography } from '@welovedevs/ui';
 
@@ -12,7 +12,7 @@ import { SocialActions } from './user_actions_row/social_actions/social_actions'
 import { CustomizeButton } from './user_actions_row/customize_button/customize_button';
 import { EditHeaderImageButton } from './edit_header_image_button/edit_header_image_button';
 
-import { OPACITY_TRANSITIONS } from '../../utils/springs/common_transitions/opacity_transitions';
+import { OPACITY_TRANSITIONS } from '../../utils/framer_motion/common_transitions/opacity_transitions';
 
 import { useIsEditing } from '../hooks/use_is_editing';
 import { useAdditionalNodes } from '../hooks/use_additional_nodes';
@@ -31,31 +31,29 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
     const [globalReceivedBannerClasses = {}] = useReceivedGlobalClasses('banner');
     const [isEditing] = useIsEditing();
 
-    const transitions = useTransition(customizationOptions?.imageHeader || null, (item) => `${item?.alt}_${item.url}`, {
-        ...OPACITY_TRANSITIONS,
-        unique: true,
-        config: config.molasses
-    });
-
+    const imageInformations = customizationOptions?.imageHeader;
     const bannerImageCredits = customizationOptions?.imageHeader?.credits;
+
     return (
         <div className={cn(classes.container, globalReceivedBannerClasses.container)}>
             {isEditing && onCustomizationChanged && (
                 <EditHeaderImageButton customizationOptions={customizationOptions} />
             )}
             <div className={cn(classes.overlay, globalReceivedBannerClasses.overlay)} />
-            {transitions?.map(
-                ({ item, key, props }) =>
-                    item && (
-                        <animated.img
-                            key={key}
-                            className={classes.image}
-                            src={item?.url}
-                            alt={item?.alt}
-                            style={props}
-                        />
-                    )
-            )}
+            <AnimatePresence>
+                {imageInformations && (
+                    <motion.img
+                        className={classes.image}
+                        src={imageInformations?.url}
+                        alt={imageInformations?.alt}
+                        variants={OPACITY_TRANSITIONS}
+                        transition={{ duration: 1 }}
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                    />
+                )}
+            </AnimatePresence>
             <div className={cn(classes.content, globalReceivedBannerClasses.content)}>
                 <UserInformations />
                 <SocialActions>
@@ -66,7 +64,7 @@ const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
             </div>
             {bannerImageCredits?.name && (
                 <Typography
-                    customClasses={{ container: cn(classes.credits, globalReceivedBannerClasses.credits) }}
+                    classes={{ container: cn(classes.credits, globalReceivedBannerClasses.credits) }}
                     variant="body3"
                 >
                     <FormattedMessage

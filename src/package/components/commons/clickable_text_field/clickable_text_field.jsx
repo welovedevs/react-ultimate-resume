@@ -2,8 +2,7 @@ import React from 'react';
 
 import cn from 'classnames';
 import { createUseStyles } from 'react-jss';
-import { animated, useSpring } from 'react-spring';
-
+import { motion } from 'framer-motion';
 import { TextField, TextFieldIcon } from '@welovedevs/ui';
 
 import { ReactComponent as KeyboardArrowDownIcon } from '../../../assets/icons/keyboard_arrow_down.svg';
@@ -16,26 +15,26 @@ const ClickableTextFieldComponent = ({
     interactionsLayerRef,
     onClick,
     textFieldIconProps,
-    customClasses = {},
+    classes: receivedClasses = {},
     arrowRotation = 0,
     ...other
 }) => {
     const classes = useStyles();
-    const { rotation: rotationSpring } = useSpring({ rotation: arrowRotation });
     return (
-        <TextField readOnly className={cn(classes.container, customClasses.container)} {...other}>
-            <animated.span
-                style={{
-                    transform: rotationSpring.to((value) => `rotate(${value}deg)`)
+        <TextField readOnly className={cn(classes.container, receivedClasses.container)} {...other}>
+            <motion.span
+                animate={{
+                    transform: `rotate(${arrowRotation}deg)`
                 }}
+                transition={{ type: 'spring' }}
             >
                 <TextFieldIcon {...textFieldIconProps}>
                     <KeyboardArrowDownIcon />
                 </TextFieldIcon>
-            </animated.span>
+            </motion.span>
             <button
                 ref={interactionsLayerRef}
-                className={cn(classes.handleInteractionsLayer, customClasses.handleInteractionsLayer)}
+                className={cn(classes.handleInteractionsLayer, receivedClasses.handleInteractionsLayer)}
                 type="button"
                 {...{ onClick }}
             />

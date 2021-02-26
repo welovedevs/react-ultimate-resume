@@ -57,7 +57,7 @@ const TechnologyRow = SortableElement(({ item, onRemove, onChange, classes, item
                 </Typography>
                 <div className={classes.sliderValueContainer}>
                     <Typography
-                        customClasses={{
+                        classes={{
                             container: classes.sliderValue
                         }}
                         color="dark"
@@ -79,7 +79,7 @@ const TechnologyRow = SortableElement(({ item, onRemove, onChange, classes, item
                         debounce={50}
                         classes={{ container: classes.slider }}
                         popperCardProps={{
-                            customClasses: {
+                            classes: {
                                 popper: classes.popper
                             }
                         }}

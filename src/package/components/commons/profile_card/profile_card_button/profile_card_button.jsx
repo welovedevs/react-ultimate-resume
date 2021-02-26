@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
 import injectSheet from 'react-jss';
-import { animated, useSpring } from 'react-spring';
+import { motion } from 'framer-motion';
 
 import { Button } from '@welovedevs/ui';
 
@@ -9,39 +9,23 @@ import { ReactComponent as ArrowRight } from '../../../../assets/icons/arrow-rig
 
 import { styles } from './profile_card_button_styles';
 import { useCardVariant } from '../../../hooks/profile_card_hooks/use_card_variant';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../utils/framer_motion/common_types/spring_type';
 
-const DEFAULT_SPRING_PROPS = { translation: 0 };
-const ACTIVE_SPRING_PROPS = { translation: 6 };
-
-const ProfileCardButtonComponent = injectSheet(styles)(({ overrideColor, classes, children, ...other }) => {
-    const [springProps, setSpringProps] = useSpring(() => DEFAULT_SPRING_PROPS);
-    const setDefaultSpringProps = useCallback(() => setSpringProps(() => DEFAULT_SPRING_PROPS), []);
-    const setActiveSpringProps = useCallback(() => setSpringProps(() => ACTIVE_SPRING_PROPS), []);
-    return (
-        <div className={classes.container}>
-            <Button
-                customClasses={{ container: classes.button, typography: classes.typography }}
-                size="small"
-                variant="text"
-                onMouseEnter={setActiveSpringProps}
-                onMouseLeave={setDefaultSpringProps}
-                onFocus={setActiveSpringProps}
-                onBlur={setDefaultSpringProps}
-                {...other}
-            >
-                {children}
-            </Button>
-            <animated.span
-                className={classes.arrowContainer}
-                style={{
-                    transform: springProps.translation.to((value) => `translate3d(${value}px, 0, 0)`)
-                }}
-            >
-                <ArrowRight className={classes.arrow} />
-            </animated.span>
-        </div>
-    );
-});
+const ProfileCardButtonComponent = injectSheet(styles)(({ overrideColor, classes, children, ...other }) => (
+    <motion.div className={classes.container} whileHover="hover">
+        <Button
+            classes={{ container: classes.button, typography: classes.typography }}
+            size="small"
+            variant="text"
+            {...other}
+        >
+            {children}
+        </Button>
+        <motion.span variants={{ hover: { x: 6 } }} className={classes.arrowContainer} transition={spring}>
+            <ArrowRight className={classes.arrow} />
+        </motion.span>
+    </motion.div>
+));
 
 const InjectVariantProfileCardButton = (props) => {
     const [variant] = useCardVariant();

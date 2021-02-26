@@ -9,10 +9,8 @@ import { styles } from './profile_card_section_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardSectionComponent = ({ children, customClasses = {} }) => {
+export const ProfileCardSection = ({ children, classes: receivedClasses = {} }) => {
     const [variant] = useCardVariant();
     const classes = useStyles({ variant });
-    return <div className={cn(classes.container, customClasses.container)}>{children}</div>;
+    return <div className={cn(classes.container, receivedClasses.container)}>{children}</div>;
 };
-
-export const ProfileCardSection = ProfileCardSectionComponent;

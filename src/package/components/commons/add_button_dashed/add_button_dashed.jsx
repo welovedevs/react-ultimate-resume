@@ -15,7 +15,7 @@ const AddButtonDashedComponent = ({ onClick, title = 'Add', classes: receivedCla
     return (
         <Tooltip title={title}>
             <button type="button" className={cn(classes.container, receivedClasses.container)} onClick={onClick}>
-                <Typography customClasses={{ container: receivedClasses.typography }} variant="h2">
+                <Typography classes={{ container: receivedClasses.typography }} variant="h2">
                     <FormattedMessage id="AddButton.plus" defaultMessage="+" />
                 </Typography>
             </button>

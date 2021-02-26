@@ -41,7 +41,7 @@ const DreamJobFrontComponent = ({ data }) => {
         if (remoteFrequency === REMOTE_FREQUENCY.FULL_TIME) {
             return (
                 <>
-                    <ProfileCardFrontVector customClasses={{ container: classes.logo }} vector={HomeLogo} />
+                    <ProfileCardFrontVector classes={{ container: classes.logo }} vector={HomeLogo} />
                     <ProfileCardFrontTypography classes={{ container: classes.typography }}>
                         <FormattedMessage id="DreamJob.Front.RemoteFulltime" defaultMessage="I want to work remotely" />
                     </ProfileCardFrontTypography>
@@ -51,7 +51,7 @@ const DreamJobFrontComponent = ({ data }) => {
 
         return (
             <>
-                <ProfileCardFrontVector customClasses={{ container: classes.logo }} vector={HomeLogo} />
+                <ProfileCardFrontVector classes={{ container: classes.logo }} vector={HomeLogo} />
                 <ProfileCardFrontTypography classes={{ container: classes.typography }}>
                     <FormattedMessage
                         id="DreamJob.Front.Cities"
@@ -68,9 +68,7 @@ const DreamJobFrontComponent = ({ data }) => {
     return (
         <>
             <ProfileCardPaddedFront>
-                <CenterContentContainer customClasses={{ container: classes.container }}>
-                    {content}
-                </CenterContentContainer>
+                <CenterContentContainer classes={{ container: classes.container }}>{content}</CenterContentContainer>
             </ProfileCardPaddedFront>
             <ProfileCardActions>
                 <ProfileCardButton onClick={handleButtonClick}>

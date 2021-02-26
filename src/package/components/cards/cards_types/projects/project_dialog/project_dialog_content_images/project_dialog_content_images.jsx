@@ -1,18 +1,19 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
 import { createUseStyles, useTheme } from 'react-jss';
-import { animated, useTransition } from 'react-spring';
+import { AnimatePresence, motion } from 'framer-motion';
 import Carousel, { Modal, ModalGateway } from 'react-images';
 
 import { ProjectDialogContentImage } from './project_dialog_content_image/project_dialog_content_image';
 import { ProjectDialogContentAddImage } from './project_dialog_content_add_image/project_dialog_content_add_image';
 
-import { PROJECT_DIALOG_CONTENT_IMAGES_TRANSITIONS_SPRING_PROPS } from './project_dialog_content_images_transitions_spring_props';
+import { PROJECT_DIALOG_CONTENT_IMAGES_TRANSITIONS_PROPS } from './project_dialog_content_images_transitions_props';
 
 import { styles } from './project_dialog_content_images_styles';
 import { useCardVariant } from '../../../../../hooks/profile_card_hooks/use_card_variant';
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../../utils/styles/styles_utils';
 import { hashCode } from '../../../../../../utils/string_utils';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = createUseStyles(styles);
 
@@ -36,14 +37,6 @@ const ProjectDialogContentImagesComponent = ({ images = [], isEditing }) => {
 
     const handleModalClose = useCallback(() => setModelCarouselIndex(null), []);
 
-    const transitions = useTransition(images, ({ url }, index) => `project_image_${index}_${hashCode(url)}`, {
-        ...PROJECT_DIALOG_CONTENT_IMAGES_TRANSITIONS_SPRING_PROPS,
-        ...(isEditing && {
-            immediate: true,
-            trail: 0
-        })
-    });
-
     const navButtonStyles = useCallback(
         (base) => ({
             ...base,
@@ -64,20 +57,27 @@ const ProjectDialogContentImagesComponent = ({ images = [], isEditing }) => {
         }),
         [theme, variant]
     );
-
     return (
         <div className={classes.container}>
             {isEditing && <ProjectDialogContentAddImage />}
-            {transitions.map(({ item, key, props }, index) => (
-                <ProjectDialogContentImage
-                    key={key}
-                    component={isEditing ? animated.button : animated.div}
-                    style={props}
-                    url={item.url}
-                    name={item.name}
-                    handleImageClick={handleImageClick(index)}
-                />
-            ))}
+            <AnimatePresence>
+                {images.map((item, index) => (
+                    <ProjectDialogContentImage
+                        key={`project_image_${index}_${hashCode(item.url)}`}
+                        component={isEditing ? motion.button : motion.div}
+                        motionConfig={{
+                            variants: PROJECT_DIALOG_CONTENT_IMAGES_TRANSITIONS_PROPS,
+                            initial: 'initial',
+                            animate: 'animate',
+                            exit: 'exit',
+                            transition: spring
+                        }}
+                        url={item.url}
+                        name={item.name}
+                        handleImageClick={handleImageClick(index)}
+                    />
+                ))}
+            </AnimatePresence>
             <ModalGateway>
                 {modalCarouselIndex !== null && (
                     <Modal

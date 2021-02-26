@@ -1,10 +1,10 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
 import { useDebounce } from 'use-debounce';
 import { FormattedMessage } from 'react-intl';
-import { animated, useChain, useTransition } from 'react-spring';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
 import { Card, TextField, Typography } from '@welovedevs/ui';
@@ -12,13 +12,15 @@ import { Card, TextField, Typography } from '@welovedevs/ui';
 import { useTechnologies } from '../../../hooks/technologies/use_technologies';
 
 import {
-    ALL_TECHNOLOGIES_TRANSITIONS_SPRING_PROPS,
-    SELECTED_ITEM_LAYER_TRANSITIONS_SPRING_PROPS
-} from './all_technologies_picker_spring_props';
+    ALL_TECHNOLOGIES_TRANSITIONS_PROPS,
+    SELECTED_ITEM_LAYER_TRANSITIONS_PROPS,
+    TECHNOLOGIES_CONTAINER_TRANSITION_PROPS
+} from './all_technologies_picker_props';
 
 import { CheckboxField } from '../../checkbox_field/checkbox_group';
 
 import { styles } from './all_technologies_picker_styles';
+import { DEFAULT_SPRING_TYPE as spring } from '../../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = createUseStyles(styles);
 
@@ -40,33 +42,34 @@ const TechnologyItem = ({ item, classes, selectedItems = [], onAdd, onDelete }) 
         return item.url;
     }, [item]);
 
-    const selectedItemLayerTransitions = useTransition(
-        selectedItem,
-        (selected) => `selected_item_layer_${selected?.name}`,
-        SELECTED_ITEM_LAYER_TRANSITIONS_SPRING_PROPS
-    );
-
     return (
         <button className={classes.technologyItem} type="button" onClick={onClick}>
             <Card
-                customClasses={{
+                classes={{
                     container: classes.technologyImageContainer
                 }}
             >
                 <img src={imgUrl} alt={item.name} className={classes.technologyImage} />
-                {selectedItemLayerTransitions.map(
-                    ({ item: selected, key, props }) =>
-                        selected && (
-                            <animated.div key={key} className={classes.selectedTechnologyLayer} style={props}>
-                                <Typography color="light" variant="h3">
-                                    {selected.index + 1}
-                                </Typography>
-                            </animated.div>
-                        )
-                )}
+                <AnimatePresence>
+                    {selectedItem && (
+                        <motion.div
+                            key={`selected_item_layer_${selectedItem?.name}`}
+                            className={classes.selectedTechnologyLayer}
+                            variants={SELECTED_ITEM_LAYER_TRANSITIONS_PROPS}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            transition={spring}
+                        >
+                            <Typography color="light" variant="h3">
+                                {selectedItem?.index + 1}
+                            </Typography>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </Card>
             <Typography
-                customClasses={{
+                classes={{
                     container: classes.typography
                 }}
             >
@@ -80,8 +83,6 @@ const AllTechnologiesPickerComponent = ({ selectedItems, onAdd, onDelete, classe
     const theme = useTheme();
     const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
     const classes = useStyles();
-    const animationEnded = useRef(false);
-    const animationReference = useRef();
     const [onlySelected, setOnlySelected] = useState();
 
     const { technologies } = useTechnologies();
@@ -106,22 +107,6 @@ const AllTechnologiesPickerComponent = ({ selectedItems, onAdd, onDelete, classe
 
     const handleTextFieldChange = useCallback((event) => setQuery(event.target.value), []);
 
-    const displayedItemsTransitions = useTransition(
-        !animationEnded.current ? displayedItems : null,
-        (item) => `technology_${item?.name}`,
-        {
-            ...ALL_TECHNOLOGIES_TRANSITIONS_SPRING_PROPS,
-            trail: 1250 / displayedItems.length,
-            onRest: async () => {
-                await new Promise((resolve) => setTimeout(resolve, 200));
-                animationEnded.current = true;
-            },
-            ref: animationReference
-        }
-    );
-
-    useChain([animationReference], [0.35, 0]);
-
     const toggleOtherPerk = useCallback(() => {
         setOnlySelected(!onlySelected);
     }, [onlySelected]);
@@ -129,7 +114,7 @@ const AllTechnologiesPickerComponent = ({ selectedItems, onAdd, onDelete, classe
     return (
         <div className={cn(classes.container, receivedClasses.container)}>
             <TextField
-                customClasses={{
+                classes={{
                     container: classes.textField
                 }}
                 fullWidth={isMobile}
@@ -151,30 +136,29 @@ const AllTechnologiesPickerComponent = ({ selectedItems, onAdd, onDelete, classe
                     color="secondary"
                 />
             )}
-            <div className={cn(classes.technologiesList, receivedClasses.technologiesList)}>
-                {(animationEnded.current ? displayedItems : displayedItemsTransitions).map((values, index) => {
-                    const item = animationEnded.current ? values : values.item;
-                    const technologyItem = (
-                        <TechnologyItem
-                            key={`technology_${item.name}_${index}`}
-                            selectedItems={selectedItems}
-                            item={item}
-                            onAdd={onAdd}
-                            onDelete={onDelete}
-                            classes={classes}
-                        />
-                    );
-                    if (!animationEnded.current) {
-                        const { key, props } = values;
-                        return (
-                            <animated.div key={key} style={props}>
-                                {technologyItem}
-                            </animated.div>
-                        );
-                    }
-                    return technologyItem;
-                })}
-            </div>
+            <AnimatePresence>
+                <motion.div
+                    variants={TECHNOLOGIES_CONTAINER_TRANSITION_PROPS}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={spring}
+                    className={cn(classes.technologiesList, receivedClasses.technologiesList)}
+                >
+                    {displayedItems.map((item, index) => (
+                        <motion.div key={`technology_${item?.name}`} variants={ALL_TECHNOLOGIES_TRANSITIONS_PROPS}>
+                            <TechnologyItem
+                                key={`technology_${item.name}_${index}`}
+                                selectedItems={selectedItems}
+                                item={item}
+                                onAdd={onAdd}
+                                onDelete={onDelete}
+                                classes={classes}
+                            />
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </AnimatePresence>
         </div>
     );
 };

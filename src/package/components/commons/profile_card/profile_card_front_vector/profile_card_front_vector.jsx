@@ -9,10 +9,8 @@ import { styles } from './profile_card_front_vector_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardFrontVectorComponent = ({ vector: Vector, customClasses = {} }) => {
+export const ProfileCardFrontVector = ({ vector: Vector, classes: receivedClasses = {} }) => {
     const [variant] = useCardVariant();
     const classes = useStyles({ variant });
-    return <Vector className={cn(classes.container, customClasses.container)} />;
+    return <Vector className={cn(classes.container, receivedClasses.container)} />;
 };
-
-export const ProfileCardFrontVector = ProfileCardFrontVectorComponent;

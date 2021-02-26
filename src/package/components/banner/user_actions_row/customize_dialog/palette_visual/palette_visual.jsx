@@ -30,7 +30,7 @@ const PaletteVisualComponent = ({
                 <Tooltip
                     key={`palette_visual_color_${key}_${hex}`}
                     title={translations[key]}
-                    customClasses={{
+                    classes={{
                         popper: receivedClasses.tooltipPopper
                     }}
                 >

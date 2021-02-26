@@ -13,7 +13,7 @@ export const WorkValidator = (formatMessage) =>
                     .transform((value) => ({ ...value, stillEmployed: !value.endDate }))
                     .shape({
                         position: Yup.string().required(formatMessage(validationTranslations.required)),
-                        name: Yup.string().min(5, formatMessage(validationTranslations.min, { min: 5 })),
+                        name: Yup.string().required(formatMessage(validationTranslations.required)),
                         summary: Yup.string()
                             .required(formatMessage(validationTranslations.required))
                             .min(30, formatMessage(validationTranslations.min, { min: 30 })),

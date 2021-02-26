@@ -7,9 +7,7 @@ import { styles } from './profile_card_padded_front_styles';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardPaddedFrontComponent = ({ children, customClasses = {} }) => {
+export const ProfileCardPaddedFront = ({ children, classes: receivedClasses = {} }) => {
     const classes = useStyles();
-    return <div className={cn(classes.container, customClasses.container)}>{children}</div>;
+    return <div className={cn(classes.container, receivedClasses.container)}>{children}</div>;
 };
-
-export const ProfileCardPaddedFront = ProfileCardPaddedFrontComponent;
