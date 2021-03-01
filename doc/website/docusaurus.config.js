@@ -16,7 +16,7 @@ module.exports = {
                 alt: 'WeLoveDevs Logo',
                 src: 'https://welovedevs.com/wp-content/uploads/2019/12/logo-menu-welovedevs-220bad.svg'
             },
-            links: [
+            items: [
                 {
                     href: 'https://welovedevs.com/inspiration',
                     label: 'Blog',
@@ -27,19 +27,6 @@ module.exports = {
         footer: {
             style: 'dark',
             links: [
-                {
-                    title: 'Docs',
-                    items: [
-                        {
-                            label: 'Style Guide',
-                            to: 'docs/doc1'
-                        },
-                        {
-                            label: 'Second Doc',
-                            to: 'docs/doc2'
-                        }
-                    ]
-                },
                 {
                     title: 'Community',
                     items: [
