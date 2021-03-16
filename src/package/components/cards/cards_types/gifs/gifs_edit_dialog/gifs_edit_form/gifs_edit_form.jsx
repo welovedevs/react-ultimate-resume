@@ -76,8 +76,8 @@ const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
     const globalError = typeof errors === 'string' && errors;
 
     const handleGifSelection = useCallback(
-        ({ url, title, user }) => {
-            interestChanged(selectedIndex, 'name', capitalize(title));
+        ({ url, user, query }) => {
+            interestChanged(selectedIndex, 'name', query);
             interestChanged(selectedIndex, 'gifUrl', url);
             interestChanged(selectedIndex, 'gifUser', user);
             removeSelectedIndex();
