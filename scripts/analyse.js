@@ -1,5 +1,8 @@
 process.env.NODE_ENV = 'production';
 
+// for development / debug purpose only
+// run before use : yarn add webpack@4.46.0 webpack-bundle-analyzer chalk progress-bar-webpack-plugin
+
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpackConfigProd = require('react-scripts/config/webpack.config')('production');
