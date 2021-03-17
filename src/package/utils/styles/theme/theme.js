@@ -1,7 +1,7 @@
-import mergeWith from 'lodash/mergeWith';
-import merge from 'lodash/merge';
-import cloneDeep from 'lodash/cloneDeep';
-import isArray from 'lodash/isArray';
+import mergeWith from 'lodash.mergewith';
+import merge from 'lodash.merge';
+import cloneDeep from 'lodash.clonedeep';
+import isArray from 'lodash.isarray';
 import DESIGN_SYSTEM_DEFAULT_PALETTE from '@welovedevs/ui/styles/palettes';
 
 import { THEME_SCHEMA } from './theme_schema';

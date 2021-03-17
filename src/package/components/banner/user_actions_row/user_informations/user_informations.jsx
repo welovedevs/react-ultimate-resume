@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react';
 
 import { createUseStyles } from 'react-jss';
-import { get } from 'lodash';
+import get from 'lodash.get';
 
 import { Typography } from '@welovedevs/ui';
 

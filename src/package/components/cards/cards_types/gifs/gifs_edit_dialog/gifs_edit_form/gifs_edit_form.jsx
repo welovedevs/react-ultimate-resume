@@ -2,10 +2,9 @@ import React, { useCallback, useContext, useMemo, useState } from 'react';
 
 import { createUseStyles, useTheme } from 'react-jss';
 import { useFormikContext } from 'formik';
-import keyBy from 'lodash/keyBy';
-import capitalize from 'lodash/capitalize';
+import keyBy from 'lodash.keyby';
 
-import omit from 'lodash/omit';
+import omit from 'lodash.omit';
 import uuid from 'uuid/v4';
 import { arrayMove } from 'react-sortable-hoc';
 

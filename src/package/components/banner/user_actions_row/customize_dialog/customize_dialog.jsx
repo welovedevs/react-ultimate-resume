@@ -2,8 +2,8 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 
 import { createUseStyles, ThemeProvider, useTheme } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
-import set from 'lodash/set';
-import cloneDeep from 'lodash/cloneDeep';
+import set from 'lodash.set';
+import cloneDeep from 'lodash.clonedeep';
 
 import { Button } from '@welovedevs/ui';
 

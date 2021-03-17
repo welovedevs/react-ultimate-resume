@@ -8,7 +8,7 @@ import { Twemoji } from 'react-emoji-render';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import { useFormikContext } from 'formik';
 import moment from 'moment';
-import keyBy from 'lodash/keyBy';
+import keyBy from 'lodash.keyby';
 import uuid from 'uuid/v4';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';

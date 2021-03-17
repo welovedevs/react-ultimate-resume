@@ -2,7 +2,7 @@ import React, { createContext, memo, useCallback, useState } from 'react';
 
 import { createUseStyles } from 'react-jss';
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
-import cloneDeep from 'lodash/cloneDeep';
+import cloneDeep from 'lodash.clonedeep';
 
 import { List } from '@welovedevs/ui';
 
