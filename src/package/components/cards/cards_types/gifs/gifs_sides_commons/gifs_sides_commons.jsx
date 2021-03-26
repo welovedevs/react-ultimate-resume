@@ -15,8 +15,12 @@ export const GifsSidesCommons = ({ underLayer, children, gifUser, classes: recei
     const classes = useStyles({ classes: receivedClasses });
     return (
         <div className={classes.container}>
-            <div className={classes.underLayerContainer}>{underLayer}</div>
-            <div className={classes.darkenLayer} />
+            {underLayer && (
+                <>
+                    <div className={classes.underLayerContainer}>{underLayer}</div>
+                    <div className={classes.darkenLayer} />
+                </>
+            )}
             <ProfileCardTitle
                 overrideColor="light"
                 classes={{
