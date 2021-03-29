@@ -36,7 +36,11 @@ export const styles = (theme) => {
             }
         },
         detailTypography: {
-            color: ['inherit', '!important']
+            color: ['currentColor', '!important']
+        },
+        salary: {
+            display: 'flex',
+            alignItems: 'center'
         }
     };
 };
