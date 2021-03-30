@@ -73,7 +73,7 @@ const Details = ({ project, index, onDelete, classes }) => {
                 <div className={classes.detail}>
                     <AnimatedUnderlinedButton color={color}>
                         <a className={classes.link} href={link}>
-                            <Typography classes={{ container: classes.salary }} color="primary">
+                            <Typography classes={{ container: classes.salary }} color={color}>
                                 <LinkIcon className={classes.detailIcon} />
                                 <FormattedMessage id="Project.section.link" defaultMessage="Link" />
                             </Typography>
