@@ -1,18 +1,19 @@
 {
     "basics": {
-        "name": "John Doe",
-        "label": "Programmer",
-        "picture": "",
-        "email": "john.doe@mail.com",
-        "phone": "(912) 555-4321",
-        "website": "http://johndoe.com",
-        "summary": "A summary of John Doe...",
+        "name": "Mary Floyd",
+        "label": "Software Developer",
+        "picture": "https://i.imgur.com/Qug1J0g.png",
+        "email": "mkfloyd93@gmail.com",
+        "phone": "(509) 859-5985",
+        "website": "https://mary-floyd.welovedevs.com/",
+        "summary": "I am a software developer who specializes in web development.",
         "location": {
-            "address": "2712 Broadway St",
-            "postalCode": "CA 94115",
-            "city": "San Francisco",
+            "address": "2833 W Crown Ave",
+            "postalCode": "WA 99205",
+            "city": "Spokane, US, US",
             "countryCode": "US",
-            "region": "California"
+            "region": "Washington",
+            "name": "Spokane, US, US"
         },
         "profiles": [
             {
@@ -24,251 +25,231 @@
     },
     "work": [
         {
-            "name": "Samsung Engineering",
-            "position": "3D Cad Engineer",
-            "website": "http://company.com",
-            "startDate": "2014-01-01",
-            "summary": "Description...",
-            "location": "Paris, France",
-            "highlights": ["Started the company"]
+            "index": 0,
+            "id": "e723c18c-21ae-4f2a-8b1b-9180cc4b2a83",
+            "name": "Eastern Washington University",
+            "position": "Tutor and Grader",
+            "place": {
+                "name": "CS Computer Lab"
+            },
+            "startDate": "2014-09-05",
+            "endDate": "2016-06-01",
+            "summary": "As a tutor I would advise students about the classes they were taking when they had questions in the computer lab. I answered questions about assignments and helped guide them to a solution if they were stuck. I also graded Python and Web Development assignments and quizzes. ",
+            "location": "CS Computer Lab",
+            "stillEmployed": false
         },
         {
-            "name": "What a nice office",
-            "position": "President",
-            "website": "http://company.com",
-            "startDate": "2013-01-01",
-            "endDate": "2014-01-01",
-            "summary": "Description...",
-            "location": "Paris, France",
-            "highlights": ["Started the company"]
+            "index": 1,
+            "id": "01e67337-84f5-48e4-a89b-9601f55597b4",
+            "name": "Verint Next IT",
+            "position": "Associate Software Engineer",
+            "place": {
+                "name": "Spokane Valley, WA"
+            },
+            "startDate": "2016-08-05",
+            "endDate": "2017-04-01",
+            "summary": "I worked with javascript and C# to create intelligent virtual assistants. ",
+            "location": "Spokane Valley, WA",
+            "stillEmployed": false
         },
         {
-            "name": "What a nice experience",
-            "position": "Lead dev",
-            "website": "http://company.com",
-            "summary": "Description...",
-            "location": "Paris, France",
-            "highlights": ["Started the company"]
+            "index": 2,
+            "id": "79d01cc9-ffac-4795-9afc-a22279d4655a",
+            "name": "Verint Next IT",
+            "position": "Software Engineer",
+            "place": {
+                "name": "Spokane Valley, WA"
+            },
+            "startDate": "2017-04-05",
+            "summary": "Shortly after I became a full Software Engineer I started organizing our baseline code on top of client intelligent virtual assistant work. I created processes to implement best practices and standards. I managed the backlog and worked on architectural research and refactors. In the last few years I have also taken on mentoring developers.",
+            "location": "Spokane Valley, WA",
+            "stillEmployed": true
         }
     ],
-    "volunteer": [
-        {
-            "organization": "Organization",
-            "position": "Volunteer",
-            "website": "http://organization.com/",
-            "endDate": "2013-01-01",
-            "summary": "Description...",
-            "highlights": ["Awarded 'Volunteer of the Month'"]
-        }
-    ],
+    "volunteer": [],
     "education": [
         {
-            "institution": "ISEN",
-            "area": "Software Development",
-            "studyType": "Engineer Degree",
-            "startDate": "2011-01-01",
-            "endDate": "2013-01-01",
-            "gpa": "4.0",
-            "courses": ["DB1101 - Basic SQL"]
+            "position": 0,
+            "id": "cc73fc8e-c4db-49cd-8257-a467f9078c8e",
+            "institution": "Eastern Washington University",
+            "endDate": "2016-01-01",
+            "studyType": "Bachelors",
+            "area": "Computer Science"
         },
         {
-            "institution": "Université d'artois",
-            "area": "",
-            "studyType": "",
-            "startDate": "2011-01-01",
-            "endDate": "",
-            "gpa": "4.0",
-            "courses": ["DB1101 - Basic SQL"]
+            "position": 1,
+            "id": "b06c0a05-dde7-4971-92fb-5124fbbaa1ca",
+            "institution": "Western Governors University",
+            "endDate": "2020-01-01",
+            "area": "Masters of Business Administration ",
+            "studyType": "1/4 Semesters Complete"
         }
     ],
-    "awards": [
-        {
-            "title": "Award",
-            "date": "2014-11-01",
-            "awarder": "Company",
-            "summary": "There is no spoon."
-        }
-    ],
-    "publications": [
-        {
-            "name": "Publication",
-            "publisher": "Company",
-            "releaseDate": "2014-10-01",
-            "website": "http://publication.com",
-            "summary": "Description..."
-        }
-    ],
+    "awards": [],
+    "publications": [],
     "skills": [
         {
             "name": "React",
             "level": "Master",
-            "value": 100,
-            "keywords": ["HTML", "CSS", "Javascript"]
+            "value": 79,
+            "keywords": [
+                "HTML",
+                "CSS",
+                "Javascript"
+            ],
+            "index": 0,
+            "id": "bd6451a1-e480-4a17-9e2f-358cdaaa3b35"
         },
         {
-            "name": "Angular",
-            "level": "Master",
-            "value": 80,
-            "keywords": ["HTML", "CSS", "Javascript"]
+            "name": "Typescript",
+            "index": 1,
+            "value": 74,
+            "id": "0ce132e7-00d1-4c38-a192-34fae7dbd3ea"
         },
         {
-            "name": "NodeJS",
-            "level": "Master",
-            "value": 40,
-            "keywords": ["HTML", "CSS", "Javascript"]
+            "name": "C#",
+            "index": 2,
+            "value": 38,
+            "id": "ba863218-7abf-436d-ae92-42c500d7cfbc"
         },
         {
-            "name": "Firebase",
-            "level": "Master",
-            "value": 60,
-            "keywords": ["HTML", "CSS", "Javascript"]
+            "name": "Javascript",
+            "index": 3,
+            "value": 87,
+            "id": "f6ba051b-56d3-4de8-825d-69aca83ed4f4"
         },
         {
-            "name": "Gmail",
-            "level": "Master",
-            "value": 20,
-            "keywords": ["HTML", "CSS", "Javascript"]
+            "name": "Git",
+            "index": 4,
+            "value": 52,
+            "id": "1c2c431e-865d-4440-8ca3-c0e63b2a2fd6"
         },
         {
-            "name": "K8S",
-            "level": "Master",
-            "value": 80,
-            "keywords": ["HTML", "CSS", "Javascript"]
+            "name": "VIM",
+            "index": 5,
+            "value": 44,
+            "id": "ce72aafe-dea3-4970-8f1c-abbc5fa01a2c"
         }
     ],
-    "languages": [{ "language": "English", "value": 100, "fluency": "Native speaker" }, { "language": "Italien", "value": 15, "fluency": "Native speaker" } ],
+    "languages": [
+        {
+            "language": "English",
+            "value": 100,
+            "fluency": "Native speaker",
+            "id": "621ce7ad-e7a8-444b-8cc9-64516f4691bb",
+            "index": 0
+        },
+        {
+            "index": 1,
+            "id": "8d3eeabc-d5a9-4e03-a505-a7390a9beeb8",
+            "language": "Japanese",
+            "value": 6
+        }
+    ],
     "interests": [
         {
-            "name": "France europe gif by nike football",
-            "gifUrl": "https://media1.giphy.com/media/3oD3YooLLYg0AfOPdK/giphy-downsized.gif?cid=f7fb5bbaegu1ofs48lty41dyowqsfo0wq9qq8h4czot7rwm1&rid=giphy-downsized.gif",
+            "name": "Cross Stitch",
+            "gifUrl": "https://thumbs.gfycat.com/HandyIdenticalAmericangoldfinch-small.gif",
+            "id": "4d20ad8e-2a97-4f26-aa44-f4c219d20a9d",
+            "index": 0
+        },
+        {
+            "name": "Books",
+            "gifUrl": "https://media.giphy.com/media/JEhCPFfqi2Hy8/giphy.gif",
+            "id": "10d807b8-5243-43e7-bb58-efbd2be06930",
+            "index": 1
+        },
+        {
+            "name": "Dance",
+            "gifUrl": "https://media.giphy.com/media/l1KsNVHsBWa7TetEY/giphy.gif",
+            "id": "f1c35872-6d7b-4aae-82b8-8b1e011118b2",
+            "index": 2
+        },
+        {
+            "name": "Knitting",
+            "gifUrl": "https://media.giphy.com/media/1463o17ejELYqs/giphy.gif",
             "id": "afa5739f-f868-464e-a1aa-18f5a3ff4e2b",
             "gifUser": {
                 "name": "Nike Football",
                 "profileUrl": "https://giphy.com/nikefootball/",
                 "isVerified": true,
                 "profileAvatarUrl": "https://media1.giphy.com/avatars/nikefootball/vPyZcrShcXY8.jpg"
-            }
-        },
-        {
-            "name": "Burritos",
-            "gifUrl": "https://media.giphy.com/media/d8WjGORtSEWqc/giphy.gif"
-        },
-
-        {
-            "name": "Tendresse",
-            "gifUrl": "https://media.giphy.com/media/EehnUUCH2JcwU/giphy.gif"
-        },
-        {
-            "name": "Something",
-            "gifUrl": "https://media.giphy.com/media/xTiTnIuKP1BLsMTerS/giphy.gif"
-        },
-        {
-            "name": "J'aime faire de la course à pied et des randonnées en famille le weekend."
+            },
+            "index": 3
         }
     ],
-    "references": [{ "name": "Jane Doe", "reference": "Reference..." }],
+    "references": [
+        {
+            "name": "Ryan Laws",
+            "reference": ""
+        },
+        {
+            "name": "Luke Smith",
+            "reference": ""
+        },
+        {
+            "name": "Scott O'Connor",
+            "reference": ""
+        }
+    ],
     "projects": [
         {
-            "index": 5,
-            "date": { "month": 11, "year": 2019 },
-            "description": "Moteur de recherche via le nom de films réalisée avec ReactJs:\nRequête à l'Api rest avec Fetch, utilisation des hooks.\n",
-            "id": "7f1f4257-e5db-477d-aa5f-ababe0ab0b12",
-            "images": [{ "url": "https://cdn.filestackcontent.com/aBOkTTkCQ66VOHUy0q8L" }],
-            "link": "https://lovely-movie.netlify.app/",
-            "name": "Lovely Movie",
-            "endDate": "2019-12-01"
-        },
-        {
-            "index": 2,
-            "date": { "month": 0, "year": 2020 },
-            "description": "Application de gestion de tâches réalisée avec ReactJs / Redux / Firebase :\nCréation de composants avec Styled Components, gestions de formulaires et validation des entrées, création d'une authentification, récupération / création / modification / suppression de tâches.",
-            "id": "af4181b1-8955-47fb-8dd9-17c6974335d3",
-            "images": [{ "url": "https://cdn.filestackcontent.com/G2CckiqvScC9tsrvHYg4" }],
-            "link": "https://diary-todo.netlify.app/",
-            "name": "Journal d'une Todo",
-            "endDate": "2020-01-01"
-        },
-        {
-            "index": 4,
-            "date": { "month": 5, "year": 2020 },
-            "description": "Blog réalisé en Java JEE et Spring, avec création d'une base de données MySQL et connectée avec JDBC.",
-            "id": "af8c78c3-f7c6-4f3b-9c32-9d37a9032e14",
-            "images": [{ "url": "https://cdn.filestackcontent.com/rPp0wj4S2GhTr0qTcqOI" }],
-            "link": "https://btz-java-2003-pjt1-blog.javarover.wilders.dev/",
-            "name": "Charlie's Angels blog",
-            "endDate": "2020-06-01"
-        },
-        {
-            "index": 3,
-            "date": { "month": 5, "year": 2020 },
-            "description": "** Pensée uniquement pour téléphone **\nApplication permettant de connaître la météo actuelle d'une ville. Réalisée afin de découvrir VueJs.",
-            "id": "c64e6ca1-6300-4d7f-a305-8cfb7c99a9e6",
-            "images": [{ "url": "https://cdn.filestackcontent.com/w5oskUihSiYCxekOn9Ba" }],
-            "link": "https://appli-meteo.netlify.app/",
-            "name": "Application Météo",
-            "endDate": "2020-06-01"
-        },
-        {
-            "index": 1,
-            "date": { "month": 7, "year": 2020 },
-            "description": "Premières armes avec Angular et Typescript :\nMise en place d'un environnement Angular, développement d'une authentification avec Firebase, gestion des formulaires, utilisation d'observable avec RxJs.\n",
-            "id": "d9f7ca32-a40a-418e-affb-317bfb4f520e",
-            "images": [{ "url": "https://cdn.filestackcontent.com/NVOhKNFQR9OQ3jtkIyHi" }],
-            "link": "https://my-connected-library.netlify.app/",
-            "name": "Librairie Connectée",
-            "endDate": "2020-08-01"
-        },
-        {
-            "index": 6,
-            "date": { "month": 4, "year": 2019 },
-            "description": "Moteur de recherche basé sur le jeu World of Warcraft, premiers pas avec ReatJs.\nRequête à l'API Raider.io avec Axios.",
-            "id": "dbe2a8d9-dd9d-443d-8ae4-7a8e0b7939f5",
-            "images": [{ "url": "https://cdn.filestackcontent.com/FSysoX0ATvqy2BFvLF21" }],
-            "link": "https://wow-search-engine.netlify.app/",
-            "name": "WoW Search",
-            "endDate": "2019-05-01"
-        },
-        {
-            "index": 0,
-            "date": { "month": 6, "year": 2020 },
-            "description": "Application réalisée en 24h (challenge de formation) avec Java JEE et Spring:\nGestion d’un CRUD, création d'une API Rest, ajout d'un environnement de production avec une base de données PostgreSQL hébergée sur Heroku.",
-            "id": "ffb8a4f2-24e6-44ef-bbe7-0593b86d40be",
-            "images": [{ "url": "https://cdn.filestackcontent.com/7XpHKtFTC2VynppurrK5" }],
-            "link": "https://your-todos-list.herokuapp.com/",
-            "name": "Your Todo List",
-            "endDate": "2020-07-01"
+            "name": "Task Management System",
+            "description": "TODO: Create a task management system that I have yet to build so no details fjkdslajfkdljsakdfsadfdsgf",
+            "date": "2021-04-05T23:58:12.101Z",
+            "id": "d4b6f2c0-e489-4ac7-9e90-c160df3974ac",
+            "endDate": "2021-04-05"
         }
     ],
     "specific": {
         "basics": {
-            "visaSponsorship": true,
-            "personalDescription": "This is a longer description of me, of my backstory, my backyard, my backfire, my backend, my frontend and my friends."
+            "visaSponsorship": false,
+            "personalDescription": "Hi! My name is Mary and I enjoy creating web applications.  I currently work at Verint Next IT where I build intelligent virtual assistants. In college my favorite languages were java and C# but my first job has been mostly web based. It took some time to find my groove with javascript but I learned to love it, and after learning typescript I am completely hooked. I like to think that I have a keen eye for design which comes in handy with the visual aspects of web development."
         },
         "dreamJob": {
             "locations": [
-                { "name": "Valenciennes, France" },
-                { "name": "Lille, France" },
-                { "name": "Paris,France" }
+                {
+                    "name": "Valenciennes, France",
+                    "id": "0ed02e9f-506c-4264-81a9-a2d758c7e499"
+                },
+                {
+                    "name": "Paris,France",
+                    "id": "2768f0f3-0719-4b85-8f33-346c8a5f4850"
+                }
             ],
-            "remoteFrequency": "regularly"
+            "remoteFrequency": "fullTime",
+            "perks": {
+                "salary": true,
+                "perks": true,
+                "challenge": true,
+                "mood": true,
+                "training": true,
+                "others": "Work life balance"
+            }
         },
         "currentJob": {
-            "issues": { "boring_management": true, "boring_team": true }
+            "issues": {
+                "boring_management": true
+            }
         },
-        "education": { "studiesLevel": 5 },
+        "education": {
+            "studiesLevel": 4
+        },
         "work": {
-            "contractTypes": ["permanent"],
-            "codingYears": 7,
-            "codingReason": "J'ai commencé à coder sur Amstrad dans ma cave et je n'ai jamais arrêté depuis",
-            "searchState": "activelySearching",
+            "contractTypes": [
+                "permanent"
+            ],
+            "codingYears": 7.5,
+            "codingReason": "I enjoy problem solu",
+            "searchState": "openOpportunities",
             "experienceYears": 0,
-            "codeExperienceYears": 1,
-            "otherExperienceYears": 1
+            "codeExperienceYears": 4.5,
+            "otherExperienceYears": 0
         },
         "sound": {
-            "embedUrl": "https://open.spotify.com/embed/playlist/37i9dQZF1DWWl7MndYYxge"
+            "embedUrl": "https://open.spotify.com/embed/playlist/72nEuRkD8uhVpvyu6UReDX?si=wbHotH5hR8eYBtkP9opHXw"
         },
-        "interestedBy": "Angular, la blochain et les chatons."
+        "interestedBy": "Angular, Vue, and Go."
     },
     "resumeCustomization": {
         "imageHeader": {
@@ -276,20 +257,93 @@
             "alt": "Default Banner"
         },
         "cardsOrder": [
-            { "type": "basics", "variant": 4 },
-            { "type": "projects", "variant": 4 },
-            { "type": "skills", "variant": 0 },
-            { "type": "dreamjob", "variant": 4 },
-            { "type": "experiences", "variant": 4 },
-            { "type": "studies", "variant": 4 },
-            { "type": "gifs", "variant": 0 },
-            { "type": "interestedBy", "variant": 3 },
-            { "type": "language", "variant": 4 },
-            { "type": "soundtrack", "variant": 4 }
+            {
+                "type": "basics",
+                "variant": 4
+            },
+            {
+                "type": "projects",
+                "variant": 4
+            },
+            {
+                "type": "skills",
+                "variant": 0
+            },
+            {
+                "type": "dreamjob",
+                "variant": 4
+            },
+            {
+                "type": "experiences",
+                "variant": 4
+            },
+            {
+                "type": "studies",
+                "variant": 4
+            },
+            {
+                "type": "gifs",
+                "variant": 0
+            },
+            {
+                "type": "interestedBy",
+                "variant": 3
+            },
+            {
+                "type": "language",
+                "variant": 4
+            },
+            {
+                "type": "soundtrack",
+                "variant": 4
+            }
         ],
         "fields": {
             "work": {
                 "customDateFormat": "YYYY"
+            }
+        },
+        "theme": {
+            "palette": {
+                "primary": {
+                    "50": "#f8fbfb",
+                    "100": "#f1f7f7",
+                    "200": "#e3eff0",
+                    "300": "#d5e7e8",
+                    "400": "#c7dfe1",
+                    "500": "#b9d7d9",
+                    "600": "#94acae",
+                    "700": "#6f8182",
+                    "800": "#4a5657",
+                    "900": "#252b2b",
+                    "contrastDefaultColor": "light"
+                },
+                "secondary": {
+                    "50": "#f0f3f3",
+                    "100": "#e0e6e6",
+                    "200": "#c2cdce",
+                    "300": "#a3b4b5",
+                    "400": "#859b9d",
+                    "500": "#668284",
+                    "600": "#52686a",
+                    "700": "#3d4e4f",
+                    "800": "#293435",
+                    "900": "#141a1a",
+                    "contrastDefaultColor": "light"
+                },
+                "tertiary": {
+                    "50": "#eaeaea",
+                    "100": "#d4d4d4",
+                    "200": "#aaa9a9",
+                    "300": "#7f7e7f",
+                    "400": "#555354",
+                    "500": "#2a2829",
+                    "600": "#222021",
+                    "700": "#191819",
+                    "800": "#111010",
+                    "900": "#080808",
+                    "contrastDefaultColor": "light"
+                }
             }
         }
     }
