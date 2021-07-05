@@ -1,31 +1,36 @@
 import { withCustomVerticalScrollbar } from '../../../../utils/styles/styles_utils';
 
-export const styles = (theme) => {
-    const {
-        palette,
-        miscellaneous: { spacing }
-    } = theme;
-    return {
+import { createStyles, Theme } from '@material-ui/core/styles';
+import { danger, dark } from '@welovedevs/ui/styles';
+
+type StylesKeys = '';
+
+export type Classes = {
+    [key in StylesKeys]?: string;
+};
+
+export const styles = ({ spacing }: Theme) =>
+    createStyles({
         container: {
-            paddingRight: spacing * 6,
+            paddingRight: spacing(6),
             height: '100%',
             overflowY: 'auto',
-            ...withCustomVerticalScrollbar()
+            ...(withCustomVerticalScrollbar() as any)
         },
         listItem: {
             display: 'flex',
             alignItems: 'center',
             width: '100%',
             padding: 0,
-            margin: [spacing * 4, 0],
+            margin: spacing(4, 0),
             position: 'relative',
             zIndex: 1400
         },
         logo: {
             width: 50,
             height: 50,
-            padding: spacing * 1,
-            margin: [0, spacing * 3, 0, spacing]
+            padding: spacing(1),
+            margin: spacing(0, 3, 0)
         },
         logoImage: {
             width: '100%',
@@ -44,22 +49,22 @@ export const styles = (theme) => {
             padding: 8
         },
         divider: {
-            margin: [0, spacing * 2],
+            margin: spacing(0, 2),
             height: 50,
             width: 1,
-            backgroundColor: palette.dark[50]
+            backgroundColor: dark[50]
         },
         removeButton: {
             display: 'flex'
         },
         removeIcon: {
-            fill: palette.danger[500]
+            fill: danger[500]
         },
         textWrapper: {
             flex: 1
         },
         trash: {
-            fill: theme.palette.danger[500],
+            fill: danger[500],
             width: 24,
             height: 24
         },
@@ -69,8 +74,8 @@ export const styles = (theme) => {
             marginTop: spacing
         },
         sliderValue: {
-            marginRight: spacing * 2,
-            width: spacing * 5,
+            marginRight: spacing(2),
+            width: spacing(5),
             marginBottom: 0
         },
         slider: {
@@ -83,7 +88,6 @@ export const styles = (theme) => {
             fontWeight: 500
         },
         sortableHelper: {
-            zIndex: [1301, '!important']
+            zIndex: '1301 !important' as any
         }
-    };
-};
+    });

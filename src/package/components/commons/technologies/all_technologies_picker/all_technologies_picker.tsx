@@ -1,7 +1,4 @@
 import React, { useCallback, useMemo, useState } from 'react';
-
-import cn from 'classnames';
-import { createUseStyles, useTheme } from 'react-jss';
 import { useDebounce } from 'use-debounce';
 import { FormattedMessage } from 'react-intl';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -9,22 +6,34 @@ import { AnimatePresence, motion } from 'framer-motion';
 import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
 import { Card, TextField, Typography } from '@welovedevs/ui';
 
-import { useTechnologies } from '../../../hooks/technologies/use_technologies';
-
 import {
     ALL_TECHNOLOGIES_TRANSITIONS_PROPS,
-    SELECTED_ITEM_LAYER_TRANSITIONS_PROPS,
-    TECHNOLOGIES_CONTAINER_TRANSITION_PROPS
+    SELECTED_ITEM_LAYER_TRANSITIONS_PROPS
 } from './all_technologies_picker_props';
 
 import { CheckboxField } from '../../checkbox_field/checkbox_group';
 
-import { styles } from './all_technologies_picker_styles';
+import { Classes, styles } from './all_technologies_picker_styles';
 import { DEFAULT_SPRING_TYPE as spring } from '../../../../utils/framer_motion/common_types/spring_type';
+import { last } from '../../../../utils/array_utils';
+import { DevTechnology, Technology } from '../technologies/technology';
+import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
-const TechnologyItem = ({ item, classes, selectedItems = [], onAdd, onDelete }) => {
+const TechnologyItem = ({
+    item,
+    selectedItems = [],
+    onAdd,
+    onDelete
+}: {
+    selectedItems: Array<DevTechnology>;
+    item: Technology;
+    onAdd: (name: string) => void;
+    onDelete: (id: string) => void;
+}) => {
+    const classes = useStyles();
+
     const selectedItem = useMemo(() => selectedItems.find(({ name }) => name === item.name), [selectedItems, item]);
 
     const onClick = useCallback(() => {
@@ -36,10 +45,8 @@ const TechnologyItem = ({ item, classes, selectedItems = [], onAdd, onDelete }) 
     }, [selectedItem, onAdd, onDelete]);
 
     const imgUrl = useMemo(() => {
-        if (item.handle) {
-            return `https://process.filestackapi.com/${item.handle}`;
-        }
-        return item.url;
+        const handle = last(item?.url?.split('/'));
+        return `https://process.filestackapi.com/auto_image/${item?.handle ?? handle ?? '4A5N89okRPW50jRcmkuM'}`;
     }, [item]);
 
     return (
@@ -79,14 +86,26 @@ const TechnologyItem = ({ item, classes, selectedItems = [], onAdd, onDelete }) 
     );
 };
 
-const AllTechnologiesPickerComponent = ({ selectedItems, onAdd, onDelete, classes: receivedClasses = {} }) => {
-    const theme = useTheme();
-    const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
-    const classes = useStyles();
-    const [onlySelected, setOnlySelected] = useState();
+interface Props {
+    technologies: DevTechnology[];
+    onDelete: (id: string) => void;
+    classes?: Classes;
+    onAdd: (name: string) => void;
+    selectedItems: Array<DevTechnology>;
+}
 
-    const { technologies } = useTechnologies();
-    const [query, setQuery] = useState('');
+export const AllTechnologiesPicker = ({
+    technologies,
+    selectedItems,
+    onAdd,
+    onDelete,
+    classes: receivedClasses = {}
+}: Props) => {
+    const isMobile = useMediaQuery(`(max-width: 500px)`);
+    const classes = useStyles({ classes: receivedClasses });
+    const [onlySelected, setOnlySelected] = useState<boolean>();
+
+    const [query, setQuery] = useState<string>('');
     const [debouncedQuery] = useDebounce(query, 200);
 
     const displayedItems = useMemo(
@@ -100,8 +119,7 @@ const AllTechnologiesPickerComponent = ({ selectedItems, onAdd, onDelete, classe
                 })
                 .filter(({ name, tags }) =>
                     [...(tags ?? []), name].some((value) => value.toLowerCase().includes(debouncedQuery.toLowerCase()))
-                )
-                .slice(0, 35),
+                ),
         [technologies, debouncedQuery, onlySelected]
     );
 
@@ -112,13 +130,13 @@ const AllTechnologiesPickerComponent = ({ selectedItems, onAdd, onDelete, classe
     }, [onlySelected]);
 
     return (
-        <div className={cn(classes.container, receivedClasses.container)}>
+        <div className={classes.container}>
             <TextField
                 classes={{
                     container: classes.textField
                 }}
                 fullWidth={isMobile}
-                variant="outlined"
+                variant="flat"
                 value={query}
                 onChange={handleTextFieldChange}
                 placeholder="Mobile, Javascript, etc..."
@@ -136,31 +154,19 @@ const AllTechnologiesPickerComponent = ({ selectedItems, onAdd, onDelete, classe
                     color="secondary"
                 />
             )}
-            <AnimatePresence>
-                <motion.div
-                    variants={TECHNOLOGIES_CONTAINER_TRANSITION_PROPS}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={spring}
-                    className={cn(classes.technologiesList, receivedClasses.technologiesList)}
-                >
-                    {displayedItems.map((item, index) => (
-                        <motion.div key={`technology_${item?.name}`} variants={ALL_TECHNOLOGIES_TRANSITIONS_PROPS}>
-                            <TechnologyItem
-                                key={`technology_${item.name}_${index}`}
-                                selectedItems={selectedItems}
-                                item={item}
-                                onAdd={onAdd}
-                                onDelete={onDelete}
-                                classes={classes}
-                            />
-                        </motion.div>
-                    ))}
-                </motion.div>
-            </AnimatePresence>
+            <div className={classes.technologiesList}>
+                {displayedItems.map((item, index) => (
+                    <motion.div key={`technology_${item?.name}`} variants={ALL_TECHNOLOGIES_TRANSITIONS_PROPS}>
+                        <TechnologyItem
+                            key={`technology_${item.name}_${index}`}
+                            selectedItems={selectedItems}
+                            item={item}
+                            onAdd={onAdd}
+                            onDelete={onDelete}
+                        />
+                    </motion.div>
+                ))}
+            </div>
         </div>
     );
 };
-
-export const AllTechnologiesPicker = AllTechnologiesPickerComponent;

@@ -11,10 +11,10 @@ const useStyles = createUseStyles(checkboxStyles);
 
 export const CheckboxField = ({
     title,
-    value,
+    value = null,
     checked,
-    name,
-    onChange,
+    name = null,
+    onChange = null,
     color = 'primary',
     variant = 'raised',
     onClick,

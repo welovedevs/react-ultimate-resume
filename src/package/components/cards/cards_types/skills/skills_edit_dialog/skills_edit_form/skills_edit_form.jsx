@@ -6,20 +6,17 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Typography } from '@welovedevs/ui';
 import uuid from 'uuid/v4';
 
-import { AllTechnologiesPicker } from '../../../../../commons/technologies/all_technologies_picker/all_technologies_picker';
-
-import { SelectedTechnologies } from '../../../../../commons/technologies/selected_technologies/selected_technologies';
-
 import { styles } from './skills_edit_form_styles';
-
-const useStyles = createUseStyles(styles);
+import { TechnologiesPicker } from '../../../../../commons/technologies/technologies_picker';
+import { useTechnologies } from '../../../../../hooks/technologies/use_technologies';
 
 const SkillsEditFormComponent = ({ helpers: { handleValueChange } }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
 
-    const classes = useStyles();
     const { values, errors: validationErrors } = useFormikContext();
+
+    const { technologies } = useTechnologies();
 
     const { skills: errors } = validationErrors;
     const addItem = useCallback(
@@ -43,36 +40,22 @@ const SkillsEditFormComponent = ({ helpers: { handleValueChange } }) => {
     const onItemChange = useCallback((item) => handleValueChange(`skills[${item.index}]`)(item), []);
 
     return (
-        <div className={classes.container}>
-            <div className={classes.allTechnologies}>
-                {errors && (
-                    <Typography color="danger" component="p">
-                        {errors}
-                    </Typography>
-                )}
-                <AllTechnologiesPicker
-                    selectedItems={values.skills}
-                    onAdd={addItem}
-                    onDelete={deleteItem}
-                    classes={{
-                        container: classes.allTechnologies,
-                        technologiesList: classes.technologiesList
-                    }}
-                />
-            </div>
-            {!isMobile && <div className={classes.divider} />}
-            {!isMobile && (
-                <div className={classes.column}>
-                    <SelectedTechnologies
-                        className={classes.selectedTechnologies}
-                        items={values.skills}
-                        onDelete={deleteItem}
-                        onChange={onArrayChange}
-                        onItemChange={onItemChange}
-                    />
-                </div>
+        <>
+            {errors && (
+                <Typography color="danger" component="p">
+                    {errors}
+                </Typography>
             )}
-        </div>
+            <TechnologiesPicker
+                technologies={technologies}
+                selectedValues={values.skills}
+                onAddItem={addItem}
+                onArrayChange={onArrayChange}
+                onArrayItemChange={onItemChange}
+                onDeleteItem={deleteItem}
+                isMobile={isMobile}
+            />
+        </>
     );
 };
 
