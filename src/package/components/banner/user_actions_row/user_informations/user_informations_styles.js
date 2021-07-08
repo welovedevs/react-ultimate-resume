@@ -17,7 +17,9 @@ export const styles = (theme) => {
             }
         },
         text: {
-            color: '#fff'
+            color: '#fff',
+            display:'flex',
+            alignItems:'center'
         },
         name: {
             extend: 'text',
