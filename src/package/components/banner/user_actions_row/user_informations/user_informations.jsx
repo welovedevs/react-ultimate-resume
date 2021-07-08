@@ -22,6 +22,7 @@ const useStyles = createUseStyles(styles);
 export const UserInformations = () => {
     const { data } = useContext(DeveloperProfileContext);
     const [additionalNodes] = useAdditionalNodes('banner.userInformations', null);
+    const [afterName] = useAdditionalNodes('banner.name.after', null);
     const [isEditing] = useIsEditing();
     const [showContactInformations] = useOptions('showContactInfos', false);
     const contactInformations = useMemo(
@@ -53,6 +54,7 @@ export const UserInformations = () => {
                     component="h3"
                 >
                     {data.basics?.name}
+                    {afterName}
                 </Typography>
                 <Typography
                     classes={{
