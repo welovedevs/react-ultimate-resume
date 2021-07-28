@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 import cn from 'classnames';
 import { createUseStyles, useTheme } from 'react-jss';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Tooltip } from '@welovedevs/ui';
 import { useMediaQuery } from '@material-ui/core';
@@ -16,6 +16,24 @@ import { styles } from './footer_styles';
 
 const useStyles = createUseStyles(styles);
 
+const Backlinks = () => {
+    const classes = useStyles();
+
+    const { locale } = useIntl();
+    return (
+        <div className={classes.backlinksContainer}>
+            <a href={`https://welovedevs.com/app/${locale === 'fr' ? 'fr/' : ''}jobs`}>
+                <FormattedMessage id="Footer.backlinks.jobs" defaultMessage="See developer jobs" />
+            </a>
+            <a href={`https://welovedevs.com/app/${locale === 'fr' ? 'fr/' : ''}tests`}>
+                <FormattedMessage id="Footer.backlinks.test" defaultMessage="Train on developers tests" />
+            </a>
+            <a href={`https://welovedevs.com/fr/salaires/`}>
+                <FormattedMessage id="Footer.backlinks.salaries" defaultMessage="How much does a developer earns?" />
+            </a>
+        </div>
+    );
+};
 const FooterComponent = () => {
     const classes = useStyles();
     const { screenSizes } = useTheme();
@@ -28,58 +46,57 @@ const FooterComponent = () => {
     if (useSmallLayout) {
         return (
             <div className={cn(classes.container, useSmallLayout && classes.smallLayoutContainer)}>
-                <div className={classes.wldLogoGithubLogoContainer}>
-                    <a
-                        className={classes.logoLink}
-                        href="https://welovedevs.com"
-                        target="_blank"
-                        rel="noreferrer noopener"
-                    >
-                        <Logo className={classes.logo} />
-                    </a>
-                    <Tooltip
-                        title={
-                            <FormattedMessage
-                                id="Footer.github.tooltip"
-                                defaultMessage="Create your own developer profile!"
-                            />
-                        }
-                    >
+                <div className={classes.logosContainer}>
+                    <div className={classes.wldLogoGithubLogoContainer}>
                         <a
-                            className={classes.githubLink}
-                            href="https://github.com/welovedevs/developer-profile"
-                            target="_bank"
-                            rel="noreferer noopener"
+                            className={classes.logoLink}
+                            href="https://welovedevs.com"
+                            target="_blank"
+                            rel="noreferrer noopener"
                         >
-                            <GithubLogo className={classes.githubLogo} />
+                            <Logo className={classes.logo} />
                         </a>
-                    </Tooltip>
+                        <Tooltip
+                            title={<FormattedMessage id="Footer.github.tooltip" defaultMessage="Fork me on GitHub !" />}
+                        >
+                            <a
+                                className={classes.githubLink}
+                                href="https://github.com/welovedevs/developer-profile"
+                                target="_bank"
+                                rel="noreferer noopener"
+                            >
+                                <GithubLogo className={classes.githubLogo} />
+                            </a>
+                        </Tooltip>
+                    </div>
+                    <ShareLinks useSmallLayout />
                 </div>
-                <ShareLinks useSmallLayout />
+                <Backlinks />
             </div>
         );
     }
 
     return (
         <div className={classes.container}>
-            <a className={classes.logoLink} href="https://welovedevs.com" target="_blank" rel="noreferrer noopener">
-                <Logo className={classes.logo} />
-            </a>
-            <ShareLinks />
-            <Tooltip
-                title={
-                    <FormattedMessage id="Footer.github.tooltip" defaultMessage="Create your own developer profile!" />
-                }
-            >
-                <a
-                    className={classes.githubLink}
-                    href="https://github.com/welovedevs/developer-profile"
-                    target="_bank"
-                    rel="noreferer noopener"
-                >
-                    <GithubLogo className={classes.githubLogo} />
+            <div className={classes.logosContainer}>
+                <a className={classes.logoLink} href="https://welovedevs.com" target="_blank" rel="noreferrer noopener">
+                    <Logo className={classes.logo} />
                 </a>
-            </Tooltip>
+                <div className={classes.linksContainer}>
+                    <ShareLinks />
+                    <Backlinks />
+                </div>
+                <Tooltip title={<FormattedMessage id="Footer.github.tooltip" defaultMessage="Fork me on GitHub !" />}>
+                    <a
+                        className={classes.githubLink}
+                        href="https://github.com/welovedevs/developer-profile"
+                        target="_bank"
+                        rel="noreferer noopener"
+                    >
+                        <GithubLogo className={classes.githubLogo} />
+                    </a>
+                </Tooltip>
+            </div>
         </div>
     );
 };

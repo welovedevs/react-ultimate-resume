@@ -18,14 +18,8 @@ export const styles = (theme) => {
             backgroundColor: getHexFromPaletteColor(theme, 'primary'),
             color: palette.light[900],
             padding: [spacing * 3, spacing * 4],
-            display: 'flex',
-            alignItems: 'center',
-            flexWrap: 'wrap',
             justifyContent: 'space-between',
-            marginTop: spacing * 10,
-            [QUERY_BETWEEN_SMALL_EXTRA_SMALL]: {
-                flexDirection: 'column'
-            }
+            marginTop: spacing * 10
         },
         logoLink: {
             display: 'flex'
@@ -55,6 +49,40 @@ export const styles = (theme) => {
             [QUERY_BETWEEN_SMALL_EXTRA_SMALL]: {
                 width: '100%',
                 marginBottom: spacing * 4
+            }
+        },
+        logosContainer: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            [QUERY_BETWEEN_SMALL_EXTRA_SMALL]: {
+                flexDirection: 'column'
+            }
+        },
+        linksContainer: {
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column'
+        },
+        backlinksContainer: {
+            padding: spacing * 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            textDecoration: 'underline',
+            marginTop: spacing * 2,
+            '& a': {
+                margin: [0, spacing * 2]
+            }
+        },
+        [QUERY_BETWEEN_SMALL_EXTRA_SMALL]: {
+            backlinksContainer: {
+                flexDirection: 'column',
+                alignItems: 'center',
+                '& a': {
+                    marginBottom: spacing * 2
+                }
             }
         }
     };
