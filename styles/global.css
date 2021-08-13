@@ -1,10 +1,12 @@
+/*  imported from global.css  */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html,
 body,
-#root {
+#global__root___2tQpj {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -12,7 +14,7 @@ body,
 }
 
 body {
-    animation: fade-in 1s ease;
+    animation: global__fade-in___g8bjJ 1s ease;
     scroll-behavior: smooth;
     overflow-x: hidden;
 }

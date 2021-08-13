@@ -1,102 +1,84 @@
 import React, { memo } from 'react';
 
-import cn from 'classnames';
-import { createUseStyles, useTheme } from 'react-jss';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 
-import { Tooltip } from '@welovedevs/ui';
-import { useMediaQuery } from '@material-ui/core';
+import { ReactComponent as LongLogo } from '../../assets/icons/brands/welovedevs_long.svg';
+import { ReactComponent as YoutubeLogo } from '../../assets/icons/brands/social/Icon__Youtube.svg';
+import { ReactComponent as LinkedInLogo } from '../../assets/icons/brands/social/Icon__Linkedin.svg';
+import { ReactComponent as TwitchLogo } from '../../assets/icons/brands/social/Icon__Twitch.svg';
+import { ReactComponent as DiscordLogo } from '../../assets/icons/brands/social/Icon__Discord.svg';
 
-import { ShareLinks } from './share_links/share_links';
+import { footerTranslations } from './footer_translations';
+// import { ReactComponent as FacebookLogo } from '../../assets/icons/brands/social/Icon__Facebook.svg';
+// import { ReactComponent as InstagramLogo } from '../../assets/icons/brands/social/Icon__Instagram.svg';
+// import { ReactComponent as GithubLogo } from '../../assets/icons/brands/social/Icon__Github.svg';
+import { ReactComponent as TwitterLogo } from '../../assets/icons/brands/social/Icon__Twitter.svg';
+import { useTheme } from 'react-jss';
+import { getHexFromPaletteColor } from '../../utils/styles/styles_utils';
 
-import { ReactComponent as Logo } from '../../assets/icons/brands/welovedevs.svg';
-import { ReactComponent as GithubLogo } from '../../assets/icons/brands/github.svg';
-
-import { styles } from './footer_styles';
-
-const useStyles = createUseStyles(styles);
-
-const Backlinks = () => {
-    const classes = useStyles();
-
-    const { locale } = useIntl();
-    return (
-        <div className={classes.backlinksContainer}>
-            <a href={`https://welovedevs.com/app/${locale === 'fr' ? 'fr/' : ''}jobs`}>
-                <FormattedMessage id="Footer.backlinks.jobs" defaultMessage="See developer jobs" />
-            </a>
-            <a href={`https://welovedevs.com/app/${locale === 'fr' ? 'fr/' : ''}tests`}>
-                <FormattedMessage id="Footer.backlinks.test" defaultMessage="Train on developers tests" />
-            </a>
-            <a href={`https://welovedevs.com/fr/salaires/`}>
-                <FormattedMessage id="Footer.backlinks.salaries" defaultMessage="How much does a developer earns?" />
-            </a>
-        </div>
-    );
+const footer = {
+    developer: ['createProfile', 'seeJobOffers', 'technicalTests', 'joinCommunity', 'training'],
+    recruiter: ['hireDeveloper', 'postJobOffers', 'createCompanyPage', 'testMyCandidates', 'recruiterTraining'],
+    more: ['blog', 'salaries', 'openSource', 'privacy']
 };
+
 const FooterComponent = () => {
-    const classes = useStyles();
-    const { screenSizes } = useTheme();
-
-    const useSmallLayout = useMediaQuery(
-        `(max-width: ${screenSizes.medium - (screenSizes.medium - screenSizes.small) / 2}px)`,
-        { defaultMatches: true }
-    );
-
-    if (useSmallLayout) {
-        return (
-            <div className={cn(classes.container, useSmallLayout && classes.smallLayoutContainer)}>
-                <div className={classes.logosContainer}>
-                    <div className={classes.wldLogoGithubLogoContainer}>
-                        <a
-                            className={classes.logoLink}
-                            href="https://welovedevs.com"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                        >
-                            <Logo className={classes.logo} />
-                        </a>
-                        <Tooltip
-                            title={<FormattedMessage id="Footer.github.tooltip" defaultMessage="Fork me on GitHub !" />}
-                        >
-                            <a
-                                className={classes.githubLink}
-                                href="https://github.com/welovedevs/developer-profile"
-                                target="_bank"
-                                rel="noreferer noopener"
-                            >
-                                <GithubLogo className={classes.githubLogo} />
-                            </a>
-                        </Tooltip>
-                    </div>
-                    <ShareLinks useSmallLayout />
-                </div>
-                <Backlinks />
-            </div>
-        );
-    }
+    const { formatMessage } = useIntl();
+    const theme = useTheme();
+    const mainColor = getHexFromPaletteColor(theme, 'primary');
 
     return (
-        <div className={classes.container}>
-            <div className={classes.logosContainer}>
-                <a className={classes.logoLink} href="https://welovedevs.com" target="_blank" rel="noreferrer noopener">
-                    <Logo className={classes.logo} />
+        <div className={'w-full pb-20 px-7 mt-20 flex flex-col justify-center md:flex-row text-white'} style={{backgroundColor: mainColor}}>
+            <div className={'flex flex-col text-sm text-white mt-10 mr-20 md:mr-10 lg:mr-20'}>
+                <a href={formatMessage(footerTranslations.w3dLink)} target="_blank" rel="noreferrer noopener">
+                    <LongLogo className={'w-[260px] md:w-[160px] lg:w-[260px] mb-2.5'} />
                 </a>
-                <div className={classes.linksContainer}>
-                    <ShareLinks />
-                    <Backlinks />
+                <p className={'mb-6 text-primary-50'}>{formatMessage(footerTranslations.w3dSentence)}</p>
+                <div className={'flex flex-col text-primary-50 mb-6'}>
+                    <span className={'mb-1'}>
+                        <a href="mailto:hello@welovedevs.com">hello@welovedevs.com</a>
+                    </span>
+                    <span>
+                        <a href="tel:+33175850252">+33 175850252</a>
+                    </span>
                 </div>
-                <Tooltip title={<FormattedMessage id="Footer.github.tooltip" defaultMessage="Fork me on GitHub !" />}>
-                    <a
-                        className={classes.githubLink}
-                        href="https://github.com/welovedevs/developer-profile"
-                        target="_bank"
-                        rel="noreferer noopener"
-                    >
-                        <GithubLogo className={classes.githubLogo} />
-                    </a>
-                </Tooltip>
+                <div className={'flex-1 flex flex-col-reverse mb-2.5'}>
+                    <div className={'flex text-primary-50'}>
+                        <a href={'https://www.youtube.com/channel/UCUZcVUeCtPbcsPGMU6icxUQ'}>
+                            <YoutubeLogo className={'w-10'} />
+                        </a>
+                        <a href={'https://www.linkedin.com/company/welovedevs'}>
+                            <LinkedInLogo className={'w-10'} />
+                        </a>
+                        <a href={'https://www.twitch.tv/welovedevs'}>
+                            <TwitchLogo className={'w-10'} />
+                        </a>
+                        <a href={'https://discord.com/invite/Ep6A9Ew6uU'}>
+                            <DiscordLogo className={'w-10'} />
+                        </a>
+                        <a href={'https://twitter.com/welovedevs'}>
+                            <TwitterLogo className={'w-10'} />
+                        </a>
+                    </div>
+                </div>
             </div>
+            {Object.entries(footer).map(([category, values]) => (
+                <div className={'text-white mt-10 mr-20 md:mr-10 lg:mr-20'}>
+                    <h3 className={'font-bold mb-6'}>{formatMessage(footerTranslations[`${category}Category`])}</h3>
+                    {values.map((element) => (
+                        <ul>
+                            <li className="mb-2.5">
+                                <a
+                                    className="text-sm text-primary-50"
+                                    href={formatMessage(footerTranslations[`${element}Link`])}
+                                >
+                                    {formatMessage(footerTranslations[element])}
+                                </a>
+                            </li>
+                        </ul>
+                    ))}
+                </div>
+            ))}
         </div>
     );
 };
