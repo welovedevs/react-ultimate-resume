@@ -15,6 +15,7 @@ const run = async () => {
     const buildingPackageSpinner = ora(`Building fresh package...`).start();
     try {
         await exec('npm run package');
+        await exec('npm run build:css');
     } catch (error) {
         buildingPackageSpinner.fail('Package build failed.');
         if (isVerbose) {
