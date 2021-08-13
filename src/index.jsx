@@ -5,7 +5,7 @@ import App from './App';
 
 import { DEFAULT_THEME } from '@welovedevs/ui/styles/theme';
 import { createMuiTheme, StylesProvider as MuiStylesProvider, ThemeProvider } from '@material-ui/core/styles';
-import './styles/global.css';
+import './package/styles/global.css';
 import './styles/animations.css';
 import { create } from 'jss';
 import { JssProvider } from 'react-jss';
