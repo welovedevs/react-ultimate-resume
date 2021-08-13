@@ -14,8 +14,17 @@ const run = async () => {
     const srcFiles = fs.readdirSync(srcPath);
     const buildingPackageSpinner = ora(`Building fresh package...`).start();
     try {
+        console.log('Removing tailwind.css placeholder...')
+        rimraf.sync(__dirname + `/styles/tailwind.css`, {}, () => {});
+        console.log('File removed');
+
+        console.log('Building tailwind css for production...')
         await exec('npm run build:css');
+        console.log('Tailwind css built.')
+
+        console.log('Generating package...')
         await exec('npm run package');
+        console.log('Package generated with success');
     } catch (error) {
         buildingPackageSpinner.fail('Package build failed.');
         if (isVerbose) {
@@ -27,6 +36,7 @@ const run = async () => {
 
     const postBuildCleanUpSpinner = ora('Doing post-build clean-up...').start();
     const rootNewFiles = fs.readdirSync(__dirname);
+
     rootNewFiles
         .filter(name => !srcFiles.includes(name) && !TO_PRESERVE_DURING_CLEAN_UP.includes(name))
         .forEach(fileName => {
