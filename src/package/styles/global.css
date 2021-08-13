@@ -1,6 +1,4 @@
 @import '../assets/fonts/AvenirNext/stylesheet.css';
-@import './tailwind.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
