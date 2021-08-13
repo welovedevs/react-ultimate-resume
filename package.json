@@ -9,7 +9,7 @@
         "eject": "react-scripts eject",
         "test": "craco test",
         "prepackage": "rimraf lib ",
-        "package": "./node_modules/.bin/babel --extensions '.ts,.tsx,.js,.jsx' src/package -d .",
+        "package": "./node_modules/.bin/babel --extensions '.ts,.tsx,.js,.jsx' src/package -d . && npx tailwindcss build -o ./main.css",
         "postpackage": "cp-cli src/package/i18n i18n && cp-cli src/package/assets assets",
         "test-build": "rimraf ./test-build && ./node_modules/.bin/babel --extensions '.ts,.tsx,.js,.jsx' src -d ./test_build",
         "posttest-build": "rimraf ./test_build ./styles ",
