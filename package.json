@@ -14,7 +14,7 @@
         "test-build": "rimraf ./test-build && ./node_modules/.bin/babel --extensions '.ts,.tsx,.js,.jsx' src -d ./test_build",
         "posttest-build": "rimraf ./test_build ./styles ",
         "build": "craco build",
-        "build:css": "npx tailwindcss build -o src/package/styles/tailwind.css",
+        "build:css": "npx tailwindcss build -o ./styles/tailwind.css",
         "build:messages": "NODE_ENV=production babel ./src >/dev/null",
         "serve": "craco build && serve build",
         "manage:translations": "node ./translationRunner.js",
