@@ -21,7 +21,12 @@
         [
             "css-modules-transform",
             {
-                "extractCss": "./styles/main.css"
+                "extractCss": {
+                    "devMode": true,
+                    "dir": "./",
+                    "relativeRoot": "./src/package",
+                    "filename": "[path]/[name].css"
+                }
             }
         ],
         "babel-plugin-inline-react-svg",
