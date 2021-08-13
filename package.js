@@ -14,14 +14,6 @@ const run = async () => {
     const srcFiles = fs.readdirSync(srcPath);
     const buildingPackageSpinner = ora(`Building fresh package...`).start();
     try {
-        console.log('Removing tailwind.css placeholder...')
-        rimraf.sync(__dirname + `/styles/tailwind.css`, {}, () => {});
-        console.log('File removed');
-
-        console.log('Building tailwind css for production...')
-        await exec('npm run build:css');
-        console.log('Tailwind css built.')
-
         console.log('Generating package...')
         await exec('npm run package');
         console.log('Package generated with success');
