@@ -14,8 +14,8 @@ const run = async () => {
     const srcFiles = fs.readdirSync(srcPath);
     const buildingPackageSpinner = ora(`Building fresh package...`).start();
     try {
-        await exec('npm run package');
         await exec('npm run build:css');
+        await exec('npm run package');
     } catch (error) {
         buildingPackageSpinner.fail('Package build failed.');
         if (isVerbose) {
