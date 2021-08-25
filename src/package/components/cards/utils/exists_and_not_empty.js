@@ -6,7 +6,7 @@ export const existsAndNotEmpty = (value) => {
         return Boolean(value.length);
     }
     if (typeof value === 'object') {
-        return Boolean(Object.keys(value).length);
+        return Boolean(Object.entries(value).filter(([, value]) => value).length);
     }
     return Boolean(value);
 };

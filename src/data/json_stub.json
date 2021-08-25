@@ -253,7 +253,7 @@
             "remoteFrequency": "regularly"
         },
         "currentJob": {
-            "issues": { "boring_management": true, "boring_team": true }
+            "issues": { "z": true, "boring_team": true }
         },
         "education": { "studiesLevel": null },
         "work": {
