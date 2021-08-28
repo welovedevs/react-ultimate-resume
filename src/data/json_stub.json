@@ -89,6 +89,14 @@
             "summary": "There is no spoon."
         }
     ],
+    "certificates": [
+        {
+            "name": "Certified Symfony Developer",
+            "date": "2018-11-01",
+            "url": "https://cdn.filestackcontent.com/w5oskUihSiYCxekOn9Ba",
+            "issuer": "SensioLabs"
+        }
+    ],
     "publications": [
         {
             "name": "Publication",
@@ -282,6 +290,7 @@
             { "type": "dreamjob", "variant": 4 },
             { "type": "experiences", "variant": 4 },
             { "type": "studies", "variant": 4 },
+            { "type": "certifications", "variant": 4 },
             { "type": "gifs", "variant": 0 },
             { "type": "interestedBy", "variant": 3 },
             { "type": "language", "variant": 4 },
