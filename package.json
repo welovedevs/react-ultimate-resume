@@ -1,6 +1,6 @@
 {
     "name": "@welovedevs/react-ultimate-resume",
-    "version": "1.1.9",
+    "version": "1.1.9-beta.13",
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
@@ -14,7 +14,7 @@
         "test-build": "rimraf ./test-build && ./node_modules/.bin/babel --extensions '.ts,.tsx,.js,.jsx' src -d ./test_build",
         "posttest-build": "rimraf ./test_build ./styles ",
         "build": "craco build",
-        "build:css": "npx tailwindcss build -o src/package/styles/tailwind.css",
+        "build:css": "npx tailwindcss build -o ./styles/tailwind.css",
         "build:messages": "NODE_ENV=production babel ./src >/dev/null",
         "serve": "craco build && serve build",
         "manage:translations": "node ./translationRunner.js",
@@ -116,7 +116,7 @@
         "readline-sync": "^1.4.10",
         "rimraf": "^3.0.0",
         "serve": "^11.3.0",
-        "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+        "tailwindcss": "npm:@tailwindcss/postcss7-compat@2.1.4",
         "typescript": "^4.0.5"
     },
     "resolutions": {

@@ -7,15 +7,24 @@ const rimraf = require('rimraf');
 require('colors');
 
 const isVerbose = yargs.verbose === 'true' || yargs.verbose === true;
-const TO_PRESERVE_DURING_CLEAN_UP = ['package.json', '.git', '.gitignore', 'node_modules', 'LICENSE.md', 'README.md', 'main.css'];
+const TO_PRESERVE_DURING_CLEAN_UP = [
+    'package.json',
+    '.git',
+    '.gitignore',
+    'node_modules',
+    'LICENSE.md',
+    'README.md',
+    'tailwind.config.js'
+];
 
 const run = async () => {
     const srcPath = __dirname + '/src/package';
     const srcFiles = fs.readdirSync(srcPath);
     const buildingPackageSpinner = ora(`Building fresh package...`).start();
     try {
-        await exec('npm run build:css');
+        console.log('Generating package...');
         await exec('npm run package');
+        console.log('Package generated with success');
     } catch (error) {
         buildingPackageSpinner.fail('Package build failed.');
         if (isVerbose) {
@@ -27,9 +36,10 @@ const run = async () => {
 
     const postBuildCleanUpSpinner = ora('Doing post-build clean-up...').start();
     const rootNewFiles = fs.readdirSync(__dirname);
+
     rootNewFiles
-        .filter(name => !srcFiles.includes(name) && !TO_PRESERVE_DURING_CLEAN_UP.includes(name))
-        .forEach(fileName => {
+        .filter((name) => !srcFiles.includes(name) && !TO_PRESERVE_DURING_CLEAN_UP.includes(name))
+        .forEach((fileName) => {
             rimraf.sync(__dirname + `/${fileName}`, {}, () => {});
         });
     postBuildCleanUpSpinner.succeed('Did post-build clean up.');
