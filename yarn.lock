@@ -2470,7 +2470,7 @@
 
 "@welovedevs/ui@1.2.8-beta.12":
   version "1.2.8-beta.12"
-  resolved "https://npm.pkg.github.com/download/@welovedevs/ui/1.2.8-beta.12/0feff5c17e1f527600be135f40e37c64bf26c839c9f63415261b9957a3ac6c40#b25de9848af3d8c311e8912204debdac4c06b59e"
+  resolved "https://registry.yarnpkg.com/@welovedevs/ui/-/ui-1.2.8-beta.12.tgz#b25de9848af3d8c311e8912204debdac4c06b59e"
   integrity sha512-3ddz6LIMYBZVqVyJ9t0YJ6fBlWALsW1LShIkIvb57Wr9D54B38jbGCa4dYbEKRiZjPUNW6v0XQQ5lPV5XhmOig==
   dependencies:
     "@material-ui/core" "^4.11.0"
