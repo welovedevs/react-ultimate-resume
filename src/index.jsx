@@ -3,10 +3,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-import { DEFAULT_THEME } from '@welovedevs/ui/styles/theme';
-import { createMuiTheme, StylesProvider as MuiStylesProvider, ThemeProvider } from '@material-ui/core/styles';
 import './package/styles/global.css';
 import './styles/animations.css';
+import { DEFAULT_THEME } from '@welovedevs/ui/styles/theme';
+import { createMuiTheme, StylesProvider as MuiStylesProvider, ThemeProvider } from '@material-ui/core/styles';
 import { create } from 'jss';
 import { JssProvider } from 'react-jss';
 import jssDefaultPreset from 'jss-preset-default';

@@ -30,9 +30,11 @@ const SkillsEditFormComponent = ({ helpers: { handleValueChange } }) => {
         [values]
     );
     const deleteItem = useCallback(
-        (id) =>
+        (name) =>
             handleValueChange('skills')(
-                values.skills.filter(({ id: skillId }) => skillId !== id).map((skill, index) => ({ ...skill, index }))
+                values.skills
+                    .filter(({ name: skillName }) => skillName !== name)
+                    .map((skill, index) => ({ ...skill, index }))
             ),
         [values.skills]
     );
