@@ -1,46 +1,52 @@
 {
-    "name": "doc",
-    "version": "0.0.0",
-    "private": true,
-    "scripts": {
-        "clean": "rimraf build/",
-        "dev": "docusaurus start",
-        "build": "docusaurus build",
-        "postbuild": "gzip build/*.js --extension=gz && gzip build/*.css --extension=gz",
-        "swizzle": "docusaurus swizzle",
-        "deploy": "docusaurus deploy",
-        "serve": "PORT=${PORT:-8080} node server.js",
-        "prebuild": "yarn clean",
-        "install": "sh startClever.sh",
-        "start": "yarn serve",
-        "start:watch": "nodemon server.js"
-    },
-    "devDependencies": {
-        "cookie-parser": "^1.4.5",
-        "dotenv": "^8.2.0",
-        "express": "^4.17.1",
-        "express-statsd": "^0.3.0",
-        "express-useragent": "^1.0.13",
-        "gzip-cli": "^1.1.0",
-        "rimraf": "^3.0.2"
-    },
-    "dependencies": {
-        "@docusaurus/core": "^2.0.0-beta.13",
-        "@docusaurus/preset-classic": "^2.0.0-beta.13",
-        "classnames": "^2.2.6",
-        "react": "^16.8.4",
-        "react-dom": "^16.8.4"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    }
+  "name": "website",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "rimraf build/",
+
+    "docusaurus": "docusaurus",
+    "dev": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "PORT=${PORT:-8080} node server.js",
+    "prebuild": "yarn clean",
+    "install": "sh startClever.sh",
+    "start": "yarn serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids"
+  },
+
+  "devDependencies": {
+  "cookie-parser": "^1.4.5",
+  "dotenv": "^8.2.0",
+  "express": "^4.17.1",
+  "express-statsd": "^0.3.0",
+  "express-useragent": "^1.0.13",
+  "gzip-cli": "^1.1.0",
+  "rimraf": "^3.0.2"
+},
+  "dependencies": {
+    "@docusaurus/core": "2.0.0-beta.13",
+    "@docusaurus/preset-classic": "2.0.0-beta.13",
+    "@mdx-js/react": "^1.6.21",
+    "clsx": "^1.1.1",
+    "prism-react-renderer": "^1.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
