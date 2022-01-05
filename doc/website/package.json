@@ -21,6 +21,7 @@
         "cookie-parser": "^1.4.5",
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
+        "husky": "^7.0.4",
         "express-statsd": "^0.3.0",
         "express-useragent": "^1.0.13",
         "gzip-cli": "^1.1.0",
