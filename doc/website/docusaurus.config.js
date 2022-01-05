@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
     title: 'React Ultimate Resume',
     tagline: 'Our vision for a clean looking and awesome react-powered dev resume.',
-    url: 'https://welovedevs.com/app',
+    url: 'https://welovedevs.com/',
     baseUrl: process.env.BASE_PATH || '/',
     favicon: 'img/favicon.ico',
     organizationName: 'welovedevs', // Usually your GitHub org/user name.
