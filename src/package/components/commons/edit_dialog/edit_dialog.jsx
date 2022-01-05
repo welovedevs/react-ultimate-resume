@@ -26,7 +26,8 @@ const EditDialogComponent = ({
     title = '✏️',
     validationSchema,
     isEditing,
-    classes: receivedClasses = {}
+    classes: receivedClasses = {},
+    disableEnforceFocus
 }) => {
     const classes = useStyles();
     const theme = useTheme();
@@ -40,6 +41,7 @@ const EditDialogComponent = ({
             }}
             open={open}
             onClose={onClose}
+            disableEnforceFocus={disableEnforceFocus}
         >
             <Formik
                 validateOnChange={false}

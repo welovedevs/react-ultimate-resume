@@ -34,6 +34,7 @@ const SkillsEditDialogComponent = ({ open, onClose, data, onEdit, validationSche
             validationSchema={validationSchemaToPass}
             dialogClasses={{ dialog: { root: classes.dialogRoot, paper: classes.dialogPaper } }}
             title={<FormattedMessage id="Skills.editDialog.title" defaultMessage="What are your main skills?" />}
+            disableEnforceFocus
         >
             {(helpers) => <SkillsEditForm helpers={helpers} />}
         </EditDialog>
