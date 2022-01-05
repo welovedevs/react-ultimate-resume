@@ -257,7 +257,7 @@
         },
         "education": { "studiesLevel": null },
         "work": {
-            "contractTypes": ["permanent"],
+            "contractTypes": ["permanent","freelance", "internship"],
             "codingYears": 0,
             "codingReason": "J'ai commencé à coder sur Amstrad dans ma cave et je n'ai jamais arrêté depuis",
             "searchState": "activelySearching",
