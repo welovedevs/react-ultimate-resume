@@ -108,7 +108,7 @@
         "husky": "^3.1.0",
         "lint-staged": "^10.0.8",
         "ora": "^4.0.3",
-        "postcss": "^7",
+        "postcss": "^8",
         "prettier": "2.0.2",
         "react-intl-translations-manager": "^5.0.3",
         "react-scripts": "^4.0.0",
