@@ -19,7 +19,6 @@ import '../styles/lib/slick-carousel/slick-theme.css';
 import '../styles/lib/slick-carousel/slick.css';
 import { technologiesInitialState, technologiesReducer } from '../store/technologies/technologies_reducer';
 import { DeveloperProfileContext, StaticDataContext, StoreContext } from '../utils/context/contexts';
-import { Footer } from './footer/footer';
 import { mergeOmitNull } from '../utils/data_utils';
 import { SIDES } from './commons/profile_card/profile_card_side/side';
 
@@ -39,7 +38,7 @@ const messages = {
 };
 const useStyles = createUseStyles(styles);
 
-const DEFAULT_OPTIONS ={
+const DEFAULT_OPTIONS = {
     locale: 'en',
     customization: {
         imageHeader: {
@@ -48,8 +47,7 @@ const DEFAULT_OPTIONS ={
         }
     },
     maxCardsPerRow: null,
-    showContactInfos: false,
-    dismissFooter: false
+    showContactInfos: false
 };
 
 const DEFAULT_OBJECT = {};
@@ -135,7 +133,6 @@ const DeveloperProfileComponent = ({
                             maxCardsPerRow={options?.maxCardsPerRow}
                             side={side}
                         />
-                        {!options.dismissFooter && <Footer />}
                     </DeveloperProfileContext.Provider>
                 </StoreContext.Provider>
             </StaticDataContext.Provider>
