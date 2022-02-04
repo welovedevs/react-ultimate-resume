@@ -4,7 +4,7 @@
     "description": "Developer profile for W3D",
     "main": "lib/index.js",
     "scripts": {
-        "start": "touch .env.local && sh -ac 'sh .env.${NODE_ENV:-local}; PORT=${PORT:-3000} EXTEND_ESLINT=true BROWSER=none TAILWIND_MODE=watch craco start'",
+        "start": "cross-env NODE_ENV=local craco start",
         "dev": "yarn start",
         "eject": "react-scripts eject",
         "test": "craco test",
@@ -98,6 +98,7 @@
         "babel-plugin-inline-react-svg": "^1.1.1",
         "babel-plugin-react-intl": "^7.0.0",
         "babel-plugin-transform-import-styles": "^0.0.11",
+        "cross-env": "^7.0.3",
         "eslint": "^7.12.1",
         "eslint-config-airbnb": "^18.2.0",
         "eslint-plugin-import": "^2.22.1",
