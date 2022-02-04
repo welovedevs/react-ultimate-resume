@@ -3,8 +3,8 @@ import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { useIntl } from 'react-intl';
 
-import { JobPerks } from '../../../../../../utils/enums/job_perks/job_perks_utils';
-import { jobPerksTranslations } from '../../../../../../utils/enums/job_perks/job_perks_translations';
+import { JobPerksEnum } from '../../../../../../types/enums/job_perks/job_perks_utils';
+import { jobPerksTranslations } from '../../../../../../utils/enums_translations/job_perks_translations';
 import { styles } from './dream_job_perks_styles';
 
 const useStyles = createUseStyles(styles);
@@ -17,7 +17,7 @@ const DreamJobPerksComponent = ({ perks = {} }) => {
             {Object.entries(perks)
                 .filter(([, value]) => Boolean(value))
                 .map(([perkId, value]) => {
-                    if (perkId === JobPerks.OTHER) {
+                    if (perkId === JobPerksEnum.OTHER) {
                         return (
                             <li className={classes.listItem} key={`dream_job_perk_${perkId}`}>
                                 {value}

@@ -19,6 +19,13 @@
                 "network": "Twitter",
                 "username": "john",
                 "url": "http://twitter.com/john"
+            },{
+                "network": "Portfolio",
+                "url": "http://twitter.com/john"
+            },{
+                "network": "CodinGame",
+                "username" : "clementdevos",
+                "url": "https://www.codingame.com/profile/ed3ee82f9630e99db32dec093b2ca07a0368002"
             }
         ]
     },

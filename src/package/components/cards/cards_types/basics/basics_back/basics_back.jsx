@@ -11,7 +11,7 @@ import { ContractType } from '../../../../commons/fields/contract_types/contract
 
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 
-import { translations } from '../../../../../utils/enums/job_serachstate/job_search_state_translations';
+import { translations } from '../../../../../utils/enums_translations/job_search_state_translations';
 import { styles } from './basics_back_styles';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 import { ExperienceYears } from './fields/professional_experience';

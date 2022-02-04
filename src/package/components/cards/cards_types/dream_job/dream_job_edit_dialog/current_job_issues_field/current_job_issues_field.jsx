@@ -8,22 +8,22 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { TextField, Typography } from '@welovedevs/ui';
 import { CheckboxGroup } from '../../../../../commons/checkbox_group/checkbox_group';
 import { CheckboxField } from '../../../../../commons/checkbox_field/checkbox_group';
-import { JobIssues } from '../../../../../../utils/enums/job_issues/job_issues_utils';
+import { JobIssuesEnum } from '../../../../../../types/enums/job_issues/job_issues_utils';
 import { EditDialogField } from '../../../../../commons/edit_dialog_field/edit_dialog_field';
 
 import { CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS } from './current_job_issues_field_props';
 
-import { translations } from '../../../../../../utils/enums/job_issues/job_issues_translations';
+import { translations } from '../../../../../../utils/enums_translations/job_issues_translations';
 import { styles } from './current_job_issues_field_styles';
 
 const useStyles = createUseStyles(styles);
-const checkboxGroupCurrentJobIssues = Object.values(JobIssues).filter((key) => key !== JobIssues.OTHER);
+const checkboxGroupCurrentJobIssues = Object.values(JobIssuesEnum).filter((key) => key !== JobIssuesEnum.OTHER);
 
 const CurrentJobIssuesFieldComponent = ({ error, currentJobIssues, onChange, setFieldValue }) => {
     const timerRef = useRef();
     const classes = useStyles();
     const { formatMessage } = useIntl();
-    const otherCurrentJobIssue = useMemo(() => currentJobIssues[JobIssues.OTHER] ?? null, [currentJobIssues]);
+    const otherCurrentJobIssue = useMemo(() => currentJobIssues[JobIssuesEnum.OTHER] ?? null, [currentJobIssues]);
     const [otherCurrentJobIssueValue, setOtherCurrentJobIssueValue] = useState(otherCurrentJobIssue);
 
     const checkedCurrentJobIssues = useMemo(
@@ -41,7 +41,7 @@ const CurrentJobIssuesFieldComponent = ({ error, currentJobIssues, onChange, set
                     acc[issue] = true;
                     return acc;
                 }, {}),
-                [JobIssues.OTHER]: currentJobIssues[JobIssues.OTHER]
+                [JobIssuesEnum.OTHER]: currentJobIssues[JobIssuesEnum.OTHER]
             }),
         [currentJobIssues]
     );
@@ -49,8 +49,8 @@ const CurrentJobIssuesFieldComponent = ({ error, currentJobIssues, onChange, set
     const toggleOtherCurrentJobIssue = useCallback(
         () =>
             setFieldValue(
-                `currentJobIssues.${JobIssues.OTHER}`,
-                typeof currentJobIssues[JobIssues.OTHER] === 'string' ? null : ''
+                `currentJobIssues.${JobIssuesEnum.OTHER}`,
+                typeof currentJobIssues[JobIssuesEnum.OTHER] === 'string' ? null : ''
             ),
         [currentJobIssues]
     );
@@ -67,7 +67,7 @@ const CurrentJobIssuesFieldComponent = ({ error, currentJobIssues, onChange, set
         }
 
         timerRef.current = setTimeout(() => {
-            setFieldValue(`currentJobIssues.${JobIssues.OTHER}`, otherCurrentJobIssueValue);
+            setFieldValue(`currentJobIssues.${JobIssuesEnum.OTHER}`, otherCurrentJobIssueValue);
         }, 500);
     }, [otherCurrentJobIssueValue]);
 
@@ -106,7 +106,7 @@ const CurrentJobIssuesFieldComponent = ({ error, currentJobIssues, onChange, set
                         containerElement={motion.div}
                         classes={{ container: cn(classes.textField, classes.otherTextField) }}
                         onChange={handleOtherJobIssueChange}
-                        name={`currentJobIssues[${JobIssues.OTHER}]`}
+                        name={`currentJobIssues[${JobIssuesEnum.OTHER}]`}
                         value={otherCurrentJobIssueValue}
                         variant="flat"
                         containerProps={{
