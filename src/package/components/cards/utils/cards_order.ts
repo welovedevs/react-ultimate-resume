@@ -1,5 +1,6 @@
 export const DEFAULT_CARD_ORDER = [
     { type: 'basics', variant: 4 },
+    { type: 'social', variant: 4 },
     { type: 'skills', variant: 0 },
     { type: 'dreamjob', variant: 4 },
     { type: 'projects', variant: 4 },
@@ -13,6 +14,7 @@ export const DEFAULT_CARD_ORDER = [
 
 export type AvailableCardsTypes =
     | 'basics'
+    | 'social'
     | 'skills'
     | 'dreamjob'
     | 'projects'

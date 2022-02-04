@@ -7,8 +7,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { Twemoji } from 'react-emoji-render';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import { useFormikContext } from 'formik';
-import keyBy from 'lodash.keyby';
-import range from 'lodash.range';
+import keyBy from 'lodash/keyBy';
+import range from 'lodash/range';
 import moment from 'moment';
 import uuid from 'uuid/v4';
 

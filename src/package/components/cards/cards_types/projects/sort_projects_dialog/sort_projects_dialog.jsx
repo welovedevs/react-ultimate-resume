@@ -8,7 +8,7 @@ import { Button, List, ListItem, Typography } from '@welovedevs/ui';
 
 import { Dialog, DialogContent, DialogActions, useMediaQuery } from '@material-ui/core';
 
-import isEqual from 'lodash.isequal';
+import isEqual from 'lodash/isEqual';
 import { DialogTitle } from '../../../../commons/dialog/dialog_title/dialog_title';
 
 import { ReactComponent as MoveIcon } from '../../../../../assets/icons/move_list.svg';

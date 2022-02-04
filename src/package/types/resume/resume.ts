@@ -12,10 +12,11 @@ export interface Location {
     region: string;
 }
 
-export interface Profile {
+export interface DeveloperSocialAccounts {
     network: string;
     username: string;
     url: string;
+    id: string;
 }
 
 export interface Basics {
@@ -27,7 +28,7 @@ export interface Basics {
     website: string;
     summary: string;
     location: Location;
-    profiles: Profile[];
+    profiles: DeveloperSocialAccounts[];
 }
 
 export interface Work {
@@ -190,17 +191,17 @@ export interface ResumeCustomization {
 }
 
 export interface DeveloperResume {
-    basics: Basics;
-    work: Work[];
-    volunteer: Volunteer[];
-    education: Education[];
-    awards: Award[];
-    publications: Publication[];
-    skills: Skill[];
-    languages: Language[];
-    interests: Interest[];
-    references: Reference[];
-    projects: Project[];
-    specific: SpecificWeloveDevsProps;
-    resumeCustomization: ResumeCustomization;
+    basics: Partial<Basics>;
+    work: Partial<Work[]>;
+    volunteer: Partial<Volunteer[]>;
+    education: Partial<Education[]>;
+    awards: Partial<Award[]>;
+    publications: Partial<Publication[]>;
+    skills: Partial<Skill[]>;
+    languages: Partial<Language[]>;
+    interests: Partial<Interest[]>;
+    references: Partial<Reference[]>;
+    projects: Partial<Project[]>;
+    specific: Partial<SpecificWeloveDevsProps>;
+    resumeCustomization: Partial<ResumeCustomization>;
 }
