@@ -54,8 +54,9 @@ function App() {
             onEdit={onEdit}
             onCustomizationChanged={onCustomizationChanged}
             options={{
-                locale: 'fr',
+                locale: 'en',
                 // side: 'back',
+                showContactInfos: false,
                 apiKeys: {
                     giphy: process.env.REACT_APP_GIPHY
                 },

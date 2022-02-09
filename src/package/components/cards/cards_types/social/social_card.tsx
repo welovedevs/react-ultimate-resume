@@ -1,22 +1,22 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
-import { InterestedByFront } from './interested_by_front/interested_by_front';
-import { InterestedByBack } from './interested_by_back/interested_by_back';
-import { FlatObjectToJsonResume, JsonResumeToFlatObject } from '../../utils/data_mapping';
-import { InterestedByEditDialog } from './social_edit_dialog/interested_by_edit_dialog';
+import { SocialEditDialog } from './social_edit_dialog/social_edit_dialog';
 
-import { socialValidationSchema, validateSocialCardComplete } from './data/validator';
+import { socialValidationSchema, showSocialCard } from './data/validator';
 import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { useMode } from '../../../hooks/use_mode';
 import { CardSideProps, CommonCardsProps } from '../../types/card_props';
 import { mapProfilesFromJsonResume, mapProfilesToJsonResume, SocialCardData } from './data/mapping';
+import { SocialCardContent } from './interested_by_back/social';
+import { useOptions } from '../../../hooks/use_options';
 
-const InterestedByCardComponent = ({ variant, side }: CommonCardsProps) => {
+export const SocialCard = ({ variant, side }: CommonCardsProps) => {
     const [mode] = useMode();
+    const [showContactInformations] = useOptions('showContactInfos', false);
 
     const { data, onEdit, isEditing } = useContext(DeveloperProfileContext);
-    const mappedData = useMemo(() => mapProfilesFromJsonResume(data), [data]);
+    const mappedData = useMemo(() => mapProfilesFromJsonResume(data, showContactInformations), [data]);
 
     const onDialogEdited = useCallback(
         (editedData: SocialCardData) => {
@@ -25,9 +25,9 @@ const InterestedByCardComponent = ({ variant, side }: CommonCardsProps) => {
         [onEdit]
     );
 
-    const isComplete = useMemo(() => validateSocialCardComplete(mappedData), [mappedData]);
+    const isComplete = useMemo(() => showSocialCard(mappedData, showContactInformations), [mappedData]);
 
-    if (!isComplete && mode !== 'edit') {
+    if (!isComplete && !isEditing) {
         return null;
     }
     return (
@@ -35,13 +35,12 @@ const InterestedByCardComponent = ({ variant, side }: CommonCardsProps) => {
             <ProfileCard
                 kind="social"
                 data={mappedData}
-                isComplete={isComplete}
                 isEditingProfile={isEditing}
                 sides={{
-                    back: (props: CardSideProps<SocialCardData>) => <InterestedByBack {...props} />
+                    back: (props: CardSideProps<SocialCardData>) => <SocialCardContent {...props} />
                 }}
                 editDialog={{
-                    component: InterestedByEditDialog,
+                    component: SocialEditDialog,
                     validationSchema: socialValidationSchema,
                     onEdit: onDialogEdited
                 }}
@@ -51,5 +50,3 @@ const InterestedByCardComponent = ({ variant, side }: CommonCardsProps) => {
         </>
     );
 };
-
-export const InterestedByCard = InterestedByCardComponent;

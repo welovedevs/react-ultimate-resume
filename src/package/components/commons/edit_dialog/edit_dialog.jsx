@@ -16,10 +16,10 @@ import { styles } from './edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
-const EditDialogComponent = ({
+export const EditDialog = ({
     open,
     onClose,
-    fullScreen,
+    fullScreen = null,
     data,
     onEdit,
     children,
@@ -27,7 +27,7 @@ const EditDialogComponent = ({
     validationSchema,
     isEditing,
     classes: receivedClasses = {},
-    disableEnforceFocus
+    disableEnforceFocus = null
 }) => {
     const classes = useStyles();
     const theme = useTheme();
@@ -168,5 +168,3 @@ const Actions = ({ onClose, handleSubmit, fullScreen, classes, receivedClasses, 
         )}
     </DialogActions>
 );
-
-export const EditDialog = EditDialogComponent;

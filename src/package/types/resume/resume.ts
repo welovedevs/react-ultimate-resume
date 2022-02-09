@@ -12,13 +12,31 @@ export interface Location {
     region: string;
 }
 
-export interface DeveloperSocialAccounts {
-    network: string;
-    username: string;
-    url: string;
+interface BaseSocialAccount {
     id: string;
 }
+export interface CustomSocialAccount extends BaseSocialAccount {
+    network: string;
+    url: string;
+}
+export interface TwitterSocialAccount extends BaseSocialAccount {
+    network: 'twitter';
+    username: string;
+}
+export interface CodingameSocialAccount extends BaseSocialAccount {
+    network: 'codingame';
+    username: string;
+}
+export interface LinkedinSocialAccount extends BaseSocialAccount {
+    network: 'linkedin';
+    url: string;
+}
 
+export type DeveloperSocialAccounts =
+    | CustomSocialAccount
+    | TwitterSocialAccount
+    | CodingameSocialAccount
+    | LinkedinSocialAccount;
 export interface Basics {
     name: string;
     label: string;

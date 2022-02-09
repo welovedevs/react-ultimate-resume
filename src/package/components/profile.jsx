@@ -26,9 +26,9 @@ if (!Intl.PluralRules) {
     // eslint-disable-next-line global-require
     require('@formatjs/intl-pluralrules/polyfill');
     // eslint-disable-next-line global-require
-    require('@formatjs/intl-pluralrules/dist/locale-data/en');
+    require('@formatjs/intl-pluralrules/locale-data/en');
     // eslint-disable-next-line global-require
-    require('@formatjs/intl-pluralrules/dist/locale-data/fr');
+    require('@formatjs/intl-pluralrules/locale-data/fr');
 }
 
 const messages = {
