@@ -16,6 +16,7 @@ import { DialogProps } from '@material-ui/core';
 import { ReactComponent as Twitter } from '../../../../../assets/icons/brands/twitter.svg';
 import { ReactComponent as Linkedin } from '../../../../../assets/icons/brands/linkedin.svg';
 import { ReactComponent as Codingame } from '../../../../../assets/icons/brands/codingame-1.svg';
+import { ReactComponent as Github } from '../../../../../assets/icons/brands/github.svg';
 import Yup from 'yup';
 import { ErrorsDisplay } from '../../../../commons/errors/errors_display';
 import { AddButton } from '../../../../commons/add_button/add_button';
@@ -48,7 +49,7 @@ export const SocialEditDialog: React.FC<
 
 const Content = () => {
     const { values, errors, handleChange, setFieldValue } = useFormikContext<SocialCardData>();
-    const { twitter, linkedin, codingame, ...others } = values.profiles;
+    const { twitter, linkedin, codingame, github, ...others } = values.profiles;
     const { formatMessage } = useIntl();
 
     let nextCustomField = `custom_${Object.values(others || []).length}`;
@@ -69,9 +70,9 @@ const Content = () => {
         <>
             <EditDialogField>
                 <div className="flex items-center">
-                    <div className="flex items-center">
+                    <Typography className="flex items-center min-w-[150px]">
                         <Twitter className="mr-2 fill-[#1d9bf0] w-[24px] h-[24px]" /> Twitter
-                    </div>
+                    </Typography>
                     <div className="w-full ml-2">
                         <TextField
                             variant="flat"
@@ -90,7 +91,7 @@ const Content = () => {
             </EditDialogField>
             <EditDialogField>
                 <div className="flex items-center">
-                    <Typography className="flex items-center">
+                    <Typography className="flex items-center min-w-[150px]">
                         <Linkedin className="mr-2 fill-[#0a66c2]  w-[24px] h-[24px]" /> Linkedin
                     </Typography>
                     <div className="w-full ml-2">
@@ -111,9 +112,9 @@ const Content = () => {
             </EditDialogField>
             <EditDialogField>
                 <div className="flex items-center">
-                    <div className="flex items-center">
+                    <Typography className="flex items-center  min-w-[150px]">
                         <Codingame className="mr-2  w-[24px] h-[24px] rounded-ml" /> CodinGame
-                    </div>
+                    </Typography>
                     <div className="w-full ml-2">
                         <TextField
                             variant="flat"
@@ -128,6 +129,28 @@ const Content = () => {
                             name="profiles.codingame.username"
                         />
                         <ErrorsDisplay errors={errors} path={'profiles.codingame.username'} />
+                    </div>
+                </div>
+            </EditDialogField>
+            <EditDialogField>
+                <div className="flex items-center">
+                    <Typography className="flex items-center  min-w-[150px] ">
+                        <Github className="mr-2  w-[24px] h-[24px] rounded-ml" /> GitHub
+                    </Typography>
+                    <div className="w-full ml-2">
+                        <TextField
+                            variant="flat"
+                            fullWidth
+                            placeholder={formatMessage(translations.github)}
+                            value={github?.username}
+                            onChange={(e) => {
+                                initField('github');
+
+                                handleChange(e);
+                            }}
+                            name="profiles.github.username"
+                        />
+                        <ErrorsDisplay errors={errors} path={'profiles.github.username'} />
                     </div>
                 </div>
             </EditDialogField>

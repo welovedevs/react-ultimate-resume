@@ -5,16 +5,18 @@ import {
     CustomSocialAccount,
     DeveloperResume,
     DeveloperSocialAccounts,
+    GithubSocialAccount,
     LinkedinSocialAccount,
     TwitterSocialAccount
 } from '../../../../../types/resume/resume';
 
-const predeterminedNetworks = ['twitter', 'linkedin', 'codingame'];
+const predeterminedNetworks = ['twitter', 'linkedin', 'codingame', 'github'];
 export interface SocialCardData {
     profiles: {
         twitter?: TwitterSocialAccount & { index: number };
         linkedin?: LinkedinSocialAccount & { index: number };
         codingame?: CodingameSocialAccount & { index: number };
+        github?: GithubSocialAccount & { index: number };
     } & {
         [customKey: string]: CustomSocialAccount & { index: number };
     };
@@ -66,6 +68,9 @@ export const mapProfilesToJsonResume = (data: SocialCardData): Partial<Developer
                 }
                 if (item.network === 'codingame') {
                     return !!(item as CodingameSocialAccount).username;
+                }
+                if (item.network === 'github') {
+                    return !!(item as GithubSocialAccount).username;
                 }
                 return true;
             })

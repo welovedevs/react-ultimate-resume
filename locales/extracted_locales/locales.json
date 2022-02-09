@@ -836,8 +836,16 @@
     "id": "Social.card.twitter.title"
   },
   {
-    "defaultMessage": "My codingame profile",
+    "defaultMessage": "My Linkedin profile",
     "id": "Social.card.linkedin.title"
+  },
+  {
+    "defaultMessage": "My github profile",
+    "id": "Social.card.github.title"
+  },
+  {
+    "defaultMessage": "My codingame profile",
+    "id": "Social.card.codingame.title"
   },
   {
     "defaultMessage": "Your Twitter handle, example : welovedevs",
@@ -852,6 +860,10 @@
     "id": "Social.editDialog.codingame.placeholder"
   },
   {
+    "defaultMessage": "Your Github profile, example : clementdevos",
+    "id": "Social.editDialog.github.placeholder"
+  },
+  {
     "defaultMessage": "Your custom network, example: Portfolio",
     "id": "Social.editDialog.custom.placeholder"
   },
@@ -864,7 +876,7 @@
     "id": "Social.editDialog.title"
   },
   {
-    "defaultMessage": "Personnalisé",
+    "defaultMessage": "Custom",
     "id": "Social.editDialog.custom.title"
   },
   {

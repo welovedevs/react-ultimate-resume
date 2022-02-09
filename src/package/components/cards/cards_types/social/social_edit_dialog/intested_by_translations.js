@@ -14,6 +14,10 @@ export default defineMessages({
         id: 'Social.editDialog.codingame.placeholder',
         defaultMessage: 'Your Codingame profile id, example : ed3ee82f9630e99db32dec093b2ca07a0368002'
     },
+    github: {
+        id: 'Social.editDialog.github.placeholder',
+        defaultMessage: 'Your Github profile, example : clementdevos'
+    },
     custom: {
         id: 'Social.editDialog.custom.placeholder',
         defaultMessage: 'Your custom network, example:  Portfolio'

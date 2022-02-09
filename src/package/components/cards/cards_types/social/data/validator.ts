@@ -5,6 +5,7 @@ import { SocialCardData } from './mapping';
 import {
     CodingameSocialAccount,
     CustomSocialAccount,
+    GithubSocialAccount,
     LinkedinSocialAccount,
     TwitterSocialAccount
 } from '../../../../../types/resume/resume';
@@ -22,6 +23,12 @@ const linkedinValidator = (formatMessage: IntlFormatters['formatMessage']) =>
         network: Yup.string().equals(['linkedin']).notRequired(),
         url: Yup.string().url(formatMessage(validationTranslations.url)).notRequired()
     });
+const githubValidator = (formatMessage: IntlFormatters['formatMessage']) =>
+    Yup.object<Partial<GithubSocialAccount>>({
+        id: Yup.string().notRequired(),
+        network: Yup.string().equals(['github']).notRequired(),
+        username: Yup.string().notRequired()
+    });
 
 const codinGameValidator = (formatMessage: IntlFormatters['formatMessage']) =>
     Yup.object<Partial<CodingameSocialAccount>>({
@@ -32,11 +39,12 @@ const codinGameValidator = (formatMessage: IntlFormatters['formatMessage']) =>
 
 export const showSocialCard = (data: SocialCardData, showContactInformations: boolean) => {
     const profiles = data?.profiles || {};
-    const { linkedin, twitter, codingame, ...other } = profiles;
+    const { linkedin, twitter, codingame, github, ...other } = profiles;
     const hasOther = Object.values(other).some(({ url }) => !!url);
     return (
         !!linkedin?.url ||
         !!twitter?.username ||
+        !!github?.username ||
         !!codingame?.username ||
         hasOther ||
         !!(showContactInformations && (data?.phone || data?.email))
@@ -45,11 +53,12 @@ export const showSocialCard = (data: SocialCardData, showContactInformations: bo
 export const socialValidationSchema = (formatMessage: IntlFormatters['formatMessage']) =>
     Yup.object({
         profiles: Yup.lazy((value) => {
-            const { twitter, linkedin, codingame, ...other } = value as SocialCardData['profiles'];
+            const { twitter, linkedin, codingame, github, ...other } = value as SocialCardData['profiles'];
 
             return Yup.object({
                 twitter: twitter ? twitterValidator(formatMessage) : twitterValidator(formatMessage).notRequired(),
                 linkedin: linkedin ? linkedinValidator(formatMessage) : linkedinValidator(formatMessage).notRequired(),
+                github: linkedin ? githubValidator(formatMessage) : githubValidator(formatMessage).notRequired(),
                 codingame: codingame
                     ? codinGameValidator(formatMessage)
                     : codinGameValidator(formatMessage).notRequired(),

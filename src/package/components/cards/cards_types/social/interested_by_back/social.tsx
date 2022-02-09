@@ -8,6 +8,7 @@ import { SocialCardData } from '../data/mapping';
 import { ReactComponent as Twitter } from '../../../../../assets/icons/brands/twitter.svg';
 import { ReactComponent as Linkedin } from '../../../../../assets/icons/brands/linkedin.svg';
 import { ReactComponent as Codingame } from '../../../../../assets/icons/brands/codingame-1.svg';
+import { ReactComponent as GithubIcon } from '../../../../../assets/icons/brands/github.svg';
 import { ReactComponent as PhoneIcon } from '../../../../../assets/icons/phone.svg';
 import { ReactComponent as EmailIcon } from '../../../../../assets/icons/email.svg';
 import { ReactComponent as Planet } from '../../../../../assets/icons/planet.svg';
@@ -23,7 +24,7 @@ export const SocialCardContent: React.FC<CardSideProps<SocialCardData>> = ({ dat
     const textColor = getHexFromPaletteColor(theme, colorsFromCardVariant.backColor);
     const [showContactInformations] = useOptions('showContactInfos', false);
 
-    const { twitter, linkedin, codingame, ...others } = data.profiles;
+    const { twitter, linkedin, codingame, github, ...others } = data.profiles;
 
     const twitterUsername = twitter?.username?.replace(/@/g, '');
     return (
@@ -86,6 +87,18 @@ export const SocialCardContent: React.FC<CardSideProps<SocialCardData>> = ({ dat
                     </Typography>
                 </a>
             )}
+            {github?.username && (
+                <a href={`https://github.com/${github.username}`} target="_blank" rel="noreferrer noopener">
+                    <Typography
+                        component="div"
+                        className={`mb-4 flex items-center hover:underline hover:decoration-2`}
+                        style={{ color: textColor }}
+                    >
+                        <GithubIcon className="mr-3 w-[24px] h-[24px]" />
+                        <FormattedMessage id="Social.card.github.title" defaultMessage="My github profile" />
+                    </Typography>
+                </a>
+            )}
             {codingame?.username && (
                 <a
                     href={`https://www.codingame.com/profile/${codingame.username}`}
@@ -98,7 +111,7 @@ export const SocialCardContent: React.FC<CardSideProps<SocialCardData>> = ({ dat
                         style={{ color: textColor }}
                     >
                         <Codingame className="mr-3 w-[24px] h-[24px] rounded-md" />
-                        <FormattedMessage id="Social.card.linkedin.title" defaultMessage="My codingame profile" />
+                        <FormattedMessage id="Social.card.codingame.title" defaultMessage="My codingame profile" />
                     </Typography>
                 </a>
             )}

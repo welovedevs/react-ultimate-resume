@@ -27,6 +27,10 @@ export interface CodingameSocialAccount extends BaseSocialAccount {
     network: 'codingame';
     username: string;
 }
+export interface GithubSocialAccount extends BaseSocialAccount {
+    network: 'github';
+    username: string;
+}
 export interface LinkedinSocialAccount extends BaseSocialAccount {
     network: 'linkedin';
     url: string;
@@ -36,6 +40,7 @@ export type DeveloperSocialAccounts =
     | CustomSocialAccount
     | TwitterSocialAccount
     | CodingameSocialAccount
+    | GithubSocialAccount
     | LinkedinSocialAccount;
 export interface Basics {
     name: string;
