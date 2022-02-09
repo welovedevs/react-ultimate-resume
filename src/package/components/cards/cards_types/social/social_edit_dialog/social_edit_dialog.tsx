@@ -118,7 +118,7 @@ const Content = () => {
                         <TextField
                             variant="flat"
                             fullWidth
-                            placeholder={formatMessage(translations.linkedin)}
+                            placeholder={formatMessage(translations.codinggame)}
                             value={codingame?.username}
                             onChange={(e) => {
                                 initField('codingame');
@@ -137,7 +137,7 @@ const Content = () => {
                     <EditDialogField
                         title={
                             <div className="flex items-center">
-                                <FormattedMessage id="Social.editDialog.custom.title" defaultMessage="Personnalisé" />
+                                <FormattedMessage id="Social.editDialog.custom.title" defaultMessage="Custom" />
                             </div>
                         }
                     >
