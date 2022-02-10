@@ -5,6 +5,7 @@ import App from './App';
 
 import './package/styles/global.css';
 import './styles/animations.css';
+import './styles/tailwind.css';
 import { DEFAULT_THEME } from '@welovedevs/ui/styles/theme';
 import { createMuiTheme, StylesProvider as MuiStylesProvider, ThemeProvider } from '@material-ui/core/styles';
 import { create } from 'jss';
