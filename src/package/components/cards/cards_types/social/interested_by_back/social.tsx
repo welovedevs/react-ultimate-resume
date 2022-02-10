@@ -14,8 +14,8 @@ import { ReactComponent as EmailIcon } from '../../../../../assets/icons/email.s
 import { ReactComponent as Planet } from '../../../../../assets/icons/planet.svg';
 import { FormattedMessage } from 'react-intl';
 import { Typography } from '@welovedevs/ui';
-import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back';
 import { useOptions } from '../../../../hooks/use_options';
+import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
 
 export const SocialCardContent: React.FC<CardSideProps<SocialCardData>> = ({ data }) => {
     const [variant] = useCardVariant();
@@ -28,110 +28,115 @@ export const SocialCardContent: React.FC<CardSideProps<SocialCardData>> = ({ dat
 
     const twitterUsername = twitter?.username?.replace(/@/g, '');
     return (
-        <ProfileCardAnimatedBack title={<FormattedMessage id="Social.card.title" defaultMessage="Contact me" />}>
-            {showContactInformations && data.phone && (
-                <a href={`phone:${data.phone}`} target="_blank" rel="noreferrer noopener">
-                    <Typography
-                        component="div"
-                        className={`mb-4 flex items-center hover:underline hover:decoration-2`}
-                        style={{ color: textColor }}
-                    >
-                        <PhoneIcon
-                            className={`mr-3 w-[24px] h-[24px]`}
-                            style={{ color: textColor, fill: 'currentColor' }}
-                        />
-                        {data.phone}
-                    </Typography>
-                </a>
-            )}
-            {showContactInformations && data.email && (
-                <a href={`mailto:${data.email}`} target="_blank" rel="noreferrer noopener">
-                    <Typography
-                        component="div"
-                        className={`mb-4 flex items-center hover:underline hover:decoration-2`}
-                        style={{ color: textColor }}
-                    >
-                        <EmailIcon
-                            className={`mr-3  w-[24px] h-[24px]`}
-                            style={{ color: textColor, fill: 'currentColor' }}
-                        />
-                        {data.email}
-                    </Typography>
-                </a>
-            )}
-            {twitterUsername && (
-                <a href={`https://twitter.com/${twitterUsername}`} target="_blank" rel="noreferrer noopener">
-                    <Typography
-                        component="div"
-                        className={`mb-4 flex items-center hover:underline hover:decoration-2`}
-                        style={{ color: textColor }}
-                    >
-                        <Twitter className="mr-3 fill-[#1d9bf0] w-[24px] h-[24px]" />
-                        <FormattedMessage
-                            id="Social.card.twitter.title"
-                            defaultMessage="My twitter (@{value})"
-                            values={{ value: twitterUsername }}
-                        />
-                    </Typography>
-                </a>
-            )}
-            {linkedin?.url && (
-                <a href={linkedin?.url} target="_blank" rel="noreferrer noopener">
-                    <Typography
-                        component="div"
-                        className={`mb-4 flex items-center hover:underline hover:decoration-2`}
-                        style={{ color: textColor }}
-                    >
-                        <Linkedin className="mr-3 fill-[#0a66c2] w-[24px] h-[24px]" />
-                        <FormattedMessage id="Social.card.linkedin.title" defaultMessage="My Linkedin profile" />
-                    </Typography>
-                </a>
-            )}
-            {github?.username && (
-                <a href={`https://github.com/${github.username}`} target="_blank" rel="noreferrer noopener">
-                    <Typography
-                        component="div"
-                        className={`mb-4 flex items-center hover:underline hover:decoration-2`}
-                        style={{ color: textColor }}
-                    >
-                        <GithubIcon className="mr-3 w-[24px] h-[24px]" />
-                        <FormattedMessage id="Social.card.github.title" defaultMessage="My github profile" />
-                    </Typography>
-                </a>
-            )}
-            {codingame?.username && (
-                <a
-                    href={`https://www.codingame.com/profile/${codingame.username}`}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                >
-                    <Typography
-                        component="div"
-                        className={`mb-4 flex items-center hover:underline hover:decoration-2`}
-                        style={{ color: textColor }}
-                    >
-                        <Codingame className="mr-3 w-[24px] h-[24px] rounded-md" />
-                        <FormattedMessage id="Social.card.codingame.title" defaultMessage="My codingame profile" />
-                    </Typography>
-                </a>
-            )}
-            {Object.entries(others)
-                .filter(([, item]) => item)
-                .map(([, { url, network }]) => (
-                    <a href={url} target="_blank" rel="noreferrer noopener">
+        <ProfileCardPaddedFront classes={{ container: 'p-3' }}>
+            <Typography variant="h2" style={{ color: textColor }}>
+                <FormattedMessage id="Social.card.title" defaultMessage="Contact me" />
+            </Typography>
+            <div className="p-2">
+                {showContactInformations && data.phone && (
+                    <a href={`phone:${data.phone}`} target="_blank" rel="noreferrer noopener">
                         <Typography
                             component="div"
-                            className={`mb-4 flex items-center hover:underline hover:decoration-2`}
+                            className={`mb-2 flex items-center hover:underline hover:decoration-2`}
                             style={{ color: textColor }}
                         >
-                            <Planet
-                                className={`mr-3 w-[24px] h-[24px] rounded-md`}
-                                style={{ color: textColor, stroke: 'currentColor' }}
+                            <PhoneIcon
+                                className={`mr-2 w-[24px] h-[24px]`}
+                                style={{ color: textColor, fill: 'currentColor' }}
                             />
-                            {network}
+                            {data.phone}
                         </Typography>
                     </a>
-                ))}
-        </ProfileCardAnimatedBack>
+                )}
+                {showContactInformations && data.email && (
+                    <a href={`mailto:${data.email}`} target="_blank" rel="noreferrer noopener">
+                        <Typography
+                            component="div"
+                            className={`mb-2 flex items-center hover:underline hover:decoration-2`}
+                            style={{ color: textColor }}
+                        >
+                            <EmailIcon
+                                className={`mr-2  w-[24px] h-[24px]`}
+                                style={{ color: textColor, fill: 'currentColor' }}
+                            />
+                            {data.email}
+                        </Typography>
+                    </a>
+                )}
+                {twitterUsername && (
+                    <a href={`https://twitter.com/${twitterUsername}`} target="_blank" rel="noreferrer noopener">
+                        <Typography
+                            component="div"
+                            className={`mb-2 flex items-center hover:underline hover:decoration-2`}
+                            style={{ color: textColor }}
+                        >
+                            <Twitter className="mr-2 fill-[#1d9bf0] w-[24px] h-[24px]" />
+                            <FormattedMessage
+                                id="Social.card.twitter.title"
+                                defaultMessage="My twitter (@{value})"
+                                values={{ value: twitterUsername }}
+                            />
+                        </Typography>
+                    </a>
+                )}
+                {linkedin?.url && (
+                    <a href={linkedin?.url} target="_blank" rel="noreferrer noopener">
+                        <Typography
+                            component="div"
+                            className={`mb-2 flex items-center hover:underline hover:decoration-2`}
+                            style={{ color: textColor }}
+                        >
+                            <Linkedin className="mr-2 fill-[#0a66c2] w-[24px] h-[24px]" />
+                            <FormattedMessage id="Social.card.linkedin.title" defaultMessage="My Linkedin profile" />
+                        </Typography>
+                    </a>
+                )}
+                {github?.username && (
+                    <a href={`https://github.com/${github.username}`} target="_blank" rel="noreferrer noopener">
+                        <Typography
+                            component="div"
+                            className={`mb-2 flex items-center hover:underline hover:decoration-2`}
+                            style={{ color: textColor }}
+                        >
+                            <GithubIcon className="mr-2 w-[24px] h-[24px]" />
+                            <FormattedMessage id="Social.card.github.title" defaultMessage="My github profile" />
+                        </Typography>
+                    </a>
+                )}
+                {codingame?.username && (
+                    <a
+                        href={`https://www.codingame.com/profile/${codingame.username}`}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        <Typography
+                            component="div"
+                            className={`mb-2 flex items-center hover:underline hover:decoration-2`}
+                            style={{ color: textColor }}
+                        >
+                            <Codingame className="mr-2 w-[24px] h-[24px] rounded-md" />
+                            <FormattedMessage id="Social.card.codingame.title" defaultMessage="My codingame profile" />
+                        </Typography>
+                    </a>
+                )}
+                {Object.entries(others)
+                    .filter(([, item]) => item)
+                    .map(([, { url, network }]) => (
+                        <a href={url} target="_blank" rel="noreferrer noopener">
+                            <Typography
+                                component="div"
+                                className={`mb-2 flex items-center hover:underline hover:decoration-2`}
+                                style={{ color: textColor }}
+                            >
+                                <Planet
+                                    className={`mr-2 w-[24px] h-[24px] rounded-md`}
+                                    style={{ color: textColor, stroke: 'currentColor' }}
+                                />
+                                {network}
+                            </Typography>
+                        </a>
+                    ))}
+            </div>
+        </ProfileCardPaddedFront>
     );
 };

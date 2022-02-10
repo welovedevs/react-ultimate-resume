@@ -68,12 +68,12 @@ const Content = () => {
 
     return (
         <>
-            <EditDialogField>
-                <div className="flex items-center">
-                    <Typography className="flex items-center min-w-[150px]">
+            <EditDialogField classes={{ container: 'my-3' }}>
+                <div className="flex items-center sm:flex-col sm:items-start">
+                    <Typography className="flex items-center min-w-[150px] sm:mb-2">
                         <Twitter className="mr-2 fill-[#1d9bf0] w-[24px] h-[24px]" /> Twitter
                     </Typography>
-                    <div className="w-full ml-2">
+                    <div className="w-full ml-2 sm:ml-0 ">
                         <TextField
                             variant="flat"
                             fullWidth
@@ -89,12 +89,12 @@ const Content = () => {
                     </div>
                 </div>
             </EditDialogField>
-            <EditDialogField>
-                <div className="flex items-center">
-                    <Typography className="flex items-center min-w-[150px]">
+            <EditDialogField classes={{ container: 'my-3' }}>
+                <div className="flex items-center sm:flex-col sm:items-start">
+                    <Typography className="flex items-center min-w-[150px] sm:mb-2">
                         <Linkedin className="mr-2 fill-[#0a66c2]  w-[24px] h-[24px]" /> Linkedin
                     </Typography>
-                    <div className="w-full ml-2">
+                    <div className="w-full ml-2 sm:ml-0">
                         <TextField
                             variant="flat"
                             fullWidth
@@ -104,18 +104,18 @@ const Content = () => {
                                 initField('linkedin');
                                 handleChange(e);
                             }}
-                            name="profiles.linkedin.username"
+                            name="profiles.linkedin.url"
                         />
-                        <ErrorsDisplay errors={errors} path={'profiles.linkedin.username'} />
+                        <ErrorsDisplay errors={errors} path={'profiles.linkedin.url'} />
                     </div>
                 </div>
             </EditDialogField>
-            <EditDialogField>
-                <div className="flex items-center">
-                    <Typography className="flex items-center  min-w-[150px]">
+            <EditDialogField classes={{ container: 'my-3' }}>
+                <div className="flex items-center sm:flex-col sm:items-start">
+                    <Typography className="flex items-center  min-w-[150px] sm:mb-2">
                         <Codingame className="mr-2  w-[24px] h-[24px] rounded-ml" /> CodinGame
                     </Typography>
-                    <div className="w-full ml-2">
+                    <div className="w-full ml-2 sm:ml-0">
                         <TextField
                             variant="flat"
                             fullWidth
@@ -132,12 +132,12 @@ const Content = () => {
                     </div>
                 </div>
             </EditDialogField>
-            <EditDialogField>
-                <div className="flex items-center">
-                    <Typography className="flex items-center  min-w-[150px] ">
+            <EditDialogField classes={{ container: 'my-3' }}>
+                <div className="flex items-center sm:flex-col sm:items-start">
+                    <Typography className="flex items-center  min-w-[150px]  sm:mb-2">
                         <Github className="mr-2  w-[24px] h-[24px] rounded-ml" /> GitHub
                     </Typography>
-                    <div className="w-full ml-2">
+                    <div className="w-full ml-2 sm:ml-0 ">
                         <TextField
                             variant="flat"
                             fullWidth
@@ -158,6 +158,7 @@ const Content = () => {
                 .filter(([, item]) => item)
                 .map(([id, { network }]) => (
                     <EditDialogField
+                        classes={{ container: 'my-3' }}
                         title={
                             <div className="flex items-center">
                                 <FormattedMessage id="Social.editDialog.custom.title" defaultMessage="Custom" />
@@ -165,33 +166,36 @@ const Content = () => {
                         }
                     >
                         <div className="flex items-center w-full">
-                            <div className="mx-1 w-full">
-                                <TextField
-                                    variant="flat"
-                                    fullWidth
-                                    placeholder={formatMessage(translations.custom)}
-                                    value={values?.profiles?.[id]?.network}
-                                    onChange={handleChange}
-                                    name={`profiles.${id}.network`}
-                                />
-                                <ErrorsDisplay errors={errors} path={`profiles.${id}.network`} />
-                            </div>
-                            <div className="mx-1 w-full">
-                                <TextField
-                                    variant="flat"
-                                    fullWidth
-                                    placeholder={formatMessage(translations.customUrl)}
-                                    value={values?.profiles?.[id]?.url}
-                                    onChange={handleChange}
-                                    name={`profiles.${id}.url`}
-                                />
-                                <ErrorsDisplay errors={errors} path={`profiles.${id}.url`} />
+                            <div className="flex items-center w-full sm:flex-col">
+                                <div className="mr-1 w-full sm:mb-1">
+                                    <TextField
+                                        variant="flat"
+                                        fullWidth
+                                        placeholder={formatMessage(translations.custom)}
+                                        value={values?.profiles?.[id]?.network}
+                                        onChange={handleChange}
+                                        classes={{ input: 'sm:p-0 sm:px-1' }}
+                                        name={`profiles.${id}.network`}
+                                    />
+                                    <ErrorsDisplay errors={errors} path={`profiles.${id}.network`} />
+                                </div>
+                                <div className="mr-1 w-full">
+                                    <TextField
+                                        variant="flat"
+                                        fullWidth
+                                        placeholder={formatMessage(translations.customUrl)}
+                                        value={values?.profiles?.[id]?.url}
+                                        onChange={handleChange}
+                                        classes={{ input: 'sm:p-0 sm:px-1' }}
+                                        name={`profiles.${id}.url`}
+                                    />
+                                    <ErrorsDisplay errors={errors} path={`profiles.${id}.url`} />
+                                </div>
                             </div>
                             <Button
                                 onClick={() => setFieldValue(`profiles.${id}`, null)}
                                 color="danger"
                                 variant={'contained'}
-                                className={'ml-2'}
                                 size="small"
                             >
                                 <DeleteIcon />
