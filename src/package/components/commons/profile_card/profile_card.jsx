@@ -30,16 +30,16 @@ const useStyles = createUseStyles(styles);
 
 export const ProfileCardContext = createContext({});
 
-const ProfileCardComponent = ({
-    id,
-    children,
+export const ProfileCard = ({
+    id = null,
+    children = null,
     data,
     sides,
     kind,
     variant,
     isEditingProfile,
     editDialog,
-    customEditAction,
+    customEditAction = null,
     isComplete = true,
     side: sideProps
 }) => {
@@ -191,10 +191,7 @@ const ProfileCardComponent = ({
                     {children}
                     <AnimatePresence>
                         {side && (
-                            <ProfileCardSide
-                                key={`card_side_${side}_${kind}`}
-                                animationProps={OPACITY_TRANSITIONS}
-                            >
+                            <ProfileCardSide key={`card_side_${side}_${kind}`} animationProps={OPACITY_TRANSITIONS}>
                                 <SideComponent data={data} handleAddButtonClick={handleAddButtonClick} />
                             </ProfileCardSide>
                         )}
@@ -213,5 +210,3 @@ const EditAction = ({ customEditAction, setEditDialogOpened }) => {
     }
     return <ProfileCardEditButton setEditDialogOpened={setEditDialogOpened} />;
 };
-
-export const ProfileCard = ProfileCardComponent;

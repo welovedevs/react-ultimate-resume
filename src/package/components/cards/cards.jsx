@@ -18,11 +18,13 @@ import { DEFAULT_CARD_ORDER } from './utils/cards_order';
 
 import { styles } from './cards_styles';
 import { useAdditionalNodes } from '../hooks/use_additional_nodes';
+import { SocialCard } from './cards_types/social/social_card';
 
 const useStyles = createUseStyles(styles);
 
 const CARD_TYPE_MAPPING = {
     basics: BasicsCard,
+    social: SocialCard,
     projects: ProjectsCard,
     language: LanguagesCard,
     dreamjob: DreamJobCard,

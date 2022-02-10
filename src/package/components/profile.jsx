@@ -2,8 +2,8 @@ import React, { useCallback, useMemo, useReducer, useState } from 'react';
 import { injectIntl, IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
-import mergeWith from 'lodash.mergewith';
-import cloneDeep from 'lodash.clonedeep';
+import mergeWith from 'lodash/mergeWith';
+import cloneDeep from 'lodash/cloneDeep';
 
 import { buildTheme } from '../utils/styles/theme/theme';
 import { Banner } from './banner/banner';
@@ -26,9 +26,9 @@ if (!Intl.PluralRules) {
     // eslint-disable-next-line global-require
     require('@formatjs/intl-pluralrules/polyfill');
     // eslint-disable-next-line global-require
-    require('@formatjs/intl-pluralrules/dist/locale-data/en');
+    require('@formatjs/intl-pluralrules/locale-data/en');
     // eslint-disable-next-line global-require
-    require('@formatjs/intl-pluralrules/dist/locale-data/fr');
+    require('@formatjs/intl-pluralrules/locale-data/fr');
 }
 
 const messages = {

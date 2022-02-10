@@ -10,8 +10,17 @@ import { styles } from './edit_dialog_field_styles';
 
 const useStyles = createUseStyles(styles);
 
-const EditDialogFieldComponent = ({ title, subtitle, children, error, classes: receivedClasses = {} }) => {
-    const classes = useStyles();
+export const EditDialogField: React.FC<{
+    title?: React.ReactElement;
+    subtitle?: React.ReactElement;
+    error?: string | any;
+    classes?: {
+        container?: string;
+        componentErrorContainer?: string;
+        component?: string;
+    };
+}> = ({ title, subtitle = null, children, error = null, classes: receivedClasses = {} }) => {
+    const classes = useStyles() as any;
     return (
         <div className={cn(classes.container, receivedClasses.container)}>
             {title && (
@@ -39,5 +48,3 @@ const EditDialogFieldComponent = ({ title, subtitle, children, error, classes: r
         </div>
     );
 };
-
-export const EditDialogField = EditDialogFieldComponent;

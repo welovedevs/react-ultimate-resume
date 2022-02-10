@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import capitalize from 'lodash.capitalize';
+import capitalize from 'lodash/capitalize';
 
 import translations from './contract_types_translations';
 

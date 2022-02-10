@@ -5,8 +5,8 @@ import { createUseStyles } from 'react-jss';
 import { useIntl } from 'react-intl';
 import { Twemoji } from 'react-emoji-render';
 import MomentUtils from '@date-io/moment';
-import isEqual from 'lodash.isequal';
-import pick from 'lodash.pick';
+import isEqual from 'lodash/isEqual';
+import pick from 'lodash/pick';
 
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { TextField, Typography } from '@welovedevs/ui';

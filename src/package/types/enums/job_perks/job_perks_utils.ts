@@ -1,4 +1,4 @@
-export const JobPerks = {
+export const JobPerksEnum = {
     MOOD: 'mood',
     CHALLENGE: 'challenge',
     SALARY: 'salary',
@@ -8,3 +8,4 @@ export const JobPerks = {
     PERKS: 'perks',
     OTHER: 'others'
 };
+export type JobPerks = typeof JobPerksEnum[keyof typeof JobPerksEnum];

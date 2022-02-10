@@ -6,9 +6,9 @@ import { ListItem } from '@welovedevs/ui';
 
 import { Select } from '../../../../../commons/select/select';
 
-import { JOB_SEARCH_STATE } from '../../../../../../utils/enums/job_serachstate/job_search_state';
+import { JOB_SEARCH_STATE } from '../../../../../../types/enums/job_serachstate/job_search_state';
 
-import { translations } from '../../../../../../utils/enums/job_serachstate/job_search_state_translations';
+import { translations } from '../../../../../../utils/enums_translations/job_search_state_translations';
 
 const JobSearchStateFieldComponent = ({ value, handleChange }) => {
     const { formatMessage } = useIntl();

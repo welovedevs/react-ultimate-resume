@@ -1,22 +1,5 @@
 {
-    "presets": [
-        "@babel/preset-react",
-        "@babel/preset-env",
-        [
-            "@babel/preset-typescript",
-            {
-                "isTSX": true,
-                "allExtensions": true
-            }
-        ]
-    ],
     "plugins": [
-        [
-            "@babel/plugin-transform-runtime",
-            {
-                "regenerator": true
-            }
-        ],
         "@babel/plugin-proposal-optional-chaining",
         [
             "css-modules-transform",
@@ -29,12 +12,6 @@
                 }
             }
         ],
-        "babel-plugin-inline-react-svg",
-        [
-            "react-intl",
-            {
-                "messagesDir": "./build/messages/"
-            }
-        ]
+        "babel-plugin-inline-react-svg"
     ]
 }

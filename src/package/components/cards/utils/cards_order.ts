@@ -1,5 +1,6 @@
 export const DEFAULT_CARD_ORDER = [
     { type: 'basics', variant: 4 },
+    { type: 'social', variant: 4 },
     { type: 'skills', variant: 0 },
     { type: 'dreamjob', variant: 4 },
     { type: 'projects', variant: 4 },
@@ -9,4 +10,17 @@ export const DEFAULT_CARD_ORDER = [
     { type: 'interestedBy', variant: 3 },
     { type: 'language', variant: 4 },
     { type: 'soundtrack', variant: 4 }
-];
+] as const;
+
+export type AvailableCardsTypes =
+    | 'basics'
+    | 'social'
+    | 'skills'
+    | 'dreamjob'
+    | 'projects'
+    | 'experiences'
+    | 'studies'
+    | 'gifs'
+    | 'interestedBy'
+    | 'language'
+    | 'soundtrack';

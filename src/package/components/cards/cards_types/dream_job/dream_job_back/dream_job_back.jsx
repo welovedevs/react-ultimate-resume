@@ -17,8 +17,8 @@ import { DreamJobSalarySectionContent } from './dream_job_salary_section_content
 import { useOpenerState } from '../../../../hooks/use_opener_state';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 
-import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
-import { remoteDisplayTranslations } from '../../../../../utils/enums/remote/remote_filter_translations';
+import { REMOTE_FREQUENCY } from '../../../../../types/enums/remote/remote_utils';
+import { remoteDisplayTranslations } from '../../../../../utils/enums_translations/remote_filter_translations';
 
 import { styles } from './dream_job_back_styles';
 import { hasOnlyFreelanceContract } from '../../../utils/has_only_freelance_contract';

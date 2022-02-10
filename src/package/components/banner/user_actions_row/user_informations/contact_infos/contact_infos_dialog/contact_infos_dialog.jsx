@@ -4,7 +4,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 
-import set from 'lodash.set';
+import set from 'lodash/set';
 
 import { Dialog, DialogContent, DialogActions, useMediaQuery } from '@material-ui/core';
 

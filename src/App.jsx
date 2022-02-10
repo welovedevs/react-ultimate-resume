@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
-import isArray from 'lodash.isarray';
-import mergeWith from 'lodash.mergewith';
-import omit from 'lodash.omit';
-import cloneDeep from 'lodash.clonedeep';
+import isArray from 'lodash/isArray';
+import mergeWith from 'lodash/mergeWith';
+import omit from 'lodash/omit';
+import cloneDeep from 'lodash/cloneDeep';
 import download from 'downloadjs';
 import { Button } from '@welovedevs/ui';
 
@@ -54,8 +54,9 @@ function App() {
             onEdit={onEdit}
             onCustomizationChanged={onCustomizationChanged}
             options={{
-                locale: 'fr',
+                locale: 'en',
                 // side: 'back',
+                showContactInfos: false,
                 apiKeys: {
                     giphy: process.env.REACT_APP_GIPHY
                 },

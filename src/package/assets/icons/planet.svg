@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+
+    <g transform="matrix(4,0,0,4,0,0)">
+        <g>
+            <circle cx="12" cy="12" r="11.25"
+                    style="fill: none;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"></circle>
+            <path d="M9.88,23.05c-1.57-2.2-2.63-6.33-2.63-11S8.31,3.15,9.88,1"
+                  style="fill: none;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"></path>
+            <path d="M14.12,23.05c1.57-2.2,2.63-6.33,2.63-11S15.69,3.15,14.12,1"
+                  style="fill: none;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"></path>
+            <line x1="0.75" y1="12" x2="23.25" y2="12"
+                  style="fill: none;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"></line>
+            <line x1="2.05" y1="17.25" x2="21.95" y2="17.25"
+                  style="fill: none;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"></line>
+            <line x1="2.05" y1="6.75" x2="21.95" y2="6.75"
+                  style="fill: none;stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.5px"></line>
+        </g>
+    </g>
+</svg>
