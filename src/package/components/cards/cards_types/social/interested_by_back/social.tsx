@@ -13,11 +13,15 @@ import { ReactComponent as PhoneIcon } from '../../../../../assets/icons/phone.s
 import { ReactComponent as EmailIcon } from '../../../../../assets/icons/email.svg';
 import { ReactComponent as Planet } from '../../../../../assets/icons/planet.svg';
 import { FormattedMessage } from 'react-intl';
-import { Typography } from '@welovedevs/ui';
+import { Button, Typography } from '@welovedevs/ui';
 import { useOptions } from '../../../../hooks/use_options';
 import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
 
-export const SocialCardContent: React.FC<CardSideProps<SocialCardData>> = ({ data }) => {
+export const SocialCardContent: React.FC<CardSideProps<SocialCardData> & { isComplete: boolean }> = ({
+    data,
+    isComplete,
+    handleAddButtonClick
+}) => {
     const [variant] = useCardVariant();
     const theme = useTheme();
     const colorsFromCardVariant = getColorsFromCardVariant(theme, variant);
@@ -32,6 +36,13 @@ export const SocialCardContent: React.FC<CardSideProps<SocialCardData>> = ({ dat
             <Typography variant="h2" style={{ color: textColor }}>
                 <FormattedMessage id="Social.card.title" defaultMessage="Contact me" />
             </Typography>
+            {!isComplete && (
+                <div className="w-full h-full flex items-center justify-center">
+                    <Button variant="outlined" color="primary" size="small" onClick={handleAddButtonClick}>
+                        <FormattedMessage id="Social.card.addButon.text" defaultMessage="Add links" />
+                    </Button>
+                </div>
+            )}
             <div className="p-2">
                 {showContactInformations && data.phone && (
                     <a href={`phone:${data.phone}`} target="_blank" rel="noreferrer noopener">

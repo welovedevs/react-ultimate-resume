@@ -25,7 +25,10 @@ export const SocialCard = ({ variant, side }: CommonCardsProps) => {
         [onEdit]
     );
 
-    const isComplete = useMemo(() => showSocialCard(mappedData, showContactInformations), [mappedData]);
+    const isComplete = useMemo(() => showSocialCard(mappedData, showContactInformations), [
+        mappedData,
+        showContactInformations
+    ]);
 
     if (!isComplete && !isEditing) {
         return null;
@@ -37,7 +40,9 @@ export const SocialCard = ({ variant, side }: CommonCardsProps) => {
                 data={mappedData}
                 isEditingProfile={isEditing}
                 sides={{
-                    back: (props: CardSideProps<SocialCardData>) => <SocialCardContent {...props} />
+                    back: (props: CardSideProps<SocialCardData>) => (
+                        <SocialCardContent {...props} isComplete={isComplete} />
+                    )
                 }}
                 editDialog={{
                     component: SocialEditDialog,
