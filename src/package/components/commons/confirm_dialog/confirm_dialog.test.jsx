@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { ThemeProvider } from 'react-jss';
 import { IntlProvider } from 'react-intl';
+import '@testing-library/jest-dom';
 
 import en from '../../../i18n/en.json';
 import { buildTheme } from '../../../utils/styles/theme/theme';

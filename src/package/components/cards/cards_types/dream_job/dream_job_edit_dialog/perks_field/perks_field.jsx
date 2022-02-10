@@ -7,10 +7,10 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { TextField, Typography } from '@welovedevs/ui';
 import { CheckboxGroup } from '../../../../../commons/checkbox_group/checkbox_group';
 import { CheckboxField } from '../../../../../commons/checkbox_field/checkbox_group';
-import { JobPerks } from '../../../../../../utils/enums/job_perks/job_perks_utils';
+import { JobPerksEnum } from '../../../../../../types/enums/job_perks/job_perks_utils';
 import { EditDialogField } from '../../../../../commons/edit_dialog_field/edit_dialog_field';
 
-import { jobPerksTranslations } from '../../../../../../utils/enums/job_perks/job_perks_translations';
+import { jobPerksTranslations } from '../../../../../../utils/enums_translations/job_perks_translations';
 
 import { PERKS_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS } from './perks_field_transitions_props';
 
@@ -20,14 +20,14 @@ import { DEFAULT_SPRING_TYPE as spring } from '../../../../../../utils/framer_mo
 
 const useStyles = createUseStyles(styles);
 
-const checkboxGroupPerks = Object.values(JobPerks).filter((perk) => perk !== JobPerks.OTHER);
+const checkboxGroupPerks = Object.values(JobPerksEnum).filter((perk) => perk !== JobPerksEnum.OTHER);
 
 const PerksFieldComponent = ({ error, perks, onChange, setFieldValue }) => {
     const timerRef = useRef();
 
     const classes = useStyles();
     const { formatMessage } = useIntl();
-    const otherPerk = useMemo(() => perks[JobPerks.OTHER] ?? null, [perks]);
+    const otherPerk = useMemo(() => perks[JobPerksEnum.OTHER] ?? null, [perks]);
     const [otherPerkValue, setOtherPerkValue] = useState(otherPerk);
 
     const checkedPerks = useMemo(
@@ -45,13 +45,13 @@ const PerksFieldComponent = ({ error, perks, onChange, setFieldValue }) => {
                     acc[perk] = true;
                     return acc;
                 }, {}),
-                [JobPerks.OTHER]: perks[JobPerks.OTHER]
+                [JobPerksEnum.OTHER]: perks[JobPerksEnum.OTHER]
             }),
         [perks]
     );
 
     const toggleOtherPerk = useCallback(
-        () => setFieldValue(`perks.${JobPerks.OTHER}`, typeof perks[JobPerks.OTHER] === 'string' ? null : ''),
+        () => setFieldValue(`perks.${JobPerksEnum.OTHER}`, typeof perks[JobPerksEnum.OTHER] === 'string' ? null : ''),
         [perks]
     );
 
@@ -66,7 +66,7 @@ const PerksFieldComponent = ({ error, perks, onChange, setFieldValue }) => {
         }
 
         timerRef.current = setTimeout(() => {
-            setFieldValue(`perks.${JobPerks.OTHER}`, otherPerkValue);
+            setFieldValue(`perks.${JobPerksEnum.OTHER}`, otherPerkValue);
         }, 500);
     }, [otherPerkValue]);
 
@@ -106,7 +106,7 @@ const PerksFieldComponent = ({ error, perks, onChange, setFieldValue }) => {
                         containerElement={motion.div}
                         classes={{ container: cn(classes.textField, classes.otherTextField) }}
                         onChange={handleOtherPerkValueChange}
-                        name={`perks[${JobPerks.OTHER}]`}
+                        name={`perks[${JobPerksEnum.OTHER}]`}
                         value={otherPerkValue}
                         variant="flat"
                         containerProps={{

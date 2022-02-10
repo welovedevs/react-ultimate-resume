@@ -26,7 +26,6 @@ sidebar_label: Props
 |    endpoint    | { devicons : string, unsplashProxy: string } | Endpoints for 3thd party services. Used to get the technology list and use unsplash. |
 | customization  |                    Object                    |                            Current resume customization.                             |
 | maxCardsPerRow |                    number                    |                Number of cards per row in the grid (defaults to none)                |
-| dismissFooter  |                   boolean                    |                            Hide footer (defaults to none)                            |
 
 ### JSON-Resume Extra Fields
 

@@ -2,8 +2,8 @@ import React, { useCallback, useMemo, useReducer, useState } from 'react';
 import { injectIntl, IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
 
-import mergeWith from 'lodash.mergewith';
-import cloneDeep from 'lodash.clonedeep';
+import mergeWith from 'lodash/mergeWith';
+import cloneDeep from 'lodash/cloneDeep';
 
 import { buildTheme } from '../utils/styles/theme/theme';
 import { Banner } from './banner/banner';
@@ -19,7 +19,6 @@ import '../styles/lib/slick-carousel/slick-theme.css';
 import '../styles/lib/slick-carousel/slick.css';
 import { technologiesInitialState, technologiesReducer } from '../store/technologies/technologies_reducer';
 import { DeveloperProfileContext, StaticDataContext, StoreContext } from '../utils/context/contexts';
-import { Footer } from './footer/footer';
 import { mergeOmitNull } from '../utils/data_utils';
 import { SIDES } from './commons/profile_card/profile_card_side/side';
 
@@ -27,9 +26,9 @@ if (!Intl.PluralRules) {
     // eslint-disable-next-line global-require
     require('@formatjs/intl-pluralrules/polyfill');
     // eslint-disable-next-line global-require
-    require('@formatjs/intl-pluralrules/dist/locale-data/en');
+    require('@formatjs/intl-pluralrules/locale-data/en');
     // eslint-disable-next-line global-require
-    require('@formatjs/intl-pluralrules/dist/locale-data/fr');
+    require('@formatjs/intl-pluralrules/locale-data/fr');
 }
 
 const messages = {
@@ -39,7 +38,7 @@ const messages = {
 };
 const useStyles = createUseStyles(styles);
 
-const DEFAULT_OPTIONS ={
+const DEFAULT_OPTIONS = {
     locale: 'en',
     customization: {
         imageHeader: {
@@ -48,8 +47,7 @@ const DEFAULT_OPTIONS ={
         }
     },
     maxCardsPerRow: null,
-    showContactInfos: false,
-    dismissFooter: false
+    showContactInfos: false
 };
 
 const DEFAULT_OBJECT = {};
@@ -135,7 +133,6 @@ const DeveloperProfileComponent = ({
                             maxCardsPerRow={options?.maxCardsPerRow}
                             side={side}
                         />
-                        {!options.dismissFooter && <Footer />}
                     </DeveloperProfileContext.Provider>
                 </StoreContext.Provider>
             </StaticDataContext.Provider>

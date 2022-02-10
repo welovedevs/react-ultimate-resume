@@ -1,0 +1,1134 @@
+[
+  {
+    "defaultMessage": "This field is mandatory",
+    "id": "Form.validation.global.mandatory"
+  },
+  {
+    "defaultMessage": "Start date must be after end date",
+    "id": "Form.validation.global.date.mustBeAfter"
+  },
+  {
+    "defaultMessage": "This field must have at least {min} chars",
+    "id": "Form.validation.global.min"
+  },
+  {
+    "defaultMessage": "This field must have at most {max} chars",
+    "id": "Form.validation.global.max"
+  },
+  {
+    "defaultMessage": "This field must be greater than {min}",
+    "id": "Form.validation.global.number.min"
+  },
+  {
+    "defaultMessage": "This field must be lower than {max}",
+    "id": "Form.validation.global.number.max"
+  },
+  {
+    "defaultMessage": "This field must be a phone number",
+    "id": "Form.validation.global.phoneNumber"
+  },
+  {
+    "defaultMessage": "Please change this field default value",
+    "id": "Form.validation.global.changeNumber"
+  },
+  {
+    "defaultMessage": "This field must be a valid URL",
+    "id": "Form.validation.global.url"
+  },
+  {
+    "defaultMessage": "Photo by {name} on {unsplashLink}",
+    "id": "Unsplash.credit"
+  },
+  {
+    "defaultMessage": "Unsplash",
+    "id": "Unsplash.brandName"
+  },
+  {
+    "defaultMessage": "Fixed-Term",
+    "id": "DeveloperProfile.contractTypes.fixedTerm"
+  },
+  {
+    "defaultMessage": "Permanent",
+    "id": "DeveloperProfile.contractTypes.permanent"
+  },
+  {
+    "defaultMessage": "Internship",
+    "id": "DeveloperProfile.contractTypes.internship"
+  },
+  {
+    "defaultMessage": "Apprenticeship",
+    "id": "DeveloperProfile.contractTypes.apprenticeship"
+  },
+  {
+    "defaultMessage": "Freelancing",
+    "id": "DeveloperProfile.contractTypes.freelance"
+  },
+  {
+    "defaultMessage": "Unknown",
+    "id": "DeveloperProfile.contractTypes.unknown"
+  },
+  {
+    "defaultMessage": "Not technical enough",
+    "id": "Developer.jobIssues.tech"
+  },
+  {
+    "defaultMessage": "Not enough responsibilities",
+    "id": "Developer.jobIssues.responsabilities"
+  },
+  {
+    "defaultMessage": "Not enough challenge",
+    "id": "Developer.jobIssues.challenge"
+  },
+  {
+    "defaultMessage": "Team issues",
+    "id": "Developer.jobIssues.team"
+  },
+  {
+    "defaultMessage": "Management issues",
+    "id": "Developer.jobIssues.management"
+  },
+  {
+    "defaultMessage": "Low salary",
+    "id": "Developer.jobIssues.salary"
+  },
+  {
+    "defaultMessage": "Location",
+    "id": "Developer.jobIssues.location"
+  },
+  {
+    "defaultMessage": "Other",
+    "id": "Developer.jobIssues.other"
+  },
+  {
+    "defaultMessage": "Great ambiance",
+    "id": "Developer.JobPerks.mood"
+  },
+  {
+    "defaultMessage": "Challenge",
+    "id": "Developer.JobPerks.challenge"
+  },
+  {
+    "defaultMessage": "Salary",
+    "id": "Developer.JobPerks.salary"
+  },
+  {
+    "defaultMessage": "Flexible work hours",
+    "id": "Developer.JobPerks.work_hours"
+  },
+  {
+    "defaultMessage": "Training",
+    "id": "Developer.JobPerks.training"
+  },
+  {
+    "defaultMessage": "Responsibilities",
+    "id": "Developer.JobPerks.resopnsabilities"
+  },
+  {
+    "defaultMessage": "Perks (meal, tickets,... )",
+    "id": "Developer.JobPerks.perks"
+  },
+  {
+    "defaultMessage": "Other",
+    "id": "Developer.JobPerks.other"
+  },
+  {
+    "defaultMessage": "I'm actively searching for a job",
+    "id": "Developer.developerJobSearchState.activelySearching"
+  },
+  {
+    "defaultMessage": "I'm open to job opportunities",
+    "id": "Developer.developerJobSearchState.openOpportunities"
+  },
+  {
+    "defaultMessage": "I'm only searching for my dream job",
+    "id": "Developer.developerJobSearchState.dreamjobOnly"
+  },
+  {
+    "defaultMessage": "I'm not open to opportunities",
+    "id": "Developer.developerJobSearchState.notSearching"
+  },
+  {
+    "defaultMessage": "Unknown job search state",
+    "id": "Developer.developerJobSearchState.unknown"
+  },
+  {
+    "defaultMessage": "No",
+    "id": "Developer.RemoteFrequency.Select.Never"
+  },
+  {
+    "defaultMessage": "Occasionally",
+    "id": "Developer.RemoteFrequency.Select.Occasionally"
+  },
+  {
+    "defaultMessage": "Regularly",
+    "id": "Developer.RemoteFrequency.Select.Regularly"
+  },
+  {
+    "defaultMessage": "Full-time",
+    "id": "Developer.RemoteFrequency.Select.FullTime"
+  },
+  {
+    "defaultMessage": "Other",
+    "id": "Developer.RemoteFrequency.Select.Other"
+  },
+  {
+    "defaultMessage": "I'm not interested by remote work",
+    "id": "Developer.RemoteFrequency.Display.never"
+  },
+  {
+    "defaultMessage": "I'm interested by occasional remote work (a few times a month)",
+    "id": "Developer.RemoteFrequency.Display.occasionally"
+  },
+  {
+    "defaultMessage": "I'm interested by regular remote work (a few times a week)",
+    "id": "Developer.RemoteFrequency.Display.regularly"
+  },
+  {
+    "defaultMessage": "I'm interested by full-time remote work",
+    "id": "Developer.RemoteFrequency.Display.fullTime"
+  },
+  {
+    "defaultMessage": "Autres",
+    "id": "Developer.RemoteFrequency.Display.other"
+  },
+  {
+    "defaultMessage": "⚠️ No key, unsplash upload is disabled",
+    "id": "Banner.EditImageDialog.noUnsplashButton"
+  },
+  {
+    "defaultMessage": "Search on unsplash",
+    "id": "Banner.EditImageDialog.unsplashButton"
+  },
+  {
+    "defaultMessage": "or",
+    "id": "Main.Lang.Or"
+  },
+  {
+    "defaultMessage": "Pick an image",
+    "id": "Banner.EditImageDialog.Title"
+  },
+  {
+    "defaultMessage": "Clear",
+    "id": "Main.lang.clear"
+  },
+  {
+    "defaultMessage": "Close",
+    "id": "Main.lang.close"
+  },
+  {
+    "defaultMessage": "Edit image banner",
+    "id": "Banner.image.editButton"
+  },
+  {
+    "defaultMessage": "Add",
+    "id": "Main.Lang.Add"
+  },
+  {
+    "defaultMessage": "+",
+    "id": "AddButton.plus"
+  },
+  {
+    "defaultMessage": "Are you sure?",
+    "id": "ConfirmDialog.title"
+  },
+  {
+    "defaultMessage": "Do you really want to achieve this action?",
+    "id": "ConfirmDialog.content"
+  },
+  {
+    "defaultMessage": "Confirm",
+    "id": "Main.lang.confirm"
+  },
+  {
+    "defaultMessage": "Copied in your clipboard",
+    "id": "Main.lang.copied"
+  },
+  {
+    "defaultMessage": "Any modification won't be saved!",
+    "id": "EditDialog.close.tooltip"
+  },
+  {
+    "defaultMessage": "Save",
+    "id": "Main.lang.save"
+  },
+  {
+    "defaultMessage": "Error",
+    "id": "Main.lang.error"
+  },
+  {
+    "defaultMessage": "⚠️ Dropzone is disabled, no upload callback set.",
+    "id": "Dropzone.disabled"
+  },
+  {
+    "defaultMessage": "Location",
+    "id": "DeveloperProfile.locationField.label"
+  },
+  {
+    "defaultMessage": "Start typing to search (ex : Paris...)",
+    "id": "DeveloperProfile.locationField.placeholder"
+  },
+  {
+    "defaultMessage": "Your location",
+    "id": "DeveloperProfile.locationField.stubPlaceholder"
+  },
+  {
+    "defaultMessage": "Search gifs",
+    "id": "Gifs.searchdialog.title"
+  },
+  {
+    "defaultMessage": "Powered by Giphy",
+    "id": "Gifs.searchdialog.poweredByGiphy"
+  },
+  {
+    "defaultMessage": "Search pictures from unsplash",
+    "id": "Unsplash.SearchDialog.Title"
+  },
+  {
+    "defaultMessage": "Only selected",
+    "id": "Skills.EditDialog.onlySelected"
+  },
+  {
+    "defaultMessage": "Delete",
+    "id": "Main.lang.delete"
+  },
+  {
+    "defaultMessage": "Upload a file",
+    "id": "UploadDialog.title"
+  },
+  {
+    "defaultMessage": "Enter an URL",
+    "id": "URLFailover.title"
+  },
+  {
+    "defaultMessage": "Enter an url",
+    "id": "Gifs.searchdialog.failoverTitle"
+  },
+  {
+    "defaultMessage": "⚠️ No key, giphy search is disabled",
+    "id": "Gifs.searchdialog.nogiphy"
+  },
+  {
+    "defaultMessage": "Enter an url",
+    "id": "Form.Url.input.title"
+  },
+  {
+    "defaultMessage": "Customize",
+    "id": "Banner.actions.customize"
+  },
+  {
+    "defaultMessage": "Customize your profile",
+    "id": "Banner.actions.customize.dialog.title"
+  },
+  {
+    "defaultMessage": "Edit",
+    "id": "Main.lang.edit"
+  },
+  {
+    "defaultMessage": "Stop edit",
+    "id": "Main.lang.stopEdit"
+  },
+  {
+    "defaultMessage": "More about me",
+    "id": "Basics.moreText"
+  },
+  {
+    "defaultMessage": "Sort projects",
+    "id": "Projects.Actions.Sort"
+  },
+  {
+    "defaultMessage": "Add a project",
+    "id": "Projects.Actions.Add"
+  },
+  {
+    "defaultMessage": "Looking for a {contractType} contract",
+    "id": "Basics.Back.WorkContract.single"
+  },
+  {
+    "defaultMessage": "Looking for a {contracts} or {lastContract} contract",
+    "id": "Basics.Back.WorkContract.multi"
+  },
+  {
+    "defaultMessage": "Permanent",
+    "id": "Developer.contractType.permanent"
+  },
+  {
+    "defaultMessage": "Fixed Term",
+    "id": "Developer.contractType.fixedTerm"
+  },
+  {
+    "defaultMessage": "Internship",
+    "id": "Developer.contractType.internship"
+  },
+  {
+    "defaultMessage": "Apprenticeship",
+    "id": "Developer.contractType.apprenticeship"
+  },
+  {
+    "defaultMessage": "Freelance",
+    "id": "Developer.contractType.freelance"
+  },
+  {
+    "defaultMessage": "Unknown",
+    "id": "Developer.contractType.unknown"
+  },
+  {
+    "defaultMessage": "This card is missing data",
+    "id": "ProfileCardIncompletePopper.label.value"
+  },
+  {
+    "defaultMessage": "Card's front background",
+    "id": "CardStub.CardVariantTooltip.FrontBackground"
+  },
+  {
+    "defaultMessage": "Card's front texts & icons color",
+    "id": "CardStub.CardVariantTooltip.FrontColor"
+  },
+  {
+    "defaultMessage": "Card's back background",
+    "id": "CardStub.CardVariantTooltip.BackBackgroundColor"
+  },
+  {
+    "defaultMessage": "Card's back texts & icons color",
+    "id": "CardStub.CardVariantTooltip.BackColor"
+  },
+  {
+    "defaultMessage": "Primary",
+    "id": "PaletteVisual.Key.Primary"
+  },
+  {
+    "defaultMessage": "Secondary",
+    "id": "PaletteVisual.Key.Secondary"
+  },
+  {
+    "defaultMessage": "Tertiary",
+    "id": "PaletteVisual.Key.Tertiary"
+  },
+  {
+    "defaultMessage": "Ajouter une description",
+    "id": "Basics.noDescription.buttonLabel"
+  },
+  {
+    "defaultMessage": "I require a visa sponsorship",
+    "id": "Basics.Back.VisaSponsorship"
+  },
+  {
+    "defaultMessage": "Work",
+    "id": "Basics.Back.Work.Title"
+  },
+  {
+    "defaultMessage": "Experience",
+    "id": "Basics.Back.CodingYears.title"
+  },
+  {
+    "defaultMessage": "Training",
+    "id": "Basics.Back.StudiesLevel.Title"
+  },
+  {
+    "defaultMessage": "Why i code",
+    "id": "Basics.Back.CodingReason.Title"
+  },
+  {
+    "defaultMessage": "Who?",
+    "id": "Basics.Back.Title"
+  },
+  {
+    "defaultMessage": "Your basic informations",
+    "id": "Basics.editDialog.title"
+  },
+  {
+    "defaultMessage": "Do you want to tell a bit more about you?",
+    "id": "Basics.editDialog.personalDescription.title"
+  },
+  {
+    "defaultMessage": "Use this space to describe yourself a bit more !",
+    "id": "Basics.editDialog.personalDescription.subtitle"
+  },
+  {
+    "defaultMessage": "Describe yourself in a few words.",
+    "id": "Basics.editDialog.summary.title"
+  },
+  {
+    "defaultMessage": "What's your current location?",
+    "id": "Basics.editDialog.location.title"
+  },
+  {
+    "defaultMessage": "What's your current job search state?",
+    "id": "Basics.editDialog.searchState.title"
+  },
+  {
+    "defaultMessage": "How long have you been coding?",
+    "id": "Basics.editDialog.codingYears.title"
+  },
+  {
+    "defaultMessage": "(every experiences, studies, personal projects, work...)",
+    "id": "Basics.editDialog.codingYears.subtitle"
+  },
+  {
+    "defaultMessage": "{countNode} year{count, plural, one {} other {s}}",
+    "id": "Main.lang.years"
+  },
+  {
+    "defaultMessage": "What is your highest level of formal education?",
+    "id": "Basics.editDialog.studiesLevel.title"
+  },
+  {
+    "defaultMessage": "Bachelor = 3 years post graduate. Master = 5 years post graduate.",
+    "id": "Basics.editDialog.studiesLevel.subtitle"
+  },
+  {
+    "defaultMessage": "How many years of professional experience as a developer do you have?",
+    "id": "Basics.editDialog.codeExperienceYears.title"
+  },
+  {
+    "defaultMessage": "Tech experiences",
+    "id": "Basics.editDialog.codeExperienceYears.subtitle"
+  },
+  {
+    "defaultMessage": "How many years of other professional experience do you have?",
+    "id": "Basics.editDialog.otherExperienceYears.title"
+  },
+  {
+    "defaultMessage": "Non-tech experiences",
+    "id": "Basics.editDialog.otherExperienceYears.subtitle"
+  },
+  {
+    "defaultMessage": "What motivates you to write code?",
+    "id": "Basics.editDialog.codingReason.title"
+  },
+  {
+    "defaultMessage": "More about me",
+    "id": "Basics.front.action"
+  },
+  {
+    "defaultMessage": "Please select at least one contract !",
+    "id": "Dreamjob.form.validation.selectOne"
+  },
+  {
+    "defaultMessage": "You can't pick internship or apprenticeship with Long/Short term contracts or freelance",
+    "id": "Dreamjob.form.validation.byGroup"
+  },
+  {
+    "defaultMessage": "Dream job",
+    "id": "Dreamjob.Back.Title"
+  },
+  {
+    "defaultMessage": "Contract types",
+    "id": "Dreamjob.Back.ContractTypes.Title"
+  },
+  {
+    "defaultMessage": "Important perks in my job",
+    "id": "Dreamjob.Back.Location.Perks.Title"
+  },
+  {
+    "defaultMessage": "Current job's issues",
+    "id": "Dreamjob.Back.Location.CurrentJobIssues.Title"
+  },
+  {
+    "defaultMessage": "I want to work remotely",
+    "id": "Dreamjob.Back.Location.RemoteOnly"
+  },
+  {
+    "defaultMessage": "My dreamjob location",
+    "id": "Dreamjob.Back.Location.Title"
+  },
+  {
+    "defaultMessage": "I want to work in {place}",
+    "id": "Dreamjob.Back.Location.OnePlace"
+  },
+  {
+    "defaultMessage": "I want to work in {place} and {length, plural, one {one other place} other {# other places}}",
+    "id": "Dreamjob.Back.Location.ManyPlaces"
+  },
+  {
+    "defaultMessage": "Your dream job information",
+    "id": "DreamJob.editDialog.title"
+  },
+  {
+    "defaultMessage": "Do you want to work remotely?",
+    "id": "DreamJob.editDialog.remoteFrequency.title"
+  },
+  {
+    "defaultMessage": "What contract types are you currently looking for?",
+    "id": "DreamJob.editDialog.contractTypes.title"
+  },
+  {
+    "defaultMessage": "I want to work remotely",
+    "id": "DreamJob.Front.RemoteFulltime"
+  },
+  {
+    "defaultMessage": "I want to work in {cities}{andMore}",
+    "id": "DreamJob.Front.Cities"
+  },
+  {
+    "defaultMessage": "Discover my dream job",
+    "id": "Dreamjob.front.action"
+  },
+  {
+    "defaultMessage": "This date cannot be in the future.",
+    "id": "Work.form.validation.noFutureDate"
+  },
+  {
+    "defaultMessage": "Fill at least one work experience.",
+    "id": "Work.form.validation.atLeastOne"
+  },
+  {
+    "defaultMessage": "Experiences",
+    "id": "Experience.back.title"
+  },
+  {
+    "defaultMessage": "Since {year}",
+    "id": "Experiences.backCard.dates.since"
+  },
+  {
+    "defaultMessage": "Edit your professional experiences?",
+    "id": "Experiences.editDialog.title"
+  },
+  {
+    "defaultMessage": "Company name",
+    "id": "Experiences.editDialog.companyName.title"
+  },
+  {
+    "defaultMessage": "Example : WeLoveDevs.com (optional)",
+    "id": "Experiences.editDialog.companyName.placeholder"
+  },
+  {
+    "defaultMessage": "Still employed",
+    "id": "Experiences.editDialog.stillEmployed"
+  },
+  {
+    "defaultMessage": "Position",
+    "id": "Experiences.editDialog.jobTitle.title"
+  },
+  {
+    "defaultMessage": "Fill in the position title",
+    "id": "Experiences.editDialog.jobTitle.placeholder"
+  },
+  {
+    "defaultMessage": "Job description",
+    "id": "Experiences.editDialog.description.title"
+  },
+  {
+    "defaultMessage": "Your skills and technologies practiced for this job. What contract were you working on? With how many people? (30 chars. min)",
+    "id": "Experiences.editDialog.description.placeholder"
+  },
+  {
+    "defaultMessage": "Start :",
+    "id": "Experiences.editDialog.start"
+  },
+  {
+    "defaultMessage": "End :",
+    "id": "Experiences.editDialog.end"
+  },
+  {
+    "defaultMessage": "{jobTitle} from {start} to {end}",
+    "id": "Experiences.editDialog.jobTitleNoCompanyBothDates"
+  },
+  {
+    "defaultMessage": "{jobTitle} since {start}",
+    "id": "Experiences.editDialog.jobTitleNoCompanyNoEnd"
+  },
+  {
+    "defaultMessage": "{jobTitle} at {companyName} from {start} to {end}",
+    "id": "Experiences.editDialog.jobTitleCompanyBothDates"
+  },
+  {
+    "defaultMessage": "{jobTitle} at {companyName} from {start}",
+    "id": "Experiences.editDialog.jobTitleCompanyNoEnd"
+  },
+  {
+    "defaultMessage": "Job location",
+    "id": "Experiences.editDialog.jobPlace.title"
+  },
+  {
+    "defaultMessage": "Where is/was it located?",
+    "id": "Experiences.editDialog.jobPlace.placeholder"
+  },
+  {
+    "defaultMessage": "Since {year}",
+    "id": "Experience.front.title.since"
+  },
+  {
+    "defaultMessage": "Still employed",
+    "id": "Experience.front.title.stillEmployed"
+  },
+  {
+    "defaultMessage": "From {start} to {end}",
+    "id": "Experience.front.title.fromTo"
+  },
+  {
+    "defaultMessage": "See all experiences",
+    "id": "Experiences.front.action"
+  },
+  {
+    "defaultMessage": "Vous n'avez pas encore ajouté d'expériences !",
+    "id": "Experiences.front.noWork"
+  },
+  {
+    "defaultMessage": "Ajouter une expérience",
+    "id": "Experiences.noWork.buttonLabel"
+  },
+  {
+    "defaultMessage": "Select at least one interest and gif.",
+    "id": "Interests.form.validation.atLeastOne"
+  },
+  {
+    "defaultMessage": "Show your loved hobbies with fancy gifs!",
+    "id": "Interests.editDialog.title"
+  },
+  {
+    "defaultMessage": "See all hobbies",
+    "id": "Gifs.front.action"
+  },
+  {
+    "defaultMessage": "Vous n'avez pas encore ajouté de hobbies !",
+    "id": "Gifs.front.noHobby"
+  },
+  {
+    "defaultMessage": "Ajouter un hobby",
+    "id": "Gifs.noHobby.buttonLabel"
+  },
+  {
+    "defaultMessage": "Hobbies",
+    "id": "Hobbies.side.commons"
+  },
+  {
+    "defaultMessage": "What technologies are you interested in?",
+    "id": "InterestedBy.editDialog.title"
+  },
+  {
+    "defaultMessage": "Vue.js, Blockchain, Datadog...",
+    "id": "InterestedBy.editDialog.interestedBy.placeholder"
+  },
+  {
+    "defaultMessage": "See all",
+    "id": "InterestedBy.front.action"
+  },
+  {
+    "defaultMessage": "Vous n'avez pas encore ajouté de techno qui vous intéresse !",
+    "id": "InterestedBy.front.noInterested"
+  },
+  {
+    "defaultMessage": "Ajouter",
+    "id": "InterestedBy.noInterested.buttonLabel"
+  },
+  {
+    "defaultMessage": "Interested by:",
+    "id": "InterestedBy.front.content"
+  },
+  {
+    "defaultMessage": "Fill at least one language",
+    "id": "Languages.form.validation.atLeastOne"
+  },
+  {
+    "defaultMessage": "Languages",
+    "id": "Languages.back.title"
+  },
+  {
+    "defaultMessage": "Your languages",
+    "id": "Languages.editDialog.title"
+  },
+  {
+    "defaultMessage": "Language :",
+    "id": "Languages.editDialog.language.title"
+  },
+  {
+    "defaultMessage": "Ex : English, Italian...",
+    "id": "Languages.editDialog.language.placeholder"
+  },
+  {
+    "defaultMessage": "Level: {valueNode}%",
+    "id": "Languages.editDialog.level.title"
+  },
+  {
+    "defaultMessage": "Languages level",
+    "id": "Languages.front.action"
+  },
+  {
+    "defaultMessage": "I speak {languagesNode}",
+    "id": "Languages.front.content"
+  },
+  {
+    "defaultMessage": "Vous n'avez pas encore ajouté de langues !",
+    "id": "Languages.front.noLanguage"
+  },
+  {
+    "defaultMessage": "Ajouter une langue",
+    "id": "Languages.noLanguage.buttonLabel"
+  },
+  {
+    "defaultMessage": "Project's details",
+    "id": "Project.editDialog.title"
+  },
+  {
+    "defaultMessage": "Projects",
+    "id": "Projects.back.title"
+  },
+  {
+    "defaultMessage": "See {count} project{count, plural, one {} other {s}}",
+    "id": "Projects.front.action"
+  },
+  {
+    "defaultMessage": "My <emoji>♥️</emoji> project :",
+    "id": "Projects.front.title"
+  },
+  {
+    "defaultMessage": "You didn't add any projects.",
+    "id": "Projects.front.noProject"
+  },
+  {
+    "defaultMessage": "Ajouter un projet",
+    "id": "Projects.noProject.buttonLabel"
+  },
+  {
+    "defaultMessage": "See more",
+    "id": "Projects.details.seemore"
+  },
+  {
+    "defaultMessage": "Sort projects",
+    "id": "Projects.SortDialog.Title"
+  },
+  {
+    "defaultMessage": "Close",
+    "id": "Main.Lang.Close"
+  },
+  {
+    "defaultMessage": "Save",
+    "id": "Main.Lang.Save"
+  },
+  {
+    "defaultMessage": "Select at least one skill.",
+    "id": "Skills.form.validation.atLeastOne"
+  },
+  {
+    "defaultMessage": "Select at most {count} skill{count, plural, one {} other{s}}.",
+    "id": "Skills.form.validation.atMost"
+  },
+  {
+    "defaultMessage": "Skills",
+    "id": "Skills.back.title"
+  },
+  {
+    "defaultMessage": "What are your main skills?",
+    "id": "Skills.editDialog.title"
+  },
+  {
+    "defaultMessage": "More skills",
+    "id": "Skills.front.action"
+  },
+  {
+    "defaultMessage": "I mainly write {techno} stuff",
+    "id": "Skills.front.title"
+  },
+  {
+    "defaultMessage": "Vous n'avez pas encore ajouté de compétences !",
+    "id": "Skills.front.noSkill"
+  },
+  {
+    "defaultMessage": "Ajouter une compétence",
+    "id": "Skills.noSkill.buttonLabel"
+  },
+  {
+    "defaultMessage": "Contact me",
+    "id": "Social.card.title"
+  },
+  {
+    "defaultMessage": "Add links",
+    "id": "Social.card.addButon.text"
+  },
+  {
+    "defaultMessage": "My twitter (@{value})",
+    "id": "Social.card.twitter.title"
+  },
+  {
+    "defaultMessage": "My Linkedin profile",
+    "id": "Social.card.linkedin.title"
+  },
+  {
+    "defaultMessage": "My github profile",
+    "id": "Social.card.github.title"
+  },
+  {
+    "defaultMessage": "My codingame profile",
+    "id": "Social.card.codingame.title"
+  },
+  {
+    "defaultMessage": "Your Twitter handle, example : welovedevs",
+    "id": "Social.editDialog.twitter.placeholder"
+  },
+  {
+    "defaultMessage": "Your Linkedin profile url, example : https://www.linkedin.com/in/%F0%9F%A5%B3-cl%C3%A9ment-devos-4b832526/",
+    "id": "Social.editDialog.linkedin.placeholder"
+  },
+  {
+    "defaultMessage": "Your Codingame profile id, example : ed3ee82f9630e99db32dec093b2ca07a0368002",
+    "id": "Social.editDialog.codingame.placeholder"
+  },
+  {
+    "defaultMessage": "Your Github profile, example : clementdevos",
+    "id": "Social.editDialog.github.placeholder"
+  },
+  {
+    "defaultMessage": "Your custom network, example: Portfolio",
+    "id": "Social.editDialog.custom.placeholder"
+  },
+  {
+    "defaultMessage": "Your custom URL, example: https://myporfolio.awesome.rocket.fr",
+    "id": "Social.editDialog.custom.url.placeholder"
+  },
+  {
+    "defaultMessage": "How can we find you ?",
+    "id": "Social.editDialog.title"
+  },
+  {
+    "defaultMessage": "Custom",
+    "id": "Social.editDialog.custom.title"
+  },
+  {
+    "defaultMessage": "Embed your musical tastes in your profile.",
+    "id": "Sountrack.editDialog.title"
+  },
+  {
+    "defaultMessage": "Enter a Spotify embed URL.",
+    "id": "Soundtrack.editDialog.embedUrl.title"
+  },
+  {
+    "defaultMessage": "Ex: https://open.spotify.com/embed/album/79dL7FLiJFOO0EoehUHQBv",
+    "id": "Soundtrack.editDialog.embedUrl.subtitle"
+  },
+  {
+    "defaultMessage": "My playlist",
+    "id": "Soundtrack.front.button"
+  },
+  {
+    "defaultMessage": "Vous n'avez pas encore ajouté de playlist !",
+    "id": "SoundTrack.front.noSoundTrack"
+  },
+  {
+    "defaultMessage": "Ajouter une playlist",
+    "id": "SoundTrack.noSoundTrack.buttonLabel"
+  },
+  {
+    "defaultMessage": "Discover my favourite tracks",
+    "id": "Soundtrack.front.title"
+  },
+  {
+    "defaultMessage": "Fill at least one study reference, even if you're self taught.",
+    "id": "Education.form.validation.atLeastOne"
+  },
+  {
+    "defaultMessage": "Your studies",
+    "id": "Studies.editDialog.title"
+  },
+  {
+    "defaultMessage": "Studies/Higher education",
+    "id": "Studies.editDialog.schoolName.title"
+  },
+  {
+    "defaultMessage": "Epitech, Supinfo, 42, ISEN, IG2I...",
+    "id": "Studies.editDialog.schoolName.placeholder"
+  },
+  {
+    "defaultMessage": "Obtained diploma",
+    "id": "Studies.editDialog.diploma.title"
+  },
+  {
+    "defaultMessage": "Field",
+    "id": "Studies.editDialog.mainCourse.title"
+  },
+  {
+    "defaultMessage": "Graduation year",
+    "id": "Studies.editDialog.diploma.date"
+  },
+  {
+    "defaultMessage": "Level : License, PhD...",
+    "id": "Studies.editDialog.diploma.placeholder"
+  },
+  {
+    "defaultMessage": "Ex : IA , Géographie, médecine",
+    "id": "Studies.editDialog.diploma.mainCourse"
+  },
+  {
+    "defaultMessage": "Studies",
+    "id": "Studies.back.title"
+  },
+  {
+    "defaultMessage": "All my studies",
+    "id": "Studies.front.action"
+  },
+  {
+    "defaultMessage": "I graduated from {schoolName}",
+    "id": "Studies.title"
+  },
+  {
+    "defaultMessage": "Vous n'avez pas encore ajouté de formations !",
+    "id": "Studies.front.noEducation"
+  },
+  {
+    "defaultMessage": "Ajouter une formation",
+    "id": "Studies.noEducation.buttonLabel"
+  },
+  {
+    "defaultMessage": "Edit your contact informations?",
+    "id": "Banner.UserInformations.ContactInfos.Dialog.Title"
+  },
+  {
+    "defaultMessage": "You can add contact informations to your profile. Please be aware that those informations might be scrapped and used for unknown purposes. <bolder>Add them at your own risks!</bolder>",
+    "id": "Banner.UserInformations.ContactInfos.Dialog.Content"
+  },
+  {
+    "defaultMessage": "Email address",
+    "id": "Banner.UserInformations.ContactInformations.Email"
+  },
+  {
+    "defaultMessage": "Phone number",
+    "id": "Banner.UserInformations.ContactInformations.Phone"
+  },
+  {
+    "defaultMessage": "Name",
+    "id": "Banner.UserInformations.ContactInformations.Name"
+  },
+  {
+    "defaultMessage": "Edit contact informations",
+    "id": "Banner.UserInformations.ContactInfosButton"
+  },
+  {
+    "defaultMessage": "No experience (yet!) as a developer",
+    "id": "Basics.Back.CodeExperienceYear.noExperience"
+  },
+  {
+    "defaultMessage": "{codeExperienceYears, plural, one {# year} other {# years} } of work experience as developer",
+    "id": "Basics.Back.CodeExperienceYear.value"
+  },
+  {
+    "defaultMessage": "I've just started coding",
+    "id": "Basics.Back.CodingYears.noExperience"
+  },
+  {
+    "defaultMessage": "{codingYears, plural, one {# year} other {# years} } coding",
+    "id": "Basics.Back.CodingYears.value"
+  },
+  {
+    "defaultMessage": "and {otherExperienceValue, plural, one {# year} other {# years} } of other work experiences",
+    "id": "Basics.Back.OtherExperienceYear.value"
+  },
+  {
+    "defaultMessage": "No experience (yet!)",
+    "id": "Basics.Back.ExperienceYear.noExperience"
+  },
+  {
+    "defaultMessage": "{experienceYears, plural, one {# year} other {# years} } of experience",
+    "id": "Basics.Back.ExperienceYear.value"
+  },
+  {
+    "defaultMessage": "Did not pursue higher education",
+    "id": "Basics.Back.StudiesLevel.noHigherEducation"
+  },
+  {
+    "defaultMessage": "{studiesLevel, plural, one {# year} other {# years}} higher education",
+    "id": "Basics.Back.StudiesLevel.value"
+  },
+  {
+    "defaultMessage": "I require a visa sponsorship",
+    "id": "Basics.editDialog.visaSponsorship"
+  },
+  {
+    "defaultMessage": "Average Daily Rate",
+    "id": "Dreamjob.Back.AverageDailyRate.Title"
+  },
+  {
+    "defaultMessage": "Ideal yearly salary",
+    "id": "Dreamjob.Back.Salary.Title"
+  },
+  {
+    "defaultMessage": "Which issues do you encounter in your current job?",
+    "id": "DreamJob.editDialog.currentJobIssues.title"
+  },
+  {
+    "defaultMessage": "Delete this place",
+    "id": "DreamJob.editDialog.location.delete"
+  },
+  {
+    "defaultMessage": "What's your dream job location?",
+    "id": "DreamJob.editDialog.location.title"
+  },
+  {
+    "defaultMessage": "What perks are important to you ?",
+    "id": "DreamJob.editDialog.perks.title"
+  },
+  {
+    "defaultMessage": "What's your average daily rate?",
+    "id": "DreamJob.editDialog.averageDailyRate.title"
+  },
+  {
+    "defaultMessage": "What's your desired salary?",
+    "id": "DreamJob.editDialog.salary.title"
+  },
+  {
+    "defaultMessage": "Les expériences que vous avez mené dans votre carrière seront affichées ici .",
+    "id": "Experiences.noWork.title"
+  },
+  {
+    "defaultMessage": "Vos hobbies seront affichés sous la forme d'un gif trop stylé !",
+    "id": "Gifs.noHobby.title"
+  },
+  {
+    "defaultMessage": "Les langues que vous maîtrisez seront affichées avec votre niveau .",
+    "id": "Languages.noLanguage.title"
+  },
+  {
+    "defaultMessage": "Project details",
+    "id": "Project.details.dialog.title"
+  },
+  {
+    "defaultMessage": "Project's list",
+    "id": "Project.dialog.link.title"
+  },
+  {
+    "defaultMessage": "Project title",
+    "id": "Projects.dialog.content.title"
+  },
+  {
+    "defaultMessage": "Describe a project that you've enjoyed as a developer. This project may have been realized during your studies, your personal time or while working at a company.",
+    "id": "Projects.noProject.title"
+  },
+  {
+    "defaultMessage": "Link",
+    "id": "Project.section.link"
+  },
+  {
+    "defaultMessage": "Ajoutez ici toutes les compétences que vous maitrisez !",
+    "id": "Skills.noSkill.title"
+  },
+  {
+    "defaultMessage": "I also master",
+    "id": "Skills.otherskills.title"
+  },
+  {
+    "defaultMessage": "Ajoutez ici une playlist qui vous représente pour partagez aux recruteurs votre humeur et goût musicaux !",
+    "id": "SoundTrack.noSoundTrack.title"
+  },
+  {
+    "defaultMessage": "Ajoutez ici les formations que vous avez effectué !",
+    "id": "Studies.noEducation.title"
+  },
+  {
+    "defaultMessage": "Update this gif",
+    "id": "GifsEditDialog.gifCard.changeGif"
+  },
+  {
+    "defaultMessage": "Remove",
+    "id": "Main.lang.remove"
+  },
+  {
+    "defaultMessage": "Add a gif",
+    "id": "GifsEditDialog.gifCard.addGif"
+  },
+  {
+    "defaultMessage": "ex : Boat, Guitar...",
+    "id": "Gifs.Dialog.hobbies.name.placeholder"
+  },
+  {
+    "defaultMessage": "Hold me to drag this card!",
+    "id": "GifsEditDialog.gifCard.dragGif"
+  }
+]

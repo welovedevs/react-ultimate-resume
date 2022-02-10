@@ -11,7 +11,7 @@ import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { EditDialogField } from '../../../../commons/edit_dialog_field/edit_dialog_field';
 import { CheckboxGroup } from '../../../../commons/checkbox_group/checkbox_group';
 
-import { CONTRACT_TYPES } from '../../../../../utils/enums/contract_types/contract_types';
+import { CONTRACT_TYPES } from '../../../../../types/enums/contract_types/contract_types';
 
 import { Select } from '../../../../commons/select/select';
 import { SalaryField } from './salary_field/salary_field';
@@ -20,9 +20,9 @@ import { PerksField } from './perks_field/perks_field';
 import { CurrentJobIssuesField } from './current_job_issues_field/current_job_issues_field';
 import { LocationPlacesField } from './location_places_field/location_places_field';
 
-import { REMOTE_FREQUENCY } from '../../../../../utils/enums/remote/remote_utils';
-import { remoteSelectTranslations } from '../../../../../utils/enums/remote/remote_filter_translations';
-import { contractTypesTranslations } from '../../../../../utils/enums/contract_types/contract_types_translations';
+import { REMOTE_FREQUENCY } from '../../../../../types/enums/remote/remote_utils';
+import { remoteSelectTranslations } from '../../../../../utils/enums_translations/remote_filter_translations';
+import { contractTypesTranslations } from '../../../../../utils/enums_translations/contract_types_translations';
 
 import { styles } from './dream_job_card_edit_dialog_styles';
 

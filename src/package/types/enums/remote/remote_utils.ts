@@ -3,4 +3,6 @@ export const REMOTE_FREQUENCY = {
     REGULARLY: 'regularly',
     OCCASIONALY: 'occasionally',
     NEVER: 'never'
-};
+} as const;
+
+export type RemoteFrequencies = typeof REMOTE_FREQUENCY[keyof typeof REMOTE_FREQUENCY];

@@ -16,17 +16,18 @@ import { styles } from './edit_dialog_styles';
 
 const useStyles = createUseStyles(styles);
 
-const EditDialogComponent = ({
+export const EditDialog = ({
     open,
     onClose,
-    fullScreen,
+    fullScreen = null,
     data,
     onEdit,
     children,
     title = '✏️',
     validationSchema,
     isEditing,
-    classes: receivedClasses = {}
+    classes: receivedClasses = {},
+    disableEnforceFocus = null
 }) => {
     const classes = useStyles();
     const theme = useTheme();
@@ -40,6 +41,7 @@ const EditDialogComponent = ({
             }}
             open={open}
             onClose={onClose}
+            disableEnforceFocus={disableEnforceFocus}
         >
             <Formik
                 validateOnChange={false}
@@ -166,5 +168,3 @@ const Actions = ({ onClose, handleSubmit, fullScreen, classes, receivedClasses, 
         )}
     </DialogActions>
 );
-
-export const EditDialog = EditDialogComponent;

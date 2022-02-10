@@ -16,9 +16,23 @@
         },
         "profiles": [
             {
-                "network": "Twitter",
-                "username": "john",
-                "url": "http://twitter.com/john"
+                "network": "twitter",
+                "username": "@john"
+            },
+            {
+                "network": "Portfolio",
+                "url": "https://myawesome.portfolio.rocket.fr"
+            },
+            {
+                "network": "codingame",
+                "username": "ed3ee82f9630e99db32dec093b2ca07a0368002"
+            }, {
+                "network": "github",
+                "username": "clementdevos"
+            },
+            {
+                "network": "linkedin",
+                "url": "https://www.linkedin.com/in/%F0%9F%A5%B3-cl%C3%A9ment-devos-4b832526/"
             }
         ]
     },
@@ -136,7 +150,10 @@
             "keywords": ["HTML", "CSS", "Javascript"]
         }
     ],
-    "languages": [{ "language": "English", "value": 100, "fluency": "Native speaker" }, { "language": "Italien", "value": 15, "fluency": "Native speaker" } ],
+    "languages": [
+        { "language": "English", "value": 100, "fluency": "Native speaker" },
+        { "language": "Italien", "value": 15, "fluency": "Native speaker" }
+    ],
     "interests": [
         {
             "name": "France europe gif by nike football",
@@ -245,11 +262,7 @@
             "personalDescription": "This is a longer description of me, of my backstory, my backyard, my backfire, my backend, my frontend and my friends."
         },
         "dreamJob": {
-            "locations": [
-                { "name": "Valenciennes, France" },
-                { "name": "Lille, France" },
-                { "name": "Paris,France" }
-            ],
+            "locations": [{ "name": "Valenciennes, France" }, { "name": "Lille, France" }, { "name": "Paris,France" }],
             "remoteFrequency": "regularly"
         },
         "currentJob": {
@@ -257,7 +270,7 @@
         },
         "education": { "studiesLevel": null },
         "work": {
-            "contractTypes": ["permanent"],
+            "contractTypes": ["permanent", "freelance", "internship"],
             "codingYears": 0,
             "codingReason": "J'ai commencé à coder sur Amstrad dans ma cave et je n'ai jamais arrêté depuis",
             "searchState": "activelySearching",
@@ -285,7 +298,8 @@
             { "type": "gifs", "variant": 0 },
             { "type": "interestedBy", "variant": 3 },
             { "type": "language", "variant": 4 },
-            { "type": "soundtrack", "variant": 4 }
+            { "type": "soundtrack", "variant": 4 },
+            { "type": "social", "variant": 4 }
         ],
         "fields": {
             "work": {

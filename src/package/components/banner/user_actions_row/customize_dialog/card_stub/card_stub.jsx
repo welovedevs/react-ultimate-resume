@@ -17,6 +17,7 @@ import { ReactComponent as SchoolSvg } from '../../../../../assets/cards/school.
 import { ReactComponent as SkillsSvg } from '../../../../../assets/cards/skills.svg';
 import { ReactComponent as SoundtrackSvg } from '../../../../../assets/cards/soundtrack.svg';
 import { ReactComponent as ExperiencesSvg } from '../../../../../assets/cards/experiences.svg';
+import { ReactComponent as SocialSvg } from '../../../../../assets/cards/social.svg';
 
 import { useOpenerState } from '../../../../hooks/use_opener_state';
 import { getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
@@ -36,7 +37,8 @@ const CARD_TYPE_MAPPING = {
     studies: SchoolSvg,
     skills: SkillsSvg,
     soundtrack: SoundtrackSvg,
-    interestedBy: InterestedBySvg
+    interestedBy: InterestedBySvg,
+    social: SocialSvg
 };
 
 const CardStubComponent = ({ data: { type, variant }, cardIndex, onItemChanged }) => {
