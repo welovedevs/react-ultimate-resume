@@ -832,6 +832,10 @@
     "id": "Social.card.title"
   },
   {
+    "defaultMessage": "Add links",
+    "id": "Social.card.addButon.text"
+  },
+  {
     "defaultMessage": "My twitter (@{value})",
     "id": "Social.card.twitter.title"
   },
