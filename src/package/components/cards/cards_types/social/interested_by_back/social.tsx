@@ -32,7 +32,7 @@ export const SocialCardContent: React.FC<CardSideProps<SocialCardData> & { isCom
 
     const twitterUsername = twitter?.username?.replace(/@/g, '');
     return (
-        <ProfileCardPaddedFront classes={{ container: 'p-3' }}>
+        <ProfileCardPaddedFront classes={{ container: 'p-3 flex flex-col' }}>
             <Typography variant="h2" style={{ color: textColor }}>
                 <FormattedMessage id="Social.card.title" defaultMessage="Contact me" />
             </Typography>
@@ -43,12 +43,12 @@ export const SocialCardContent: React.FC<CardSideProps<SocialCardData> & { isCom
                     </Button>
                 </div>
             )}
-            <div className="p-2">
+            <div className="sm:px-1 px-2">
                 {showContactInformations && data.phone && (
                     <a href={`phone:${data.phone}`} target="_blank" rel="noreferrer noopener">
                         <Typography
                             component="div"
-                            className={`mb-2 flex items-center hover:underline hover:decoration-2`}
+                            className={`my-2 flex items-center hover:underline hover:decoration-2  font-medium`}
                             style={{ color: textColor }}
                         >
                             <PhoneIcon
@@ -63,7 +63,7 @@ export const SocialCardContent: React.FC<CardSideProps<SocialCardData> & { isCom
                     <a href={`mailto:${data.email}`} target="_blank" rel="noreferrer noopener">
                         <Typography
                             component="div"
-                            className={`mb-2 flex items-center hover:underline hover:decoration-2`}
+                            className={`my-2 flex items-center hover:underline hover:decoration-2  font-medium`}
                             style={{ color: textColor }}
                         >
                             <EmailIcon
@@ -78,7 +78,7 @@ export const SocialCardContent: React.FC<CardSideProps<SocialCardData> & { isCom
                     <a href={`https://twitter.com/${twitterUsername}`} target="_blank" rel="noreferrer noopener">
                         <Typography
                             component="div"
-                            className={`mb-2 flex items-center hover:underline hover:decoration-2`}
+                            className={`my-2 flex items-center hover:underline hover:decoration-2  font-medium`}
                             style={{ color: textColor }}
                         >
                             <Twitter className="mr-2 fill-[#1d9bf0] w-[24px] h-[24px]" />
@@ -94,7 +94,7 @@ export const SocialCardContent: React.FC<CardSideProps<SocialCardData> & { isCom
                     <a href={linkedin?.url} target="_blank" rel="noreferrer noopener">
                         <Typography
                             component="div"
-                            className={`mb-2 flex items-center hover:underline hover:decoration-2`}
+                            className={`my-2 flex items-center hover:underline hover:decoration-2  font-medium`}
                             style={{ color: textColor }}
                         >
                             <Linkedin className="mr-2 fill-[#0a66c2] w-[24px] h-[24px]" />
@@ -106,7 +106,7 @@ export const SocialCardContent: React.FC<CardSideProps<SocialCardData> & { isCom
                     <a href={`https://github.com/${github.username}`} target="_blank" rel="noreferrer noopener">
                         <Typography
                             component="div"
-                            className={`mb-2 flex items-center hover:underline hover:decoration-2`}
+                            className={`my-2 flex items-center hover:underline hover:decoration-2  font-medium`}
                             style={{ color: textColor }}
                         >
                             <GithubIcon className="mr-2 w-[24px] h-[24px]" />
@@ -122,7 +122,7 @@ export const SocialCardContent: React.FC<CardSideProps<SocialCardData> & { isCom
                     >
                         <Typography
                             component="div"
-                            className={`mb-2 flex items-center hover:underline hover:decoration-2`}
+                            className={`my-2 flex items-center hover:underline hover:decoration-2  font-medium`}
                             style={{ color: textColor }}
                         >
                             <Codingame className="mr-2 w-[24px] h-[24px] rounded-md" />
@@ -136,7 +136,7 @@ export const SocialCardContent: React.FC<CardSideProps<SocialCardData> & { isCom
                         <a href={url} target="_blank" rel="noreferrer noopener">
                             <Typography
                                 component="div"
-                                className={`mb-2 flex items-center hover:underline hover:decoration-2`}
+                                className={`my-2 flex items-center hover:underline hover:decoration-2  font-medium`}
                                 style={{ color: textColor }}
                             >
                                 <Planet
