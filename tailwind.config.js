@@ -2,7 +2,7 @@ const palettes = require('@welovedevs/ui/styles/palette');
 
 module.exports = {
     mode: 'jit',
-    content: ['./src/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+    content: ['./src/package/**/*.{js,jsx,ts,tsx}'],
     theme: {
         extend: {
             screens: {
@@ -71,6 +71,9 @@ module.exports = {
     },
     variants: {
         extend: {}
+    },
+    corePlugins: {
+        preflight: false
     },
     plugins: []
 };
