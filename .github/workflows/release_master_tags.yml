@@ -30,7 +30,6 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: yarn install
       - run: node package.js --verbose
-      - run: yarn build:css
       - run: npm publish --scope=welovedevs --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
