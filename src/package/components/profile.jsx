@@ -15,8 +15,7 @@ import en from '../i18n/en.json';
 import fr from '../i18n/fr.json';
 import tr from '../i18n/tr.json';
 
-import '../styles/lib/slick-carousel/slick-theme.css';
-import '../styles/lib/slick-carousel/slick-theme.css';
+import '../styles/lib/slick-carousel/slick-theme.module.css';
 import '../styles/tailwind.css';
 import { technologiesInitialState, technologiesReducer } from '../store/technologies/technologies_reducer';
 import { DeveloperProfileContext, StaticDataContext, StoreContext } from '../utils/context/contexts';
