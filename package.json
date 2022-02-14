@@ -11,6 +11,7 @@
         "test-build": "rimraf ./test-build && npx babel  --config-file ./build.babelrc --extensions '.ts,.tsx,.js,.jsx' ./src -d ./test_build",
         "posttest-build": "rimraf ./test_build ./styles ",
         "build": "react-scripts build",
+        "build:bundle": "node ./node_modules/webpack/bin/webpack.js --config webpack.config.js",
         "build:css": "npx tailwindcss build -o ./src/package/styles/tailwind.css --minify",
         "prepackage": "rimraf lib && npm run build:css ",
         "package": "npx  babel --no-babelrc --config-file ./build.babelrc --extensions '.ts,.tsx,.js,.jsx' ./src/package -d .",
@@ -84,6 +85,7 @@
         "babel-plugin-inline-react-svg": "^1.1.1",
         "babel-plugin-react-intl": "^8.2.25",
         "cross-env": "^7.0.3",
+        "css-loader": "^6.6.0",
         "gh-pages": "^2.2.0",
         "husky": "^3.1.0",
         "lint-staged": "^10.0.8",
@@ -94,8 +96,11 @@
         "readline-sync": "^1.4.10",
         "rimraf": "^3.0.0",
         "serve": "^11.3.0",
+        "style-loader": "^3.3.1",
         "tailwindcss": "^3.0.18",
-        "typescript": "^4.5.5"
+        "typescript": "^4.5.5",
+        "webpack": "^5.68.0",
+        "webpack-cli": "^4.9.2"
     },
     "resolutions": {
         "jss": "10.0.3",
