@@ -32,3 +32,4 @@ jobs:
       - run: npm publish --scope=welovedevs --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          CI: false

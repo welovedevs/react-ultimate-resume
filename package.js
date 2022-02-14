@@ -38,7 +38,7 @@ const run = async () => {
     const postBuildCleanUpSpinner = ora('Doing post-build clean-up...').start();
 
     srcFiles
-        .filter((name) =>!TO_PRESERVE_DURING_CLEAN_UP.includes(name))
+        .filter((name) => !TO_PRESERVE_DURING_CLEAN_UP.includes(name))
         .forEach((fileName) => {
             rimraf.sync(__dirname + `/${fileName}`, {}, () => {});
         });
