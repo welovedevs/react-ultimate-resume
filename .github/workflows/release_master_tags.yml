@@ -18,7 +18,6 @@ jobs:
         with:
           node-version: 14
       - run: yarn install
-      - run: npm run test-build
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
