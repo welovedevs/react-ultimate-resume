@@ -8,6 +8,7 @@ require('colors');
 
 const isVerbose = yargs.verbose === 'true' || yargs.verbose === true;
 const TO_PRESERVE_DURING_CLEAN_UP = [
+    'dist',
     'package.json',
     '.git',
     '.gitignore',
@@ -18,7 +19,7 @@ const TO_PRESERVE_DURING_CLEAN_UP = [
 ];
 
 const run = async () => {
-    const srcPath = __dirname + '/src/package';
+    const srcPath = __dirname;
     const srcFiles = fs.readdirSync(srcPath);
     const buildingPackageSpinner = ora(`Building fresh package...`).start();
     try {
@@ -35,9 +36,8 @@ const run = async () => {
     buildingPackageSpinner.succeed('Package built.');
 
     const postBuildCleanUpSpinner = ora('Doing post-build clean-up...').start();
-    const rootNewFiles = fs.readdirSync(__dirname);
 
-    rootNewFiles
+    srcFiles
         .filter((name) => !srcFiles.includes(name) && !TO_PRESERVE_DURING_CLEAN_UP.includes(name))
         .forEach((fileName) => {
             rimraf.sync(__dirname + `/${fileName}`, {}, () => {});
