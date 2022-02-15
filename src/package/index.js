@@ -21,10 +21,10 @@ import { ProfileCardFrontVector } from './components/commons/profile_card/profil
 import { DEFAULT_THEME } from './utils/styles/theme/theme';
 import { DeveloperProfileContext } from './utils/context/contexts';
 import { useCardVariant } from './components/hooks/profile_card_hooks/use_card_variant';
-import EditIcon from './assets/icons/edit.svg';
 
-export default {
-    DeveloperProfile,
+export default DeveloperProfile;
+
+export const exports = {
     DEFAULT_CARD_ORDER,
     BouncingRoundButton,
     ProfileCard,
@@ -44,5 +44,5 @@ export default {
     useCardSide,
     createScreenWidthMediaQuery,
     getHexFromPaletteColor,
-    EditIcon
 };
+

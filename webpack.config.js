@@ -1,24 +1,52 @@
-const path = require('path');
-const glob = require('glob');
+const Path = require('path');
 
 module.exports = {
-    entry: {
-        'bundle.js': glob.sync('./build/static/?(js|css|media)/main.*.?(js|css)').map((f) => path.resolve(__dirname, f))
-    },
-    mode: 'development',
-    optimization: {
-        minimize: false
-    },
+    entry: './src/package/index.js',
     devtool: 'source-map',
     output: {
-        filename: 'index.js'
+        filename: 'index.js',
+        library: {
+            type: 'umd',
+            name: '@welovedevs/react-ultimate-resume'
+        }
     },
     resolve: {
-        roots: [__dirname, path.resolve(__dirname, 'build')]
+        extensions: ['.json', '.js', '.jsx', '.ts', '.tsx']
     },
     module: {
         rules: [
-            { test: /\.js$/, use: 'babel-loader' },
+            {
+                test: /\.[jt]sx?$/,
+                exclude: [/node_modules/],
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        babelrc: false,
+                        presets: [
+                            '@babel/preset-react',
+                            '@babel/preset-env',
+                            [
+                                '@babel/preset-typescript',
+                                {
+                                    isTSX: true,
+                                    allExtensions: true
+                                }
+                            ]
+                        ],
+                        plugins: [
+                            'babel-plugin-inline-react-svg',
+                                [
+                                '@babel/plugin-transform-runtime',
+                                {
+                                    regenerator: true
+                                }
+                            ],
+                            '@babel/plugin-proposal-optional-chaining',
+                        ]
+                    }
+                }
+            },
+            { test: /\.svg/, type: 'asset/inline' },
             { test: /\.css$/i, use: ['style-loader', 'css-loader'] },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
