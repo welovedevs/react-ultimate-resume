@@ -8,8 +8,6 @@
         "dev": "yarn start",
         "eject": "react-scripts eject",
         "test": "react-scripts test",
-        "test-build": "rimraf ./test-build && npx babel  --config-file ./.babelrc --extensions '.ts,.tsx,.js,.jsx' ./src -d ./test_build",
-        "posttest-build": "rimraf ./test_build ./styles ",
         "build": "rimraf build && react-scripts build",
         "build:bundle": "rimraf dist && node ./node_modules/webpack/bin/webpack.js --config webpack.config.js",
         "build:css": "npx tailwindcss build -o ./src/package/styles/tailwind.css --minify",
@@ -130,7 +128,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run test-build --scripts-prepend-node-path && CI=true yarn test && lint-staged"
+            "pre-commit": "CI=true yarn test && lint-staged"
         }
     },
     "lint-staged": {
