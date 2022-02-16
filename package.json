@@ -1,6 +1,6 @@
 {
     "name": "@welovedevs/react-ultimate-resume",
-    "version": "1.2.4-beta.11",
+    "version": "1.2.4-beta.12",
     "description": "Developer profile for W3D",
     "main": "dist/index.js",
     "scripts": {
