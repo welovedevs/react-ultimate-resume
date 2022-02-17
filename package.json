@@ -9,7 +9,7 @@
         "eject": "react-scripts eject",
         "test": "react-scripts test",
         "build": "rimraf build && react-scripts build",
-        "build:bundle": "rimraf dist && node ./node_modules/webpack/bin/webpack.js --config webpack.config.js",
+        "build:bundle": "rimraf dist && npx tailwindcss build -o ./src/package/styles/tailwind.css --minify && node ./node_modules/webpack/bin/webpack.js --config webpack.config.js",
         "build:css": "npx tailwindcss build -o ./src/package/styles/tailwind.css --minify",
         "package": "npm run build:css && npm run build:bundle",
         "serve": "react-scripts build && serve build",
