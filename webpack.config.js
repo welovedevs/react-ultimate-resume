@@ -13,6 +13,9 @@ module.exports = {
     resolve: {
         extensions: ['.json', '.js', '.jsx', '.ts', '.tsx']
     },
+    optimization: {
+        minimize: false
+    },
     module: {
         rules: [
             {

@@ -24,7 +24,7 @@ import { useCardVariant } from './components/hooks/profile_card_hooks/use_card_v
 
 export default DeveloperProfile;
 
-export const exports = {
+export {
     DEFAULT_CARD_ORDER,
     BouncingRoundButton,
     ProfileCard,
@@ -43,6 +43,5 @@ export const exports = {
     useCardIsEditing,
     useCardSide,
     createScreenWidthMediaQuery,
-    getHexFromPaletteColor,
+    getHexFromPaletteColor
 };
-
