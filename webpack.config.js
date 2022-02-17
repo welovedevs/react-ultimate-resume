@@ -8,7 +8,8 @@ module.exports = {
             type: 'umd',
             name: '@welovedevs/react-ultimate-resume'
         },
-        globalObject: 'this'
+        globalObject: 'this',
+        publicPath: ''
     },
     resolve: {
         extensions: ['.json', '.js', '.jsx', '.ts', '.tsx']
