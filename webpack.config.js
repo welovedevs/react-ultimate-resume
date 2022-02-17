@@ -1,4 +1,4 @@
-const Path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     entry: './src/package/index.js',
@@ -16,6 +16,7 @@ module.exports = {
     optimization: {
         minimize: false
     },
+    externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
     module: {
         rules: [
             {
