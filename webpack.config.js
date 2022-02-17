@@ -2,6 +2,7 @@ const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     entry: './src/package/index.js',
+    target: 'node',
     output: {
         filename: 'index.js',
         library: {
