@@ -9,9 +9,9 @@ import url from '@rollup/plugin-url';
 
 const pkg = require('./package.json');
 
-const makeExternalPredicate = externalArr => {
+const makeExternalPredicate = (externalArr) => {
     if (externalArr.length === 0) return () => false;
-    return id => new RegExp(`^(${externalArr.join('|')})($|/)`).test(id);
+    return (id) => new RegExp(`^(${externalArr.join('|')})($|/)`).test(id);
 };
 
 export default {
@@ -28,7 +28,9 @@ export default {
             sourcemap: true
         }
     ],
-    external: makeExternalPredicate(Object.keys(pkg.peerDependencies || {}).concat(Object.keys(pkg.dependencies || {}))),
+    external: makeExternalPredicate(
+        Object.keys(pkg.peerDependencies || {}).concat(Object.keys(pkg.dependencies || {}))
+    ),
     plugins: [
         peerDepsExternal(),
         nodeResolve(),

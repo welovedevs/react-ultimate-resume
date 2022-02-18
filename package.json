@@ -4,7 +4,7 @@
     "description": "Developer profile for W3D",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
-    "types": "dist/package/index.d.ts",
+    "types": "dist/cjs/package/index.d.ts",
     "scripts": {
         "start": "cross-env NODE_ENV=local react-scripts start",
         "dev": "yarn start",
