@@ -35,7 +35,7 @@ export default {
         peerDepsExternal(),
         nodeResolve(),
         url(),
-        svgr({ icon: true }),
+        svgr(),
         json(),
         typescript({ tsconfig: './tsconfig.json', include: 'src/**/*.{jsx,js,ts,tsx}' }),
         commonjs(),
