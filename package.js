@@ -24,7 +24,7 @@ const run = async () => {
     const buildingPackageSpinner = ora(`Building fresh package...`).start();
     try {
         console.log('Generating package...');
-        await exec('npm run package');
+        await exec('npm run build:library');
         console.log('Package generated with success');
     } catch (error) {
         buildingPackageSpinner.fail('Package build failed.');
