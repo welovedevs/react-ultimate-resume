@@ -35,7 +35,16 @@ export default {
         peerDepsExternal(),
         nodeResolve(),
         url(),
-        svgr(),
+        svgr({
+            svgoConfig: {
+                plugins: [
+                    {
+                        name: 'removeViewBox',
+                        active: false
+                    }
+                ]
+            }
+        }),
         json(),
         typescript({ tsconfig: './tsconfig.json', include: 'src/**/*.{jsx,js,ts,tsx}' }),
         commonjs(),
