@@ -15,14 +15,22 @@ import { ProfileCardFrontTypography } from './components/commons/profile_card/pr
 import { ProfileCardActions } from './components/commons/profile_card/profile_card_actions/profile_card_actions';
 import { ProfileCardButton } from './components/commons/profile_card/profile_card_button/profile_card_button';
 import { useCardSide } from './components/hooks/profile_card_hooks/use_card_side';
-import { createScreenWidthMediaQuery, getHexFromPaletteColor } from './utils/styles/styles_utils';
+import {
+    createScreenWidthMediaQuery,
+    getColorsFromCardVariant,
+    getHexFromPaletteColor
+} from './utils/styles/styles_utils';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { ProfileCardFrontVector } from './components/commons/profile_card/profile_card_front_vector/profile_card_front_vector';
 import { DEFAULT_THEME } from './utils/styles/theme/theme';
 import { DeveloperProfileContext } from './utils/context/contexts';
 import { useCardVariant } from './components/hooks/profile_card_hooks/use_card_variant';
 
+import { ReactComponent as EditIcon } from './assets/icons/edit.svg';
+
+
 export {
+    EditIcon,
     DeveloperProfile,
     DEFAULT_CARD_ORDER,
     BouncingRoundButton,
@@ -42,5 +50,7 @@ export {
     useCardIsEditing,
     useCardSide,
     createScreenWidthMediaQuery,
-    getHexFromPaletteColor
+    getHexFromPaletteColor,
+    getColorsFromCardVariant
+
 };

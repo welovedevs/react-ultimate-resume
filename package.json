@@ -2,9 +2,9 @@
     "name": "@welovedevs/react-ultimate-resume",
     "version": "1.2.4",
     "description": "Developer profile for W3D",
-    "main": "dist/index.js",
+    "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
-    "types": "dist/index.d.ts",
+    "types": "dist/package/index.d.ts",
     "scripts": {
         "start": "cross-env NODE_ENV=local react-scripts start",
         "dev": "yarn start",

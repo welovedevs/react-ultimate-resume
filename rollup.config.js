@@ -7,28 +7,33 @@ import json from '@rollup/plugin-json';
 import svgr from '@svgr/rollup';
 import url from '@rollup/plugin-url';
 
-const packageJson = require('./package.json');
+const pkg = require('./package.json');
+
+const makeExternalPredicate = externalArr => {
+    if (externalArr.length === 0) return () => false;
+    return id => new RegExp(`^(${externalArr.join('|')})($|/)`).test(id);
+};
 
 export default {
     input: './src/package/index.js',
     output: [
         {
-            file: packageJson.main,
+            file: pkg.main,
             format: 'cjs',
             sourcemap: true
         },
         {
-            file: packageJson.module,
+            file: pkg.module,
             format: 'esm',
             sourcemap: true
         }
     ],
-    external : Object.keys(packageJson.dependencies),
+    external: makeExternalPredicate(Object.keys(pkg.peerDependencies || {}).concat(Object.keys(pkg.dependencies || {}))),
     plugins: [
         peerDepsExternal(),
         nodeResolve(),
         url(),
-        svgr({icon: true}),
+        svgr({ icon: true }),
         json(),
         typescript({ tsconfig: './tsconfig.json', include: 'src/**/*.{jsx,js,ts,tsx}' }),
         commonjs(),
