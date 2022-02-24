@@ -77,7 +77,7 @@ const Content = ({ helpers: { fullScreen, isMobile } }) => {
                 title={
                     <FormattedMessage
                         id="Soundtrack.editDialog.embedUrl.title"
-                        defaultMessage="Enter a Spotify embed URL."
+                        defaultMessage="Enter a Spotify, SoundCloud or Deezer URL."
                     />
                 }
                 subtitle={
@@ -102,7 +102,6 @@ const Content = ({ helpers: { fullScreen, isMobile } }) => {
                 {hasLoaded === null && <LoadingSpinner />}
                 {iframeUrl && (
                     <iframe
-                        // title="deezer-widget"
                         className={classes.iframe}
                         key={frameHashCode}
                         title="Soundtrack"
