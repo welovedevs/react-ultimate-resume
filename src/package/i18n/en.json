@@ -232,7 +232,7 @@
   "Skills.back.title": "Skills",
   "Skills.editDialog.title": "What are your main skills?",
   "Skills.form.validation.atLeastOne": "Select at least one skill.",
-  "Skills.form.validation.atMost": "Select at most {count} skill{count, plural, one {} other{s}}.",
+  "Skills.form.validation.atMost": "Select at most {limitTo} skill{limitTo, plural, one {} other{s}}.",
   "Skills.front.action": "More skills",
   "Skills.front.noSkill": "You do not have any skill yet !",
   "Skills.front.title": "I mainly write {techno} stuff",

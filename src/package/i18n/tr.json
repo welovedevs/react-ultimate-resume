@@ -232,7 +232,7 @@
   "Skills.back.title": "Beceriler",
   "Skills.editDialog.title": "Ana becerileriniz neler?",
   "Skills.form.validation.atLeastOne": "En az bir beceri seçin.",
-  "Skills.form.validation.atMost": "Select at most {count} skill{count, plural, one {} other{s}}.",
+  "Skills.form.validation.atMost": "Select at most {limitTo} skill{limitTo, plural, one {} other{s}}.",
   "Skills.front.action": "Daha fazla beceri",
   "Skills.front.noSkill": "Henüz bir beceriniz yok!",
   "Skills.front.title": "Ben esas olarak {techno} yazıyorum",

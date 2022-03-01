@@ -232,7 +232,7 @@
   "Skills.back.title": "Compétences",
   "Skills.editDialog.title": "Quelles sont vos compétences principales ?",
   "Skills.form.validation.atLeastOne": "Sélectionnez au moins une technologie",
-  "Skills.form.validation.atMost": "Sélectionnez au maximum {count} technos{count, plural, one {} other{s}}.",
+  "Skills.form.validation.atMost": "Sélectionnez au maximum {limitTo} technos{limitTo, plural, one {} other{s}}.",
   "Skills.front.action": "Voir plus",
   "Skills.front.noSkill": "Vous n'avez pas encore ajouté de compétences !",
   "Skills.front.title": "Je code avec {techno}",
