@@ -5,8 +5,6 @@ import injectSheet from 'react-jss';
 import { Menu } from '@material-ui/core';
 import { ClickableTextField } from '../clickable_text_field/clickable_text_field';
 
-import styles from './select_styles';
-
 function getValueFromChildren(children, value) {
     const selectedChild = children.map((child) => child.props || {}).find((childProps) => childProps.value === value);
     if (selectedChild && typeof selectedChild.children === 'string') {
@@ -77,4 +75,4 @@ const SelectComponent = ({
     );
 };
 
-export const Select = injectSheet(styles)(SelectComponent);
+export const Select = SelectComponent;

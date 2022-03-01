@@ -1,6 +1,7 @@
 #package files
 
 #build files
+dist
 build
 .env.*
 ./lib/

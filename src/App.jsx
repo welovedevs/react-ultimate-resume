@@ -9,7 +9,7 @@ import download from 'downloadjs';
 import { Button } from '@welovedevs/ui';
 
 import JsonStub from './data/json_stub.json';
-import DeveloperProfile from './package';
+import { DeveloperProfile } from './package';
 import { ReactComponent as SaveIcon } from './package/assets/icons/drop_file.svg';
 
 import { styles } from './app_styles';
