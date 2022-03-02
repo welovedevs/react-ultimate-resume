@@ -7,6 +7,6 @@ export const skillTranslations = defineMessages({
     },
     atMost: {
         id: 'Skills.form.validation.atMost',
-        defaultMessage: 'Select at most {count} skill{count, plural, one {} other{s}}.'
+        defaultMessage: 'Select at most {limitTo} skill{limitTo, plural, one {} other{s}}.'
     }
 });

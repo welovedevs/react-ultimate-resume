@@ -9,12 +9,12 @@ export const SkillsIsCompleteValidationSchema = (formatMessage = () => {}) =>
     });
 
 export const SkillsValidationSchema = (formatMessage = () => {}, options = { limitTo: DEFAULT_MAX_ITEMS }) => {
-    const count = Number.isNaN(Number(options.limitTo)) ? DEFAULT_MAX_ITEMS : options.limitTo;
+    const count = Number.isNaN(Number(options.limitTo)) ? DEFAULT_MAX_ITEMS : Number(options.limitTo);
     return Yup.object({
         skills: Yup.array()
             .required(formatMessage(skillTranslations.atLeastOne))
             .min(1, formatMessage(skillTranslations.atLeastOne))
-            .max(count, formatMessage(skillTranslations.atMost, { count }))
+            .max(count, formatMessage(skillTranslations.atMost, { limitTo: count }))
     });
 };
 export const validateSkillsComplete = (data) => {
