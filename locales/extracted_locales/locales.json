@@ -888,7 +888,7 @@
     "id": "Sountrack.editDialog.title"
   },
   {
-    "defaultMessage": "Enter a Spotify embed URL.",
+    "defaultMessage": "Enter a Spotify, SoundCloud or Deezer URL.",
     "id": "Soundtrack.editDialog.embedUrl.title"
   },
   {

@@ -14,11 +14,9 @@ import { LoadingSpinner } from '../../../../commons/loading_spinner/loading_spin
 import { hashCode } from '../../../../../utils/string_utils';
 
 import { styles } from './soundtrack_card_edit_dialog_styles';
+import { getEmbeddedUrl, isValidEmbeddedUrl } from './soundtrack_card_utils';
 
 const useStyles = createUseStyles(styles);
-
-const URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/g;
-const SPOTIFY_DOMAIN = 'https://open.spotify.com';
 
 export const SoundtrackCardEditDialog = ({ open, onClose, data, onEdit, isEditing }) => (
     <EditDialog
@@ -53,17 +51,8 @@ const Content = ({ helpers: { fullScreen, isMobile } }) => {
             const {
                 target: { value }
             } = event;
-            if (!URL_REGEX.test(value) || !value.startsWith(SPOTIFY_DOMAIN)) {
-                return;
-            }
-            let finalValue = value;
-            if (!value.includes('/embed')) {
-                finalValue = `${value.substring(0, SPOTIFY_DOMAIN.length)}/embed/${value.substring(
-                    SPOTIFY_DOMAIN.length + 1,
-                    value.length
-                )}`;
-            }
-            setFieldValue('embedUrl', finalValue);
+            console.log(getEmbeddedUrl(value));
+            setFieldValue('embedUrl', getEmbeddedUrl(value));
         },
         [setFieldValue, embedUrl]
     );
@@ -72,7 +61,7 @@ const Content = ({ helpers: { fullScreen, isMobile } }) => {
         setFieldValue('embedUrl', '');
     }, [setFieldValue]);
 
-    const isValidUrl = useMemo(() => URL_REGEX.test(iframeUrl) && iframeUrl?.includes('/embed'), [iframeUrl]);
+    const isValidUrl = useMemo(() => isValidEmbeddedUrl(iframeUrl), [iframeUrl]);
 
     useEffect(() => {
         if (isValidUrl) {
@@ -88,7 +77,7 @@ const Content = ({ helpers: { fullScreen, isMobile } }) => {
                 title={
                     <FormattedMessage
                         id="Soundtrack.editDialog.embedUrl.title"
-                        defaultMessage="Enter a Spotify embed URL."
+                        defaultMessage="Enter a Spotify, SoundCloud or Deezer URL."
                     />
                 }
                 subtitle={
@@ -120,7 +109,7 @@ const Content = ({ helpers: { fullScreen, isMobile } }) => {
                         height="100%"
                         width={600}
                         frameBorder="0"
-                        allow="encrypted-media"
+                        allow="encrypted-media; clipboard-write"
                         onLoad={handleLoad}
                     />
                 )}

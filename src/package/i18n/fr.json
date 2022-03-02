@@ -257,7 +257,7 @@
   "SoundTrack.noSoundTrack.buttonLabel": "Ajouter une playlist",
   "SoundTrack.noSoundTrack.title": "Ajouter ici une playlist qui représente votre humeur et votre personnalité !",
   "Soundtrack.editDialog.embedUrl.subtitle": "Ex: https://open.spotify.com/embed/album/79dL7FLiJFOO0EoehUHQBv",
-  "Soundtrack.editDialog.embedUrl.title": "Entrez une url spotify embed",
+  "Soundtrack.editDialog.embedUrl.title": "Entrez une url Spotify, SoundClound ou Deezer",
   "Soundtrack.front.button": "Ma playlist",
   "Soundtrack.front.title": "Découvrez ma tracklist",
   "Sountrack.editDialog.title": "Ajouter vos goûts musicaux dans votre profil.",
