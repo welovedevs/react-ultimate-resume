@@ -24,12 +24,10 @@ export const SortProjectsDialog = ({ open, onClose, projects }) => {
     const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
     const { onEdit } = useContext(DeveloperProfileContext);
 
-    const [sortedProjects, setSortedProjects] = useState(projects);
-
-    const saveDisabled = useMemo(() => isEqual(sortedProjects, projects), [projects, sortedProjects]);
+    const [sortedProjects, setSortedProjects] = useState(projects.sort(({ index: a }, { index: b }) => a - b));
 
     useEffect(() => {
-        setSortedProjects(projects);
+        setSortedProjects(projects.sort(({ index: a }, { index: b }) => a - b));
     }, [projects]);
 
     const handleSortEnd = useCallback(
@@ -38,20 +36,18 @@ export const SortProjectsDialog = ({ open, onClose, projects }) => {
                 ...data,
                 index
             }));
+            console.log({ oldIndex, newIndex, newProjects });
             setSortedProjects(newProjects);
         },
         [sortedProjects]
     );
 
     const handleSave = useCallback(async () => {
-        if (saveDisabled) {
-            return;
-        }
         await onEdit({
             projects: sortedProjects
         });
         onClose();
-    }, [saveDisabled, onEdit, sortedProjects]);
+    }, [onEdit, sortedProjects]);
 
     return (
         <Dialog open={open} onClose={onClose} fullScreen={isMobile}>
@@ -74,7 +70,7 @@ export const SortProjectsDialog = ({ open, onClose, projects }) => {
                 <Button size="small" onClick={onClose}>
                     <FormattedMessage id="Main.Lang.Close" defaultMessage="Close" />
                 </Button>
-                <Button size="small" color="primary" onClick={handleSave} disabled={saveDisabled}>
+                <Button size="small" color="primary" onClick={handleSave}>
                     <FormattedMessage id="Main.Lang.Save" defaultMessage="Save" />
                 </Button>
             </DialogActions>
@@ -84,19 +80,16 @@ export const SortProjectsDialog = ({ open, onClose, projects }) => {
 
 const SortableProjects = SortableContainer(({ items = [], classes }) => (
     <List>
-        {items
-            .filter(Boolean)
-            .sort(({ index: a }, { index: b }) => a - b)
-            .map((project, index) => (
-                <ProjectItem
-                    index={index}
-                    key={`project_${project.id}_${index}`}
-                    id={project?.id}
-                    project={project}
-                    classes={classes}
-                    projectIndex={index}
-                />
-            ))}
+        {items.filter(Boolean).map((project, index) => (
+            <ProjectItem
+                index={index}
+                key={`project_${project.id}_${index}`}
+                id={project?.id}
+                project={project}
+                classes={classes}
+                projectIndex={index}
+            />
+        ))}
     </List>
 ));
 
