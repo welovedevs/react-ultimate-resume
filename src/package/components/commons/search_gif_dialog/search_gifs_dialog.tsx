@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { createUseStyles } from 'react-jss';
 import { useDebounce } from 'use-debounce';
 
-import { Dialog, DialogActions, DialogContent, DialogProps } from '@material-ui/core';
+import { Dialog, DialogActions, DialogContent, DialogProps } from '@mui/material';
 import { Button, TextField, Tooltip, Typography } from '@welovedevs/ui';
 
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';

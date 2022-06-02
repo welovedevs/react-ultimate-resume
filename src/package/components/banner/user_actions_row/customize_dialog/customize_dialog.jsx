@@ -1,35 +1,35 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 
-import { createUseStyles, ThemeProvider, useTheme } from 'react-jss';
-import { FormattedMessage } from 'react-intl';
+import {createUseStyles, ThemeProvider, useTheme} from 'react-jss';
+import {FormattedMessage} from 'react-intl';
 import set from 'lodash/set';
 import cloneDeep from 'lodash/cloneDeep';
 
-import { Button } from '@welovedevs/ui';
+import {Button} from '@welovedevs/ui';
 
-import { Dialog, DialogActions, DialogContent, useMediaQuery } from '@material-ui/core';
+import {Dialog, DialogActions, DialogContent, useMediaQuery} from '@mui/material';
 
-import { DialogTitle } from '../../../commons/dialog/dialog_title/dialog_title';
-import { CardsOrderer } from './card_orderer/cards_orderer';
-import { PalettesList } from './palettes_list/palettes_list';
+import {DialogTitle} from '../../../commons/dialog/dialog_title/dialog_title';
+import {CardsOrderer} from './card_orderer/cards_orderer';
+import {PalettesList} from './palettes_list/palettes_list';
 
-import { buildTheme } from '../../../../utils/styles/theme/theme';
-import { DeveloperProfileContext } from '../../../../utils/context/contexts';
+import {buildTheme} from '../../../../utils/styles/theme/theme';
+import {DeveloperProfileContext} from '../../../../utils/context/contexts';
 
-import { styles } from './customize_dialog_styles';
-import { createScreenWidthMediaQuery } from '../../../../utils/styles/styles_utils';
+import {styles} from './customize_dialog_styles';
+import {createScreenWidthMediaQuery} from '../../../../utils/styles/styles_utils';
 
 const useStyles = createUseStyles(styles);
 
-const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
+const CustomizeDialogComponent = ({open, onClose, customizationOptions}) => {
     const theme = useTheme();
     const onlyShowPalettesList = useMediaQuery(createScreenWidthMediaQuery('max-width', theme.screenSizes.small), {
         defaultMatches: true
     });
-    const classes = useStyles({ onlyShowPalettesList });
+    const classes = useStyles({onlyShowPalettesList});
     const [value, setValue] = useState(customizationOptions);
     const [builtTheme, setBuiltTheme] = useState({});
-    const { onCustomizationChanged } = useContext(DeveloperProfileContext);
+    const {onCustomizationChanged} = useContext(DeveloperProfileContext);
 
     useEffect(() => {
         setValue(customizationOptions);
@@ -83,7 +83,7 @@ const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
             onClose={onClose}
         >
             <DialogTitle>
-                <FormattedMessage id="Banner.actions.customize.dialog.title" defaultMessage="Customize your profile" />
+                <FormattedMessage id="Banner.actions.customize.dialog.title" defaultMessage="Customize your profile"/>
             </DialogTitle>
             <DialogContent
                 classes={{
@@ -100,10 +100,10 @@ const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
                 {!onlyShowPalettesList && (
                     <>
                         <div className={classes.dividerContainer}>
-                            <div className={classes.divider} />
+                            <div className={classes.divider}/>
                         </div>
                         <ThemeProvider theme={builtTheme}>
-                            <CardsOrderer onChange={onCardOrdered} value={value?.cardsOrder} />
+                            <CardsOrderer onChange={onCardOrdered} value={value?.cardsOrder}/>
                         </ThemeProvider>
                     </>
                 )}
@@ -114,10 +114,10 @@ const CustomizeDialogComponent = ({ open, onClose, customizationOptions }) => {
                 }}
             >
                 <Button size="small" onClick={onClose}>
-                    <FormattedMessage id="Main.lang.close" deaultMessage="Close" />
+                    <FormattedMessage id="Main.lang.close" deaultMessage="Close"/>
                 </Button>
                 <Button color="primary" variant="contained" size="small" onClick={onSave}>
-                    <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
+                    <FormattedMessage id="Main.lang.save" defaultMessage="Save"/>
                 </Button>
             </DialogActions>
         </Dialog>

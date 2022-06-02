@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import copy from 'copy-to-clipboard';
 import { FormattedMessage } from 'react-intl';
-import { Portal, Snackbar } from '@material-ui/core';
+import { Portal, Snackbar } from '@mui/material';
 
 const mergeOnClicks = (...fns) => (...args) => {
     fns.forEach((fn) => {

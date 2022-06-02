@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { Button, Typography } from '@welovedevs/ui';
 
-import { Dialog, DialogContent, DialogActions } from '@material-ui/core';
+import { Dialog, DialogContent, DialogActions } from '@mui/material';
 
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';
 

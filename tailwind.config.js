@@ -1,4 +1,4 @@
-const palettes = require('@welovedevs/ui/styles/palette');
+const {palette} = require('@welovedevs/ui');
 
 module.exports = {
     mode: 'jit',
@@ -63,7 +63,7 @@ module.exports = {
                 reset: 'unset'
             },
             colors: {
-                ...palettes,
+                ...palette,
                 white: '#FFF',
                 black: '#000'
             }

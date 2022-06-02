@@ -25,18 +25,21 @@
     "author": "WeLoveDevs.com",
     "license": "AGPLv3",
     "peerDependencies": {
-        "@material-ui/core": "^4.11.0",
         "formik": "^2.1.2",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2"
+        "react": "18.1.0",
+        "react-dom": "18.1.0"
     },
     "dependencies": {
         "@date-io/moment": "^1.3.13",
+        "@emotion/react": "^11.9.0",
+        "@emotion/styled": "^11.8.1",
         "@formatjs/intl-pluralrules": "^4.3.2",
         "@formatjs/intl-relativetimeformat": "^10.0.0",
         "@material-ui/pickers": "^3.2.9",
+        "@mui/material": "^5.8.2",
+        "@mui/styles": "^5.8.0",
         "@types/giphy-api": "^2.0.2",
-        "@welovedevs/ui": "v1.2.11-beta.4",
+        "@welovedevs/ui": "^1.2.11-beta.26",
         "chroma-js": "^2.1.0",
         "classnames": "^2.3.1",
         "copy-to-clipboard": "^3.3.1",
@@ -59,6 +62,7 @@
         "react-use-dimensions": "^1.2.1",
         "recharts": "^2.0.0-beta.1",
         "respinner": "^3.0.2",
+        "slick-carousel": "^1.8.1",
         "use-debounce": "^3.3.0",
         "uuid": "^3.4.0",
         "values.js": "^1.0.3",
@@ -101,7 +105,7 @@
         "ora": "^4.0.3",
         "prettier": "2.0.2",
         "react-intl-translations-manager": "^5.0.3",
-        "react-scripts": "^5.0.0",
+        "react-scripts": "^5.0.1",
         "readline-sync": "^1.4.10",
         "rimraf": "^3.0.0",
         "rollup": "^2.67.2",
@@ -120,9 +124,8 @@
     },
     "resolutions": {
         "jss": "10.0.3",
-        "react": "17.0.2",
-        "react-dom": "17.0.2",
-        "@material-ui/core": "4.11.0"
+        "react": "18.1.0",
+        "react-dom": "18.1.0"
     },
     "eslintConfig": {
         "extends": "react-app"

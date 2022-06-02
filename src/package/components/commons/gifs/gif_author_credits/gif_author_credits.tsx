@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import { Classes, styles } from './gif_author_credits_styles';
 import { GiphyAuthor, GiphySearchResult } from '../../../hooks/giphy/types';
 import { ReactComponent as Verified } from '../../../../assets/icons/verified.svg';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import { Typography } from '@welovedevs/ui';
 
 const useStyles = makeStyles(styles);

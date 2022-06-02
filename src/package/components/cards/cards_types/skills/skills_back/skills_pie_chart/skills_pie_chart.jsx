@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts';
 import chroma from 'chroma-js';
-import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
+import useMediaQuery from '@mui/material/useMediaQuery/useMediaQuery';
 
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../../utils/styles/styles_utils';
 import { CustomLabel } from '../utils/skills_back_recharts_utils';

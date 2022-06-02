@@ -48,10 +48,6 @@ export const styles = (theme) => {
             ...withCustomVerticalScrollbar('#fff')
         },
         slidesContainer: {
-            height: '100%',
-            '& .slick-slider': {
-                height: '100%'
-            },
             '& .slick-dots': {
                 zIndex: 3,
                 bottom: 35

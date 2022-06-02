@@ -1,4 +1,4 @@
-import { secondary } from '@welovedevs/ui/styles';
+import { secondary } from '@welovedevs/ui';
 
 export const styles = (theme) => {
     const {

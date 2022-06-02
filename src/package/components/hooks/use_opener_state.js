@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 
-import { useMediaQuery } from '@material-ui/core';
+import { useMediaQuery } from '@mui/material';
 
 export const useOpenerState = ({ mobileWidth = 560, useClickOnMobile, defaultHandlers } = {}) => {
     const [open, setOpen] = useState(false);

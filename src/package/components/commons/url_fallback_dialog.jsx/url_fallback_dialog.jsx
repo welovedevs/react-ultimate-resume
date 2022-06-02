@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
+import { Dialog, DialogActions, DialogContent } from '@mui/material';
 import { FormattedMessage } from 'react-intl';
 import { Button, Typography } from '@welovedevs/ui';
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';

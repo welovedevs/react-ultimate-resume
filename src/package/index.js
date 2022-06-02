@@ -20,7 +20,7 @@ import {
     getColorsFromCardVariant,
     getHexFromPaletteColor
 } from './utils/styles/styles_utils';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogTitle from '@mui/material/DialogTitle';
 import { ProfileCardFrontVector } from './components/commons/profile_card/profile_card_front_vector/profile_card_front_vector';
 import { DEFAULT_THEME } from './utils/styles/theme/theme';
 import { DeveloperProfileContext } from './utils/context/contexts';

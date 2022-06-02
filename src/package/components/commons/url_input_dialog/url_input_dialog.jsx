@@ -5,7 +5,7 @@ import { createUseStyles } from 'react-jss';
 
 import { Button, TextField } from '@welovedevs/ui';
 
-import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
+import { Dialog, DialogActions, DialogContent } from '@mui/material';
 
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';
 

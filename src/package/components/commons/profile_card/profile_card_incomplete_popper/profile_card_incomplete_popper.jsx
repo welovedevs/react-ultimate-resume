@@ -1,18 +1,18 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, {memo, useEffect, useState} from 'react';
 
-import { createUseStyles } from 'react-jss';
-import { FormattedMessage } from 'react-intl';
+import {createUseStyles} from 'react-jss';
+import {FormattedMessage} from 'react-intl';
 
-import { PopperCard, Typography } from '@welovedevs/ui';
+import {PopperCard, Typography} from '@welovedevs/ui';
 
-import { ReactComponent as WarnIcon } from '../../../../assets/icons/warn.svg';
+import {ReactComponent as WarnIcon} from '../../../../assets/icons/warn.svg';
 
-import { styles } from './profile_card_incomplete_popper_styles';
-import { useMode } from '../../../hooks/use_mode';
+import {styles} from './profile_card_incomplete_popper_styles';
+import {useMode} from '../../../hooks/use_mode';
 
 const useStyles = createUseStyles(styles);
 
-const ProfileCardIncompletePopperComponent = ({ open, onClose, anchorElement }) => {
+const ProfileCardIncompletePopperComponent = ({open, onClose, anchorElement}) => {
     const classes = useStyles();
     const [hasBeenMounted, setHasBeenMouneted] = useState(false);
     const [mode] = useMode();
@@ -22,6 +22,8 @@ const ProfileCardIncompletePopperComponent = ({ open, onClose, anchorElement }) 
     if (mode !== 'edit' || !open || !hasBeenMounted) {
         return null;
     }
+
+
     return (
         <PopperCard
             classes={{
@@ -34,20 +36,19 @@ const ProfileCardIncompletePopperComponent = ({ open, onClose, anchorElement }) 
             popperProps={{
                 placement: 'top-start',
                 disablePortal: true,
-                modifiers: {
-                    preventOverflow: {
-                        enabled: false
+                modifiers: [
+                    {
+                        name: 'preventOverflow',
+                    }, {
+                        name: 'hide',
                     },
-                    hide: {
-                        enabled: false
+                    {
+                        name: 'flip',
                     },
-                    flip: {
-                        behavior: ['top-start']
-                    }
-                }
+                ]
             }}
         >
-            <WarnIcon className={classes.icon} />
+            <WarnIcon className={classes.icon}/>
             <Typography color="light">
                 <FormattedMessage
                     id="ProfileCardIncompletePopper.label.value"

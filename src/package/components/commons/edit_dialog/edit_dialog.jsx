@@ -5,10 +5,10 @@ import { FormattedMessage } from 'react-intl';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Formik, useFormikContext } from 'formik';
 
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { Button, Tooltip } from '@welovedevs/ui';
 
-import { Dialog, DialogActions, DialogContent } from '@material-ui/core';
+import { Dialog, DialogActions, DialogContent } from '@mui/material';
 
 import { DialogTitle } from '../dialog/dialog_title/dialog_title';
 

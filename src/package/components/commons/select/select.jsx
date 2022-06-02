@@ -2,7 +2,7 @@ import React, { cloneElement, useCallback, useState } from 'react';
 
 import injectSheet from 'react-jss';
 
-import { Menu } from '@material-ui/core';
+import { Menu } from '@mui/material';
 import { ClickableTextField } from '../clickable_text_field/clickable_text_field';
 
 function getValueFromChildren(children, value) {

@@ -1,26 +1,26 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import {createUseStyles} from 'react-jss';
 
-import { PopperCard, Slider } from '@welovedevs/ui';
+import {PopperCard, Slider} from '@welovedevs/ui';
 
-import { styles } from './slider_with_popper_styles';
+import {styles} from './slider_with_popper_styles';
 
 const useStyles = createUseStyles(styles);
 
 export const SliderWithPopper = ({
-    color,
-    name,
-    value,
-    onChange,
-    min,
-    max,
-    step,
-    debounce = 500,
-    classes: receivedClasses = {},
-    popperCardProps
-}) => {
+                                     color,
+                                     name,
+                                     value,
+                                     onChange,
+                                     min,
+                                     max,
+                                     step,
+                                     debounce = 500,
+                                     classes: receivedClasses = {},
+                                     popperCardProps
+                                 }) => {
     const classes = useStyles();
 
     const [isFocused, setIsFocused] = useState(false);
@@ -74,14 +74,13 @@ export const SliderWithPopper = ({
                     anchorElement={thumbReference.current}
                     popperProps={{
                         disablePortal: true,
-                        modifiers: {
-                            preventOverflow: {
-                                boundariesElement: 'viewport'
-                            },
-                            hide: {
-                                enabled: false
+                        modifiers: [
+                            {
+                                name: 'preventOverflow',
+                            }, {
+                                name: 'hide',
                             }
-                        }
+                        ]
                     }}
                     {...popperCardProps}
                 >

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { ThemeProvider } from 'react-jss';
+import { ThemeProvider, StyledEngineProvider } from 'react-jss';
 import { IntlProvider } from 'react-intl';
 import '@testing-library/jest-dom';
 
@@ -10,11 +10,13 @@ import { buildTheme } from '../../../utils/styles/theme/theme';
 import { ConfirmDialog } from './confirm_dialog';
 
 const Providers = ({ children }) => (
-    <ThemeProvider theme={buildTheme()}>
-        <IntlProvider locale="en" defaultLocale="en" messages={en}>
-            {children}
-        </IntlProvider>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={buildTheme()}>
+            <IntlProvider locale="en" defaultLocale="en" messages={en}>
+                {children}
+            </IntlProvider>
+        </ThemeProvider>
+    </StyledEngineProvider>
 );
 
 describe('<ConfirmDialog />', () => {

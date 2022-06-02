@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import { createUseStyles, useTheme } from 'react-jss';
 import { useFormikContext } from 'formik';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { Typography } from '@welovedevs/ui';
 import uuid from 'uuid/v4';
 

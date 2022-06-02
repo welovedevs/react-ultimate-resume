@@ -14,7 +14,7 @@ import uuid from 'uuid/v4';
 
 import { List, ListItem, TextField, Tooltip, Typography } from '@welovedevs/ui';
 
-import { MenuItem, useMediaQuery } from '@material-ui/core';
+import { MenuItem, useMediaQuery } from '@mui/material';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 

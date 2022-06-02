@@ -6,7 +6,7 @@ import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'r
 
 import { Button, List, ListItem, Typography } from '@welovedevs/ui';
 
-import { Dialog, DialogContent, DialogActions, useMediaQuery } from '@material-ui/core';
+import { Dialog, DialogContent, DialogActions, useMediaQuery } from '@mui/material';
 
 import isEqual from 'lodash/isEqual';
 import { DialogTitle } from '../../../../commons/dialog/dialog_title/dialog_title';

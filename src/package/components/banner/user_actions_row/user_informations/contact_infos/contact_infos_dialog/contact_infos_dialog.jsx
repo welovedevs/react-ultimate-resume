@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl';
 
 import set from 'lodash/set';
 
-import { Dialog, DialogContent, DialogActions, useMediaQuery } from '@material-ui/core';
+import { Dialog, DialogContent, DialogActions, useMediaQuery } from '@mui/material';
 
 import { Button, Typography } from '@welovedevs/ui';
 import { DialogTitle } from '../../../../../commons/dialog/dialog_title/dialog_title';

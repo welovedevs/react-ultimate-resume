@@ -1,7 +1,7 @@
 import {
     TechnologiesPicker as TechnologiesPickerComponent,
     TechnologiesPickerProps
-} from '@welovedevs/ui/technologies/technologies_picker';
+} from '@welovedevs/ui';
 import React, { useMemo } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useAdditionalNodes } from '../../hooks/use_additional_nodes';

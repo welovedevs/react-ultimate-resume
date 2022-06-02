@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { Card } from '@welovedevs/ui';
 
-import { useMediaQuery } from '@material-ui/core';
+import { useMediaQuery } from '@mui/material';
 
 import { ProfileCardSide } from './profile_card_side/profile_card_side';
 import { ProfileCardEditButton } from './profile_card_edit_button/profile_card_edit_button';

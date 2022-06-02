@@ -12,7 +12,7 @@ import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { EditDialogField } from '../../../../commons/edit_dialog_field/edit_dialog_field';
 import translations from './intested_by_translations';
 import { SocialCardData } from '../data/mapping';
-import { DialogProps } from '@material-ui/core';
+import { DialogProps } from '@mui/material';
 import { ReactComponent as Twitter } from '../../../../../assets/icons/brands/twitter.svg';
 import { ReactComponent as Linkedin } from '../../../../../assets/icons/brands/linkedin.svg';
 import { ReactComponent as Codingame } from '../../../../../assets/icons/brands/codingame-1.svg';

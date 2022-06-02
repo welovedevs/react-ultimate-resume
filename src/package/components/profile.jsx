@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useReducer, useState } from 'react';
 import { injectIntl, IntlProvider } from 'react-intl';
 import { createUseStyles, ThemeProvider } from 'react-jss';
+import { StyledEngineProvider} from '@mui/material/styles';
 
 import mergeWith from 'lodash/mergeWith';
 import cloneDeep from 'lodash/cloneDeep';
@@ -166,21 +167,23 @@ const WithProvidersDeveloperProfile = ({
     );
 
     return (
-        <ThemeProvider theme={builtTheme}>
-            <IntlProvider locale={locale} messages={providerMessages} defaultLocale={locale}>
-                <DeveloperProfileComponent
-                    data={data}
-                    mode={mode}
-                    onEdit={onEdit}
-                    onCustomizationChanged={onCustomizationChanged}
-                    onIsEditingChanged={onIsEditingChanged}
-                    options={mergedOptions}
-                    additionalNodes={additionalNodes}
-                    onFilesUpload={onFilesUpload}
-                    classes={classes}
-                />
-            </IntlProvider>
-        </ThemeProvider>
+        <StyledEngineProvider injectFirst>
+            <ThemeProvider theme={builtTheme}>
+                <IntlProvider locale={locale} messages={providerMessages} defaultLocale={locale}>
+                    <DeveloperProfileComponent
+                        data={data}
+                        mode={mode}
+                        onEdit={onEdit}
+                        onCustomizationChanged={onCustomizationChanged}
+                        onIsEditingChanged={onIsEditingChanged}
+                        options={mergedOptions}
+                        additionalNodes={additionalNodes}
+                        onFilesUpload={onFilesUpload}
+                        classes={classes}
+                    />
+                </IntlProvider>
+            </ThemeProvider>
+        </StyledEngineProvider>
     );
 };
 
