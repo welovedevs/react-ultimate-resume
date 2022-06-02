@@ -1,15 +1,13 @@
 import React, { useCallback } from 'react';
 
 import { createUseStyles } from 'react-jss';
-
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-
-import MomentUtils from '@date-io/moment';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Typography } from '@welovedevs/ui';
 import { useFormikContext } from 'formik';
 import { styles } from './project_dialog_content_date_styles';
 
 import { YearMonth } from '../../../../../commons/year_month/year_month';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
 const useStyles = createUseStyles(styles);
 
@@ -45,7 +43,7 @@ const EditingContent = ({ classes }) => {
     );
     return (
         <>
-            <MuiPickersUtilsProvider utils={MomentUtils}>
+            <LocalizationProvider dateAdapter={AdapterMoment}>
                 <YearMonth
                     textfieldProps={{
                         fullWidth: true
@@ -56,7 +54,7 @@ const EditingContent = ({ classes }) => {
                     onChange={handleStartDate}
                     title={{ id: 'Project.editDialog.date', defaultMessage: 'Project date' }}
                 />
-            </MuiPickersUtilsProvider>
+            </LocalizationProvider>
             {errors?.date && (
                 <Typography color="danger" variant="helper" component="p">
                     {errors.date}
