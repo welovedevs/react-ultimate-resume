@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import {createTheme} from "@mui/material/styles";
 
 const hexToRgb = (hex) => {
     let c;
@@ -20,6 +21,7 @@ const THEME_TRANSFORMS = {
             const colorAccumulator = colorsAcc;
             colorAccumulator[colorName] = {
                 ...shades,
+                main: "#fff",
                 rgbShades: Object.entries(shades).reduce((shadesAcc, [shade, shadeValue]) => {
                     if (Number.isNaN(parseInt(shade, 10))) {
                         return shadesAcc;
@@ -33,8 +35,12 @@ const THEME_TRANSFORMS = {
         }, {})
 };
 
-export const transformTheme = (theme) =>
-    Object.entries(THEME_TRANSFORMS).reduce((acc, [path, transform]) => {
+export const transformTheme = (theme) => {
+    const transfomedTheme = Object.entries(THEME_TRANSFORMS).reduce((acc, [path, transform]) => {
         acc[path] = transform(get(theme, path));
         return acc;
     }, theme);
+
+
+    return createTheme(transfomedTheme)
+};

@@ -11,7 +11,7 @@ import moment from 'moment';
 import keyBy from 'lodash/keyBy';
 import uuid from 'uuid/v4';
 
-import useMediaQuery from '@mui/material/useMediaQuery/useMediaQuery';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { Checkbox, List, ListItem, TextField, Tooltip, Typography } from '@welovedevs/ui';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';

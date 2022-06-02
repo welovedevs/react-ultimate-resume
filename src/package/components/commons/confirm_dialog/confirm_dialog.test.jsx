@@ -1,30 +1,48 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import { StyledEngineProvider} from '@mui/material/styles';
-import { ThemeProvider } from 'react-jss';
-import { IntlProvider } from 'react-intl';
+import {render, fireEvent} from '@testing-library/react';
+import {JssProvider, ThemeProvider} from 'react-jss';
+import {IntlProvider} from 'react-intl';
 import '@testing-library/jest-dom';
+import {createTheme, StyledEngineProvider, ThemeProvider as MuiThemeProvider} from '@mui/material/styles';
 
 import en from '../../../i18n/en.json';
-import { buildTheme } from '../../../utils/styles/theme/theme';
 
-import { ConfirmDialog } from './confirm_dialog';
+import {ConfirmDialog} from './confirm_dialog';
+import MuiStylesProvider from "@mui/styles/StylesProvider";
+import {create} from "jss";
+import jssDefaultPreset from "jss-preset-default";
+import {buildTheme} from "../../../utils/styles/theme/theme";
 
-const Providers = ({ children }) => (
-    <StyledEngineProvider injectFirst>
-        <ThemeProvider theme={buildTheme()}>
-            <IntlProvider locale="en" defaultLocale="en" messages={en}>
-                {children}
-            </IntlProvider>
-        </ThemeProvider>
-    </StyledEngineProvider>
-);
+const muiInstance = create(jssDefaultPreset());
+muiInstance.setup({insertionPoint: 'mui-insertion-point'});
+const jssinstance = create(jssDefaultPreset());
+jssinstance.setup({insertionPoint: 'jss-insertion-point'});
+
+
+const theme = buildTheme();
+
+const Providers = ({children}) => (
+        <StyledEngineProvider injectFirst>
+            <MuiThemeProvider theme={createTheme()}>
+                <ThemeProvider theme={theme}>
+                    <MuiStylesProvider jss={muiInstance}>
+                        <JssProvider jss={jssinstance}>
+                            <IntlProvider locale="en" defaultLocale="en" messages={en}>
+                                {children}
+                            </IntlProvider>
+                        </JssProvider>
+                    </MuiStylesProvider>
+                </ThemeProvider>
+            </MuiThemeProvider>
+        </StyledEngineProvider>
+    )
+
 
 describe('<ConfirmDialog />', () => {
     it('should render with the default title', () => {
         const screen = render(
             <Providers>
-                <ConfirmDialog open />
+                <ConfirmDialog open/>
             </Providers>
         );
 
@@ -35,7 +53,7 @@ describe('<ConfirmDialog />', () => {
         const onClose = jest.fn();
         const screen = render(
             <Providers>
-                <ConfirmDialog open onClose={onClose} />
+                <ConfirmDialog open onClose={onClose}/>
             </Providers>
         );
 

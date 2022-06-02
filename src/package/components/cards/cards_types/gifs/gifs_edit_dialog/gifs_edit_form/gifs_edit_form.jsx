@@ -8,7 +8,7 @@ import omit from 'lodash/omit';
 import uuid from 'uuid/v4';
 import { arrayMove } from 'react-sortable-hoc';
 
-import useMediaQuery from '@mui/material/useMediaQuery/useMediaQuery';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { Typography } from '@welovedevs/ui';
 
 import { SearchGifsDialog } from '../../../../../commons/search_gif_dialog/search_gifs_dialog';
