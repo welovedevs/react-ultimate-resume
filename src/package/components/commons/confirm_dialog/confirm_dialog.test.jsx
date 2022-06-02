@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { ThemeProvider, StyledEngineProvider} from '@mui/material/styles';
+import { StyledEngineProvider} from '@mui/material/styles';
 import { ThemeProvider } from 'react-jss';
 import { IntlProvider } from 'react-intl';
 import '@testing-library/jest-dom';
