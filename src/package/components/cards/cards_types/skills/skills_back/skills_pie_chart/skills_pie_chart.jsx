@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
+
 import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts';
 import chroma from 'chroma-js';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -12,7 +14,7 @@ import { DEFAULT_SPRING_TYPE as spring } from '../../../../../../utils/framer_mo
 
 // const GRAPH_PIE_RADIUS = 100;
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 const SkillsPieChart = ({ data, variant, springOnOpenOpacityProps, onScrollOpacityProps }) => {
     const classes = useStyles();
     const theme = useTheme();

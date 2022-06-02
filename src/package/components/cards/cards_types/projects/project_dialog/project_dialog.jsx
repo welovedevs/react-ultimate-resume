@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 
 import { FormattedMessage, useIntl } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { useFormikContext } from 'formik';
 
@@ -17,7 +17,7 @@ import { mapProjectToJsonResume, updateProjectsArray } from '../data/mapping';
 import { ProjectDialogContentLink } from './project_dialog_content_link/project_dialog_content_link';
 import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const DEFAULT_OBJECT = {};
 const ProjectDialogComponent = ({ open, onClose, data: project, isEditing }) => {

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 
 import { FormattedMessage } from 'react-intl';
@@ -11,7 +11,7 @@ import { ReactComponent as MoveIcon } from '../../../../../../../assets/icons/mo
 
 import { styles } from './gifs_sortable_cards_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const GifsSortableCardsComponent = ({
     items = [],

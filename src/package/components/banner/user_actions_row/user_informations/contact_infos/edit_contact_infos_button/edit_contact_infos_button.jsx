@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage } from 'react-intl';
 
 import { Button } from '@welovedevs/ui';
@@ -10,7 +10,7 @@ import { ContactInfosDialog } from '../contact_infos_dialog/contact_infos_dialog
 
 import { styles } from './edit_contact_infos_button_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const EditContactInfosButton = ({ contactInformations }) => {
     const classes = useStyles();

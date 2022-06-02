@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useFormikContext } from 'formik';
 import uuid from 'uuid/v4';
@@ -26,7 +26,7 @@ import { contractTypesTranslations } from '../../../../../utils/enums_translatio
 
 import { styles } from './dream_job_card_edit_dialog_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const DEFAULT_OBJECT = {};
 

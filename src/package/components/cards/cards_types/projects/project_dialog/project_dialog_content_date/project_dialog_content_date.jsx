@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Typography } from '@welovedevs/ui';
 import { useFormikContext } from 'formik';
@@ -9,7 +9,7 @@ import { styles } from './project_dialog_content_date_styles';
 import { YearMonth } from '../../../../../commons/year_month/year_month';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const ProjectDialogContentDateComponent = ({ date, isEditing }) => {
     const classes = useStyles({ isEditing });

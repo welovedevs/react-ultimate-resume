@@ -1,6 +1,6 @@
 import React, { createContext, memo, useCallback, useState } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 import cloneDeep from 'lodash/cloneDeep';
 
@@ -11,7 +11,7 @@ import { DEFAULT_CARD_ORDER } from '../../../../cards/utils/cards_order';
 
 import { styles } from './cards_orderer_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const SortableCard = SortableElement(memo(CardStub));
 

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
@@ -8,7 +8,7 @@ import { GifsEditForm } from './gifs_edit_form/gifs_edit_form';
 
 import { styles } from './gifs_edit_dialog_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const GifsEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
     const classes = useStyles();

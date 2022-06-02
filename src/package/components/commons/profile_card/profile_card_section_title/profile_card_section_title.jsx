@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { Typography } from '@welovedevs/ui';
 
 import { styles } from './profile_card_section_title_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const ProfileCardSectionTitleComponent = ({ children }) => {
     const classes = useStyles();

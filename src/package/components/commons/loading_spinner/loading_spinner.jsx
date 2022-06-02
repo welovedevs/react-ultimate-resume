@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 
-import { useTheme } from 'react-jss';
 import { WaveLoading } from 'respinner';
 
 import { getHexFromPaletteColor } from '../../../utils/styles/styles_utils';
+import { useTheme } from "@mui/styles";
 
 const LoadingSpinnerComponent = ({ color = 'primary', height = null }) => {
     const theme = useTheme();

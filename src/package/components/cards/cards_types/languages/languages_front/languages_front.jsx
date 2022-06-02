@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useMemo } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { FormattedMessage } from 'react-intl';
 import { Typography } from '@welovedevs/ui';
@@ -15,7 +15,7 @@ import { useCardSide } from '../../../../hooks/profile_card_hooks/use_card_side'
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const LanguagesFrontComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles();

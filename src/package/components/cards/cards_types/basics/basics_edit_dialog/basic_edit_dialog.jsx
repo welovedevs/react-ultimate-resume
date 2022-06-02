@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useFormikContext } from 'formik';
 
@@ -15,7 +15,7 @@ import { JobSearchStateField } from './job_search_state_field/job_search_state_f
 
 import { styles } from './basic_edit_dialog_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const BasicsCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
     const { formatMessage } = useIntl();

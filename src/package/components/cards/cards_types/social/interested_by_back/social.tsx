@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
 import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
 import { CardSideProps } from '../../../types/card_props';

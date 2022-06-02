@@ -34,11 +34,7 @@ const root = createRoot(container);
 
 root.render(<MuiStylesProvider jss={muiInstance}>
     <JssProvider jss={jssinstance}>
-        <StyledEngineProvider injectFirst>
-            <ThemeProvider {...{theme}}>
-                <App/>
-            </ThemeProvider>
-        </StyledEngineProvider>
+        <App/>
     </JssProvider>
 </MuiStylesProvider>);
 

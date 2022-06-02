@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { useDebounce } from 'use-debounce';
 
 import { Dialog, DialogActions, DialogContent } from '@mui/material';
@@ -15,7 +15,7 @@ import { useUnsplashResults } from '../../hooks/unsplash/use_unsplash_results';
 
 import { styles } from './search_unsplash_result_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const SearchUnsplashDialogComponent = ({ open, onClose, onSelect }) => {
     const classes = useStyles();

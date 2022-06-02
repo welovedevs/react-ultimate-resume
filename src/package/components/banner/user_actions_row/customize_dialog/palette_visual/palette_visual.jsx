@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { Tooltip } from '@welovedevs/ui';
 
@@ -9,7 +9,7 @@ import { PALETTE_KEY_TRANSLATIONS } from './palette_visual_translations';
 
 import { styles } from './palette_visual_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const PaletteVisualComponent = ({
     palette,

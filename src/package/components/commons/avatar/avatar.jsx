@@ -1,14 +1,14 @@
 import React, { useMemo } from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { useAdditionalNodes } from '../../hooks/use_additional_nodes';
 import { useReceivedGlobalClasses } from '../../hooks/use_received_global_classes';
 
 import { styles } from './avatar_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const DEFAULT_IMAGE = 'https://i.pravatar.cc/250';
 const AvatarComponent = ({ src, displayedName }) => {

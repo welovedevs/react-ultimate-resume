@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { motion } from 'framer-motion';
 
 import { EditContactInfosButton } from './edit_contact_infos_button/edit_contact_infos_button';
@@ -14,7 +14,7 @@ import { useIsEditing } from '../../../../hooks/use_is_editing';
 import { styles } from './contact_infos_styles';
 import { DEFAULT_SPRING_TYPE as spring } from '../../../../../utils/framer_motion/common_types/spring_type';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const ContactInfos = ({ contactInformations }) => {
     const classes = useStyles();

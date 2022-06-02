@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { TextField, Typography } from '@welovedevs/ui';
 import { useFormikContext } from 'formik';
 
 import { styles } from './project_dialog_content_description_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const ProjectDialogContentDescriptionComponent = ({ description, isEditing }) => {
     const classes = useStyles({ isEditing });

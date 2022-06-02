@@ -1,7 +1,7 @@
 import React from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { motion } from 'framer-motion';
 
 import { ProfileCardTitle } from '../profile_card_title/profile_card_title';
@@ -12,7 +12,7 @@ import { CONTENT_PROPS, TITLE_PROPS } from './profile_card_animated_back_transit
 import { styles } from './profile_card_animated_back_styles';
 import { DEFAULT_SPRING_TYPE as spring } from '../../../../utils/framer_motion/common_types/spring_type';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const ProfileCardAnimatedBack = ({ title, children: content, classes: receivedClasses = {} }) => {
     const classes = useStyles();

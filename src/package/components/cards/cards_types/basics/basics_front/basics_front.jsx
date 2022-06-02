@@ -3,7 +3,7 @@ import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
 import { ProfileCardActions } from '../../../../commons/profile_card/profile_card_actions/profile_card_actions';
@@ -21,7 +21,7 @@ import { styles } from './basics_front_styles';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 import { useMode } from '../../../../hooks/use_mode';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const BasicsFrontComponent = ({ data, handleAddButtonClick }) => {
     const [mode] = useMode();

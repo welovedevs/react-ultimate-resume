@@ -1,14 +1,15 @@
 import React from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage } from 'react-intl';
 
 import { Typography } from '@welovedevs/ui';
 
 import { styles } from './edit_dialog_field_styles';
 
-const useStyles = createUseStyles(styles);
+// @ts-ignore
+const useStyles = makeStyles(styles);
 
 export const EditDialogField: React.FC<{
     title?: React.ReactElement;

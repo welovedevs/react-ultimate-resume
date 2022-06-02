@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage } from 'react-intl';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -22,7 +22,7 @@ import { styles } from './banner_styles';
 import { useMode } from '../hooks/use_mode';
 import { EditButton } from './user_actions_row/edit_button/edit_button';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const BannerComponent = ({ customizationOptions, onCustomizationChanged }) => {
     const classes = useStyles();

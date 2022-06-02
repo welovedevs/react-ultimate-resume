@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage } from 'react-intl';
 
 import { Typography } from '@welovedevs/ui';
@@ -16,7 +16,7 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const InterestedByFrontComponent = ({
     data: { interestedBy },

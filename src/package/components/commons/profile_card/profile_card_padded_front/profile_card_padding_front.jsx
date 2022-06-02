@@ -1,11 +1,11 @@
 import React from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { styles } from './profile_card_padded_front_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const ProfileCardPaddedFront = ({ children, classes: receivedClasses = {} }) => {
     const classes = useStyles();

@@ -1,7 +1,5 @@
 import React, { cloneElement, useCallback, useState } from 'react';
 
-import injectSheet from 'react-jss';
-
 import { Menu } from '@mui/material';
 import { ClickableTextField } from '../clickable_text_field/clickable_text_field';
 

@@ -10,7 +10,9 @@ import { List, TextField, Tooltip, Typography } from '@welovedevs/ui';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { useFormikContext } from 'formik';
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
+
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { SliderWithPopper } from '../../../../commons/slider_with_popper/slider_with_popper';
 import { AddButton } from '../../../../commons/add_button/add_button';
@@ -21,7 +23,7 @@ import { ReactComponent as TrashIcon } from '../../../../../assets/icons/trash.s
 import translations from './languages_edit_dialog_translations';
 import { styles } from './languages_edit_dialog_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const LanguagesCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
     const { formatMessage } = useIntl();

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { useIntl } from 'react-intl';
 
 import { List, ListItem, PopperCard, TextField, Typography } from '@welovedevs/ui';
@@ -11,7 +11,7 @@ import { useGoogleMapsPredictions } from '../../hooks/location/use_google_maps_p
 import { styles } from './location_field_style';
 import { translations } from './location_field_translations';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const LocationFieldComponent = ({ variant, onLocationSelected, value, clearOnSelect, onChange, fullWidth }) => {
     const classes = useStyles();

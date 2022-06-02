@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { Button, Card, PopperCardActions, TextField, Typography } from '@welovedevs/ui';
 
@@ -10,7 +10,7 @@ import { styles } from './gif_card_styles';
 import { translations } from './gif_card_translations';
 import { GifAuthorCredits } from '../../../../../../commons/gifs/gif_author_credits/gif_author_credits';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const GifCard = ({
     name,

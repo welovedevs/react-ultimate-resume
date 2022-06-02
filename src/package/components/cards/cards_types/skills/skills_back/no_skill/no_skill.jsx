@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage } from 'react-intl';
 
 import { Typography } from '@welovedevs/ui';
@@ -8,7 +8,7 @@ import { Typography } from '@welovedevs/ui';
 import { styles } from './no_skill_styles';
 import { NoDataButton } from '../../../../../commons/no_data_button/no_data_button';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const NoSkillComponent = ({ handleAddButtonClick }) => {
     const classes = useStyles();

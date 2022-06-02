@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
 import { useFormikContext } from 'formik';
 import keyBy from 'lodash/keyBy';
 
@@ -19,7 +20,7 @@ import { styles } from './gifs_edit_form_styles';
 import { StaticDataContext } from '../../../../../../utils/context/contexts';
 import { URLFallbackDialog } from '../../../../../commons/url_fallback_dialog.jsx/url_fallback_dialog';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const GifsEditFormComponent = ({ helpers: { handleValueChange } }) => {
     const theme = useTheme();

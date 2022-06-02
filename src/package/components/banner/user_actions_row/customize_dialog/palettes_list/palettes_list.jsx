@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import InfiniteScroll from 'react-infinite-scroller';
 import { motion } from 'framer-motion';
 
@@ -18,7 +18,7 @@ import { PALETTES_LIST_TRANSITIONS_PROPS, PALETTES_ITEM_TRANSITIONS_PROPS } from
 
 import { styles } from './palettes_list_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const PalettesListComponent = ({ value: currentPalette, onChange, classes: receivedClasses = {} }) => {
     const classes = useStyles();

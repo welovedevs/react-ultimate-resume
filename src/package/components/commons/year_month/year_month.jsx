@@ -5,7 +5,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import moment from 'moment';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { useIntl } from 'react-intl';
 import { Twemoji } from 'react-emoji-render';
 import isEqual from 'lodash/isEqual';
@@ -15,7 +15,7 @@ import { TextField, Typography } from '@welovedevs/ui';
 
 import styles from './year_month_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const YearMonthComponent = ({ className, value, onChange, title, error, variant, textfieldProps = {} }) => {
     const classes = useStyles();

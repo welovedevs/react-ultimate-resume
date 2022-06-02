@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { Button } from '@welovedevs/ui';
 import { FormattedMessage } from 'react-intl';
@@ -9,7 +9,7 @@ import { ReactComponent as AddIcon } from '../../../assets/icons/add.svg';
 
 import { styles } from './add_button_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const AddButtonComponent = ({ color = 'primary', variant = 'outlined', ...other }) => {
     const classes = useStyles({ color });

@@ -1,7 +1,9 @@
 import React, { memo, useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
+
 
 import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
@@ -18,7 +20,7 @@ import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './dream_job_front_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const DreamJobFrontComponent = ({ data }) => {
     const theme = useTheme();

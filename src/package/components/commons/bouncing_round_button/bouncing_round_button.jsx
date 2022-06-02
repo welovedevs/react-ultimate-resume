@@ -1,7 +1,7 @@
 import React from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { motion } from 'framer-motion';
 
 import { Tooltip } from '@welovedevs/ui';
@@ -12,7 +12,7 @@ import { TRANSITION_PROPS } from './bouncing_round_button_props';
 
 import { styles } from './bouncing_round_button_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const BouncingRoundButtonComponent = ({
     title = 'Click me!',

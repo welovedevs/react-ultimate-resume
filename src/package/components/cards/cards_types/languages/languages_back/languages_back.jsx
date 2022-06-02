@@ -1,6 +1,7 @@
 import React, { memo, useMemo } from 'react';
 
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
 import chroma from 'chroma-js';
 import { motion } from 'framer-motion';
 import { FormattedMessage } from 'react-intl';
@@ -17,7 +18,7 @@ import { styles } from './languages_back_styles';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoLanguage } from './no_language/no_language';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const LanguagesBackComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles({ itemSize: data.languages?.length ?? 0 });

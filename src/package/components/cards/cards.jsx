@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
 
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
+
 
 import { BasicsCard } from './cards_types/basics/basics_card';
 import { ProjectsCard } from './cards_types/projects/projects_card';
@@ -20,7 +22,7 @@ import { styles } from './cards_styles';
 import { useAdditionalNodes } from '../hooks/use_additional_nodes';
 import { SocialCard } from './cards_types/social/social_card';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const CARD_TYPE_MAPPING = {
     basics: BasicsCard,

@@ -1,7 +1,9 @@
 import React, { memo, useCallback, useMemo, useState } from 'react';
 
 import cn from 'classnames';
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
+
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Twemoji } from 'react-emoji-render';
@@ -37,7 +39,7 @@ const DragHandle = SortableHandle(({ classes }) => (
         <MoveIcon className={classes.dragHandle} />
     </button>
 ));
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const StudiesCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
     const classes = useStyles();

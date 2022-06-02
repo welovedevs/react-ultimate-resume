@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { Typography } from '@welovedevs/ui';
 
@@ -9,7 +9,7 @@ import { useCardVariant } from '../../../hooks/profile_card_hooks/use_card_varia
 
 import { styles } from './profile_card_front_typography_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const ProfileCardFrontTypography = forwardRef(
     ({ component = 'h2', variant = 'h1', overrideColor, children, classes: receivedClasses = {} }, ref) => {

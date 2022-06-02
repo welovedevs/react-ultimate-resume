@@ -2,13 +2,13 @@ import React from 'react';
 
 import cn from 'classnames';
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { Tooltip, Typography } from '@welovedevs/ui';
 
 import { styles } from './add_button_dashed_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const AddButtonDashedComponent = ({ onClick, title = 'Add', classes: receivedClasses = {} }) => {
     const classes = useStyles();

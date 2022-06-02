@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useContext, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { ProfileCardTitle } from '../../../../commons/profile_card/profile_card_title/profile_card_title';
 
@@ -15,7 +15,7 @@ import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoProject } from './no_project/no_project';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const ProjectsBackComponent = ({ data, handleAddButtonClick }) => {
     const [variant] = useCardVariant();

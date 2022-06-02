@@ -3,14 +3,14 @@ import { useIntl } from 'react-intl';
 
 import { Button } from '@welovedevs/ui';
 import { useMediaQuery } from '@mui/material';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { Twemoji } from 'react-emoji-render';
 import { useCallbackOpen } from '../../../hooks/use_callback_open';
 import { CustomizeDialog } from '../customize_dialog/customize_dialog';
 import { translations } from './customize_button_translations';
 import { styles } from './customize_button_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 export const CustomizeButton = ({ customizationOptions }) => {
     const { formatMessage } = useIntl();
     const [dialogOpen, open, close] = useCallbackOpen();

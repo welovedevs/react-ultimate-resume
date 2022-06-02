@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { Typography } from '@welovedevs/ui';
 
@@ -16,7 +16,7 @@ import { useCallbackOpen } from '../../../../hooks/use_callback_open';
 import { styles } from './see_project_detail_styles';
 import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const SeeProjectDetailComponent = ({ color, project }) => {
     const classes = useStyles();

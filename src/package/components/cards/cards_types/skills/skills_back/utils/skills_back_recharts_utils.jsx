@@ -1,14 +1,16 @@
 import React, { useMemo } from 'react';
 
 import chroma from 'chroma-js';
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
+
 import { styles } from './skills_back_recharts_styles';
 import { useTechnologies } from '../../../../../hooks/technologies/use_technologies';
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../../utils/styles/styles_utils';
 import { useCardVariant } from '../../../../../hooks/profile_card_hooks/use_card_variant';
 import { DEFAULT_TECHNO_HANDLE } from '../../../../../../utils/icons';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const CustomLabel = (props) => {
     const theme = useTheme();

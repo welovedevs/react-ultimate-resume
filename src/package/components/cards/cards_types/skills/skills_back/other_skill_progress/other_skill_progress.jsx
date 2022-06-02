@@ -1,12 +1,12 @@
 import React from 'react';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { ProgressBar } from '@welovedevs/ui';
 import { Typography } from '@welovedevs/ui';
 
 import { styles } from './other_skill_progress_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const OtherSkillProgress = ({ color, value, name }) => {
     const classes = useStyles({ color });

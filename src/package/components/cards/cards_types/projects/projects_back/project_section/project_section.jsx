@@ -1,7 +1,9 @@
 import React, { useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
+
 import { Typography } from '@welovedevs/ui';
 
 import { ProfileCardSectionTitle } from '../../../../../commons/profile_card/profile_card_section_title/profile_card_section_title';
@@ -23,7 +25,7 @@ import { useCardVariant } from '../../../../../hooks/profile_card_hooks/use_card
 import { getColorsFromCardVariant } from '../../../../../../utils/styles/styles_utils';
 import { HttpRegex } from '../../data/validator';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const ProjectSectionContainer = ({ project, cardVariant, onDelete, index }) => {
     const classes = useStyles();

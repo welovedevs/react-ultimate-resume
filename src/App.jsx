@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import isArray from 'lodash/isArray';
 import mergeWith from 'lodash/mergeWith';
 import omit from 'lodash/omit';
@@ -14,7 +14,7 @@ import { ReactComponent as SaveIcon } from './package/assets/icons/drop_file.svg
 
 import { styles } from './app_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 const mergeFunction = (objValue, srcValue) => {
     if (!objValue || isArray(objValue)) {
         return srcValue;

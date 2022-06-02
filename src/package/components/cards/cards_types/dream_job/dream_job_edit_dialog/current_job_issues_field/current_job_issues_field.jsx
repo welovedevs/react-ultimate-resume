@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -16,7 +16,7 @@ import { CURRENT_JOB_ISSUES_FIELD_OTHER_TEXTFIELD_TRANSITIONS_PROPS } from './cu
 import { translations } from '../../../../../../utils/enums_translations/job_issues_translations';
 import { styles } from './current_job_issues_field_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 const checkboxGroupCurrentJobIssues = Object.values(JobIssuesEnum).filter((key) => key !== JobIssuesEnum.OTHER);
 
 const CurrentJobIssuesFieldComponent = ({ error, currentJobIssues, onChange, setFieldValue }) => {

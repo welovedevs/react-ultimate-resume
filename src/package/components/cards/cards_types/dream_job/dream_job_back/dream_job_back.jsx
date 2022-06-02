@@ -1,6 +1,6 @@
 import React, {memo, useMemo, useRef} from 'react';
 
-import {createUseStyles} from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import {FormattedMessage, useIntl} from 'react-intl';
 
 import {List, ListItem, PopperCard, Typography} from '@welovedevs/ui';
@@ -29,7 +29,7 @@ import {remoteDisplayTranslations} from '../../../../../utils/enums_translations
 import {styles} from './dream_job_back_styles';
 import {hasOnlyFreelanceContract} from '../../../utils/has_only_freelance_contract';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const DreamJobBackComponent = ({data}) => {
     const classes = useStyles();

@@ -1,6 +1,8 @@
 import React, { memo, useCallback, useMemo, useState } from 'react';
 
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
+
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
@@ -13,7 +15,7 @@ import { styles } from './soundtrack_back_styles';
 import { NoSoundTrack } from './no_soundtrack/no_soundtrack';
 import { OPACITY_TRANSITIONS } from '../../../../../utils/framer_motion/common_transitions/opacity_transitions';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const SoundtrackBackComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles();

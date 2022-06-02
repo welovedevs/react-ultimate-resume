@@ -1,8 +1,8 @@
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import React from 'react';
 import styles from './text_section_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 export const TextSection = ({ icon, children }) => {
     const classes = useStyles();
 

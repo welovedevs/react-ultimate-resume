@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -11,7 +11,7 @@ import { ANIMATED_UNDERLINED_BUTTON_TRANSITIONS_PROPS } from './animated_underli
 import { styles } from './animated_underlined_button_styles';
 import { DEFAULT_SPRING_TYPE as spring } from '../../../utils/framer_motion/common_types/spring_type';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const AnimatedUnderlinedButtonComponent = ({ color = 'primary', onClick, children }) => {
     const classes = useStyles({ color });

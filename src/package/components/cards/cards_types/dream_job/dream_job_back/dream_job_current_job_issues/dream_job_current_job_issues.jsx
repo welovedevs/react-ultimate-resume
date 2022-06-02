@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { useIntl } from 'react-intl';
 
 import { styles } from './dream_job_current_job_issues_styles';
 import { translations } from '../../../../../../utils/enums_translations/job_issues_translations';
 import { JobIssuesEnum } from '../../../../../../types/enums/job_issues/job_issues_utils';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const DreamJobCurrentJobIssuesComponent = ({ currentJobIssues = {} }) => {
     const classes = useStyles();

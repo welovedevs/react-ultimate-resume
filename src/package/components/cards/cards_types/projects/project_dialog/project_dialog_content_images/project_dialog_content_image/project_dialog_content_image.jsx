@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { AnimatePresence, motion } from 'framer-motion';
 import { DEFAULT_SPRING_TYPE as spring } from '../../../../../../../utils/framer_motion/common_types/spring_type';
 
@@ -15,7 +15,7 @@ import { ReactComponent as DeleteIcon } from '../../../../../../../assets/icons/
 import { styles } from './project_dialog_content_image_styles';
 import { OPACITY_TRANSITIONS } from '../../../../../../../utils/framer_motion/common_transitions/opacity_transitions';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const ProjectDialogContentImageComponent = ({
     component: Component = 'div',

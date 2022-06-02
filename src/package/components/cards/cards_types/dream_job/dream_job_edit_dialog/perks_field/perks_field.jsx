@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 import { TextField, Typography } from '@welovedevs/ui';
@@ -18,7 +18,7 @@ import { styles } from './perks_field_styles';
 import { AnimatePresence, motion } from 'framer-motion';
 import { DEFAULT_SPRING_TYPE as spring } from '../../../../../../utils/framer_motion/common_types/spring_type';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const checkboxGroupPerks = Object.values(JobPerksEnum).filter((perk) => perk !== JobPerksEnum.OTHER);
 

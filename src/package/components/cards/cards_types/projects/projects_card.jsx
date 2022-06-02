@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage } from 'react-intl';
 
 import { ProfileCard } from '../../../commons/profile_card/profile_card';
@@ -18,7 +18,7 @@ import { SortProjectsButton } from './sort_projects_button/sort_projects_button'
 
 import { styles } from './projects_card_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const ProjectsCardComponent = ({ variant, side }) => {
     const classes = useStyles();

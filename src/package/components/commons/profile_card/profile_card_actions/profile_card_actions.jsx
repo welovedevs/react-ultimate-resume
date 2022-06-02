@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { styles } from './profile_card_actions_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const ProfileCardActionsComponent = ({ children }) => {
     const classes = useStyles();

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage } from 'react-intl';
 import { useFormikContext } from 'formik';
 import { useDebounce } from 'use-debounce';
@@ -16,7 +16,7 @@ import { hashCode } from '../../../../../utils/string_utils';
 import { styles } from './soundtrack_card_edit_dialog_styles';
 import { getEmbeddedUrl, isValidEmbeddedUrl } from './soundtrack_card_utils';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const SoundtrackCardEditDialog = ({ open, onClose, data, onEdit, isEditing }) => (
     <EditDialog

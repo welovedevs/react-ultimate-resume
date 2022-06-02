@@ -1,6 +1,8 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
+
 import { FormattedMessage } from 'react-intl';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 
@@ -16,7 +18,7 @@ import { ReactComponent as MoveIcon } from '../../../../../assets/icons/move_lis
 import { styles } from './sort_projects_dialog_styles';
 import { DeveloperProfileContext } from '../../../../../utils/context/contexts';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const SortProjectsDialog = ({ open, onClose, projects }) => {
     const classes = useStyles();

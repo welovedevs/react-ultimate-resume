@@ -1,7 +1,7 @@
 import React from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage } from 'react-intl';
 
 import { Typography } from '@welovedevs/ui';
@@ -10,7 +10,7 @@ import { CheckboxField } from '../../../../../commons/checkbox_field/checkbox_gr
 
 import { styles } from './visa_field_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const VisaFieldComponent = ({ value, toggleValue, classes: receivedClasses = {} }) => {
     const classes = useStyles();

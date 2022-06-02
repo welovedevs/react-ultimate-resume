@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { Tooltip, Typography } from '@welovedevs/ui';
 
 import { styles } from './language_column_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const LanguageColumnComponent = ({
     component: Component = 'div',

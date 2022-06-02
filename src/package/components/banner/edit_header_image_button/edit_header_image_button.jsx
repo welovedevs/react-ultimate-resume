@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage } from 'react-intl';
 
 import { ReactComponent as PhotoCameraIcon } from '../../../assets/icons/photo_camera.svg';
@@ -16,7 +16,7 @@ import { styles } from './edit_header_image_button_styles';
 import { useReceivedGlobalClasses } from '../../hooks/use_received_global_classes';
 import { useMode } from '../../hooks/use_mode';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const EditHeaderImageButton = ({ customizationOptions }) => {
     const classes = useStyles();

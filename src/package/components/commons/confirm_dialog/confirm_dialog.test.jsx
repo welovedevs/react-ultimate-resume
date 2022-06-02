@@ -3,7 +3,7 @@ import {render, fireEvent} from '@testing-library/react';
 import {JssProvider, ThemeProvider} from 'react-jss';
 import {IntlProvider} from 'react-intl';
 import '@testing-library/jest-dom';
-import {createTheme, StyledEngineProvider, ThemeProvider as MuiThemeProvider} from '@mui/material/styles';
+import {StyledEngineProvider, ThemeProvider as MuiThemeProvider} from '@mui/material/styles';
 
 import en from '../../../i18n/en.json';
 
@@ -18,24 +18,19 @@ muiInstance.setup({insertionPoint: 'mui-insertion-point'});
 const jssinstance = create(jssDefaultPreset());
 jssinstance.setup({insertionPoint: 'jss-insertion-point'});
 
-
-const theme = buildTheme();
-
 const Providers = ({children}) => (
-        <StyledEngineProvider injectFirst>
-            <MuiThemeProvider theme={createTheme()}>
-                <ThemeProvider theme={theme}>
-                    <MuiStylesProvider jss={muiInstance}>
-                        <JssProvider jss={jssinstance}>
-                            <IntlProvider locale="en" defaultLocale="en" messages={en}>
-                                {children}
-                            </IntlProvider>
-                        </JssProvider>
-                    </MuiStylesProvider>
-                </ThemeProvider>
-            </MuiThemeProvider>
-        </StyledEngineProvider>
-    )
+    <StyledEngineProvider injectFirst>
+        <MuiThemeProvider theme={buildTheme()}>
+            <MuiStylesProvider jss={muiInstance}>
+                <JssProvider jss={jssinstance}>
+                    <IntlProvider locale="en" defaultLocale="en" messages={en}>
+                        {children}
+                    </IntlProvider>
+                </JssProvider>
+            </MuiStylesProvider>
+        </MuiThemeProvider>
+    </StyledEngineProvider>
+)
 
 
 describe('<ConfirmDialog />', () => {

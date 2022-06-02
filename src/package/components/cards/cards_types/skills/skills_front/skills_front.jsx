@@ -1,7 +1,9 @@
 import React, { memo, useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
+
 import chroma from 'chroma-js';
 
 import { Typography } from '@welovedevs/ui';
@@ -22,7 +24,7 @@ import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 import { DEFAULT_TECHNO_HANDLE } from '../../../../../utils/icons';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const SkillsFrontComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles();

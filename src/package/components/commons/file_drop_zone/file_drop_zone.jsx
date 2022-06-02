@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 
 import { useDropzone } from 'react-dropzone';
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { Typography } from '@welovedevs/ui';
 
@@ -14,7 +14,7 @@ import { ReactComponent as RemoveIcon } from '../../../assets/icons/remove_circl
 
 import { styles } from './file_drop_zone_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const DEFAULT_ON_DROP = () => {
     throw new Error('Did not provide a valid onDrop function.');

@@ -1,6 +1,6 @@
 import React, { memo, useMemo } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { ProfileCardAnimatedBack } from '../../../../commons/profile_card/profile_card_animated_back/profile_card_animated_back';
@@ -21,7 +21,7 @@ import { CodingYears } from './fields/coding_years';
 import { StudiesLevel } from './fields/studies_level';
 import { useMode } from '../../../../hooks/use_mode';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
     const [mode] = useMode();

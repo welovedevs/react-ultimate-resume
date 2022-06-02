@@ -1,7 +1,9 @@
 /* eslint no-unused-vars: 0 */
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
+
 import { FormattedMessage } from 'react-intl';
 
 import set from 'lodash/set';
@@ -16,7 +18,7 @@ import { ContactInfosDialogTextFields } from './contact_infos_dialog_textfields/
 import { styles } from './contact_infos_dialog_styles';
 import { CONTACT_INFOS_DATA } from '../contact_infos_data';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const ContactInfosDialog = ({ open, onClose, contactInformations }) => {
     const { onEdit } = useContext(DeveloperProfileContext);

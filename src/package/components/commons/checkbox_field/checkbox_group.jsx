@@ -1,13 +1,13 @@
 import React from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { Checkbox } from '@welovedevs/ui';
 
 import { checkboxStyles } from './checkbox_styles';
 
-const useStyles = createUseStyles(checkboxStyles);
+const useStyles = makeStyles(checkboxStyles);
 
 export const CheckboxField = ({
     title,

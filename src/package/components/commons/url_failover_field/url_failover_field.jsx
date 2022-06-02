@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { TextField, Typography } from '@welovedevs/ui';
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { styles } from './url_failover_field_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const URLFailoverField = ({ onChange, value: inputValue }) => {
     const classes = useStyles();

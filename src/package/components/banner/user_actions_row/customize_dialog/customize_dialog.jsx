@@ -1,6 +1,9 @@
 import React, {useCallback, useContext, useEffect, useState} from 'react';
 
-import {createUseStyles, ThemeProvider, useTheme} from 'react-jss';
+import { ThemeProvider} from '@mui/material/styles';
+import makeStyles from '@mui/styles/makeStyles';
+import { useTheme } from "@mui/styles";
+
 import {FormattedMessage} from 'react-intl';
 import set from 'lodash/set';
 import cloneDeep from 'lodash/cloneDeep';
@@ -19,7 +22,7 @@ import {DeveloperProfileContext} from '../../../../utils/context/contexts';
 import {styles} from './customize_dialog_styles';
 import {createScreenWidthMediaQuery} from '../../../../utils/styles/styles_utils';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const CustomizeDialogComponent = ({open, onClose, customizationOptions}) => {
     const theme = useTheme();

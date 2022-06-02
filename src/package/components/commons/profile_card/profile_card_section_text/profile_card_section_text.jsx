@@ -1,13 +1,13 @@
 import React from 'react';
 
 import cn from 'classnames';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { Typography } from '@welovedevs/ui';
 
 import { styles } from './profile_card_section_text_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const ProfileCardSectionText = ({ children, component, classes: receivedClasses = {} }) => {
     const classes = useStyles();

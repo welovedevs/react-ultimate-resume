@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage } from 'react-intl';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 
@@ -22,7 +22,7 @@ import { ReactComponent as MoveIcon } from '../../../../../../assets/icons/move.
 import { DEFAULT_SPRING_TYPE as spring } from '../../../../../../utils/framer_motion/common_types/spring_type';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 const DragHandle = SortableHandle(({ classes }) => (
     <button className={classes.dragHandleButton} type="button">
         <MoveIcon className={classes.dragHandle} />

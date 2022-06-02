@@ -1,7 +1,8 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
 import cn from 'classnames';
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Twemoji } from 'react-emoji-render';
@@ -30,7 +31,7 @@ import { styles } from './experiences_edit_dialog_styles';
 import { useOptions } from '../../../../hooks/use_options';
 import { DEFAULT_SPRING_TYPE as spring } from '../../../../../utils/framer_motion/common_types/spring_type';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const DragHandle = SortableHandle(({ classes }) => (
     <button className={classes.dragHandleButton} type="button">

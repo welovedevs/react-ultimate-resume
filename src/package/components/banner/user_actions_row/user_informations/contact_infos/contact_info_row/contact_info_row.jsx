@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { useIntl } from 'react-intl';
 
 import { Tooltip, Typography } from '@welovedevs/ui';
 
 import { styles } from './contact_info_row_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const ContactInfoRow = ({ icon: Icon, translation, value }) => {
     const classes = useStyles();

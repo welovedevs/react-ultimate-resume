@@ -2,7 +2,9 @@ import React, { useCallback } from 'react';
 
 import cn from 'classnames';
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
+
 import { Formik, useFormikContext } from 'formik';
 
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -14,7 +16,7 @@ import { DialogTitle } from '../dialog/dialog_title/dialog_title';
 
 import { styles } from './edit_dialog_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const EditDialog = ({
     open,

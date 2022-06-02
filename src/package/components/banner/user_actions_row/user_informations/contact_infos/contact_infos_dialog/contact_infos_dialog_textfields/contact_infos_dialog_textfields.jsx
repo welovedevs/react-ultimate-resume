@@ -1,6 +1,6 @@
 import React, { memo, useCallback } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { useIntl } from 'react-intl';
 
 import { Tooltip, TextField, TextFieldIcon } from '@welovedevs/ui';
@@ -9,7 +9,7 @@ import { CONTACT_INFOS_DATA } from '../../contact_infos_data';
 
 import { styles } from './contact_infos_dialog_textfields_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const ContactInfosDialogTextFields = memo(({ inputs, setInputs }) => {
     const classes = useStyles();

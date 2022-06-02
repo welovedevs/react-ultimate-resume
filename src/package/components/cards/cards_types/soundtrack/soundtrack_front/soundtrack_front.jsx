@@ -1,7 +1,7 @@
 import React, { memo, useCallback } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { Typography } from '@welovedevs/ui';
 import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
@@ -18,7 +18,7 @@ import { styles } from './soundtrack_front_styles';
 import { useCardSide } from '../../../../hooks/profile_card_hooks/use_card_side';
 import { NoDataButton } from '../../../../commons/no_data_button/no_data_button';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const SoundtrackFrontComponent = ({ data, handleAddButtonClick }) => {
     const classes = useStyles();

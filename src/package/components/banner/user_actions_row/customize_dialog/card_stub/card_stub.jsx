@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
 
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
 import { useDebounce } from 'use-debounce';
 
 import { PopperCard, Checkbox } from '@welovedevs/ui';
@@ -25,7 +26,7 @@ import { CARD_STUB_TRANSLATIONS } from './card_stub_translations';
 
 import { styles } from './card_stub_styles';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const CARD_TYPE_MAPPING = {
     basics: BasicsSvg,

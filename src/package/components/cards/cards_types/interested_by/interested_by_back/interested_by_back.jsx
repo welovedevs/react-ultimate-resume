@@ -1,14 +1,14 @@
 import React, { memo, useMemo } from 'react';
 
-import { createUseStyles, useTheme } from 'react-jss';
-
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
 import { InterestedByFront } from '../interested_by_front/interested_by_front';
 
 import { styles } from './interested_by_back_styles';
 import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 import { getColorsFromCardVariant } from '../../../../../utils/styles/styles_utils';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const InterestedByBackComponent = (props) => {
     const [variant] = useCardVariant();

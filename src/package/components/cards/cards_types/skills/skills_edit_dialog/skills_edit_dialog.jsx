@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
@@ -9,7 +9,7 @@ import { SkillsEditForm } from './skills_edit_form/skills_edit_form';
 import { styles } from './skills_edit_dialog_styles';
 import { useOptions } from '../../../../hooks/use_options';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const SkillsEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
     const classes = useStyles();

@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 import get from 'lodash/get';
 
 import { Typography } from '@welovedevs/ui';
@@ -17,7 +17,7 @@ import { ContactInfos } from './contact_infos/contact_infos';
 import { useOptions } from '../../../hooks/use_options';
 import { useIsEditing } from '../../../hooks/use_is_editing';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const UserInformations = () => {
     const { data } = useContext(DeveloperProfileContext);

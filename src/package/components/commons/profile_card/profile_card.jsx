@@ -1,6 +1,8 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 
-import { createUseStyles, useTheme } from 'react-jss';
+import { useTheme } from "@mui/styles";
+import makeStyles from '@mui/styles/makeStyles';
+
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { Card } from '@welovedevs/ui';
@@ -26,7 +28,7 @@ import { SIDES } from './profile_card_side/side';
 import { styles } from './profile_card_styles';
 import { OPACITY_TRANSITIONS } from '../../../utils/framer_motion/common_transitions/opacity_transitions';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 export const ProfileCardContext = createContext({});
 

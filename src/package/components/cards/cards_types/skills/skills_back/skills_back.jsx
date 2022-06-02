@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { createUseStyles } from 'react-jss';
+import makeStyles from '@mui/styles/makeStyles';
 
 import { ProfileCardTitle } from '../../../../commons/profile_card/profile_card_title/profile_card_title';
 
@@ -13,7 +13,7 @@ import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_va
 import { existsAndNotEmpty } from '../../../utils/exists_and_not_empty';
 import { NoSkill } from './no_skill/no_skill';
 
-const useStyles = createUseStyles(styles);
+const useStyles = makeStyles(styles);
 
 const SkillsBackComponent = ({ data, handleAddButtonClick }) => (
     <>
