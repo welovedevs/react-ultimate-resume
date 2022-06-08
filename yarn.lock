@@ -3092,10 +3092,10 @@
   resolved "https://registry.yarnpkg.com/@webpack-cli/serve/-/serve-1.6.1.tgz#0de2875ac31b46b6c5bb1ae0a7d7f0ba5678dffe"
   integrity sha512-gNGTiTrjEVQ0OcVnzsRSqTxaBSr+dmTfm+qJsCDluky8uhdLWep7Gcr62QsAKHTMxjCS/8nEITsmFAhfIx+QSw==
 
-"@welovedevs/ui@^1.2.11-beta.29":
-  version "1.2.11-beta.29"
-  resolved "https://registry.yarnpkg.com/@welovedevs/ui/-/ui-1.2.11-beta.29.tgz#293d6efb32416b313a5e88a65bfc2a62edbd75d7"
-  integrity sha512-3+Ho70locNR0Qu9p3GzijnUl2jF1rhk3VTxQoiri5tWDdUOTkQu3Gh4gQJv8/eoV6xIv0PT88eYteg9F7FyAmg==
+"@welovedevs/ui@^1.2.11-beta.36":
+  version "1.2.11-beta.36"
+  resolved "https://registry.yarnpkg.com/@welovedevs/ui/-/ui-1.2.11-beta.36.tgz#865c82a5e6e8f657803120b32c608be0a9400aff"
+  integrity sha512-jeIjra557FH8uEIBD2UNIPTZMcf95JPpm9MdAX831Je9lwgYes9MLdPgPOW0rq+RyRvJKTeosaYxL7bHgI72wg==
   dependencies:
     "@emotion/react" "^11.9.0"
     "@emotion/styled" "^11.8.1"
