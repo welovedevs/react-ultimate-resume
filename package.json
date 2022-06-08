@@ -40,7 +40,7 @@
         "@mui/styles": "^5.8.0",
         "@mui/x-date-pickers": "^5.0.0-alpha.5",
         "@types/giphy-api": "^2.0.2",
-        "@welovedevs/ui": "^1.2.11-beta.36",
+        "@welovedevs/ui": "^1.2.11-beta.45",
         "chroma-js": "^2.1.0",
         "classnames": "^2.3.1",
         "copy-to-clipboard": "^3.3.1",
