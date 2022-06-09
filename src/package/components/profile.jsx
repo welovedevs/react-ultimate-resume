@@ -1,28 +1,27 @@
-import React, {useCallback, useMemo, useReducer, useState} from 'react';
-import {injectIntl, IntlProvider} from 'react-intl';
+import React, { useCallback, useMemo, useReducer, useState } from 'react';
+import { injectIntl, IntlProvider } from 'react-intl';
 import makeStyles from '@mui/styles/makeStyles';
 
-import {StyledEngineProvider, ThemeProvider} from '@mui/material/styles';
+import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 
 import mergeWith from 'lodash/mergeWith';
 import cloneDeep from 'lodash/cloneDeep';
 
-import {buildTheme} from '../utils/styles/theme/theme';
-import {Banner} from './banner/banner';
-import {Cards} from './cards/cards';
+import { buildTheme } from '../utils/styles/theme/theme';
+import { Banner } from './banner/banner';
+import { Cards } from './cards/cards';
 
-import {styles} from './profile_styles';
+import { styles } from './profile_styles';
 
 import en from '../i18n/en.json';
 import fr from '../i18n/fr.json';
 import tr from '../i18n/tr.json';
 
-import '../styles/lib/slick-carousel/slick-theme.module.css';
 import '../styles/tailwind.css';
-import {technologiesInitialState, technologiesReducer} from '../store/technologies/technologies_reducer';
-import {DeveloperProfileContext, StaticDataContext, StoreContext} from '../utils/context/contexts';
-import {mergeOmitNull} from '../utils/data_utils';
-import {SIDES} from './commons/profile_card/profile_card_side/side';
+import { technologiesInitialState, technologiesReducer } from '../store/technologies/technologies_reducer';
+import { DeveloperProfileContext, StaticDataContext, StoreContext } from '../utils/context/contexts';
+import { mergeOmitNull } from '../utils/data_utils';
+import { SIDES } from './commons/profile_card/profile_card_side/side';
 
 if (!Intl.PluralRules) {
     // eslint-disable-next-line global-require
@@ -53,22 +52,21 @@ const DEFAULT_OPTIONS = {
 };
 
 const DEFAULT_OBJECT = {};
-const DEFAULT_FUNCTION = () => {
-};
+const DEFAULT_FUNCTION = () => {};
 
 const DeveloperProfileComponent = ({
-                                       data: originalData = DEFAULT_OBJECT,
-                                       options,
-                                       mode,
-                                       onEdit: onEditProps = DEFAULT_FUNCTION,
-                                       onIsEditingChanged = DEFAULT_FUNCTION,
-                                       onCustomizationChanged,
-                                       onFilesUpload,
-                                       additionalNodes,
-                                       classes: receivedGlobalClasses = {}
-                                   }) => {
+    data: originalData = DEFAULT_OBJECT,
+    options,
+    mode,
+    onEdit: onEditProps = DEFAULT_FUNCTION,
+    onIsEditingChanged = DEFAULT_FUNCTION,
+    onCustomizationChanged,
+    onFilesUpload,
+    additionalNodes,
+    classes: receivedGlobalClasses = {}
+}) => {
     const classes = useStyles(styles);
-    const {apiKeys, endpoints} = options;
+    const { apiKeys, endpoints } = options;
     const [isEditing, setIsEditing] = useState(false);
     const onEdit = useCallback(
         (newData) => {
@@ -90,7 +88,7 @@ const DeveloperProfileComponent = ({
     };
     const staticContext = useMemo(
         () => ({
-            apiKeys: {giphy: apiKeys?.giphy, unsplash: apiKeys?.unsplash},
+            apiKeys: { giphy: apiKeys?.giphy, unsplash: apiKeys?.unsplash },
             endpoints,
             additionalNodes,
             receivedGlobalClasses,
@@ -144,27 +142,27 @@ const DeveloperProfileComponent = ({
 };
 
 const WithProvidersDeveloperProfile = ({
-                                           data,
-                                           onEdit,
-                                           onCustomizationChanged,
-                                           onIsEditingChanged,
-                                           options = {},
-                                           mode = 'readOnly',
-                                           additionalNodes,
-                                           classes,
-                                           onFilesUpload,
-                                           intl: parentIntl
-                                       }) => {
+    data,
+    onEdit,
+    onCustomizationChanged,
+    onIsEditingChanged,
+    options = {},
+    mode = 'readOnly',
+    additionalNodes,
+    classes,
+    onFilesUpload,
+    intl: parentIntl
+}) => {
     const mergedOptions = useMemo(
         () => mergeWith(cloneDeep(DEFAULT_OPTIONS), JSON.parse(JSON.stringify(options || {})), mergeOmitNull),
         [JSON.stringify(options)]
     );
 
-    const {locale, customization} = mergedOptions;
+    const { locale, customization } = mergedOptions;
     const builtTheme = useMemo(() => buildTheme(customization?.theme), [customization?.theme]);
 
     const providerMessages = useMemo(
-        () => ({...(parentIntl?.messages || {}), ...(messages[locale] || messages.en)}),
+        () => ({ ...(parentIntl?.messages || {}), ...(messages[locale] || messages.en) }),
         [parentIntl, locale]
     );
 
@@ -189,4 +187,4 @@ const WithProvidersDeveloperProfile = ({
     );
 };
 
-export const DeveloperProfile = injectIntl(WithProvidersDeveloperProfile, {enforceContext: false});
+export const DeveloperProfile = injectIntl(WithProvidersDeveloperProfile, { enforceContext: false });

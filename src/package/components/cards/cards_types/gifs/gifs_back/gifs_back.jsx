@@ -1,8 +1,5 @@
 import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 import cn from 'classnames';
 import makeStyles from '@mui/styles/makeStyles';
 import Slider from 'react-slick';
@@ -25,8 +22,6 @@ import { DEFAULT_SPRING_TYPE as spring } from '../../../../../utils/framer_motio
 
 const useStyles = makeStyles(styles);
 
-
-
 const SETTINGS = {
     arrows: true,
     dots: true,
@@ -48,7 +43,6 @@ const GifsBackComponent = ({ data, handleAddButtonClick }) => {
         setPreviousIndex(current);
         setCurrentIndex(next);
     }, []);
-
 
     return (
         <GifsSidesCommons
@@ -155,10 +149,7 @@ const SlideItem = ({ gifUrl, name, classes }) => {
 const TransitioningItem = ({ item, classes, motionConfig }) => {
     return (
         <AnimatePresence>
-            <motion.div
-                {...motionConfig}
-                className={classes.transitioningItemWithoutGif}
-            >
+            <motion.div {...motionConfig} className={classes.transitioningItemWithoutGif}>
                 {!item?.gifUrl ? (
                     <Typography
                         classes={{

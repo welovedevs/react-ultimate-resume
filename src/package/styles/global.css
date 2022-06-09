@@ -1,4 +1,6 @@
 @import '../assets/fonts/AvenirNext/stylesheet.css';
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
 @tailwind utilities;
 
 html,
@@ -15,4 +17,3 @@ body {
     scroll-behavior: smooth;
     overflow-x: hidden;
 }
-
