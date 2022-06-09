@@ -1,10 +1,11 @@
-import React, { createContext, memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 
 import makeStyles from '@mui/styles/makeStyles';
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
 import cloneDeep from 'lodash/cloneDeep';
 
 import { List } from '@welovedevs/ui';
+import { Context } from '../card_stub/card_stub';
 
 import { CardStub } from '../card_stub/card_stub';
 import { DEFAULT_CARD_ORDER } from '../../../../cards/utils/cards_order';
@@ -15,7 +16,6 @@ const useStyles = makeStyles(styles);
 
 const SortableCard = SortableElement(memo(CardStub));
 
-export const Context = createContext({});
 
 const CardsOrdererComponent = ({ onChange, value: cardsOrder = DEFAULT_CARD_ORDER }) => {
     const classes = useStyles();

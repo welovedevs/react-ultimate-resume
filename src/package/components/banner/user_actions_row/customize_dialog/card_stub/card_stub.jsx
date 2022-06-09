@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useRef } from 'react';
+import React, {createContext, useCallback, useContext, useMemo, useRef} from 'react';
 
 import { useTheme } from "@mui/styles";
 import makeStyles from '@mui/styles/makeStyles';
@@ -7,7 +7,6 @@ import { useDebounce } from 'use-debounce';
 import { PopperCard, Checkbox } from '@welovedevs/ui';
 
 import { PaletteVisual } from '../palette_visual/palette_visual';
-import { Context } from '../card_orderer/cards_orderer';
 import { ReactComponent as BasicsSvg } from '../../../../../assets/cards/basics.svg';
 import { ReactComponent as HobbiesSvg } from '../../../../../assets/cards/hobbies.svg';
 import { ReactComponent as InterestedBySvg } from '../../../../../assets/cards/interested_by.svg';
@@ -27,6 +26,8 @@ import { CARD_STUB_TRANSLATIONS } from './card_stub_translations';
 import { styles } from './card_stub_styles';
 
 const useStyles = makeStyles(styles);
+
+export const Context = createContext({});
 
 const CARD_TYPE_MAPPING = {
     basics: BasicsSvg,
