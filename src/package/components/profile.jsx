@@ -164,7 +164,7 @@ const WithProvidersDeveloperProfile = ({
     const builtTheme = useMemo(() => buildTheme(customization?.theme), [customization?.theme]);
 
     const providerMessages = useMemo(
-        () => ({ ...(parentIntl?.messages || {}), ...(messages[locale] || messages.en) }),
+        () => ({ ...(messages[locale] || messages.en), ...(parentIntl?.messages || {}) }),
         [parentIntl, locale]
     );
 
