@@ -9,6 +9,8 @@ import { styles } from './project_dialog_content_date_styles';
 import { YearMonth } from '../../../../../commons/year_month/year_month';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
+import { translations } from './project_dialog_content_date.translations';
+
 const useStyles = makeStyles(styles);
 
 const ProjectDialogContentDateComponent = ({ date, isEditing }) => {
@@ -35,8 +37,10 @@ const DefaultContent = ({ date, classes }) => (
 
 const EditingContent = ({ classes }) => {
     const { setFieldValue, values, errors } = useFormikContext();
+
     const handleStartDate = useCallback(
         (value) => {
+            console.log('new date', value)
             setFieldValue('date', value);
         },
         [JSON.stringify(values)]
@@ -52,7 +56,7 @@ const EditingContent = ({ classes }) => {
                     variant="flat"
                     value={values.date}
                     onChange={handleStartDate}
-                    title={{ id: 'Project.editDialog.date', defaultMessage: 'Project date' }}
+                    title={translations.projectDate}
                 />
             </LocalizationProvider>
             {errors?.date && (

@@ -215,6 +215,7 @@
   "ProfileCardIncompletePopper.label.value": "This card's data is incomplete",
   "Project.details.dialog.title": "Project details",
   "Project.dialog.link.title": "Project link",
+  "Project.editDialog.date": "Project date",
   "Project.editDialog.title": "Project's details",
   "Project.section.link": "Link",
   "Projects.Actions.Add": "Add a project",

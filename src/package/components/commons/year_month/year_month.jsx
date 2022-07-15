@@ -31,7 +31,7 @@ const YearMonthComponent = ({ className, value, onChange, title, error, variant,
         },
         [onChange]
     );
-    const date = useMemo(() => moment(value ? new Date(value.year(), value.month()) : new Date()), [value]);
+    const date = useMemo(() => moment(value ? new Date(value.year(), value.month()) : null), [value]);
     return (
         <div className={cn(className, classes.fieldsContainer)}>
             <div className={classes.selectContainer}>

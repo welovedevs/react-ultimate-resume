@@ -800,7 +800,7 @@
     "id": "Skills.form.validation.atLeastOne"
   },
   {
-    "defaultMessage": "Select at most {count} skill{count, plural, one {} other{s}}.",
+    "defaultMessage": "Select at most {limitTo} skill{limitTo, plural, one {} other{s}}.",
     "id": "Skills.form.validation.atMost"
   },
   {
@@ -1074,6 +1074,10 @@
   {
     "defaultMessage": "Les langues que vous maîtrisez seront affichées avec votre niveau .",
     "id": "Languages.noLanguage.title"
+  },
+  {
+    "defaultMessage": "Project date",
+    "id": "Project.editDialog.date"
   },
   {
     "defaultMessage": "Project details",
