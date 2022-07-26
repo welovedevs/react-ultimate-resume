@@ -8,7 +8,7 @@ import { DeveloperProfileContext } from '../../../../utils/context/contexts';
 import { useMode } from '../../../hooks/use_mode';
 import { CardSideProps, CommonCardsProps } from '../../types/card_props';
 import { mapProfilesFromJsonResume, mapProfilesToJsonResume, SocialCardData } from './data/mapping';
-import { SocialCardContent } from './interested_by_back/social';
+import { SocialCardContent } from './social_card_back/social';
 import { useOptions } from '../../../hooks/use_options';
 
 export const SocialCard = ({ variant, side }: CommonCardsProps) => {

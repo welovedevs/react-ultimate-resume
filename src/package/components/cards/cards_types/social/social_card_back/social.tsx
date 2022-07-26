@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useTheme } from "@mui/styles";
+import { useTheme } from '@mui/styles';
 import { useCardVariant } from '../../../../hooks/profile_card_hooks/use_card_variant';
 import { getColorsFromCardVariant, getHexFromPaletteColor } from '../../../../../utils/styles/styles_utils';
 import { CardSideProps } from '../../../types/card_props';
@@ -132,8 +132,13 @@ export const SocialCardContent: React.FC<CardSideProps<SocialCardData> & { isCom
                 )}
                 {Object.entries(others)
                     .filter(([, item]) => item)
-                    .map(([, { url, network }]) => (
-                        <a href={url} target="_blank" rel="noreferrer noopener">
+                    .map(([, { url, network }], index) => (
+                        <a
+                            href={url}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            key={`social_others_${network}_${index}`}
+                        >
                             <Typography
                                 component="div"
                                 className={`my-2 flex items-center hover:underline hover:decoration-2  font-medium`}
