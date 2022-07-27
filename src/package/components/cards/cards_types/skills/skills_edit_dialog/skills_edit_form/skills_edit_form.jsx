@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { useTheme } from "@mui/styles";
+import { useTheme } from '@mui/styles';
 import makeStyles from '@mui/styles/makeStyles';
 
 import { useFormikContext } from 'formik';
@@ -12,7 +12,7 @@ import { styles } from './skills_edit_form_styles';
 import { TechnologiesPicker } from '../../../../../commons/technologies/technologies_picker';
 import { useTechnologies } from '../../../../../hooks/technologies/use_technologies';
 
-const SkillsEditFormComponent = ({ helpers: { handleValueChange } }) => {
+export const SkillsEditForm = ({ helpers: { handleValueChange } }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
 
@@ -62,5 +62,3 @@ const SkillsEditFormComponent = ({ helpers: { handleValueChange } }) => {
         </>
     );
 };
-
-export const SkillsEditForm = SkillsEditFormComponent;

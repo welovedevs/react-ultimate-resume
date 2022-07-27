@@ -19,6 +19,9 @@ const SkillsEditDialogComponent = ({ open, onClose, data, onEdit, validationSche
         validationSchema
     ]);
 
+    if (!open) {
+        return null;
+    }
     return (
         <EditDialog
             fullScreen
