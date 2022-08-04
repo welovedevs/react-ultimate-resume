@@ -1,12 +1,29 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
 import cn from 'classnames';
-import { useTheme } from "@mui/styles";
+import { useTheme } from '@mui/styles';
 import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Twemoji } from 'react-emoji-render';
-import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
+
+import {
+    DndContext,
+    closestCenter,
+    KeyboardSensor,
+    PointerSensor,
+    useSensor,
+    useSensors,
+} from '@dnd-kit/core';
+import {
+    arrayMove,
+    SortableContext,
+    sortableKeyboardCoordinates, useSortable,
+    verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+
+
 import { useFormikContext } from 'formik';
 import moment from 'moment';
 import keyBy from 'lodash/keyBy';
@@ -32,12 +49,6 @@ import { useOptions } from '../../../../hooks/use_options';
 import { DEFAULT_SPRING_TYPE as spring } from '../../../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = makeStyles(styles);
-
-const DragHandle = SortableHandle(({ classes }) => (
-    <button className={classes.dragHandleButton} type="button">
-        <MoveIcon className={classes.dragHandle} />
-    </button>
-));
 
 const ExperiencesEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
     const { formatMessage } = useIntl();
@@ -134,91 +145,96 @@ const JobTitle = ({ experience }) => {
     return title;
 };
 
-const ExperienceItem = SortableElement(
-    ({
-        id,
-        experience,
-        onChange,
-        onRemove,
-        error: fieldErrors,
-        folded,
-        toggleFold,
-        classes,
-        experienceIndex: index
-    }) => {
-        const { formatMessage } = useIntl();
-        const theme = useTheme();
-        const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
-        const [disableSortableExperience] = useOptions('disableSortableExperience', false);
+const ExperienceItem = ({
+    id,
+    experience,
+    onChange,
+    onRemove,
+    error: fieldErrors,
+    folded,
+    toggleFold,
+    classes,
+    experienceIndex: index
+}) => {
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition
+    };
 
-        const dragHandle = useMemo(() => {
-            if (disableSortableExperience) {
-                return null;
-            }
+    const { formatMessage } = useIntl();
+    const theme = useTheme();
+    const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
+    const [disableSortableExperience] = useOptions('disableSortableExperience', false);
 
-            return (
-                <>
-                    <DragHandle classes={classes} />
-                    <div className={classes.divider} />
-                </>
-            );
-        }, [disableSortableExperience]);
-        const hasError = Boolean(fieldErrors);
+    const dragHandle = useMemo(() => {
+        if (disableSortableExperience) {
+            return null;
+        }
+
         return (
-            <div className={classes.experience}>
-                <div className={classes.smallItemContainer}>
-                    {dragHandle}
-                    <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Delete" />}>
-                        <button className={classes.removeButton} type="button" onClick={onRemove(id)}>
-                            <DeleteIcon className={classes.removeIcon} />
-                        </button>
-                    </Tooltip>
-                    {!isMobile && <div className={classes.divider} />}
-                    <ListItem
-                        button
-                        className={cn(classes.listItem, hasError && classes.listItemError)}
-                        onClick={() => toggleFold(!folded)}
-                    >
-                        <motion.div
-                            className={classes.arrowContainer}
-                            animate={{
-                                transform: `rotate(${folded ? -90 : 0}deg)`
-                            }}
-                        >
-                            <ArrowIcon className={cn('refinement-arrow')} />
-                        </motion.div>
-                        {hasError && <Twemoji className={classes.warningIcon} svg text="⚠️" />}
-                        <Typography className={classes.smallTitle} color="dark">
-                            <JobTitle {...{ experience }} />
-                        </Typography>
-                    </ListItem>
-                </div>
-                <AnimatePresence>
-                    {!folded && (
-                        <motion.div
-                            variants={EXPERIENCE_CONTENT_TRANSITION_PROPS}
-                            initial="initial"
-                            animate="animate"
-                            exit="exit"
-                            transition={spring}
-                        >
-                            <ContentFields
-                                fieldErrors={fieldErrors}
-                                id={id}
-                                formatMessage={formatMessage}
-                                experience={experience}
-                                onChange={onChange}
-                                classes={classes}
-                                index={index}
-                            />
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
+            <>
+                <button {...attributes} {...listeners} className={classes.dragHandleButton} type="button">
+                    <MoveIcon className={classes.dragHandle} />
+                </button>
+                <div className={classes.divider} />
+            </>
         );
-    }
-);
-
+    }, [disableSortableExperience]);
+    const hasError = Boolean(fieldErrors);
+    return (
+        <div className={classes.experience} ref={setNodeRef} style={style}>
+            <div className={classes.smallItemContainer}>
+                {dragHandle}
+                <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Delete" />}>
+                    <button className={classes.removeButton} type="button" onClick={onRemove(id)}>
+                        <DeleteIcon className={classes.removeIcon} />
+                    </button>
+                </Tooltip>
+                {!isMobile && <div className={classes.divider} />}
+                <ListItem
+                    button
+                    className={cn(classes.listItem, hasError && classes.listItemError)}
+                    onClick={() => toggleFold(!folded)}
+                >
+                    <motion.div
+                        className={classes.arrowContainer}
+                        animate={{
+                            transform: `rotate(${folded ? -90 : 0}deg)`
+                        }}
+                    >
+                        <ArrowIcon className={cn('refinement-arrow')} />
+                    </motion.div>
+                    {hasError && <Twemoji className={classes.warningIcon} svg text="⚠️" />}
+                    <Typography className={classes.smallTitle} color="dark">
+                        <JobTitle {...{ experience }} />
+                    </Typography>
+                </ListItem>
+            </div>
+            <AnimatePresence>
+                {!folded && (
+                    <motion.div
+                        variants={EXPERIENCE_CONTENT_TRANSITION_PROPS}
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        transition={spring}
+                    >
+                        <ContentFields
+                            fieldErrors={fieldErrors}
+                            id={id}
+                            formatMessage={formatMessage}
+                            experience={experience}
+                            onChange={onChange}
+                            classes={classes}
+                            index={index}
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
 const ContentFields = ({ fieldErrors, id, formatMessage, experience, onChange, classes, index }) => {
     const stillEmployed = !experience.endDate;
 
@@ -362,41 +378,67 @@ const ContentFields = ({ fieldErrors, id, formatMessage, experience, onChange, c
     );
 };
 
-const SortableExperiences = SortableContainer(
-    ({
-        items = [],
-        experienceFieldChanged,
-        experienceDeleted,
-        formatMessage,
-        errors,
-        foldedState,
-        toggleFold,
-        classes
-    }) => (
-        <List component="nav">
-            {items
-                .filter(Boolean)
-                .sort(({ index: a }, { index: b }) => a - b)
-                .map((experience, index) => (
-                    <ExperienceItem
-                        index={index}
-                        key={`work_${experience.id}_${index}`}
-                        onChange={experienceFieldChanged}
-                        onRemove={experienceDeleted}
-                        id={experience.id}
-                        experience={experience}
-                        formatMessage={formatMessage}
-                        error={errors && errors[index]}
-                        folded={foldedState[experience.id]}
-                        toggleFold={toggleFold(experience.id)}
-                        classes={classes}
-                        experienceIndex={index}
-                    />
-                ))}
-        </List>
-    )
-);
+const SortableExperiences = ({
+    items = [],
+    experienceFieldChanged,
+    experienceDeleted,
+    formatMessage,
+    errors,
+    foldedState,
+    toggleFold,
+    classes,
+    onSortEnd
+}) => {
+    const sensors = useSensors(
+        useSensor(PointerSensor),
+        useSensor(KeyboardSensor, {
+            coordinateGetter: sortableKeyboardCoordinates
+        })
+    );
 
+    const handleDragEnd = useCallback(
+        (event) => {
+            const { active, over } = event;
+
+            if (active.id !== over.id) {
+                const oldItem = items.find(({ id }) => id === active.id);
+                const newItem = items.find(({ id }) => id === over.id);
+                const oldIndex = oldItem && items.indexOf(oldItem);
+                const newIndex = newItem && items.indexOf(newItem);
+                return onSortEnd({ oldIndex, newIndex });
+            }
+        },
+        [items]
+    );
+
+    return (
+        <List component="nav">
+            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+                <SortableContext items={items} strategy={verticalListSortingStrategy}>
+                    {items
+                        .filter(Boolean)
+                        .sort(({ index: a }, { index: b }) => a - b)
+                        .map((experience, index) => (
+                            <ExperienceItem
+                                index={index}
+                                key={`work_${experience.id}_${index}`}
+                                onChange={experienceFieldChanged}
+                                onRemove={experienceDeleted}
+                                id={experience.id}
+                                experience={experience}
+                                formatMessage={formatMessage}
+                                error={errors && errors[index]}
+                                folded={foldedState[experience.id]}
+                                toggleFold={toggleFold(experience.id)}
+                                classes={classes}
+                                experienceIndex={index}
+                            />
+                        ))}
+                </SortableContext>
+            </DndContext>
+        </List>
+    );
+};
 const StillEmployedField = ({ value, classes, handleStillEmployedChange, formatMessage }) => (
     <div
         className={cn(
@@ -443,13 +485,8 @@ const ExperiencesEditForm = ({ data, errors, onAdd, onMove, onFieldChange, onDel
     return (
         <div className={classes.container}>
             <SortableExperiences
-                lockToContainerEdges
-                helperClass={classes.sortableHelper}
                 onSortEnd={onMove}
                 items={data}
-                distance={15}
-                useDragHandle
-                lockAxis="y"
                 experienceFieldChanged={onFieldChange}
                 experienceDeleted={onDelete}
                 {...{

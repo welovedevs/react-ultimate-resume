@@ -43,9 +43,6 @@ export const styles = (theme) => {
         listItemError: {
             backgroundColor: [palette.danger[50], '!important']
         },
-        sortableHelper: {
-            zIndex: 1301
-        },
         arrowContainer: {
             display: 'flex',
             alignItems: 'center'
