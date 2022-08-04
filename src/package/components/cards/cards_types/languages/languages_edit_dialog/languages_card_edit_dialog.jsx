@@ -68,9 +68,9 @@ const LanguageItem = ({ id, language, onChange, onRemove, error: fieldErrors, cl
     const handleValueChange = useCallback((e) => onChange(index, 'value', Number(e.target.value)), [index]);
 
     return (
-        <div className={classes.itemContainer} ref={setNodeRef} style={style} {...attributes} {...listeners}>
+        <div className={classes.itemContainer} ref={setNodeRef} style={style}>
             <div className={classes.actions}>
-                <button type="button">
+                <button type="button" {...attributes} {...listeners}>
                     <MoveIcon className={classes.dragHandle} />
                 </button>
 
