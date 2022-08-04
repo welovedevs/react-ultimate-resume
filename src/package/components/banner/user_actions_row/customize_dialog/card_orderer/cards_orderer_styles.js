@@ -19,11 +19,6 @@ export const styles = (theme) => {
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center'
-        },
-        sortableHelper: {
-            zIndex: 10000000000,
-            width: CARD_DIMENSION,
-            height: CARD_DIMENSION
         }
     };
 };

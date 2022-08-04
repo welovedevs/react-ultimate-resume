@@ -56,7 +56,7 @@ const PalettesListComponent = ({ value: currentPalette, onChange, classes: recei
             <InfiniteScroll
                 key="scroll"
                 hasMore={itemsToShow < palettes.length}
-                loader={<LoadingSpinner />}
+                loader={<LoadingSpinner key={"loader"} />}
                 pageStart={0}
                 useWindow={false}
                 loadMore={setNextDisplayedPalettes}
@@ -66,7 +66,7 @@ const PalettesListComponent = ({ value: currentPalette, onChange, classes: recei
                     {displayedPalettes.map((item, paletteIndex) => (
                         <motion.button
                             variants={PALETTES_ITEM_TRANSITIONS_PROPS}
-                            key={`palette_${item.join('_')}`}
+                            key={`palette_${item.join('_')}_${paletteIndex}`}
                             type="button"
                             className={classes.selectablePaletteContainer}
                             onClick={onSelectChanged(item)}
