@@ -19,7 +19,8 @@ const BouncingRoundButtonComponent = ({
     tooltipPlacement = 'top',
     onClick,
     icon: Icon = EditIcon,
-    classes: receivedClasses = {}
+    classes: receivedClasses = {},
+    ...others
 }) => {
     const classes = useStyles();
 
@@ -32,6 +33,7 @@ const BouncingRoundButtonComponent = ({
                 variants={TRANSITION_PROPS}
                 initial="default"
                 whileTap="active"
+                {...others}
             >
                 <Icon className={cn(classes.icon, classes.iconContainer)} />
             </motion.button>

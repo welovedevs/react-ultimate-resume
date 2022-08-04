@@ -7,7 +7,6 @@ import keyBy from 'lodash/keyBy';
 
 import omit from 'lodash/omit';
 import uuid from 'uuid/v4';
-import { arrayMove } from 'react-sortable-hoc';
 
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Typography } from '@welovedevs/ui';
@@ -19,6 +18,7 @@ import { GifsSortableCards } from './gifs_sortable_cards/gifs_sortable_cards';
 import { styles } from './gifs_edit_form_styles';
 import { StaticDataContext } from '../../../../../../utils/context/contexts';
 import { URLFallbackDialog } from '../../../../../commons/url_fallback_dialog.jsx/url_fallback_dialog';
+import { arrayMove } from "@dnd-kit/sortable";
 
 const useStyles = makeStyles(styles);
 

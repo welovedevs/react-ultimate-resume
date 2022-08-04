@@ -1,7 +1,13 @@
 import React, { useCallback } from 'react';
 
 import makeStyles from '@mui/styles/makeStyles';
-import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
+import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import {
+    SortableContext,
+    sortableKeyboardCoordinates,
+    useSortable,
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 import { FormattedMessage } from 'react-intl';
 import { GifCard } from '../gif_card/gif_card';
@@ -24,8 +30,6 @@ const GifsSortableCardsComponent = ({
     const classes = useStyles();
     return (
         <SortableGifsCards
-            useDragHandle
-            axis="xy"
             items={items}
             interestDeleted={interestDeleted}
             interestChanged={interestChanged}
@@ -37,59 +41,110 @@ const GifsSortableCardsComponent = ({
     );
 };
 
-const SortableGifsCards = SortableContainer(
-    ({ items = [], interestDeleted, interestChanged, errors, setSelectedIndex, classes }) => (
+const SortableGifsCards = ({
+    items = [],
+    interestDeleted,
+    interestChanged,
+    errors,
+    setSelectedIndex,
+    classes,
+    onSortEnd
+}) => {
+    const sensors = useSensors(
+        useSensor(PointerSensor),
+        useSensor(KeyboardSensor, {
+            coordinateGetter: sortableKeyboardCoordinates
+        })
+    );
+
+    const handleDragEnd = useCallback(
+        (event) => {
+            const { active, over } = event;
+
+            if (active.id !== over.id) {
+                const oldItem = items.find(({ id }) => id === active.id);
+                const newItem = items.find(({ id }) => id === over.id);
+                const oldIndex = oldItem && items.indexOf(oldItem);
+                const newIndex = newItem && items.indexOf(newItem);
+                return onSortEnd({ oldIndex, newIndex });
+            }
+        },
+        [items]
+    );
+
+    return (
         <ul className={classes.list}>
-            {items
-                .filter(Boolean)
-                .sort(({ index: a }, { index: b }) => a - b)
-                .map((interest, index) => (
-                    <SortableGifItem
-                        index={index}
-                        key={`interest_${interest.id}_${index}`}
-                        onChange={interestChanged}
-                        onRemove={interestDeleted}
-                        setSelectedIndex={setSelectedIndex}
-                        id={interest.id}
-                        interest={interest}
-                        error={errors?.[index]}
-                        interestIndex={index}
-                        classes={classes}
-                    />
-                ))}
+            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+                <SortableContext items={items}>
+                    {items
+                        .filter(Boolean)
+                        .sort(({ index: a }, { index: b }) => a - b)
+                        .map((interest, index) => (
+                            <SortableGifItem
+                                index={index}
+                                key={`interest_${interest.id}_${index}`}
+                                onChange={interestChanged}
+                                onRemove={interestDeleted}
+                                setSelectedIndex={setSelectedIndex}
+                                id={interest.id}
+                                interest={interest}
+                                error={errors?.[index]}
+                                interestIndex={index}
+                                classes={classes}
+                            />
+                        ))}
+                </SortableContext>
+            </DndContext>
         </ul>
-    )
-);
+    );
+};
 
-const DragHandle = SortableHandle(() => (
-    <BouncingRoundButton
-        title={<FormattedMessage id="GifsEditDialog.gifCard.dragGif" defaultMessage="Hold me to drag this card!" />}
-        icon={MoveIcon}
-        tooltipPlacement="bottom"
-    />
-));
+const SortableGifItem = ({
+    id,
+    interest,
+    onChange,
+    onRemove,
+    error: fieldErrors,
+    interestIndex: index,
+    setSelectedIndex,
+    classes
+}) => {
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition
+    };
 
-const SortableGifItem = SortableElement(
-    ({ id, interest, onChange, onRemove, error: fieldErrors, interestIndex: index, setSelectedIndex, classes }) => {
-        const handleRemove = useCallback(() => onRemove(id), [id, onRemove]);
-        const handleChange = useCallback((field) => (value) => onChange(index, field, value), [onChange]);
-        const handleImageEditClick = useCallback(() => setSelectedIndex(index), []);
-        return (
-            <li className={classes.listItem}>
-                <GifCard
-                    imageEditable
-                    gifUrl={interest?.gifUrl}
-                    gifUser={interest?.gifUser}
-                    name={interest?.name}
-                    onChange={handleChange}
-                    onRemove={handleRemove}
-                    onImageEditClick={handleImageEditClick}
-                    error={fieldErrors}
-                    additionalActions={<DragHandle />}
-                />
-            </li>
-        );
-    }
-);
-
+    const handleRemove = useCallback(() => onRemove(id), [id, onRemove]);
+    const handleChange = useCallback((field) => (value) => onChange(index, field, value), [onChange]);
+    const handleImageEditClick = useCallback(() => setSelectedIndex(index), []);
+    return (
+        <li className={classes.listItem} style={style} ref={setNodeRef}>
+            <GifCard
+                imageEditable
+                gifUrl={interest?.gifUrl}
+                gifUser={interest?.gifUser}
+                name={interest?.name}
+                onChange={handleChange}
+                onRemove={handleRemove}
+                onImageEditClick={handleImageEditClick}
+                error={fieldErrors}
+                additionalActions={
+                    <BouncingRoundButton
+                        title={
+                            <FormattedMessage
+                                id="GifsEditDialog.gifCard.dragGif"
+                                defaultMessage="Hold me to drag this card!"
+                            />
+                        }
+                        icon={MoveIcon}
+                        tooltipPlacement="bottom"
+                        {...attributes}
+                        {...listeners}
+                    />
+                }
+            />
+        </li>
+    );
+};
 export const GifsSortableCards = GifsSortableCardsComponent;
