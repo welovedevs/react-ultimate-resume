@@ -22,9 +22,6 @@ export const styles = (theme) => {
             display: 'flex',
             flex: 1
         },
-        sortableHelper: {
-            zIndex: 1301
-        },
         arrowContainer: {
             display: 'flex',
             alignItems: 'center'
