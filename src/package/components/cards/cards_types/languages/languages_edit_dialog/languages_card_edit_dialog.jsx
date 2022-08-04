@@ -2,7 +2,16 @@ import React, { useCallback, useMemo } from 'react';
 
 import cn from 'classnames';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
+
+import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import {
+    arrayMove,
+    SortableContext,
+    sortableKeyboardCoordinates,
+    useSortable,
+    verticalListSortingStrategy
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 import uuid from 'uuid/v4';
 
@@ -10,7 +19,7 @@ import { List, TextField, Tooltip, Typography } from '@welovedevs/ui';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { useFormikContext } from 'formik';
-import { useTheme } from "@mui/styles";
+import { useTheme } from '@mui/styles';
 import makeStyles from '@mui/styles/makeStyles';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
@@ -44,112 +53,141 @@ const LanguagesCardEditDialogComponent = ({ open, onClose, data, onEdit, validat
     );
 };
 
-const LanguageItem = SortableElement(
-    ({ id, language, onChange, onRemove, error: fieldErrors, classes, languageIndex: index }) => {
-        const { formatMessage } = useIntl();
-        const theme = useTheme();
-        const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
+const LanguageItem = ({ id, language, onChange, onRemove, error: fieldErrors, classes, languageIndex: index }) => {
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition
+    };
 
-        const handleLanguageChange = useCallback((e) => onChange(index, 'language', e.target.value), [index]);
-        const handleValueChange = useCallback((e) => onChange(index, 'value', Number(e.target.value)), [index]);
+    const { formatMessage } = useIntl();
+    const theme = useTheme();
+    const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
 
-        return (
-            <div className={classes.itemContainer}>
-                <div className={classes.actions}>
-                    <DragHandle {...{ classes }} />
-                    <div className={classes.divider} />
-                    <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Delete" />}>
-                        <button type="button" className={classes.button} onClick={onRemove(id)}>
-                            <TrashIcon className={classes.removeIcon} />
-                        </button>
-                    </Tooltip>
-                    {!isMobile && <div className={classes.divider} />}
-                </div>
-                <div className={classes.listItem}>
-                    <div className={classes.fieldGroup}>
-                        <div className={classes.field}>
-                            <Typography color="dark" variant="label">
-                                {formatMessage(translations.language)}
+    const handleLanguageChange = useCallback((e) => onChange(index, 'language', e.target.value), [index]);
+    const handleValueChange = useCallback((e) => onChange(index, 'value', Number(e.target.value)), [index]);
+
+    return (
+        <div className={classes.itemContainer} ref={setNodeRef} style={style} {...attributes} {...listeners}>
+            <div className={classes.actions}>
+                <button type="button">
+                    <MoveIcon className={classes.dragHandle} />
+                </button>
+
+                <div className={classes.divider} />
+                <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Delete" />}>
+                    <button type="button" className={classes.button} onClick={onRemove(id)}>
+                        <TrashIcon className={classes.removeIcon} />
+                    </button>
+                </Tooltip>
+                {!isMobile && <div className={classes.divider} />}
+            </div>
+            <div className={classes.listItem}>
+                <div className={classes.fieldGroup}>
+                    <div className={classes.field}>
+                        <Typography color="dark" variant="label">
+                            {formatMessage(translations.language)}
+                        </Typography>
+                        <TextField
+                            value={language.language}
+                            onChange={handleLanguageChange}
+                            id={`language_language_${id}`}
+                            placeholder={formatMessage(translations.languagePlaceholder)}
+                            variant="flat"
+                        />
+                        {fieldErrors && fieldErrors.language && (
+                            <Typography color="danger" variant="helper" component="p">
+                                {fieldErrors.language}
                             </Typography>
-                            <TextField
-                                value={language.language}
-                                onChange={handleLanguageChange}
-                                id={`language_language_${id}`}
-                                placeholder={formatMessage(translations.languagePlaceholder)}
-                                variant="flat"
-                            />
-                            {fieldErrors && fieldErrors.language && (
-                                <Typography color="danger" variant="helper" component="p">
-                                    {fieldErrors.language}
-                                </Typography>
-                            )}
-                        </div>
-                        <div className={cn(classes.field, classes.sliderValueContainer)}>
-                            <Typography
-                                classes={{
-                                    container: classes.sliderValue
-                                }}
-                                color="dark"
-                                variant="label"
-                            >
-                                {formatMessage(translations.level, {
-                                    valueNode: <span className={classes.bolden}>{language.value}</span>
-                                })}
+                        )}
+                    </div>
+                    <div className={cn(classes.field, classes.sliderValueContainer)}>
+                        <Typography
+                            classes={{
+                                container: classes.sliderValue
+                            }}
+                            color="dark"
+                            variant="label"
+                        >
+                            {formatMessage(translations.level, {
+                                valueNode: <span className={classes.bolden}>{language.value}</span>
+                            })}
+                        </Typography>
+                        <SliderWithPopper
+                            color="primary"
+                            name="value"
+                            value={language.value}
+                            onChange={handleValueChange}
+                            min={0}
+                            max={100}
+                            className={classes.slider}
+                            popperCardProps={{
+                                classes: {
+                                    container: classes.sliderPopperCard,
+                                    arrowContainer: classes.sliderPopperCardArrowContainer
+                                }
+                            }}
+                        />
+                        {fieldErrors && fieldErrors.value && (
+                            <Typography color="danger" variant="helper" component="p">
+                                {fieldErrors.value}
                             </Typography>
-                            <SliderWithPopper
-                                color="primary"
-                                name="value"
-                                value={language.value}
-                                onChange={handleValueChange}
-                                min={0}
-                                max={100}
-                                className={classes.slider}
-                                popperCardProps={{
-                                    classes: {
-                                        container: classes.sliderPopperCard,
-                                        arrowContainer: classes.sliderPopperCardArrowContainer
-                                    }
-                                }}
-                            />
-                            {fieldErrors && fieldErrors.value && (
-                                <Typography color="danger" variant="helper" component="p">
-                                    {fieldErrors.value}
-                                </Typography>
-                            )}
-                        </div>
+                        )}
                     </div>
                 </div>
             </div>
-        );
-    }
-);
+        </div>
+    );
+};
 
-const SortableLanguagesItems = SortableContainer(({ items, onChange, onDelete, errors, name, schools, classes }) => (
-    <List>
-        {items?.map((language, index) => (
-            <LanguageItem
-                key={`${name}_${language.id}_${index}`}
-                onChange={onChange}
-                onRemove={onDelete}
-                id={language.id}
-                languageIndex={index}
-                error={errors && errors[index]}
-                {...{
-                    index,
-                    language,
-                    schools,
-                    classes
-                }}
-            />
-        ))}
-    </List>
-));
+const SortableLanguagesItems = ({ items, onChange, onSortEnd, onDelete, errors, name, schools, classes }) => {
+    const sensors = useSensors(
+        useSensor(PointerSensor),
+        useSensor(KeyboardSensor, {
+            coordinateGetter: sortableKeyboardCoordinates
+        })
+    );
 
-const DragHandle = SortableHandle(({ classes }) => (
-    <button type="button">
-        <MoveIcon className={classes.dragHandle} />
-    </button>
-));
+    const handleDragEnd = useCallback(
+        (event) => {
+            const { active, over } = event;
+
+            if (active.id !== over.id) {
+                const oldItem = items.find(({ id }) => id === active.id);
+                const newItem = items.find(({ id }) => id === over.id);
+                const oldIndex = oldItem && items.indexOf(oldItem);
+                const newIndex = newItem && items.indexOf(newItem);
+                return onSortEnd({ oldIndex, newIndex });
+            }
+        },
+        [items]
+    );
+
+    return (
+        <List>
+            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+                <SortableContext items={items} strategy={verticalListSortingStrategy}>
+                    {items?.map((language, index) => (
+                        <LanguageItem
+                            key={`${name}_${language.id}_${index}`}
+                            onChange={onChange}
+                            onRemove={onDelete}
+                            id={language.id}
+                            languageIndex={index}
+                            error={errors && errors[index]}
+                            {...{
+                                index,
+                                language,
+                                schools,
+                                classes
+                            }}
+                        />
+                    ))}
+                </SortableContext>
+            </DndContext>
+        </List>
+    );
+};
 
 export const LanguagesEditForm = ({ data, onMove, onValueChange, onDelete, onAdd, errors: validationErrors }) => {
     const classes = useStyles();
@@ -158,13 +196,8 @@ export const LanguagesEditForm = ({ data, onMove, onValueChange, onDelete, onAdd
     return (
         <>
             <SortableLanguagesItems
-                useDragHandle
-                lockToContainerEdges
-                helperClass={classes.sortableHelper}
                 items={data}
                 onSortEnd={onMove}
-                distance={20}
-                lockAxis="y"
                 name="education"
                 onChange={onValueChange}
                 onDelete={onDelete}

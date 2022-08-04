@@ -33,9 +33,6 @@ export const styles = (theme) => {
             display: 'flex',
             alignItems: 'center'
         },
-        sortableHelper: {
-            zIndex: 1301
-        },
         removeIcon: {
             fill: palette.danger[500]
         },
