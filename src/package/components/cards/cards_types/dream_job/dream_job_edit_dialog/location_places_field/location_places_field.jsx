@@ -2,7 +2,15 @@ import React, { useCallback, useMemo } from 'react';
 
 import makeStyles from '@mui/styles/makeStyles';
 import { FormattedMessage } from 'react-intl';
-import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
+import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import {
+    arrayMove,
+    SortableContext,
+    sortableKeyboardCoordinates,
+    useSortable,
+    verticalListSortingStrategy
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 import { Tag, Tooltip, Typography } from '@welovedevs/ui';
 
@@ -19,27 +27,29 @@ import { ReactComponent as TrashIcon } from '../../../../../../assets/icons/tras
 import { styles } from './location_places_field_styles';
 
 import { ReactComponent as MoveIcon } from '../../../../../../assets/icons/move.svg';
-import { DEFAULT_SPRING_TYPE as spring } from '../../../../../../utils/framer_motion/common_types/spring_type';
-import { AnimatePresence, motion } from 'framer-motion';
 
 const useStyles = makeStyles(styles);
-const DragHandle = SortableHandle(({ classes }) => (
-    <button className={classes.dragHandleButton} type="button">
-        <MoveIcon className={classes.dragHandle} />
-    </button>
-));
-const SortableTag = SortableElement(({ onRemove, item, motionConfig }) => {
+
+const SortableTag = ({ onRemove, item }) => {
     const classes = useStyles();
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: item.id });
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition
+    };
 
     return (
         <Tag
+            ref={setNodeRef}
+            style={style}
             key={`${item.id}_${item.name}`}
-            component={motion.div}
-            classes={{ container: classes.place }}
-            color="secondary"
-            {...motionConfig}
+            size="xs"
+            classes={{ container: `${classes.place} m-1` }}
+            color="primary"
         >
-            <DragHandle classes={classes} />
+            <button {...attributes} {...listeners} className={classes.dragHandleButton} type="button">
+                <MoveIcon className={classes.dragHandle} />
+            </button>
             <Tooltip
                 title={<FormattedMessage id="DreamJob.editDialog.location.delete" defaultMessage="Delete this place" />}
             >
@@ -52,38 +62,52 @@ const SortableTag = SortableElement(({ onRemove, item, motionConfig }) => {
             </Typography>
         </Tag>
     );
-});
-const SortableTags = SortableContainer(({ onRemove, items }) => {
+};
+
+const SortableTags = ({ onRemove, items, onSortEnd }) => {
     const classes = useStyles();
+    const sensors = useSensors(
+        useSensor(PointerSensor),
+        useSensor(KeyboardSensor, {
+            coordinateGetter: sortableKeyboardCoordinates
+        })
+    );
+
+    const handleDragEnd = useCallback(
+        (event) => {
+            const { active, over } = event;
+
+            if (active.id !== over.id) {
+                const oldItem = items.find(({ id }) => id === active.id);
+                const newItem = items.find(({ id }) => id === over.id);
+                const oldIndex = oldItem && items.indexOf(oldItem);
+                const newIndex = newItem && items.indexOf(newItem);
+                return onSortEnd({ oldIndex, newIndex });
+            }
+        },
+        [items]
+    );
 
     return (
-        <motion.div
-            variants={LOCATION_PLACES_LIST_TRANSITION_PROPS}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            className={classes.places}
-        >
-            <AnimatePresence>
-                {items.map(
-                    (item, index) =>
-                        item && (
-                            <SortableTag
-                                index={index}
-                                key={`place_${item.id}`}
-                                item={item}
-                                motionConfig={{
-                                    variants: LOCATION_PLACES_FIELD_TRANSITIONS_PROPS,
-                                    transition: spring
-                                }}
-                                onRemove={onRemove(item.id)}
-                            />
-                        )
-                )}
-            </AnimatePresence>
-        </motion.div>
+        <div className={classes.places}>
+            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+                <SortableContext items={items}>
+                    {items.map(
+                        (item, index) =>
+                            item && (
+                                <SortableTag
+                                    index={index}
+                                    key={`place_${item.id}`}
+                                    item={item}
+                                    onRemove={onRemove(item.id)}
+                                />
+                            )
+                    )}
+                </SortableContext>
+            </DndContext>
+        </div>
     );
-});
+};
 const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace, onChange }) => {
     const classes = useStyles();
     const placesValues = useMemo(() => Object.values(places || {}), [places]);
@@ -115,9 +139,6 @@ const LocationPlacesFieldComponent = ({ error, places, addPlace, removePlace, on
                 onLocationSelected={addPlace}
             />
             <SortableTags
-                lockToContainerEdges
-                axis="xy"
-                helperClass={classes.sortableHelper}
                 items={placesValues}
                 onRemove={removePlace}
                 distance={15}

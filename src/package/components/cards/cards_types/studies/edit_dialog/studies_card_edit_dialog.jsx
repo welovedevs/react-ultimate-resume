@@ -1,13 +1,23 @@
 import React, { memo, useCallback, useMemo, useState } from 'react';
 
 import cn from 'classnames';
-import { useTheme } from "@mui/styles";
+import { useTheme } from '@mui/styles';
 import makeStyles from '@mui/styles/makeStyles';
 
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Twemoji } from 'react-emoji-render';
-import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
+
+import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import {
+    arrayMove,
+    SortableContext,
+    sortableKeyboardCoordinates,
+    useSortable,
+    verticalListSortingStrategy
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+
 import { useFormikContext } from 'formik';
 import keyBy from 'lodash/keyBy';
 import range from 'lodash/range';
@@ -34,11 +44,6 @@ import { STUDIES_CONTENT_TRANSITION_PROPS } from './studies_edit_dialog_props';
 import { AnimatePresence, motion } from 'framer-motion';
 import { DEFAULT_SPRING_TYPE as spring } from '../../../../../utils/framer_motion/common_types/spring_type';
 
-const DragHandle = SortableHandle(({ classes }) => (
-    <button className={classes.dragHandleButton} type="button">
-        <MoveIcon className={classes.dragHandle} />
-    </button>
-));
 const useStyles = makeStyles(styles);
 
 const StudiesCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
@@ -139,187 +144,233 @@ const SelectComponent = memo(({ value, onChange, classes, id }) => {
     );
 });
 
-const FormationItem = SortableElement(
-    ({ id, formation, onChange, onRemove, error: fieldErrors, folded, toggleFold, classes, formationIndex: index }) => {
-        const theme = useTheme();
-        const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
+const FormationItem = ({
+    id,
+    formation,
+    onChange,
+    onRemove,
+    error: fieldErrors,
+    folded,
+    toggleFold,
+    classes,
+    formationIndex: index
+}) => {
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition
+    };
 
-        const { formatMessage } = useIntl();
+    const theme = useTheme();
+    const isMobile = useMediaQuery(`(max-width: ${theme.screenSizes.small}px)`);
 
-        const handleInstitutionChange = useCallback((event) => onChange(index, 'institution', event.target.value), [
-            index
-        ]);
-        const handleStudyType = useCallback((event) => onChange(index, 'studyType', event.target.value), [index]);
-        const handleAreaChange = useCallback((event) => onChange(index, 'area', event.target.value), [index]);
-        const handleEndDate = useCallback((value) => onChange(index, 'endDate', moment({ year: value })), [index]);
+    const { formatMessage } = useIntl();
 
-        const hasError = Boolean(fieldErrors);
+    const handleInstitutionChange = useCallback((event) => onChange(index, 'institution', event.target.value), [index]);
+    const handleStudyType = useCallback((event) => onChange(index, 'studyType', event.target.value), [index]);
+    const handleAreaChange = useCallback((event) => onChange(index, 'area', event.target.value), [index]);
+    const handleEndDate = useCallback((value) => onChange(index, 'endDate', moment({ year: value })), [index]);
 
-        return (
-            <div className={classes.study}>
-                <div className={classes.itemContainer}>
-                    <div className={classes.header}>
-                        <DragHandle classes={classes} />
-                        <div className={classes.divider} />
-                        <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Delete" />}>
-                            <button className={classes.removeButton} type="button" onClick={onRemove(id)}>
-                                <DeleteIcon className={classes.removeIcon} />
-                            </button>
-                        </Tooltip>
-                        {!isMobile && <div className={classes.divider} />}
-                        <ListItem
-                            button
-                            className={cn(classes.listItem, hasError && classes.listItemError)}
-                            onClick={() => toggleFold(!folded)}
+    const hasError = Boolean(fieldErrors);
+
+    return (
+        <div className={classes.study} style={style} ref={setNodeRef}>
+            <div className={classes.itemContainer}>
+                <div className={classes.header}>
+                    <button className={classes.dragHandleButton} type="button" {...attributes} {...listeners}>
+                        <MoveIcon className={classes.dragHandle} />
+                    </button>
+                    <div className={classes.divider} />
+                    <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Delete" />}>
+                        <button className={classes.removeButton} type="button" onClick={onRemove(id)}>
+                            <DeleteIcon className={classes.removeIcon} />
+                        </button>
+                    </Tooltip>
+                    {!isMobile && <div className={classes.divider} />}
+                    <ListItem
+                        button
+                        className={cn(classes.listItem, hasError && classes.listItemError)}
+                        onClick={() => toggleFold(!folded)}
+                    >
+                        <motion.div
+                            className={classes.arrowContainer}
+                            animate={{
+                                transform: `rotate(${folded ? -90 : 0}deg)`
+                            }}
                         >
-                            <motion.div
-                                className={classes.arrowContainer}
-                                animate={{
-                                    transform: `rotate(${folded ? -90 : 0}deg)`
-                                }}
-                            >
-                                <ArrowIcon className={cn('refinement-arrow')} />
-                            </motion.div>
-                            {hasError && <Twemoji className={classes.warningIcon} svg text="⚠️" />}
-                            <Typography className={classes.smallTitle} color="dark">
-                                {formation.institution}
-                            </Typography>
-                        </ListItem>
-                    </div>
-                    <AnimatePresence>
-                        {!folded && (
-                            <motion.div
-                                variants={STUDIES_CONTENT_TRANSITION_PROPS}
-                                initial="initial"
-                                animate="animate"
-                                exit="exit"
-                                transition={spring}
-                                className={cn(classes.listItem, fieldErrors && classes.listItemError)}
-                            >
-                                <div className={classes.fieldGroup}>
-                                    <div className={classes.field}>
-                                        <TextField
-                                            fullWidth
-                                            variant="flat"
-                                            value={formation.institution}
-                                            onChange={handleInstitutionChange}
-                                            id={`formation_institution_${id}`}
-                                            placeholder={formatMessage(translations.schoolNamePlaceholder)}
-                                        />
-                                        {fieldErrors && fieldErrors.institution && (
-                                            <Typography color="danger" variant="helper" component="p">
-                                                {fieldErrors.institution}
-                                            </Typography>
-                                        )}
-                                    </div>
-                                    <div className={classes.field}>
-                                        <SelectComponent
-                                            onChange={handleEndDate}
-                                            id={formation.id}
-                                            value={formation.endDate}
-                                            classes={classes}
-                                        />
-                                        {fieldErrors && fieldErrors.endDate && (
-                                            <Typography color="danger" variant="helper" component="p">
-                                                {fieldErrors.endDate}
-                                            </Typography>
-                                        )}
-                                    </div>
-                                </div>
-                                <div className={classes.fieldGroup}>
-                                    <div className={classes.field}>
-                                        <TextField
-                                            id={`formation_diploma_${id}`}
-                                            fullWidth
-                                            variant="flat"
-                                            label={formatMessage(translations.diplomaTitle)}
-                                            placeholder={formatMessage(translations.diplomaPlaceholder)}
-                                            value={formation.studyType}
-                                            onChange={handleStudyType}
-                                            margin="normal"
-                                            error={fieldErrors && fieldErrors.studyType}
-                                        />
-
-                                        {fieldErrors && fieldErrors.studyType && (
-                                            <Typography color="danger" variant="helper" component="p">
-                                                {fieldErrors.studyType}
-                                            </Typography>
-                                        )}
-                                    </div>
-                                    <div className={classes.field}>
-                                        <TextField
-                                            id={`formation_area_${id}`}
-                                            fullWidth
-                                            variant="flat"
-                                            label={formatMessage(translations.mainCourse)}
-                                            placeholder={formatMessage(translations.mainCoursePlaceholder)}
-                                            value={formation.area}
-                                            onChange={handleAreaChange}
-                                            margin="normal"
-                                            error={fieldErrors && fieldErrors.area}
-                                        />
-
-                                        {fieldErrors && fieldErrors.area && (
-                                            <Typography color="danger" variant="helper" component="p">
-                                                {fieldErrors.area}
-                                            </Typography>
-                                        )}
-                                    </div>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                            <ArrowIcon className={cn('refinement-arrow')} />
+                        </motion.div>
+                        {hasError && <Twemoji className={classes.warningIcon} svg text="⚠️" />}
+                        <Typography className={classes.smallTitle} color="dark">
+                            {formation.institution}
+                        </Typography>
+                    </ListItem>
                 </div>
+                <AnimatePresence>
+                    {!folded && (
+                        <motion.div
+                            variants={STUDIES_CONTENT_TRANSITION_PROPS}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            transition={spring}
+                            className={cn(classes.listItem, fieldErrors && classes.listItemError)}
+                        >
+                            <div className={classes.fieldGroup}>
+                                <div className={classes.field}>
+                                    <TextField
+                                        fullWidth
+                                        variant="flat"
+                                        value={formation.institution}
+                                        onChange={handleInstitutionChange}
+                                        id={`formation_institution_${id}`}
+                                        placeholder={formatMessage(translations.schoolNamePlaceholder)}
+                                    />
+                                    {fieldErrors && fieldErrors.institution && (
+                                        <Typography color="danger" variant="helper" component="p">
+                                            {fieldErrors.institution}
+                                        </Typography>
+                                    )}
+                                </div>
+                                <div className={classes.field}>
+                                    <SelectComponent
+                                        onChange={handleEndDate}
+                                        id={formation.id}
+                                        value={formation.endDate}
+                                        classes={classes}
+                                    />
+                                    {fieldErrors && fieldErrors.endDate && (
+                                        <Typography color="danger" variant="helper" component="p">
+                                            {fieldErrors.endDate}
+                                        </Typography>
+                                    )}
+                                </div>
+                            </div>
+                            <div className={classes.fieldGroup}>
+                                <div className={classes.field}>
+                                    <TextField
+                                        id={`formation_diploma_${id}`}
+                                        fullWidth
+                                        variant="flat"
+                                        label={formatMessage(translations.diplomaTitle)}
+                                        placeholder={formatMessage(translations.diplomaPlaceholder)}
+                                        value={formation.studyType}
+                                        onChange={handleStudyType}
+                                        margin="normal"
+                                        error={fieldErrors && fieldErrors.studyType}
+                                    />
+
+                                    {fieldErrors && fieldErrors.studyType && (
+                                        <Typography color="danger" variant="helper" component="p">
+                                            {fieldErrors.studyType}
+                                        </Typography>
+                                    )}
+                                </div>
+                                <div className={classes.field}>
+                                    <TextField
+                                        id={`formation_area_${id}`}
+                                        fullWidth
+                                        variant="flat"
+                                        label={formatMessage(translations.mainCourse)}
+                                        placeholder={formatMessage(translations.mainCoursePlaceholder)}
+                                        value={formation.area}
+                                        onChange={handleAreaChange}
+                                        margin="normal"
+                                        error={fieldErrors && fieldErrors.area}
+                                    />
+
+                                    {fieldErrors && fieldErrors.area && (
+                                        <Typography color="danger" variant="helper" component="p">
+                                            {fieldErrors.area}
+                                        </Typography>
+                                    )}
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
-        );
-    }
-);
+        </div>
+    );
+};
 
-const SortableFormationsItems = SortableContainer(
-    ({ items, formationChanged, formationDeleted, errors, name, schools, classes }) => {
-        const keyedValues = useMemo(() => keyBy(items, ({ id }) => id), [items]);
+const SortableFormationsItems = ({
+    items,
+    formationChanged,
+    formationDeleted,
+    errors,
+    name,
+    schools,
+    classes,
+    onSortEnd
+}) => {
+    const sensors = useSensors(
+        useSensor(PointerSensor),
+        useSensor(KeyboardSensor, {
+            coordinateGetter: sortableKeyboardCoordinates
+        })
+    );
 
-        const [foldedState, setFoldState] = useState(
-            Object.keys(keyedValues || {}).reduce((state, id) => {
-                // eslint-disable-next-line no-param-reassign
-                state[id] = true;
-                return state;
-            }, {})
-        );
+    const handleDragEnd = useCallback(
+        (event) => {
+            const { active, over } = event;
 
-        const toggleFold = useCallback(
-            (id) => (value) => {
-                const newFoldState = { ...foldedState };
-                newFoldState[id] = value;
-                setFoldState(newFoldState);
-            },
-            [foldedState]
-        );
-        return (
-            <List>
-                {items.map((formation, index) => (
-                    <FormationItem
-                        key={`${name}_${formation.id}_${index}`}
-                        onChange={formationChanged}
-                        onRemove={formationDeleted}
-                        id={formation.id}
-                        formationIndex={index}
-                        error={errors && errors[index]}
-                        toggleFold={toggleFold(formation.id)}
-                        folded={foldedState[formation.id]}
-                        {...{
-                            index,
-                            formation,
-                            schools,
-                            classes
-                        }}
-                    />
-                ))}
-            </List>
-        );
-    }
-);
+            if (active.id !== over.id) {
+                const oldItem = items.find(({ id }) => id === active.id);
+                const newItem = items.find(({ id }) => id === over.id);
+                const oldIndex = oldItem && items.indexOf(oldItem);
+                const newIndex = newItem && items.indexOf(newItem);
+                return onSortEnd({ oldIndex, newIndex });
+            }
+        },
+        [items]
+    );
 
+    const keyedValues = useMemo(() => keyBy(items, ({ id }) => id), [items]);
+
+    const [foldedState, setFoldState] = useState(
+        Object.keys(keyedValues || {}).reduce((state, id) => {
+            // eslint-disable-next-line no-param-reassign
+            state[id] = true;
+            return state;
+        }, {})
+    );
+
+    const toggleFold = useCallback(
+        (id) => (value) => {
+            const newFoldState = { ...foldedState };
+            newFoldState[id] = value;
+            setFoldState(newFoldState);
+        },
+        [foldedState]
+    );
+    return (
+        <List>
+            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+                <SortableContext items={items} strategy={verticalListSortingStrategy}>
+                    {items.map((formation, index) => (
+                        <FormationItem
+                            key={`${name}_${formation.id}_${index}`}
+                            onChange={formationChanged}
+                            onRemove={formationDeleted}
+                            id={formation.id}
+                            formationIndex={index}
+                            error={errors && errors[index]}
+                            toggleFold={toggleFold(formation.id)}
+                            folded={foldedState[formation.id]}
+                            {...{
+                                index,
+                                formation,
+                                schools,
+                                classes
+                            }}
+                        />
+                    ))}
+                </SortableContext>
+            </DndContext>
+        </List>
+    );
+};
 export const FormationsEditForm = ({ data, onMove, onAdd, onFieldChange, onDelete, errors }) => {
     const classes = useStyles();
     const globalError = typeof errors === 'string' && errors;
@@ -327,13 +378,8 @@ export const FormationsEditForm = ({ data, onMove, onAdd, onFieldChange, onDelet
     return (
         <>
             <SortableFormationsItems
-                lockToContainerEdges
-                helperClass={classes.sortableHelper}
                 items={data}
                 onSortEnd={onMove}
-                distance={20}
-                useDragHandle
-                lockAxis="y"
                 name="education"
                 formationChanged={onFieldChange}
                 formationDeleted={onDelete}

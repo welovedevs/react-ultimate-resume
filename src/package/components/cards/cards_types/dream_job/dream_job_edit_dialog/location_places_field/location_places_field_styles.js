@@ -24,9 +24,6 @@ export const styles = (theme) => {
             marginRight: spacing,
             cursor: 'pointer'
         },
-        sortableHelper: {
-            zIndex: 10000000000
-        },
         dragHandleButton: {
             display: 'flex'
         },
