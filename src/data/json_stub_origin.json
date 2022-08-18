@@ -1,0 +1,310 @@
+{
+    "basics": {
+        "name": "John Doe",
+        "label": "Programmer",
+        "picture": "",
+        "email": "john.doe@mail.com",
+        "phone": "(912) 555-4321",
+        "website": "http://johndoe.com",
+        "summary": "A summary of John Doe...",
+        "location": {
+            "address": "2712 Broadway St",
+            "postalCode": "CA 94115",
+            "city": "San Francisco",
+            "countryCode": "US",
+            "region": "California"
+        },
+        "profiles": [
+            {
+                "network": "twitter",
+                "username": "@john"
+            },
+            {
+                "network": "Portfolio",
+                "url": "https://myawesome.portfolio.rocket.fr"
+            },
+            {
+                "network": "codingame",
+                "username": "ed3ee82f9630e99db32dec093b2ca07a0368002"
+            }, {
+                "network": "github",
+                "username": "clementdevos"
+            },
+            {
+                "network": "linkedin",
+                "url": "https://www.linkedin.com/in/%F0%9F%A5%B3-cl%C3%A9ment-devos-4b832526/"
+            }
+        ]
+    },
+    "work": [
+        {
+            "name": "Samsung Engineering",
+            "position": "3D Cad Engineer",
+            "website": "http://company.com",
+            "startDate": "2014-01-01",
+            "summary": "Description...",
+            "location": "Paris, France",
+            "highlights": ["Started the company"]
+        },
+        {
+            "name": "What a nice office",
+            "position": "President",
+            "website": "http://company.com",
+            "startDate": "2013-01-01",
+            "endDate": "2014-01-01",
+            "summary": "Description...",
+            "location": "Paris, France",
+            "highlights": ["Started the company"]
+        },
+        {
+            "name": "What a nice experience",
+            "position": "Lead dev",
+            "website": "http://company.com",
+            "summary": "Description...",
+            "location": "Paris, France",
+            "highlights": ["Started the company"]
+        }
+    ],
+    "volunteer": [
+        {
+            "organization": "Organization",
+            "position": "Volunteer",
+            "website": "http://organization.com/",
+            "endDate": "2013-01-01",
+            "summary": "Description...",
+            "highlights": ["Awarded 'Volunteer of the Month'"]
+        }
+    ],
+    "education": [
+        {
+            "institution": "ISEN",
+            "area": "Software Development",
+            "studyType": "Engineer Degree",
+            "startDate": "2011-01-01",
+            "endDate": "2013-01-01",
+            "gpa": "4.0",
+            "courses": ["DB1101 - Basic SQL"]
+        },
+        {
+            "institution": "Université d'artois",
+            "area": "",
+            "studyType": "",
+            "startDate": "2011-01-01",
+            "endDate": "",
+            "gpa": "4.0",
+            "courses": ["DB1101 - Basic SQL"]
+        }
+    ],
+    "awards": [
+        {
+            "title": "Award",
+            "date": "2014-11-01",
+            "awarder": "Company",
+            "summary": "There is no spoon."
+        }
+    ],
+    "publications": [
+        {
+            "name": "Publication",
+            "publisher": "Company",
+            "releaseDate": "2014-10-01",
+            "website": "http://publication.com",
+            "summary": "Description..."
+        }
+    ],
+    "skills": [
+        {
+            "name": "React",
+            "level": "Master",
+            "value": 100,
+            "keywords": ["HTML", "CSS", "Javascript"]
+        },
+        {
+            "name": "Angular",
+            "level": "Master",
+            "value": 80,
+            "keywords": ["HTML", "CSS", "Javascript"]
+        },
+        {
+            "name": "NodeJS",
+            "level": "Master",
+            "value": 40,
+            "keywords": ["HTML", "CSS", "Javascript"]
+        },
+        {
+            "name": "Firebase",
+            "level": "Master",
+            "value": 60,
+            "keywords": ["HTML", "CSS", "Javascript"]
+        },
+        {
+            "name": "Gmail",
+            "level": "Master",
+            "value": 20,
+            "keywords": ["HTML", "CSS", "Javascript"]
+        },
+        {
+            "name": "K8S",
+            "level": "Master",
+            "value": 80,
+            "keywords": ["HTML", "CSS", "Javascript"]
+        }
+    ],
+    "languages": [
+        { "language": "English", "value": 100, "fluency": "Native speaker" },
+        { "language": "Italien", "value": 15, "fluency": "Native speaker" }
+    ],
+    "interests": [
+        {
+            "name": "France europe gif by nike football",
+            "gifUrl": "https://media1.giphy.com/media/3oD3YooLLYg0AfOPdK/giphy-downsized.gif?cid=f7fb5bbaegu1ofs48lty41dyowqsfo0wq9qq8h4czot7rwm1&rid=giphy-downsized.gif",
+            "id": "afa5739f-f868-464e-a1aa-18f5a3ff4e2b",
+            "gifUser": {
+                "name": "Nike Football",
+                "profileUrl": "https://giphy.com/nikefootball/",
+                "isVerified": true,
+                "profileAvatarUrl": "https://media1.giphy.com/avatars/nikefootball/vPyZcrShcXY8.jpg"
+            }
+        },
+        {
+            "name": "Burritos",
+            "gifUrl": "https://media.giphy.com/media/d8WjGORtSEWqc/giphy.gif"
+        },
+
+        {
+            "name": "Tendresse",
+            "gifUrl": "https://media.giphy.com/media/EehnUUCH2JcwU/giphy.gif"
+        },
+        {
+            "name": "Something",
+            "gifUrl": "https://media.giphy.com/media/xTiTnIuKP1BLsMTerS/giphy.gif"
+        },
+        {
+            "name": "J'aime faire de la course à pied et des randonnées en famille le weekend."
+        }
+    ],
+    "references": [{ "name": "Jane Doe", "reference": "Reference..." }],
+    "projects": [
+        {
+            "index": 5,
+            "date": { "month": 11, "year": 2019 },
+            "description": "Moteur de recherche via le nom de films réalisée avec ReactJs:\nRequête à l'Api rest avec Fetch, utilisation des hooks.\n",
+            "id": "7f1f4257-e5db-477d-aa5f-ababe0ab0b12",
+            "images": [{ "url": "https://cdn.filestackcontent.com/aBOkTTkCQ66VOHUy0q8L" }],
+            "link": "https://lovely-movie.netlify.app/",
+            "name": "Lovely Movie",
+            "endDate": "2019-12-01"
+        },
+        {
+            "index": 2,
+            "date": { "month": 0, "year": 2020 },
+            "description": "Application de gestion de tâches réalisée avec ReactJs / Redux / Firebase :\nCréation de composants avec Styled Components, gestions de formulaires et validation des entrées, création d'une authentification, récupération / création / modification / suppression de tâches.",
+            "id": "af4181b1-8955-47fb-8dd9-17c6974335d3",
+            "images": [{ "url": "https://cdn.filestackcontent.com/G2CckiqvScC9tsrvHYg4" }],
+            "link": "https://diary-todo.netlify.app/",
+            "name": "Journal d'une Todo",
+            "endDate": "2020-01-01"
+        },
+        {
+            "index": 4,
+            "date": { "month": 5, "year": 2020 },
+            "description": "Blog réalisé en Java JEE et Spring, avec création d'une base de données MySQL et connectée avec JDBC.",
+            "id": "af8c78c3-f7c6-4f3b-9c32-9d37a9032e14",
+            "images": [{ "url": "https://cdn.filestackcontent.com/rPp0wj4S2GhTr0qTcqOI" }],
+            "link": "https://btz-java-2003-pjt1-blog.javarover.wilders.dev/",
+            "name": "Charlie's Angels blog",
+            "endDate": "2020-06-01"
+        },
+        {
+            "index": 3,
+            "date": { "month": 5, "year": 2020 },
+            "description": "** Pensée uniquement pour téléphone **\nApplication permettant de connaître la météo actuelle d'une ville. Réalisée afin de découvrir VueJs.",
+            "id": "c64e6ca1-6300-4d7f-a305-8cfb7c99a9e6",
+            "images": [{ "url": "https://cdn.filestackcontent.com/w5oskUihSiYCxekOn9Ba" }],
+            "link": "https://appli-meteo.netlify.app/",
+            "name": "Application Météo",
+            "endDate": "2020-06-01"
+        },
+        {
+            "index": 1,
+            "date": { "month": 7, "year": 2020 },
+            "description": "Premières armes avec Angular et Typescript :\nMise en place d'un environnement Angular, développement d'une authentification avec Firebase, gestion des formulaires, utilisation d'observable avec RxJs.\n",
+            "id": "d9f7ca32-a40a-418e-affb-317bfb4f520e",
+            "images": [{ "url": "https://cdn.filestackcontent.com/NVOhKNFQR9OQ3jtkIyHi" }],
+            "link": "https://my-connected-library.netlify.app/",
+            "name": "Librairie Connectée",
+            "endDate": "2020-08-01"
+        },
+        {
+            "index": 6,
+            "date": { "month": 4, "year": 2019 },
+            "description": "Moteur de recherche basé sur le jeu World of Warcraft, premiers pas avec ReatJs.\nRequête à l'API Raider.io avec Axios.",
+            "id": "dbe2a8d9-dd9d-443d-8ae4-7a8e0b7939f5",
+            "images": [{ "url": "https://cdn.filestackcontent.com/FSysoX0ATvqy2BFvLF21" }],
+            "link": "https://wow-search-engine.netlify.app/",
+            "name": "WoW Search",
+            "endDate": "2019-05-01"
+        },
+        {
+            "index": 0,
+            "date": { "month": 6, "year": 2020 },
+            "description": "Application réalisée en 24h (challenge de formation) avec Java JEE et Spring:\nGestion d’un CRUD, création d'une API Rest, ajout d'un environnement de production avec une base de données PostgreSQL hébergée sur Heroku.",
+            "id": "ffb8a4f2-24e6-44ef-bbe7-0593b86d40be",
+            "images": [{ "url": "https://cdn.filestackcontent.com/7XpHKtFTC2VynppurrK5" }],
+            "link": "https://your-todos-list.herokuapp.com/",
+            "name": "Your Todo List",
+            "endDate": "2020-07-01"
+        }
+    ],
+    "specific": {
+        "basics": {
+            "visaSponsorship": true,
+            "personalDescription": "This is a longer description of me, of my backstory, my backyard, my backfire, my backend, my frontend and my friends."
+        },
+        "dreamJob": {
+            "locations": [{ "name": "Valenciennes, France" }, { "name": "Lille, France" }, { "name": "Paris,France" }],
+            "remoteFrequency": "regularly"
+        },
+        "currentJob": {
+            "issues": { "z": true, "boring_team": true }
+        },
+        "education": { "studiesLevel": null },
+        "work": {
+            "contractTypes": ["permanent", "freelance", "internship"],
+            "codingYears": 0,
+            "codingReason": "J'ai commencé à coder sur Amstrad dans ma cave et je n'ai jamais arrêté depuis",
+            "searchState": "activelySearching",
+            "experienceYears": 0,
+            "codeExperienceYears": null,
+            "otherExperienceYears": null
+        },
+        "sound": {
+            "embedUrl": "https://open.spotify.com/embed/playlist/37i9dQZF1DWWl7MndYYxge"
+        },
+        "interestedBy": "Angular, la blochain et les chatons."
+    },
+    "resumeCustomization": {
+        "imageHeader": {
+            "url": "https://cdn.filestackcontent.com/8I2wVnCRTFxypXRYLRsp",
+            "alt": "Default Banner"
+        },
+        "cardsOrder": [
+            { "type": "basics", "variant": 4 },
+            { "type": "projects", "variant": 4 },
+            { "type": "skills", "variant": 0 },
+            { "type": "dreamjob", "variant": 4 },
+            { "type": "experiences", "variant": 4 },
+            { "type": "studies", "variant": 4 },
+            { "type": "gifs", "variant": 0 },
+            { "type": "interestedBy", "variant": 3 },
+            { "type": "language", "variant": 4 },
+            { "type": "soundtrack", "variant": 4 },
+            { "type": "social", "variant": 4 }
+        ],
+        "fields": {
+            "work": {
+                "customDateFormat": "YYYY"
+            }
+        }
+    }
+}

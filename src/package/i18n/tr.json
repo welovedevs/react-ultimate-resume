@@ -162,6 +162,7 @@
   "Form.validation.global.number.min": "Bu alan {min}'dan büyük olmalıdır",
   "Form.validation.global.phoneNumber": "Bu alan bir telefon numarası olmalı",
   "Form.validation.global.url": "Bu alan geçerli bir URL olmalıdır",
+  "Form.validation.global.notUrl": "Bu alan bir URL değil, bir tanımlayıcı olmalıdır",
   "Gifs.Dialog.hobbies.name.placeholder": "ex : Boat, Guitar...",
   "Gifs.front.action": "Tüm hobileri görün",
   "Gifs.front.noHobby": "Henüz bir hobiniz yok!",

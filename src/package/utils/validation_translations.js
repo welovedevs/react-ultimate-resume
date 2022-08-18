@@ -36,5 +36,9 @@ export const validationTranslations = defineMessages({
     url: {
         id: 'Form.validation.global.url',
         defaultMessage: 'This field must be a valid URL'
+    },
+    notUrl: {
+        id: 'Form.validation.global.notUrl',
+        defaultMessage: 'This field must a username and not an URL'
     }
 });

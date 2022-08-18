@@ -36,6 +36,10 @@
     "id": "Form.validation.global.url"
   },
   {
+    "defaultMessage": "This field must a username and not an URL",
+    "id": "Form.validation.global.notUrl"
+  },
+  {
     "defaultMessage": "Photo by {name} on {unsplashLink}",
     "id": "Unsplash.credit"
   },
