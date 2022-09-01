@@ -15,6 +15,8 @@ const twitterValidator = (formatMessage: IntlFormatters['formatMessage']) =>
         id: Yup.string().notRequired(),
         network: Yup.string().equals(['twitter']).notRequired(),
         username: Yup.string()
+            .matches(/^((?!https?:\/\/)[\s\S])*$/, formatMessage(validationTranslations.notUrl))
+            .notRequired()
     });
 
 const linkedinValidator = (formatMessage: IntlFormatters['formatMessage']) =>
@@ -27,14 +29,18 @@ const githubValidator = (formatMessage: IntlFormatters['formatMessage']) =>
     Yup.object<Partial<GithubSocialAccount>>({
         id: Yup.string().notRequired(),
         network: Yup.string().equals(['github']).notRequired(),
-        username: Yup.string().notRequired()
+        username: Yup.string()
+            .matches(/^((?!https?:\/\/)[\s\S])*$/, formatMessage(validationTranslations.notUrl))
+            .notRequired()
     });
 
 const codinGameValidator = (formatMessage: IntlFormatters['formatMessage']) =>
     Yup.object<Partial<CodingameSocialAccount>>({
         id: Yup.string().notRequired(),
         network: Yup.string().equals(['codingame']).notRequired(),
-        username: Yup.string().notRequired()
+        username: Yup.string()
+            .matches(/^((?!https?:\/\/)[\s\S])*$/, formatMessage(validationTranslations.notUrl))
+            .notRequired()
     });
 
 export const showSocialCard = (data: SocialCardData, showContactInformations: boolean) => {
