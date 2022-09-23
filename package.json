@@ -81,6 +81,7 @@
         "@babel/preset-env": "^7.16.11",
         "@babel/preset-typescript": "^7.16.7",
         "@formatjs/cli": "^4.2.31",
+        "@kurone-kito/jsonresume-types": "^0.3.4",
         "@rollup/plugin-commonjs": "^21.0.1",
         "@rollup/plugin-json": "^4.1.0",
         "@rollup/plugin-node-resolve": "^13.1.3",

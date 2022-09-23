@@ -1784,6 +1784,11 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@kurone-kito/jsonresume-types@^0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@kurone-kito/jsonresume-types/-/jsonresume-types-0.3.4.tgz#3d1c6511fc0752fd4d118ded8f0f0062363e8532"
+  integrity sha512-QxydDnunddAbiDLMJ71kKU50RBVhAIh3DCMrw8DFgNukgYCTLDx9yfKD3aF4F9KVrrHLuxHBWqDHhBnuw/oqaA==
+
 "@material-ui/pickers@^3.2.9":
   version "3.3.10"
   resolved "https://registry.yarnpkg.com/@material-ui/pickers/-/pickers-3.3.10.tgz#f1b0f963348cc191645ef0bdeff7a67c6aa25485"

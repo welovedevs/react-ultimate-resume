@@ -1,7 +1,9 @@
-export const mapJsonResumeToBasicData = (jsonResume) => {
+import { DeveloperResume } from '../../../../../types/resume/resume';
+
+export const mapJsonResumeToBasicData = (jsonResume: DeveloperResume) => {
     const city = jsonResume.basics?.location?.city;
     const countryCode = jsonResume.basics?.location?.countryCode;
-    let currentCity = {};
+    let currentCity: { name?: string } = {};
     if (city || countryCode) {
         currentCity = {
             name: `${[city, countryCode].filter(Boolean).join(', ')}`
@@ -19,11 +21,14 @@ export const mapJsonResumeToBasicData = (jsonResume) => {
         codingReason: jsonResume?.specific?.work?.codingReason,
         visaSponsorship: jsonResume?.specific?.basics?.visaSponsorship,
         searchState: jsonResume?.specific?.work?.searchState,
-        personalDescription: jsonResume?.specific?.basics?.personalDescription
+        personalDescription: jsonResume?.specific?.basics?.personalDescription,
+        globalJobTitle: jsonResume?.specific?.basics?.globalJobTitle
     };
 };
 
-export const mapBasicsDataToJsonResume = (data) => ({
+export type BasicCardDataType = ReturnType<typeof mapJsonResumeToBasicData>;
+
+export const mapBasicsDataToJsonResume = (data: BasicCardDataType): Partial<DeveloperResume> => ({
     basics: {
         summary: data.summary,
         location: data.currentCity && { ...data.currentCity, city: data.currentCity.name }
@@ -31,7 +36,8 @@ export const mapBasicsDataToJsonResume = (data) => ({
     specific: {
         basics: {
             visaSponsorship: data.visaSponsorship,
-            personalDescription: data.personalDescription
+            personalDescription: data.personalDescription,
+            globalJobTitle: data.globalJobTitle
         },
         work: {
             experienceYears: data.experienceYears,

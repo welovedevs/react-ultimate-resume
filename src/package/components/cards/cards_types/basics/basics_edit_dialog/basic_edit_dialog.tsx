@@ -1,28 +1,41 @@
 import React, { useMemo } from 'react';
 
 import makeStyles from '@mui/styles/makeStyles';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage, IntlFormatters, useIntl } from 'react-intl';
 import { useFormikContext } from 'formik';
 
 import { TextField, Typography } from '@welovedevs/ui';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { EditDialogField } from '../../../../commons/edit_dialog_field/edit_dialog_field';
+
 import { SliderWithPopper } from '../../../../commons/slider_with_popper/slider_with_popper';
 import { VisaField } from './visa_field/visa_field';
 import { LocationField } from '../../../../commons/location_field/location_field';
 import { JobSearchStateField } from './job_search_state_field/job_search_state_field';
 
 import { styles } from './basic_edit_dialog_styles';
+import { BasicCardDataType } from '../data/mapping';
+import { DialogContentRenderFunction } from '../../../../commons/edit_dialog/edit_dialog_types';
+import { DialogProps } from '@mui/material';
+import Yup from 'yup';
+import { JobTitleField } from './job_title_field/job_title_field';
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles as any);
 
-const BasicsCardEditDialogComponent = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
+const BasicsCardEditDialogComponent: React.FC<
+    {
+        data: BasicCardDataType;
+        onEdit: (newData: BasicCardDataType) => void;
+        validationSchema: (formatMessage: IntlFormatters['formatMessage']) => Yup.Schema<any>;
+        isEditing?: boolean;
+    } & DialogProps
+> = ({ open, onClose, data, onEdit, validationSchema, isEditing }) => {
     const { formatMessage } = useIntl();
     const validationSchemaToPass = useMemo(() => validationSchema(formatMessage), [validationSchema]);
 
     return (
-        <EditDialog
+        <EditDialog<BasicCardDataType>
             open={open}
             onClose={onClose}
             data={data}
@@ -36,9 +49,11 @@ const BasicsCardEditDialogComponent = ({ open, onClose, data, onEdit, validation
     );
 };
 
-const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
-    const classes = useStyles();
-    const { values, errors, handleChange } = useFormikContext();
+const Content: React.FC<{ helpers: DialogContentRenderFunction<BasicCardDataType> }> = ({
+    helpers: { handleValueChange, toggleValue }
+}) => {
+    const classes: any = useStyles();
+    const { values, errors, handleChange, setFieldValue } = useFormikContext<BasicCardDataType>();
     const {
         currentCity,
         codeExperienceYears,
@@ -49,10 +64,25 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
         visaSponsorship,
         searchState,
         personalDescription,
-        summary
+        summary,
+        globalJobTitle
     } = values;
     return (
         <>
+            <EditDialogField
+                classes={{
+                    container: classes.field
+                }}
+                error={errors?.summary}
+                title={
+                    <FormattedMessage
+                        id="Basics.editDialog.summary.title"
+                        defaultMessage="Describe yourself in a few words."
+                    />
+                }
+            >
+                <TextField fullWidth variant="flat" onChange={handleChange} value={summary} name="summary" />
+            </EditDialogField>
             <EditDialogField
                 error={errors.personalDescription}
                 title={
@@ -78,20 +108,7 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                     fullWidth
                 />
             </EditDialogField>
-            <EditDialogField
-                classes={{
-                    container: classes.field
-                }}
-                error={errors?.summary}
-                title={
-                    <FormattedMessage
-                        id="Basics.editDialog.summary.title"
-                        defaultMessage="Describe yourself in a few words."
-                    />
-                }
-            >
-                <TextField fullWidth variant="flat" onChange={handleChange} value={summary} name="summary" />
-            </EditDialogField>
+
             <EditDialogField
                 error={errors?.currentCity?.name || errors?.currentCity}
                 title={
@@ -101,6 +118,8 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                     />
                 }
             >
+                {/*
+                 // @ts-ignore */}
                 <LocationField
                     fullWidth
                     variant="flat"
@@ -119,6 +138,21 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                 }
             >
                 <JobSearchStateField value={searchState} handleChange={handleChange} />
+            </EditDialogField>
+            <EditDialogField
+                error={errors.globalJobTitle}
+                title={
+                    <FormattedMessage
+                        id="Basics.editDialog.globalJobTitle.title"
+                        defaultMessage="What's your job title?"
+                    />
+                }
+            >
+                <JobTitleField<BasicCardDataType>
+                    value={globalJobTitle}
+                    handleChange={handleChange}
+                    setFieldValue={setFieldValue}
+                />
             </EditDialogField>
             <EditDialogField
                 error={errors.codingYears}
@@ -189,6 +223,8 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                             }}
                         />
                     </Typography>
+                    {/*
+                    // @ts-ignore */}
                     <SliderWithPopper
                         color="primary"
                         name="studiesLevel"
@@ -231,6 +267,9 @@ const Content = ({ helpers: { handleValueChange, toggleValue } }) => {
                             }}
                         />
                     </Typography>
+
+                    {/*
+                    // @ts-ignore */}
                     <SliderWithPopper
                         color="primary"
                         name="codeExperienceYears"

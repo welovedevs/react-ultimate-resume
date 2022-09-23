@@ -38,7 +38,8 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
         codingReason,
         searchState,
         visaSponsorship,
-        personalDescription
+        personalDescription,
+        globalJobTitle
     } = data;
 
     const descriptionContent = useMemo(() => {
@@ -59,6 +60,11 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
 
     const sections = useMemo(
         () => ({
+            globalJobTitle: {
+                title: globalJobTitle,
+                hide: false,
+                value: null
+            },
             personalDescription: {
                 title: null,
                 hide: false,
@@ -133,7 +139,7 @@ const BasicsBackComponent = ({ data, handleAddButtonClick }) => {
                 .map(([id, { title, value }]) => (
                     <ProfileCardSection key={id}>
                         {title && <ProfileCardSectionTitle>{title}</ProfileCardSectionTitle>}
-                        <ProfileCardSectionText>{value}</ProfileCardSectionText>
+                        {value && <ProfileCardSectionText>{value}</ProfileCardSectionText>}
                     </ProfileCardSection>
                 ))}
         </ProfileCardAnimatedBack>

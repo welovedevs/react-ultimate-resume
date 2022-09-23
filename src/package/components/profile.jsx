@@ -23,8 +23,6 @@ import { DeveloperProfileContext, StaticDataContext, StoreContext } from '../uti
 import { mergeOmitNull } from '../utils/data_utils';
 import { SIDES } from './commons/profile_card/profile_card_side/side';
 
-console.log('coucou slick');
-
 if (!Intl.PluralRules) {
     // eslint-disable-next-line global-require
     require('@formatjs/intl-pluralrules/polyfill');
@@ -99,7 +97,8 @@ const DeveloperProfileComponent = ({
                 showContactInfos: options?.showContactInfos,
                 maxSkills: options?.maxSkills,
                 disableSortableExperience: options?.disableSortableExperience
-            }
+            },
+            referenceData: options?.referenceData
         }),
         [apiKeys, endpoints, additionalNodes, receivedGlobalClasses, JSON.stringify(options?.customization)]
     );

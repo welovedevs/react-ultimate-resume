@@ -8,7 +8,7 @@ import {
     GithubSocialAccount,
     LinkedinSocialAccount,
     TwitterSocialAccount
-} from '../../../../../types/resume/resume';
+} from './mapping';
 
 const twitterValidator = (formatMessage: IntlFormatters['formatMessage']) =>
     Yup.object<Partial<TwitterSocialAccount>>({

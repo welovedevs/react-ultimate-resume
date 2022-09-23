@@ -64,11 +64,13 @@ function App() {
                     devicons:
                         'https://firebasestorage.googleapis.com/v0/b/jechercheundev.appspot.com/o/technologies%2Ftechnologies_list.json?alt=media&token=459028ba-d9bc-4480-a3c4-88633afab7e2'
                 },
-                // showContactInfos: true,
                 maxSkills: 6,
                 customization,
                 disableSortableExperience: false,
-                maxCardsPerRow: 3
+                maxCardsPerRow: 3,
+                referenceData: {
+                    professions: ['Developpeur Front-End', 'Développeur Back-End']
+                }
             }}
             additionalNodes={{
                 banner: {

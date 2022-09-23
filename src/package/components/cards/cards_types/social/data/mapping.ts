@@ -1,15 +1,30 @@
 // @ts-ignore
 import uuid from 'uuid/v4';
-import {
-    CodingameSocialAccount,
-    CustomSocialAccount,
-    DeveloperResume,
-    DeveloperSocialAccounts,
-    GithubSocialAccount,
-    LinkedinSocialAccount,
-    TwitterSocialAccount
-} from '../../../../../types/resume/resume';
+import { DeveloperResume } from '../../../../../types/resume/resume';
 
+interface BaseSocialAccount {
+    id: string;
+}
+export interface CustomSocialAccount extends BaseSocialAccount {
+    network: string;
+    url: string;
+}
+export interface TwitterSocialAccount extends BaseSocialAccount {
+    network: 'twitter';
+    username: string;
+}
+export interface CodingameSocialAccount extends BaseSocialAccount {
+    network: 'codingame';
+    username: string;
+}
+export interface GithubSocialAccount extends BaseSocialAccount {
+    network: 'github';
+    username: string;
+}
+export interface LinkedinSocialAccount extends BaseSocialAccount {
+    network: 'linkedin';
+    url: string;
+}
 const predeterminedNetworks = ['twitter', 'linkedin', 'codingame', 'github'];
 export interface SocialCardData {
     profiles: {
@@ -36,19 +51,21 @@ export const mapProfilesFromJsonResume = (
 ): SocialCardData => ({
     profiles: (jsonResume?.basics?.profiles ?? []).reduce((acc, profile, index) => {
         const id = profile.id || uuid();
-        const key = getId(profile?.network, id);
+        const key = getId(profile?.network || '', id);
         return {
             ...acc,
             [key]: {
                 ...profile,
+                network: profile.network ?? '',
+                url: profile.url ?? '',
                 id,
                 index
             }
         };
-    }, {}),
+    }, {} as SocialCardData['profiles']),
     ...(showContactInformations && {
-        phone: jsonResume.basics.phone,
-        email: jsonResume.basics.email
+        phone: jsonResume.basics?.phone,
+        email: jsonResume.basics?.email
     })
 });
 
