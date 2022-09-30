@@ -7,7 +7,7 @@
         <g id="Desktop-HD" transform="translate(-511.000000, -290.000000)">
             <g id="Group" transform="translate(511.000000, 290.000000)">
                 <rect class="to-fill" id="Rectangle" fill="#220BAB" x="0" y="0" width="470" height="470" rx="20"></rect>
-                <text class="to-color" id="I-want-to-work-in-Li" font-family="AvenirNext-Bold, Avenir Next" font-size="40" font-weight="bold" line-spacing="50" fill="currentColor">
+                <text class="to-color" id="I-want-to-work-in-Li" font-family="Plus Jakarta Sans" font-size="40" font-weight="bold" line-spacing="50" fill="currentColor">
                     <tspan x="120" y="282">I want to</tspan>
                     <tspan x="120" y="332">work in</tspan>
                     <tspan x="120" y="382">Lille, France</tspan>
@@ -15,7 +15,7 @@
                 <g class="to-color" id="home" transform="translate(153.000000, 53.000000)" fill="currentColor" fill-rule="nonzero">
                     <path d="M159.013546,75.7472466 L85.2315826,1.96528321 C82.6089692,-0.650622768 78.36986,-0.650622768 75.7472466,1.96528321 L1.96528321,75.7472466 C-0.650622768,78.36986 -0.650622768,82.6156767 1.96528321,85.2315826 C3.22628404,86.4925835 4.92997665,87.1968659 6.70745122,87.1968659 L15.0917652,87.1968659 C16.0173935,87.1968659 16.768628,87.9481004 16.768628,88.8737287 L16.768628,154.271378 C16.768628,157.973891 19.7735662,160.978829 23.4760793,160.978829 L62.0439238,160.978829 C62.969552,160.978829 63.7207866,160.227595 63.7207866,159.301966 L63.7207866,127.441573 C63.7207866,118.178583 71.2264245,110.672945 80.4894146,110.672945 C89.7524048,110.672945 97.2580427,118.178583 97.2580427,127.441573 L97.2580427,159.301966 C97.2580427,160.227595 98.0092772,160.978829 98.9349055,160.978829 L137.50275,160.978829 C141.205263,160.978829 144.210201,157.973891 144.210201,154.271378 L144.210201,88.8737287 C144.210201,87.9481004 144.961436,87.1968659 145.887064,87.1968659 L154.271378,87.1968659 C157.973891,87.1968659 160.978829,84.1919277 160.978829,80.4894146 C160.978829,78.7119401 160.267839,77.00154 159.013546,75.7472466 Z M80.4894146,80.4894146 C71.2264245,80.4894146 63.7207866,72.9837767 63.7207866,63.7207866 C63.7207866,54.4577965 71.2264245,46.9521585 80.4894146,46.9521585 C89.7524048,46.9521585 97.2580427,54.4577965 97.2580427,63.7207866 C97.2580427,72.9837767 89.7524048,80.4894146 80.4894146,80.4894146 Z" id="Shape"></path>
                 </g>
-                <text class="to-color" id="Discover-my-dream-jo" font-family="AvenirNext-Medium, Avenir Next" font-size="18" font-weight="400" fill="currentColor">
+                <text class="to-color" id="Discover-my-dream-jo" font-family=" Plus Jakarta Sans" font-size="18" font-weight="400" fill="currentColor">
                     <tspan x="215" y="441">Discover my dream job</tspan>
                 </text>
                 <g color="to-color" id="arrow-right" transform="translate(423.000000, 428.000000)" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">

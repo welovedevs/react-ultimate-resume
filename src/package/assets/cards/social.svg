@@ -18,27 +18,27 @@
         <path d="M90.8832 179.075C90.8484 179.06 90.8099 179.056 90.7728 179.063C90.7357 179.071 90.7016 179.089 90.6749 179.116L84.2166 185.574C84.1678 185.623 84.1405 185.689 84.1405 185.758C84.1405 185.827 84.1678 185.894 84.2166 185.943L89.4697 191.196C89.5443 191.268 89.6039 191.354 89.6449 191.449C89.6858 191.545 89.7074 191.647 89.7084 191.751C89.7093 191.854 89.6896 191.957 89.6504 192.053C89.6111 192.149 89.5532 192.237 89.4799 192.31C89.4065 192.383 89.3193 192.442 89.2233 192.481C89.1274 192.52 89.0245 192.54 88.9208 192.539C88.817 192.538 88.7145 192.517 88.6192 192.476C88.5238 192.435 88.4376 192.376 88.3655 192.301L83.1124 187.048C83.0882 187.024 83.0595 187.004 83.0278 186.991C82.9962 186.978 82.9623 186.971 82.928 186.971C82.8938 186.971 82.8599 186.978 82.8282 186.991C82.7966 187.004 82.7678 187.024 82.7437 187.048L80.526 189.266C79.9888 189.802 79.2604 190.104 78.501 190.104C77.7415 190.104 77.0131 189.802 76.476 189.266L74.2562 187.05C74.2072 187.001 74.1409 186.974 74.0718 186.974C74.0027 186.974 73.9364 187.001 73.8875 187.05L68.6344 192.303C68.4869 192.445 68.2896 192.524 68.0847 192.522C67.8799 192.52 67.684 192.438 67.5392 192.293C67.3944 192.148 67.3123 191.952 67.3107 191.747C67.309 191.542 67.3878 191.345 67.5302 191.198L72.7833 185.945C72.832 185.896 72.8594 185.829 72.8594 185.76C72.8594 185.691 72.832 185.625 72.7833 185.576L66.325 179.118C66.2984 179.091 66.2643 179.072 66.2271 179.065C66.1899 179.058 66.1514 179.062 66.1167 179.077C66.0824 179.091 66.0531 179.115 66.0324 179.146C66.0117 179.177 66.0004 179.213 66 179.25V191.75C66 192.302 66.2195 192.832 66.6102 193.223C67.0009 193.614 67.5308 193.833 68.0833 193.833H88.9165C89.4691 193.833 89.999 193.614 90.3897 193.223C90.7804 192.832 90.9999 192.302 90.9999 191.75V179.25C91 179.213 90.989 179.176 90.9682 179.145C90.9474 179.114 90.9178 179.089 90.8832 179.075V179.075Z"
               fill="currentColor"/>
     </g>
-    <text class="to-color" id="I-mainly-write-React" font-family="AvenirNext-Bold, Avenir Next" font-size="36"
+    <text class="to-color" id="I-mainly-write-React" font-family="Plus Jakarta Sans" font-size="36"
           font-weight="bold" line-spacing="46" fill="currentColor">
         <tspan x="40" y="64">Contact Me</tspan>
     </text>
-    <text class="to-color" id="I-mainly-write-React" font-family="AvenirNext-Bold, Avenir Next" font-size="14"
+    <text class="to-color" id="I-mainly-write-React" font-family="Plus Jakarta Sans" font-size="14"
           fill="currentColor">
         <tspan x="100" y="150">+33 6 44 13 13 37</tspan>
     </text>
-    <text class="to-color" id="I-mainly-write-React" font-family="AvenirNext-Bold, Avenir Next" font-size="14"
+    <text class="to-color" id="I-mainly-write-React" font-family="Plus Jakarta Sans" font-size="14"
           fill="currentColor">
         <tspan x="100" y="190">devs@welovedevs.com</tspan>
     </text>
-    <text class="to-color" id="I-mainly-write-React" font-family="AvenirNext-Bold, Avenir Next" font-size="14"
+    <text class="to-color" id="I-mainly-write-React" font-family="Plus Jakarta Sans" font-size="14"
           fill="currentColor">
         <tspan x="100" y="233">My linkedin profile</tspan>
     </text>
-    <text class="to-color" id="I-mainly-write-React" font-family="AvenirNext-Bold, Avenir Next" font-size="14"
+    <text class="to-color" id="I-mainly-write-React" font-family="Plus Jakarta Sans" font-size="14"
           fill="currentColor">
         <tspan x="100" y="270">My codingame profile</tspan>
     </text>
-    <text class="to-color" id="I-mainly-write-React" font-family="AvenirNext-Bold, Avenir Next" font-size="14"
+    <text class="to-color" id="I-mainly-write-React" font-family="Plus Jakarta Sans" font-size="14"
           fill="currentColor">
         <tspan x="100" y="310">Portfolio</tspan>
     </text>

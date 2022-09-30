@@ -7,12 +7,12 @@
         <g id="Desktop-HD" transform="translate(-503.000000, -292.000000)">
             <g id="Group" transform="translate(503.000000, 292.000000)">
                 <rect class="to-fill" id="Rectangle" fill="#220BAB" x="0" y="0" width="470" height="470" rx="20"></rect>
-                <text class="to-color" id="Développeur-Web-/-Re" font-family="AvenirNext-Bold, Avenir Next" font-size="50" font-weight="bold" line-spacing="70" fill="#FFFFFF">
+                <text class="to-color" id="Développeur-Web-/-Re" font-family="Plus Jakarta Sans" font-size="50" font-weight="bold" line-spacing="70" fill="#FFFFFF">
                     <tspan x="57" y="180">Développeur</tspan>
                     <tspan x="57" y="250">Web / React</tspan>
                     <tspan x="57" y="320">- Node</tspan>
                 </text>
-                <text class="to-color" id="see-all-experiences" font-family="AvenirNext-Medium, Avenir Next" font-size="18" font-weight="400" fill="#FFFFFF">
+                <text class="to-color" id="see-all-experiences" font-family=" Plus Jakarta Sans" font-size="18" font-weight="400" fill="#FFFFFF">
                     <tspan x="250" y="441">see all experiences</tspan>
                 </text>
                 <g id="arrow-right" transform="translate(423.000000, 428.000000)" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">

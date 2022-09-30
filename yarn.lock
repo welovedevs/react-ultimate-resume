@@ -3158,10 +3158,10 @@
   resolved "https://registry.yarnpkg.com/@webpack-cli/serve/-/serve-1.6.1.tgz#0de2875ac31b46b6c5bb1ae0a7d7f0ba5678dffe"
   integrity sha512-gNGTiTrjEVQ0OcVnzsRSqTxaBSr+dmTfm+qJsCDluky8uhdLWep7Gcr62QsAKHTMxjCS/8nEITsmFAhfIx+QSw==
 
-"@welovedevs/ui@1.3.1-beta.28":
-  version "1.3.1-beta.28"
-  resolved "https://registry.yarnpkg.com/@welovedevs/ui/-/ui-1.3.1-beta.28.tgz#957614b246fdd48be58c5663ceff21fcfef1489a"
-  integrity sha512-VveidUsSistQ4Rt6HtboQuLDgEJE1AsZr97HcMvMGVf5FY0rIzXtPGlJ3yHOL6DuYNxS1/G66UwiSnIW5G25nw==
+"@welovedevs/ui@1.4.1-beta.1":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@welovedevs/ui/-/ui-1.4.0.tgz#ea2a0e019890d53b7c3ccf6113614ada7e6d35f4"
+  integrity sha512-SLTSHN8oYoc11pP99YaeA9uMTL1uidlGaKvduNrT9iv3whXqR6uVzhlLUiNl2mO4yCsf/ZoxvdFRbvHoDFRe+w==
   dependencies:
     "@dnd-kit/core" "^6.0.5"
     "@dnd-kit/sortable" "^7.0.1"

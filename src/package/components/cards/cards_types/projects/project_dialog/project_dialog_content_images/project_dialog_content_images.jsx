@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
-import { useTheme } from "@mui/styles";
+import { useTheme } from '@mui/styles';
 import makeStyles from '@mui/styles/makeStyles';
 
 import { AnimatePresence, motion } from 'framer-motion';
@@ -87,7 +87,7 @@ const ProjectDialogContentImagesComponent = ({ images = [], isEditing }) => {
                         styles={{
                             blanket: (base) => ({ ...base, zIndex: 2100 }),
                             positioner: (base) => ({ ...base, zIndex: 2110 }),
-                            dialog: (base) => ({ ...base, zIndex: 2120, fontFamily: 'Avenir Next' })
+                            dialog: (base) => ({ ...base, zIndex: 2120, fontFamily: 'Plus Jakarta Sans' })
                         }}
                     >
                         <Carousel

@@ -2,7 +2,7 @@ import mergeWith from 'lodash/mergeWith';
 import merge from 'lodash/merge';
 import cloneDeep from 'lodash/cloneDeep';
 import isArray from 'lodash/isArray';
-import {palette} from '@welovedevs/ui';
+import { palette } from '@welovedevs/ui';
 
 import { THEME_SCHEMA } from './theme_schema';
 import { transformTheme } from './theme_transforms';
@@ -14,7 +14,7 @@ export const DEFAULT_THEME = {
     miscellaneous: {
         backgroundColor: DEFAULT_PALETTE.dark[50],
         color: DEFAULT_PALETTE.dark[500],
-        fontFamily: ['Avenir Next', 'Open Sans', 'Roboto', 'Arial'],
+        fontFamily: ['Plus Jakarta Sans', 'Open Sans', 'Roboto', 'Arial'],
         spacing: 8
     },
     screenSizes: {

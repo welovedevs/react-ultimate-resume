@@ -13,7 +13,7 @@
                     <polygon id="Path" points="200 73.1277533 162.995595 109.251101 200 109.251101"></polygon>
                     <polygon id="Path" points="0 102.607048 73.4731278 102.607048 73.4731278 139.207048 110.132159 139.207048 110.132159 73.0669604 36.7920705 73.0669604 110.132159 0 73.4731278 0 0 73.0669604"></polygon>
                 </g>
-                <text class="to-color" id="I-graduated-from-Éco" font-family="AvenirNext-Bold, Avenir Next" font-size="36" font-weight="bold" fill="currentColor">
+                <text class="to-color" id="I-graduated-from-Éco" font-family="Plus Jakarta Sans" font-size="36" font-weight="bold" fill="currentColor">
                     <tspan x="134" y="293">I graduated</tspan>
                     <tspan x="134" y="342">from</tspan>
                     <tspan x="134" y="391">École 42</tspan>

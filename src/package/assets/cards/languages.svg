@@ -7,13 +7,13 @@
         <g id="Desktop-HD" transform="translate(-503.000000, -292.000000)">
             <g id="Group" transform="translate(503.000000, 292.000000)">
                 <rect class="to-fill" id="Rectangle" fill="#220BAB" x="0" y="0" width="470" height="470" rx="20"></rect>
-                <text class="to-color" id="I-speak-English-Fren" font-family="AvenirNext-Bold, Avenir Next" font-size="64" font-weight="bold" line-spacing="70" fill="currentColor">
+                <text class="to-color" id="I-speak-English-Fren" font-family="Plus Jakarta Sans" font-size="64" font-weight="bold" line-spacing="70" fill="currentColor">
                     <tspan x="85" y="159">I speak</tspan>
                     <tspan x="85" y="229">English</tspan>
                     <tspan x="85" y="299">French</tspan>
                     <tspan x="85" y="369">Allemand</tspan>
                 </text>
-                <text id="Languages-level" font-family="AvenirNext-Medium, Avenir Next" font-size="18" font-weight="400" fill="currentColor">
+                <text id="Languages-level" font-family=" Plus Jakarta Sans" font-size="18" font-weight="400" fill="currentColor">
                     <tspan x="270" y="441">Languages level</tspan>
                 </text>
                 <g id="arrow-right" transform="translate(423.000000, 428.000000)" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
