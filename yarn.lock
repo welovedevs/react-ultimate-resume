@@ -3159,9 +3159,9 @@
   integrity sha512-gNGTiTrjEVQ0OcVnzsRSqTxaBSr+dmTfm+qJsCDluky8uhdLWep7Gcr62QsAKHTMxjCS/8nEITsmFAhfIx+QSw==
 
 "@welovedevs/ui@1.4.1-beta.1":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@welovedevs/ui/-/ui-1.4.0.tgz#ea2a0e019890d53b7c3ccf6113614ada7e6d35f4"
-  integrity sha512-SLTSHN8oYoc11pP99YaeA9uMTL1uidlGaKvduNrT9iv3whXqR6uVzhlLUiNl2mO4yCsf/ZoxvdFRbvHoDFRe+w==
+  version "1.4.1-beta.1"
+  resolved "https://registry.yarnpkg.com/@welovedevs/ui/-/ui-1.4.1-beta.1.tgz#e3975974dabd03c5d8b42ac8bcf657a5d4ddfa15"
+  integrity sha512-6qGrnZV5dX/LAF/YTr9vGvGESLqM03/Wk4jf2+n3tj9ZKLS73PYUhSJGpOykkUWNX3N7uM5WUgMAnKNJNUmlUg==
   dependencies:
     "@dnd-kit/core" "^6.0.5"
     "@dnd-kit/sortable" "^7.0.1"

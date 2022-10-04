@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 
-import { useTheme } from "@mui/styles";
+import { useTheme } from '@mui/styles';
 import makeStyles from '@mui/styles/makeStyles';
 
 import { AnimatePresence, motion } from 'framer-motion';
@@ -54,7 +54,6 @@ export const ProfileCard = ({
         defaultMatches: true
     });
 
-    const [containerElement, setContainerElement] = useState();
     const containerReference = useRef();
     const [openEditDialog, setOpenEditDialog] = useState(false);
     const [forceOpenEditDialog, setForceOpenEditDialog] = useState(false);
@@ -107,10 +106,6 @@ export const ProfileCard = ({
         },
         [isSmall]
     );
-
-    useEffect(() => {
-        setContainerElement(containerReference.current);
-    }, []);
 
     const setSide = useCallback(
         (newSide) => {
@@ -166,7 +161,7 @@ export const ProfileCard = ({
                     />
                 </ProfileCardContext.Provider>
             )}
-            <ProfileCardIncompletePopper open={isComplete !== true} anchorElement={containerElement} />
+            <ProfileCardIncompletePopper open={isComplete !== true} anchorElement={containerReference.current} />
             <Card
                 containerRef={containerReference}
                 classes={{ container: classes.container }}
