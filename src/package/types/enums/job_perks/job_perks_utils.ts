@@ -4,7 +4,7 @@ export const JobPerksEnum = {
     SALARY: 'salary',
     WORK_HOURS: 'work_hours',
     TRAINING: 'training',
-    RESPONSABILITIES: 'responsabilities',
+    RESPONSIBILITIES: 'responsibilities',
     PERKS: 'perks',
     OTHER: 'others'
 };
