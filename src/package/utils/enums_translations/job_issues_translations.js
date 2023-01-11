@@ -5,8 +5,8 @@ export const translations = defineMessages({
         id: 'Developer.jobIssues.tech',
         defaultMessage: 'Not technical enough'
     },
-    no_responsabilities: {
-        id: 'Developer.jobIssues.responsabilities',
+    no_responsibilities: {
+        id: 'Developer.jobIssues.responsibilities',
         defaultMessage: 'Not enough responsibilities'
     },
     no_challenge: {
