@@ -7,22 +7,15 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Twemoji } from 'react-emoji-render';
 
-import {
-    DndContext,
-    closestCenter,
-    KeyboardSensor,
-    PointerSensor,
-    useSensor,
-    useSensors,
-} from '@dnd-kit/core';
+import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import {
     arrayMove,
     SortableContext,
-    sortableKeyboardCoordinates, useSortable,
-    verticalListSortingStrategy,
+    sortableKeyboardCoordinates,
+    useSortable,
+    verticalListSortingStrategy
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-
 
 import { useFormikContext } from 'formik';
 import moment from 'moment';
@@ -205,7 +198,14 @@ const ExperienceItem = ({
                     >
                         <ArrowIcon className={cn('refinement-arrow')} />
                     </motion.div>
-                    {hasError && <Twemoji className={classes.warningIcon} svg text="⚠️" />}
+                    {hasError && (
+                        <Twemoji
+                            options={{ baseUrl: '//cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/' }}
+                            className={classes.warningIcon}
+                            svg
+                            text="⚠️"
+                        />
+                    )}
                     <Typography className={classes.smallTitle} color="dark">
                         <JobTitle {...{ experience }} />
                     </Typography>
@@ -256,9 +256,10 @@ const ContentFields = ({ fieldErrors, id, formatMessage, experience, onChange, c
     const handleStartDate = useCallback((value) => onChange(index, 'startDate', value), [index]);
     const handleEndDate = useCallback((value) => onChange(index, 'endDate', value), [index]);
     const handleLocationChange = useCallback((value) => onChange(index, 'place', value), [index]);
-    const handleLocationTextChange = useCallback((value) => onChange(index, 'place', { name: value.target.value }), [
-        index
-    ]);
+    const handleLocationTextChange = useCallback(
+        (value) => onChange(index, 'place', { name: value.target.value }),
+        [index]
+    );
 
     return (
         <div className={classes.content}>

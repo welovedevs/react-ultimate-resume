@@ -21,7 +21,12 @@ export const CustomizeButton = ({ customizationOptions }) => {
         <>
             <CustomizeDialog open={dialogOpen} onClose={close} customizationOptions={customizationOptions} />
             <Button variant="outlined" color="light" onClick={open}>
-                <Twemoji svg text="🎨" className={classes.icon} />
+                <Twemoji
+                    options={{ baseUrl: '//cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/' }}
+                    svg
+                    text="🎨"
+                    className={classes.icon}
+                />
                 {!isMobile && formatMessage(translations.customize)}
             </Button>
         </>

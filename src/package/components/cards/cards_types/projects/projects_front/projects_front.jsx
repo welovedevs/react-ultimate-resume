@@ -23,15 +23,16 @@ const useStyles = makeStyles(styles);
 const ProjectsFrontComponent = ({ data, handleAddButtonClick }) => {
     const [side, setSide] = useCardSide();
 
-    const handleButtonClick = useCallback(() => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT), [
-        side,
-        setSide
-    ]);
+    const handleButtonClick = useCallback(
+        () => setSide(side === SIDES.FRONT ? SIDES.BACK : SIDES.FRONT),
+        [side, setSide]
+    );
 
     const [variant] = useCardVariant();
-    const imageSrc = useMemo(() => data.projects?.[0]?.images?.url ?? DEFAULT_PROJECT_IMAGE, [
-        data.projects?.[0]?.images
-    ]);
+    const imageSrc = useMemo(
+        () => data.projects?.[0]?.images?.url ?? DEFAULT_PROJECT_IMAGE,
+        [data.projects?.[0]?.images]
+    );
     const alt = data.projects?.[0]?.title;
 
     const projectTitle = useMemo(() => {
@@ -87,10 +88,16 @@ const Content = ({ hasProject, projectTitle, handleAddButtonClick, classes }) =>
                     defaultMessage="My <emoji>♥️</emoji> project : "
                     values={{
                         emoji: ([value]) => {
-                            return <Twemoji svg text={value} />;
+                            return (
+                                <Twemoji
+                                    options={{ baseUrl: '//cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/' }}
+                                    svg
+                                    text={value}
+                                />
+                            );
                         }
                     }}
-                ></FormattedMessage>
+                />
                 {projectTitle}
             </Typography>
         );

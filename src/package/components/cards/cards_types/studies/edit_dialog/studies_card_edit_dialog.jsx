@@ -200,7 +200,14 @@ const FormationItem = ({
                         >
                             <ArrowIcon className={cn('refinement-arrow')} />
                         </motion.div>
-                        {hasError && <Twemoji className={classes.warningIcon} svg text="⚠️" />}
+                        {hasError && (
+                            <Twemoji
+                                options={{ baseUrl: '//cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/' }}
+                                className={classes.warningIcon}
+                                svg
+                                text="⚠️"
+                            />
+                        )}
                         <Typography className={classes.smallTitle} color="dark">
                             {formation.institution}
                         </Typography>
