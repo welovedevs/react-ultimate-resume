@@ -56,6 +56,7 @@ const ExperienceContent = ({ experience, variant, classes }) => {
         builder.push(dateString);
         return builder.map((value, index) => <Fragment key={`builder_part_${index}`}>{value}</Fragment>);
     }, [buildTitle, experience]);
+    
     return (
         <ProfileCardSection key={id} cardVariant={variant}>
             <ProfileCardSectionTitle>{position}</ProfileCardSectionTitle>
@@ -67,11 +68,12 @@ const ExperienceContent = ({ experience, variant, classes }) => {
 
 const Content = ({ data, handleAddButtonClick, classes }) => {
     const hasWork = useMemo(() => existsAndNotEmpty(data?.work), [data]);
-    const experiences = data.work?.filter(({ position, summary }) => Boolean(position && summary));
+    const experiences = data.work?.filter(({ position }) => Boolean(position ));
 
-    if (!hasWork) {
+    if (!hasWork || experiences?.length === 0) {
         return <NoWork {...{ handleAddButtonClick }} />;
     }
+
     return experiences.map((experience) => (
         <ExperienceContent key={`work_experience_${experience.id}`} experience={experience} classes={classes} />
     ));
