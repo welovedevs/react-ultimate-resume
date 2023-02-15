@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { useTheme } from "@mui/styles";
+import { useTheme } from '@mui/styles';
 import makeStyles from '@mui/styles/makeStyles';
 
 import { Typography } from '@welovedevs/ui';
@@ -60,21 +60,21 @@ const Details = ({ project, index, onDelete, classes }) => {
 
     const color = getColorsFromCardVariant(theme, variant).backColor;
 
-    const projectLink = project.link;
+    const projectUrl = project.url;
 
-    const link = useMemo(() => {
-        if (!new RegExp(HttpRegex).test(projectLink)) {
-            return `http://${projectLink}`;
+    const url = useMemo(() => {
+        if (!new RegExp(HttpRegex).test(projectUrl)) {
+            return `http://${projectUrl}`;
         }
-        return projectLink;
-    }, [projectLink]);
+        return projectUrl;
+    }, [projectUrl]);
 
     return (
         <div className={classes.details}>
-            {project.link && (
+            {projectUrl && (
                 <div className={classes.detail}>
                     <AnimatedUnderlinedButton color={color}>
-                        <a className={classes.link} href={link}>
+                        <a className={classes.link} href={url}>
                             <Typography classes={{ container: classes.salary }} color={color}>
                                 <LinkIcon className={classes.detailIcon} />
                                 <FormattedMessage id="Project.section.link" defaultMessage="Link" />
