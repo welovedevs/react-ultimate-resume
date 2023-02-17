@@ -23,10 +23,6 @@ export const BasicsValidationSchema = (formatMessage) =>
             .min(0, formatMessage(validationTranslations.min, { min: 0 }))
             .max(12, formatMessage(validationTranslations.max, { max: 12 }))
             .required(formatMessage(validationTranslations.required)),
-        codingYears: Yup.number()
-            .min(0, formatMessage(validationTranslations.min, { min: 0 }))
-            .max(20, formatMessage(validationTranslations.max, { max: 20 }))
-            .required(formatMessage(validationTranslations.required)),
         codingReason: Yup.string().min(10, formatMessage(validationTranslations.min, { min: 10 }))
     });
 
