@@ -59,7 +59,6 @@ const Content: React.FC<{ helpers: DialogContentRenderFunction<BasicCardDataType
         codeExperienceYears,
         otherExperienceYears,
         studiesLevel,
-        codingYears,
         codingReason,
         visaSponsorship,
         searchState,
@@ -153,49 +152,6 @@ const Content: React.FC<{ helpers: DialogContentRenderFunction<BasicCardDataType
                     handleChange={handleChange}
                     setFieldValue={setFieldValue}
                 />
-            </EditDialogField>
-            <EditDialogField
-                error={errors.codingYears}
-                title={
-                    <FormattedMessage
-                        id="Basics.editDialog.codingYears.title"
-                        defaultMessage="How long have you been coding?"
-                    />
-                }
-                subtitle={
-                    <FormattedMessage
-                        id="Basics.editDialog.codingYears.subtitle"
-                        defaultMessage="(every experiences, studies, personal projects, work...)"
-                    />
-                }
-            >
-                <div className={classes.valueSliderContainer}>
-                    <Typography className={classes.sliderValue}>
-                        <FormattedMessage
-                            id="Main.lang.years"
-                            defaultMessage="{countNode} year{count, plural, one {} other {s}}"
-                            values={{
-                                count: codingYears,
-                                countNode: <span className={classes.bolden}>{codingYears}</span>
-                            }}
-                        />
-                    </Typography>
-                    <SliderWithPopper
-                        color="primary"
-                        name="codingYears"
-                        value={codingYears}
-                        step={0.5}
-                        onChange={handleChange}
-                        min={0}
-                        max={20}
-                        popperCardProps={{
-                            classes: {
-                                container: classes.sliderPopperCard,
-                                arrowContainer: classes.sliderPopperCardArrowContainer
-                            }
-                        }}
-                    />
-                </div>
             </EditDialogField>
             <EditDialogField
                 error={errors.studiesLevel}
