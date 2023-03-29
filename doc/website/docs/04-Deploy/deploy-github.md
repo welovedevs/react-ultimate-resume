@@ -1,6 +1,7 @@
 ---
 id: deploy-github
 title: Deploy on Github
+sidebar_position: 2.4
 ---
 
 ## Deploy on Github Pages

@@ -2,6 +2,7 @@
 id: home
 title: Documentation
 sidebar_label: Home
+sidebar_position: 1
 ---
 
 
@@ -74,7 +75,7 @@ Replace the default JSON Resume with yours
 
 ### Deploy on you own server
 
-You can deploy your resume on your own server in few minutes. Follow our [HOW TO documentation](deploy-fork.md). 
+You can deploy your resume on your own server in few minutes. Follow our [HOW TO documentation](04-Deploy/deploy-fork.md). 
 
 ### Hosted for free on WeLoveDevs.com
 

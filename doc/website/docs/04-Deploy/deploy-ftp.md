@@ -1,6 +1,7 @@
 ---
 id: deploy-ftp
 title: Deploy via FTP
+sidebar_position: 2.3
 ---
 
 ## Example : Deploy over OVH Webhosting (Mutu)

@@ -1,6 +1,7 @@
 ---
 id: deploy-build
 title: Build
+sidebar_position: 2.1
 ---
 
 ## BUILD
