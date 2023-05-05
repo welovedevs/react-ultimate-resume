@@ -167,35 +167,52 @@ const Content: React.FC<{ helpers: DialogContentRenderFunction<BasicCardDataType
                         defaultMessage="Bachelor = 3 years post graduate. Master = 5 years post graduate."
                     />
                 }
+                classes={{
+                    container: 'flex items-center',
+                    component: 'flex items-center flex-row',
+                    componentErrorContainer: 'max-w-[120px] w-120px'
+                }}
             >
-                <div className={classes.valueSliderContainer}>
-                    <Typography className={classes.sliderValue}>
-                        <FormattedMessage
-                            id="Main.lang.years"
-                            defaultMessage="{countNode} year{count, plural, one {} other {s}}"
-                            values={{
-                                count: studiesLevel,
-                                countNode: <span className={classes.bolden}>{studiesLevel}</span>
-                            }}
-                        />
-                    </Typography>
-                    {/*
-                    // @ts-ignore */}
-                    <SliderWithPopper
-                        color="primary"
-                        name="studiesLevel"
-                        value={studiesLevel}
-                        onChange={handleChange}
-                        min={0}
-                        max={12}
-                        popperCardProps={{
-                            classes: {
-                                container: classes.sliderPopperCard,
-                                arrowContainer: classes.sliderPopperCardArrowContainer
-                            }
-                        }}
-                    />
-                </div>
+                {/*<div className={classes.valueSliderContainer}>*/}
+                {/*<Typography className={classes.sliderValue}>*/}
+                {/*    <FormattedMessage*/}
+                {/*        id='Main.lang.years'*/}
+                {/*        defaultMessage='{countNode} year{count, plural, one {} other {s}}'*/}
+                {/*        values={{*/}
+                {/*            count: studiesLevel,*/}
+                {/*            countNode: <span className={classes.bolden}>{studiesLevel}</span>*/}
+                {/*        }}*/}
+                {/*    />*/}
+                {/*</Typography>*/}
+                {/*/!**/}
+                {/*// @ts-ignore *!/*/}
+                {/*<SliderWithPopper*/}
+                {/*    color='primary'*/}
+                {/*    name='studiesLevel'*/}
+                {/*    value={studiesLevel}*/}
+                {/*    onChange={handleChange}*/}
+                {/*    min={0}*/}
+                {/*    max={12}*/}
+                {/*    popperCardProps={{*/}
+                {/*        classes: {*/}
+                {/*            container: classes.sliderPopperCard,*/}
+                {/*            arrowContainer: classes.sliderPopperCardArrowContainer*/}
+                {/*        }*/}
+                {/*    }}*/}
+                {/*/>*/}
+                <TextField
+                    type="number"
+                    min={0}
+                    max={12}
+                    onChange={handleChange}
+                    name="studiesLevel"
+                    value={studiesLevel ?? 0}
+                    variant="flat"
+                />
+                <Typography className="ml-1">
+                    <FormattedMessage id="Main.lang.year" defaultMessage="year(s)" />
+                </Typography>
+                {/*</div>*/}
             </EditDialogField>
             <EditDialogField
                 error={errors.codeExperienceYears}
@@ -211,37 +228,52 @@ const Content: React.FC<{ helpers: DialogContentRenderFunction<BasicCardDataType
                         defaultMessage="Tech experiences"
                     />
                 }
+                classes={{
+                    container: 'flex items-center',
+                    component: 'flex items-center flex-row',
+                    componentErrorContainer: 'max-w-[120px] w-120px'
+                }}
             >
-                <div className={classes.valueSliderContainer}>
-                    <Typography className={classes.sliderValue}>
-                        <FormattedMessage
-                            id="Main.lang.years"
-                            defaultMessage="{countNode} year{count, plural, one {} other {s}}"
-                            values={{
-                                count: codeExperienceYears,
-                                countNode: <span className={classes.bolden}>{codeExperienceYears}</span>
-                            }}
-                        />
-                    </Typography>
+                {/*<div className={classes.valueSliderContainer}>*/}
+                {/*<Typography className={classes.sliderValue}>*/}
+                {/*    <FormattedMessage*/}
+                {/*        id='Main.lang.years'*/}
+                {/*        defaultMessage='{countNode} year{count, plural, one {} other {s}}'*/}
+                {/*        values={{*/}
+                {/*            count: codeExperienceYears,*/}
+                {/*            countNode: <span className={classes.bolden}>{codeExperienceYears}</span>*/}
+                {/*        }}*/}
+                {/*    />*/}
+                {/*</Typography>*/}
 
-                    {/*
-                    // @ts-ignore */}
-                    <SliderWithPopper
-                        color="primary"
-                        name="codeExperienceYears"
-                        value={codeExperienceYears}
-                        onChange={handleChange}
-                        min={0}
-                        max={20}
-                        step={0.5}
-                        popperCardProps={{
-                            classes: {
-                                container: classes.sliderPopperCard,
-                                arrowContainer: classes.sliderPopperCardArrowContainer
-                            }
-                        }}
-                    />
-                </div>
+                {/*<SliderWithPopper*/}
+                {/*    color='primary'*/}
+                {/*    name='codeExperienceYears'*/}
+                {/*    value={codeExperienceYears}*/}
+                {/*    onChange={handleChange}*/}
+                {/*    min={0}*/}
+                {/*    max={20}*/}
+                {/*    step={0.5}*/}
+                {/*    popperCardProps={{*/}
+                {/*        classes: {*/}
+                {/*            container: classes.sliderPopperCard,*/}
+                {/*            arrowContainer: classes.sliderPopperCardArrowContainer*/}
+                {/*        }*/}
+                {/*    }}*/}
+                {/*/>*/}
+                <TextField
+                    type="number"
+                    min={0}
+                    max={40}
+                    onChange={handleChange}
+                    name="codeExperienceYears"
+                    value={codeExperienceYears ?? 0}
+                    variant="flat"
+                />
+                <Typography className="ml-1">
+                    <FormattedMessage id="Main.lang.year" defaultMessage="year(s)" />
+                </Typography>
+                {/*</div>*/}
             </EditDialogField>
             <EditDialogField
                 error={errors.otherExperienceYears}
@@ -257,34 +289,52 @@ const Content: React.FC<{ helpers: DialogContentRenderFunction<BasicCardDataType
                         defaultMessage="Non-tech experiences"
                     />
                 }
+                classes={{
+                    container: 'flex items-center',
+                    component: 'flex items-center flex-row',
+                    componentErrorContainer: 'max-w-[120px] w-120px'
+                }}
             >
-                <div className={classes.valueSliderContainer}>
-                    <Typography className={classes.sliderValue}>
-                        <FormattedMessage
-                            id="Main.lang.years"
-                            defaultMessage="{countNode} year{count, plural, one {} other {s}}"
-                            values={{
-                                count: otherExperienceYears,
-                                countNode: <span className={classes.bolden}>{otherExperienceYears}</span>
-                            }}
-                        />
-                    </Typography>
-                    <SliderWithPopper
-                        color="primary"
-                        name="otherExperienceYears"
-                        value={otherExperienceYears}
-                        onChange={handleChange}
-                        min={0}
-                        max={20}
-                        step={0.5}
-                        popperCardProps={{
-                            classes: {
-                                container: classes.sliderPopperCard,
-                                arrowContainer: classes.sliderPopperCardArrowContainer
-                            }
-                        }}
-                    />
-                </div>
+                {/*<div className={classes.valueSliderContainer}>*/}
+                {/*<Typography className={classes.sliderValue}>*/}
+                {/*    <FormattedMessage*/}
+                {/*        id='Main.lang.years'*/}
+                {/*        defaultMessage='{countNode} year{count, plural, one {} other {s}}'*/}
+                {/*        values={{*/}
+                {/*            count: otherExperienceYears,*/}
+                {/*            countNode: <span className={classes.bolden}>{otherExperienceYears}</span>*/}
+                {/*        }}*/}
+                {/*    />*/}
+                {/*</Typography>*/}
+                {/*    <SliderWithPopper*/}
+                {/*        color='primary'*/}
+                {/*        name='otherExperienceYears'*/}
+                {/*        value={otherExperienceYears}*/}
+                {/*        onChange={handleChange}*/}
+                {/*        min={0}*/}
+                {/*        max={20}*/}
+                {/*        step={0.5}*/}
+                {/*        popperCardProps={{*/}
+                {/*            classes: {*/}
+                {/*                container: classes.sliderPopperCard,*/}
+                {/*                arrowContainer: classes.sliderPopperCardArrowContainer*/}
+                {/*            }*/}
+                {/*        }}*/}
+                {/*    />*/}
+                <TextField
+                    type="number"
+                    min={0}
+                    max={40}
+                    onChange={handleChange}
+                    name="otherExperienceYears"
+                    value={otherExperienceYears ?? 0}
+                    variant="flat"
+                />
+                <Typography className="ml-1">
+                    <FormattedMessage id="Main.lang.year" defaultMessage="year(s)" />
+                </Typography>
+
+                {/*</div>*/}
             </EditDialogField>
             <EditDialogField
                 error={errors.codingReason}

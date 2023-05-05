@@ -24,16 +24,19 @@ export const EditDialogField: React.FC<{
     const classes = useStyles() as any;
     return (
         <div className={cn(classes.container, receivedClasses.container)}>
-            {title && (
-                <Typography classes={{ container: classes.title }} component="h3" variant="h4" color="dark">
-                    {title}
-                </Typography>
-            )}
-            {subtitle && (
-                <Typography classes={{ container: classes.subtitle }} component="p" variant="body2" color="dark">
-                    {subtitle}
-                </Typography>
-            )}
+            <div className="ds-flex ds-flex-col flex-1">
+                {title && (
+                    <Typography classes={{ container: classes.title }} component="h3" variant="h4" color="dark">
+                        {title}
+                    </Typography>
+                )}
+                {subtitle && (
+                    <Typography classes={{ container: classes.subtitle }} component="p" variant="body2" color="dark">
+                        {subtitle}
+                    </Typography>
+                )}
+            </div>
+
             <div className={cn(classes.componentErrorContainer, receivedClasses.componentErrorContainer)}>
                 <div className={cn(classes.component, receivedClasses.component)}>{children}</div>
                 {error && (

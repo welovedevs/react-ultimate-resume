@@ -16,12 +16,12 @@ export const BasicsValidationSchema = (formatMessage) =>
                     .required(formatMessage(validationTranslations.required))
             }),
         codeExperienceYears: Yup.number()
-            .min(0, formatMessage(validationTranslations.min, { min: 0 }))
-            .max(20, formatMessage(validationTranslations.max, { max: 20 }))
+            .min(0, formatMessage(validationTranslations.minNumber, { min: 0 }))
+            .max(40, formatMessage(validationTranslations.maxNumber, { max: 40 }))
             .required(formatMessage(validationTranslations.required)),
         studiesLevel: Yup.number()
-            .min(0, formatMessage(validationTranslations.min, { min: 0 }))
-            .max(12, formatMessage(validationTranslations.max, { max: 12 }))
+            .min(0, formatMessage(validationTranslations.minNumber, { min: 0 }))
+            .max(12, formatMessage(validationTranslations.maxNumber, { max: 12 }))
             .required(formatMessage(validationTranslations.required)),
         codingReason: Yup.string().min(10, formatMessage(validationTranslations.min, { min: 10 }))
     });

@@ -125,7 +125,7 @@
   },
   {
     "defaultMessage": "Responsibilities",
-    "id": "Developer.JobPerks.resopnsabilities"
+    "id": "Developer.JobPerks.responsibilities"
   },
   {
     "defaultMessage": "Perks (meal, tickets,... )",
@@ -420,10 +420,6 @@
     "id": "Basics.Back.Work.Title"
   },
   {
-    "defaultMessage": "Experience",
-    "id": "Basics.Back.CodingYears.title"
-  },
-  {
     "defaultMessage": "Training",
     "id": "Basics.Back.StudiesLevel.Title"
   },
@@ -440,16 +436,16 @@
     "id": "Basics.editDialog.title"
   },
   {
+    "defaultMessage": "Describe yourself in a few words.",
+    "id": "Basics.editDialog.summary.title"
+  },
+  {
     "defaultMessage": "Do you want to tell a bit more about you?",
     "id": "Basics.editDialog.personalDescription.title"
   },
   {
     "defaultMessage": "Use this space to describe yourself a bit more !",
     "id": "Basics.editDialog.personalDescription.subtitle"
-  },
-  {
-    "defaultMessage": "Describe yourself in a few words.",
-    "id": "Basics.editDialog.summary.title"
   },
   {
     "defaultMessage": "What's your current location?",
@@ -460,16 +456,8 @@
     "id": "Basics.editDialog.searchState.title"
   },
   {
-    "defaultMessage": "How long have you been coding?",
-    "id": "Basics.editDialog.codingYears.title"
-  },
-  {
-    "defaultMessage": "(every experiences, studies, personal projects, work...)",
-    "id": "Basics.editDialog.codingYears.subtitle"
-  },
-  {
-    "defaultMessage": "{countNode} year{count, plural, one {} other {s}}",
-    "id": "Main.lang.years"
+    "defaultMessage": "What's your job title?",
+    "id": "Basics.editDialog.globalJobTitle.title"
   },
   {
     "defaultMessage": "What is your highest level of formal education?",
@@ -478,6 +466,10 @@
   {
     "defaultMessage": "Bachelor = 3 years post graduate. Master = 5 years post graduate.",
     "id": "Basics.editDialog.studiesLevel.subtitle"
+  },
+  {
+    "defaultMessage": "year(s)",
+    "id": "Main.lang.year"
   },
   {
     "defaultMessage": "How many years of professional experience as a developer do you have?",

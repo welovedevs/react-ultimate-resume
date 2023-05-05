@@ -77,6 +77,7 @@
         "@babel/plugin-proposal-optional-chaining": "^7.9.0",
         "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
         "@babel/plugin-transform-runtime": "^7.17.0",
+
         "@babel/preset-env": "^7.16.11",
         "@emotion/react": "^11.10.5",
         "@emotion/styled": "^11.10.5",
