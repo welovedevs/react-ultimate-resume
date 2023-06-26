@@ -1,13 +1,12 @@
-import React, {memo, useEffect, useState} from 'react';
-import {FormattedMessage} from 'react-intl';
+import React, { memo, useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 
-import {PopperCard, Typography} from '@welovedevs/ui';
+import { PopperCard, Typography } from '@welovedevs/ui';
 
-import {ReactComponent as WarnIcon} from '../../../../assets/icons/warn.svg';
-import {useMode} from '../../../hooks/use_mode';
+import { ReactComponent as WarnIcon } from '../../../../assets/icons/warn.svg';
+import { useMode } from '../../../hooks/use_mode';
 
-
-const ProfileCardIncompletePopperComponent = ({open, onClose, anchorElement}) => {
+const ProfileCardIncompletePopperComponent = ({ open, onClose, anchorElement }) => {
     const [hasBeenMounted, setHasBeenMouneted] = useState(false);
     const [mode] = useMode();
 
@@ -20,9 +19,8 @@ const ProfileCardIncompletePopperComponent = ({open, onClose, anchorElement}) =>
     return (
         <PopperCard
             classes={{
-
-                container: "bg-danger-400",
-                arrowContainer: "text-danger-400"
+                container: 'bg-danger-400',
+                arrowContainer: 'text-danger-400'
             }}
             open={open}
             onClose={onClose}
@@ -30,11 +28,22 @@ const ProfileCardIncompletePopperComponent = ({open, onClose, anchorElement}) =>
             popperProps={{
                 placement: 'top',
                 disablePortal: true,
+                modifiers: [
+                    {
+                        name: 'preventOverflow'
+                    },
+                    {
+                        name: 'hide'
+                    },
+                    {
+                        name: 'flip',
+                        enabled: false
+                    }
+                ]
             }}
         >
-
             <Typography color="light" className="flex items-center">
-                <WarnIcon className="mr-1 w-3 h-3 fill-current"/>
+                <WarnIcon className="mr-1 w-3 h-3 fill-current" />
                 <FormattedMessage
                     id="ProfileCardIncompletePopper.label.value"
                     defaultMessage="This card is missing data"
