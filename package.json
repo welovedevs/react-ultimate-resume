@@ -1,6 +1,6 @@
 {
     "name": "@welovedevs/react-ultimate-resume",
-    "version": "1.3.10",
+    "version": "1.3.12",
     "description": "Developer profile for W3D",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
@@ -56,6 +56,7 @@
         "prop-types": "15.7.2",
         "react-dropzone": "^10.2.1",
         "react-emoji-render": "^1.2.1",
+        "react-scripts": "^5.0.1",
         "react-images": "^1.1.0-beta.3",
         "react-infinite-scroller": "^1.2.4",
         "react-intl": "^5.24.6",
