@@ -56,7 +56,6 @@
         "prop-types": "15.7.2",
         "react-dropzone": "^10.2.1",
         "react-emoji-render": "^1.2.1",
-        "react-scripts": "^5.0.1",
         "react-images": "^1.1.0-beta.3",
         "react-infinite-scroller": "^1.2.4",
         "react-intl": "^6.4.4",
@@ -120,6 +119,7 @@
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "readline-sync": "^1.4.10",
+
         "rimraf": "^3.0.0",
         "rollup": "^2.67.2",
         "rollup-plugin-auto-external": "^2.0.0",
