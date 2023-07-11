@@ -26,8 +26,8 @@
     "license": "AGPLv3",
     "peerDependencies": {
         "formik": "^2.1.2",
-        "react": "18.1.0",
-        "react-dom": "18.1.0",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
         "@welovedevs/ui": "1.4.16",
         "@emotion/react": "^11.10.5",
         "@emotion/styled": "^11.10.5",
@@ -39,8 +39,8 @@
         "@dnd-kit/core": "^6.0.5",
         "@dnd-kit/sortable": "^7.0.1",
         "@dnd-kit/utilities": "^3.2.0",
-        "@formatjs/intl-pluralrules": "^4.3.2",
-        "@formatjs/intl-relativetimeformat": "^10.0.0",
+        "@formatjs/intl-pluralrules": "^5.2.4",
+        "@formatjs/intl-relativetimeformat": "^11.2.4",
         "@material-ui/pickers": "^3.3.10",
         "@mui/x-date-pickers": "^5.0.10",
         "@types/giphy-api": "^2.0.2",
@@ -59,7 +59,7 @@
         "react-scripts": "^5.0.1",
         "react-images": "^1.1.0-beta.3",
         "react-infinite-scroller": "^1.2.4",
-        "react-intl": "^5.24.6",
+        "react-intl": "^6.4.4",
         "react-jss": "10.0.3",
         "react-slick": "^0.29.0",
         "react-use-dimensions": "^1.2.1",
@@ -117,6 +117,8 @@
         "prettier": "2.0.2",
         "react-intl-translations-manager": "^5.0.3",
         "react-scripts": "^5.0.1",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
         "readline-sync": "^1.4.10",
         "rimraf": "^3.0.0",
         "rollup": "^2.67.2",
@@ -134,9 +136,7 @@
         "webpack-node-externals": "^3.0.0"
     },
     "resolutions": {
-        "jss": "10.0.3",
-        "react": "18.1.0",
-        "react-dom": "18.1.0"
+        "jss": "10.0.3"
     },
     "eslintConfig": {
         "extends": "react-app"
