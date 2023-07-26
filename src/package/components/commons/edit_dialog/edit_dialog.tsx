@@ -18,7 +18,7 @@ import { styles } from './edit_dialog_styles';
 
 import Yup from 'yup';
 import { DialogContentRenderFunction } from './edit_dialog_types';
-import Warning from '@mui/icons-material/Warning';
+import { ReactComponent as Warning } from '../../../assets/icons/warn.svg';
 
 const useStyles = makeStyles(styles as any);
 
@@ -245,7 +245,7 @@ const Actions = <T extends { [key: string]: any }>({
                     classes={{ typography: 'flex flex-col' }}
                 >
                     <span className="flex items-center">
-                        {hasErrors && <Warning className="mr-1" />}
+                        {hasErrors && <Warning className="fill-current w-2 h-2 mr-1" />}
                         <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
                     </span>
                     {hasErrors && (
