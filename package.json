@@ -82,7 +82,6 @@
         "@emotion/styled": "^11.10.5",
         "@mui/material": "^5.10.17",
         "@mui/styles": "^5.10.16",
-        "@mui/icons-material": "^5.10.16",
         "@babel/preset-typescript": "^7.16.7",
         "@formatjs/cli": "^4.2.31",
         "@kurone-kito/jsonresume-types": "^0.3.4",
