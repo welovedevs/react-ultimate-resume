@@ -170,7 +170,7 @@ const Content: React.FC<{ helpers: DialogContentRenderFunction<BasicCardDataType
                 classes={{
                     container: 'flex items-center',
                     component: 'flex items-center flex-row',
-                    componentErrorContainer: 'max-w-[120px] w-120px'
+                    componentErrorContainer: 'max-w-[130px] w-130px'
                 }}
             >
                 {/*<div className={classes.valueSliderContainer}>*/}
@@ -231,7 +231,7 @@ const Content: React.FC<{ helpers: DialogContentRenderFunction<BasicCardDataType
                 classes={{
                     container: 'flex items-center',
                     component: 'flex items-center flex-row',
-                    componentErrorContainer: 'max-w-[120px] w-120px'
+                    componentErrorContainer: 'max-w-[130px] w-130px'
                 }}
             >
                 {/*<div className={classes.valueSliderContainer}>*/}
@@ -292,7 +292,7 @@ const Content: React.FC<{ helpers: DialogContentRenderFunction<BasicCardDataType
                 classes={{
                     container: 'flex items-center',
                     component: 'flex items-center flex-row',
-                    componentErrorContainer: 'max-w-[120px] w-120px'
+                    componentErrorContainer: 'max-w-[130px] w-130px'
                 }}
             >
                 {/*<div className={classes.valueSliderContainer}>*/}

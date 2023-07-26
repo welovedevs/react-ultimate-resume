@@ -9,6 +9,10 @@ export const translations = defineMessages({
         id: 'Studies.editDialog.schoolName.placeholder',
         defaultMessage: 'Epitech, Supinfo, 42, ISEN, IG2I...'
     },
+    endYearPlaceholder: {
+        id: 'Studies.editDialog.endYear.placeholder',
+        defaultMessage: 'Année de fin, ex : 2023'
+    },
     diplomaTitle: {
         id: 'Studies.editDialog.diploma.title',
         defaultMessage: 'Obtained diploma'

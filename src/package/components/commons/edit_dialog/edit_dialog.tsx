@@ -8,7 +8,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import { Formik, useFormikContext } from 'formik';
 
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { Button, Tooltip } from '@welovedevs/ui';
+import { Button, Tooltip, Typography } from '@welovedevs/ui';
 
 import { Dialog, DialogActions, DialogContent, DialogProps } from '@mui/material';
 
@@ -18,6 +18,8 @@ import { styles } from './edit_dialog_styles';
 
 import Yup from 'yup';
 import { DialogContentRenderFunction } from './edit_dialog_types';
+import Warning from '@mui/icons-material/Warning';
+
 const useStyles = makeStyles(styles as any);
 
 interface Props<T> {
@@ -59,6 +61,7 @@ export const EditDialog = <T extends { [key: string]: any }>({
         <Dialog
             fullScreen={fullScreen || isMobile}
             classes={{
+                root: classes.root,
                 paper: cn(classes.paper, receivedClasses.paper, fullScreen && classes.fullScreen)
             }}
             open={open}
@@ -213,29 +216,48 @@ const Actions = <T extends { [key: string]: any }>({
     classes,
     receivedClasses,
     isEditing
-}: ActionProps<T>) => (
-    <DialogActions
-        classes={{
-            root: cn(classes.actions, receivedClasses?.actions)
-        }}
-    >
-        <Tooltip
-            title={<FormattedMessage id="EditDialog.close.tooltip" defaultMessage="Any modification won't be saved!" />}
+}: ActionProps<T>) => {
+    const { errors } = useFormikContext();
+    let hasErrors = !!Object.entries(errors).length;
+    console.log({ errors });
+    return (
+        <DialogActions
+            classes={{
+                root: cn(classes.actions, receivedClasses?.actions)
+            }}
         >
-            <Button size="small" onClick={onClose as any}>
-                <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
-            </Button>
-        </Tooltip>
-        {isEditing && (
-            <Button
-                variant={fullScreen ? 'contained' : 'text'}
-                type="submit"
-                size="small"
-                color="primary"
-                onClick={handleSubmit}
+            <Tooltip
+                title={
+                    <FormattedMessage id="EditDialog.close.tooltip" defaultMessage="Any modification won't be saved!" />
+                }
             >
-                <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
-            </Button>
-        )}
-    </DialogActions>
-);
+                <Button size="small" onClick={onClose as any}>
+                    <FormattedMessage id="Main.lang.close" defaultMessage="Close" />
+                </Button>
+            </Tooltip>
+            {isEditing && (
+                <Button
+                    variant={fullScreen ? 'contained' : 'text'}
+                    type="submit"
+                    size="small"
+                    color={hasErrors ? 'danger' : 'primary'}
+                    onClick={handleSubmit}
+                    classes={{ typography: 'flex flex-col' }}
+                >
+                    <span className="flex items-center">
+                        {hasErrors && <Warning className="mr-1" />}
+                        <FormattedMessage id="Main.lang.save" defaultMessage="Save" />
+                    </span>
+                    {hasErrors && (
+                        <Typography variant="body3" color={'danger'}>
+                            <FormattedMessage
+                                id="EditDialog.save.hasErrors"
+                                defaultMessage="(Erreurs dans le formulaire)"
+                            />
+                        </Typography>
+                    )}
+                </Button>
+            )}
+        </DialogActions>
+    );
+};

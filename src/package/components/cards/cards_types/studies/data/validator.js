@@ -10,11 +10,10 @@ export const StudiesValidator = (formatMessage) =>
                     institution: Yup.string().required(formatMessage(validationTranslations.required)),
                     studyType: Yup.string().required(formatMessage(validationTranslations.required)),
                     area: Yup.string().required(formatMessage(validationTranslations.required)),
-                    endDate: Yup.object().test(
-                        'is-not-empty',
-                        formatMessage(validationTranslations.required),
-                        (value) => !!value && !Number.isNaN(Number(value.year()))
-                    )
+                    endDate: Yup.number()
+                        .required(formatMessage(validationTranslations.required))
+                        .min(1970, formatMessage(validationTranslations.minNumber, { min: 1970 }))
+                        .max(2100, formatMessage(validationTranslations.minNumber, { min: 2100 }))
                 })
             )
             .required(formatMessage(studiesTranslations.atLeastOne))

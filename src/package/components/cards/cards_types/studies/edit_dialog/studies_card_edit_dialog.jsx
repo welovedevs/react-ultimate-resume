@@ -8,7 +8,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Twemoji } from 'react-emoji-render';
 
-import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { closestCenter, DndContext, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import {
     arrayMove,
     SortableContext,
@@ -24,7 +24,7 @@ import range from 'lodash/range';
 import moment from 'moment';
 import uuid from 'uuid/v4';
 
-import { List, ListItem, TextField, Tooltip, Typography } from '@welovedevs/ui';
+import { Button, List, ListItem, TextField, Tooltip, Typography } from '@welovedevs/ui';
 
 import { MenuItem, useMediaQuery } from '@mui/material';
 
@@ -40,9 +40,7 @@ import { AddButton } from '../../../../commons/add_button/add_button';
 
 import { translations } from './studies_translations';
 import { styles } from './studies_styles';
-import { STUDIES_CONTENT_TRANSITION_PROPS } from './studies_edit_dialog_props';
 import { AnimatePresence, motion } from 'framer-motion';
-import { DEFAULT_SPRING_TYPE as spring } from '../../../../../utils/framer_motion/common_types/spring_type';
 
 const useStyles = makeStyles(styles);
 
@@ -169,22 +167,22 @@ const FormationItem = ({
     const handleInstitutionChange = useCallback((event) => onChange(index, 'institution', event.target.value), [index]);
     const handleStudyType = useCallback((event) => onChange(index, 'studyType', event.target.value), [index]);
     const handleAreaChange = useCallback((event) => onChange(index, 'area', event.target.value), [index]);
-    const handleEndDate = useCallback((value) => onChange(index, 'endDate', moment({ year: value })), [index]);
+    const handleEndDate = useCallback((event) => onChange(index, 'endDate', Number(event.target.value)), [index]);
 
     const hasError = Boolean(fieldErrors);
 
     return (
         <div className={classes.study} style={style} ref={setNodeRef}>
-            <div className={classes.itemContainer}>
-                <div className={classes.header}>
+            <div className={'flex flex-col mb-1'}>
+                <div className={'flex items-center'}>
                     <button className={classes.dragHandleButton} type="button" {...attributes} {...listeners}>
                         <MoveIcon className={classes.dragHandle} />
                     </button>
                     <div className={classes.divider} />
                     <Tooltip title={<FormattedMessage id="Main.lang.delete" defaultMessage="Delete" />}>
-                        <button className={classes.removeButton} type="button" onClick={onRemove(id)}>
-                            <DeleteIcon className={classes.removeIcon} />
-                        </button>
+                        <Button className="m-0" color="danger" type="button" size="xs" onClick={onRemove(id)}>
+                            <DeleteIcon className="fill-current" />
+                        </Button>
                     </Tooltip>
                     {!isMobile && <div className={classes.divider} />}
                     <ListItem
@@ -213,18 +211,15 @@ const FormationItem = ({
                         </Typography>
                     </ListItem>
                 </div>
-                <AnimatePresence>
-                    {!folded && (
-                        <motion.div
-                            variants={STUDIES_CONTENT_TRANSITION_PROPS}
-                            initial="initial"
-                            animate="animate"
-                            exit="exit"
-                            transition={spring}
-                            className={cn(classes.listItem, fieldErrors && classes.listItemError)}
-                        >
+                {!folded && (
+                    <div className={'flex items-stretch my-1'}>
+                        <div className={'w-[1px] bg-dark-50 mx-2'} />
+                        <div className={cn(classes.listItem, fieldErrors && classes.listItemError)}>
                             <div className={classes.fieldGroup}>
                                 <div className={classes.field}>
+                                    <Typography component="p" color="dark" variant="label">
+                                        {formatMessage(translations.schoolName)}
+                                    </Typography>
                                     <TextField
                                         fullWidth
                                         variant="flat"
@@ -240,12 +235,26 @@ const FormationItem = ({
                                     )}
                                 </div>
                                 <div className={classes.field}>
-                                    <SelectComponent
-                                        onChange={handleEndDate}
-                                        id={formation.id}
+                                    <Typography component="p" color="dark" variant="label">
+                                        {formatMessage(translations.diplomaDate)}
+                                    </Typography>
+                                    <TextField
+                                        fullWidth
+                                        variant="flat"
+                                        min={1970}
+                                        max={2100}
                                         value={formation.endDate}
-                                        classes={classes}
+                                        type="number"
+                                        onChange={handleEndDate}
+                                        id={`formation_institution_${id}`}
+                                        placeholder={formatMessage(translations.endYearPlaceholder)}
                                     />
+                                    {/*<SelectComponent*/}
+                                    {/*    onChange={handleEndDate}*/}
+                                    {/*    id={formation.id}*/}
+                                    {/*    value={formation.endDate}*/}
+                                    {/*    classes={classes}*/}
+                                    {/*/>*/}
                                     {fieldErrors && fieldErrors.endDate && (
                                         <Typography color="danger" variant="helper" component="p">
                                             {fieldErrors.endDate}
@@ -255,6 +264,9 @@ const FormationItem = ({
                             </div>
                             <div className={classes.fieldGroup}>
                                 <div className={classes.field}>
+                                    <Typography component="p" color="dark" variant="label">
+                                        {formatMessage(translations.diplomaTitle)}
+                                    </Typography>
                                     <TextField
                                         id={`formation_diploma_${id}`}
                                         fullWidth
@@ -274,6 +286,9 @@ const FormationItem = ({
                                     )}
                                 </div>
                                 <div className={classes.field}>
+                                    <Typography component="p" color="dark" variant="label">
+                                        {formatMessage(translations.mainCourse)}
+                                    </Typography>
                                     <TextField
                                         id={`formation_area_${id}`}
                                         fullWidth
@@ -293,9 +308,9 @@ const FormationItem = ({
                                     )}
                                 </div>
                             </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

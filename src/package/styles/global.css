@@ -4,3 +4,6 @@
 
 @tailwind utilities;
 
+* {
+    --font-plus_jakarta_sans:'Plus Jarkata Sans'
+}
