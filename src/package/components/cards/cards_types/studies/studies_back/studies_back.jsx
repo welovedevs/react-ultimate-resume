@@ -27,7 +27,7 @@ const Study = ({ study }) => {
     }, [study]);
 
     const date = useMemo(() => {
-        const year = typeof endDate?.year === 'function' ? endDate.year() : null;
+        const year = typeof endDate?.year === 'function' ? endDate.year() : endDate ?? null;
         if (!Number.isNaN(Number(year))) {
             return year;
         }
