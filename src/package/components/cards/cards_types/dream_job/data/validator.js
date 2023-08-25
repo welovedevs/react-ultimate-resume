@@ -42,14 +42,16 @@ export const DreamJobValidationSchema = (formatMessage) =>
             frequency: Yup.string()
                 .required(formatMessage(validationTranslations.required))
                 .oneOf(Object.values(RemoteFrequenciesV2).map((value) => value)),
-            daysPerWeek: Yup.number().when('frequency', {
-                is: (value) => value === RemoteFrequenciesV2.hybrid,
-                then: Yup.number()
-                    .nullable()
-                    .min(1, formatMessage(validationTranslations.minEqNumber, { min: 1 }))
-                    .max(5, formatMessage(validationTranslations.maxEqNumber, { max: 5 })),
-                otherwise: Yup.number().notRequired()
-            })
+            daysPerWeek: Yup.number()
+                .nullable()
+                .when('frequency', {
+                    is: (value) => value === RemoteFrequenciesV2.hybrid,
+                    then: Yup.number()
+                        .required(formatMessage(validationTranslations.required))
+                        .min(1, formatMessage(validationTranslations.minEqNumber, { min: 1 }))
+                        .max(5, formatMessage(validationTranslations.maxEqNumber, { max: 5 })),
+                    otherwise: Yup.number().notRequired()
+                })
         })
     });
 

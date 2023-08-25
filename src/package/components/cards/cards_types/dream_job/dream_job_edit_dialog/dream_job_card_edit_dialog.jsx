@@ -101,7 +101,13 @@ const Content = ({ helpers: { handleValueChange } }) => {
                 <Select
                     fullWidth
                     value={remoteFrequency.frequency}
-                    onChange={handleChange('remoteFrequency.frequency')}
+                    onChange={(value) => {
+                        setFieldValue('remoteFrequency.frequency', value);
+
+                        if (value !== 'hybrid') {
+                            setFieldValue('remoteFrequency.daysPerWeek', null);
+                        }
+                    }}
                     textFieldProps={{ variant: 'flat' }}
                     textFieldIconProps={{ className: classes.selectIcon }}
                 >
