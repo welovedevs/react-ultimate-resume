@@ -1,6 +1,7 @@
-import { defineMessages } from 'react-intl';
+import { defineMessages, MessageDescriptor } from 'react-intl';
+import { JobPerksKeys } from '../../types/enums/job_perks/job_perks_utils';
 
-export const jobPerksTranslations = defineMessages({
+export const jobPerksTranslations: { [key in JobPerksKeys]: MessageDescriptor } = defineMessages({
     mood: {
         id: 'Developer.JobPerks.mood',
         defaultMessage: 'Great ambiance'

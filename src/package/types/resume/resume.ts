@@ -1,9 +1,10 @@
-import { RemoteFrequencies } from '../enums/remote/remote_utils';
+import { RemoteFrequencies, RemoteFrequenciesV2 } from '../enums/remote/remote_utils';
 import { JobIssues } from '../enums/job_issues/job_issues_utils';
 import { ContractTypes } from '../enums/contract_types/contract_types';
 import { JobSearchStates } from '../enums/job_serachstate/job_search_state';
 import { AvailableCardsTypes } from '../../components/cards/utils/cards_order';
 import { ResumeSchema } from '@kurone-kito/jsonresume-types';
+import { JobPerksKeys } from '../enums/job_perks/job_perks_utils';
 
 export interface GifUser {
     name: string;
@@ -19,8 +20,24 @@ export interface SpecificWeloveDevsBasics {
 }
 
 export interface SpecificWeloveDevsDreamJob {
-    locations: Array<{ name: string }>;
-    remoteFrequency?: RemoteFrequencies;
+    averageDailyRate?: string;
+    salary?: string;
+    perks?: { [key in JobPerksKeys | string]: boolean } | null;
+    locations: Array<{
+        name: string;
+        id?: string;
+    }>;
+    remoteFrequency?:
+        | {
+              frequency: typeof RemoteFrequenciesV2.no;
+          }
+        | {
+              frequency: typeof RemoteFrequenciesV2.fullTime;
+          }
+        | {
+              frequency: typeof RemoteFrequenciesV2.hybrid;
+              daysPerWeek: number | null;
+          };
 }
 
 export interface SpecificWeloveDevsCurrentJob {
@@ -48,6 +65,7 @@ export interface SpecificWeloveDevsSound {
 export interface SpecificWeloveDevsProps {
     basics: Partial<SpecificWeloveDevsBasics>;
     dreamJob: Partial<SpecificWeloveDevsDreamJob>;
+
     currentJob: Partial<SpecificWeloveDevsCurrentJob>;
     education: Partial<SpecificWeloveDevsEducation>;
     work: Partial<SpecificWeloveDevsWork>;
@@ -79,4 +97,5 @@ export interface CustomResumeTypes {
     specific: Partial<SpecificWeloveDevsProps>;
     resumeCustomization: Partial<ResumeCustomization>;
 }
+
 export type DeveloperResume = ResumeSchema & CustomResumeTypes;

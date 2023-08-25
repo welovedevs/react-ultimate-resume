@@ -7,7 +7,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { TextField, Typography } from '@welovedevs/ui';
 import { CheckboxGroup } from '../../../../../commons/checkbox_group/checkbox_group';
 import { CheckboxField } from '../../../../../commons/checkbox_field/checkbox_group';
-import { JobPerksEnum } from '../../../../../../types/enums/job_perks/job_perks_utils';
+import { JobPerks as JobPerksEnum } from '../../../../../../types/enums/job_perks/job_perks_utils';
 import { EditDialogField } from '../../../../../commons/edit_dialog_field/edit_dialog_field';
 
 import { jobPerksTranslations } from '../../../../../../utils/enums_translations/job_perks_translations';

@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import { validationTranslations } from '../../../../../utils/validation_translations';
 import { dreamjobValidationTranslations } from './validator_translations';
 import { hasOnlyFreelanceContract } from '../../../utils/has_only_freelance_contract';
+import { RemoteFrequenciesV2 } from '../../../../../types/enums/remote/remote_utils';
 
 export const DreamJobValidationSchema = (formatMessage) =>
     Yup.object({
@@ -36,6 +37,19 @@ export const DreamJobValidationSchema = (formatMessage) =>
             is: (contractType) => hasOnlyFreelanceContract(contractType),
             then: Yup.number().min(1, formatMessage(validationTranslations.minNumber, { min: 1 })),
             otherwise: Yup.number().nullable().notRequired()
+        }),
+        remoteFrequency: Yup.object({
+            frequency: Yup.string()
+                .required(formatMessage(validationTranslations.required))
+                .oneOf(Object.values(RemoteFrequenciesV2).map((value) => value)),
+            daysPerWeek: Yup.number().when('frequency', {
+                is: (value) => value === RemoteFrequenciesV2.hybrid,
+                then: Yup.number()
+                    .nullable()
+                    .min(1, formatMessage(validationTranslations.minEqNumber, { min: 1 }))
+                    .max(5, formatMessage(validationTranslations.maxEqNumber, { max: 5 })),
+                otherwise: Yup.number().notRequired()
+            })
         })
     });
 

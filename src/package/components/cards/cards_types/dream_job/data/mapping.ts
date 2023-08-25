@@ -1,6 +1,8 @@
+// @ts-ignore
 import uuid from 'uuid/v4';
+import { DeveloperResume } from '../../../../../types/resume/resume';
 
-export const mapDreamJobFromJsonResume = (jsonResume) => ({
+export const mapDreamJobFromJsonResume = (jsonResume: DeveloperResume) => ({
     places: (jsonResume.specific?.dreamJob?.locations ?? []).map((location) => ({
         ...location,
         id: location.id || uuid()
@@ -13,7 +15,7 @@ export const mapDreamJobFromJsonResume = (jsonResume) => ({
     currentJobIssues: jsonResume.specific?.currentJob?.issues
 });
 
-export const mapDreamJobToJsonResume = (data) => ({
+export const mapDreamJobToJsonResume = (data: ReturnType<typeof mapDreamJobFromJsonResume>) => ({
     specific: {
         dreamJob: {
             locations: data.places,

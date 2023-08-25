@@ -11,7 +11,7 @@ export const translations = defineMessages({
     },
     endYearPlaceholder: {
         id: 'Studies.editDialog.endYear.placeholder',
-        defaultMessage: 'Année de fin, ex : 2023'
+        defaultMessage: 'End year, ex : 2023'
     },
     diplomaTitle: {
         id: 'Studies.editDialog.diploma.title',

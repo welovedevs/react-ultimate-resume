@@ -20,6 +20,14 @@
     "id": "Form.validation.global.number.min"
   },
   {
+    "defaultMessage": "This field must be greater or equal to {min}",
+    "id": "Form.validation.global.number.minEq"
+  },
+  {
+    "defaultMessage": "This field must be less or equal to {max}",
+    "id": "Form.validation.global.number.maxEq"
+  },
+  {
     "defaultMessage": "This field must be lower than {max}",
     "id": "Form.validation.global.number.max"
   },
@@ -157,38 +165,30 @@
   },
   {
     "defaultMessage": "No",
-    "id": "Developer.RemoteFrequency.Select.Never"
+    "id": "Developer.RemoteFrequency.Select.no"
   },
   {
-    "defaultMessage": "Occasionally",
-    "id": "Developer.RemoteFrequency.Select.Occasionally"
+    "defaultMessage": "Yes, partially",
+    "id": "Developer.RemoteFrequency.Select.hybrid"
   },
   {
-    "defaultMessage": "Regularly",
-    "id": "Developer.RemoteFrequency.Select.Regularly"
-  },
-  {
-    "defaultMessage": "Full-time",
-    "id": "Developer.RemoteFrequency.Select.FullTime"
+    "defaultMessage": "Yes, Full time",
+    "id": "Developer.RemoteFrequency.Select.fullTime"
   },
   {
     "defaultMessage": "Other",
     "id": "Developer.RemoteFrequency.Select.Other"
   },
   {
-    "defaultMessage": "I'm not interested by remote work",
-    "id": "Developer.RemoteFrequency.Display.never"
+    "defaultMessage": "I don't want to remote work",
+    "id": "Developer.RemoteFrequency.Display.no"
   },
   {
-    "defaultMessage": "I'm interested by occasional remote work (a few times a month)",
-    "id": "Developer.RemoteFrequency.Display.occasionally"
+    "defaultMessage": "I'd like to remote work {daysPerWeek,plural, =0 { } =1 {(1 day per week)} other {(# days per week)}}",
+    "id": "Developer.RemoteFrequency.Display.hybrid"
   },
   {
-    "defaultMessage": "I'm interested by regular remote work (a few times a week)",
-    "id": "Developer.RemoteFrequency.Display.regularly"
-  },
-  {
-    "defaultMessage": "I'm interested by full-time remote work",
+    "defaultMessage": "I want to work remotely",
     "id": "Developer.RemoteFrequency.Display.fullTime"
   },
   {
@@ -254,6 +254,10 @@
   {
     "defaultMessage": "Save",
     "id": "Main.lang.save"
+  },
+  {
+    "defaultMessage": "(Erreurs dans le formulaire)",
+    "id": "EditDialog.save.hasErrors"
   },
   {
     "defaultMessage": "Error",
@@ -520,10 +524,6 @@
     "id": "Dreamjob.Back.Location.CurrentJobIssues.Title"
   },
   {
-    "defaultMessage": "I want to work remotely",
-    "id": "Dreamjob.Back.Location.RemoteOnly"
-  },
-  {
     "defaultMessage": "My dreamjob location",
     "id": "Dreamjob.Back.Location.Title"
   },
@@ -542,6 +542,10 @@
   {
     "defaultMessage": "Do you want to work remotely?",
     "id": "DreamJob.editDialog.remoteFrequency.title"
+  },
+  {
+    "defaultMessage": "How many days per week?",
+    "id": "DreamJob.editDialog.remoteFrequency.daysPerWeek.title"
   },
   {
     "defaultMessage": "What contract types are you currently looking for?",
@@ -922,6 +926,10 @@
   {
     "defaultMessage": "Epitech, Supinfo, 42, ISEN, IG2I...",
     "id": "Studies.editDialog.schoolName.placeholder"
+  },
+  {
+    "defaultMessage": "End year, ex : 2023",
+    "id": "Studies.editDialog.endYear.placeholder"
   },
   {
     "defaultMessage": "Obtained diploma",

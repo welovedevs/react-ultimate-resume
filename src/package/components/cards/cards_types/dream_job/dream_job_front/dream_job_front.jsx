@@ -1,9 +1,8 @@
 import React, { memo, useCallback, useMemo } from 'react';
 
 import { FormattedMessage } from 'react-intl';
-import { useTheme } from "@mui/styles";
+import { useTheme } from '@mui/styles';
 import makeStyles from '@mui/styles/makeStyles';
-
 
 import { ProfileCardPaddedFront } from '../../../../commons/profile_card/profile_card_padded_front/profile_card_padding_front';
 import { CenterContentContainer } from '../../../../commons/center_content_container/center_content_container';
@@ -15,7 +14,7 @@ import { ProfileCardButton } from '../../../../commons/profile_card/profile_card
 import { ReactComponent as HomeLogo } from '../../../../../assets/icons/home.svg';
 
 import { useCardSide } from '../../../../hooks/profile_card_hooks/use_card_side';
-import { REMOTE_FREQUENCY } from '../../../../../types/enums/remote/remote_utils';
+import { RemoteFrequenciesV2 } from '../../../../../types/enums/remote/remote_utils';
 import { SIDES } from '../../../../commons/profile_card/profile_card_side/side';
 
 import { styles } from './dream_job_front_styles';
@@ -40,7 +39,7 @@ const DreamJobFrontComponent = ({ data }) => {
         return ` (+ ${places.length - 1})`;
     }, [places]);
     const content = useMemo(() => {
-        if (remoteFrequency === REMOTE_FREQUENCY.FULL_TIME) {
+        if (remoteFrequency.frequency === RemoteFrequenciesV2.fullTime) {
             return (
                 <>
                     <ProfileCardFrontVector classes={{ container: classes.logo }} vector={HomeLogo} />

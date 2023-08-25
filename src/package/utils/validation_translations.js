@@ -21,6 +21,14 @@ export const validationTranslations = defineMessages({
         id: 'Form.validation.global.number.min',
         defaultMessage: 'This field must be greater than {min}'
     },
+    minEqNumber: {
+        id: 'Form.validation.global.number.minEq',
+        defaultMessage: 'This field must be greater or equal to  {min}'
+    },
+    maxEqNumber: {
+        id: 'Form.validation.global.number.maxEq',
+        defaultMessage: 'This field must be less or equal to {max}'
+    },
     maxNumber: {
         id: 'Form.validation.global.number.max',
         defaultMessage: 'This field must be lower than {max}'

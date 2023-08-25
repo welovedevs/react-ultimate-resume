@@ -26,7 +26,8 @@
             {
                 "network": "codingame",
                 "username": "ed3ee82f9630e99db32dec093b2ca07a0368002"
-            }, {
+            },
+            {
                 "network": "github",
                 "username": "clementdevos"
             },
@@ -151,10 +152,23 @@
         }
     ],
     "languages": [
-        { "language": "English", "value": 100, "fluency": "Native speaker" },
-        { "language": "Italien", "value": 15, "fluency": "Native speaker" }
+        {
+            "language": "English",
+            "value": 100,
+            "fluency": "Native speaker"
+        },
+        {
+            "language": "Italien",
+            "value": 15,
+            "fluency": "Native speaker"
+        }
     ],
-    "references": [{ "name": "Jane Doe", "reference": "Reference..." }],
+    "references": [
+        {
+            "name": "Jane Doe",
+            "reference": "Reference..."
+        }
+    ],
     "projects": [],
     "specific": {
         "basics": {
@@ -162,13 +176,31 @@
             "personalDescription": "This is a longer description of me, of my backstory, my backyard, my backfire, my backend, my frontend and my friends."
         },
         "dreamJob": {
-            "locations": [{ "name": "Valenciennes, France" }, { "name": "Lille, France" }, { "name": "Paris,France" }],
-            "remoteFrequency": "regularly"
+            "locations": [
+                {
+                    "name": "Valenciennes, France"
+                },
+                {
+                    "name": "Lille, France"
+                },
+                {
+                    "name": "Paris,France"
+                }
+            ],
+            "remoteFrequency": {
+                "frequency": "hybrid",
+                "daysPerWeek": 2
+            }
         },
         "currentJob": {
-            "issues": { "z": true, "boring_team": true }
+            "issues": {
+                "z": true,
+                "boring_team": true
+            }
         },
-        "education": { "studiesLevel": null },
+        "education": {
+            "studiesLevel": null
+        },
         "work": {
             "contractTypes": ["permanent", "freelance", "internship"],
             "codingReason": "J'ai commencé à coder sur Amstrad dans ma cave et je n'ai jamais arrêté depuis",
@@ -188,17 +220,50 @@
             "alt": "Default Banner"
         },
         "cardsOrder": [
-            { "type": "basics", "variant": 4 },
-            { "type": "skills", "variant": 0 },
-            { "type": "dreamjob", "variant": 4 },
-            { "type": "projects", "variant": 4 },
-            { "type": "experiences", "variant": 4 },
-            { "type": "studies", "variant": 4 },
-            { "type": "gifs", "variant": 0 },
-            { "type": "interestedBy", "variant": 3 },
-            { "type": "language", "variant": 4 },
-            { "type": "soundtrack", "variant": 4 },
-            { "type": "social", "variant": 4 }
+            {
+                "type": "basics",
+                "variant": 4
+            },
+            {
+                "type": "skills",
+                "variant": 0
+            },
+            {
+                "type": "dreamjob",
+                "variant": 4
+            },
+            {
+                "type": "projects",
+                "variant": 4
+            },
+            {
+                "type": "experiences",
+                "variant": 4
+            },
+            {
+                "type": "studies",
+                "variant": 4
+            },
+            {
+                "type": "gifs",
+                "variant": 0
+            },
+            {
+                "type": "interestedBy",
+                "variant": 3
+            },
+            {
+                "type": "language",
+                "variant": 4
+            },
+            {
+                "type": "soundtrack",
+                "variant": 4
+            },
+            {
+                "type": "social",
+                "variant": 4
+            }
         ],
         "fields": {
             "work": {

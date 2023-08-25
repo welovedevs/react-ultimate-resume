@@ -5,7 +5,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { useFormikContext } from 'formik';
 import uuid from 'uuid/v4';
 
-import { ListItem } from '@welovedevs/ui';
+import { ListItem, TextField } from '@welovedevs/ui';
 
 import { EditDialog } from '../../../../commons/edit_dialog/edit_dialog';
 import { EditDialogField } from '../../../../commons/edit_dialog_field/edit_dialog_field';
@@ -20,7 +20,7 @@ import { PerksField } from './perks_field/perks_field';
 import { CurrentJobIssuesField } from './current_job_issues_field/current_job_issues_field';
 import { LocationPlacesField } from './location_places_field/location_places_field';
 
-import { REMOTE_FREQUENCY } from '../../../../../types/enums/remote/remote_utils';
+import { RemoteFrequenciesV2 } from '../../../../../types/enums/remote/remote_utils';
 import { remoteSelectTranslations } from '../../../../../utils/enums_translations/remote_filter_translations';
 import { contractTypesTranslations } from '../../../../../utils/enums_translations/contract_types_translations';
 
@@ -58,9 +58,16 @@ const Content = ({ helpers: { handleValueChange } }) => {
     const perks = values.perks ?? DEFAULT_OBJECT;
     const currentJobIssues = values.currentJobIssues ?? DEFAULT_OBJECT;
 
-    const addPlace = useCallback((place) => handleValueChange('places')(places.concat({ ...place, id: uuid() })), [
-        places
-    ]);
+    const addPlace = useCallback(
+        (place) =>
+            handleValueChange('places')(
+                places.concat({
+                    ...place,
+                    id: uuid()
+                })
+            ),
+        [places]
+    );
 
     const removePlace = useCallback(
         (id) => () => handleValueChange('places')(places.filter((place) => place.id !== id)),
@@ -83,7 +90,7 @@ const Content = ({ helpers: { handleValueChange } }) => {
                 setFieldValue={setFieldValue}
             />
             <EditDialogField
-                error={errors.remoteFrequency}
+                error={errors.remoteFrequency?.frequency}
                 title={
                     <FormattedMessage
                         id="DreamJob.editDialog.remoteFrequency.title"
@@ -93,18 +100,38 @@ const Content = ({ helpers: { handleValueChange } }) => {
             >
                 <Select
                     fullWidth
-                    value={remoteFrequency}
-                    onChange={handleChange('remoteFrequency')}
+                    value={remoteFrequency.frequency}
+                    onChange={handleChange('remoteFrequency.frequency')}
                     textFieldProps={{ variant: 'flat' }}
                     textFieldIconProps={{ className: classes.selectIcon }}
                 >
-                    {Object.values(REMOTE_FREQUENCY).map((elemValue, index) => (
+                    {Object.values(RemoteFrequenciesV2).map((elemValue, index) => (
                         <ListItem key={`remote_frequency_${elemValue}_${index}`} value={elemValue}>
                             {formatMessage(remoteSelectTranslations[elemValue])}
                         </ListItem>
                     ))}
                 </Select>
             </EditDialogField>
+            {remoteFrequency.frequency === 'hybrid' && (
+                <EditDialogField
+                    error={errors.remoteFrequency?.daysPerWeek}
+                    title={
+                        <FormattedMessage
+                            id="DreamJob.editDialog.remoteFrequency.daysPerWeek.title"
+                            defaultMessage="How many days per week?"
+                        />
+                    }
+                >
+                    <TextField
+                        type="number"
+                        min="0"
+                        max="5"
+                        value={remoteFrequency.daysPerWeek}
+                        onChange={handleChange('remoteFrequency.daysPerWeek')}
+                        variant="flat"
+                    />
+                </EditDialogField>
+            )}
             <EditDialogField
                 error={errors.contractTypes}
                 title={
