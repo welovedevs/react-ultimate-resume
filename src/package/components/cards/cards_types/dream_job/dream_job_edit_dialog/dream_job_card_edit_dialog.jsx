@@ -100,7 +100,7 @@ const Content = ({ helpers: { handleValueChange } }) => {
             >
                 <Select
                     fullWidth
-                    value={remoteFrequency.frequency}
+                    value={remoteFrequency?.frequency}
                     onChange={(value) => {
                         setFieldValue('remoteFrequency.frequency', value);
 
@@ -118,7 +118,7 @@ const Content = ({ helpers: { handleValueChange } }) => {
                     ))}
                 </Select>
             </EditDialogField>
-            {remoteFrequency.frequency === 'hybrid' && (
+            {remoteFrequency?.frequency === 'hybrid' && (
                 <EditDialogField
                     error={errors.remoteFrequency?.daysPerWeek}
                     title={

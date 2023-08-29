@@ -91,7 +91,7 @@ const DreamJobBackComponent = ({ data }) => {
 
 const DreamJobLocations = ({ remoteFrequency, places, classes }) => {
     const { formatMessage } = useIntl();
-    if (remoteFrequency === RemoteFrequenciesV2.fullTime) {
+    if (remoteFrequency?.frequency === RemoteFrequenciesV2.fullTime) {
         return <FormattedMessage {...remoteDisplayTranslations.fullTime} />;
     }
 
@@ -103,7 +103,7 @@ const DreamJobLocations = ({ remoteFrequency, places, classes }) => {
             <ProfileCardSectionText>
                 <DreamJobPlaces places={places} classes={classes} />
                 <br />
-                {remoteFrequency.frequency &&
+                {remoteFrequency?.frequency &&
                     formatMessage(
                         remoteDisplayTranslations[remoteFrequency.frequency] || remoteDisplayTranslations.others,
                         { daysPerWeek: remoteFrequency.daysPerWeek }

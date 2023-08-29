@@ -39,7 +39,7 @@ const DreamJobFrontComponent = ({ data }) => {
         return ` (+ ${places.length - 1})`;
     }, [places]);
     const content = useMemo(() => {
-        if (remoteFrequency.frequency === RemoteFrequenciesV2.fullTime) {
+        if (remoteFrequency?.frequency === RemoteFrequenciesV2.fullTime) {
             return (
                 <>
                     <ProfileCardFrontVector classes={{ container: classes.logo }} vector={HomeLogo} />
