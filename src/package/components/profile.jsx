@@ -22,7 +22,6 @@ import { technologiesInitialState, technologiesReducer } from '../store/technolo
 import { DeveloperProfileContext, StaticDataContext, StoreContext } from '../utils/context/contexts';
 import { mergeOmitNull } from '../utils/data_utils';
 import { SIDES } from './commons/profile_card/profile_card_side/side';
-import Footer from './footer';
 
 if (!Intl.PluralRules) {
     // eslint-disable-next-line global-require
@@ -183,7 +182,6 @@ const WithProvidersDeveloperProfile = ({
                         onFilesUpload={onFilesUpload}
                         classes={classes}
                     />
-                    <Footer />
                 </IntlProvider>
             </ThemeProvider>
         </StyledEngineProvider>
