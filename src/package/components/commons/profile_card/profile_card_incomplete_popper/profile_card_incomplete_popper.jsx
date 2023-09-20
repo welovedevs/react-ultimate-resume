@@ -19,16 +19,22 @@ const ProfileCardIncompletePopperComponent = ({ open, onClose, anchorElement }) 
     return (
         <PopperCard
             classes={{
-                container: 'bg-danger-400',
-                arrowContainer: 'text-danger-400'
+                container: 'bg-danger-400 ',
+                arrowContainer: 'text-danger-400 '
             }}
             open={open}
             onClose={onClose}
             anchorElement={anchorElement}
             popperProps={{
-                placement: 'top',
+                placement: 'top-start',
                 disablePortal: true,
                 modifiers: [
+                    {
+                        name: 'offset',
+                        options: {
+                            offset: [0, -36]
+                        }
+                    },
                     {
                         name: 'preventOverflow'
                     },
