@@ -188,7 +188,7 @@
                 }
             ],
             "remoteFrequency": {
-                "frequency": "hybrid",
+                "frequency": "fullTime",
                 "daysPerWeek": 2
             }
         },
