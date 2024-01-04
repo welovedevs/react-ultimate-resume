@@ -6,7 +6,7 @@
     "module": "dist/esm/index.js",
     "types": "dist/cjs/package/index.d.ts",
     "scripts": {
-        "start": "cross-env NODE_ENV=local react-scripts start",
+        "start": "cross-env NODE_ENV=local react-scripts --openssl-legacy-provider start",
         "dev": "yarn start",
         "eject": "react-scripts eject",
         "test": "react-scripts test",
