@@ -49,7 +49,7 @@ export const DreamJobValidationSchema = (formatMessage) =>
                     then: Yup.number()
                         .required(formatMessage(validationTranslations.required))
                         .min(1, formatMessage(validationTranslations.minEqNumber, { min: 1 }))
-                        .max(5, formatMessage(validationTranslations.maxEqNumber, { max: 5 })),
+                        .max(4, formatMessage(validationTranslations.maxEqNumber, { max: 4 })),
                     otherwise: Yup.number().notRequired()
                 })
         })

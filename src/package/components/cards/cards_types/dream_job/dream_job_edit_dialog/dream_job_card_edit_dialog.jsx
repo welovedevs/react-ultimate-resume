@@ -131,7 +131,7 @@ const Content = ({ helpers: { handleValueChange } }) => {
                     <TextField
                         type="number"
                         min="0"
-                        max="5"
+                        max="4"
                         value={remoteFrequency.daysPerWeek}
                         onChange={handleChange('remoteFrequency.daysPerWeek')}
                         variant="flat"
