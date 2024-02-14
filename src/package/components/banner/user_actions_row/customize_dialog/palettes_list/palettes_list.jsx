@@ -1,31 +1,22 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 
 import cn from 'classnames';
 import makeStyles from '@mui/styles/makeStyles';
-import InfiniteScroll from 'react-infinite-scroller';
-import { motion } from 'framer-motion';
 
 import { Typography } from '@welovedevs/ui';
 
 import { PaletteVisual } from '../palette_visual/palette_visual';
-import { LoadingSpinner } from '../../../../commons/loading_spinner/loading_spinner';
 
 import { buildShadedPalette } from './utils/build_shaded_palette';
 
-import { palettes } from './utils/palettes';
-
-import { PALETTES_LIST_TRANSITIONS_PROPS, PALETTES_ITEM_TRANSITIONS_PROPS } from './palettes_list_transition_props';
-
 import { styles } from './palettes_list_styles';
+import { palettes } from './utils/palettes';
 
 const useStyles = makeStyles(styles);
 
 const PalettesListComponent = ({ value: currentPalette, onChange, classes: receivedClasses = {} }) => {
     const classes = useStyles();
     const containerReference = useRef();
-    const [itemsToShow, setItemsToShow] = useState(10);
-
-    const displayedPalettes = useMemo(() => palettes.slice(0, itemsToShow), [itemsToShow]);
 
     const onSelectChanged = useCallback(
         (value) => () => {
@@ -39,8 +30,6 @@ const PalettesListComponent = ({ value: currentPalette, onChange, classes: recei
         []
     );
 
-    const setNextDisplayedPalettes = useCallback(() => setItemsToShow(itemsToShow + 10), [itemsToShow, setItemsToShow]);
-
     return (
         <div
             ref={containerReference}
@@ -53,50 +42,40 @@ const PalettesListComponent = ({ value: currentPalette, onChange, classes: recei
                     <div className={classes.divider} />
                 </div>
             )}
-            <InfiniteScroll
-                key="scroll"
-                hasMore={itemsToShow < palettes.length}
-                loader={<LoadingSpinner key={"loader"} />}
-                pageStart={0}
-                useWindow={false}
-                loadMore={setNextDisplayedPalettes}
-                getScrollParent={() => containerReference.current}
-            >
-                <motion.div variants={PALETTES_LIST_TRANSITIONS_PROPS} initial="hidden" animate="visible">
-                    {displayedPalettes.map((item, paletteIndex) => (
-                        <motion.button
-                            variants={PALETTES_ITEM_TRANSITIONS_PROPS}
-                            key={`palette_${item.join('_')}_${paletteIndex}`}
-                            type="button"
-                            className={classes.selectablePaletteContainer}
-                            onClick={onSelectChanged(item)}
+
+            <div>
+                {palettes.map((item, paletteIndex) => (
+                    <button
+                        key={`palette_${item.join('_')}_${paletteIndex}`}
+                        type="button"
+                        className={classes.selectablePaletteContainer}
+                        onClick={onSelectChanged(item)}
+                    >
+                        <Typography
+                            color="dark"
+                            classes={{
+                                container: classes.selectablePaletteIndex
+                            }}
+                            variant="h3"
                         >
-                            <Typography
-                                color="dark"
-                                classes={{
-                                    container: classes.selectablePaletteIndex
-                                }}
-                                variant="h3"
-                            >
-                                {`${paletteIndex + 1}.`}
-                            </Typography>
-                            <PaletteVisual
-                                classes={{
-                                    tooltipPopper: classes.tooltipPopper,
-                                    color: classes.paletteVisualColor
-                                }}
-                                palette={['primary', 'secondary', 'tertiary'].reduce(
-                                    (acc, keyName, index) => ({
-                                        ...acc,
-                                        [keyName]: { 500: item[index] }
-                                    }),
-                                    {}
-                                )}
-                            />
-                        </motion.button>
-                    ))}
-                </motion.div>
-            </InfiniteScroll>
+                            {`${paletteIndex + 1}.`}
+                        </Typography>
+                        <PaletteVisual
+                            classes={{
+                                tooltipPopper: classes.tooltipPopper,
+                                color: classes.paletteVisualColor
+                            }}
+                            palette={['primary', 'secondary', 'tertiary'].reduce(
+                                (acc, keyName, index) => ({
+                                    ...acc,
+                                    [keyName]: { 500: item[index] }
+                                }),
+                                {}
+                            )}
+                        />
+                    </button>
+                ))}
+            </div>
         </div>
     );
 };
